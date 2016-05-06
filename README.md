@@ -5,7 +5,7 @@ Free and Open Source messaging app that combines chat and messaging common servi
 
 Available for Windows, Mac and Linux.
 
-[DOWNLOAD HERE](https://github.com/saenzramiro/rambox/releases)
+[DOWNLOAD HERE](https://github.com/saenzramiro/rambox/releases/latest)
 
 ----------
 
@@ -13,6 +13,27 @@ Available for Windows, Mac and Linux.
 
 Windows 7
 ![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/win1.png)
+
+## Services available - 17
+
+![WhatsApp](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png)![Facebook Messenger](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png)![Skype](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/skype.png)![Slack](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/slack.png)![Hangouts](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hangouts.png)![Telegram](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/telegram.png) ![WeChat](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/wechat.png) ![Gmail](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/gmail.png) ![Inbox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png) ![HipChat](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hipchat.png) ![ChatWork](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/chatwork.png) ![GroupMe](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/groupme.png) ![Grape](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/grape.png) ![Gitter](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/gitter.png) ![Steam Chat](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/steam.png) ![Discord](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/discord.png) ![Noysi](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/noysi.png)
+
+## Features
+
+- [x] Reorder applications in the tab bar.
+- [x] Notification badge in the tab.
+- [x] Minimize to tray.
+- [x] Mute audio to specific service.
+- [x] Separate tabs floating to the right.
+
+## To Do
+
+- [ ] Change theme.
+- [ ] Add a custom service.
+- [ ] Task icon notification badge.
+- [ ] Modify an existing service.
+- [ ] Preferences.
+- [ ] Prevent notifications to specific service.
 
 ## Getting Involved
 
