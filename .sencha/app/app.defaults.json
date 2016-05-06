@@ -1,0 +1,429 @@
+{
+    /**
+     * The relative path to the appliaction's markup file (html, jsp, asp, etc.)
+     */
+    "indexHtmlPath": "index.html",
+
+    /**
+     * List of all JavaScript assets in the right execution order.
+     *
+     * Each item is an object with the following format:
+     *
+     *      {
+     *          // Path to file. If the file is local this must be a relative path from
+     *          // this app.json file.
+     *          //
+     *          "path": "path/to/script.js",   // REQUIRED
+     *
+     *          // Set to true on one file to indicate that it should become the container
+     *          // for the concatenated classes.
+     *          //
+     *          "bundle": false,    // OPTIONAL
+     *
+     *          // Set to true to include this file in the concatenated classes.
+     *          //
+     *          "includeInBundle": false,  // OPTIONAL
+     *
+     *          // Specify as true if this file is remote and should not be copied into the
+     *          // build folder. Defaults to false for a local file which will be copied.
+     *          //
+     *          "remote": false,    // OPTIONAL
+     *
+     *          // If not specified, this file will only be loaded once, and cached inside
+     *          // localStorage until this value is changed. You can specify:
+     *          //
+     *          //   - "delta" to enable over-the-air delta update for this file
+     *          //   - "full" means full update will be made when this file changes
+     *          //
+     *          "update": "",        // OPTIONAL
+     *
+     *          // A value of true indicates that is a development mode only dependency.
+     *          // These files will not be copied into the build directory or referenced
+     *          // in the generate app.json manifest for the micro loader.
+     *          //
+     *          "bootstrap": false   // OPTIONAL
+     *      }
+     *
+     * To use ext-all-debug.js instead of explicitly loading all framework files at
+     * dev time, add the following entry to this js list :
+     *
+     *      {
+     *          "path": "${framework.dir}/build/ext-all-debug.js"
+     *      }
+     *
+     * Note: when using ext-all-debug.js, you also need to disable the loadOrder portion
+     * of the bootstrap manifest.  See the "bootstrap" property for details.
+     *
+     */
+    "js": [
+        {
+            "path": "${framework.dir}/build/ext-all-rtl-debug.js"
+        },
+        {
+            "path": "app.js",
+            "bundle": true
+        }
+    ],
+
+    /**
+     * List of all CSS assets in the right inclusion order.
+     *
+     * Each item is an object with the following format:
+     *
+     *      {
+     *          // Path to file. If the file is local this must be a relative path from
+     *          // this app.json file.
+     *          //
+     *          "path": "path/to/stylesheet.css",   // REQUIRED
+     *
+     *          // Specify as true if this file is remote and should not be copied into the
+     *          // build folder. Defaults to false for a local file which will be copied.
+     *          //
+     *          "remote": false,    // OPTIONAL
+     *
+     *          // If not specified, this file will only be loaded once, and cached inside
+     *          // localStorage until this value is changed. You can specify:
+     *          //
+     *          //   - "delta" to enable over-the-air delta update for this file
+     *          //   - "full" means full update will be made when this file changes
+     *          //
+     *          "update": ""      // OPTIONAL
+     *      }
+     */
+    "css": [
+        {
+            "path": "bootstrap.css",
+            "bootstrap": true
+        }
+    ],
+
+    /**
+     * This option is used to configure the dynamic loader. At present these options
+     * are supported.
+     *
+     *      "loader": {
+     *          // This property controls how the loader manages caching for requests:
+     *          //
+     *          //   - true: allows requests to receive cached responses
+     *          //   - false: disable cached responses by adding a random "cache buster"
+     *          //   - other: a string (such as the build.timestamp shown here) to allow
+     *          //     requests to be cached for this build.
+     *          //
+     *          "cache": "${build.timestamp}",
+     *
+     *          // When "cache" is not true, this value is the request parameter used
+     *          // to control caching.
+     *          //
+     *          "cacheParam": "_dc"
+     *      },
+     *
+     */
+
+
+    /**
+     *  "compressor": {
+     *      "type": "closure",
+     *      "languageIn": "ECMASCRIPT5"
+     *  }
+     *
+     */
+    "compressor": null,
+
+    /**
+     * override objects for setting build environment specific
+     * settings.
+     */
+    "production": {
+        "compressor": {
+            "type": "yui"
+        }
+    },
+
+    "testing": {
+        "output": {
+            "deltas": {
+                "enable": false
+            },
+            "cache": {
+                "enable": false
+            }
+        }
+    },
+
+    "development": {
+        "output": {
+            "deltas": {
+                "enable": false
+            },
+            "cache": {
+                "enable": false
+            }
+        }
+    },
+
+
+    /**
+     *  Controls the output structure of bootstrap artifacts.  May be specified by a string:
+     *
+     *      "bootstrap": "${app.dir}"
+     *
+     *  to adjust the base path for all bootstrap objects, or expanded into object form:
+     *
+     *      "bootstrap": {
+     *          "base": "${app.dir},
+     *          "manifest": "bootstrap.json",
+     *          "microloader": "bootstrap.js",
+     *          "css": "bootstrap.css"
+     *      }
+     *
+     *  To disable "loadOrder" metadata when using a framwork build file such as
+     *  ext-all-debug.js, use the expanded form of the manifest property:
+     *
+     *      "bootstrap": {
+     *          "manifest": {
+     *              "path": "bootstrap.json",
+     *              "exclude": "loadOrder"
+     *          }
+     *      }
+     *
+     */
+    "bootstrap":{
+        "base": "${app.dir}"
+    },
+
+    /**
+     *  Controls the output directory for build resources.  May be set with
+     *  either a string:
+     *
+     *      output: ""
+     *
+     *  or an object containing values for various types of
+     *  build artifacts:
+     *
+     *      "output": {
+     *          "base": "${workspace.build.dir}/${build.environment}/${app.name}",
+     *          "page": {
+     *              "path": "../index.html",
+     *              "enable": false
+     *          },
+     *          "css": "${app.output.resources}/${app.name}-all.css",
+     *          "js": {
+     *              "path": "app.js",
+     *              "enable": true,
+     *              "optimize": {
+     *                  "defines": true,
+     *                  "callParent": true,
+     *                  "requires": true,
+     *               }
+     *          },
+     *          "microloader": {
+     *              "path": "microloader.js",
+     *              "embed": true,
+     *              "enable": true
+     *          },
+     *          "manifest": {
+     *              "path": "app.json",
+     *              "embed": false,
+     *              "enable": "${app.output.microloader.enable}"
+     *          },
+     *          "resources": "resources",
+     *          "slicer": {
+     *              "path": "${app.output.resources}/images",
+     *              "enable": false
+     *          }
+     *
+     */
+    "output": {
+        "base": "${workspace.build.dir}/${build.environment}/${app.name}",
+        "deltas": {
+            "enable": false
+        },
+        "cache": {
+            "enable": false
+        },
+        "microloader": {
+            "enable": true
+        }
+    },
+    
+    /**
+    * Controls for localStorage caching
+    *   "cache": {
+    *       // This property controls whether localStorage caching of this manifest file is on or off. 
+    *       // if disabled no deltas will be generated during a build and full updates will be disabled
+    *       "enable": false,
+    *       
+    *       // This property allows for global toggle of deltas.
+    *       // If set to a string the value will be used as the path to where deltas will be generated relative to you build.
+    *       // If set to a Truthy Value the default path ok "deltas" will be used
+    *       // If set to a Falsey value or if this property is not present deltas will be disabled and not generated.
+    *       // 
+    *       "deltas": "deltas"
+    *   },
+    */
+    "cache": {
+        "deltas": "deltas"
+    },
+
+    /**
+     * This sets the default output folder for cordova packagers builds
+     *
+     *      // Cordova Packager Config options
+     *      "config": {
+     *
+     *          // 'name' This is the name of your cordova application. This will default to your Sencha App name.
+     *          // This is only used once during Cordova app creation and cannot be changed after.
+     *          "name": "AppNameForCordova",
+     *
+     *          // 'id' This will be your package name for Android and your Bundle Identifier for iOS
+     *          // This is only used once during Cordova app creation and cannot be changed after
+     *          "id": "com.domain.AppName",
+     *
+     *          // 'platform' can be a platform or a space seperated list of platform (ios android)
+     *          // platform supported on mac: ios, amazon-fireos, android, blackberry10, firefoxos
+     *          // platform supported on win: wp7, wp8, windows8, amazon-fireos, android, blackberry10, firefoxos
+     *          "platform": "ios"
+     *
+     *          // 'verbose' This boolean will determine if all cordova commands will have verbose output or not.
+     *          // to properly see this run sencha command with the '-info' flag like the following
+     *          // sencha -info app run [buildname]
+     *
+     *          // 'path' The path this builds cordova project should be created in.
+     *          // This defaults to your {app.dir}/cordova
+     *
+     *          // 'target' This is the target for emulator/simulator commands.
+     *          // On Android is the name of your Android Virtual Device
+     *          // For iOS it is one of the following:
+     *          // "iPhone (Retina 3.5-inch)"
+     *          // "iPhone (Retina 4-inch)"
+     *          // "iPhone"
+     *          // "iPad"
+     *          // "iPad (Retina)"
+     *
+     */
+    "cordova": {
+        "config": {
+            "name": "${app.name}",
+            "id": "com.domain.${app.name}",
+            "verbose": false,
+            "target": "",
+            "path": "${app.dir}/cordova"
+        },
+        "js": [
+            {
+                "path": "cordova.js",
+                "remote": true,
+                "priority": 1000
+            }
+        ],
+        "microloader": "${app.config.dir}/Microloader.js",
+        "output": {
+            "base": "${app.cordova.config.path}/www",
+            "deltas": {
+                "enable": false
+            },
+            "cache": {
+                "enable": false
+            }
+        }
+    },
+
+    /**
+     * This sets the default output folder for phonegap packagers builds
+     *
+     *      // Phonegap Packager Config options
+     *      "config": {
+     *
+     *          // 'name' This is the name of your phonegap application. This will default to your Sencha App name.
+     *          // This is only used once during Phonegap app creation and cannot be changed after.
+     *          "name": "AppNameForCordova",
+     *
+     *          // 'id' This will be your package name for Android and your Bundle Identifier for iOS
+     *          // This is only used once during Phonegap app creation and cannot be changed after
+     *          "id": "com.domain.AppName",
+     *
+     *          // 'platform' a single platform to build, run or emulate
+     *          // platform supported locally: android, ios, wp8, Blackberry 10
+     *          // platform supported remotely: android, ios, wp8
+     *          //"platform": "ios"
+     *
+     *          // 'remote' This boolean will determine if the build should be run on Phonegap's remove server 'http://build.phonegap.com'
+     *          // setting remote to true will attempt to build on the cloud.
+     *          // To properly use this one must set the following properties in there local.properties file (if this file does not exist create it in your app root)
+     *          // phonegap.remote.username=myname@domain.com
+     *          // phonegap.remote.password=mys3cr3tp@ssw0rd
+     *
+     *          // 'verbose' This boolean will determine if all phonegap commands will have verbose output or not.
+     *          // to properly see this run sencha command with the '-info' flag like the following
+     *          // sencha -info app run [buildname]
+     *
+     *          // 'path' The path this builds phonegap project should be created in.
+     *          // This is only used once during Phonegap app creation if changed this will result in a new phonegap application being generated
+     *          // This defaults to your {app.dir}/phonegap
+     *
+     */
+    "phonegap": {
+        "config": {
+            "name": "${app.name}",
+            "id": "com.domain.${app.name}",
+            "remote": false,
+            "verbose": false,
+            "path": "${app.dir}/phonegap"
+        },
+        "js": [
+            {
+                "path": "phonegap.js",
+                "remote": true,
+                "priority": 1000
+            }
+        ],
+        "microloader": "${app.config.dir}/Microloader.js",
+        "output": {
+            "base": "${app.phonegap.config.path}/www",
+            "deltas": {
+                "enable": false
+            },
+            "cache": {
+                "enable": false
+            }
+        }
+    },
+
+    /**
+     * Additional resources used during theme slicing operations
+     */
+    "slicer": {
+        "js": [
+            {
+                "path": "${app.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ],
+        "output": {
+            "deltas": {
+                "enable": false
+            },
+            "cache": {
+                "enable": false
+            }
+        }
+    }
+
+    /**
+     * The space config object is used by the sencha app publish command to deploy this application to sencha space
+     * "space": {
+     *     // the space id for this application
+     *     "id": 12345,
+     *     // name of app in space deployments
+     *     "name": "${app.name}",
+     *     // space host
+     *     "host": "https://api.space.sencha.com/json.rpc",
+     *     // can be a zip file path, or a folder to be zipped and deployd to sencha space
+     *     "file": "${app.output.base}",
+     *     // These may be specified here, but are best specified in your user
+     *     // ~/.sencha/cmd/sencha.cfg file
+     *     "apiKey": "",
+     *     "secret": ""
+     * }
+     */
+}

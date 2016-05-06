@@ -1,0 +1,22 @@
+{
+    "name": "ext-theme-neptune",
+    "type": "theme",
+    "creator": "Sencha",
+    "summary": "Ext JS Neptune Theme",
+    "detailedDescription": "The Neptune Theme provides a clean, modern style for Ext JS",
+    "version": "5.0.0",
+    "compatVersion": "5.0.0",
+    "format": "1",
+    "slicer": {
+        "js": [
+            {
+                "path": "${package.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ]
+    },
+    "output": "${package.dir}/build",
+    "local": true,
+    "requires": [],
+    "extend": "ext-theme-neutral"
+}

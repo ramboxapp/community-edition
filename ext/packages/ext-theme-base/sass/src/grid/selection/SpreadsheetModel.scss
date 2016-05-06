@@ -1,0 +1,14 @@
+.#{$prefix}ssm-row-numberer-hd {
+    // Needs important to defeat the s-resize rule on all column headers
+    cursor: se-resize!important;
+}
+
+.#{$prefix}ssm-row-numberer-cell {
+    cursor: e-resize;
+}
+
+.#{$prefix}ssm-column-select {
+    .#{$prefix}column-header {
+        cursor: s-resize;
+    }
+}

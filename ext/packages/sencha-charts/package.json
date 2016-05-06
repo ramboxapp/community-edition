@@ -1,0 +1,45 @@
+{
+    "name": "sencha-charts",
+    "type": "code",
+    "creator": "Sencha",
+    "summary": "Sencha Charts",
+    "detailedDescription": "Sencha Charts is a package that allows to generate charts of different types (line, columns, scatter, radar, gauge, etc...). It also includes the Drawing library which provides an abstraction sitting on top of HTML Canvas and SVG.",
+    "version": "1.0.0",
+    "compatVersion": "1.0.0",
+    "format": "1",
+    "slicer": {
+        "js": [
+            {
+                "path": "${package.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ]
+    },
+    "output": {
+        "base": "${package.dir}/build/${build.id}",
+        "js": "..",
+        "sass":""
+    },
+
+    "local": true,
+    "requires": ["sencha-core"],
+    "classpath": "${package.dir}/src,${package.dir}/src-${framework.name}",
+    "overrides": "${package.dir}/overrides,${package.dir}/overrides-${framework.name}",
+    "js": [
+    ],
+
+    "builds": {
+        "neptune": {
+            "framework": "ext",
+            "theme": "ext-theme-neptune"
+        },
+        "crisp": {
+            "framework": "ext",
+            "theme": "ext-theme-crisp"
+        },
+        "classic": {
+            "framework": "ext",
+            "theme": "ext-theme-classic"
+        }
+    }
+}

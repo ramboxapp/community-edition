@@ -1,0 +1,22 @@
+<project name="packager-impl" default="-native-package">
+    <target name="-init-native-package">
+        <if>
+            <isset property="app.packager"/>
+            <then>
+                <x-ant-call target="${app.packager}-init-native-package" inheritall="true" inheritrefs="true"/>
+            </then>
+        </if>
+    </target>
+
+    <!--Sencha App build will land here after everything is done-->
+    <target name="-before-native-package"/>
+    <target name="-native-package">
+        <if>
+            <isset property="app.packager"/>
+            <then>
+                <x-ant-call target="${app.packager}-native-package" inheritall="true" inheritrefs="true"/>
+            </then>
+        </if>
+    </target>
+    <target name="-after-native-package"/>
+</project>

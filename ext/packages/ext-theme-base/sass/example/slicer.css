@@ -1,0 +1,22 @@
+.widget-container {
+    margin: 10px;
+    width: 400px;
+    position: relative;
+    overflow: visible;
+}
+
+.x-slicer-target,
+.x-slicer-target * {
+    opacity: 1;
+}
+
+/* ensure body does not overlap the rounded corners of framed panel/window when slicing */
+.x-panel-body,
+.x-window-body {
+    background: transparent;
+}
+
+/* prevent focus outline from being sliced */
+.x-btn-wrap {
+    outline: none !important;
+}

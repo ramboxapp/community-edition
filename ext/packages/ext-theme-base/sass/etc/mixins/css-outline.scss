@@ -1,0 +1,47 @@
+/**
+ * adds a css outline to an element with compatibility for IE8/outline-offset
+ * NOTE: the element receiving the outline must be positioned (either relative or absolute)
+ * in order for the outline to work in IE8
+ *
+ * @param {number} [$width=1px]
+ * The width of the outline
+ *
+ * @param {string} [$style=solid]
+ * The style of the outline
+ *
+ * @param {color} [$color=#000]
+ * The color of the outline
+ *
+ * @param {number} [$offset=0]
+ * The offset of the outline
+ *
+ * @param {number/list} [$border-width=0]
+ * The border-width of the element receiving the outline.
+ * Required in order for outline-offset to work in IE8
+ */
+@mixin css-outline(
+    $width: 1px,
+    $style: solid,
+    $color: #000,
+    $offset: 0,
+    $border-width: 0
+) {
+    outline: $width $style $color;
+    outline-offset: $offset;
+
+    @if $include-ie {
+        .#{$prefix}ie8 & {
+            outline: none;
+            &:after {
+                position: absolute;
+                content: ' ';
+                top: -$offset - $width - top($border-width) ;
+                right: -$offset - $width - right($border-width);
+                bottom: -$offset - $width - bottom($border-width);
+                left: -$offset - $width - left($border-width);
+
+                border: $width $style $color;
+            }
+        }
+    }
+}

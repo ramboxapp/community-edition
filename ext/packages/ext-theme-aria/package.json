@@ -1,0 +1,21 @@
+{
+    "name": "ext-theme-aria",
+    "type": "theme",
+    "requires": ["ext-aria"],
+    "extend": "ext-theme-neptune",
+
+    "creator": "Sencha",
+    "summary": "ARIA Theme",
+    "detailedDescription": "A high-contrast accessibility theme based on Neptune",
+
+    "version": "5.0.0",
+    "compatVersion": "5.0.0",
+    "format": "1",
+
+    "slicer": {
+        "js": []
+    },
+
+    "output": "${package.dir}/build",
+    "local": true
+}

@@ -1,0 +1,27 @@
+<project name="x-resources-impl">
+    <target name="-before-resources"/>
+    <target name="-after-resources"/>
+    
+    <!--'-init-compiler' defined in init-impl.xml-->
+    <target name="-resources" depends="-init-compiler">
+        <property name="target.json.resources.dir" value="${build.out.base.path}"/>
+        <property name="target.config.resources.dir" value="${build.resources.dir}"/>
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+                resources
+                    -excludes=-all*.css
+                    -out=${target.config.resources.dir}
+                and
+                resources
+                    -model=true
+                    -out=${target.json.resources.dir}
+            ]]>
+        </x-compile>
+    </target>
+
+    <!-- Legacy targets (implement -before-resources or -after-resources instead): -->
+    <target name="-after-copy-resources"/>
+    <target name="-after-inherit-resources"/>
+    <target name="-before-copy-resources"/>
+    <target name="-before-inherit-resources"/>
+</project>

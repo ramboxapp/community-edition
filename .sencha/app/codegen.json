@@ -1,0 +1,238 @@
+{
+  "sources": {
+    "build.properties.merge": {
+      "d4613dc19be3ddb60e7ff5716e28c8b15d954f3a": "eJytUstOw0AMvPMVI/WGoB+AxAFx4sBD0B9ws05idbOOdp2E/j1OH6pEEKfuzR57POP1Co/XfDcrbFopqCUy+qyjBC6gBB05Zw/QqyRDrRmBaxqiYaQstI1e5xlJHCAJ1nJhZ4s6cXYm0Sy2P/CWh5uVI8A9+NvWPqXnbMLllLxdn5jLEvsTmUXrRSHhBO6xpeJyNGE7SAxrTqNkTR27A0nFmAIoBFzIYOpsmhhaHz2glab9x4L3hqEy0bRUa1xMUrMEEpmMvMz3VO2o4d/uXl4/3j83T28bL/niVLWE5y5gkhjRcW4Yex0yPJ8a9zCJtRAr0CkhDNklYOibTP6X6+OyaFRx32q+CqEzS6WpjlJ55xHvaDf3RnLwDmVi7uf4POewKzufy8x83Vv8AQy16fs\u003d"
+    },
+    "development.properties.merge": {
+      "c45c602c9b6f6f73cace183e9f0bf09c00a3ccf6": "eJytkUuOAjEMBfec4one9w24wyy4QFDc0xbBjhyTEbcfp0F89mRny6l6liccvvl2E44rNyxcCNW0c6aGJNBOZlGgKotjUUOmJV2LoyfjdCoxFx0WymBBgJyas/zOj7k2B6+SOVObw0JtMzw6SEZQKTfwpap5UP5WEpyuXHJQgjecvhL2mToVrRcS34Oks6mMYt5NMfbzYr7l8edWns5DzGrst22vu+QtXjR8BAraFqloyoEZAT7l28cW3i9f4R+b7pUs"
+    },
+    "native.properties.merge": {
+      "2c8c063f9588eecff09624782d7369a8a000d61c": "eJytkEsOwjAMRPecYkT3vQF3YMEFguJSi2BXjgni9rgfFQ5AdrEm743T4fTPc+hwGbli4EKYTBtnqkgCbWQWF0zK4hjUkGlIz+JoyThdS+RiwkIZLAiQJOdG/RarfeAmMmeqfUioLoJtgmQElfIGPyY1D8hrJMH1ySWz3AI3K30kHFfuESSNTeVB4v2hi8T5i/tp4vs+nu6zk9XY38tGK/+nWQx87hK0pU3RlAMzu3fv8qaG8s9f/wFV3ZB9"
+    },
+    "package.properties.merge": {
+      "c6c1fb2fb1dda28480ad0f6e5caffc9b97d196ae": "eJytkUFygzAMRfc5hSZsOxygM11223aRCwgsQBNH8tiCTG5fGWjDAcLOsnjvS27g45XfqYHLxAUGjgQp68KBCqCALpSzHyApi8GgGQINOEeDBTNjF73PKywUgAUclLC/4kjt3lda5yXKxlRat1BZDXsFMBOoxAfwLWk2p9wnEuhmjoFldF512kRw3sFnIFk4q9xIrD013vLz5B2y2P9EhtcqZc1sj3WmTXCI5gWrYZy2xomKwTFV/hSvP5XN+fV9+Xzftjb7SDoc+jClWJmmIGi80N9SwnbVe1HlDUTdWfNvt1togpGEMkYoLP1K7tVfIHKXfeVU/S9+/V9rlbyW"
+    },
+    "production.properties.merge": {
+      "cbdf9712e9b5d37cecb4d0530ba1fccd0ed004a3": "eJytkUEOwjAMBO+8YkXv/QF/4MAHAnGpRbArxy3i97gFQbk3t6ycmbXS4LDl2TU49VzRcSEMphNnqkgCncgsLhiUxdGpIVOXxuKYknE6l5iLhIUyWBCgeJ7Hi7NK+xmtbWQDmTPVNkRUF8knQTKCSnmC74OaB+jRk+A8csks10DOWu8J+x97D5KJTeVO4u2uianjD7lq5N+9PN1mL6uxP5fN3o5Vuwh87hO0pVHRlAMz+//cy7sa2o2/4QV6LJW9"
+    },
+    "sencha.cfg.tpl.merge": {
+      "09f3bf64dcdd4788a111fadfc62e6f580b348258": "eJytVE1vEzEQvedXjFQOrdRue0NChAPcOEWCIxfHnt04eG3L9uYD1P/OG292SUmLKkGkJF7P7Htvnmd8RV83TF71TKGlgrWK0Vmtig1+gXUjseVP+X1cLK5qelRlc51vqITzbNqqnco62VgohyFpznStQ98ryhxVUoXNTYXUTuUsIMs334aHh7cfZdPY9HiPxe0ze802v5477Dgla15kn+MX7HNkIkshlGoO1GoWziEz7Tfsqcdb1neUdc6UeCoYKdtMtUDAXJH11dSM5/ucNClvxoedSgRS1iUki1QRIYFmpjszfYWiBVoSKA2OyXBrva2lt9aBWIcEFTF4I6qQ+xmOfBkdOclpfpNAyrP+TzovSCHXqvW/EwPnZWIEL4jbwevKJs719mBPvGeYXP5SDIL3yrlGzukcnA8lKXi5Pp7qwJ712g2G8Y8HObaOPdfOGbXo4FvbNWl9C6D34JH++DDyzDHaW+dozROaITWU0KNNNXQcybYUYRj7UksyofaJl0ZjJIMZ7+bI2raWTYPYXKiorZVO/Xk+t2iZ76pjEVkUjkgOA9v4Iqd2aRvSNOHVvBpawoi7urqrp2X1CG4zZIbIqRxJKy+i+mCqJtGoN8p3FR11xmGsJQxFllFkiKkAwryYaQgwjRG7VKfSm4auuXuHoOFDo3I83J7W2xypaRoax1XQxktojG5K70RieSJxMiyToj+mnpzNRVwS6/KZPwB5Mrg6xCOdTn49WGfmAT1WJVNyU4Eu2m3Ggrrlf/1A6Kcho4loNdYrdd7RysmlpGvE/qj3YMY5ubAfzXHW1ztL7YLF7HDq5ESkUXFtloxGxSh43nMiXHxZXl/8ApjUHO8\u003d"
+    },
+    "testing.properties.merge": {
+      "360e715956c81757e53736789fe20be045acb544": "eJytkMENwjAMRe+d4oveuwE7cGCBoLjUItiVY4q6PW6pKAM0t1g/732nxfnI07S4DlzRcyGMphNnqkgCncgsLhiVxdGrIVOfXsUxJeN0K5GLCQtlsCBATtVZ7t2Wq13wRjJnql1YqK6GbYJkBJUyg5+jmgflPZDg9uKSgxK8xekD4bSBTyCZ2FSeJN41bUQuO++vi/828vRYpKzGPq87fQV/1WLgS5mgrXWKphyYRb6L10c1nAf//gdqIpHi"
+    },
+    "config.rb.tpl.merge": {
+      "33f446bd02c3fd24eb27891582eff6a2e789796b": "eJxLLi2KT8ksUrBVcMvMSdUDMvMSc1M14uPdPH1c4+M1ufJLSwpKS+KLSypzUoGqrPJSi0tSU7gALskTcA\u003d\u003d"
+    }
+  },
+  "targets": {
+    ".sencha/app/build.properties": {
+      "source": "build.properties.merge",
+      "version": "d4613dc19be3ddb60e7ff5716e28c8b15d954f3a",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    },
+    ".sencha/app/development.properties": {
+      "source": "development.properties.merge",
+      "version": "c45c602c9b6f6f73cace183e9f0bf09c00a3ccf6",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    },
+    ".sencha/app/native.properties": {
+      "source": "native.properties.merge",
+      "version": "2c8c063f9588eecff09624782d7369a8a000d61c",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    },
+    ".sencha/app/package.properties": {
+      "source": "package.properties.merge",
+      "version": "c6c1fb2fb1dda28480ad0f6e5caffc9b97d196ae",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    },
+    ".sencha/app/production.properties": {
+      "source": "production.properties.merge",
+      "version": "cbdf9712e9b5d37cecb4d0530ba1fccd0ed004a3",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    },
+    ".sencha/app/sencha.cfg": {
+      "source": "sencha.cfg.tpl.merge",
+      "version": "09f3bf64dcdd4788a111fadfc62e6f580b348258",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    },
+    ".sencha/app/testing.properties": {
+      "source": "testing.properties.merge",
+      "version": "360e715956c81757e53736789fe20be045acb544",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    },
+    "sass/config.rb": {
+      "source": "config.rb.tpl.merge",
+      "version": "33f446bd02c3fd24eb27891582eff6a2e789796b",
+      "parameters": {
+        "appControllers": "",
+        "appModels": "",
+        "appName": "Rambox",
+        "appStores": "",
+        "appViews": "",
+        "controllerFileName": "Main",
+        "controllerName": "Main",
+        "controllerNamespace": "Rambox.controller",
+        "frameworkKey": "ext",
+        "frameworkName": "ext",
+        "frameworkPath": "ext",
+        "modelNamespace": "Rambox.model",
+        "name": "Rambox",
+        "packagesRelPath": "ext/packages",
+        "senchadir": ".sencha",
+        "themeName": "default",
+        "uniqueId": "0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed",
+        "viewFileName": "Main",
+        "viewName": "Main",
+        "viewNamespace": "Rambox.view"
+      }
+    }
+  }
+}

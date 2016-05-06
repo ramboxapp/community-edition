@@ -1,0 +1,35 @@
+{
+	"name": "Rambox",
+	"version": "0.1.0",
+	"description": "Free messaging app that combines chat and messaging common services into one application.",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron main.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saenzramiro/rambox.git"
+	},
+	"keywords": [
+		"Rambox",
+		"messaging",
+		"app",
+		"slack",
+		"whatsapp",
+		"facebook",
+		"messenger",
+		"telegram",
+		"google",
+		"hangouts",
+		"skype"
+	],
+	"author": "Ramiro Saenz",
+	"license": "CC0-1.0",
+	"bugs": {
+		"url": "https://github.com/saenzramiro/rambox/issues"
+	},
+	"homepage": "https://github.com/saenzramiro/rambox#readme",
+	"devDependencies": {
+		"electron-prebuilt": "^0.37.8"
+	}
+}

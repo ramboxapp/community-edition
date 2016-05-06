@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Cordova" default="cordova-help">
+    <!--Legacy properties file support-->
+    <property file="${app.dir}/cordova.local.properties"/>
+
+    <!--Init for All Cordova Task-->
+    <target name="-before-cordova-init"/>
+    <target name="-cordova-init">
+        <if>
+            <x-is-true value="app.cordova.config.verbose"/>
+            <then>
+                <property name="cordova.cli.options" value="-d"/>
+            </then>
+            <else>
+                <property name="cordova.cli.options" value=""/>
+            </else>
+        </if>
+    </target>
+    <target name="-after-cordova-init"/>
+    <target name="cordova-init"
+            depends="-init, -before-cordova-init, -cordova-init, -after-cordova-init"/>
+
+    <target name="cordova-help"/>
+
+    <!-- Create Cordova Application-->
+    <target name="cordova-create" depends="cordova-init">
+        <if>
+            <not>
+                <available file="${app.cordova.config.path}" type="dir"/>
+            </not>
+            <then>
+                <cordova-echo message="Creating Cordova Application with ID &quot;${app.cordova.config.id}&quot; and Name &quot;${app.cordova.config.name}&quot;"/>
+                <x-shell reloadprofile="true" dir="${app.dir}">
+                    cordova ${cordova.cli.options} create "${app.cordova.config.path}" ${app.cordova.config.id} "${app.cordova.config.name}"
+                </x-shell>
+            </then>
+        </if>
+    </target>
+
+    <!-- Prepares application for all platforms -->
+    <target name="-before-cordova-prepare"/>
+    <target name="-cordova-prepare" if="args.prepare">
+        <cordova-echo message="Attempting Cordova Prepare for platforms &quot;${cordova.platforms.clean}&quot;"/>
+        <x-shell reloadprofile="true" dir="${app.cordova.config.path}">
+            cordova ${cordova.cli.options} prepare ${cordova.platforms.clean}
+        </x-shell>
+    </target>
+    <target name="-after-cordova-prepare"/>
+    <target name="cordova-prepare" depends="cordova-init, -before-cordova-prepare, -cordova-prepare, -after-cordova-prepare"/>
+
+    <!-- Emulates application on all platforms -->
+    <target name="-before-cordova-emulate"/>
+    <target name="-cordova-emulate" if="args.emulate" depends="cordova-platform-add">
+        <cordova-echo message="Attempting Cordova Emulate for platforms &quot;${cordova.platforms.clean}&quot;"/>
+        <x-shell reloadprofile="true" dir="${app.cordova.config.path}">
+            cordova ${cordova.cli.options} emulate ${cordova.platforms.clean} --target=${app.cordova.config.target}
+        </x-shell>
+    </target>
+    <target name="-after-cordova-emulate"/>
+    <target name="cordova-emulate" depends="cordova-init, -before-cordova-emulate, -cordova-emulate, -after-cordova-emulate"/>
+
+    <!-- Runs application on device for all platforms -->
+    <target name="-before-cordova-run"/>
+    <target name="-cordova-run" if="args.autorun" depends="cordova-platform-add">
+        <cordova-echo message="Attempting Cordova Run for platforms &quot;${cordova.platforms.clean}&quot;"/>
+        <x-shell reloadprofile="true" dir="${app.cordova.config.path}">
+            cordova ${cordova.cli.options} run ${cordova.platforms.clean} --target=${app.cordova.config.target}
+        </x-shell>
+    </target>
+    <target name="-after-cordova-run"/>
+    <target name="cordova-run" depends="cordova-init, -before-cordova-run, -cordova-run, -after-cordova-run"/>
+
+    <!-- Builds application for all platforms -->
+    <target name="-before-cordova-build"/>
+    <target name="-cordova-build" depends="cordova-platform-add">
+        <cordova-echo message="Attempting Cordova Build for platforms &quot;${cordova.platforms.clean}&quot;"/>
+        <x-shell reloadprofile="true" dir="${app.cordova.config.path}">
+            cordova ${cordova.cli.options} build ${cordova.platforms.clean}
+        </x-shell>
+    </target>
+    <target name="-after-cordova-build"/>
+    <target name="cordova-build" depends="cordova-init, -before-cordova-build, -cordova-build, -after-cordova-build"/>
+
+    <!-- Adds all missing Platforms from properties file to the project-->
+    <target name="-before-cordova-platform-add"/>
+    <target name="-cordova-platform-add">
+        <fail status="0" message="No platforms were specified, add a platform to ${build.name}'s -> cordova -> config -> platforms property in app.json">
+            <condition>
+                <or>
+                    <not>
+                        <isset property="cordova.platforms"/>
+                    </not>
+                    <contains string="${cordova.platforms}" substring="$"/>
+                </or>
+            </condition>
+        </fail>
+
+
+        <script language="javascript">
+            var platforms = project.getProperty("cordova.platforms");
+
+            if (!platforms) {
+                platforms = ""
+            }
+            platforms = platforms.replace("/,/g", " ");
+            project.setProperty("cordova.platforms.clean", platforms);
+        </script>
+
+        <x-shell reloadprofile="true" dir="${app.cordova.config.path}" outputproperty="cordova.platforms.list">
+            cordova ${cordova.cli.options} platform list
+        </x-shell>
+
+        <script language="javascript">
+            var target_platforms = project.getProperty("cordova.platforms.clean").split(" ");
+            var existing_platforms = project.getProperty("cordova.platforms.list");
+            var available = existing_platforms.indexOf("Available");
+
+            if (available >= 0) {
+                existing_platforms = existing_platforms.substring(0, available);
+            }
+
+            var missing_platforms = [], platformIndex, platform;
+            for (platformIndex in target_platforms) {
+                platform = target_platforms[platformIndex];
+                if(existing_platforms.indexOf(platform) === -1){
+                    missing_platforms.push(platform);
+                }
+            }
+
+            if(missing_platforms.length > 0) {
+                self.log("Cordova: Missing platforms " + missing_platforms.toString() + ". Attempting add.");
+                project.setProperty("cordova.platforms.missing", missing_platforms.join(" "));
+            } else if(existing_platforms.length() >0){
+                self.log("Cordova: All requested platforms exist");
+            } else {
+                self.log("Cordova: No platforms exist");
+            }
+        </script>
+
+        <if>
+            <isset property="cordova.platforms.missing"/>
+            <then>
+                <cordova-echo message="Cordova is adding platforms &quot;${cordova.platforms.missing}&quot;"/>
+                <x-shell reloadprofile="true" dir="${app.cordova.config.path}">
+                    cordova ${cordova.cli.options} platform add ${cordova.platforms.missing}
+                </x-shell>
+            </then>
+        </if>
+    </target>
+    <target name="-after-cordova-platform-add"/>
+    <target name="cordova-platform-add" depends="cordova-init, -before-cordova-platform-add, -cordova-platform-add, -after-cordova-platform-add"/>
+
+    <target name="-before-cordova-init-native-package"/>
+    <target name="-cordova-init-native-package" depends="cordova-create"/>
+    <target name="-after-cordova-init-native-package"/>
+    <target name="cordova-init-native-package" depends="cordova-init, -before-cordova-init-native-package, -cordova-init-native-package, -after-cordova-init-native-package"/>
+
+    <target name="-before-cordova-native-package"/>
+    <target name="-cordova-native-package" depends="cordova-platform-add, cordova-build, cordova-prepare, cordova-emulate, cordova-run"/>
+    <target name="-after-cordova-native-package"/>
+    <target name="cordova-native-package" depends="cordova-init, -before-cordova-native-package, -cordova-native-package, -after-cordova-native-package"/>
+
+
+    <macrodef name="cordova-echo">
+        <text name="text" optional="true"/>
+        <attribute name="message" default=""/>
+        <attribute name="level" default="info"/>
+        <sequential>
+            <if>
+                <equals arg1="@{message}" arg2=""/>
+                <then>
+                    <x-echo message="[Cordova] @{text}" level="@{level}"/>
+                </then>
+                <else>
+                    <x-echo message="[Cordova] @{message}" level="@{level}"/>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+</project>

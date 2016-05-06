@@ -1,0 +1,64 @@
+.u#{$prefix}rating-picker {
+    overflow: hidden;
+    color: $rating-picker-color;
+    @include opacity($rating-picker-opacity);
+
+    // These cause the elements to wrap to the size needed by the glyphs
+    display: inline-block;
+    // And not take up extra space due to the baseline
+    vertical-align: top;
+
+    // We want the bounding box to not add extra space above/below the text
+    line-height: 1;
+}
+
+.u#{$prefix}rating-picker-inner {
+    position: relative;
+    overflow: hidden;
+
+    display: inline-block;
+    vertical-align: top;
+
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+// When we are over a picker that has "trackOver" enabled, we'll change the color of
+// things, hide the value element show the tracker element.
+.u#{$prefix}rating-picker-over.u#{$prefix}rating-picker-track-over {
+    color: $rating-picker-hover-color;
+
+    > * > .u#{$prefix}rating-picker-value {
+        display: none;
+        width: 0;
+    }
+
+    > * > .u#{$prefix}rating-picker-value:hover {
+        color: $rating-picker-selected-hover-color;
+    }
+
+    > * > .u#{$prefix}rating-picker-tracker {
+        display: inline-block;
+    }
+}
+
+.u#{$prefix}rating-picker-value,
+.u#{$prefix}rating-picker-tracker {
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    // NOTE: We do not specify left here so we will be either left or right
+    // aligned based on RTL mode.
+    top: 0;
+    width: 0;
+    height: 100%;
+    color: $rating-picker-selected-color;
+}
+
+.u#{$prefix}rating-picker-tracker {
+    display: none;
+}
+
+.u#{$prefix}rating-picker-over {
+    @include opacity($rating-picker-hover-opacity);
+}

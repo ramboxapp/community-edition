@@ -1,0 +1,41 @@
+{
+    "format": "1",
+    "name": "ext-ux",
+    "type": "code",
+    "creator": "Sencha",
+    "summary": "User eXtensions",
+    "detailedDescription": "This package contains extensions to Ext JS that should be considered as 'beta' or 'work in progress'. We hope they are useful 'as is' or serve as inspiration for more feature-rich work.",
+    "version": "5.1.0",
+    "compatVersion": "5.1.0",
+    "sass": {
+        "namespace": "Ext.ux"
+    },
+    "slicer": {
+        "js": [
+            {
+                "path": "${package.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ]
+    },
+    "output": {
+        "base": "${package.dir}/build/${build.id}",
+        "js": "..",
+        "sass": ""
+    },
+    "local": true,
+    "requires": [],
+
+    "framework": "ext",
+    "builds": {
+        "neptune": {
+            "theme": "ext-theme-neptune"
+        },
+        "crisp": {
+            "theme": "ext-theme-crisp"
+        },
+        "classic": {
+            "theme": "ext-theme-classic"
+        }
+    }
+}

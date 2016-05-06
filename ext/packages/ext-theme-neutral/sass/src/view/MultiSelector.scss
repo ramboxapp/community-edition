@@ -1,0 +1,13 @@
+.#{$prefix}multiselector-remove {
+    font-size: $multiselector-remove-font-size;
+    color: $multiselector-remove-text-color;
+    cursor: $multiselector-remove-cursor;
+
+    .#{$prefix}grid-cell-inner {
+        padding: $multiselector-remove-padding;
+    }
+}
+
+.#{$prefix}grid-item-over .#{$prefix}multiselector-remove {
+    color: $multiselector-remove-text-color-over;
+}

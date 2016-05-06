@@ -1,0 +1,317 @@
+<project name="x-page-impl.xml">
+
+    <macrodef name="x-build-microload-markup">
+        <sequential>
+            <x-sencha-command dir="${app.dir}" inheritall="true">
+                <![CDATA[
+                fs
+                    minify
+                        ${build.embedded.microloader.compressor}
+                        -from=${build.microloader.path}
+                        -to=${build.microloader.path}
+                ]]>
+            </x-sencha-command>
+            <if>
+                <x-is-true value="${build.enable.embedded.microloader}"/>
+                <then>
+                    <x-run-if-true value="${app.output.page.enable}">
+                        <x-compile refid="${compiler.ref.id}">
+                            <![CDATA[
+                            markup
+                                -contentFile=${build.microloader.path}
+                                -tpl=${build.embedded.microloader.tpl}
+                                -out=${build.out.page.path}
+                            ]]>
+                        </x-compile>
+                        <!--once the generated microloader file is embedded, delete it-->
+                        <delete file="${build.microloader.path}"/>
+                    </x-run-if-true>
+                </then>
+                <else>
+                    <x-run-if-true value="${app.output.page.enable}">
+                        <x-compile refid="${compiler.ref.id}">
+                            <![CDATA[
+                            markup
+                                -markup=${build.external.microloader.markup}
+                                -out=${build.out.page.path}
+                            ]]>
+                        </x-compile>
+                    </x-run-if-true>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <target name="-build-output-manifest-page">
+        <local name="metadata.base.path"/>
+        <property name="metadata.base.path" value="${build.out.metadata.dir}"/>
+        <x-run-if-true value="${app.output.manifest.enable}">
+            <if>
+                <x-is-true value="${build.enable.embedded.manifest}"/>
+                <then>
+                    <x-compile refid="${compiler.ref.id}">
+                        <![CDATA[
+                        # generate microloader file
+                        # generate json file
+                        microload
+                            -operation=manifest
+                            -fashion=${use.fashion}
+                            -tpl=${build.microloader.json.tpl.embedded}
+                            -out=${build.microloader.path}
+                            -resourcePath=${build.out.base.path}
+                            -basePath=${metadata.base.path}
+                        and
+                        microload
+                            -append
+                            -operation=microloader
+                            -microloaderPath=${app.microloader.path}
+                            -bootPath=${build.boot.file}
+                            -tpl=${build.microloader.code.tpl}
+                            -out=${build.microloader.path}
+                        ]]>
+                    </x-compile>
+                </then>
+                <else>
+                    <x-compile refid="${compiler.ref.id}">
+                        <![CDATA[
+                        # generate json file
+                        microload
+                            -operation=manifest
+                            -fashion=${use.fashion}
+                            -tpl=${build.microloader.json.tpl.standalone}
+                            -out=${build.out.json.path}
+                            -resourcePath=${build.out.base.path}
+                            -basePath=${metadata.base.path}
+                        and
+                        microload
+                            -operation=manifest
+                            -fashion=${use.fashion}
+                            -tpl=${build.microloader.json.tpl.external}
+                            -out=${build.microloader.path}
+                            -resourcePath=${build.out.base.path}
+                            -basePath=${metadata.base.path}
+                        and
+                        # generate microloader file
+                        microload
+                            -append
+                            -operation=microloader
+                            -microloaderPath=${app.microloader.path}
+                            -bootPath=${build.boot.file}
+                            -tpl=${build.microloader.code.tpl}
+                            -out=${build.microloader.path}
+                        ]]>
+                    </x-compile>
+                </else>
+            </if>
+        </x-run-if-true>
+        <x-build-microload-markup/>
+    </target>
+
+    <target name="-build-output-microload-page">
+        <if>
+            <x-is-true value="${build.enable.embedded.manifest}"/>
+            <then>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    # generate microloader file
+                    microload
+                        -operation=microloader
+                        -microloaderPath=${app.microloader.path}
+                        -tpl=${build.microloader.code.tpl}
+                        -out=${build.microloader.path}
+                    and
+                    # generate json file
+                    microload
+                        -operation=json
+                        -append
+                        -tpl=${build.microloader.json.tpl.embedded}
+                        -out=${build.microloader.path}
+                    ]]>
+                </x-compile>
+            </then>
+            <else>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    # generate json file
+                    microload
+                        -operation=json
+                        -tpl=${build.microloader.json.tpl.standalone}
+                        -out=${build.out.json.path}
+                    and
+                    # generate microloader file
+                    microload
+                        -operation=microloader
+                        -microloaderPath=${app.microloader.path}
+                        -tpl=${build.microloader.code.tpl}
+                        -out=${build.microloader.path}
+                    and
+                    microload
+                        -operation=json
+                        -append
+                        -tpl=${build.microloader.json.tpl.external}
+                        -out=${build.microloader.path}
+                    ]]>
+                </x-compile>
+            </else>
+        </if>
+        <x-build-microload-markup/>
+    </target>
+
+    <!-- generates a separate json manifest for use with native packager -->
+    <target name="-build-standalone-json-manifest">
+        <x-run-if-true value="${enable.standalone.manifest}">
+            <x-compile refid="${compiler.ref.id}">
+                <![CDATA[
+                # generate json file
+                microload
+                    -operation=json
+                    -tpl=${build.microloader.json.tpl.standalone}
+                    -out=${build.out.json.path}
+                ]]>
+            </x-compile>
+        </x-run-if-true>
+    </target>
+
+    <target name="-build-output-markup-page">
+        <condition property="internal.app.css.rel" value="${app.out.css.rel}">
+            <x-is-true value="${enable.ext42.themes}"/>
+        </condition>
+        <property name="internal.app.css.rel" value=""/>
+
+        <if>
+            <isset property="framework.isV5"/>
+            <then>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    markup
+                        -out=${build.out.page.path}
+                        -basePath=${build.out.metadata.dir}
+                        -resourcePath=${build.out.base.path}
+                    and
+                    # generate microloader file
+                    # generate json file
+                    microload
+                        -operation=manifest
+                        -fashion=${use.fashion}
+                        -tpl=${build.microloader.json.tpl.embedded}
+                        -out=${build.microloader.path}
+                        -resourcePath=${build.out.base.path}
+                        -basePath=${build.out.metadata.dir}
+                    ]]>
+                </x-compile>
+                <x-compress-js srcFile="${build.microloader.path}" outFile="${build.microloader.path}"/>
+                <concat destfile="${build.out.js.path}.tmp">
+                    <fileset file="${build.microloader.path}"/>
+                    <fileset file="${build.out.js.path}"/>
+                </concat>
+                <delete file="${build.microloader.path}"/>
+                <delete file="${build.out.js.path}"/>
+                <move file="${build.out.js.path}.tmp" tofile="${build.out.js.path}"/>
+            </then>
+            <else>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    markup
+                        -out=${build.out.page.path}
+                        -resourcePath=${build.out.base.path}
+                        -basePath=${build.out.metadata.dir}
+                    ]]>
+                </x-compile>
+            </else>
+        </if>
+    </target>
+
+    <!-- '-detect-app-build-properties' is defined in js-impl.xml -->
+    <target name="-build-output-page"
+            depends="-detect-app-build-properties,-build-standalone-json-manifest">
+        <if>
+            <x-is-true value="${build.output.markuponly}"/>
+            <then>
+                <x-ant-call target="-build-output-markup-page"/>
+            </then>
+            <else>
+                <if>
+                    <x-is-true value="${build.enable.appmanifest}"/>
+                    <then>
+                        <x-ant-call target="-build-output-manifest-page"/>
+                    </then>
+                    <else>
+                        <x-ant-call target="-build-output-microload-page"/>
+                    </else>
+                </if>
+            </else>
+        </if>
+    </target>
+
+    <target name="-copy-app-resources" depends="-init-compiler">
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+            app-resources
+                -compress=${enable.resource.compression}
+                -out=${build.out.base.path}
+            ]]>
+        </x-compile>
+    </target>
+
+    <target name="-apply-version-stamps" depends="-init-compiler">
+        <x-run-if-true value="${app.cache.enable}">
+            <x-compile refid="${compiler.ref.id}">
+                <![CDATA[
+                versions
+                    -resourcePath=${build.out.base.path}
+                ]]>
+            </x-compile>
+        </x-run-if-true>
+    </target>
+
+    <target name="-generate-deltas" depends="-apply-version-stamps">
+        <if>
+            <and>
+                <x-is-false value="${skip.deltas}"/>
+                <x-is-false value="${build.output.markuponly}"/>
+            </and>
+            <then>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    deltas
+                        -archivePath=${build.out.archive.path}
+                        -deltaPath=${build.out.deltas.path}
+                        -resourcePath=${build.out.base.path}
+                    ]]>
+                </x-compile>
+            </then>
+        </if>
+    </target>
+
+    <target name="-generate-cache-manifest" depends="-init-compiler">
+        <if>
+            <and>
+                <x-is-false value="${skip.appCache}"/>
+                <x-is-false value="${build.output.markuponly}"/>
+            </and>
+            <then>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    cache-manifest
+                        -cacheManifestPath=${build.manifest.path}
+                    ]]>
+                </x-compile>
+                <replace file="${build.out.page.path}"
+                         token="&lt;html manifest=&quot;&quot;"
+                         value="&lt;html manifest=&quot;${build.out.appCache.name}&quot;"/>
+            </then>
+        </if>
+        <!--remove manifest placeholder if present-->
+        <replace file="${build.out.page.path}"
+                 token="&lt;html manifest=&quot;&quot;"
+                 value="&lt;html"/>
+    </target>
+
+    <target name="-before-page"/>
+    <target name="-page"
+            depends="-copy-app-resources,
+                     -generate-deltas,
+                     -build-output-page,
+                     -generate-cache-manifest"/>
+    <target name="-after-page"/>
+</project>

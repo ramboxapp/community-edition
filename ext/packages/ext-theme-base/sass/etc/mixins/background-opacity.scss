@@ -1,0 +1,21 @@
+// produces a partly opaque background using RGB alpha channel
+// with a workaround for IE8 that doesn't support it
+@mixin background-opacity(
+    $background-color: null,
+    $opacity: 1,
+    $include-ie: $include-ie
+) {
+    $background-opaque: rgba($background-color, $opacity);
+    
+    background-image: none;
+    background-color: $background-opaque;
+
+    @if $include-ie {
+        $ie-background-str: ie-hex-str($background-opaque);
+        
+        .#{$prefix}ie8 & {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-background-str}, endColorstr=#{$ie-background-str});
+            zoom: 1;
+        }
+    }
+}

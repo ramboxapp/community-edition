@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="PhoneGap" default="phonegap-help">
+    <!--Legacy properties file support-->
+    <property file="${app.dir}/phonegap.local.properties"/>
+
+    <!--Init for All PhoneGap Tasks-->
+    <target name="-before-phonegap-init"/>
+    <target name="-phonegap-init">
+        <if>
+            <or>
+                <x-is-true value="${args.emulate}"/>
+                <x-is-true value="${args.autorun}"/>
+            </or>
+            <then>
+                <property name="phonegap.skip.build" value="true"/>
+            </then>
+        </if>
+
+        <!--Check for verbose output config from the user-->
+        <if>
+            <x-is-true value="app.phonegap.config.verbose"/>
+            <then>
+                <property name="phonegap.cli.options" value="-d"/>
+            </then>
+            <else>
+                <property name="phonegap.cli.options" value=""/>
+            </else>
+        </if>
+    </target>
+    <target name="-after-phonegap-init"/>
+    <target name="phonegap-init"
+            depends="-init, -before-phonegap-init, -phonegap-init, -after-phonegap-init"/>
+
+    <!--Default target outputs help information-->
+    <target name="phonegap-help"/>
+
+    <!-- Create Phonegap Application-->
+    <target name="phonegap-create" depends="phonegap-init">
+        <if>
+            <not>
+                <available file="${app.phonegap.config.path}" type="dir"/>
+            </not>
+            <then>
+                <phonegap-echo message="Creating Phonegap Application with ID &quot;${app.phonegap.config.id}&quot; and Name &quot;${app.phonegap.config.name}&quot;"/>
+                <x-shell reloadprofile="true" dir="${app.dir}">
+                    phonegap ${phonegap.cli.options} create "${app.phonegap.config.path}" ${app.phonegap.config.id} ${app.phonegap.config.name}
+                </x-shell>
+                <!--
+                Phonegap puts config.xml in the www root folder, this is dangerous due to how we clean this folder out
+                we will move it up to the phonegap root in order to keep parity with cordova.
+                Later we will copy this file back into www during remote builds
+                -->
+                <move file="${build.out.base.path}/config.xml" todir="${app.phonegap.config.path}" failonerror="false" overwrite="false" />
+            </then>
+        </if>
+    </target>
+
+    <!-- Prepares application for specified platform -->
+    <target name="-before-phonegap-prepare"/>
+    <target name="-phonegap-prepare" if="args.prepare">
+        <fail status="0" message="Phonegap does not currently support prepare command, if this is required for your workflow please try Apache Cordova "/>
+    </target>
+    <target name="-after-phonegap-prepare"/>
+    <target name="phonegap-prepare" depends="phonegap-init, -before-phonegap-prepare, -phonegap-prepare, -after-phonegap-prepare"/>
+
+    <!-- Emulates application for the specified platform -->
+    <target name="-before-phonegap-emulate"/>
+    <target name="-phonegap-emulate" depends="-phonegap-check-platform, -phonegap-check-config-xml" if="args.emulate">
+        <if>
+            <x-is-true value="${phonegap.build.remote}"/>
+            <then>
+                <x-ant-call target="-phonegap-remote-emulate"/>
+            </then>
+            <else>
+                <x-ant-call target="-phonegap-local-emulate"/>
+            </else>
+        </if>
+    </target>
+    <target name="-after-phonegap-emulate"/>
+    <target name="phonegap-emulate" depends="phonegap-init, -before-phonegap-emulate, -phonegap-emulate, -after-phonegap-emulate"/>
+
+
+    <!-- Runs application on a device for the specified platform -->
+    <target name="-before-phonegap-run"/>
+    <target name="-phonegap-run" depends="-phonegap-check-platform, -phonegap-check-config-xml" if="args.autorun">
+        <if>
+            <x-is-true value="${phonegap.build.remote}"/>
+            <then>
+                <x-ant-call target="-phonegap-remote-run"/>
+            </then>
+            <else>
+                <x-ant-call target="-phonegap-local-run"/>
+            </else>
+        </if>
+    </target>
+    <target name="-after-phonegap-run"/>
+    <target name="phonegap-run" depends="phonegap-init, -before-phonegap-run, -phonegap-run, -after-phonegap-run"/>
+
+
+    <!-- Overall Phonegap Build Target. Determines type of build to use -->
+    <target name="-before-phonegap-build"/>
+    <target name="-phonegap-build" depends="-phonegap-check-platform, -phonegap-check-config-xml" unless="phonegap.skip.build">
+        <if>
+            <x-is-true value="${phonegap.build.remote}"/>
+            <then>
+                <x-ant-call target="-phonegap-remote-build"/>
+            </then>
+            <else>
+                <x-ant-call target="-phonegap-local-build"/>
+            </else>
+        </if>
+    </target>
+    <target name="-after-phonegap-build"/>
+    <target name="phonegap-build" depends="phonegap-init, -before-phonegap-build, -phonegap-build, -after-phonegap-build" />
+
+    <!-- Private Utility Target to make sure users have declared a platform to take action on -->
+    <target name="-phonegap-check-platform">
+        <fail status="0" message="No platforms were specified, add a platform to ${build.name}'s -> phonegap -> config -> platform property in app.json">
+            <condition>
+                <or>
+                    <not>
+                        <isset property="phonegap.platform"/>
+                    </not>
+                    <contains string="${phonegap.platform}" substring="$"/>
+                </or>
+            </condition>
+        </fail>
+
+
+
+    </target>
+
+    <!-- Private Utility target to copy the config.xml file back into the WWW folder -->
+    <target name="-phonegap-check-config-xml">
+        <copy todir="${build.out.base.path}" file="${app.phonegap.config.path}/config.xml" failonerror="false" overwrite="true" quiet="true"/>
+    </target>
+
+    <!-- Private Remote Build Targets-->
+    <target name="-phonegap-remote-login">
+        <phonegap-echo message="Attempting login to PhoneGap Build"/>
+        <if>
+            <not>
+                <and>
+                    <isset property="phonegap.build.remote.username"/>
+                    <isset property="phonegap.build.remote.password"/>
+                </and>
+            </not>
+            <then>
+                <phonegap-echo level="warning">
+                    Phonegap Build login credentials were was not found. If you have not logged in prior to running this command.
+                    Please either login via &quot;phonegap remote login&quot; or edit your [APP_ROOT]/local.properties and set &quot;phonegap.username&quot; and &quot;phonegap.password&quot; appropriately
+                </phonegap-echo>
+            </then>
+        </if>
+
+        <x-shell reloadprofile="true" dir="${app.phonegap.config.path}">
+            phonegap ${phonegap.cli.options} remote login --username="${phonegap.build.remote.username}" --password="${phonegap.build.remote.password}"
+        </x-shell>
+    </target>
+
+    <target name="-phonegap-remote-build" depends="-phonegap-remote-login">
+        <phonegap-echo message="Attempting PhoneGap remote build for ${phonegap.platform}"/>
+        <x-shell reloadprofile="true" dir="${app.phonegap.config.path}">
+            phonegap ${phonegap.cli.options} remote build ${phonegap.platform}
+        </x-shell>
+    </target>
+
+    <target name="-phonegap-remote-run" depends="-phonegap-remote-login">
+        <phonegap-echo message="Attempting PhoneGap remote run for ${phonegap.platform}"/>
+        <x-shell reloadprofile="true" dir="${app.phonegap.config.path}">
+            phonegap ${phonegap.cli.options} remote run ${phonegap.platform}
+        </x-shell>
+    </target>
+
+    <target name="-phonegap-remote-emulate" depends="-phonegap-remote-login">
+        <phonegap-echo message="Attempting PhoneGap remote emulate for ${phonegap.platform}"/>
+        <x-shell reloadprofile="true" dir="${app.phonegap.config.path}">
+            phonegap ${phonegap.cli.options} remote run ${phonegap.platform} --emulator
+        </x-shell>
+    </target>
+
+    <!-- Private Local Build Targets-->
+    <target name="-phonegap-local-build">
+        <phonegap-echo message="Attempting PhoneGap local build for ${phonegap.platform}"/>
+        <x-shell reloadprofile="true" dir="${app.phonegap.config.path}">
+            phonegap ${phonegap.cli.options} local build ${phonegap.platform}
+        </x-shell>
+    </target>
+
+    <target name="-phonegap-local-run">
+        <phonegap-echo message="Attempting PhoneGap local run for ${phonegap.platform}"/>
+        <x-shell reloadprofile="true" dir="${app.phonegap.config.path}">
+            phonegap ${phonegap.cli.options} local run ${phonegap.platform}
+        </x-shell>
+    </target>
+
+    <target name="-phonegap-local-emulate">
+        <phonegap-echo message="Attempting PhoneGap local emulate for ${phonegap.platform}"/>
+        <x-shell reloadprofile="true" dir="${app.phonegap.config.path}">
+            phonegap ${phonegap.cli.options} local run ${phonegap.platform} --emulator
+        </x-shell>
+    </target>
+
+    <!-- Internal Packager Hooks -->
+    <target name="-before-phonegap-init-native-package"/>
+    <target name="-phonegap-init-native-package" depends="phonegap-init, phonegap-create"/>
+    <target name="-after-phonegap-init-native-package"/>
+    <target name="phonegap-init-native-package" depends="-before-phonegap-init-native-package, -phonegap-init-native-package, -after-phonegap-init-native-package"/>
+
+    <target name="-before-phonegap-native-package"/>
+    <target name="-phonegap-native-package" depends="phonegap-build, phonegap-emulate, phonegap-run"/>
+    <target name="-after-phonegap-native-package"/>
+    <target name="phonegap-native-package" depends="phonegap-init, -before-phonegap-native-package, -phonegap-native-package, -after-phonegap-native-package"/>
+
+    <macrodef name="phonegap-echo">
+        <text name="text" optional="true"/>
+        <attribute name="message" default=""/>
+        <attribute name="level" default="info"/>
+        <sequential>
+            <if>
+                <equals arg1="@{message}" arg2=""/>
+                <then>
+                    <x-echo message="[Phonegap] @{text}" level="@{level}"/>
+                </then>
+                <else>
+                    <x-echo message="[Phonegap] @{message}" level="@{level}"/>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+</project>

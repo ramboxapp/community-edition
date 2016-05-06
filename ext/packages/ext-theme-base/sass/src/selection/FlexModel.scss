@@ -1,0 +1,16 @@
+.#{$prefix}column-header.#{$prefix}group-header,
+.#{$prefix}column-header.#{$prefix}column-header-checkbox{
+  cursor: pointer;
+}
+
+.#{$prefix}grid-cell-row-numberer{
+  cursor: e-resize;
+}
+
+.#{$prefix}column-header{
+  cursor: s-resize;
+}
+
+.#{$prefix}column-header.#{$prefix}row-numberer{
+  cursor:se-resize;
+}

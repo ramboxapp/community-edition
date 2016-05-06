@@ -1,0 +1,267 @@
+{
+    /**
+     * The name of the package.
+     */
+    "name": "rambox-default-theme",
+
+    /**
+     * Alternate names for this package.
+     *
+     *    "alternateName": [],
+     */
+
+     /**
+      * The namespace of this package.
+      *
+      * As a general rule, all classes that belong to this package should be under this namespace
+      * if multiple namespaces are part of this package, set this to "".
+      */
+     "namespace": "Ext",
+
+    /**
+     * The package type.
+     *
+     * Sencha Cmd understands the following types of packages:
+     *  - code : An arbitrary package of code for use by applications or other packages.
+     *  - theme : A package to be used as an application’s theme.
+     *  - locale : A package containing localization strings or locale-specific code.
+     *  - template : A package containing one or more templates.
+     */
+    "type": "theme",
+
+    /**
+     * The parent theme package (only for "theme" package type).
+     *
+     * Themes can also use extend to inherit Sass and resources from another theme package.
+     *
+     *    "extend": "parent-theme-package",
+     */
+    "extend": "ext-theme-crisp",
+
+    /**
+     * The toolkit used by this theme (only for "theme" package type).
+     *
+     * Themes can specify the toolkit they apply to ("classic" or "modern").
+     *
+     *    "toolkit": "classic",
+     */
+    "toolkit": "${args.toolkit}",
+
+     /**
+      * The author of the package.
+      *
+      * Required only if you are distributing this package through a Sencha Cmd repository,
+      * in which case it should match the name you assign to your local package repository.
+      */
+    "creator": "anonymous",
+
+    /**
+     * A summarized description of this package.
+     */
+    "summary": "Short summary",
+
+    /**
+     * A detailed description of this package.
+     */
+    "detailedDescription": "Long description of package",
+
+    /**
+     * The package version.
+     *
+     * Typically, changes to the package should come along with changes to the version.
+     * This number should be in this format: d+(.d+)*
+     */
+    "version": "1.0.0",
+
+    /**
+     * The version that users can transparently update from without requiring code changes.
+     *
+     * In addition the version property, packages can also indicate the degree to which
+     * they are backward compatible using the compatVersion property.
+     */
+    "compatVersion": "1.0.0",
+
+    /**
+     * Spec. version of this package.json file.
+     * This is set automatically by Sencha Cmd when first generating this file
+     */
+    "format": "1",
+
+    /**
+     * Additional resources used during theme slicing operations
+     */
+    "slicer": {
+        "js": [
+            {
+                "path": "${package.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ]
+    },
+
+    /**
+     * Controls the output directory.
+     */
+    "output": "${package.dir}/build",
+
+    /**
+     * Indicates whether this is a locally developed package or downloaded form a repository.
+     * Defaults to true on newly generated packages, should not be changed.
+     */
+    "local": true,
+
+    /**
+     * The theme (package) this package will use (e.g., "ext-theme-neptune", etc.).
+     * This is only needed if the built package will be used by a non-Cmd application.
+     *
+     *     "theme": "ext-theme-classic",
+     */
+
+    /**
+     * Sass configuration properties.
+     */
+    "sass" : {
+        /**
+         * The namespace to which this package's SASS corresponds. The default value of
+         * "Ext" means that the files in ./sass/src (and ./sass/var) match classes in
+         * the Ext" root namespace. In other words, "Ext.panel.Panel" maps to
+         * ./sass/src/panel/Panel.scss.
+         *
+         * To style classes from any namespace, set this to blank. If this is blank,
+         * then to style "Ext.panel.Panel" you would put SASS in
+         * ./sass/src/Ext/panel/Panel.scss.
+         */
+        "namespace": "Ext",
+
+        /**
+         * Comma-separated list of files or folders containing extra Sass. These
+         * files are automatically included in the Sass compilation. By default this
+         * is just "etc/all.scss" to allow import directives to control the order
+         * other files are included.
+         *
+         * All "etc" files are included at the top of the Sass compilation in their
+         * dependency order:
+         *
+         *      +-------+---------+
+         *      |       | base    |
+         *      | theme +---------+
+         *      |       | derived |
+         *      +-------+---------+
+         *      | packages        |  (in package dependency order)
+         *      +-----------------+
+         *      | application     |
+         *      +-----------------+
+         */
+        "etc": "${package.dir}/sass/etc/all.scss,${package.dir}/${toolkit.name}/sass/etc/all.scss",
+
+        /**
+         * Comma-separated list of folders containing Sass variable definitions
+         * files. These file can also define Sass mixins for use by components.
+         *
+         * All "var" files are included after "etc" files in the Sass compilation in
+         * dependency order:
+         *
+         *      +-------+---------+
+         *      |       | base    |
+         *      | theme +---------+
+         *      |       | derived |
+         *      +-------+---------+
+         *      | packages        |  (in package dependency order)
+         *      +-----------------+
+         *      | application     |
+         *      +-----------------+
+         *
+         * The "sass/var/all.scss" file is always included at the start of the var
+         * block before any files associated with JavaScript classes.
+         */
+        "var": "${package.dir}/sass/var,${package.dir}/${toolkit.name}/sass/var",
+
+        /**
+         * Comma-separated list of folders containing Sass rule files.
+         *
+         * All "src" files are included after "var" files in the Sass compilation in
+         * dependency order (the same order as "etc"):
+         *
+         *      +-------+---------+
+         *      |       | base    |
+         *      | theme +---------+
+         *      |       | derived |
+         *      +-------+---------+
+         *      | packages        |  (in package dependency order)
+         *      +-----------------+
+         *      | application     |
+         *      +-----------------+
+         */
+        "src": "${package.dir}/sass/src,${package.dir}/${toolkit.name}/sass/src"
+    },
+
+    /**
+     * This is the comma-separated list of folders where classes reside. These
+     * classes must be explicitly required to be included in the build.
+     */
+    "classpath": "${package.dir}/src,${package.dir}/${toolkit.name}/src",
+
+    /**
+     * Comma-separated string with the paths of directories or files to search. Any classes
+     * declared in these locations will be automatically required and included in the build.
+     * If any file defines an Ext JS override (using Ext.define with an "override" property),
+     * that override will in fact only be included in the build if the target class specified
+     * in the "override" property is also included.
+     */
+    "overrides": "${package.dir}/overrides,${package.dir}/${toolkit.name}/overrides",
+
+    "example": {
+        /**
+         * One or more folders that contain example applications for this package.
+         */
+        "path": [
+            "${package.dir}/examples"
+        ]
+
+        /**
+         * You can list apps specifically.
+         *
+         *      "apps": [
+         *          "demo1",
+         *          "demo2"
+         *      ]
+         *
+         * By default, all subfolders in the path are considered example applications.
+         */
+    },
+
+    /**
+     * The framework this package will use (i.e., "ext" or "touch").
+     * This is only needed if the built package will be used by a non-Cmd application.
+     *
+     *     "framework": "ext",
+     */
+    "framework": "ext",
+
+    /**
+     * Packages can require other packages in the same way that applications can require
+     * packages.
+     *
+     * Can be specified as an array of package names or configuration objects.
+     *
+     *      "requires": [
+     *          "foo",
+     *          "bar@1.1-2.0",
+     *          {
+     *              "name": "baz"
+     *              "version": "1.5"
+     *          }
+     *      ]
+     *
+     * Can also be specified as an object:
+     *
+     *      "requires": {
+     *          "foo": "2.2",
+     *          "bar": {
+     *              "minVersion": "1.1",
+     *              "version": "2.0"
+     *          }
+     *      }
+     */
+    "requires": []
+}

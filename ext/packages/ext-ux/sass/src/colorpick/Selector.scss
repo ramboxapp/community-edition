@@ -1,0 +1,121 @@
+/* The actual pop window with the color picker components */
+.#{$prefix}colorpicker {
+
+    // needed for overflow: visible for color map & slider draggers
+    // to "break out" of their drag boundaries
+    overflow: visible;
+
+    >.#{$prefix}box-inner {
+        overflow: visible;
+    }
+
+    // Center field labels
+    .#{$prefix}form-item-label {
+        text-align: center;
+    }
+}
+
+.#{$prefix}colopicker-escape-overflow {
+    overflow: visible;
+
+    >.#{$prefix}box-inner {
+      overflow: visible;
+    }
+}
+
+
+// main color map for shade selection with draggable circle
+.#{$prefix}colorpicker-colormap {
+    // This background image is not really visually presented but we put it here
+    // so that we can pass through the resource URL to our JavaScript side.
+    background-image: theme-background-image('colorpick/map_gradient','png');
+}
+
+// circle for dragging
+.#{$prefix}colorpicker-colormap-draghandle-container {
+    overflow : visible;
+    z-index  : 1;
+}
+
+// transparent PNG for shades blending
+.#{$prefix}colorpicker-colormap-blender {
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    width    : 100%;
+    height   : 100%;
+}
+
+.#{$prefix}colorpicker-colormap-draghandle {
+    width      : 15px;
+    height     : 15px;
+    position   : relative;
+    left       : -7px;
+    top        : -7px;
+    background-image : theme-background-image('colorpick/drag_circle', 'png');
+}
+
+// 4 sliders
+
+.#{$prefix}colorpicker-draghandle-container {
+    width: 20px;
+}
+
+.#{$prefix}colorpicker-draghandle {
+    width             : 32px;
+    height            : 9px;
+    position          : relative;
+    left              : -6px;
+    top               : -4px;
+    background-image  : theme-background-image('colorpick/pickerslider','png');
+    background-repeat : no-repeat;
+    z-index           : 1;
+}
+
+.#{$prefix}colorpicker-hue {
+    // This background image is not really visually presented but we put it here
+    // so that we can pass through the resource URL to our JavaScript side.
+    background-image: theme-background-image('colorpick/huegradient','png');
+}
+
+// the stretched gradient <img>
+.#{$prefix}colorpicker-hue-gradient {
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    width    : 100%;
+    height   : 100%;
+}
+
+.#{$prefix}colorpicker-saturation {
+    > .#{$prefix}colorpicker-draghandle-container {
+        background : -mox-linear-gradient(top, #ffffff 0%, #000000 100%); /* FF3.6+ */
+        background : -webkit-linear-gradient(top, #ffffff 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+        background : -o-linear-gradient(top, #ffffff 0%,#000000 100%); /* Opera 11.10+ */
+        background : -ms-linear-gradient(top, #ffffff 0%,#000000 100%); /* IE10+ */
+        background : linear-gradient(to bottom, #ffffff 0%,#000000 100%); /* W3C */
+        filter     : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    }
+}
+
+.#{$prefix}colorpicker-value {
+    > .#{$prefix}colorpicker-draghandle-container {
+        background : -mox-linear-gradient(top, #ff0000 0%, #000000 100%); /* FF3.6+ */
+        background : -webkit-linear-gradient(top, #ff0000 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+        background : -o-linear-gradient(top, #ff0000 0%,#000000 100%); /* Opera 11.10+ */
+        background : -ms-linear-gradient(top, #ff0000 0%,#000000 100%); /* IE10+ */
+        background : linear-gradient(to bottom, #ff0000 0%,#000000 100%); /* W3C */
+        filter     : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+    }
+}
+
+.#{$prefix}colorpicker-alpha {
+    > .#{$prefix}colorpicker-draghandle-container {
+        background-image: theme-background-image('colorpick/checkerboard', 'png');
+    }
+}
+
+// Preview on the right top
+.#{$prefix}colorpicker-preview {
+    background-image: theme-background-image('colorpick/checkerboard', 'png');
+}

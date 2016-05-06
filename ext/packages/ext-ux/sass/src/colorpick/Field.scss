@@ -1,0 +1,29 @@
+.#{$prefix}colorpicker-field {
+
+    .#{$prefix}form-item-body {
+        position: relative;
+    }
+
+    input {
+        padding-left: 26px;
+    }
+}
+
+.#{$prefix}colorpicker-field-swatch {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 4px;
+    background-image: theme-background-image('colorpick/checkerboard', 'png');
+
+    // vertically center
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+}
+
+.#{$prefix}colorpicker-field-swatch-inner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,273 @@
+<project name="x-slice-impl">
+
+    <target name="-load-sass-page"
+            depends="-generate-slicer-bootstrap,
+                     -generate-slicer-manifest">
+        <x-run-if-true value="${package.sass.fashion}">
+            <if>
+                <x-is-false value="${package.sass.rhino}"/>
+                <then>
+                    <x-get-relative-path from="${build.web.root}"
+                                         to="${package.example.fashion.html}"
+                                         property="package.example.fashion.html.relative"/>
+                    <property name="example.page.url"
+                              value="http://localhost:${build.web.port}/${package.example.fashion.html.relative}"/>
+                    <x-sass-page page="${package.example.fashion.html}"
+                                 url="${example.page.url}"
+                                 refId="package.web.server"/>
+                </then>
+            </if>
+        </x-run-if-true>
+    </target>
+
+    <!--
+    Uses the compiler to generate a special theme-only scss file containing
+    rules for all framework / package / app components.  This is then used
+    by the slicer example page to capture theme sprites
+    -->
+    <target name="-compile-slicer-sass" depends="-init-compiler">
+        <local name="package.example.scss.tmp"/>
+        <property name="package.example.scss.tmp" value="${package.example.scss}.tmp"/>
+        <x-normalize-path
+                path="${build.out.resources.dir}"
+                property="image.search.path"/>
+
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+                restore
+                    package-${package.name}-all
+                and
+                include
+                    -all
+                and
+                sass
+                    +class-name-vars
+                    +etc
+                    +vars
+                    +rules
+                    -variable=$image-search-path:'${image.search.path}'
+                    -variable=$theme-name: '${theme.name}' !default
+                    -output=${package.example.scss.tmp}
+                    -forward=${package.sass.dynamic}
+                and
+                restore
+                    package-${package.name}-all
+                and
+                sass
+                    +ruby
+                    -output=${package.example.out.ruby}
+            ]]>
+        </x-compile>
+
+        <if>
+            <not>
+                <filesmatch file1="${package.example.scss.tmp}" file2="${package.example.scss}"/>
+            </not>
+            <then>
+                <copy file="${package.example.scss.tmp}" tofile="${package.example.scss}" overwrite="true"/>
+            </then>
+        </if>
+
+    </target>
+
+    <!--
+    Compiles the scss file for the theme slicer page
+    -->
+    <target name="-compass-compile-slicer-css" depends="-compile-slicer-sass">
+        <if>
+            <not>
+                <x-is-true value="${package.sass.fashion}"/>
+            </not>
+            <then>
+                <x-compass-compile
+                        dir="${package.example.build.dir}"
+                        trace="${compass.compile.trace}"
+                        boring="${compass.compile.boring}"
+                        force="${compass.compile.force}"
+                        sassdir="${package.example.build.dir}"
+                        cssdir="${package.example.build.dir}"
+                        config="${package.example.compass.config}"/>
+            </then>
+        </if>
+    </target>
+
+    <!--
+    Compiles the scss file for the theme slicer page
+    -->
+    <target name="-fashion-compile-slicer-css" depends="-compile-slicer-sass">
+        <if>
+            <x-is-true value="${package.sass.fashion}"/>
+            <then>
+                <if>
+                    <x-is-true value="${package.sass.rhino}"/>
+                    <then>
+                        <x-fashion-compile file="${package.example.build.dir}"
+                                           tofile="${package.example.build.dir}"/>
+                    </then>
+                    <else>
+                        <x-sass-build input="${package.example.build.dir}"
+                                      output="${package.example.build.dir}"
+                                      refId="package.web.server"/>
+                    </else>
+                </if>
+            </then>
+        </if>
+    </target>
+
+    <target name="-generate-slicer-manifest" depends="-compass-compile-slicer-css" if="framework.isV5">
+        <condition property="remove.slicer.css.bootstrap.entries" value="true">
+            <and>
+                <x-is-true value="${package.sass.fashion}"/>
+                <x-is-false value="${package.sass.rhino}"/>
+            </and>
+        </condition>
+        <property name="remove.slicer.css.bootstrap.entries" value="false"/>
+
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+                slicer-manifest
+                    -removeBootstrapCssEntries=${remove.slicer.css.bootstrap.entries}
+                    -cssFile=${package.example.css}
+                    -basePath=${bootstrap.base.path}
+                    -out=${bootstrap.example.json}
+                and
+                microload
+                    -operation=microloader
+                    -microloaderPath=${build.slicer.microloader.file}
+                    -bootPath=${build.boot.file}
+                    -out=${bootstrap.example.js}
+            ]]>
+        </x-compile>
+    </target>
+ 
+    <target name="-generate-slicer-bootstrap" depends="-init-compiler" unless="framework.isV5">
+
+        <local name="relpath"/>
+        <x-get-relative-path from="${bootstrap.base.path}"
+                             to="${framework.packages.dir}"
+                             property="relpath"/>
+    
+        <local name="override.tpl"/>
+        <local name="override.tpl.type"/>
+
+        <property name="override.tpl.type" value="tpl"/>
+        <property name="override.tpl" value='Ext.Loader.loadScriptFile("{0}", Ext.emptyFn);'/>
+        
+        <x-bootstrap file="${bootstrap.example.js}"
+                     basedir="${bootstrap.base.path}"
+                     includeBoot="true"
+                     includeCoreFiles="true"
+                     overrideTpl="${override.tpl}"
+                     overrideTplType="${override.tpl.type}"
+                     overrideExcludeTags="">
+<![CDATA[
+Ext.Boot.loadSync([
+    "render.js",
+    "${relpath}/ext-theme-base/sass/example/manifest.js",
+    "${relpath}/ext-theme-base/sass/example/shortcuts.js",
+    "custom.js"
+]);
+]]>
+        </x-bootstrap>
+    </target>
+    
+    <target name="-update-slicer-css">
+        <x-get-relative-path
+            from="${package.example.dir}"
+            to="${package.example.css}"
+            property="package.example.css.path"
+            />
+        
+<!--update the app's example to point to the build output-->
+<echo file="${package.example.dir}/example.css">
+/*
+ * This file is generated by Sencha Cmd and should NOT be edited. It redirects
+ * to the most recently built CSS file for the application to allow theme.html
+ * to load properly for image slicing (required to support non-CSS3 browsers
+ * such as IE9 and below).
+ */
+@import '${package.example.css.path}';
+</echo>
+    </target>
+ 
+ 
+    <target name="-capture-theme-image"
+            depends="-generate-slicer-bootstrap,-generate-slicer-manifest,-update-slicer-css">
+        <if>
+            <or>
+                <x-is-false value="${package.sass.fashion}"/>
+                <x-is-true value="${package.sass.rhino}"/>
+            </or>
+            <then>
+                <echo>Capture theme image to ${build.dir}/theme-capture.png</echo>
+                <x-sencha-command dir="${package.dir}">
+                    <![CDATA[
+                    theme
+                        capture
+                            -page=${package.example.theme.html}
+                            -image=${build.capture.png}
+                            -manifest=${build.capture.json}
+                    ]]>
+                </x-sencha-command>
+            </then>
+        </if>
+    </target>
+
+    <target name="-capture-sass-page-image">
+        <if>
+            <and>
+                <x-is-true value="${package.sass.fashion}"/>
+                <x-is-false value="${package.sass.rhino}"/>
+            </and>
+            <then>
+                <echo>Capture theme image to ${build.capture.png}</echo>
+                <x-capture-slicer-data manifestPath="${build.capture.json}"
+                                       imagePath="${build.capture.png}"
+                                       refId="package.web.server"/>
+            </then>
+        </if>
+    </target>
+
+    <target name="-slice-theme-images" depends="-capture-theme-image">
+        <echo>Slicing theme images to ${build.resources.dir}</echo>
+        <x-sencha-command dir="${package.dir}">
+            <![CDATA[
+            fs
+                slice
+                    ${build.slice.options}
+                    -image=${build.capture.png}
+                    -manifest=${build.capture.json}
+                    -out=${build.resources.dir}
+            ]]>
+        </x-sencha-command>
+    </target>
+
+    <target name="-slice-sass-page"
+            depends="-load-sass-page,
+                     -update-slicer-css,
+                     -fashion-compile-slicer-css,
+                     -capture-sass-page-image,
+                     -slice-theme-images"/>
+ 
+    <target name="-fashion-slice-images" depends="-slice-sass-page"></target>
+    <target name="-compass-slice-images" depends="-slice-theme-images"></target>
+    
+    
+    <target name="-slice-package-images">
+        <if>
+            <x-is-true value="${package.sass.fashion}"/>
+            <then>
+                <x-ant-call target="-fashion-slice-images"/>
+            </then>
+            <else>
+                <x-ant-call target="-compass-slice-images"/>
+            </else>
+        </if>
+    </target>
+    
+    <target name="-before-slice"/>
+    <target name="-after-slice"/>
+    <target name="-slice" 
+            depends="-slice-package-images"/>
+
+</project>

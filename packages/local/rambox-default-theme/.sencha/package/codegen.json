@@ -1,0 +1,158 @@
+{
+  "sources": {
+    "config.rb.tpl.merge": {
+      "33f446bd02c3fd24eb27891582eff6a2e789796b": "eJxLLi2KT8ksUrBVcMvMSdUDMvMSc1M14uPdPH1c4+M1ufJLSwpKS+KLSypzUoGqrPJSi0tSU7gALskTcA\u003d\u003d"
+    },
+    "all.scss.merge": {
+      "da39a3ee5e6b4b0d3255bfef95601890afd80709": "eJwDAAAAAAE\u003d"
+    },
+    "custom.js.merge": {
+      "199e99bbd15c3c0415569425cb21e77c95e9042a": "eJxlj0FOxDAMRfdziq9ZwUjTHIAlYslquIAncdtA4lSxC8PtSdoREmIV6f/4+dmdDjjhbY6KMSZGeycWrmQcQAqCGlWLMmEpUQzXb1xY/Ex4zgFnRMNXTAlSWseovCTybbbUDl6XsJHa1FH3sYX8B03cqqlS4OPQ//2V8CQ7K5fPriEBNjPU17gYjCZE6UnmYbacfj/GsaUNslUIhbVzu5lwq/2qVjIohGixCCVkkjiyWrOFzqWaXw0sViPr0IRYGVQ7yq+55X2HdObg7meo45udt4XnKyk7Je0Z5SWxqyyB6/Cu/Uh3ODj3crNhN28ar/f1D49P/7rLXUd7+QPuPI9g"
+    },
+    "fashion.html.tpl.merge": {
+      "5117b27d384b8c5ae0bd4aafdb1fad14eaddcc62": "eJytVE2P0zAQvfdXzOYEq7ppFw6om/RSFgFCAmnLgePUmTbedWxjT9NWiP3tOE6hH8AF4UOsmeeZ9+xnp7h6/XG++PLpDmpu9GxQXAkxAIC5dXuv1jXDM/kcbsaTGxE/L0ZwT0bWCO+MHA2EiAWHupqwmnWVULBiTbO7HcP7e1jU1BC8RW8ohCLvsX5dQ4yRlp2grxvVltncGibDYrF3lIHsozJj2nHe0dxCpPaBuPy8eCNeZad9DDZUZq2irbOeT6q3quK6rKhVkkQKhqCMYoVaBImayskQGtypZtMcE5tAPkW4jAljI1dPdjgf+GCxAtQafCfeUwVamccAaCoI0ivHIa3rzigV9knguLfDlh6wxT6bQfCyzPIn2VR5hMgEZU3IQzpsscJQxzi/mEcPIZsVed/i/7EEDEFI2zilyf8jx9JaDuzRXdQfGvD+5yXoxii6siYWnWWoDHn49gvrRoN+rcwUJmO3uz1Dkp1TeDn+DXE2RIttrPKkkVVL57htya+03U6hVUFFj4/w98FR2U4EHe+NFxw1EA//isD1hWjrUCreR9V/7JxfQzz+jSdY2moPlaUAxnLSpdEB1wTebkwVL5a08fH4AHYFKx+veQUODel8q0xlt7CtyUAnRpk1XOenEtM60TGcKe8LU/5C9RLl4zrxTiHaZ4JDH1/R6RaSg/nBwiI/efddv+h1mjok/Rh+ACC6Vqw\u003d"
+    },
+    "theme.html.tpl.merge": {
+      "2c775eb1b3eb10df6efa0743d8aa426af3f9a562": "eJx1U8GO0zAQvfcrZnOCqm7ahQPqJr2URYCQQNpy4Og608a7jm3saZIK8e/YTqHpAj4k8rx5855n7OLm7efN9tuXe6ipUetJccPYBAA2xp6cPNQEL8RLuF0sb1n4vJrDA2pRc/igxXzCWCCceTXyah2ZUJAkhev7nuDjA2xrbBDec6fR+yIfsCGvQeJBlizD70fZltnGaEJNbHuymIEYdmVG2FMeZe4gSDuPVH7dvmNvsnEdzRsss1ZiZ42jEbuTFdVlha0UyNJmBlJLklwxL7jCcjmDhveyOTaXwNGjSzu+CwFtgtYgdu4PfDK8Aq4UuGjeYQVK6icPXFfghZOWfMqLPUrECIdkVWaeTgp9jRhsUjjq+YTC+wxqh/syw543VuE8hfJzgaHqmPHIWz5EM/BOlNnOGPLkuJ0/+mxd5AP423rSHYrFNQ/NOCCx2CkuNTr48QeLq+HuIPUKlgvb310hqYsreL34C7HGh86awAon5SRbvMZNi26vTLeCVnoZWnuBf04uznrmVRiXYxQ8IM3+i8D0mWljuZB0Cq7/WTmfAmp/dAg7U52gMuhBG0q+FLdANYIzR12FeQoT7qzzYPawd+F2VWC5RpV3Ulemg65GDdGM1AeY5mOLKY9FhSvnAzHFn7necfF0SLorCOPT3nIXLu/4CGmC+XmERT56brFemHX6RSS9x1+JIiOn"
+    },
+    "build.properties.merge": {
+      "8b81315dbe73ce9c08478f4c1d2df84f456efcf5": "eJytkEtOxEAMRPdzipKyhbkBCzQrFnzE5AKetJNYdOzI3UnE7XGA3GC8K5f9/GnwdM84NWhHKeglM2a3VRIXkMJWdg+B2UQrenMk7mnJFSu50C1HXWREOUEUAfr3yzk4M3sVLudTE8bL68f7Z/v81uIRV9ZuJFymhE1yxsQ+ML5tcUReh6BuUkdILbBNkRYXHbDMg1P6BaI10GqSYrXKWoUOSmfaZ+mi88+f6GvvzRTmA8rGPO/6mFMtYPW4fiff97U/al6C1w\u003d\u003d"
+    },
+    "sencha.cfg.tpl.merge": {
+      "057f5f361104adf05c1c49b01b08cd389b3822b2": "eJytkDFyw0AIRfs9BWOlteLOlRvnAHGRMg1eIYnRatGwSBpnxnc3TqIbmPJ/PvCo4KsnaCU1pGA9GkTJhpwLlPm6nzAO2FEBad3lAv9CDZ853WDBxI2nFXat4kir6LAL1dYFdpuoDlXYUj5yGrpSN6ynt+/5cDieN8ul+/u2LoTq9NLymz7mYjLCRWUiNXamPVwSRoL46/APGotzXynJ+kebODuEAC7inCNpRz7JP9QmjlZgZesh0+q/W0jLMx4e5yNt/w\u003d\u003d"
+    },
+    "testing.properties.merge": {
+      "e65f969c42eb4f355c850fc58fea852582f20db8": "eJyVkUFywyAQBO9+xVb5oIutH/gX+QCCkbUOAooFOf59FsmqpHKKOFEwOzM0Z7r9f53O9DGx0Mge5DBygFDKMSEX1m0VOBpepLqhsndXnpPvv2Z/oefEdiKdLRNoMAJqdyqMI5lAJiXP1hSOQbbZ5msh0mskmuOvnDHHWY32JjbmDEkxOCqxBai6K5DC4d693RAWzjHMCOVCkmB5ZLhW9EWdINjJtBJv9T7cU0vXsk/2rWwxn9AisHA6AooLcgNhqi8riYXdimAn0P+07vXsCOuD8rNimLWaiDKkmBrK7UOUyR0B2RRQdzXedyp+CMVaUi0rQn3ninMxvurPspjBQ/54jjHvYLbHycGKG5Fm2SIf0u/ut9M3l43NIg\u003d\u003d"
+    }
+  },
+  "targets": {
+    "sass/config.rb": {
+      "source": "config.rb.tpl.merge",
+      "version": "33f446bd02c3fd24eb27891582eff6a2e789796b",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    },
+    "sass/etc/all.scss": {
+      "source": "all.scss.merge",
+      "version": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    },
+    "sass/example/custom.js": {
+      "source": "custom.js.merge",
+      "version": "199e99bbd15c3c0415569425cb21e77c95e9042a",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    },
+    "sass/example/fashion.html": {
+      "source": "fashion.html.tpl.merge",
+      "version": "5117b27d384b8c5ae0bd4aafdb1fad14eaddcc62",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    },
+    "sass/example/theme.html": {
+      "source": "theme.html.tpl.merge",
+      "version": "2c775eb1b3eb10df6efa0743d8aa426af3f9a562",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    },
+    ".sencha/package/build.properties": {
+      "source": "build.properties.merge",
+      "version": "8b81315dbe73ce9c08478f4c1d2df84f456efcf5",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    },
+    ".sencha/package/sencha.cfg": {
+      "source": "sencha.cfg.tpl.merge",
+      "version": "057f5f361104adf05c1c49b01b08cd389b3822b2",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    },
+    ".sencha/package/testing.properties": {
+      "source": "testing.properties.merge",
+      "version": "e65f969c42eb4f355c850fc58fea852582f20db8",
+      "parameters": {
+        "extRelPath": "../../../ext",
+        "pkgExtend": "ext-theme-neptune",
+        "pkgFramework": "ext",
+        "pkgName": "rambox-default-theme",
+        "pkgNamespace": "Ext",
+        "pkgTheme": "",
+        "pkgToolkit": "${args.toolkit}",
+        "pkgType": "theme",
+        "senchadir": ".sencha",
+        "touchRelPath": "../../../${touch.dir}"
+      }
+    }
+  }
+}

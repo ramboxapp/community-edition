@@ -1,0 +1,17 @@
+.widget-container {
+    margin: 10px;
+    width: 400px;
+    position: relative;
+    overflow: visible;
+}
+
+.x-slicer-target,
+.x-slicer-target * {
+    opacity: 1;
+}
+
+/* ensure body does not overlap the rounded corners of framed panel/window when slicing */
+.x5-panel-body,
+.x5-window-body {
+    background: transparent;
+}

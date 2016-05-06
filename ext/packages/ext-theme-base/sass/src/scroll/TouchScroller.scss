@@ -1,0 +1,47 @@
+.#{$prefix}scroll-container {
+    overflow: hidden;
+    // scrollable containers use position:relative so that scroll indicators can be
+    // positioned correctly inside of them
+    position: relative;
+}
+
+.#{$prefix}scroll-scroller {
+    // the primary function of this element is to act as a wrapper around its content to
+    // determine the content's size.  There are several possible ways to achieve this,
+    // so first, the ones we tried that didn't work, and the reasons why:
+    //
+    // 1. display:table - works everywhere except firefox.  In firefox, absolutely positioned
+    // children of a display:table element do not contribute to its scrollWidth/scrollHeight
+    // and so we cannot use the element to determine the true size of the content.
+    //
+    // 2. display:table-cell - should work similarly to display:table in that it shrink wraps
+    // the content in both directions, and it works as expected with regard to scrollWidth/
+    // scrollHeight and absolutely positioned children, but it must be a child of a
+    // display:table element in order for min-width/min-height specified as percentages
+    // to work (we use min-width/min-height:100% to ensure this element at least fills
+    // its container)
+    //
+    // 3. display:inline-block - does everything we need it to do, except since it is
+    // an inline element, its sizing and spacing are affected by line-height, font-size
+    // and vertical-align.  We can work around these issues by setting line-height:0,
+    // font-size:0, and vertical-align:top.  But this has undesirable side-effects because
+    // all three of these properties are inherited by child elements and we do not want
+    // the presence of a scroller to change the styling of contained children.
+    //
+    // The solution - float:left
+    // - It shrink wraps the contents in both directions
+    // - Being a block element, its scrollWidth/Height are affected by absolutely positioned
+    //   children
+    // - It can act as a container for child elements without affecting their styling
+    float: left;
+
+    // position:relative allows the element's position to be translated using top/left
+    // styling in browsers that do not support css3 transforms
+    position: relative;
+
+    // https://sencha.jira.com/browse/EXTJSIV-12773
+    // Scroller must not shrinkwrap width of block items.
+    // Must always be at least 100% of component width.
+    min-width: 100%;
+    min-height: 100%;
+}

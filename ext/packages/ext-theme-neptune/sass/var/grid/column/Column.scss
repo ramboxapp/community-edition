@@ -1,0 +1,8 @@
+/** @class Ext.grid.column.Column */
+//
+
+$grid-column-header-font-weight: $font-weight-bold !default;
+$grid-column-header-color: #666 !default;
+
+$grid-column-header-focus-border-color: mix($grid-header-background-color, $base-color, 20%) !default;
+

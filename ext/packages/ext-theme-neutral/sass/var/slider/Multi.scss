@@ -1,0 +1,51 @@
+/**
+ * @class Ext.slider.Multi
+ */
+
+/**
+ * @var {number}
+ * The horizontal slider thumb width
+ */
+$horizontal-slider-thumb-width: 15px !default;
+
+/**
+ * @var {number}
+ * The horizontal slider thumb height
+ */
+$horizontal-slider-thumb-height: 15px !default;
+
+/**
+ * @var {number}
+ * The width of the horizontal slider start cap
+ */
+$horizontal-slider-start-cap-width: floor($horizontal-slider-thumb-width / 2) !default;
+
+/**
+ * @var {number}
+ * The width of the horizontal slider end cap
+ */
+$horizontal-slider-end-cap-width: ceil($horizontal-slider-thumb-width / 2) !default;
+
+/**
+ * @var {number}
+ * The vertical slider thumb width
+ */
+$vertical-slider-thumb-width: 15px !default;
+
+/**
+ * @var {number}
+ * The vertical slider thumb height
+ */
+$vertical-slider-thumb-height: 15px !default;
+
+/**
+ * @var {number}
+ * The height of the vertical slider start cap
+ */
+$vertical-slider-start-cap-height: floor($vertical-slider-thumb-height / 2) !default;
+
+/**
+ * @var {number}
+ * The height of the vertical slider end cap
+ */
+$vertical-slider-end-cap-height: ceil($vertical-slider-thumb-height / 2) !default;

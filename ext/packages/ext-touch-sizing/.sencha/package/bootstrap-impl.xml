@@ -1,0 +1,62 @@
+<project name="bootstrap-impl">
+    <!--
+    This macrodef regenerates the bootstrap.js class system metadata, which includes
+    relative file paths, class names, alternate class names, and class alias data
+    -->
+    <macrodef name="x-bootstrap">
+        <attribute name="file"/>
+        <attribute name="basedir"/>
+        <attribute name="coreFilesFile" default="@{file}"/>
+        <attribute name="classMetadataFile" default="@{file}"/>
+        <attribute name="overridesFile" default="@{file}"/>
+        <attribute name="includeBoot" default="true"/>
+        <attribute name="includeManifest" default="false"/>
+        <attribute name="includeCoreFiles" default="false"/>
+        <attribute name="includeMetadata" default="true"/>
+        <attribute name="includeOverrides" default="true"/>
+        <attribute name="appendCoreFiles" default="true"/>
+        <attribute name="appendClassMetadata" default="true"/>
+        <attribute name="appendOverrides" default="true"/>
+        <attribute name="manifestTpl" default="var Ext = Ext || '{' '}'; Ext.manifest = {0};"/>
+        <attribute name="coreFilesJsonpTpl" default="Ext.Boot.loadSync"/>
+        <attribute name="loaderConfigJsonpTpl" default="Ext.Loader.addClassPathMappings"/>
+        <attribute name="overrideTpl" default='Ext.Loader.loadScriptsSync'/>
+        <attribute name="overrideTplType" default="jsonp"/>
+        <attribute name="overrideExcludeTags" default="package-sencha-core,package-${framework.name}"/>
+        <text name="launchcode" optional="true"/>
+        <sequential>
+            <local name="temp.file"/>
+            <tempfile property="temp.file"
+                      deleteonexit="true"
+                      createfile="true"/>
+            <echo file="${temp.file}">@{launchcode}</echo>
+            <x-compile refid="${compiler.ref.id}">
+                <![CDATA[
+                    bootstrap
+                        -baseDir=@{basedir}
+                        -file=@{file}
+                        -coreFilesFile=@{coreFilesFile}
+                        -classMetadataFile=@{classMetadataFile}
+                        -overridesFile=@{overridesFile}
+                        -includeBoot=@{includeBoot}
+                        -includeManifest=@{includeManifest}
+                        -includeCoreFiles=@{includeCoreFiles}
+                        -includeMetadata=@{includeMetadata}
+                        -includeOverrides=@{includeOverrides}
+                        -appendCoreFiles=@{appendCoreFiles}
+                        -appendClassMetadata=@{appendClassMetadata}
+                        -appendOverrides=@{appendOverrides}
+                        -manifestTpl=@{manifestTpl}
+                        -coreFilesJsonpTpl=@{coreFilesJsonpTpl}
+                        -loaderConfigJsonpTpl=@{loaderConfigJsonpTpl}
+                        -overrideTpl=@{overrideTpl}
+                        -overrideType=@{overrideTplType}
+                        -overrideExcludeTags=@{overrideExcludeTags}
+                        -launchContentFile=${temp.file}
+                ]]>
+            </x-compile>
+            <delete file="${temp.file}"/>
+        </sequential>
+    </macrodef>
+
+</project>

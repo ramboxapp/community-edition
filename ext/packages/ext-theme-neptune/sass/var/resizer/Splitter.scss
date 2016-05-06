@@ -1,0 +1,9 @@
+/** @class Ext.resizer.Splitter */
+//
+
+$splitter-size: 8px !default;
+$collapse-tool-size: 48px !default;
+
+$splitter-focus-outline-color: #fff !default;
+$splitter-focus-outline-width: 1px !default;
+$splitter-focus-outline-offset: -($splitter-focus-outline-width + 1) !default;

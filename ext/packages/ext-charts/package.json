@@ -1,0 +1,19 @@
+{
+    "name": "ext-charts",
+    "type": "code",
+    "creator": "Sencha",
+    "summary": "Ext JS legacy charts",
+    "detailedDescription": "Charting package that was used in Ext JS 4.x, and is now provided for backwards compatibility",
+    "version": "5.0.2",
+    "compatVersion": "5.0.0",
+    "format": "1",
+    "slicer": {
+        "js": []
+    },
+    "output": "${package.dir}/build",
+    "local": true,
+    "requires": [
+        "ext-theme-base"
+    ],
+    "framework": "ext"
+}

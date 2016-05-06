@@ -1,0 +1,35 @@
+.#{$prefix}panel,
+.#{$prefix}plain {
+    overflow: hidden;
+    position: relative;
+}
+
+.#{$prefix}panel {
+    outline: none;
+}
+
+@if $include-ie {
+    // Fix for IE8 clipping. EXTJSIV-1553
+    td.#{$prefix}frame-mc {
+        vertical-align: top;
+    }
+}
+
+.#{$prefix}panel-body {
+    overflow: hidden;
+    position: relative;
+}
+
+.#{$prefix}panel-header-plain,
+.#{$prefix}panel-body-plain {
+    border: 0;
+    padding: 0;
+}
+
+// If we're using framing on modern browsers, they are
+// part of the border/border-radius, but we also need to show
+// the collapsed splitter. In that case, just hide the panel so it
+// doesn't interfere with the positioning
+.#{$prefix}panel-collapsed-mini {
+    visibility: hidden;
+}
