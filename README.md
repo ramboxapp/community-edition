@@ -11,7 +11,8 @@ Available for Windows, Mac and Linux.
 
 ## Screenshots
 
-Comming soon...
+Windows 7
+![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/win1.png)
 
 ## Getting Involved
 
