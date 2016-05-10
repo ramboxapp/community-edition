@@ -227,4 +227,13 @@ Ext.define('Rambox.view.main.MainController', {
 			}
 		});
 	}
+
+	,doFilter: function( cg, newValue, oldValue ) {
+		var values = Ext.cq1('checkboxgroup').getValue();
+		Ext.getStore('ServicesList').getFilters().replaceAll({
+			fn: function(record) {
+				return Ext.Array.contains(Ext.Object.getKeys(values), record.get('type'));
+			}
+		});
+	}
 });

@@ -85,6 +85,31 @@ Ext.define('Rambox.view.main.Main', {
 							,margin: '50 0 0 0'
 							,tools: [
 								{
+									 xtype: 'checkboxgroup'
+									,items: [
+										{
+											 xtype: 'checkbox'
+											,boxLabel: 'Messaging'
+											,name: 'messaging'
+											,checked: true
+											,uncheckedValue: false
+											,inputValue: true
+										}
+										,{
+											 xtype: 'checkbox'
+											,boxLabel: 'Email'
+											,margin: '0 10 0 10'
+											,name: 'email'
+											,checked: true
+											,uncheckedValue: false
+											,inputValue: true
+										}
+									]
+									,listeners: {
+										change: 'doFilter'
+									}
+								}
+								,{
 									 type: 'plus'
 									,tooltip: 'Add a custom service (soon...)'
 								}

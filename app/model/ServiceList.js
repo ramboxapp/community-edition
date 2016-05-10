@@ -13,5 +13,8 @@ Ext.define('Rambox.model.ServiceList', {
 	},{
 		 name: 'url'
 		,type: 'string'
+	},{
+		 name: 'type'
+		,type: 'string'
 	}]
 });
