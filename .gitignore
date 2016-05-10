@@ -1,5 +1,6 @@
 # Sencha (ExtJS)
-build/
+/build
+.sass-cache/
 .sass_cache/
 
 # OS generated files #

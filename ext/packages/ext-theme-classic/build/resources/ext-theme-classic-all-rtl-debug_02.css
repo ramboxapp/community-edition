@@ -1,0 +1,834 @@
+/* line 45, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x-accordion-hd .x-tool-collapse-top,
+.x-accordion-hd .x-tool-collapse-bottom {
+  background-position: 0 -255px; }
+/* line 50, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x-accordion-hd .x-tool-expand-top,
+.x-accordion-hd .x-tool-expand-bottom {
+  background-position: 0 -240px; }
+/* line 58, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x-accordion-hd .x-tool-over .x-tool-collapse-top,
+.x-accordion-hd .x-tool-over .x-tool-collapse-bottom {
+  background-position: -15px -255px; }
+/* line 63, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x-accordion-hd .x-tool-over .x-tool-expand-top,
+.x-accordion-hd .x-tool-over .x-tool-expand-bottom {
+  background-position: -15px -240px; }
+/* line 69, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x-accordion-hd .x-tool-img {
+  background-color: #d9e7f8; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/layout/container/Form.scss */
+.x-form-layout-wrap {
+  border-spacing: 5px; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle {
+  position: absolute;
+  z-index: 100;
+  font-size: 1px;
+  line-height: 6px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  background-color: #fff; }
+
+/* line 17, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-collapsed .x-resizable-handle {
+  display: none; }
+
+/* line 21, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-north {
+  cursor: n-resize; }
+
+/* line 24, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-south {
+  cursor: s-resize; }
+
+/* line 27, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-east {
+  cursor: e-resize; }
+
+/* line 30, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-west {
+  cursor: w-resize; }
+
+/* line 33, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southeast {
+  cursor: se-resize; }
+
+/* line 36, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northwest {
+  cursor: nw-resize; }
+
+/* line 39, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northeast {
+  cursor: ne-resize; }
+
+/* line 42, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southwest {
+  cursor: sw-resize; }
+
+/* line 46, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-east {
+  width: 6px;
+  height: 100%;
+  right: 0;
+  top: 0; }
+
+/* line 53, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-south {
+  width: 100%;
+  height: 6px;
+  left: 0;
+  bottom: 0; }
+
+/* line 60, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-west {
+  width: 6px;
+  height: 100%;
+  left: 0;
+  top: 0; }
+
+/* line 67, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-north {
+  width: 100%;
+  height: 6px;
+  left: 0;
+  top: 0; }
+
+/* line 74, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southeast {
+  width: 6px;
+  height: 6px;
+  right: 0;
+  bottom: 0;
+  z-index: 101; }
+
+/* line 82, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northwest {
+  width: 6px;
+  height: 6px;
+  left: 0;
+  top: 0;
+  z-index: 101; }
+
+/* line 90, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northeast {
+  width: 6px;
+  height: 6px;
+  right: 0;
+  top: 0;
+  z-index: 101; }
+
+/* line 98, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southwest {
+  width: 6px;
+  height: 6px;
+  left: 0;
+  bottom: 0;
+  z-index: 101; }
+
+/* line 107, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-window .x-window-handle {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0; }
+
+/* line 111, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-window-collapsed .x-window-handle {
+  display: none; }
+
+/* line 116, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-proxy {
+  border: 1px dashed #3b5a82;
+  position: absolute;
+  overflow: hidden;
+  z-index: 50000; }
+
+/* line 125, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-over,
+.x-resizable-pinned .x-resizable-handle {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1; }
+
+/* line 131, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-east-over,
+.x-resizable-handle-west-over {
+  background-image: url(images/sizer/e-handle.gif); }
+
+/* line 137, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-south-over,
+.x-resizable-handle-north-over {
+  background-image: url(images/sizer/s-handle.gif); }
+
+/* line 142, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southeast-over {
+  background-position: top left;
+  background-image: url(images/sizer/se-handle.gif); }
+
+/* line 147, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northwest-over {
+  background-position: bottom right;
+  background-image: url(images/sizer/nw-handle.gif); }
+
+/* line 152, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northeast-over {
+  background-position: bottom left;
+  background-image: url(images/sizer/ne-handle.gif); }
+
+/* line 157, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southwest-over {
+  background-position: top right;
+  background-image: url(images/sizer/sw-handle.gif); }
+
+/* line 165, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-east,
+.x-resizable-pinned .x-resizable-handle-west {
+  background-image: url(images/sizer/e-handle.gif); }
+/* line 171, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-south,
+.x-resizable-pinned .x-resizable-handle-north {
+  background-image: url(images/sizer/s-handle.gif); }
+/* line 176, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-southeast {
+  background-position: top left;
+  background-image: url(images/sizer/se-handle.gif); }
+/* line 181, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-northwest {
+  background-position: bottom right;
+  background-image: url(images/sizer/nw-handle.gif); }
+/* line 186, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-northeast {
+  background-position: bottom left;
+  background-image: url(images/sizer/ne-handle.gif); }
+/* line 191, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-southwest {
+  background-position: top right;
+  background-image: url(images/sizer/sw-handle.gif); }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x-column-header-checkbox {
+  border-color: #c5c5c5; }
+
+/* line 6, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x-grid-row-checker,
+.x-column-header-checkbox .x-column-header-text {
+  height: 13px;
+  width: 13px;
+  background-image: url(images/form/checkbox.gif);
+  line-height: 13px; }
+
+/* line 15, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x-column-header-checkbox .x-column-header-inner {
+  padding: 5px 5px 4px 5px; }
+
+/* line 19, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x-grid-cell-row-checker .x-grid-cell-inner {
+  padding: 4px 5px 3px 5px; }
+  /* line 23, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+  .x-grid-no-row-lines .x-grid-row-focused .x-grid-cell-row-checker .x-grid-cell-inner {
+    padding-top: 3px;
+    padding-bottom: 2px; }
+
+/* line 32, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x-grid-hd-checker-on .x-column-header-text,
+.x-grid-item-selected .x-grid-row-checker,
+.x-grid-item-selected .x-grid-row-checker {
+  background-position: 0 -13px; }
+
+/* Horizontal styles */
+/* line 2, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz {
+  padding-left: 7px;
+  background: no-repeat 0 -15px; }
+  /* line 6, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x-slider-horz .x-slider-end {
+    padding-right: 7px;
+    background: no-repeat right -30px; }
+
+/* line 12, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz .x-slider-inner {
+  height: 15px; }
+
+/* line 16, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz .x-slider-thumb {
+  width: 14px;
+  height: 15px;
+  margin-left: -7px;
+  background-image: url(images/slider/slider-thumb.png); }
+
+/* line 23, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz.x-slider-focus .x-slider-thumb {
+  background-position: -42px -45px; }
+
+/* line 27, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz .x-slider-thumb-over {
+  background-position: -14px -15px; }
+
+/* line 31, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz.x-slider-focus .x-slider-thumb-over {
+  background-position: -56px -60px; }
+
+/* line 35, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz .x-slider-thumb-drag {
+  background-position: -28px -30px; }
+
+/* line 39, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz.x-slider-focus .x-slider-thumb-drag {
+  background-position: -70px -75px; }
+
+/* line 44, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-rtl.x-slider-horz {
+  padding-left: 0;
+  padding-right: 7px;
+  background-position: right -30px; }
+  /* line 49, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x-rtl.x-slider-horz .x-slider-end {
+    padding-right: 0;
+    padding-left: 7px;
+    background-position: left -15px; }
+  /* line 55, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x-rtl.x-slider-horz .x-slider-thumb {
+    margin-right: -7px; }
+
+/* Vertical styles */
+/* line 62, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-ct-vert {
+  height: 100%; }
+
+/* line 66, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert {
+  padding-top: 7px;
+  background: no-repeat -30px 0;
+  height: 100%; }
+  /* line 71, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x-slider-vert > .x-slider-end {
+    height: 100%; }
+    /* line 73, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+    .x-slider-vert > .x-slider-end > .x-slider-inner {
+      height: 100%; }
+
+/* line 79, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert .x-slider-end {
+  padding-bottom: 7px;
+  background: no-repeat -15px bottom;
+  width: 15px; }
+
+/* line 85, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert .x-slider-inner {
+  width: 15px; }
+
+/* line 89, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert .x-slider-thumb {
+  width: 15px;
+  height: 14px;
+  margin-bottom: -7px;
+  background-image: url(images/slider/slider-v-thumb.png); }
+
+/* line 96, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert.x-slider-focus .x-slider-thumb {
+  background-position: -45px -42px; }
+
+/* line 100, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert .x-slider-thumb-over {
+  background-position: -15px -14px; }
+
+/* line 104, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert.x-slider-focus .x-slider-thumb-over {
+  background-position: -60px -56px; }
+
+/* line 108, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert .x-slider-thumb-drag {
+  background-position: -30px -28px; }
+
+/* line 112, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert.x-slider-focus .x-slider-thumb-drag {
+  background-position: -75px -70px; }
+
+/* line 118, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-horz,
+.x-slider-horz .x-slider-end,
+.x-slider-horz .x-slider-inner {
+  background-image: url(images/slider/slider-bg.png); }
+
+/* line 124, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-vert,
+.x-slider-vert .x-slider-end,
+.x-slider-vert .x-slider-inner {
+  background-image: url(images/slider/slider-v-bg.png); }
+
+/* line 129, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x-slider-default-cell > .x-grid-cell-inner,
+.x-sliderwidget-default-cell > .x-grid-cell-inner {
+  padding-top: 2px;
+  padding-bottom: 3px; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/sparkline/Base.scss */
+.x-sparkline-cell .x-grid-cell-inner {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 18px; }
+
+/**
+ * Creates a visual theme for a Breadcrumb.
+ *
+ * @param {string} $ui
+ * The name of the UI being created. Can not included spaces or special punctuation
+ * (used in CSS class names).
+ *
+ * @param {string} [$ui-button-ui=$breadcrumb-button-ui]
+ * The name of the button UI that will be used with this breadcrumb UI. Used for overriding
+ * the button arrows for the given button UI when it is used inside a breadcrumb with this UI.
+ *
+ * @param {number} [$ui-button-spacing=$breadcrumb-button-spacing]
+ * The space between the breadcrumb buttons
+ *
+ * @param {number} [$ui-arrow-width=$breadcrumb-arrow-width]
+ * The width of the breadcrumb arrows when
+ * {@link Ext.toolbar.Breadcrumb#useSplitButtons} is `false`
+ *
+ * @param {number} [$ui-split-width=$breadcrumb-split-width]
+ * The width of breadcrumb arrows when {@link Ext.toolbar.Breadcrumb#useSplitButtons} is
+ * `true`
+ *
+ * @param {boolean} [$ui-include-menu-active-arrow=$breadcrumb-include-menu-active-arrow]
+ * `true` to include a separate background-image for menu arrows when a breadcrumb button's
+ * menu is open
+ *
+ * @param {boolean} [$ui-include-split-over-arrow=$breadcrumb-include-split-over-arrow
+ * `true` to include a separate background-image for split arrows when a breadcrumb button's
+ * arrow is hovered
+ *
+ * @param {string} [$ui-folder-icon=$breadcrumb-folder-icon]
+ * The background-image for the default "folder" icon
+ *
+ * @param {string} [$ui-leaf-icon=$breadcrumb-leaf-icon]
+ * The background-image for the default "leaf" icon
+ *
+ * @param {number} [$ui-scroller-width=$breadcrumb-scroller-width]
+ * The width of Breadcrumb scrollers
+ *
+ * @param {number} [$ui-scroller-height=$breadcrumb-scroller-height]
+ * The height of Breadcrumb scrollers
+ *
+ * @param {color} [$ui-scroller-border-color=$breadcrumb-scroller-border-color]
+ * The border-color of Breadcrumb scrollers
+ *
+ * @param {number} [$ui-scroller-border-width=$breadcrumb-scroller-border-width]
+ * The border-width of Breadcrumb scrollers
+ *
+ * @param {number/list} [$ui-scroller-top-margin=$breadcrumb-scroller-top-margin]
+ * The margin of "top" scroller buttons
+ *
+ * @param {number/list} [$ui-scroller-right-margin=$breadcrumb-scroller-right-margin]
+ * The margin of "right" scroller buttons
+ *
+ * @param {number/list} [$ui-scroller-bottom-margin=$breadcrumb-scroller-bottom-margin]
+ * The margin of "bottom" scroller buttons
+ *
+ * @param {number/list} [$ui-scroller-left-margin=$breadcrumb-scroller-left-margin]
+ * The margin of "left" scroller buttons
+ *
+ * @param {string} [$ui-scroller-cursor=$breadcrumb-scroller-cursor]
+ * The cursor of Breadcrumb scrollers
+ *
+ * @param {string} [$ui-scroller-cursor-disabled=$breadcrumb-scroller-cursor-disabled]
+ * The cursor of disabled Breadcrumb scrollers
+ *
+ * @param {number} [$ui-scroller-opacity=$breadcrumb-scroller-opacity]
+ * The opacity of Breadcrumb scroller buttons. Only applicable when
+ * `$ui-classic-scrollers` is `false`.
+ *
+ * @param {number} [$ui-scroller-opacity-over=$breadcrumb-scroller-opacity-over]
+ * The opacity of hovered Breadcrumb scroller buttons. Only applicable when
+ * `$ui-classic-scrollers` is `false`.
+ *
+ * @param {number} [$ui-scroller-opacity-pressed=$breadcrumb-scroller-opacity-pressed]
+ * The opacity of pressed Breadcrumb scroller buttons. Only applicable when
+ * `$ui-classic-scrollers` is `false`.
+ *
+ * @param {number} [$ui-scroller-opacity-disabled=$breadcrumb-scroller-opacity-disabled]
+ * The opacity of disabled Breadcrumb scroller buttons.
+ *
+ * @param {boolean} [$ui-classic-scrollers=$breadcrumb-classic-scrollers]
+ * `true` to use classic-style scroller buttons.  When `true` scroller buttons are given
+ * their hover state by changing their background-position,  When `false` scroller buttons
+ * are given their hover state by applying opacity.
+ *
+ * @member Ext.toolbar.Breadcrumb
+ */
+/* line 115, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-breadcrumb-btn-default {
+  margin: 0 0 0 0px; }
+
+/* line 119, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-breadcrumb-icon-folder-default {
+  background-image: url(images/tree/folder.gif); }
+
+/* line 123, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-breadcrumb-icon-leaf-default {
+  background-image: url(images/tree/leaf.gif); }
+
+/* line 128, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-arrow:after {
+  width: 14px;
+  background-image: url(images/breadcrumb/default-arrow.gif); }
+/* line 134, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-rtl.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-arrow:after {
+  background-image: url(images/breadcrumb/default-arrow-rtl.gif); }
+/* line 140, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-btn-menu-active.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-arrow:after {
+  background-image: url(images/breadcrumb/default-arrow-open.gif); }
+/* line 145, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-rtl.x-btn-menu-active.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-arrow:after {
+  background-image: url(images/breadcrumb/default-arrow-open-rtl.gif); }
+
+/* line 153, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-split:after {
+  width: 14px;
+  background-image: url(images/breadcrumb/default-split-arrow.gif); }
+/* line 159, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-rtl.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-rtl.gif); }
+/* line 165, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-btn-over.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-over.gif); }
+/* line 170, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-rtl.x-btn-over.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-over-rtl.gif); }
+/* line 177, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-btn-menu-active.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-open.gif); }
+/* line 182, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x-rtl.x-btn-menu-active.x-breadcrumb-btn > .x-btn-wrap-default-toolbar-small.x-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-open-rtl.gif); }
+
+/* line 145, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x-breadcrumb-default-scroller .x-box-scroller-body-horizontal {
+  margin-left: 14px; }
+
+/* line 151, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x-breadcrumb-default-vertical-scroller .x-box-scroller-body-vertical {
+  margin-top: 26px; }
+
+/* line 156, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x-box-scroller-breadcrumb-default {
+  cursor: pointer; }
+  /* line 177, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x-box-scroller-breadcrumb-default.x-box-scroller-disabled {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5;
+    cursor: default; }
+  /* line 188, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x-box-scroller-breadcrumb-default.x-box-scroller-left, .x-box-scroller-breadcrumb-default.x-box-scroller-right {
+    width: 14px;
+    height: 22px;
+    border-style: solid;
+    border-color: #8db2e3;
+    border-width: 0 0 1px;
+    top: 50%;
+    margin-top: -11px; }
+  /* line 214, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x-box-scroller-breadcrumb-default.x-box-scroller-left {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    background-image: url(images/breadcrumb/default-scroll-left.gif);
+    background-position: -14px 0; }
+    /* line 231, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+    .x-box-scroller-breadcrumb-default.x-box-scroller-left.x-box-scroller-hover {
+      background-position: 0 0; }
+  /* line 237, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x-box-scroller-breadcrumb-default.x-box-scroller-right {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    background-image: url(images/breadcrumb/default-scroll-right.gif);
+    background-position: 0 0; }
+    /* line 254, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+    .x-box-scroller-breadcrumb-default.x-box-scroller-right.x-box-scroller-hover {
+      background-position: -14px 0; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x-tree-drop-ok-append .x-dd-drop-icon {
+  background-image: url(images/tree/drop-append.gif); }
+
+/* line 5, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x-tree-drop-ok-above .x-dd-drop-icon {
+  background-image: url(images/tree/drop-above.gif); }
+
+/* line 9, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x-tree-drop-ok-below .x-dd-drop-icon {
+  background-image: url(images/tree/drop-below.gif); }
+
+/* line 13, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x-tree-drop-ok-between .x-dd-drop-icon {
+  background-image: url(images/tree/drop-between.gif); }
+
+/* line 17, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x-tree-ddindicator {
+  height: 1px;
+  border-width: 1px 0px 0px;
+  border-style: dotted;
+  border-color: green; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/view/MultiSelector.scss */
+.x-multiselector-remove {
+  font-size: 100%;
+  color: #eeeeee;
+  cursor: pointer; }
+  /* line 6, ../../../ext-theme-neutral/sass/src/view/MultiSelector.scss */
+  .x-multiselector-remove .x-grid-cell-inner {
+    padding: 3px 6px 4px 6px; }
+
+/* line 11, ../../../ext-theme-neutral/sass/src/view/MultiSelector.scss */
+.x-grid-item-over .x-multiselector-remove {
+  color: red; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x-toast-icon-information {
+  background-image: url(images/window/toast/icon16_info.png); }
+
+/* line 5, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x-toast-icon-error {
+  background-image: url(images/window/toast/icon16_error.png); }
+
+/* Using standard theme */
+/* line 11, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x-toast-window .x-window-body {
+  padding: 15px 5px 15px 5px; }
+
+/* Custom styling */
+/* line 17, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x-toast-light .x-window-header {
+  background-color: transparent; }
+
+/* line 21, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x-toast-light .x-tool-img {
+  background-color: transparent; }
+
+/* line 25, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x-toast-light {
+  background-image: url(images/window/toast/fader.png); }
+
+/* line 29, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x-toast-light .x-window-body {
+  padding: 15px 5px 20px 5px;
+  background-color: transparent;
+  border: 0px solid white; }
+
+/* including package ext-theme-classic */
+/* line 2, ../../sass/src/dom/Element.scss */
+.x-box-tl {
+  background: transparent no-repeat 0 0; }
+
+/* line 6, ../../sass/src/dom/Element.scss */
+.x-box-tc {
+  height: 8px;
+  background: transparent repeat-x 0 0;
+  overflow: hidden; }
+
+/* line 12, ../../sass/src/dom/Element.scss */
+.x-box-tr {
+  background: transparent no-repeat right -8px; }
+
+/* line 16, ../../sass/src/dom/Element.scss */
+.x-box-ml {
+  background: transparent repeat-y 0;
+  padding-left: 4px;
+  overflow: hidden; }
+
+/* line 22, ../../sass/src/dom/Element.scss */
+.x-box-mc {
+  background: repeat-x 0 -16px;
+  padding: 4px 10px; }
+
+/* line 27, ../../sass/src/dom/Element.scss */
+.x-box-mc h3 {
+  margin: 0 0 4px 0; }
+
+/* line 31, ../../sass/src/dom/Element.scss */
+.x-box-mr {
+  background: transparent repeat-y right;
+  padding-right: 4px;
+  overflow: hidden; }
+
+/* line 37, ../../sass/src/dom/Element.scss */
+.x-box-bl {
+  background: transparent no-repeat 0 -16px; }
+
+/* line 41, ../../sass/src/dom/Element.scss */
+.x-box-bc {
+  background: transparent repeat-x 0 -8px;
+  height: 8px;
+  overflow: hidden; }
+
+/* line 47, ../../sass/src/dom/Element.scss */
+.x-box-br {
+  background: transparent no-repeat right -24px; }
+
+/* line 51, ../../sass/src/dom/Element.scss */
+.x-box-tl, .x-box-bl {
+  padding-left: 8px;
+  overflow: hidden; }
+
+/* line 56, ../../sass/src/dom/Element.scss */
+.x-box-tr, .x-box-br {
+  padding-right: 8px;
+  overflow: hidden; }
+
+/* line 61, ../../sass/src/dom/Element.scss */
+.x-box-tl {
+  background-image: url(images/box/corners.gif); }
+
+/* line 65, ../../sass/src/dom/Element.scss */
+.x-box-tc {
+  background-image: url(images/box/tb.gif); }
+
+/* line 69, ../../sass/src/dom/Element.scss */
+.x-box-tr {
+  background-image: url(images/box/corners.gif); }
+
+/* line 73, ../../sass/src/dom/Element.scss */
+.x-box-ml {
+  background-image: url(images/box/l.gif); }
+
+/* line 77, ../../sass/src/dom/Element.scss */
+.x-box-mc {
+  background-color: #eee;
+  background-image: url(images/box/tb.gif);
+  font-family: "Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+  color: #393939;
+  font-size: 15px; }
+
+/* line 85, ../../sass/src/dom/Element.scss */
+.x-box-mc h3 {
+  font-size: 18px;
+  font-weight: bold; }
+
+/* line 90, ../../sass/src/dom/Element.scss */
+.x-box-mr {
+  background-image: url(images/box/r.gif); }
+
+/* line 94, ../../sass/src/dom/Element.scss */
+.x-box-bl {
+  background-image: url(images/box/corners.gif); }
+
+/* line 98, ../../sass/src/dom/Element.scss */
+.x-box-bc {
+  background-image: url(images/box/tb.gif); }
+
+/* line 102, ../../sass/src/dom/Element.scss */
+.x-box-br {
+  background-image: url(images/box/corners.gif); }
+
+/* line 106, ../../sass/src/dom/Element.scss */
+.x-box-blue .x-box-bl, .x-box-blue .x-box-br, .x-box-blue .x-box-tl, .x-box-blue .x-box-tr {
+  background-image: url(images/box/corners-blue.gif); }
+
+/* line 110, ../../sass/src/dom/Element.scss */
+.x-box-blue .x-box-bc, .x-box-blue .x-box-mc, .x-box-blue .x-box-tc {
+  background-image: url(images/box/tb-blue.gif); }
+
+/* line 114, ../../sass/src/dom/Element.scss */
+.x-box-blue .x-box-mc {
+  background-color: #c3daf9; }
+
+/* line 118, ../../sass/src/dom/Element.scss */
+.x-box-blue .x-box-mc h3 {
+  color: #17385b; }
+
+/* line 122, ../../sass/src/dom/Element.scss */
+.x-box-blue .x-box-ml {
+  background-image: url(images/box/l-blue.gif); }
+
+/* line 126, ../../sass/src/dom/Element.scss */
+.x-box-blue .x-box-mr {
+  background-image: url(images/box/r-blue.gif); }
+
+/* line 1, ../../sass/src/grid/column/Column.scss */
+.x-column-header-trigger {
+  background-color: #c5c5c5;
+  background-image: url(images/grid/grid3-hd-btn.gif); }
+
+/* line 8, ../../sass/src/grid/column/Column.scss */
+.x-rtl.x-column-header-trigger {
+  background-image: url(images/grid/grid3-hd-btn-left.gif); }
+
+/* line 2, ../../sass/src/window/MessageBox.scss */
+.x-message-box .x-msg-box-wait {
+  background-image: url(images/shared/blue-loading.gif); }
+
+/* line 2, ../../sass/src/form/field/HtmlEditor.scss */
+.x-html-editor-wrap .x-toolbar {
+  border-left-color: #b5b8c8;
+  border-top-color: #b5b8c8;
+  border-right-color: #b5b8c8; }
+
+/* line 9, ../../sass/src/form/field/HtmlEditor.scss */
+.x-html-editor-input {
+  border: 1px solid #b5b8c8;
+  border-top-width: 0; }
+
+/* line 1, ../../sass/src/layout/container/Accordion.scss */
+.x-accordion-hd {
+  -webkit-box-shadow: inset 0 0 0 0 #d9e7f8;
+  -moz-box-shadow: inset 0 0 0 0 #d9e7f8;
+  box-shadow: inset 0 0 0 0 #d9e7f8; }
+
+/* line 4, ../../sass/src/layout/container/Accordion.scss */
+.x-accordion-hd-sibling-expanded {
+  -webkit-box-shadow: inset 0 1px 0 0 #f3f7fb;
+  -moz-box-shadow: inset 0 1px 0 0 #f3f7fb;
+  box-shadow: inset 0 1px 0 0 #f3f7fb; }
+
+/* line 3, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-handle-east-over,
+.x-resizable-handle-west-over {
+  background-position: left; }
+
+/* line 8, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-handle-south-over,
+.x-resizable-handle-north-over {
+  background-position: top; }
+
+/* line 12, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southeast-over {
+  background-position: top left; }
+
+/* line 16, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northwest-over {
+  background-position: bottom right; }
+
+/* line 20, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northeast-over {
+  background-position: bottom left; }
+
+/* line 24, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southwest-over {
+  background-position: top right; }
+
+/* line 30, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-east,
+.x-resizable-pinned .x-resizable-handle-west {
+  background-position: left; }
+/* line 35, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-south,
+.x-resizable-pinned .x-resizable-handle-north {
+  background-position: top; }
+/* line 39, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-southeast {
+  background-position: top left; }
+/* line 43, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-northwest {
+  background-position: bottom right; }
+/* line 47, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-northeast {
+  background-position: bottom left; }
+/* line 51, ../../sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-southwest {
+  background-position: top right; }
+
+/* line 1, ../../sass/src/slider/Multi.scss */
+.x-slider-focus .x-slider-thumb {
+  outline: 1px dotted #333333; }

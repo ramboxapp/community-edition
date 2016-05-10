@@ -1,0 +1,834 @@
+/* line 45, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x5-accordion-hd .x5-tool-collapse-top,
+.x5-accordion-hd .x5-tool-collapse-bottom {
+  background-position: 0 -255px; }
+/* line 50, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x5-accordion-hd .x5-tool-expand-top,
+.x5-accordion-hd .x5-tool-expand-bottom {
+  background-position: 0 -240px; }
+/* line 58, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x5-accordion-hd .x5-tool-over .x5-tool-collapse-top,
+.x5-accordion-hd .x5-tool-over .x5-tool-collapse-bottom {
+  background-position: -15px -255px; }
+/* line 63, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x5-accordion-hd .x5-tool-over .x5-tool-expand-top,
+.x5-accordion-hd .x5-tool-over .x5-tool-expand-bottom {
+  background-position: -15px -240px; }
+/* line 69, ../../../ext-theme-neutral/sass/src/layout/container/Accordion.scss */
+.x5-accordion-hd .x5-tool-img {
+  background-color: #d9e7f8; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/layout/container/Form.scss */
+.x5-form-layout-wrap {
+  border-spacing: 5px; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle {
+  position: absolute;
+  z-index: 100;
+  font-size: 1px;
+  line-height: 6px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  background-color: #fff; }
+
+/* line 17, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-collapsed .x5-resizable-handle {
+  display: none; }
+
+/* line 21, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-north {
+  cursor: n-resize; }
+
+/* line 24, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-south {
+  cursor: s-resize; }
+
+/* line 27, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-east {
+  cursor: e-resize; }
+
+/* line 30, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-west {
+  cursor: w-resize; }
+
+/* line 33, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southeast {
+  cursor: se-resize; }
+
+/* line 36, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northwest {
+  cursor: nw-resize; }
+
+/* line 39, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northeast {
+  cursor: ne-resize; }
+
+/* line 42, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southwest {
+  cursor: sw-resize; }
+
+/* line 46, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-east {
+  width: 6px;
+  height: 100%;
+  right: 0;
+  top: 0; }
+
+/* line 53, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-south {
+  width: 100%;
+  height: 6px;
+  left: 0;
+  bottom: 0; }
+
+/* line 60, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-west {
+  width: 6px;
+  height: 100%;
+  left: 0;
+  top: 0; }
+
+/* line 67, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-north {
+  width: 100%;
+  height: 6px;
+  left: 0;
+  top: 0; }
+
+/* line 74, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southeast {
+  width: 6px;
+  height: 6px;
+  right: 0;
+  bottom: 0;
+  z-index: 101; }
+
+/* line 82, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northwest {
+  width: 6px;
+  height: 6px;
+  left: 0;
+  top: 0;
+  z-index: 101; }
+
+/* line 90, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northeast {
+  width: 6px;
+  height: 6px;
+  right: 0;
+  top: 0;
+  z-index: 101; }
+
+/* line 98, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southwest {
+  width: 6px;
+  height: 6px;
+  left: 0;
+  bottom: 0;
+  z-index: 101; }
+
+/* line 107, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-window .x5-window-handle {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0; }
+
+/* line 111, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-window-collapsed .x5-window-handle {
+  display: none; }
+
+/* line 116, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-proxy {
+  border: 1px dashed #3b5a82;
+  position: absolute;
+  overflow: hidden;
+  z-index: 50000; }
+
+/* line 125, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-over,
+.x5-resizable-pinned .x5-resizable-handle {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1; }
+
+/* line 131, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-east-over,
+.x5-resizable-handle-west-over {
+  background-image: url(images/sizer/e-handle.gif); }
+
+/* line 137, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-south-over,
+.x5-resizable-handle-north-over {
+  background-image: url(images/sizer/s-handle.gif); }
+
+/* line 142, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southeast-over {
+  background-position: top left;
+  background-image: url(images/sizer/se-handle.gif); }
+
+/* line 147, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northwest-over {
+  background-position: bottom right;
+  background-image: url(images/sizer/nw-handle.gif); }
+
+/* line 152, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northeast-over {
+  background-position: bottom left;
+  background-image: url(images/sizer/ne-handle.gif); }
+
+/* line 157, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southwest-over {
+  background-position: top right;
+  background-image: url(images/sizer/sw-handle.gif); }
+
+/* line 165, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-east,
+.x5-resizable-pinned .x5-resizable-handle-west {
+  background-image: url(images/sizer/e-handle.gif); }
+/* line 171, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-south,
+.x5-resizable-pinned .x5-resizable-handle-north {
+  background-image: url(images/sizer/s-handle.gif); }
+/* line 176, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-southeast {
+  background-position: top left;
+  background-image: url(images/sizer/se-handle.gif); }
+/* line 181, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-northwest {
+  background-position: bottom right;
+  background-image: url(images/sizer/nw-handle.gif); }
+/* line 186, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-northeast {
+  background-position: bottom left;
+  background-image: url(images/sizer/ne-handle.gif); }
+/* line 191, ../../../ext-theme-neutral/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-southwest {
+  background-position: top right;
+  background-image: url(images/sizer/sw-handle.gif); }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x5-column-header-checkbox {
+  border-color: #c5c5c5; }
+
+/* line 6, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x5-grid-row-checker,
+.x5-column-header-checkbox .x5-column-header-text {
+  height: 13px;
+  width: 13px;
+  background-image: url(images/form/checkbox.gif);
+  line-height: 13px; }
+
+/* line 15, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x5-column-header-checkbox .x5-column-header-inner {
+  padding: 5px 5px 4px 5px; }
+
+/* line 19, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x5-grid-cell-row-checker .x5-grid-cell-inner {
+  padding: 4px 5px 3px 5px; }
+  /* line 23, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+  .x5-grid-no-row-lines .x5-grid-row-focused .x5-grid-cell-row-checker .x5-grid-cell-inner {
+    padding-top: 3px;
+    padding-bottom: 2px; }
+
+/* line 32, ../../../ext-theme-neutral/sass/src/selection/CheckboxModel.scss */
+.x5-grid-hd-checker-on .x5-column-header-text,
+.x5-grid-item-selected .x5-grid-row-checker,
+.x5-grid-item-selected .x5-grid-row-checker {
+  background-position: 0 -13px; }
+
+/* Horizontal styles */
+/* line 2, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz {
+  padding-left: 7px;
+  background: no-repeat 0 -15px; }
+  /* line 6, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x5-slider-horz .x5-slider-end {
+    padding-right: 7px;
+    background: no-repeat right -30px; }
+
+/* line 12, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz .x5-slider-inner {
+  height: 15px; }
+
+/* line 16, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz .x5-slider-thumb {
+  width: 14px;
+  height: 15px;
+  margin-left: -7px;
+  background-image: url(images/slider/slider-thumb.png); }
+
+/* line 23, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz.x5-slider-focus .x5-slider-thumb {
+  background-position: -42px -45px; }
+
+/* line 27, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz .x5-slider-thumb-over {
+  background-position: -14px -15px; }
+
+/* line 31, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz.x5-slider-focus .x5-slider-thumb-over {
+  background-position: -56px -60px; }
+
+/* line 35, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz .x5-slider-thumb-drag {
+  background-position: -28px -30px; }
+
+/* line 39, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz.x5-slider-focus .x5-slider-thumb-drag {
+  background-position: -70px -75px; }
+
+/* line 44, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-rtl.x5-slider-horz {
+  padding-left: 0;
+  padding-right: 7px;
+  background-position: right -30px; }
+  /* line 49, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x5-rtl.x5-slider-horz .x5-slider-end {
+    padding-right: 0;
+    padding-left: 7px;
+    background-position: left -15px; }
+  /* line 55, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x5-rtl.x5-slider-horz .x5-slider-thumb {
+    margin-right: -7px; }
+
+/* Vertical styles */
+/* line 62, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-ct-vert {
+  height: 100%; }
+
+/* line 66, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert {
+  padding-top: 7px;
+  background: no-repeat -30px 0;
+  height: 100%; }
+  /* line 71, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+  .x5-slider-vert > .x5-slider-end {
+    height: 100%; }
+    /* line 73, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+    .x5-slider-vert > .x5-slider-end > .x5-slider-inner {
+      height: 100%; }
+
+/* line 79, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert .x5-slider-end {
+  padding-bottom: 7px;
+  background: no-repeat -15px bottom;
+  width: 15px; }
+
+/* line 85, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert .x5-slider-inner {
+  width: 15px; }
+
+/* line 89, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert .x5-slider-thumb {
+  width: 15px;
+  height: 14px;
+  margin-bottom: -7px;
+  background-image: url(images/slider/slider-v-thumb.png); }
+
+/* line 96, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert.x5-slider-focus .x5-slider-thumb {
+  background-position: -45px -42px; }
+
+/* line 100, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert .x5-slider-thumb-over {
+  background-position: -15px -14px; }
+
+/* line 104, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert.x5-slider-focus .x5-slider-thumb-over {
+  background-position: -60px -56px; }
+
+/* line 108, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert .x5-slider-thumb-drag {
+  background-position: -30px -28px; }
+
+/* line 112, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert.x5-slider-focus .x5-slider-thumb-drag {
+  background-position: -75px -70px; }
+
+/* line 118, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-horz,
+.x5-slider-horz .x5-slider-end,
+.x5-slider-horz .x5-slider-inner {
+  background-image: url(images/slider/slider-bg.png); }
+
+/* line 124, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-vert,
+.x5-slider-vert .x5-slider-end,
+.x5-slider-vert .x5-slider-inner {
+  background-image: url(images/slider/slider-v-bg.png); }
+
+/* line 129, ../../../ext-theme-neutral/sass/src/slider/Multi.scss */
+.x5-slider-default-cell > .x5-grid-cell-inner,
+.x5-sliderwidget-default-cell > .x5-grid-cell-inner {
+  padding-top: 2px;
+  padding-bottom: 3px; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/sparkline/Base.scss */
+.x5-sparkline-cell .x5-grid-cell-inner {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 18px; }
+
+/**
+ * Creates a visual theme for a Breadcrumb.
+ *
+ * @param {string} $ui
+ * The name of the UI being created. Can not included spaces or special punctuation
+ * (used in CSS class names).
+ *
+ * @param {string} [$ui-button-ui=$breadcrumb-button-ui]
+ * The name of the button UI that will be used with this breadcrumb UI. Used for overriding
+ * the button arrows for the given button UI when it is used inside a breadcrumb with this UI.
+ *
+ * @param {number} [$ui-button-spacing=$breadcrumb-button-spacing]
+ * The space between the breadcrumb buttons
+ *
+ * @param {number} [$ui-arrow-width=$breadcrumb-arrow-width]
+ * The width of the breadcrumb arrows when
+ * {@link Ext.toolbar.Breadcrumb#useSplitButtons} is `false`
+ *
+ * @param {number} [$ui-split-width=$breadcrumb-split-width]
+ * The width of breadcrumb arrows when {@link Ext.toolbar.Breadcrumb#useSplitButtons} is
+ * `true`
+ *
+ * @param {boolean} [$ui-include-menu-active-arrow=$breadcrumb-include-menu-active-arrow]
+ * `true` to include a separate background-image for menu arrows when a breadcrumb button's
+ * menu is open
+ *
+ * @param {boolean} [$ui-include-split-over-arrow=$breadcrumb-include-split-over-arrow
+ * `true` to include a separate background-image for split arrows when a breadcrumb button's
+ * arrow is hovered
+ *
+ * @param {string} [$ui-folder-icon=$breadcrumb-folder-icon]
+ * The background-image for the default "folder" icon
+ *
+ * @param {string} [$ui-leaf-icon=$breadcrumb-leaf-icon]
+ * The background-image for the default "leaf" icon
+ *
+ * @param {number} [$ui-scroller-width=$breadcrumb-scroller-width]
+ * The width of Breadcrumb scrollers
+ *
+ * @param {number} [$ui-scroller-height=$breadcrumb-scroller-height]
+ * The height of Breadcrumb scrollers
+ *
+ * @param {color} [$ui-scroller-border-color=$breadcrumb-scroller-border-color]
+ * The border-color of Breadcrumb scrollers
+ *
+ * @param {number} [$ui-scroller-border-width=$breadcrumb-scroller-border-width]
+ * The border-width of Breadcrumb scrollers
+ *
+ * @param {number/list} [$ui-scroller-top-margin=$breadcrumb-scroller-top-margin]
+ * The margin of "top" scroller buttons
+ *
+ * @param {number/list} [$ui-scroller-right-margin=$breadcrumb-scroller-right-margin]
+ * The margin of "right" scroller buttons
+ *
+ * @param {number/list} [$ui-scroller-bottom-margin=$breadcrumb-scroller-bottom-margin]
+ * The margin of "bottom" scroller buttons
+ *
+ * @param {number/list} [$ui-scroller-left-margin=$breadcrumb-scroller-left-margin]
+ * The margin of "left" scroller buttons
+ *
+ * @param {string} [$ui-scroller-cursor=$breadcrumb-scroller-cursor]
+ * The cursor of Breadcrumb scrollers
+ *
+ * @param {string} [$ui-scroller-cursor-disabled=$breadcrumb-scroller-cursor-disabled]
+ * The cursor of disabled Breadcrumb scrollers
+ *
+ * @param {number} [$ui-scroller-opacity=$breadcrumb-scroller-opacity]
+ * The opacity of Breadcrumb scroller buttons. Only applicable when
+ * `$ui-classic-scrollers` is `false`.
+ *
+ * @param {number} [$ui-scroller-opacity-over=$breadcrumb-scroller-opacity-over]
+ * The opacity of hovered Breadcrumb scroller buttons. Only applicable when
+ * `$ui-classic-scrollers` is `false`.
+ *
+ * @param {number} [$ui-scroller-opacity-pressed=$breadcrumb-scroller-opacity-pressed]
+ * The opacity of pressed Breadcrumb scroller buttons. Only applicable when
+ * `$ui-classic-scrollers` is `false`.
+ *
+ * @param {number} [$ui-scroller-opacity-disabled=$breadcrumb-scroller-opacity-disabled]
+ * The opacity of disabled Breadcrumb scroller buttons.
+ *
+ * @param {boolean} [$ui-classic-scrollers=$breadcrumb-classic-scrollers]
+ * `true` to use classic-style scroller buttons.  When `true` scroller buttons are given
+ * their hover state by changing their background-position,  When `false` scroller buttons
+ * are given their hover state by applying opacity.
+ *
+ * @member Ext.toolbar.Breadcrumb
+ */
+/* line 115, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-breadcrumb-btn-default {
+  margin: 0 0 0 0px; }
+
+/* line 119, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-breadcrumb-icon-folder-default {
+  background-image: url(images/tree/folder.gif); }
+
+/* line 123, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-breadcrumb-icon-leaf-default {
+  background-image: url(images/tree/leaf.gif); }
+
+/* line 128, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-arrow:after {
+  width: 14px;
+  background-image: url(images/breadcrumb/default-arrow.gif); }
+/* line 134, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-rtl.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-arrow:after {
+  background-image: url(images/breadcrumb/default-arrow-rtl.gif); }
+/* line 140, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-btn-menu-active.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-arrow:after {
+  background-image: url(images/breadcrumb/default-arrow-open.gif); }
+/* line 145, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-rtl.x5-btn-menu-active.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-arrow:after {
+  background-image: url(images/breadcrumb/default-arrow-open-rtl.gif); }
+
+/* line 153, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-split:after {
+  width: 14px;
+  background-image: url(images/breadcrumb/default-split-arrow.gif); }
+/* line 159, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-rtl.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-rtl.gif); }
+/* line 165, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-btn-over.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-over.gif); }
+/* line 170, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-rtl.x5-btn-over.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-over-rtl.gif); }
+/* line 177, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-btn-menu-active.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-open.gif); }
+/* line 182, ../../../ext-theme-neutral/sass/src/toolbar/Breadcrumb.scss */
+.x5-rtl.x5-btn-menu-active.x5-breadcrumb-btn > .x5-btn-wrap-default-toolbar-small.x5-btn-split:after {
+  background-image: url(images/breadcrumb/default-split-arrow-open-rtl.gif); }
+
+/* line 145, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x5-breadcrumb-default-scroller .x5-box-scroller-body-horizontal {
+  margin-left: 14px; }
+
+/* line 151, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x5-breadcrumb-default-vertical-scroller .x5-box-scroller-body-vertical {
+  margin-top: 26px; }
+
+/* line 156, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+.x5-box-scroller-breadcrumb-default {
+  cursor: pointer; }
+  /* line 177, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x5-box-scroller-breadcrumb-default.x5-box-scroller-disabled {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5;
+    cursor: default; }
+  /* line 188, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x5-box-scroller-breadcrumb-default.x5-box-scroller-left, .x5-box-scroller-breadcrumb-default.x5-box-scroller-right {
+    width: 14px;
+    height: 22px;
+    border-style: solid;
+    border-color: #8db2e3;
+    border-width: 0 0 1px;
+    top: 50%;
+    margin-top: -11px; }
+  /* line 214, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x5-box-scroller-breadcrumb-default.x5-box-scroller-left {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    background-image: url(images/breadcrumb/default-scroll-left.gif);
+    background-position: -14px 0; }
+    /* line 231, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+    .x5-box-scroller-breadcrumb-default.x5-box-scroller-left.x5-box-scroller-hover {
+      background-position: 0 0; }
+  /* line 237, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+  .x5-box-scroller-breadcrumb-default.x5-box-scroller-right {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    background-image: url(images/breadcrumb/default-scroll-right.gif);
+    background-position: 0 0; }
+    /* line 254, ../../../ext-theme-neutral/sass/src/layout/container/Box.scss */
+    .x5-box-scroller-breadcrumb-default.x5-box-scroller-right.x5-box-scroller-hover {
+      background-position: -14px 0; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x5-tree-drop-ok-append .x5-dd-drop-icon {
+  background-image: url(images/tree/drop-append.gif); }
+
+/* line 5, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x5-tree-drop-ok-above .x5-dd-drop-icon {
+  background-image: url(images/tree/drop-above.gif); }
+
+/* line 9, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x5-tree-drop-ok-below .x5-dd-drop-icon {
+  background-image: url(images/tree/drop-below.gif); }
+
+/* line 13, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x5-tree-drop-ok-between .x5-dd-drop-icon {
+  background-image: url(images/tree/drop-between.gif); }
+
+/* line 17, ../../../ext-theme-neutral/sass/src/tree/ViewDropZone.scss */
+.x5-tree-ddindicator {
+  height: 1px;
+  border-width: 1px 0px 0px;
+  border-style: dotted;
+  border-color: green; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/view/MultiSelector.scss */
+.x5-multiselector-remove {
+  font-size: 100%;
+  color: #eeeeee;
+  cursor: pointer; }
+  /* line 6, ../../../ext-theme-neutral/sass/src/view/MultiSelector.scss */
+  .x5-multiselector-remove .x5-grid-cell-inner {
+    padding: 3px 6px 4px 6px; }
+
+/* line 11, ../../../ext-theme-neutral/sass/src/view/MultiSelector.scss */
+.x5-grid-item-over .x5-multiselector-remove {
+  color: red; }
+
+/* line 1, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x5-toast-icon-information {
+  background-image: url(images/window/toast/icon16_info.png); }
+
+/* line 5, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x5-toast-icon-error {
+  background-image: url(images/window/toast/icon16_error.png); }
+
+/* Using standard theme */
+/* line 11, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x5-toast-window .x-window-body {
+  padding: 15px 5px 15px 5px; }
+
+/* Custom styling */
+/* line 17, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x5-toast-light .x-window-header {
+  background-color: transparent; }
+
+/* line 21, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x5-toast-light .x-tool-img {
+  background-color: transparent; }
+
+/* line 25, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x5-toast-light {
+  background-image: url(images/window/toast/fader.png); }
+
+/* line 29, ../../../ext-theme-neutral/sass/src/window/Toast.scss */
+.x5-toast-light .x-window-body {
+  padding: 15px 5px 20px 5px;
+  background-color: transparent;
+  border: 0px solid white; }
+
+/* including package ext-theme-classic */
+/* line 2, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tl {
+  background: transparent no-repeat 0 0; }
+
+/* line 6, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tc {
+  height: 8px;
+  background: transparent repeat-x 0 0;
+  overflow: hidden; }
+
+/* line 12, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tr {
+  background: transparent no-repeat right -8px; }
+
+/* line 16, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-ml {
+  background: transparent repeat-y 0;
+  padding-left: 4px;
+  overflow: hidden; }
+
+/* line 22, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-mc {
+  background: repeat-x 0 -16px;
+  padding: 4px 10px; }
+
+/* line 27, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-mc h3 {
+  margin: 0 0 4px 0; }
+
+/* line 31, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-mr {
+  background: transparent repeat-y right;
+  padding-right: 4px;
+  overflow: hidden; }
+
+/* line 37, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-bl {
+  background: transparent no-repeat 0 -16px; }
+
+/* line 41, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-bc {
+  background: transparent repeat-x 0 -8px;
+  height: 8px;
+  overflow: hidden; }
+
+/* line 47, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-br {
+  background: transparent no-repeat right -24px; }
+
+/* line 51, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tl, .x5-box-bl {
+  padding-left: 8px;
+  overflow: hidden; }
+
+/* line 56, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tr, .x5-box-br {
+  padding-right: 8px;
+  overflow: hidden; }
+
+/* line 61, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tl {
+  background-image: url(images/box/corners.gif); }
+
+/* line 65, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tc {
+  background-image: url(images/box/tb.gif); }
+
+/* line 69, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-tr {
+  background-image: url(images/box/corners.gif); }
+
+/* line 73, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-ml {
+  background-image: url(images/box/l.gif); }
+
+/* line 77, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-mc {
+  background-color: #eee;
+  background-image: url(images/box/tb.gif);
+  font-family: "Myriad Pro","Myriad Web","Tahoma","Helvetica","Arial",sans-serif;
+  color: #393939;
+  font-size: 15px; }
+
+/* line 85, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-mc h3 {
+  font-size: 18px;
+  font-weight: bold; }
+
+/* line 90, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-mr {
+  background-image: url(images/box/r.gif); }
+
+/* line 94, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-bl {
+  background-image: url(images/box/corners.gif); }
+
+/* line 98, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-bc {
+  background-image: url(images/box/tb.gif); }
+
+/* line 102, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-br {
+  background-image: url(images/box/corners.gif); }
+
+/* line 106, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-blue .x5-box-bl, .x5-box-blue .x5-box-br, .x5-box-blue .x5-box-tl, .x5-box-blue .x5-box-tr {
+  background-image: url(images/box/corners-blue.gif); }
+
+/* line 110, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-blue .x5-box-bc, .x5-box-blue .x5-box-mc, .x5-box-blue .x5-box-tc {
+  background-image: url(images/box/tb-blue.gif); }
+
+/* line 114, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-blue .x5-box-mc {
+  background-color: #c3daf9; }
+
+/* line 118, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-blue .x5-box-mc h3 {
+  color: #17385b; }
+
+/* line 122, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-blue .x5-box-ml {
+  background-image: url(images/box/l-blue.gif); }
+
+/* line 126, ../../../ext-theme-classic/sass/src/dom/Element.scss */
+.x5-box-blue .x5-box-mr {
+  background-image: url(images/box/r-blue.gif); }
+
+/* line 1, ../../../ext-theme-classic/sass/src/grid/column/Column.scss */
+.x5-column-header-trigger {
+  background-color: #c5c5c5;
+  background-image: url(images/grid/grid3-hd-btn.gif); }
+
+/* line 8, ../../../ext-theme-classic/sass/src/grid/column/Column.scss */
+.x5-rtl.x5-column-header-trigger {
+  background-image: url(images/grid/grid3-hd-btn-left.gif); }
+
+/* line 2, ../../../ext-theme-classic/sass/src/window/MessageBox.scss */
+.x5-message-box .x5-msg-box-wait {
+  background-image: url(images/shared/blue-loading.gif); }
+
+/* line 2, ../../../ext-theme-classic/sass/src/form/field/HtmlEditor.scss */
+.x5-html-editor-wrap .x5-toolbar {
+  border-left-color: #b5b8c8;
+  border-top-color: #b5b8c8;
+  border-right-color: #b5b8c8; }
+
+/* line 9, ../../../ext-theme-classic/sass/src/form/field/HtmlEditor.scss */
+.x5-html-editor-input {
+  border: 1px solid #b5b8c8;
+  border-top-width: 0; }
+
+/* line 1, ../../../ext-theme-classic/sass/src/layout/container/Accordion.scss */
+.x5-accordion-hd {
+  -webkit-box-shadow: inset 0 0 0 0 #d9e7f8;
+  -moz-box-shadow: inset 0 0 0 0 #d9e7f8;
+  box-shadow: inset 0 0 0 0 #d9e7f8; }
+
+/* line 4, ../../../ext-theme-classic/sass/src/layout/container/Accordion.scss */
+.x5-accordion-hd-sibling-expanded {
+  -webkit-box-shadow: inset 0 1px 0 0 #f3f7fb;
+  -moz-box-shadow: inset 0 1px 0 0 #f3f7fb;
+  box-shadow: inset 0 1px 0 0 #f3f7fb; }
+
+/* line 3, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-east-over,
+.x5-resizable-handle-west-over {
+  background-position: left; }
+
+/* line 8, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-south-over,
+.x5-resizable-handle-north-over {
+  background-position: top; }
+
+/* line 12, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southeast-over {
+  background-position: top left; }
+
+/* line 16, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northwest-over {
+  background-position: bottom right; }
+
+/* line 20, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-northeast-over {
+  background-position: bottom left; }
+
+/* line 24, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-handle-southwest-over {
+  background-position: top right; }
+
+/* line 30, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-east,
+.x5-resizable-pinned .x5-resizable-handle-west {
+  background-position: left; }
+/* line 35, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-south,
+.x5-resizable-pinned .x5-resizable-handle-north {
+  background-position: top; }
+/* line 39, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-southeast {
+  background-position: top left; }
+/* line 43, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-northwest {
+  background-position: bottom right; }
+/* line 47, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-northeast {
+  background-position: bottom left; }
+/* line 51, ../../../ext-theme-classic/sass/src/resizer/Resizer.scss */
+.x5-resizable-pinned .x5-resizable-handle-southwest {
+  background-position: top right; }
+
+/* line 1, ../../../ext-theme-classic/sass/src/slider/Multi.scss */
+.x5-slider-focus .x5-slider-thumb {
+  outline: 1px dotted #333333; }

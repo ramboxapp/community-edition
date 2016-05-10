@@ -1,0 +1,3296 @@
+  .x-panel-header-title-light > .x-title-icon-wrap-light > .x-title-glyph {
+    color: white;
+    font-size: 16px;
+    line-height: 16px;
+    opacity: 0.5; }
+    /* line 469, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+    .x-ie8 .x-panel-header-title-light > .x-title-icon-wrap-light > .x-title-glyph {
+      color: #eff4f8; }
+
+/* line 479, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-body-light {
+  background: white;
+  border-color: #dfeaf2;
+  color: black;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: helvetica, arial, verdana, sans-serif;
+  border-width: 1px;
+  border-style: solid; }
+
+/* line 643, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light {
+  background-image: none;
+  background-color: #dfeaf2; }
+
+/* line 647, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-vertical {
+  background-image: none;
+  background-color: #dfeaf2; }
+
+/* line 652, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-rtl.x-panel-header-light-vertical {
+  background-image: none;
+  background-color: #dfeaf2; }
+
+/* line 705, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-collapsed-border-top {
+  border-bottom-width: 1px !important; }
+/* line 709, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-collapsed-border-right {
+  border-left-width: 1px !important; }
+/* line 713, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-collapsed-border-bottom {
+  border-top-width: 1px !important; }
+/* line 717, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-collapsed-border-left {
+  border-right-width: 1px !important; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-top:before {
+  display: none;
+  content: "x-slicer:stretch:bottom" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-bottom:before {
+  display: none;
+  content: "x-slicer:stretch:top" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-left:before {
+  display: none;
+  content: "x-slicer:stretch:right" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-right:before {
+  display: none;
+  content: "x-slicer:stretch:left" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 753, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-horizontal .x-tool-after-title {
+  margin: 0 0 0 6px; }
+/* line 758, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-horizontal .x-rtl.x-tool-after-title {
+  margin: 0 6px 0 0; }
+/* line 763, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-horizontal .x-tool-before-title {
+  margin: 0 6px 0 0; }
+/* line 768, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-horizontal .x-rtl.x-tool-before-title {
+  margin: 0 0 0 6px; }
+
+/* line 775, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-vertical .x-tool-after-title {
+  margin: 6px 0 0 0; }
+/* line 780, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-vertical .x-rtl.x-tool-after-title {
+  margin: 6px 0 0 0; }
+/* line 785, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-vertical .x-tool-before-title {
+  margin: 0 0 6px 0; }
+/* line 790, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-vertical .x-rtl.x-tool-before-title {
+  margin: 0 0 6px 0; }
+
+/* line 798, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-rtl.x-panel-header-light-collapsed-border-right {
+  border-right-width: 1px !important; }
+/* line 801, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-rtl.x-panel-header-light-collapsed-border-left {
+  border-left-width: 1px !important; }
+
+/* line 815, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-light-resizable .x-panel-handle {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0; }
+
+/* line 2, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-l {
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 1px !important; }
+
+/* line 6, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-b {
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 1px !important; }
+
+/* line 10, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-bl {
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 1px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 1px !important; }
+
+/* line 16, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-r {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 1px !important; }
+
+/* line 20, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-rl {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 1px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 1px !important; }
+
+/* line 26, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-rb {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 1px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 1px !important; }
+
+/* line 32, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-rbl {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 1px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 1px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 1px !important; }
+
+/* line 40, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-t {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 1px !important; }
+
+/* line 44, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tl {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 1px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 1px !important; }
+
+/* line 50, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tb {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 1px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 1px !important; }
+
+/* line 56, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tbl {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 1px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 1px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 1px !important; }
+
+/* line 64, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-tr {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 1px !important;
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 1px !important; }
+
+/* line 70, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-trl {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 1px !important;
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 1px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 1px !important; }
+
+/* line 78, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-trb {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 1px !important;
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 1px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 1px !important; }
+
+/* line 86, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-outer-border-trbl {
+  border-color: #dfeaf2 !important;
+  border-width: 1px !important; }
+
+/* line 256, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-light-framed {
+  border-color: #dfeaf2;
+  padding: 0; }
+
+/* line 262, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed {
+  font-size: 15px;
+  border: 5px solid #dfeaf2; }
+  /* line 269, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-light-framed .x-tool-img {
+    background-image: url(images/tools/tool-sprites-dark.png);
+    background-color: #dfeaf2; }
+
+/* line 282, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-horizontal {
+  padding: 1px 11px 1px 11px; }
+  /* line 286, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-light-framed-horizontal .x-panel-header-light-framed-tab-bar {
+    margin-top: -1px;
+    margin-bottom: -1px; }
+
+/* line 294, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-horizontal.x-header-noborder {
+  padding: 6px 16px 1px 16px; }
+  /* line 298, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-light-framed-horizontal.x-header-noborder .x-panel-header-light-framed-tab-bar {
+    margin-top: -6px;
+    margin-bottom: -1px; }
+
+/* line 306, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-vertical {
+  padding: 11px 1px 11px 1px; }
+  /* line 310, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-light-framed-vertical .x-panel-header-light-framed-tab-bar {
+    margin-right: -1px;
+    margin-left: -1px; }
+
+/* line 318, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-vertical.x-header-noborder {
+  padding: 16px 6px 16px 1px; }
+  /* line 322, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-light-framed-vertical.x-header-noborder .x-panel-header-light-framed-tab-bar {
+    margin-right: -6px;
+    margin-left: -1px; }
+
+/* line 331, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-rtl.x-panel-header-light-framed-vertical {
+  padding: 11px 1px 11px 1px; }
+  /* line 335, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-rtl.x-panel-header-light-framed-vertical .x-panel-header-light-framed-tab-bar {
+    margin-left: -1px;
+    margin-right: -1px; }
+
+/* line 343, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-rtl.x-panel-header-light-framed-vertical.x-header-noborder {
+  padding: 16px 1px 16px 6px; }
+  /* line 347, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-rtl.x-panel-header-light-framed-vertical.x-header-noborder .x-panel-header-light-framed-tab-bar {
+    margin-left: -6px;
+    margin-right: -1px; }
+
+/* line 356, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-title-light-framed {
+  color: #666666;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: helvetica, arial, verdana, sans-serif;
+  line-height: 32px; }
+  /* line 369, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-title-light-framed > .x-title-text-light-framed {
+    text-transform: none;
+    padding: 0; }
+  /* line 412, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-top {
+    height: 22px;
+    padding-bottom: 6px; }
+  /* line 417, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-right {
+    width: 22px;
+    padding-left: 6px; }
+    /* line 422, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+    .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-right.x-rtl {
+      padding-left: 0;
+      padding-right: 6px; }
+  /* line 429, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-bottom {
+    height: 22px;
+    padding-top: 6px; }
+  /* line 434, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-left {
+    width: 22px;
+    padding-right: 6px; }
+    /* line 439, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+    .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed.x-title-icon-left.x-rtl {
+      padding-right: 0;
+      padding-left: 6px; }
+  /* line 446, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed > .x-title-icon-light-framed {
+    width: 16px;
+    height: 16px;
+    background-position: center center; }
+  /* line 452, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed > .x-title-glyph {
+    color: white;
+    font-size: 16px;
+    line-height: 16px;
+    opacity: 0.5; }
+    /* line 469, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+    .x-ie8 .x-panel-header-title-light-framed > .x-title-icon-wrap-light-framed > .x-title-glyph {
+      color: #eff4f8; }
+
+/* line 479, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-body-light-framed {
+  background: white;
+  border-color: #dfeaf2;
+  color: black;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: helvetica, arial, verdana, sans-serif;
+  border-width: 1px;
+  border-style: solid; }
+
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  padding: 0px 0px 0px 0px;
+  border-width: 5px;
+  border-style: solid;
+  background-color: white; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-mc {
+  background-color: white; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-light-framed {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-frameInfo {
+  font-family: dh-5-5-5-5-5-5-5-5-0-0-0-0; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-ml {
+  background-position: 0 top; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-mr {
+  background-position: right top; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-tr,
+.x-panel-light-framed-br,
+.x-panel-light-framed-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-tl,
+.x-panel-light-framed-bl,
+.x-panel-light-framed-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-tl,
+.x-panel-light-framed-bl,
+.x-panel-light-framed-tr,
+.x-panel-light-framed-br,
+.x-panel-light-framed-tc,
+.x-panel-light-framed-bc,
+.x-panel-light-framed-ml,
+.x-panel-light-framed-mr {
+  background-image: url(images/panel/panel-light-framed-corners.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-ml,
+.x-panel-light-framed-mr {
+  background-image: url(images/panel/panel-light-framed-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-light-framed-mc {
+  padding: 0px 0px 0px 0px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-light-framed:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 5px 5px, corners:url(images/panel/panel-light-framed-corners.gif), sides:url(images/panel/panel-light-framed-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 1px 11px 1px 11px;
+  border-width: 5px 5px 0 5px;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-top {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-frameInfo {
+  font-family: dh-5-5-0-5-5-5-0-5-1-11-1-11; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-ml {
+  background-position: 0 top; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-mr {
+  background-position: right top; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-tr,
+.x-panel-header-light-framed-top-br,
+.x-panel-header-light-framed-top-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-tl,
+.x-panel-header-light-framed-top-bl,
+.x-panel-header-light-framed-top-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-bc {
+  height: 0; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-tl,
+.x-panel-header-light-framed-top-bl,
+.x-panel-header-light-framed-top-tr,
+.x-panel-header-light-framed-top-br,
+.x-panel-header-light-framed-top-tc,
+.x-panel-header-light-framed-top-bc,
+.x-panel-header-light-framed-top-ml,
+.x-panel-header-light-framed-top-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-top-corners.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-ml,
+.x-panel-header-light-framed-top-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-top-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-top-mc {
+  padding: 1px 11px 1px 11px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-top:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 0 5px, corners:url(images/panel-header/panel-header-light-framed-top-corners.gif), sides:url(images/panel-header/panel-header-light-framed-top-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 11px 1px 11px 1px;
+  border-width: 5px 5px 5px 0;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 226, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-right {
+  background-image: none;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-right {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-frameInfo {
+  font-family: dh-5-5-5-0-5-5-5-0-11-1-11-1; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-ml {
+  background-position: right 0; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-mr {
+  background-position: right 0; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-tr,
+.x-panel-header-light-framed-right-br,
+.x-panel-header-light-framed-right-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-tl,
+.x-panel-header-light-framed-right-bl,
+.x-panel-header-light-framed-right-ml {
+  padding-left: 0; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-tl,
+.x-panel-header-light-framed-right-bl,
+.x-panel-header-light-framed-right-tr,
+.x-panel-header-light-framed-right-br,
+.x-panel-header-light-framed-right-tc,
+.x-panel-header-light-framed-right-bc,
+.x-panel-header-light-framed-right-ml,
+.x-panel-header-light-framed-right-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-right-corners.gif); }
+
+/* line 428, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-right-tl, .x-rtl.x-panel-header-light-framed-right-ml, .x-rtl.x-panel-header-light-framed-right-bl, .x-rtl.x-panel-header-light-framed-right-tr, .x-rtl.x-panel-header-light-framed-right-mr, .x-rtl.x-panel-header-light-framed-right-br {
+  background-image: url(images/panel-header/panel-header-light-framed-right-corners-rtl.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-ml,
+.x-panel-header-light-framed-right-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-right-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-right-mc {
+  padding: 11px 1px 11px 1px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-right:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 5px 0, corners:url(images/panel-header/panel-header-light-framed-right-corners.gif), corners-rtl:url(images/panel-header/panel-header-light-framed-right-corners-rtl.gif), sides:url(images/panel-header/panel-header-light-framed-right-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 1px 11px 1px 11px;
+  border-width: 0 5px 5px 5px;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-bottom {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-frameInfo {
+  font-family: dh-0-5-5-5-0-5-5-5-1-11-1-11; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-ml {
+  background-position: 0 bottom; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-mr {
+  background-position: right bottom; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-tr,
+.x-panel-header-light-framed-bottom-br,
+.x-panel-header-light-framed-bottom-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-tl,
+.x-panel-header-light-framed-bottom-bl,
+.x-panel-header-light-framed-bottom-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-tc {
+  height: 0; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-tl,
+.x-panel-header-light-framed-bottom-bl,
+.x-panel-header-light-framed-bottom-tr,
+.x-panel-header-light-framed-bottom-br,
+.x-panel-header-light-framed-bottom-tc,
+.x-panel-header-light-framed-bottom-bc,
+.x-panel-header-light-framed-bottom-ml,
+.x-panel-header-light-framed-bottom-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-bottom-corners.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-ml,
+.x-panel-header-light-framed-bottom-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-bottom-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-bottom-mc {
+  padding: 1px 11px 1px 11px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-bottom:before {
+  display: none;
+  content: "x-slicer:frame:0 5px 5px 5px, corners:url(images/panel-header/panel-header-light-framed-bottom-corners.gif), sides:url(images/panel-header/panel-header-light-framed-bottom-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 11px 1px 11px 1px;
+  border-width: 5px 0 5px 5px;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 226, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-left {
+  background-image: none;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-left {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-frameInfo {
+  font-family: dh-5-0-5-5-5-0-5-5-11-1-11-1; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-ml {
+  background-position: left 0; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-mr {
+  background-position: left 0; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-tr,
+.x-panel-header-light-framed-left-br,
+.x-panel-header-light-framed-left-mr {
+  padding-right: 0; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-tl,
+.x-panel-header-light-framed-left-bl,
+.x-panel-header-light-framed-left-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-tl,
+.x-panel-header-light-framed-left-bl,
+.x-panel-header-light-framed-left-tr,
+.x-panel-header-light-framed-left-br,
+.x-panel-header-light-framed-left-tc,
+.x-panel-header-light-framed-left-bc,
+.x-panel-header-light-framed-left-ml,
+.x-panel-header-light-framed-left-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-left-corners.gif); }
+
+/* line 428, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-left-tl, .x-rtl.x-panel-header-light-framed-left-ml, .x-rtl.x-panel-header-light-framed-left-bl, .x-rtl.x-panel-header-light-framed-left-tr, .x-rtl.x-panel-header-light-framed-left-mr, .x-rtl.x-panel-header-light-framed-left-br {
+  background-image: url(images/panel-header/panel-header-light-framed-left-corners-rtl.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-ml,
+.x-panel-header-light-framed-left-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-left-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-left-mc {
+  padding: 11px 1px 11px 1px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-left:before {
+  display: none;
+  content: "x-slicer:frame:5px 0 5px 5px, corners:url(images/panel-header/panel-header-light-framed-left-corners.gif), corners-rtl:url(images/panel-header/panel-header-light-framed-left-corners-rtl.gif), sides:url(images/panel-header/panel-header-light-framed-left-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 1px 11px 1px 11px;
+  border-width: 5px;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-top {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-frameInfo {
+  font-family: dh-5-5-5-5-5-5-5-5-1-11-1-11; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-ml {
+  background-position: 0 top; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-mr {
+  background-position: right top; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-tr,
+.x-panel-header-light-framed-collapsed-top-br,
+.x-panel-header-light-framed-collapsed-top-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-tl,
+.x-panel-header-light-framed-collapsed-top-bl,
+.x-panel-header-light-framed-collapsed-top-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-tl,
+.x-panel-header-light-framed-collapsed-top-bl,
+.x-panel-header-light-framed-collapsed-top-tr,
+.x-panel-header-light-framed-collapsed-top-br,
+.x-panel-header-light-framed-collapsed-top-tc,
+.x-panel-header-light-framed-collapsed-top-bc,
+.x-panel-header-light-framed-collapsed-top-ml,
+.x-panel-header-light-framed-collapsed-top-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-top-corners.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-ml,
+.x-panel-header-light-framed-collapsed-top-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-top-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-top-mc {
+  padding: 1px 11px 1px 11px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-collapsed-top:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 5px 5px, corners:url(images/panel-header/panel-header-light-framed-collapsed-top-corners.gif), sides:url(images/panel-header/panel-header-light-framed-collapsed-top-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 11px 1px 11px 1px;
+  border-width: 5px;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 226, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-collapsed-right {
+  background-image: none;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-right {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-frameInfo {
+  font-family: dh-5-5-5-5-5-5-5-5-11-1-11-1; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-ml {
+  background-position: right 0; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-mr {
+  background-position: right 0; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tr,
+.x-panel-header-light-framed-collapsed-right-br,
+.x-panel-header-light-framed-collapsed-right-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tl,
+.x-panel-header-light-framed-collapsed-right-bl,
+.x-panel-header-light-framed-collapsed-right-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-tl,
+.x-panel-header-light-framed-collapsed-right-bl,
+.x-panel-header-light-framed-collapsed-right-tr,
+.x-panel-header-light-framed-collapsed-right-br,
+.x-panel-header-light-framed-collapsed-right-tc,
+.x-panel-header-light-framed-collapsed-right-bc,
+.x-panel-header-light-framed-collapsed-right-ml,
+.x-panel-header-light-framed-collapsed-right-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-right-corners.gif); }
+
+/* line 428, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-collapsed-right-tl, .x-rtl.x-panel-header-light-framed-collapsed-right-ml, .x-rtl.x-panel-header-light-framed-collapsed-right-bl, .x-rtl.x-panel-header-light-framed-collapsed-right-tr, .x-rtl.x-panel-header-light-framed-collapsed-right-mr, .x-rtl.x-panel-header-light-framed-collapsed-right-br {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-right-corners-rtl.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-ml,
+.x-panel-header-light-framed-collapsed-right-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-right-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-right-mc {
+  padding: 11px 1px 11px 1px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-collapsed-right:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 5px 5px, corners:url(images/panel-header/panel-header-light-framed-collapsed-right-corners.gif), corners-rtl:url(images/panel-header/panel-header-light-framed-collapsed-right-corners-rtl.gif), sides:url(images/panel-header/panel-header-light-framed-collapsed-right-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 1px 11px 1px 11px;
+  border-width: 5px;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-bottom {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-frameInfo {
+  font-family: dh-5-5-5-5-5-5-5-5-1-11-1-11; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-ml {
+  background-position: 0 bottom; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-mr {
+  background-position: right bottom; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-tr,
+.x-panel-header-light-framed-collapsed-bottom-br,
+.x-panel-header-light-framed-collapsed-bottom-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-tl,
+.x-panel-header-light-framed-collapsed-bottom-bl,
+.x-panel-header-light-framed-collapsed-bottom-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-tl,
+.x-panel-header-light-framed-collapsed-bottom-bl,
+.x-panel-header-light-framed-collapsed-bottom-tr,
+.x-panel-header-light-framed-collapsed-bottom-br,
+.x-panel-header-light-framed-collapsed-bottom-tc,
+.x-panel-header-light-framed-collapsed-bottom-bc,
+.x-panel-header-light-framed-collapsed-bottom-ml,
+.x-panel-header-light-framed-collapsed-bottom-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-bottom-corners.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-ml,
+.x-panel-header-light-framed-collapsed-bottom-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-bottom-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-bottom-mc {
+  padding: 1px 11px 1px 11px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-collapsed-bottom:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 5px 5px, corners:url(images/panel-header/panel-header-light-framed-collapsed-bottom-corners.gif), sides:url(images/panel-header/panel-header-light-framed-collapsed-bottom-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left {
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 11px 1px 11px 1px;
+  border-width: 5px;
+  border-style: solid;
+  background-color: #dfeaf2; }
+
+/* line 226, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-collapsed-left {
+  background-image: none;
+  background-color: #dfeaf2; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-mc {
+  background-color: #dfeaf2; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-left {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-frameInfo {
+  font-family: dh-5-5-5-5-5-5-5-5-11-1-11-1; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-tl {
+  background-position: 0 -10px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-tr {
+  background-position: right -15px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-bl {
+  background-position: 0 -20px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-br {
+  background-position: right -25px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-ml {
+  background-position: left 0; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-mr {
+  background-position: left 0; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-bc {
+  background-position: 0 -5px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-tr,
+.x-panel-header-light-framed-collapsed-left-br,
+.x-panel-header-light-framed-collapsed-left-mr {
+  padding-right: 5px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-tl,
+.x-panel-header-light-framed-collapsed-left-bl,
+.x-panel-header-light-framed-collapsed-left-ml {
+  padding-left: 5px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-tc {
+  height: 5px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-bc {
+  height: 5px; }
+
+/* line 414, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-tl,
+.x-panel-header-light-framed-collapsed-left-bl,
+.x-panel-header-light-framed-collapsed-left-tr,
+.x-panel-header-light-framed-collapsed-left-br,
+.x-panel-header-light-framed-collapsed-left-tc,
+.x-panel-header-light-framed-collapsed-left-bc,
+.x-panel-header-light-framed-collapsed-left-ml,
+.x-panel-header-light-framed-collapsed-left-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-left-corners.gif); }
+
+/* line 428, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-rtl.x-panel-header-light-framed-collapsed-left-tl, .x-rtl.x-panel-header-light-framed-collapsed-left-ml, .x-rtl.x-panel-header-light-framed-collapsed-left-bl, .x-rtl.x-panel-header-light-framed-collapsed-left-tr, .x-rtl.x-panel-header-light-framed-collapsed-left-mr, .x-rtl.x-panel-header-light-framed-collapsed-left-br {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-left-corners-rtl.gif); }
+
+/* line 454, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-ml,
+.x-panel-header-light-framed-collapsed-left-mr {
+  background-image: url(images/panel-header/panel-header-light-framed-collapsed-left-sides.gif);
+  background-repeat: repeat-y; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-panel-header-light-framed-collapsed-left-mc {
+  padding: 11px 1px 11px 1px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-panel-header-light-framed-collapsed-left:before {
+  display: none;
+  content: "x-slicer:frame:5px 5px 5px 5px, corners:url(images/panel-header/panel-header-light-framed-collapsed-left-corners.gif), corners-rtl:url(images/panel-header/panel-header-light-framed-collapsed-left-corners-rtl.gif), sides:url(images/panel-header/panel-header-light-framed-collapsed-left-sides.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 605, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-framed-top {
+  border-bottom-width: 5px !important; }
+/* line 609, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-framed-right {
+  border-left-width: 5px !important; }
+/* line 613, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-framed-bottom {
+  border-top-width: 5px !important; }
+/* line 617, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel .x-panel-header-light-framed-left {
+  border-right-width: 5px !important; }
+
+/* line 623, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-top {
+  border-bottom-width: 0 !important; }
+/* line 627, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-right {
+  border-left-width: 0 !important; }
+/* line 631, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-bottom {
+  border-top-width: 0 !important; }
+/* line 635, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-nbr .x-panel-header-light-framed-collapsed-left {
+  border-right-width: 0 !important; }
+
+/* line 753, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-horizontal .x-tool-after-title {
+  margin: 0 0 0 6px; }
+/* line 758, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-horizontal .x-rtl.x-tool-after-title {
+  margin: 0 6px 0 0; }
+/* line 763, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-horizontal .x-tool-before-title {
+  margin: 0 6px 0 0; }
+/* line 768, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-horizontal .x-rtl.x-tool-before-title {
+  margin: 0 0 0 6px; }
+
+/* line 775, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-vertical .x-tool-after-title {
+  margin: 6px 0 0 0; }
+/* line 780, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-vertical .x-rtl.x-tool-after-title {
+  margin: 6px 0 0 0; }
+/* line 785, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-vertical .x-tool-before-title {
+  margin: 0 0 6px 0; }
+/* line 790, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-header-light-framed-vertical .x-rtl.x-tool-before-title {
+  margin: 0 0 6px 0; }
+
+/* line 798, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-rtl.x-panel-header-light-framed-collapsed-border-right {
+  border-right-width: 5px !important; }
+/* line 801, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-rtl.x-panel-header-light-framed-collapsed-border-left {
+  border-left-width: 5px !important; }
+
+/* line 812, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+.x-panel-light-framed-resizable {
+  overflow: visible; }
+  /* line 815, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0; }
+  /* line 824, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-north-br {
+    top: -5px; }
+  /* line 827, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-south-br {
+    bottom: -5px; }
+  /* line 830, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-east-br {
+    right: -5px; }
+  /* line 833, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-west-br {
+    left: -5px; }
+  /* line 836, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-northwest-br {
+    left: -5px;
+    top: -5px; }
+  /* line 840, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-northeast-br {
+    right: -5px;
+    top: -5px; }
+  /* line 844, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-southeast-br {
+    right: -5px;
+    bottom: -5px; }
+  /* line 848, ../../../ext-theme-neutral/sass/src/panel/Panel.scss */
+  .x-panel-light-framed-resizable .x-panel-handle-southwest-br {
+    left: -5px;
+    bottom: -5px; }
+
+/* line 2, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-l {
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 5px !important; }
+
+/* line 6, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-b {
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 5px !important; }
+
+/* line 10, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-bl {
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 5px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 5px !important; }
+
+/* line 16, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-r {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 5px !important; }
+
+/* line 20, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-rl {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 5px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 5px !important; }
+
+/* line 26, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-rb {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 5px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 5px !important; }
+
+/* line 32, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-rbl {
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 5px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 5px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 5px !important; }
+
+/* line 40, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-t {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 5px !important; }
+
+/* line 44, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-tl {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 5px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 5px !important; }
+
+/* line 50, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-tb {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 5px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 5px !important; }
+
+/* line 56, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-tbl {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 5px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 5px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 5px !important; }
+
+/* line 64, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-tr {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 5px !important;
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 5px !important; }
+
+/* line 70, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-trl {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 5px !important;
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 5px !important;
+  border-left-color: #dfeaf2 !important;
+  border-left-width: 5px !important; }
+
+/* line 78, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-trb {
+  border-top-color: #dfeaf2 !important;
+  border-top-width: 5px !important;
+  border-right-color: #dfeaf2 !important;
+  border-right-width: 5px !important;
+  border-bottom-color: #dfeaf2 !important;
+  border-bottom-width: 5px !important; }
+
+/* line 86, ../../../ext-theme-base/sass/etc/mixins/border-management.scss */
+.x-panel-light-framed-outer-border-trbl {
+  border-color: #dfeaf2 !important;
+  border-width: 5px !important; }
+
+/* line 1, ../../../ext-theme-neptune/sass/src/grid/header/Container.scss */
+.x-grid-header-ct {
+  border: 1px solid #c1c1c1; }
+
+/* line 6, ../../../ext-theme-neptune/sass/src/grid/column/Column.scss */
+.x-column-header-trigger {
+  background: #eef6fb url(images/grid/hd-pop.png) no-repeat center center;
+  border-left: 1px solid #c1c1c1; }
+
+/* line 12, ../../../ext-theme-neptune/sass/src/grid/column/Column.scss */
+.x-rtl.x-column-header-trigger {
+  border-right: 1px solid #c1c1c1;
+  border-left: 0; }
+
+/* line 18, ../../../ext-theme-neptune/sass/src/grid/column/Column.scss */
+.x-column-header-last {
+  border-right-width: 0; }
+  /* line 20, ../../../ext-theme-neptune/sass/src/grid/column/Column.scss */
+  .x-column-header-last .x-column-header-over .x-column-header-trigger {
+    border-right: 1px solid #c1c1c1; }
+
+/* line 26, ../../../ext-theme-neptune/sass/src/grid/column/Column.scss */
+.x-rtl.x-column-header-last {
+  border-left-width: 0; }
+  /* line 28, ../../../ext-theme-neptune/sass/src/grid/column/Column.scss */
+  .x-rtl.x-column-header-last .x-column-header-over .x-column-header-trigger {
+    border-left: 1px solid #c1c1c1; }
+
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 3px 4px 3px 4px;
+  border-width: 1px;
+  border-style: solid;
+  background-image: none;
+  background-color: transparent; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-mc {
+  background-image: url(images/btn/btn-plain-toolbar-small-fbg.gif);
+  background-position: 0 top;
+  background-color: transparent; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-btn-plain-toolbar-small {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  background-image: none;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-frameInfo {
+  font-family: th-3-3-3-3-1-1-1-1-3-4-3-4; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-tl {
+  background-position: 0 -6px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-tr {
+  background-position: right -9px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-bl {
+  background-position: 0 -12px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-br {
+  background-position: right -15px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-ml {
+  background-position: 0 top; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-mr {
+  background-position: right top; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-bc {
+  background-position: 0 -3px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-tr,
+.x-btn-plain-toolbar-small-br,
+.x-btn-plain-toolbar-small-mr {
+  padding-right: 3px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-tl,
+.x-btn-plain-toolbar-small-bl,
+.x-btn-plain-toolbar-small-ml {
+  padding-left: 3px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-tc {
+  height: 3px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-bc {
+  height: 3px; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-small-mc {
+  padding: 1px 2px 1px 2px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-plain-toolbar-small:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, frame-bg:url(images/btn/btn-plain-toolbar-small-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 423, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-plain-toolbar-small {
+  border-color: transparent; }
+
+/* line 430, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-button-plain-toolbar-small {
+  height: 24px; }
+
+/* line 435, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-inner-plain-toolbar-small {
+  font: bold 15px/20px helvetica, arial, verdana, sans-serif;
+  color: #666666;
+  padding: 0 6px;
+  max-width: 100%; }
+  /* line 446, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-right > .x-btn-inner-plain-toolbar-small, .x-btn-icon-left > .x-btn-inner-plain-toolbar-small {
+    max-width: calc(100% - 24px); }
+
+/* line 453, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-icon-el-plain-toolbar-small {
+  height: 24px; }
+  /* line 457, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-left > .x-btn-icon-el-plain-toolbar-small, .x-btn-icon-right > .x-btn-icon-el-plain-toolbar-small {
+    width: 24px; }
+  /* line 462, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-top > .x-btn-icon-el-plain-toolbar-small, .x-btn-icon-bottom > .x-btn-icon-el-plain-toolbar-small {
+    min-width: 24px; }
+  /* line 466, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-el-plain-toolbar-small.x-btn-glyph {
+    font-size: 24px;
+    line-height: 24px;
+    color: #666666;
+    opacity: 0.5; }
+    /* line 486, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-ie8 .x-btn-icon-el-plain-toolbar-small.x-btn-glyph {
+      color: #b2b2b2; }
+  /* line 493, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-left > .x-btn-icon-el-plain-toolbar-small {
+    margin-right: 0; }
+    /* line 497, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-btn-text.x-btn-icon-left > .x-btn-icon-el-plain-toolbar-small.x-rtl {
+      margin-right: 0;
+      margin-left: 0; }
+  /* line 504, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-small {
+    margin-left: 0; }
+    /* line 508, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-small.x-rtl {
+      margin-left: 0;
+      margin-right: 0; }
+  /* line 515, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-top > .x-btn-icon-el-plain-toolbar-small {
+    margin-bottom: 5px; }
+  /* line 519, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-bottom > .x-btn-icon-el-plain-toolbar-small {
+    margin-top: 5px; }
+
+/* line 525, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-right > .x-btn-icon.x-btn-no-text.x-btn-button-plain-toolbar-small {
+  padding-right: 6px; }
+/* line 528, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-right > .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-small {
+  margin-right: 6px; }
+
+/* line 535, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-bottom > .x-btn-button-plain-toolbar-small,
+.x-btn-split-bottom > .x-btn-button-plain-toolbar-small {
+  padding-bottom: 3px; }
+
+/* line 541, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-small.x-btn-arrow-right:after {
+  width: 22px;
+  padding-right: 22px;
+  background-image: url(images/button/plain-toolbar-small-arrow.png); }
+/* line 554, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-small.x-rtl.x-btn-arrow-right:after {
+  background-image: url(images/button/plain-toolbar-small-arrow-rtl.png); }
+/* line 563, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-small.x-btn-arrow-bottom:after {
+  height: 16px;
+  background-image: url(images/button/plain-toolbar-small-arrow.png); }
+
+/* line 583, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-small.x-btn-split-right:after {
+  width: 30px;
+  padding-right: 30px;
+  background-image: url(images/button/plain-toolbar-small-s-arrow.png); }
+/* line 592, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-small.x-rtl.x-btn-split-right:after {
+  background-image: url(images/button/plain-toolbar-small-s-arrow-rtl.png); }
+/* line 597, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-small.x-btn-split-bottom:after {
+  height: 24px;
+  background-image: url(images/button/plain-toolbar-small-s-arrow-b.png); }
+
+/* line 624, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-split-right > .x-btn-icon.x-btn-no-text.x-btn-button-plain-toolbar-small {
+  padding-right: 6px; }
+/* line 627, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-split-right > .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-small {
+  margin-right: 6px; }
+
+/* line 632, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-plain-toolbar-small {
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 667, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over.x-btn-plain-toolbar-small {
+  border-color: #d8d8d8;
+  background-image: none;
+  background-color: #ebebeb;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(50%, #ebebeb), color-stop(51%, #dfdfdf), color-stop(100%, #ebebeb));
+  background-image: -webkit-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -moz-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -o-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -ms-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb); }
+
+/* line 694, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over.x-btn-plain-toolbar-small {
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 723, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active.x-btn-plain-toolbar-small,
+.x-btn.x-btn-pressed.x-btn-plain-toolbar-small {
+  border-color: #cecece;
+  background-image: none;
+  background-color: #e1e1e1;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e1e1e1), color-stop(50%, #d5d5d5), color-stop(51%, #e1e1e1), color-stop(100%, #e4e4e4));
+  background-image: -webkit-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -moz-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -o-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -ms-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4); }
+
+/* line 751, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active.x-btn-plain-toolbar-small,
+.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-small {
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 779, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled.x-btn-plain-toolbar-small {
+  background-image: none;
+  background-color: transparent; }
+
+/* line 816, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-small-tl,
+.x-btn-focus .x-btn-plain-toolbar-small-bl,
+.x-btn-focus .x-btn-plain-toolbar-small-tr,
+.x-btn-focus .x-btn-plain-toolbar-small-br,
+.x-btn-focus .x-btn-plain-toolbar-small-tc,
+.x-btn-focus .x-btn-plain-toolbar-small-bc {
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-corners.gif); }
+/* line 820, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-small-ml,
+.x-btn-focus .x-btn-plain-toolbar-small-mr {
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-sides.gif); }
+/* line 823, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-small-mc {
+  background-color: transparent;
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-fbg.gif); }
+
+/* line 840, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-small-tl,
+.x-btn-over .x-btn-plain-toolbar-small-bl,
+.x-btn-over .x-btn-plain-toolbar-small-tr,
+.x-btn-over .x-btn-plain-toolbar-small-br,
+.x-btn-over .x-btn-plain-toolbar-small-tc,
+.x-btn-over .x-btn-plain-toolbar-small-bc {
+  background-image: url(images/btn/btn-plain-toolbar-small-over-corners.gif); }
+/* line 844, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-small-ml,
+.x-btn-over .x-btn-plain-toolbar-small-mr {
+  background-image: url(images/btn/btn-plain-toolbar-small-over-sides.gif); }
+/* line 847, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-small-mc {
+  background-color: #ebebeb;
+  background-image: url(images/btn/btn-plain-toolbar-small-over-fbg.gif); }
+
+/* line 864, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-tl,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-bl,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-tr,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-br,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-tc,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-bc {
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-over-corners.gif); }
+/* line 868, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-ml,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-mr {
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-over-sides.gif); }
+/* line 871, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-small-mc {
+  background-color: #ebebeb;
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-over-fbg.gif); }
+
+/* line 890, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-tl,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-bl,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-tr,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-br,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-tc,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-bc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-tl,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-bl,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-tr,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-br,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-tc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-bc {
+  background-image: url(images/btn/btn-plain-toolbar-small-pressed-corners.gif); }
+/* line 894, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-ml,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-mr,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-ml,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-mr {
+  background-image: url(images/btn/btn-plain-toolbar-small-pressed-sides.gif); }
+/* line 897, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-small-mc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-small-mc {
+  background-color: #e1e1e1;
+  background-image: url(images/btn/btn-plain-toolbar-small-pressed-fbg.gif); }
+
+/* line 915, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-tl,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-bl,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-tr,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-br,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-tc,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-bc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-tl,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-bl,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-tr,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-br,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-tc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-bc {
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-pressed-corners.gif); }
+/* line 919, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-ml,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-mr,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-ml,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-mr {
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-pressed-sides.gif); }
+/* line 922, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-small-mc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-small-mc {
+  background-color: #e1e1e1;
+  background-image: url(images/btn/btn-plain-toolbar-small-focus-pressed-fbg.gif); }
+
+/* line 940, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-tl,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-bl,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-tr,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-br,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-tc,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-bc {
+  background-image: url(images/btn/btn-plain-toolbar-small-disabled-corners.gif); }
+/* line 944, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-ml,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-mr {
+  background-image: url(images/btn/btn-plain-toolbar-small-disabled-sides.gif); }
+/* line 947, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-small-mc {
+  background-color: transparent;
+  background-image: url(images/btn/btn-plain-toolbar-small-disabled-fbg.gif); }
+
+/* line 957, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-btn-plain-toolbar-small {
+  background-image: none; }
+
+/* line 963, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-disabled.x-btn-plain-toolbar-small {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5; }
+
+/* line 982, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small.x-segmented-button-first {
+  border-right-width: 1px !important; }
+  /* line 984, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small.x-segmented-button-first .x-btn-plain-toolbar-small-mc {
+    padding-right: 4px !important; }
+/* line 988, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small.x-segmented-button-middle {
+  border-right-width: 1px !important; }
+  /* line 990, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small.x-segmented-button-middle .x-btn-plain-toolbar-small-mc {
+    padding-right: 4px !important;
+    padding-left: 4px !important; }
+/* line 996, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small.x-segmented-button-last .x-btn-plain-toolbar-small-mc {
+  padding-left: 4px !important; }
+/* line 1003, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small.x-segmented-button-first {
+  border-bottom-width: 1px !important; }
+  /* line 1005, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small.x-segmented-button-first .x-btn-plain-toolbar-small-mc {
+    padding-bottom: 3px !important; }
+/* line 1009, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small.x-segmented-button-middle {
+  border-bottom-width: 1px !important; }
+  /* line 1011, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small.x-segmented-button-middle .x-btn-plain-toolbar-small-mc {
+    padding-top: 3px !important;
+    padding-bottom: 3px !important; }
+/* line 1017, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small.x-segmented-button-last .x-btn-plain-toolbar-small-mc {
+  padding-top: 3px !important; }
+/* line 1023, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-plain-toolbar-small:after {
+  content: ' ';
+  border-style: solid;
+  border-width: 0;
+  position: absolute; }
+/* line 1041, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small:after {
+  top: 1px;
+  right: 0;
+  bottom: 1px;
+  left: 0; }
+/* line 1047, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small.x-segmented-button-first:after {
+  left: 1px; }
+/* line 1050, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-small.x-segmented-button-last:after {
+  right: 1px; }
+/* line 1056, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small:after {
+  top: 0;
+  right: 1px;
+  bottom: 0;
+  left: 1px; }
+/* line 1062, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small.x-segmented-button-first:after {
+  top: 1px; }
+/* line 1065, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-small.x-segmented-button-last:after {
+  bottom: 1px; }
+/* line 1072, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-plain-toolbar-small:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+/* line 1086, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-plain-toolbar-small:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+/* line 1102, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-plain-toolbar-small:after, .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-small:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-plain-toolbar-small:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-small-focus-corners.gif), sides:url(images/btn/btn-plain-toolbar-small-focus-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-small-focus-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-over.x-btn-plain-toolbar-small:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-small-over-corners.gif), sides:url(images/btn/btn-plain-toolbar-small-over-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-small-over-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-plain-toolbar-small:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-small-focus-over-corners.gif), sides:url(images/btn/btn-plain-toolbar-small-focus-over-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-small-focus-over-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-pressed.x-btn-plain-toolbar-small:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-small-pressed-corners.gif), sides:url(images/btn/btn-plain-toolbar-small-pressed-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-small-pressed-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-small:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-small-focus-pressed-corners.gif), sides:url(images/btn/btn-plain-toolbar-small-focus-pressed-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-small-focus-pressed-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-disabled.x-btn-plain-toolbar-small:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-small-disabled-corners.gif), sides:url(images/btn/btn-plain-toolbar-small-disabled-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-small-disabled-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 1128, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-button-plain-toolbar-small-cell > .x-grid-cell-inner {
+  padding-top: 0px;
+  padding-bottom: 0px; }
+  /* line 1133, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-button-plain-toolbar-small-cell > .x-grid-cell-inner > .x-btn-plain-toolbar-small {
+    vertical-align: top; }
+
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 6px 4px 6px 4px;
+  border-width: 1px;
+  border-style: solid;
+  background-image: none;
+  background-color: transparent; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-mc {
+  background-image: url(images/btn/btn-plain-toolbar-medium-fbg.gif);
+  background-position: 0 top;
+  background-color: transparent; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-btn-plain-toolbar-medium {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  background-image: none;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-frameInfo {
+  font-family: th-3-3-3-3-1-1-1-1-6-4-6-4; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-tl {
+  background-position: 0 -6px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-tr {
+  background-position: right -9px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-bl {
+  background-position: 0 -12px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-br {
+  background-position: right -15px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-ml {
+  background-position: 0 top; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-mr {
+  background-position: right top; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-bc {
+  background-position: 0 -3px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-tr,
+.x-btn-plain-toolbar-medium-br,
+.x-btn-plain-toolbar-medium-mr {
+  padding-right: 3px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-tl,
+.x-btn-plain-toolbar-medium-bl,
+.x-btn-plain-toolbar-medium-ml {
+  padding-left: 3px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-tc {
+  height: 3px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-bc {
+  height: 3px; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-medium-mc {
+  padding: 4px 2px 4px 2px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-plain-toolbar-medium:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, frame-bg:url(images/btn/btn-plain-toolbar-medium-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 423, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-plain-toolbar-medium {
+  border-color: transparent; }
+
+/* line 430, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-button-plain-toolbar-medium {
+  height: 24px; }
+
+/* line 435, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-inner-plain-toolbar-medium {
+  font: bold 16px/22px helvetica, arial, verdana, sans-serif;
+  color: #666666;
+  padding: 0 8px;
+  max-width: 100%; }
+  /* line 446, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-right > .x-btn-inner-plain-toolbar-medium, .x-btn-icon-left > .x-btn-inner-plain-toolbar-medium {
+    max-width: calc(100% - 24px); }
+
+/* line 453, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-icon-el-plain-toolbar-medium {
+  height: 24px; }
+  /* line 457, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-left > .x-btn-icon-el-plain-toolbar-medium, .x-btn-icon-right > .x-btn-icon-el-plain-toolbar-medium {
+    width: 24px; }
+  /* line 462, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-top > .x-btn-icon-el-plain-toolbar-medium, .x-btn-icon-bottom > .x-btn-icon-el-plain-toolbar-medium {
+    min-width: 24px; }
+  /* line 466, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-el-plain-toolbar-medium.x-btn-glyph {
+    font-size: 24px;
+    line-height: 24px;
+    color: #666666;
+    opacity: 0.5; }
+    /* line 486, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-ie8 .x-btn-icon-el-plain-toolbar-medium.x-btn-glyph {
+      color: #b2b2b2; }
+  /* line 493, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-left > .x-btn-icon-el-plain-toolbar-medium {
+    margin-right: 0; }
+    /* line 497, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-btn-text.x-btn-icon-left > .x-btn-icon-el-plain-toolbar-medium.x-rtl {
+      margin-right: 0;
+      margin-left: 0; }
+  /* line 504, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-medium {
+    margin-left: 0; }
+    /* line 508, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-medium.x-rtl {
+      margin-left: 0;
+      margin-right: 0; }
+  /* line 515, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-top > .x-btn-icon-el-plain-toolbar-medium {
+    margin-bottom: 5px; }
+  /* line 519, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-bottom > .x-btn-icon-el-plain-toolbar-medium {
+    margin-top: 5px; }
+
+/* line 525, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-right > .x-btn-icon.x-btn-no-text.x-btn-button-plain-toolbar-medium {
+  padding-right: 8px; }
+/* line 528, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-right > .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-medium {
+  margin-right: 8px; }
+
+/* line 535, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-bottom > .x-btn-button-plain-toolbar-medium,
+.x-btn-split-bottom > .x-btn-button-plain-toolbar-medium {
+  padding-bottom: 6px; }
+
+/* line 541, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-medium.x-btn-arrow-right:after {
+  width: 26px;
+  padding-right: 26px;
+  background-image: url(images/button/plain-toolbar-medium-arrow.png); }
+/* line 554, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-medium.x-rtl.x-btn-arrow-right:after {
+  background-image: url(images/button/plain-toolbar-medium-arrow-rtl.png); }
+/* line 563, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-medium.x-btn-arrow-bottom:after {
+  height: 18px;
+  background-image: url(images/button/plain-toolbar-medium-arrow.png); }
+
+/* line 583, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-medium.x-btn-split-right:after {
+  width: 36px;
+  padding-right: 36px;
+  background-image: url(images/button/plain-toolbar-medium-s-arrow.png); }
+/* line 592, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-medium.x-rtl.x-btn-split-right:after {
+  background-image: url(images/button/plain-toolbar-medium-s-arrow-rtl.png); }
+/* line 597, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-medium.x-btn-split-bottom:after {
+  height: 30px;
+  background-image: url(images/button/plain-toolbar-medium-s-arrow-b.png); }
+
+/* line 624, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-split-right > .x-btn-icon.x-btn-no-text.x-btn-button-plain-toolbar-medium {
+  padding-right: 8px; }
+/* line 627, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-split-right > .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-medium {
+  margin-right: 8px; }
+
+/* line 632, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-plain-toolbar-medium {
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 667, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over.x-btn-plain-toolbar-medium {
+  border-color: #d8d8d8;
+  background-image: none;
+  background-color: #ebebeb;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(50%, #ebebeb), color-stop(51%, #dfdfdf), color-stop(100%, #ebebeb));
+  background-image: -webkit-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -moz-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -o-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -ms-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb); }
+
+/* line 694, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over.x-btn-plain-toolbar-medium {
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 723, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active.x-btn-plain-toolbar-medium,
+.x-btn.x-btn-pressed.x-btn-plain-toolbar-medium {
+  border-color: #cecece;
+  background-image: none;
+  background-color: #e1e1e1;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e1e1e1), color-stop(50%, #d5d5d5), color-stop(51%, #e1e1e1), color-stop(100%, #e4e4e4));
+  background-image: -webkit-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -moz-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -o-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -ms-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4); }
+
+/* line 751, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active.x-btn-plain-toolbar-medium,
+.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-medium {
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 779, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled.x-btn-plain-toolbar-medium {
+  background-image: none;
+  background-color: transparent; }
+
+/* line 816, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-medium-tl,
+.x-btn-focus .x-btn-plain-toolbar-medium-bl,
+.x-btn-focus .x-btn-plain-toolbar-medium-tr,
+.x-btn-focus .x-btn-plain-toolbar-medium-br,
+.x-btn-focus .x-btn-plain-toolbar-medium-tc,
+.x-btn-focus .x-btn-plain-toolbar-medium-bc {
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-corners.gif); }
+/* line 820, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-medium-ml,
+.x-btn-focus .x-btn-plain-toolbar-medium-mr {
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-sides.gif); }
+/* line 823, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-medium-mc {
+  background-color: transparent;
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-fbg.gif); }
+
+/* line 840, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-medium-tl,
+.x-btn-over .x-btn-plain-toolbar-medium-bl,
+.x-btn-over .x-btn-plain-toolbar-medium-tr,
+.x-btn-over .x-btn-plain-toolbar-medium-br,
+.x-btn-over .x-btn-plain-toolbar-medium-tc,
+.x-btn-over .x-btn-plain-toolbar-medium-bc {
+  background-image: url(images/btn/btn-plain-toolbar-medium-over-corners.gif); }
+/* line 844, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-medium-ml,
+.x-btn-over .x-btn-plain-toolbar-medium-mr {
+  background-image: url(images/btn/btn-plain-toolbar-medium-over-sides.gif); }
+/* line 847, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-medium-mc {
+  background-color: #ebebeb;
+  background-image: url(images/btn/btn-plain-toolbar-medium-over-fbg.gif); }
+
+/* line 864, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-tl,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-bl,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-tr,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-br,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-tc,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-bc {
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-over-corners.gif); }
+/* line 868, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-ml,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-mr {
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-over-sides.gif); }
+/* line 871, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-medium-mc {
+  background-color: #ebebeb;
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-over-fbg.gif); }
+
+/* line 890, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-tl,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-bl,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-tr,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-br,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-tc,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-bc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-tl,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-bl,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-tr,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-br,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-tc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-bc {
+  background-image: url(images/btn/btn-plain-toolbar-medium-pressed-corners.gif); }
+/* line 894, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-ml,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-mr,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-ml,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-mr {
+  background-image: url(images/btn/btn-plain-toolbar-medium-pressed-sides.gif); }
+/* line 897, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-medium-mc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-medium-mc {
+  background-color: #e1e1e1;
+  background-image: url(images/btn/btn-plain-toolbar-medium-pressed-fbg.gif); }
+
+/* line 915, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-tl,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-bl,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-tr,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-br,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-tc,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-bc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-tl,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-bl,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-tr,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-br,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-tc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-bc {
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-pressed-corners.gif); }
+/* line 919, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-ml,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-mr,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-ml,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-mr {
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-pressed-sides.gif); }
+/* line 922, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-medium-mc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-medium-mc {
+  background-color: #e1e1e1;
+  background-image: url(images/btn/btn-plain-toolbar-medium-focus-pressed-fbg.gif); }
+
+/* line 940, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-tl,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-bl,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-tr,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-br,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-tc,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-bc {
+  background-image: url(images/btn/btn-plain-toolbar-medium-disabled-corners.gif); }
+/* line 944, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-ml,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-mr {
+  background-image: url(images/btn/btn-plain-toolbar-medium-disabled-sides.gif); }
+/* line 947, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-medium-mc {
+  background-color: transparent;
+  background-image: url(images/btn/btn-plain-toolbar-medium-disabled-fbg.gif); }
+
+/* line 957, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-btn-plain-toolbar-medium {
+  background-image: none; }
+
+/* line 963, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-disabled.x-btn-plain-toolbar-medium {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5; }
+
+/* line 982, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium.x-segmented-button-first {
+  border-right-width: 1px !important; }
+  /* line 984, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium.x-segmented-button-first .x-btn-plain-toolbar-medium-mc {
+    padding-right: 4px !important; }
+/* line 988, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium.x-segmented-button-middle {
+  border-right-width: 1px !important; }
+  /* line 990, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium.x-segmented-button-middle .x-btn-plain-toolbar-medium-mc {
+    padding-right: 4px !important;
+    padding-left: 4px !important; }
+/* line 996, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium.x-segmented-button-last .x-btn-plain-toolbar-medium-mc {
+  padding-left: 4px !important; }
+/* line 1003, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium.x-segmented-button-first {
+  border-bottom-width: 1px !important; }
+  /* line 1005, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium.x-segmented-button-first .x-btn-plain-toolbar-medium-mc {
+    padding-bottom: 6px !important; }
+/* line 1009, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium.x-segmented-button-middle {
+  border-bottom-width: 1px !important; }
+  /* line 1011, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium.x-segmented-button-middle .x-btn-plain-toolbar-medium-mc {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important; }
+/* line 1017, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium.x-segmented-button-last .x-btn-plain-toolbar-medium-mc {
+  padding-top: 6px !important; }
+/* line 1023, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-plain-toolbar-medium:after {
+  content: ' ';
+  border-style: solid;
+  border-width: 0;
+  position: absolute; }
+/* line 1041, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium:after {
+  top: 1px;
+  right: 0;
+  bottom: 1px;
+  left: 0; }
+/* line 1047, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium.x-segmented-button-first:after {
+  left: 1px; }
+/* line 1050, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-medium.x-segmented-button-last:after {
+  right: 1px; }
+/* line 1056, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium:after {
+  top: 0;
+  right: 1px;
+  bottom: 0;
+  left: 1px; }
+/* line 1062, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium.x-segmented-button-first:after {
+  top: 1px; }
+/* line 1065, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-medium.x-segmented-button-last:after {
+  bottom: 1px; }
+/* line 1072, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-plain-toolbar-medium:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+/* line 1086, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-plain-toolbar-medium:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+/* line 1102, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-plain-toolbar-medium:after, .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-medium:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-plain-toolbar-medium:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-medium-focus-corners.gif), sides:url(images/btn/btn-plain-toolbar-medium-focus-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-medium-focus-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-over.x-btn-plain-toolbar-medium:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-medium-over-corners.gif), sides:url(images/btn/btn-plain-toolbar-medium-over-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-medium-over-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-plain-toolbar-medium:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-medium-focus-over-corners.gif), sides:url(images/btn/btn-plain-toolbar-medium-focus-over-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-medium-focus-over-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-pressed.x-btn-plain-toolbar-medium:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-medium-pressed-corners.gif), sides:url(images/btn/btn-plain-toolbar-medium-pressed-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-medium-pressed-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-medium:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-medium-focus-pressed-corners.gif), sides:url(images/btn/btn-plain-toolbar-medium-focus-pressed-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-medium-focus-pressed-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-disabled.x-btn-plain-toolbar-medium:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-medium-disabled-corners.gif), sides:url(images/btn/btn-plain-toolbar-medium-disabled-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-medium-disabled-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 1128, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-button-plain-toolbar-medium-cell > .x-grid-cell-inner {
+  padding-top: 0;
+  padding-bottom: 0; }
+  /* line 1133, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-button-plain-toolbar-medium-cell > .x-grid-cell-inner > .x-btn-plain-toolbar-medium {
+    vertical-align: top; }
+
+/* line 187, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px 4px 5px 4px;
+  border-width: 1px;
+  border-style: solid;
+  background-image: none;
+  background-color: transparent; }
+
+/* line 237, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-mc {
+  background-image: url(images/btn/btn-plain-toolbar-large-fbg.gif);
+  background-position: 0 top;
+  background-color: transparent; }
+
+/* line 264, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-nbr .x-btn-plain-toolbar-large {
+  padding: 0 !important;
+  border-width: 0 !important;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent !important;
+  background-image: none;
+  box-shadow: none !important; }
+
+/* line 281, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-frameInfo {
+  font-family: th-3-3-3-3-1-1-1-1-5-4-5-4; }
+
+/* line 347, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-tl {
+  background-position: 0 -6px; }
+
+/* line 351, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-tr {
+  background-position: right -9px; }
+
+/* line 355, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-bl {
+  background-position: 0 -12px; }
+
+/* line 359, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-br {
+  background-position: right -15px; }
+
+/* line 363, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-ml {
+  background-position: 0 top; }
+
+/* line 371, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-mr {
+  background-position: right top; }
+
+/* line 379, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-tc {
+  background-position: 0 0; }
+
+/* line 383, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-bc {
+  background-position: 0 -3px; }
+
+/* line 390, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-tr,
+.x-btn-plain-toolbar-large-br,
+.x-btn-plain-toolbar-large-mr {
+  padding-right: 3px; }
+
+/* line 396, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-tl,
+.x-btn-plain-toolbar-large-bl,
+.x-btn-plain-toolbar-large-ml {
+  padding-left: 3px; }
+
+/* line 400, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-tc {
+  height: 3px; }
+
+/* line 403, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-bc {
+  height: 3px; }
+
+/* line 464, ../../../ext-theme-base/sass/etc/mixins/frame.scss */
+.x-btn-plain-toolbar-large-mc {
+  padding: 3px 2px 3px 2px; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-plain-toolbar-large:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, frame-bg:url(images/btn/btn-plain-toolbar-large-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 423, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-plain-toolbar-large {
+  border-color: transparent; }
+
+/* line 430, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-button-plain-toolbar-large {
+  height: 32px; }
+
+/* line 435, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-inner-plain-toolbar-large {
+  font: bold 17px/20px helvetica, arial, verdana, sans-serif;
+  color: #666666;
+  padding: 0 10px;
+  max-width: 100%; }
+  /* line 446, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-right > .x-btn-inner-plain-toolbar-large, .x-btn-icon-left > .x-btn-inner-plain-toolbar-large {
+    max-width: calc(100% - 32px); }
+
+/* line 453, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-icon-el-plain-toolbar-large {
+  height: 32px; }
+  /* line 457, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-left > .x-btn-icon-el-plain-toolbar-large, .x-btn-icon-right > .x-btn-icon-el-plain-toolbar-large {
+    width: 32px; }
+  /* line 462, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-top > .x-btn-icon-el-plain-toolbar-large, .x-btn-icon-bottom > .x-btn-icon-el-plain-toolbar-large {
+    min-width: 32px; }
+  /* line 466, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-icon-el-plain-toolbar-large.x-btn-glyph {
+    font-size: 32px;
+    line-height: 32px;
+    color: #666666;
+    opacity: 0.5; }
+    /* line 486, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-ie8 .x-btn-icon-el-plain-toolbar-large.x-btn-glyph {
+      color: #b2b2b2; }
+  /* line 493, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-left > .x-btn-icon-el-plain-toolbar-large {
+    margin-right: 0; }
+    /* line 497, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-btn-text.x-btn-icon-left > .x-btn-icon-el-plain-toolbar-large.x-rtl {
+      margin-right: 0;
+      margin-left: 0; }
+  /* line 504, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-large {
+    margin-left: 0; }
+    /* line 508, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+    .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-large.x-rtl {
+      margin-left: 0;
+      margin-right: 0; }
+  /* line 515, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-top > .x-btn-icon-el-plain-toolbar-large {
+    margin-bottom: 5px; }
+  /* line 519, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-btn-text.x-btn-icon-bottom > .x-btn-icon-el-plain-toolbar-large {
+    margin-top: 5px; }
+
+/* line 525, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-right > .x-btn-icon.x-btn-no-text.x-btn-button-plain-toolbar-large {
+  padding-right: 10px; }
+/* line 528, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-right > .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-large {
+  margin-right: 10px; }
+
+/* line 535, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-arrow-bottom > .x-btn-button-plain-toolbar-large,
+.x-btn-split-bottom > .x-btn-button-plain-toolbar-large {
+  padding-bottom: 5px; }
+
+/* line 541, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-large.x-btn-arrow-right:after {
+  width: 30px;
+  padding-right: 30px;
+  background-image: url(images/button/plain-toolbar-large-arrow.png); }
+/* line 554, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-large.x-rtl.x-btn-arrow-right:after {
+  background-image: url(images/button/plain-toolbar-large-arrow-rtl.png); }
+/* line 563, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-large.x-btn-arrow-bottom:after {
+  height: 24px;
+  background-image: url(images/button/plain-toolbar-large-arrow.png); }
+
+/* line 583, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-large.x-btn-split-right:after {
+  width: 42px;
+  padding-right: 42px;
+  background-image: url(images/button/plain-toolbar-large-s-arrow.png); }
+/* line 592, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-large.x-rtl.x-btn-split-right:after {
+  background-image: url(images/button/plain-toolbar-large-s-arrow-rtl.png); }
+/* line 597, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-wrap-plain-toolbar-large.x-btn-split-bottom:after {
+  height: 36px;
+  background-image: url(images/button/plain-toolbar-large-s-arrow-b.png); }
+
+/* line 624, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-split-right > .x-btn-icon.x-btn-no-text.x-btn-button-plain-toolbar-large {
+  padding-right: 10px; }
+/* line 627, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-split-right > .x-btn-text.x-btn-icon-right > .x-btn-icon-el-plain-toolbar-large {
+  margin-right: 10px; }
+
+/* line 632, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-plain-toolbar-large {
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 667, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over.x-btn-plain-toolbar-large {
+  border-color: #d8d8d8;
+  background-image: none;
+  background-color: #ebebeb;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ededed), color-stop(50%, #ebebeb), color-stop(51%, #dfdfdf), color-stop(100%, #ebebeb));
+  background-image: -webkit-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -moz-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -o-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: -ms-linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb);
+  background-image: linear-gradient(top, #ededed, #ebebeb 50%, #dfdfdf 51%, #ebebeb); }
+
+/* line 694, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over.x-btn-plain-toolbar-large {
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 723, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active.x-btn-plain-toolbar-large,
+.x-btn.x-btn-pressed.x-btn-plain-toolbar-large {
+  border-color: #cecece;
+  background-image: none;
+  background-color: #e1e1e1;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e1e1e1), color-stop(50%, #d5d5d5), color-stop(51%, #e1e1e1), color-stop(100%, #e4e4e4));
+  background-image: -webkit-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -moz-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -o-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: -ms-linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4);
+  background-image: linear-gradient(top, #e1e1e1, #d5d5d5 50%, #e1e1e1 51%, #e4e4e4); }
+
+/* line 751, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active.x-btn-plain-toolbar-large,
+.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-large {
+  -webkit-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  -moz-box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset;
+  box-shadow: #4196d4 0 1px 0px 0 inset, #4196d4 0 -1px 0px 0 inset, #4196d4 -1px 0 0px 0 inset, #4196d4 1px 0 0px 0 inset; }
+
+/* line 779, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled.x-btn-plain-toolbar-large {
+  background-image: none;
+  background-color: transparent; }
+
+/* line 816, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-large-tl,
+.x-btn-focus .x-btn-plain-toolbar-large-bl,
+.x-btn-focus .x-btn-plain-toolbar-large-tr,
+.x-btn-focus .x-btn-plain-toolbar-large-br,
+.x-btn-focus .x-btn-plain-toolbar-large-tc,
+.x-btn-focus .x-btn-plain-toolbar-large-bc {
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-corners.gif); }
+/* line 820, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-large-ml,
+.x-btn-focus .x-btn-plain-toolbar-large-mr {
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-sides.gif); }
+/* line 823, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus .x-btn-plain-toolbar-large-mc {
+  background-color: transparent;
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-fbg.gif); }
+
+/* line 840, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-large-tl,
+.x-btn-over .x-btn-plain-toolbar-large-bl,
+.x-btn-over .x-btn-plain-toolbar-large-tr,
+.x-btn-over .x-btn-plain-toolbar-large-br,
+.x-btn-over .x-btn-plain-toolbar-large-tc,
+.x-btn-over .x-btn-plain-toolbar-large-bc {
+  background-image: url(images/btn/btn-plain-toolbar-large-over-corners.gif); }
+/* line 844, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-large-ml,
+.x-btn-over .x-btn-plain-toolbar-large-mr {
+  background-image: url(images/btn/btn-plain-toolbar-large-over-sides.gif); }
+/* line 847, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-over .x-btn-plain-toolbar-large-mc {
+  background-color: #ebebeb;
+  background-image: url(images/btn/btn-plain-toolbar-large-over-fbg.gif); }
+
+/* line 864, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-tl,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-bl,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-tr,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-br,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-tc,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-bc {
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-over-corners.gif); }
+/* line 868, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-ml,
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-mr {
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-over-sides.gif); }
+/* line 871, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-over .x-btn-plain-toolbar-large-mc {
+  background-color: #ebebeb;
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-over-fbg.gif); }
+
+/* line 890, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-tl,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-bl,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-tr,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-br,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-tc,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-bc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-tl,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-bl,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-tr,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-br,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-tc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-bc {
+  background-image: url(images/btn/btn-plain-toolbar-large-pressed-corners.gif); }
+/* line 894, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-ml,
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-mr,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-ml,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-mr {
+  background-image: url(images/btn/btn-plain-toolbar-large-pressed-sides.gif); }
+/* line 897, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-menu-active .x-btn-plain-toolbar-large-mc,
+.x-btn.x-btn-pressed .x-btn-plain-toolbar-large-mc {
+  background-color: #e1e1e1;
+  background-image: url(images/btn/btn-plain-toolbar-large-pressed-fbg.gif); }
+
+/* line 915, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-tl,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-bl,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-tr,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-br,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-tc,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-bc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-tl,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-bl,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-tr,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-br,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-tc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-bc {
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-pressed-corners.gif); }
+/* line 919, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-ml,
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-mr,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-ml,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-mr {
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-pressed-sides.gif); }
+/* line 922, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-focus.x-btn-menu-active .x-btn-plain-toolbar-large-mc,
+.x-btn-focus.x-btn-pressed .x-btn-plain-toolbar-large-mc {
+  background-color: #e1e1e1;
+  background-image: url(images/btn/btn-plain-toolbar-large-focus-pressed-fbg.gif); }
+
+/* line 940, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-tl,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-bl,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-tr,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-br,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-tc,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-bc {
+  background-image: url(images/btn/btn-plain-toolbar-large-disabled-corners.gif); }
+/* line 944, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-ml,
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-mr {
+  background-image: url(images/btn/btn-plain-toolbar-large-disabled-sides.gif); }
+/* line 947, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn.x-btn-disabled .x-btn-plain-toolbar-large-mc {
+  background-color: transparent;
+  background-image: url(images/btn/btn-plain-toolbar-large-disabled-fbg.gif); }
+
+/* line 957, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-btn-plain-toolbar-large {
+  background-image: none; }
+
+/* line 963, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-btn-disabled.x-btn-plain-toolbar-large {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5; }
+
+/* line 982, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large.x-segmented-button-first {
+  border-right-width: 1px !important; }
+  /* line 984, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large.x-segmented-button-first .x-btn-plain-toolbar-large-mc {
+    padding-right: 4px !important; }
+/* line 988, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large.x-segmented-button-middle {
+  border-right-width: 1px !important; }
+  /* line 990, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large.x-segmented-button-middle .x-btn-plain-toolbar-large-mc {
+    padding-right: 4px !important;
+    padding-left: 4px !important; }
+/* line 996, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large.x-segmented-button-last .x-btn-plain-toolbar-large-mc {
+  padding-left: 4px !important; }
+/* line 1003, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large.x-segmented-button-first {
+  border-bottom-width: 1px !important; }
+  /* line 1005, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large.x-segmented-button-first .x-btn-plain-toolbar-large-mc {
+    padding-bottom: 5px !important; }
+/* line 1009, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large.x-segmented-button-middle {
+  border-bottom-width: 1px !important; }
+  /* line 1011, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large.x-segmented-button-middle .x-btn-plain-toolbar-large-mc {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important; }
+/* line 1017, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large.x-segmented-button-last .x-btn-plain-toolbar-large-mc {
+  padding-top: 5px !important; }
+/* line 1023, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-plain-toolbar-large:after {
+  content: ' ';
+  border-style: solid;
+  border-width: 0;
+  position: absolute; }
+/* line 1041, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large:after {
+  top: 1px;
+  right: 0;
+  bottom: 1px;
+  left: 0; }
+/* line 1047, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large.x-segmented-button-first:after {
+  left: 1px; }
+/* line 1050, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-horizontal.x-btn-plain-toolbar-large.x-segmented-button-last:after {
+  right: 1px; }
+/* line 1056, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large:after {
+  top: 0;
+  right: 1px;
+  bottom: 0;
+  left: 1px; }
+/* line 1062, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large.x-segmented-button-first:after {
+  top: 1px; }
+/* line 1065, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item-vertical.x-btn-plain-toolbar-large.x-segmented-button-last:after {
+  bottom: 1px; }
+/* line 1072, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-plain-toolbar-large:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+/* line 1086, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-over.x-btn-plain-toolbar-large:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+/* line 1102, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-nbr .x-segmented-button-item.x-btn-focus.x-btn-menu-active.x-btn-plain-toolbar-large:after, .x-nbr .x-segmented-button-item.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-large:after {
+  border-width: 1px;
+  border-color: #4196d4; }
+
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-plain-toolbar-large:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-large-focus-corners.gif), sides:url(images/btn/btn-plain-toolbar-large-focus-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-large-focus-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-over.x-btn-plain-toolbar-large:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-large-over-corners.gif), sides:url(images/btn/btn-plain-toolbar-large-over-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-large-over-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-over.x-btn-plain-toolbar-large:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-large-focus-over-corners.gif), sides:url(images/btn/btn-plain-toolbar-large-focus-over-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-large-focus-over-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-pressed.x-btn-plain-toolbar-large:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-large-pressed-corners.gif), sides:url(images/btn/btn-plain-toolbar-large-pressed-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-large-pressed-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-focus.x-btn-pressed.x-btn-plain-toolbar-large:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-large-focus-pressed-corners.gif), sides:url(images/btn/btn-plain-toolbar-large-focus-pressed-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-large-focus-pressed-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/*<if slicer>*/
+/* line 83, ../../../ext-theme-base/sass/etc/mixins/slicer.scss */
+.x-cmd-slicer.x-btn-disabled.x-btn-plain-toolbar-large:before {
+  display: none;
+  content: "x-slicer:stretch:bottom, frame:3px 3px 3px 3px, corners:url(images/btn/btn-plain-toolbar-large-disabled-corners.gif), sides:url(images/btn/btn-plain-toolbar-large-disabled-sides.gif), frame-bg:url(images/btn/btn-plain-toolbar-large-disabled-fbg.gif)" !important; }
+
+/*</if slicer>*/
+/* */
+/* line 1128, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+.x-button-plain-toolbar-large-cell > .x-grid-cell-inner {
+  padding-top: 0;
+  padding-bottom: 0; }
+  /* line 1133, ../../../ext-theme-neutral/sass/src/button/Button.scss */
+  .x-button-plain-toolbar-large-cell > .x-grid-cell-inner > .x-btn-plain-toolbar-large {
+    vertical-align: top; }
+
+/* line 220, ../../../ext-theme-neptune/sass/src/button/Button.scss */
+.x-btn-plain-toolbar-small-disabled .x-btn-icon-el,
+.x-btn-plain-toolbar-medium-disabled .x-btn-icon-el,
+.x-btn-plain-toolbar-large-disabled .x-btn-icon-el {
+  background-color: white; }
+  /* line 223, ../../../ext-theme-neptune/sass/src/button/Button.scss */
+  .x-ie8 .x-btn-plain-toolbar-small-disabled .x-btn-icon-el, .x-ie8
+  .x-btn-plain-toolbar-medium-disabled .x-btn-icon-el, .x-ie8
+  .x-btn-plain-toolbar-large-disabled .x-btn-icon-el {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5; }
+
+/* line 3, ../../../ext-theme-neptune/sass/src/form/field/File.scss */
+.x-form-file-wrap .x-form-trigger-wrap {
+  border: 0; }
+
+/* line 7, ../../../ext-theme-neptune/sass/src/form/field/File.scss */
+.x-form-file-wrap .x-form-trigger-wrap .x-form-text {
+  border: 1px solid;
+  border-color: #c1c1c1 #d9d9d9 #d9d9d9;
+  height: 32px; }
+
+/* line 1, ../../../ext-theme-neptune/sass/src/form/field/HtmlEditor.scss */
+.x-html-editor-container {
+  border: 1px solid;
+  border-color: #c1c1c1 #d9d9d9 #d9d9d9; }
+
+/* line 1, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-handle {
+  background-color: #c1c1c1;
+  background-repeat: no-repeat; }
+
+/* line 8, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-east-over,
+.x-resizable-handle-west-over {
+  background-position: center; }
+
+/* line 13, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-south-over,
+.x-resizable-handle-north-over {
+  background-position: center; }
+
+/* line 17, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southeast-over {
+  background-position: -2px -2px; }
+
+/* line 21, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northwest-over {
+  background-position: 2px 2px; }
+
+/* line 25, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-northeast-over {
+  background-position: -2px 2px; }
+
+/* line 29, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-handle-southwest-over {
+  background-position: 2px -2px; }
+
+/* line 35, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-east,
+.x-resizable-pinned .x-resizable-handle-west {
+  background-position: center; }
+/* line 40, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-south,
+.x-resizable-pinned .x-resizable-handle-north {
+  background-position: center; }
+/* line 44, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-southeast {
+  background-position: -2px -2px; }
+/* line 48, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-northwest {
+  background-position: 2px 2px; }
+/* line 52, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-northeast {
+  background-position: -2px 2px; }
+/* line 56, ../../../ext-theme-neptune/sass/src/resizer/Resizer.scss */
+.x-resizable-pinned .x-resizable-handle-southwest {
+  background-position: 2px -2px; }

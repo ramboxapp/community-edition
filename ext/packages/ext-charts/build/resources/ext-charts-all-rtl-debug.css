@@ -1,0 +1,283 @@
+/* including package ext-theme-base */
+/**
+ * Creates a background gradient.
+ *
+ * Example usage:
+ *     .foo {
+ *          @include background-gradient(#808080, matte, left);
+ *     }
+ *
+ * @param {Color} $bg-color The background color of the gradient
+ * @param {String/List} [$type=$base-gradient] The type of gradient to be used. Can either
+ * be a String which is a predefined gradient name, or it can can be a list of color stops.
+ * If null is passed, this mixin will still set the `background-color` to $bg-color.
+ * The available predefined gradient names are:
+ *
+ * * bevel
+ * * glossy
+ * * recessed
+ * * matte
+ * * matte-reverse
+ * * panel-header
+ * * tabbar
+ * * tab
+ * * tab-active
+ * * tab-over
+ * * tab-disabled
+ * * grid-header
+ * * grid-header-over
+ * * grid-row-over
+ * * grid-cell-special
+ * * glossy-button
+ * * glossy-button-over
+ * * glossy-button-pressed
+ *
+ * Each of these gradient names corresponds to a function named linear-gradient[name].
+ * Themes can override these functions to customize the color stops that they return.
+ * For example, to override the glossy-button gradient function add a function named
+ * "linear-gradient-glossy-button" to a file named "sass/etc/mixins/background-gradient.scss"
+ * in your theme.  The function should return the result of calling the Compass linear-gradient
+ * function with the desired direction and color-stop information for the gradient.  For example:
+ *
+ *     @function linear-gradient-glossy-button($direction, $bg-color) {
+ *         @return linear-gradient($direction, color_stops(
+ *             mix(#fff, $bg-color, 10%),
+ *             $bg-color 50%,
+ *             mix(#000, $bg-color, 5%) 51%,
+ *             $bg-color
+ *         ));
+ *     }
+ *
+ * @param {String} [$direction=top] The direction of the gradient. Can either be
+ * `top` or `left`.
+ *
+ * @member Global_CSS
+ */
+/*
+ * Method which inserts a full background-image property for a theme image.
+ * It checks if the file exists and if it doesn't, it'll throw an error.
+ * By default it will not include the background-image property if it is not found,
+ * but this can be changed by changing the default value of $include-missing-images to
+ * be true.
+ */
+/**
+ * Includes a google webfont for use in your theme.
+ * @param {string} $font-name The name of the font.  If the font name contains spaces
+ * use "+" instead of space.
+ * @param {string} [$font-weights=400] Comma-separated list of font weights to include.
+ *
+ * Example usage:
+ *
+ *     @include google-webfont(
+ *         $font-name: Exo,
+ *         $font-weights: 200 300 400
+ *     );
+ *
+ * Outputs:
+ *
+ *     @import url(http://fonts.googleapis.com/css?family=Exo:200,300,400);
+ *
+ * @member Global_CSS
+ */
+/**
+ * adds a css outline to an element with compatibility for IE8/outline-offset
+ * NOTE: the element receiving the outline must be positioned (either relative or absolute)
+ * in order for the outline to work in IE8
+ *
+ * @param {number} [$width=1px]
+ * The width of the outline
+ *
+ * @param {string} [$style=solid]
+ * The style of the outline
+ *
+ * @param {color} [$color=#000]
+ * The color of the outline
+ *
+ * @param {number} [$offset=0]
+ * The offset of the outline
+ *
+ * @param {number/list} [$border-width=0]
+ * The border-width of the element receiving the outline.
+ * Required in order for outline-offset to work in IE8
+ */
+/* including package ext-theme-base */
+/**
+ * @class Global_CSS
+ */
+/**
+ * @var {string} $prefix
+ * The prefix to be applied to all CSS selectors. If this is changed, it must also be changed in your
+ * JavaScript application.
+ */
+/**
+ * @var {boolean/string} $relative-image-path-for-uis
+ * True to use a relative image path for all new UIs. If true, the path will be "../images/".
+ * It can also be a string of the path value.
+ * It defaults to false, which means it will look for the images in the ExtJS SDK folder.
+ */
+/**
+ * @var {boolean} $include-not-found-images
+ * True to include files which are not found when compiling your SASS
+ */
+/**
+ * @var {boolean} $include-ie
+ * True to include Internet Explorer specific rules for IE9 and lower.  IE10 and up are
+ * considered to be "modern" browsers, and as such do not need any of the CSS hacks required
+ * for IE9 and below.  Setting this property to false will result in a significantly smaller
+ * CSS file size, and may also result in a slight performance improvement, because the
+ * browser will have fewer rules to process.
+ */
+/**
+ * @var {boolean} $include-ff
+ * True to include Firefox specific rules
+ */
+/**
+ * @var {boolean} $include-opera
+ * True to include Opera specific rules
+ */
+/**
+ * @var {boolean} $include-webkit
+ * True to include Webkit specific rules
+ */
+/**
+ * @var {boolean} $include-safari
+ * True to include Safari specific rules
+ */
+/**
+ * @var {boolean} $include-chrome
+ * True to include Chrome specific rules
+ */
+/**
+ * @var {boolean} $include-slicer-border-radius
+ * True to include rules for rounded corners produced by the slicer.  Enables emulation
+ * of CSS3 border-radius in browsers that do not support it.
+ */
+/**
+ * @var {boolean} $include-slicer-gradient
+ * True to include rules for background gradients produced by the slicer.  Enables emulation
+ * of CSS3 background-gradient in browsers that do not support it.
+ */
+/**
+ * @var {number} $css-shadow-border-radius
+ * The border radius for CSS shadows
+ */
+/**
+ * @var {string} $image-extension
+ * default file extension to use for images (defaults to 'png').
+ */
+/**
+ * @var {string} $slicer-image-extension
+ * default file extension to use for slicer images (defaults to 'gif').
+ */
+/**
+ * Default search path for images
+ */
+/**
+ * @var {boolean}
+ * True to include the default UI for each component.
+ */
+/**
+ * @var {boolean}
+ * True to add font-smoothing styles to all components
+ */
+/**
+ * @var {string}
+ * The base path relative to the CSS output directory to use for theme resources.  For example
+ * if the theme's images live one directory up from the generated CSS output in a directory
+ * named 'foo/images/', you would need to set this variable to '../foo/' in order for the image
+ * paths in the CSS output to be generated correctly. By default this is the same as the
+ * CSS output directory.
+ */
+/**
+ * @private
+ * Flag to ensure GridField rules only get set once
+ */
+/* including package ext-charts */
+/* line 1, ../../sass/src/draw/Component.scss */
+.x-hide-visibility {
+  visibility: hidden !important;
+}
+
+/* line 5, ../../sass/src/draw/Component.scss */
+.x-hide-display {
+  display: none !important;
+}
+
+/* line 9, ../../sass/src/draw/Component.scss */
+.x-surface {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  overflow: hidden;
+}
+
+/* line 14, ../../sass/src/draw/Component.scss */
+.rvml {
+  behavior: url(#default#VML);
+}
+
+/* line 18, ../../sass/src/draw/Component.scss */
+.x-surface tspan {
+  user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-drag: none;
+  cursor: default;
+}
+
+/* line 22, ../../sass/src/draw/Component.scss */
+.x-vml-sprite {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/* line 30, ../../sass/src/draw/Component.scss */
+.x-vml-group {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1000px;
+  height: 1000px;
+}
+
+/* line 38, ../../sass/src/draw/Component.scss */
+.x-vml-measure-span {
+  position: absolute;
+  left: -9999em;
+  top: -9999em;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+/* line 47, ../../sass/src/draw/Component.scss */
+.x-vml-base {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* line 55, ../../sass/src/draw/Component.scss */
+.x-vml-base {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* line 63, ../../sass/src/draw/Component.scss */
+svg, vml {
+  overflow: hidden;
+}

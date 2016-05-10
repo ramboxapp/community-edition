@@ -1,0 +1,10 @@
+{
+  "name": "sencha-amf",
+  "format": "1",
+  "version": "1.0.0",
+  "creator": "sencha",
+  "summary": "AMF Direct support, for using AMF-based servers as data sources",
+  "detailedDescription": "Use AMF-based server (e.g. BlazeDS, Coldfusion) as data sources for grid. Also allows making RMI calls to the server using Direct.",
+  "type": "code",
+  "local": true
+}

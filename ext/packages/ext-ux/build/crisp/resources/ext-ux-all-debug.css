@@ -1,0 +1,7730 @@
+/* including package ext-theme-base */
+/**
+ * Creates a background gradient.
+ *
+ * Example usage:
+ *     .foo {
+ *          @include background-gradient(#808080, matte, left);
+ *     }
+ *
+ * @param {Color} $bg-color The background color of the gradient
+ * @param {String/List} [$type=$base-gradient] The type of gradient to be used. Can either
+ * be a String which is a predefined gradient name, or it can can be a list of color stops.
+ * If null is passed, this mixin will still set the `background-color` to $bg-color.
+ * The available predefined gradient names are:
+ *
+ * * bevel
+ * * glossy
+ * * recessed
+ * * matte
+ * * matte-reverse
+ * * panel-header
+ * * tabbar
+ * * tab
+ * * tab-active
+ * * tab-over
+ * * tab-disabled
+ * * grid-header
+ * * grid-header-over
+ * * grid-row-over
+ * * grid-cell-special
+ * * glossy-button
+ * * glossy-button-over
+ * * glossy-button-pressed
+ *
+ * Each of these gradient names corresponds to a function named linear-gradient[name].
+ * Themes can override these functions to customize the color stops that they return.
+ * For example, to override the glossy-button gradient function add a function named
+ * "linear-gradient-glossy-button" to a file named "sass/etc/mixins/background-gradient.scss"
+ * in your theme.  The function should return the result of calling the Compass linear-gradient
+ * function with the desired direction and color-stop information for the gradient.  For example:
+ *
+ *     @function linear-gradient-glossy-button($direction, $bg-color) {
+ *         @return linear-gradient($direction, color_stops(
+ *             mix(#fff, $bg-color, 10%),
+ *             $bg-color 50%,
+ *             mix(#000, $bg-color, 5%) 51%,
+ *             $bg-color
+ *         ));
+ *     }
+ *
+ * @param {String} [$direction=top] The direction of the gradient. Can either be
+ * `top` or `left`.
+ *
+ * @member Global_CSS
+ */
+/*
+ * Method which inserts a full background-image property for a theme image.
+ * It checks if the file exists and if it doesn't, it'll throw an error.
+ * By default it will not include the background-image property if it is not found,
+ * but this can be changed by changing the default value of $include-missing-images to
+ * be true.
+ */
+/**
+ * Includes a google webfont for use in your theme.
+ * @param {string} $font-name The name of the font.  If the font name contains spaces
+ * use "+" instead of space.
+ * @param {string} [$font-weights=400] Comma-separated list of font weights to include.
+ *
+ * Example usage:
+ *
+ *     @include google-webfont(
+ *         $font-name: Exo,
+ *         $font-weights: 200 300 400
+ *     );
+ *
+ * Outputs:
+ *
+ *     @import url(http://fonts.googleapis.com/css?family=Exo:200,300,400);
+ *
+ * @member Global_CSS
+ */
+/**
+ * adds a css outline to an element with compatibility for IE8/outline-offset
+ * NOTE: the element receiving the outline must be positioned (either relative or absolute)
+ * in order for the outline to work in IE8
+ *
+ * @param {number} [$width=1px]
+ * The width of the outline
+ *
+ * @param {string} [$style=solid]
+ * The style of the outline
+ *
+ * @param {color} [$color=#000]
+ * The color of the outline
+ *
+ * @param {number} [$offset=0]
+ * The offset of the outline
+ *
+ * @param {number/list} [$border-width=0]
+ * The border-width of the element receiving the outline.
+ * Required in order for outline-offset to work in IE8
+ */
+/* including package ext-theme-neutral */
+/* including package ext-theme-neptune */
+/* including package ext-theme-crisp */
+/* including package ext-ux */
+/* including package ext-ux */
+/* including package ext-theme-crisp */
+/** @class Ext.resizer.Resizer */
+/* including package ext-theme-neptune */
+/** @class Global_CSS */
+/** @class Ext.LoadMask */
+/** @class Ext.ProgressBar */
+/** @class Ext.panel.Tool */
+/** @class Ext.resizer.Splitter */
+/** @class Ext.toolbar.Toolbar */
+/** @class Ext.panel.Panel */
+/**
+ * @var {boolean}
+ * True to include the "light" panel UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "light-framed" panel UI
+ */
+/** @class Ext.form.Labelable */
+/** @class Ext.form.field.Base */
+/** @class Ext.form.field.Display */
+/** @class Ext.form.field.Checkbox */
+/** @class Ext.grid.header.Container */
+/** @class Ext.grid.column.Column */
+/** @class Ext.layout.container.Border */
+/** @class Ext.button.Button */
+/** @class Ext.tab.Tab */
+/** @class Ext.tab.Bar */
+/** @class Ext.window.Window */
+/** @class Ext.tip.Tip */
+/** @class Ext.container.ButtonGroup */
+/** @class Ext.form.FieldSet */
+/** @class Ext.toolbar.Paging */
+/** @class Ext.view.BoundList */
+/** @class Ext.picker.Date */
+/** @class Ext.picker.Color */
+/** @class Ext.grid.column.Action */
+/** @class Ext.grid.feature.Grouping */
+/** @class Ext.menu.Menu */
+/** @class Ext.grid.plugin.RowEditing */
+/** @class Ext.layout.container.Accordion */
+/** @class Ext.resizer.Resizer */
+/** @class Ext.selection.CheckboxModel */
+/* including package ext-theme-neutral */
+/**
+ * @class Ext.Component
+ */
+/**
+ * @var {color}
+ * The background color of scroll indicators when touch scrolling is enabled
+ */
+/**
+ * @var {number}
+ * The opacity of scroll indicators when touch scrolling is enabled
+ */
+/**
+ * @var {number}
+ * The border-radius of scroll indicators when touch scrolling is enabled
+ */
+/**
+ * @var {color}
+ * The background color of scroll indicators when touch scrolling is enabled
+ */
+/**
+ * @var {number}
+ * The space between scroll indicators and the edge of their container
+ */
+/**
+ * @class Global_CSS
+ */
+/**
+ * @var {color} $color
+ * The default text color to be used throughout the theme.
+ */
+/**
+ * @var {string} $font-family
+ * The default font-family to be used throughout the theme.
+ */
+/**
+ * @var {number} $font-size
+ * The default font-size to be used throughout the theme.
+ */
+/**
+ * @var {string/number}
+ * The default font-weight to be used throughout the theme.
+ */
+/**
+ * @var {string/number}
+ * The default font-weight for bold font to be used throughout the theme.
+ */
+/**
+ * @var {string/number} $line-height
+ * The default line-height to be used throughout the theme.
+ */
+/**
+ * @var {string} $base-gradient
+ * The base gradient to be used throughout the theme.
+ */
+/**
+ * @var {color} $base-color
+ * The base color to be used throughout the theme.
+ */
+/**
+ * @var {color} $neutral-color
+ * The neutral color to be used throughout the theme.
+ */
+/**
+ * @var {color} $body-background-color
+ * Background color to apply to the body element.  If set to transparent or 'none' no
+ * background-color style will be set on the body element.
+ */
+/**
+ * @class Ext.FocusManager
+ */
+/**
+ * @var {color}
+ * The border-color of the focusFrame.  See {@link #method-enable}.
+ */
+/**
+ * @var {color}
+ * The border-style of the focusFrame.  See {@link #method-enable}.
+ */
+/**
+ * @var {color}
+ * The border-width of the focusFrame.  See {@link #method-enable}.
+ */
+/**
+ * @class Ext.LoadMask
+ */
+/**
+ * @var {number}
+ * Opacity of the LoadMask
+ */
+/**
+ * @var {color}
+ * The background-color of the LoadMask
+ */
+/**
+ * @var {string}
+ * The type of cursor to dislay when the cursor is over the LoadMask
+ */
+/**
+ * @var {string}
+ * The border-style of the LoadMask focus border
+ */
+/**
+ * @var {string}
+ * The border-color of the LoadMask focus border
+ */
+/**
+ * @var {string}
+ * The border-width of the LoadMask focus border
+ */
+/**
+ * @var {number/list}
+ * The padding to apply to the LoadMask's message element
+ */
+/**
+ * @var {string}
+ * The border-style of the LoadMask's message element
+ */
+/**
+ * @var {color}
+ * The border-color of the LoadMask's message element
+ */
+/**
+ * @var {number}
+ * The border-width of the LoadMask's message element
+ */
+/**
+ * @var {color}
+ * The background-color of the LoadMask's message element
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the LoadMask's message element. Can be either the name
+ * of a predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {number/list}
+ * The padding of the message inner element
+ */
+/**
+ * @var {string}
+ * The icon to display in the message inner element
+ */
+/**
+ * @var {list}
+ * The background-position of the icon
+ */
+/**
+ * @var {string}
+ * The border-style of the message inner element
+ */
+/**
+ * @var {color}
+ * The border-color of the message inner element
+ */
+/**
+ * @var {number}
+ * The border-width of the message inner element
+ */
+/**
+ * @var {color}
+ * The background-color of the message inner element
+ */
+/**
+ * @var {color}
+ * The text color of the message inner element
+ */
+/**
+ * @var {number}
+ * The font-size of the message inner element
+ */
+/**
+ * @var {string}
+ * The font-weight of the message inner element
+ */
+/**
+ * @var {string}
+ * The font-family of the message inner element
+ */
+/**
+ * @var {number/list}
+ * The padding of the message element
+ */
+/**
+ * @var {number}
+ * The border-radius of the message element
+ */
+/**
+ * @class Ext.ProgressBar
+ */
+/**
+ * @var {number}
+ * The height of the ProgressBar
+ */
+/**
+ * @var {color}
+ * The border-color of the ProgressBar
+ */
+/**
+ * @var {number}
+ * The border-width of the ProgressBar
+ */
+/**
+ * @var {number}
+ * The border-radius of the ProgressBar
+ */
+/**
+ * @var {color}
+ * The background-color of the ProgressBar
+ */
+/**
+ * @var {color}
+ * The background-color of the ProgressBar's moving element
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the ProgressBar's moving element. Can be either the name of
+ * a predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The color of the ProgressBar's text when in front of the ProgressBar's moving element
+ */
+/**
+ * @var {color}
+ * The color of the ProgressBar's text when the ProgressBar's 'moving element is not under it
+ */
+/**
+ * @var {string}
+ * The text-align of the ProgressBar's text
+ */
+/**
+ * @var {number}
+ * The font-size of the ProgressBar's text
+ */
+/**
+ * @var {string}
+ * The font-weight of the ProgressBar's text
+ */
+/**
+ * @var {string}
+ * The font-family of the ProgressBar's text
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" ProgressBar UI
+ */
+/**
+ * @class Ext.panel.Tool
+ */
+/**
+ * @var {number}
+ * The size of Tools
+ */
+/**
+ * @var {boolean}
+ * True to change the background-position of the Tool on hover. Allows for a separate
+ * hover state icon in the sprite.
+ */
+/**
+ * @var {string}
+ * The cursor to display when the mouse cursor is over a Tool
+ */
+/**
+ * @var {number}
+ * The opacity of Tools
+ */
+/**
+ * @var {number}
+ * The opacity of hovered Tools
+ */
+/**
+ * @var {number}
+ * The opacity of pressed Tools
+ */
+/**
+ * @var {string}
+ * The sprite to use as the background-image for Tools
+ */
+/** @class Ext.panel.Header */
+/**
+ * @class Ext.resizer.Splitter
+ */
+/**
+ * @var {number}
+ * The size of the Splitter
+ */
+/**
+ * @var {color}
+ * The background-color of the active Splitter (the Splitter currently being dragged)
+ */
+/**
+ * @var {number}
+ * The opacity of the active Splitter (the Splitter currently being dragged)
+ */
+/**
+ * @var {number}
+ * The opacity of the collapse tool on the active Splitter (the Splitter currently being dragged)
+ */
+/**
+ * @var {color}
+ * The color of the outline around the splitter when it is focused
+ */
+/**
+ * @var {string}
+ * The outline-style of the splitter when it is focused
+ */
+/**
+ * @var {number}
+ * The outline-width of the splitter when it is focused
+ */
+/**
+ * @var {number}
+ * The outline-offset of the splitter when it is focused
+ */
+/**
+ * @var {string}
+ * The the type of cursor to display when the cursor is over the collapse tool
+ */
+/**
+ * @var {number}
+ * The size of the collapse tool. This becomes the width of the collapse tool for
+ * horizontal splitters, and the height for vertical splitters.
+ */
+/**
+ * @var {number}
+ * The opacity of the collapse tool.
+ */
+/**
+ * @class Ext.toolbar.Toolbar
+ */
+/**
+ * @var {number}
+ * The default font-size of Toolbar text
+ */
+/**
+ * @var {color}
+ * The background-color of the Toolbar
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the Toolbar.  Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {number}
+ * The horizontal spacing of Toolbar items
+ */
+/**
+ * @var {number}
+ * The vertical spacing of Toolbar items
+ */
+/**
+ * @var {number}
+ * The horizontal spacing of {@link Ext.panel.Panel#fbar footer} Toolbar items
+ */
+/**
+ * @var {number}
+ * The vertical spacing of {@link Ext.panel.Panel#fbar footer} Toolbar items
+ */
+/**
+ * @var {color}
+ * The background-color of {@link Ext.panel.Panel#fbar footer} Toolbars
+ */
+/**
+ * @var {number}
+ * The border-width of {@link Ext.panel.Panel#fbar footer} Toolbars
+ */
+/**
+ * @var {color}
+ * The border-color of Toolbars
+ */
+/**
+ * @var {number}
+ * The border-width of Toolbars
+ */
+/**
+ * @var {string}
+ * The border-style of Toolbars
+ */
+/**
+ * @var {number}
+ * The width of Toolbar {@link Ext.toolbar.Spacer Spacers}
+ */
+/**
+ * @var {color}
+ * The main border-color of Toolbar {@link Ext.toolbar.Separator Separators}
+ */
+/**
+ * @var {color}
+ * The highlight border-color of Toolbar {@link Ext.toolbar.Separator Separators}
+ */
+/**
+ * @var {number/list}
+ * The margin of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {number}
+ * The height of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {string}
+ * The border-style of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {number}
+ * The border-width of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {number/list}
+ * The margin of {@link Ext.toolbar.Separator Separators} on a vertically oriented Toolbar
+ */
+/**
+ * @var {string}
+ * The border-style of {@link Ext.toolbar.Separator Separators} on a vertically oriented Toolbar
+ */
+/**
+ * @var {number}
+ * The border-width of {@link Ext.toolbar.Separator Separators} on a vertically oriented Toolbar
+ */
+/**
+ * @var {string}
+ * The default font-family of Toolbar text
+ */
+/**
+ * @var {number}
+ * The default font-size of Toolbar text
+ */
+/**
+ * @var {number}
+ * The default font-size of Toolbar text
+ */
+/**
+ * @var {color}
+ * The text-color of Toolbar text
+ */
+/**
+ * @var {number}
+ * The line-height of Toolbar text
+ */
+/**
+ * @var {number/list}
+ * The padding of Toolbar text
+ */
+/**
+ * @var {number}
+ * The width of Toolbar scrollers
+ */
+/**
+ * @var {number}
+ * The height of Toolbar scrollers
+ */
+/**
+ * @var {number}
+ * The width of scrollers on vertically aligned toolbars
+ */
+/**
+ * @var {number}
+ * The height of scrollers on vertically aligned toolbars
+ */
+/**
+ * @var {color}
+ * The border-color of Toolbar scroller buttons
+ */
+/**
+ * @var {number}
+ * The border-width of Toolbar scroller buttons
+ */
+/**
+ * @var {color}
+ * The border-color of scroller buttons on vertically aligned toolbars
+ */
+/**
+ * @var {number}
+ * The border-width of scroller buttons on vertically aligned toolbars
+ */
+/**
+ * @var {number/list}
+ * The margin of "top" Toolbar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "right" Toolbar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "bottom" Toolbar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "left" Toolbar scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of Toolbar scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of disabled Toolbar scroller buttons
+ */
+/**
+ * @var {number}
+ * The opacity of Toolbar scroller buttons. Only applicable when
+ * {@link #$toolbar-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of hovered Toolbar scroller buttons. Only applicable when
+ * {@link #$toolbar-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of pressed Toolbar scroller buttons. Only applicable when
+ * {@link #$toolbar-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of disabled Toolbar scroller buttons.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-style scroller buttons.  When `true` scroller buttons are given their
+ * hover state by changing their background-position,  When `false` scroller buttons are
+ * given their hover state by applying opacity.
+ */
+/**
+ * @var {string}
+ * The sprite to use for {@link Ext.panel.Tool Tools} on a Toolbar
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" toolbar UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "footer" toolbar UI
+ */
+/**
+ * @class Ext.panel.Panel
+ */
+/**
+ * @var {number}
+ * The default border-width of Panels
+ */
+/**
+ * @var {color}
+ * The base color of Panels
+ */
+/**
+ * @var {color}
+ * The default border-color of Panels
+ */
+/**
+ * @var {number}
+ * The maximum width a Panel's border can be before resizer handles are embedded
+ * into the borders using negative absolute positions.
+ *
+ * This defaults to 2, so that in the classic theme which uses 1 pixel borders,
+ * resize handles are in the content area within the border as they always have
+ * been.
+ *
+ * In the Neptune theme, the handles are embedded into the 5 pixel wide borders
+ * of any framed panel.
+ */
+/**
+ * @var {string}
+ * The default border-style of Panels
+ */
+/**
+ * @var {color}
+ * The default body background-color of Panels
+ */
+/**
+ * @var {color}
+ * The default color of text inside a Panel's body
+ */
+/**
+ * @var {color}
+ * The default border-color of the Panel body
+ */
+/**
+ * @var {number}
+ * The default border-width of the Panel body
+ */
+/**
+ * @var {number}
+ * The default font-size of the Panel body
+ */
+/**
+ * @var {string}
+ * The default font-weight of the Panel body
+ */
+/**
+ * @var {string}
+ * The default font-family of the Panel body
+ */
+/**
+ * @var {number}
+ * The space between the Panel {@link Ext.panel.Tool Tools}
+ */
+/**
+ * @var {string}
+ * The background sprite to use for Panel {@link Ext.panel.Tool Tools}
+ */
+/**
+ * @var {number}
+ * The border-width of Panel Headers
+ */
+/**
+ * @var {string}
+ * The border-style of Panel Headers
+ */
+/**
+ * @var {number/list}
+ * The padding of Panel Headers
+ */
+/**
+ * @var {number}
+ * The font-size of Panel Headers
+ */
+/**
+ * @var {number}
+ * The line-height of Panel Headers
+ */
+/**
+ * @var {string}
+ * The font-weight of Panel Headers
+ */
+/**
+ * @var {string}
+ * The font-family of Panel Headers
+ */
+/**
+ * @var {string}
+ * The text-transform of Panel Headers
+ */
+/**
+ * @var {number/list}
+ * The padding of the Panel Header's text element
+ */
+/**
+ * @var {number/list}
+ * The margin of the Panel Header's text element
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the Panel Header. Can be either the name of a predefined
+ * gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The border-color of the Panel Header
+ */
+/**
+ * @var {color}
+ * The inner border-color of the Panel Header
+ */
+/**
+ * @var {number}
+ * The inner border-width of the Panel Header
+ */
+/**
+ * @var {color}
+ * The text color of the Panel Header
+ */
+/**
+ * @var {color}
+ * The background-color of the Panel Header
+ */
+/**
+ * @var {number}
+ * The width of the Panel Header icon
+ */
+/**
+ * @var {number}
+ * The height of the Panel Header icon
+ */
+/**
+ * @var {number}
+ * The space between the Panel Header icon and text
+ */
+/**
+ * @var {list}
+ * The background-position of  the Panel Header icon
+ */
+/**
+ * @var {color}
+ * The color of the Panel Header glyph icon
+ */
+/**
+ * @var {number}
+ * The opacity of the Panel Header glyph icon
+ */
+/**
+ * @var {boolean}
+ * True to adjust the padding of borderless panel headers so that their height is the same
+ * as the height of bordered panels.  This is helpful when borderless and bordered panels
+ * are used side-by-side, as it maintains a consistent vertical alignment.
+ */
+/**
+ * @var {color}
+ * The base color of the framed Panels
+ */
+/**
+ * @var {number}
+ * The border-radius of framed Panels
+ */
+/**
+ * @var {number}
+ * The border-width of framed Panels
+ */
+/**
+ * @var {string}
+ * The border-style of framed Panels
+ */
+/**
+ * @var {number}
+ * The padding of framed Panels
+ */
+/**
+ * @var {color}
+ * The background-color of framed Panels
+ */
+/**
+ * @var {color}
+ * The border-color of framed Panels
+ */
+/**
+ * @var {number}
+ * The border-width of the body element of framed Panels
+ */
+/**
+ * @var {number}
+ * The border-width of framed Panel Headers
+ */
+/**
+ * @var {color}
+ * The inner border-color of framed Panel Headers
+ */
+/**
+ * @var {number}
+ * The inner border-width of framed Panel Headers
+ */
+/**
+ * @var {number/list}
+ * The padding of framed Panel Headers
+ */
+/**
+ * @var {number}
+ * The opacity of ghost Panels while dragging
+ */
+/**
+ * @var {string}
+ * The direction to strech the background-gradient of top docked Headers when slicing images
+ * for IE using Sencha Cmd
+ */
+/**
+ * @var {string}
+ * The direction to strech the background-gradient of bottom docked Headers when slicing images
+ * for IE using Sencha Cmd
+ */
+/**
+ * @var {string}
+ * The direction to strech the background-gradient of right docked Headers when slicing images
+ * for IE using Sencha Cmd
+ */
+/**
+ * @var {string}
+ * The direction to strech the background-gradient of left docked Headers when slicing images
+ * for IE using Sencha Cmd
+ */
+/**
+ * @var {boolean}
+ * True to include neptune style border management rules.
+ */
+/**
+ * @var {color}
+ * The color to apply to the border that wraps the body and docked items in a framed
+ * panel. The presence of the wrap border in a framed panel is controlled by the
+ * {@link #border} config. Only applicable when `$panel-include-border-management-rules` is
+ * `true`.
+ */
+/**
+ * @var {number}
+ * The width to apply to the border that wraps the body and docked items in a framed
+ * panel. The presence of the wrap border in a framed panel is controlled by the
+ * {@link #border} config. Only applicable when `$panel-include-border-management-rules` is
+ * `true`.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" panel UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "default-framed" panel UI
+ */
+/**
+ * @var {boolean}
+ * True to ignore the frame padding.  By default, the frame mixin adds extra padding when
+ * border radius is larger than border width.  This is intended to prevent the content
+ * from colliding with the rounded corners of the frame.  Set this to true to prevent
+ * the panel frame from adding this extra padding.
+ */
+/**
+ * @class Ext.form.field.Base
+ */
+/**
+ * @var {number} $form-field-height
+ * Height for form fields.
+ */
+/**
+ * @var {number} $form-toolbar-field-height
+ * Height for form fields in toolbar.
+ */
+/**
+ * @var {number} $form-field-padding
+ * Padding around form fields.
+ */
+/**
+ * @var {number} $form-field-font-size
+ * Font size for form fields.
+ */
+/**
+ * @var {string} $form-field-font-family
+ * Font family for form fields.
+ */
+/**
+ * @var {string} $form-field-font-weight
+ * Font weight for form fields.
+ */
+/**
+ * @var {number} $form-toolbar-field-font-size
+ * Font size for toolbar form fields.
+ */
+/**
+ * @var {string} $form-toolbar-field-font-family
+ * Font family for toolbar form fields.
+ */
+/**
+ * @var {string} $form-toolbar-field-font-weight
+ * Font weight for toolbar form fields.
+ */
+/**
+ * @var {color} $form-field-color
+ * Text color for form fields.
+ */
+/**
+ * @var {color} $form-field-empty-color
+ * Text color for empty form fields.
+ */
+/**
+ * @var {color} $form-field-border-color
+ * Border color for form fields.
+ */
+/**
+ * @var {number} $form-field-border-width
+ * Border width for form fields.
+ */
+/**
+ * @var {string} $form-field-border-style
+ * Border style for form fields.
+ */
+/**
+ * @var {color} $form-field-focus-border-color
+ * Border color for focused form fields.
+ *
+ * In the default Neptune color scheme this is the same as $base-highlight-color
+ * but it does not change automatically when one changes the $base-color.  This is because
+ * checkboxes and radio buttons have this focus color hard coded into their background
+ * images.  If this color is changed, you should also modify checkbox and radio button
+ * background images to match
+ */
+/**
+ * @var {color} $form-field-invalid-border-color
+ * Border color for invalid form fields.
+ */
+/**
+ * @var {color} $form-field-background-color
+ * Background color for form fields.
+ */
+/**
+ * @var {string} $form-field-background-image
+ * Background image for form fields.
+ */
+/**
+ * @var {color} $form-field-invalid-background-color
+ * Background color for invalid form fields.
+ */
+/**
+ * @var {string} $form-field-invalid-background-image
+ * Background image for invalid form fields.
+ */
+/**
+ * @var {string} $form-field-invalid-background-repeat
+ * Background repeat for invalid form fields.
+ */
+/**
+ * @var {string/list} $form-field-invalid-background-position
+ * Background position for invalid form fields.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" field UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" field UI
+ */
+/**
+ * @class Ext.form.Labelable
+ */
+/**
+ * @var {color}
+ * The text color of form field labels
+ */
+/**
+ * @var {string}
+ * The font-weight of form field labels
+ */
+/**
+ * @var {number}
+ * The font-size of form field labels
+ */
+/**
+ * @var {string}
+ * The font-family of form field labels
+ */
+/**
+ * @var {number}
+ * The line-height of form field labels
+ */
+/**
+ * @var {number}
+ * Horizontal space between the label and the field body when the label is left-aligned.
+ */
+/**
+ * @var {number}
+ * Vertical space between the label and the field body when the label is top-aligned.
+ */
+/**
+ * @var {string}
+ * The background image for error icons
+ */
+/**
+ * @var {number}
+ * Width for form error icons.
+ */
+/**
+ * @var {number}
+ * Height for form error icons.
+ */
+/**
+ * @var {number/list}
+ * Margin for error icons that are aligned to the side of the field
+ */
+/**
+ * @var {number}
+ * The space between the icon and the message for errors that display under the field
+ */
+/**
+ * @var {number/list}
+ * The padding on errors that display under the form field
+ */
+/**
+ * @var {color}
+ * The text color of form error messages
+ */
+/**
+ * @var {string}
+ * The font-weight of form error messages
+ */
+/**
+ * @var {number}
+ * The font-size of form error messages
+ */
+/**
+ * @var {string}
+ * The font-family of form error messages
+ */
+/**
+ * @var {number}
+ * The line-height of form error messages
+ */
+/**
+ * @var {number}
+ * The bottom margin to apply to form items when in auto, anchor, vbox, or table layout.
+ * This value is also used as the default border-spacing in a form-layout.
+ */
+/**
+ * @var {number}
+ * Opacity of disabled form fields
+ */
+/**
+ * @var {color}
+ * The text color of toolbar form field labels
+ */
+/**
+ * @var {string}
+ * The font-weight of toolbar form field labels
+ */
+/**
+ * @var {number}
+ * The font-size of toolbar form field labels
+ */
+/**
+ * @var {string}
+ * The font-family of toolbar form field labels
+ */
+/**
+ * @var {number}
+ * The line-height of toolbar form field labels
+ */
+/**
+ * @var {number}
+ * Horizontal space between the toolbar field's label and the field body when the label is left-aligned.
+ */
+/**
+ * @var {number}
+ * Vertical space between the toolbar field's label and the field body when the label is top-aligned.
+ */
+/**
+ * @var {string}
+ * The background image for toolbar field error icons
+ */
+/**
+ * @var {number}
+ * Width for toolbar field error icons.
+ */
+/**
+ * @var {number}
+ * Height for toolbar field error icons.
+ */
+/**
+ * @var {number/list}
+ * Margin for toolbar field error icons that are aligned to the side of the field
+ */
+/**
+ * @var {number}
+ * The space between the icon and the message for errors that display under a toolbar field
+ */
+/**
+ * @var {number/list}
+ * The padding on errors that display under the toolbar form field
+ */
+/**
+ * @var {color}
+ * The text color of toolbar form error messages
+ */
+/**
+ * @var {string}
+ * The font-weight of toolbar form field error messages
+ */
+/**
+ * @var {number}
+ * The font-size of toolbar form field error messages
+ */
+/**
+ * @var {string}
+ * The font-family of toolbar form field error messages
+ */
+/**
+ * @var {number}
+ * The line-height of toolbar form field error messages
+ */
+/**
+ * @var {number}
+ * Opacity of disabled toolbar form fields
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" label UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" label UI
+ */
+/**
+ * @class Ext.form.field.Text
+ */
+/**
+ * @var {number}
+ * The height of text fields
+ */
+/**
+ * @var {number}
+ * Font size for text fields.
+ */
+/**
+ * @var {string}
+ * Font family for text fields.
+ */
+/**
+ * @var {string}
+ * Font weight for text fields.
+ */
+/**
+ * @var {color}
+ * The color of the text field's input element
+ */
+/**
+ * @var {color}
+ * The background color of the text field's input element
+ */
+/**
+ * @var {number/list}
+ * The border width of text fields
+ */
+/**
+ * @var {string/list}
+ * The border style of text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of the focused text field
+ */
+/**
+ * @var {color}
+ * Border color for invalid text fields.
+ */
+/**
+ * @var {number/list}
+ * Border radius for text fields
+ */
+/**
+ * @var {string}
+ * The background image of the text field's input element
+ */
+/**
+ * @var {number/list}
+ * The padding of the text field's input element
+ */
+/**
+ * @var {color}
+ * Text color for empty text fields.
+ */
+/**
+ * @var {number}
+ * The default width of the text field's body element (the element that contains the input
+ * element and triggers) when the field is not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Background color of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background image of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background repeat of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string/list}
+ * Background position of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-theme styled border for text fields.
+ */
+/**
+ * @var {number} $form-textarea-line-height
+ * The line-height to use for the TextArea's text
+ */
+/**
+ * @var {number} $form-textarea-body-height
+ * The default width of the TextArea's body element (the element that contains the textarea
+ * html element when the field is not sized explicitly using the {@link #width}config, or
+ * sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Text color for file fields
+ */
+/**
+ * @var {number}
+ * The width of the text field's trigger element
+ */
+/**
+ * @var {number/list}
+ * The width of the text field's trigger's border
+ */
+/**
+ * @var {color/list}
+ * The color of the text field's trigger's border
+ */
+/**
+ * @var {string/list}
+ * The style of the text field's trigger's border
+ */
+/**
+ * @var {color}
+ * The color of the text field's trigger's border when hovered
+ */
+/**
+ * @var {color}
+ * The color of the text field's trigger's border when the field is focused
+ */
+/**
+ * @var {color}
+ * The color of the text field's trigger's border when the field is focused and the trigger is hovered
+ */
+/**
+ * @var {string}
+ * The default background image for text field triggers
+ */
+/**
+ * @var {color}
+ * The background color of the text field's trigger element
+ */
+/**
+ * @var {number}
+ * The height of toolbar text fields
+ */
+/**
+ * @var {number}
+ * Font size for toolbar text fields.
+ */
+/**
+ * @var {string}
+ * Font family for toolbar text fields.
+ */
+/**
+ * @var {string}
+ * Font weight for toolbar text fields.
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's input element
+ */
+/**
+ * @var {color}
+ * The background color of the toolbar text field's input element
+ */
+/**
+ * @var {number/list}
+ * The border width of toolbar text fields
+ */
+/**
+ * @var {string/list}
+ * The border style of toolbar text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of toolbar text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of the focused toolbar text field
+ */
+/**
+ * @var {color} $form-field-invalid-border-color
+ * Border color for invalid toolbar text fields.
+ */
+/**
+ * @var {number/list}
+ * Border radius for toolbar text fields
+ */
+/**
+ * @var {string}
+ * The background image of the toolbar text field's input element
+ */
+/**
+ * @var {number/list}
+ * The padding of the toolbar text field's input element
+ */
+/**
+ * @var {color}
+ * Text color for empty toolbar text fields.
+ */
+/**
+ * @var {number}
+ * The default width of the toolbar text field's body element (the element that contains the input
+ * element and triggers) when the field is not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Background color of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background image of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background repeat of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string/list}
+ * Background position of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-theme styled border for toolbar text fields.
+ */
+/**
+ * @var {number/string}
+ * The line-height to use for the toolbar TextArea's text
+ */
+/**
+ * @var {number}
+ * The default width of the toolbar TextArea's body element (the element that contains the
+ * textarea html element when the field is not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Text color for toolbar file fields
+ */
+/**
+ * @var {number}
+ * The width of the toolbar text field's trigger element
+ */
+/**
+ * @var {number/list}
+ * The width of the toolbar text field's trigger's border
+ */
+/**
+ * @var {color/list}
+ * The color of the toolbar text field's trigger's border
+ */
+/**
+ * @var {string/list}
+ * The style of the toolbar text field's trigger's border
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's trigger's border when hovered
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's trigger's border when the field is focused
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's trigger's border when the field is focused and the trigger is hovered
+ */
+/**
+ * @var {string}
+ * The default background image for toolbar text field triggers
+ */
+/**
+ * @var {color}
+ * The background color of the toolbar text field's trigger element
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" text field UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" text field UI
+ */
+/**
+ * @class Ext.form.field.Spinner
+ */
+/**
+ * @var {boolean}
+ * True to use vertically oriented triggers. False to use horizontally oriented triggers.
+ * Themes that set this property to true must also override the
+ * {@link Ext.form.trigger.Spinner#vertical} config to match. Defaults to true.  When
+ * 'vertical' orientation is used, the background image for both triggers is
+ * 'form/spinner'.  When 'horizontal' is used, the triggers use separate background
+ * images - 'form/spinner-up', and 'form/spinner-down'.
+ */
+/**
+ * @var {string}
+ * Background image for vertically oriented spinner triggers
+ */
+/**
+ * @var {string}
+ * Background image for the "up" trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {string}
+ * Background image for the "down" trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {boolean}
+ * `true` to use vertically oriented triggers for fields with the 'toolbar' UI.
+ */
+/**
+ * @var {string}
+ * Background image for vertically oriented toolbar spinner triggers
+ */
+/**
+ * @var {string}
+ * Background image for the "up" toolbar trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {string}
+ * Background image for the "down" toolbar trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" spinner UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" spinner UI
+ */
+/**
+ * @class Ext.form.field.Checkbox
+ */
+/**
+ * @var {number}
+ * The size of the checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the radio button
+ */
+/**
+ * @var {color}
+ * The color of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-weight of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-size of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-family of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The line-height of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {number}
+ * The space between the {@link #boxLabel} and the checkbox.
+ */
+/**
+ * @var {number}
+ * The size of the toolbar checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the toolbar checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the toolbar radio button
+ */
+/**
+ * @var {color}
+ * The color of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-weight of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-size of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-family of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The line-height of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {number}
+ * The space between the {@link #boxLabel} and the toolbar checkbox.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" checkbox UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" checkbox UI
+ */
+/**
+ * @class Ext.form.field.Display
+ */
+/**
+ * @var {color}
+ * The text color of display fields
+ */
+/**
+ * @var {number}
+ * The font-size of display fields
+ */
+/**
+ * @var {string}
+ * The font-family of display fields
+ */
+/**
+ * @var {string}
+ * The font-weight of display fields
+ */
+/**
+ * @var {number}
+ * The line-height of display fields
+ */
+/**
+ * @var {color}
+ * The text color of toolbar display fields
+ */
+/**
+ * @var {number}
+ * The font-size of toolbar display fields
+ */
+/**
+ * @var {string}
+ * The font-family of toolbar display fields
+ */
+/**
+ * @var {string}
+ * The font-weight of toolbar display fields
+ */
+/**
+ * @var {number}
+ * The line-height of toolbar display fields
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" display field UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" display field UI
+ */
+/**
+ * @class Ext.view.Table
+ */
+/**
+ * @var {color}
+ * The color of the text in the grid cells
+ */
+/**
+ * @var {number}
+ * The font size of the text in the grid cells
+ */
+/**
+ * @var {number}
+ * The line-height of the text inside the grid cells.
+ */
+/**
+ * @var {string}
+ * The font-weight of the text in the grid cells
+ */
+/**
+ * @var {string}
+ * The font-family of the text in the grid cells
+ */
+/**
+ * @var {color}
+ * The background-color of the grid cells
+ */
+/**
+ * @var {color}
+ * The border-color of row/column borders. Can be specified as a single color, or as a list
+ * of colors containing the row border color followed by the column border color.
+ */
+/**
+ * @var {string}
+ * The border-style of the row/column borders.
+ */
+/**
+ * @var {number}
+ * The border-width of the row and column borders.
+ */
+/**
+ * @var {color}
+ * The background-color of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+/**
+ * @var {string}
+ * The background-gradient to use for "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+/**
+ * @var {number}
+ * The border-width of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the row border width is determined by
+ * {#$grid-row-cell-border-width}.
+ */
+/**
+ * @var {color}
+ * The border-color of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the row border color is determined by
+ * {#$grid-row-cell-border-color}.
+ */
+/**
+ * @var {string}
+ * The border-style of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the row border style is determined by
+ * {#$grid-row-cell-border-style}.
+ */
+/**
+ * @var {color}
+ * The border-color of "special" cells when the row is selected using a {@link
+ * Ext.selection.RowModel Row Selection Model}.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the selected row border color is determined by
+ * {#$grid-row-cell-selected-border-color}.
+ */
+/**
+ * @var {color}
+ * The background-color of "special" cells when the row is hovered. Special cells are
+ * created by {@link Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel
+ * Checkbox Selection Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+/**
+ * @var {color}
+ * The background-color color of odd-numbered rows when the table view is configured with
+ * `{@link Ext.view.Table#stripeRows stripeRows}: true`.
+ */
+/**
+ * @var {string}
+ * The border-style of the hovered row
+ */
+/**
+ * @var {color}
+ * The text color of the hovered row
+ */
+/**
+ * @var {color}
+ * The background-color of the hovered row
+ */
+/**
+ * @var {color}
+ * The border-color of the hovered row
+ */
+/**
+ * @var {string}
+ * The border-style of the selected row
+ */
+/**
+ * @var {color}
+ * The text color of the selected row
+ */
+/**
+ * @var {color}
+ * The background-color of the selected row
+ */
+/**
+ * @var {color}
+ * The border-color of the selected row
+ */
+/**
+ * @var {number}
+ * The border-width of the focused cell
+ */
+/**
+ * @var {color}
+ * The border-color of the focused cell
+ */
+/**
+ * @var {string}
+ * The border-style of the focused cell
+ */
+/**
+ * @var {number}
+ * The spacing between grid cell border and inner focus border
+ */
+/**
+ * @var {color}
+ * The text color of the focused cell
+ */
+/**
+ * @var {color}
+ * The background-color of the focused cell
+ */
+/**
+ * @var {boolean}
+ * True to show the focus border when a row is focused even if the grid has no
+ * {@link Ext.panel.Table#rowLines rowLines}.
+ */
+/**
+ * @var {color}
+ * The text color of a selected cell when using a {@link Ext.selection.CellModel
+ * Cell Selection Model}.
+ */
+/**
+ * @var {color}
+ * The background-color of a selected cell when using a {@link Ext.selection.CellModel
+ * Cell Selection Model}.
+ */
+/**
+ * @var {number}
+ * The amount of padding to apply to the grid cell's inner div element
+ */
+/**
+ * @var {string}
+ * The type of text-overflow to use on the grid cell's inner div element
+ */
+/**
+ * @var {color}
+ * The border-color of the grid body
+ */
+/**
+ * @var {number}
+ * The border-width of the grid body border
+ */
+/**
+ * @var {string}
+ * The border-style of the grid body border
+ */
+/**
+ * @var {color}
+ * The background-color of the grid body
+ */
+/**
+ * @var {number}
+ * The amount of padding to apply to the grid body when the grid contains no data.
+ */
+/**
+ * @var {color}
+ * The text color of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {color}
+ * The background color of the grid body when the grid contains no data.
+ */
+/**
+ * @var {number}
+ * The font-size of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {number}
+ * The font-weight of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {number}
+ * The font-family of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {color}
+ * The color of the resize markers that display when dragging a column border to resize
+ * the column
+ */
+/**
+ * @class Ext.tree.View
+ */
+/**
+ * @var {number} $tree-elbow-width
+ * The width of the tree elbow/arrow icons
+ */
+/**
+ * @var {number} $tree-icon-width
+ * The width of the tree folder/leaf icons
+ */
+/**
+ * @var {number} $tree-elbow-spacing 
+ * The amount of spacing between the tree elbows or arrows, and the checkbox or icon.
+ */
+/**
+ * @var {number} $tree-checkbox-spacing
+ * The amount of space (in pixels) between the tree checkbox and the folder/leaf icon
+ */
+/**
+ * @var {number} $tree-icon-spacing
+ * The amount of space (in pixels) between the folder/leaf icons and the text
+ */
+/**
+ * @var {string} $tree-expander-cursor
+ * The type of cursor to display when the mouse is over a tree expander (+, - or arrow icon)
+ */
+/**
+ * @var {number/list}
+ * The amount of padding to apply to the tree cell's inner div element
+ */
+/**
+ * @class Ext.grid.header.DropZone
+ */
+/**
+ * @var {number}
+ * The size of the column move icon
+ */
+/**
+ * @class Ext.grid.header.Container
+ */
+/**
+ * @var {color}
+ * The background-color of grid headers
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of grid headers.  Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The border-color of grid headers
+ */
+/**
+ * @var {number}
+ * The border-width of grid headers
+ */
+/**
+ * @var {string}
+ * The border-style of grid headers
+ */
+/**
+ * @var {color}
+ * The background-color of grid headers when the cursor is over the header
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of grid headers when the cursor is over the header.  Can be
+ * either the name of a predefined gradient or a list of color stops. Used as the `$type`
+ * parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The background-color of a grid header when its menu is open
+ */
+/**
+ * @var {number/list}
+ * The padding to apply to grid headers
+ */
+/**
+ * @var {number}
+ * The height of grid header triggers
+ */
+/**
+ * @var {number}
+ * The width of grid header triggers
+ */
+/**
+ * @var {number}
+ * The width of the grid header sort icon
+ */
+/**
+ * @var {string}
+ * The type of cursor to display when the cursor is over a grid header trigger
+ */
+/**
+ * @var {number}
+ * The amount of space between the header trigger and text
+ */
+/**
+ * @var {list}
+ * The background-position of the header trigger
+ */
+/**
+ * @var {color}
+ * The background-color of the header trigger
+ */
+/**
+ * @var {color}
+ * The background-color of the header trigger when the menu is open
+ */
+/**
+ * @var {number}
+ * The space between the grid header sort icon and the grid header text
+ */
+/**
+ * @class Ext.grid.column.Column
+ */
+/**
+ * @var {string}
+ * The font-family of grid column headers
+ */
+/**
+ * @var {number}
+ * The font-size of grid column headers
+ */
+/**
+ * @var {string}
+ * The font-weight of grid column headers
+ */
+/**
+ * @var {number}
+ * The line-height of grid column headers
+ */
+/**
+ * @var {string}
+ * The text-overflow of grid column headers
+ */
+/**
+ * @var {color}
+ * The text color of grid column headers
+ */
+/**
+ * @var {number}
+ * The border-width of grid column headers
+ */
+/**
+ * @var {string}
+ * The border-style of grid column headers
+ */
+/**
+ * @var {color}
+ * The text color of focused grid column headers
+ */
+/**
+ * @var {color}
+ * The background-color of focused grid column headers
+ */
+/**
+ * @var {number}
+ * The border-width of focused grid column headers
+ */
+/**
+ * @var {string}
+ * The border-style of focused grid column headers
+ */
+/**
+ * @var {number}
+ * The spacing between column header element border and inner focus border
+ */
+/**
+ * @var {color}
+ * The border color of focused grid column headers
+ */
+/**
+ * @class Ext.layout.container.Border
+ */
+/**
+ * @var {color}
+ * The background-color of the Border layout element
+ */
+/** @class Ext.button.Button */
+/**
+ * @var {number}
+ * The default width for a button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default height for a button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default width for a {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default height for a {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default space between a button's icon and text
+ */
+/**
+ * @var {number}
+ * The default border-radius for a small {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default border-width for a small {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default padding for a small {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default horizontal padding to add to the left and right of the text element for
+ * a small {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default font-size for a small {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default font-size for a small {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a small {@link #scale} button when the button is focused
+ */
+/**
+ * @var {number}
+ * The default font-size for a small {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a small {@link #scale} button when the button is focused and
+ * the cursor is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a small {@link #scale} button when the button is focused and pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a small {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-weight for a small {@link #scale} button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a small {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a small {@link #scale} button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-weight for a small {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a small {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a small {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a small {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-family for a small {@link #scale} button
+ */
+/**
+ * @var {string}
+ * The default font-family for a small {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a small {@link #scale} button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-family for a small {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a small {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a small {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a small {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {number}
+ * The line-height for the text in a small {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default icon size for a small {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The space between a small {@link #scale} button's icon and text
+ */
+/**
+ * @var {number}
+ * The default width of a small {@link #scale} button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default height of a small {@link #scale} button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default width of a small {@link #scale} {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default height of a small {@link #scale} {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default border-radius for a medium {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default border-width for a medium {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default padding for a medium {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default horizontal padding to add to the left and right of the text element for
+ * a medium {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default font-size for a medium {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default font-size for a medium {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a medium {@link #scale} button when the button is focused
+ */
+/**
+ * @var {number}
+ * The default font-size for a medium {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a medium {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a medium {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a medium {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-weight for a medium {@link #scale} button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a medium {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a medium {@link #scale} button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-weight for a medium {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a medium {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a medium {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a medium {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-family for a medium {@link #scale} button
+ */
+/**
+ * @var {string}
+ * The default font-family for a medium {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a medium {@link #scale} button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-family for a medium {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a medium {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a medium {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a medium {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {number}
+ * The line-height for the text in a medium {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default icon size for a medium {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The space between a medium {@link #scale} button's icon and text
+ */
+/**
+ * @var {number}
+ * The default width of a medium {@link #scale} button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default height of a medium {@link #scale} button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default width of a medium {@link #scale} {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default height of a medium {@link #scale} {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default border-radius for a large {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default border-width for a large {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default padding for a large {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default horizontal padding to add to the left and right of the text element for
+ * a large {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default font-size for a large {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default font-size for a large {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a large {@link #scale} button when the button is focused
+ */
+/**
+ * @var {number}
+ * The default font-size for a large {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a large {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a large {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a large {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-weight for a large {@link #scale} button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a large {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a large {@link #scale} button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-weight for a large {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a large {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a large {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a large {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-family for a large {@link #scale} button
+ */
+/**
+ * @var {string}
+ * The default font-family for a large {@link #scale} button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a large {@link #scale} button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-family for a large {@link #scale} button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a large {@link #scale} button when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a large {@link #scale} button when the button is focused
+ * and pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a large {@link #scale} button when the button is disabled
+ */
+/**
+ * @var {number}
+ * The line-height for the text in a large {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The default icon size for a large {@link #scale} button
+ */
+/**
+ * @var {number}
+ * The space between a large {@link #scale} button's icon and text
+ */
+/**
+ * @var {number}
+ * The default width of a large {@link #scale} button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default height of a large {@link #scale} button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default width of a large {@link #scale} {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default height of a large {@link #scale} {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {color}
+ * The base color for the `default` button UI
+ */
+/**
+ * @var {color}
+ * The base color for the `default` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The base color for the `default` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The base color for the `default` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The base color for the `default` button UI when the button is focused and the cursor
+ * is over the button
+ */
+/**
+ * @var {color}
+ * The base color for the `default` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The base color for the `default` button UI when the button is disabled
+ */
+/**
+ * @var {color}
+ * The border-color for the `default` button UI
+ */
+/**
+ * @var {color}
+ * The border-color for the `default` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The border-color for the `default` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The border-color for the `default` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The border-color for the `default` button UI when the button is focused and the cursor
+ * is over the button
+ */
+/**
+ * @var {color}
+ * The border-color for the `default` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The border-color for the `default` button UI when the button is disabled
+ */
+/**
+ * @var {color}
+ * The background-color for the `default` button UI
+ */
+/**
+ * @var {color}
+ * The background-color for the `default` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The background-color for the `default` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The background-color for the `default` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The background-color for the `default` button UI when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {color}
+ * The background-color for the `default` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The background-color for the `default` button UI when the button is disabled
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default` button UI.  Can be either the name of a
+ * predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default` button UI when the cursor is over the button.
+ * Can be either the name of a predefined gradient or a list of color stops. Used as the
+ * `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default` button UI when the button is focused.  Can be
+ * either the name of a predefined gradient or a list of color stops. Used as the `$type`
+ * parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default` button UI when the button is pressed.  Can be
+ * either the name of a predefined gradient or a list of color stops. Used as the `$type`
+ * parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default` button UI when the button is focused and the
+ * cursor is over the button. Can be either the name of a predefined gradient or a list
+ * of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default` button UI when the button is focused and
+ * pressed.  Can be either the name of a predefined gradient or a list of color stops.
+ * Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default` button UI when the button is disabled.  Can be
+ * either the name of a predefined gradient or a list of color stops. Used as the `$type`
+ * parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The text color for the `default` button UI
+ */
+/**
+ * @var {color}
+ * The text color for the `default` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The text color for the `default` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The text color for the `default` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The text color for the `default` button UI when the button is focused and the cursor
+ * is over the button
+ */
+/**
+ * @var {color}
+ * The text color for the `default` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The text color for the `default` button UI when the button is disabled
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default` button UI
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default` button UI when the cursor is over the button
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default` button UI when the button is focused
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default` button UI when the button is pressed
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default` button UI when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default` button UI when the button is focused and pressed
+ */
+/**
+ * @var {number/lipressed}
+ * The inner border-width for the `default` button UI when the button is disabled
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default` button UI
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default` button UI when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default` button UI when the button is disabled
+ */
+/**
+ * @var {number}
+ * The body outline width for the `default` button UI when the button is focused
+ */
+/**
+ * @var {string}
+ * The body outline-style for the `default` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The body outline color for the `default` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The color of the {@link #glyph} icon for the `default` button UI
+ */
+/**
+ * @var {color}
+ * The opacity of the {@link #glyph} icon for the `default` button UI
+ */
+/**
+ * @var {color}
+ * The border-color for the `default-toolbar` button UI
+ */
+/**
+ * @var {color}
+ * The border-color for the `default-toolbar` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The border-color for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The border-color for the `default-toolbar` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The border-color for the `default-toolbar` button UI when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {color}
+ * The border-color for the `default-toolbar` button UI when the button is focused and
+ * pressed
+ */
+/**
+ * @var {color}
+ * The border-color for the `default-toolbar` button UI when the button is disabled
+ */
+/**
+ * @var {color}
+ * The background-color for the `default-toolbar` button UI
+ */
+/**
+ * @var {color}
+ * The background-color for the `default-toolbar` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The background-color for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The background-color for the `default-toolbar` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The background-color for the `default-toolbar` button UI when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The background-color for the `default-toolbar` button UI when the button is focused
+ * and pressed
+ */
+/**
+ * @var {color}
+ * The background-color for the `default-toolbar` button UI when the button is disabled
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default-toolbar` button UI.  Can be either the name of
+ * a predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default-toolbar` button UI when the cursor is over the
+ * button. Can be either the name of a predefined gradient or a list of color stops. Used
+ * as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default-toolbar` button UI when the button is focused.
+ * Can be either the name of a predefined gradient or a list of color stops. Used as the
+ * `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default-toolbar` button UI when the button is pressed.
+ * Can be either the name of a predefined gradient or a list of color stops. Used as the
+ * `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default-toolbar` button UI when the button is focused
+ * and the cursor is over the button. Can be either the name of a predefined gradient or a
+ * list of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default-toolbar` button UI when the button is focused
+ * and pressed. Can be either the name of a predefined gradient or a list of color stops.
+ * Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `default-toolbar` button UI when the button is disabled.
+ * Can be either the name of a predefined gradient or a list of color stops. Used as the
+ * `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The text color for the `default-toolbar` button UI
+ */
+/**
+ * @var {color}
+ * The text color for the `default-toolbar` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The text color for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The text color for the `default-toolbar` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The text color for the `default-toolbar` button UI when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {color}
+ * The text color for the `default-toolbar` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The text color for the `default-toolbar` button UI when the button is disabled
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default-toolbar` button UI
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default-toolbar` button UI when the cursor is over the button
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default-toolbar` button UI when the button is pressed
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default-toolbar` button UI when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default-toolbar` button UI when the button is focused
+ * and pressed
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `default-toolbar` button UI when the button is disabled
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default-toolbar` button UI
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default-toolbar` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default-toolbar` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default-toolbar` button UI when the button is focused
+ * and the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default-toolbar` button UI when the button is focused
+ * and pressed
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `default-toolbar` button UI when the button is disabled
+ */
+/**
+ * @var {number}
+ * The body outline width for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {string}
+ * The body outline-style for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The body outline color for the `default-toolbar` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The color of the {@link #glyph} icon for the `default-toolbar` button UI
+ */
+/**
+ * @var {color}
+ * The opacity of the {@link #glyph} icon for the `default-toolbar` button UI
+ */
+/**
+ * @var {boolean} $button-include-ui-menu-arrows
+ * True to use a different image url for the menu button arrows for each button UI
+ */
+/**
+ * @var {boolean} $button-include-ui-split-arrows
+ * True to use a different image url for the split button arrows for each button UI
+ */
+/**
+ * @var {boolean} $button-include-split-over-arrows
+ * True to include different split arrows for buttons' hover state.
+ */
+/**
+ * @var {boolean} $button-include-split-noline-arrows
+ * True to include "noline" split arrows for buttons in their default state.
+ */
+/**
+ * @var {boolean} $button-toolbar-include-split-noline-arrows
+ * True to include "noline" split arrows for toolbar buttons in their default state.
+ */
+/**
+ * @var {number} $button-opacity-disabled
+ * opacity to apply to the button's main element when the buton is disabled
+ */
+/**
+ * @var {number} $button-inner-opacity-disabled
+ * opacity to apply to the button's inner elements (icon and text) when the buton is disabled
+ */
+/**
+ * @var {number} $button-toolbar-opacity-disabled
+ * opacity to apply to the toolbar button's main element when the button is disabled
+ */
+/**
+ * @var {number} $button-toolbar-inner-opacity-disabled
+ * opacity to apply to the toolbar button's inner elements (icon and text) when the buton is disabled
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" button UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" button UI for "small" scale buttons
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" button UI for "medium" scale buttons
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" button UI for "large" scale buttons
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" button UI for buttons rendered inside a grid cell (Slightly smaller height than default)
+ */
+/**
+ * @var {boolean}
+ * True to include the "default-toolbar" button UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "default-toolbar" button UI for "small" scale buttons
+ */
+/**
+ * @var {boolean}
+ * True to include the "default-toolbar" button UI for "medium" scale buttons
+ */
+/**
+ * @var {boolean}
+ * True to include the "default-toolbar" button UI for "large" scale buttons
+ */
+/**
+ * @var {number}
+ * The default width for a grid cell button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default height for a grid cell button's {@link #cfg-menu} arrow
+ */
+/**
+ * @var {number}
+ * The default width a grid cell {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default height a grid cell {@link Ext.button.Split Split Button}'s arrow
+ */
+/**
+ * @var {number}
+ * The default space between a grid cell button's icon and text
+ */
+/**
+ * @var {number}
+ * The default border-radius for a grid cell button
+ */
+/**
+ * @var {number}
+ * The default border-width for a grid cell button
+ */
+/**
+ * @var {number}
+ * The default padding for a grid cell button
+ */
+/**
+ * @var {number}
+ * The default horizontal padding to add to the left and right of the text element for
+ * a grid cell button
+ */
+/**
+ * @var {number}
+ * The default font-size for a grid cell button
+ */
+/**
+ * @var {number}
+ * The default font-size for a grid cell button when the cursor is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a grid cell button when the button is focused
+ */
+/**
+ * @var {number}
+ * The default font-size for a grid cell button when the button is pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a grid cell button when the button is focused and the cursor
+ * is over the button
+ */
+/**
+ * @var {number}
+ * The default font-size for a grid cell button when the button is focused and pressed
+ */
+/**
+ * @var {number}
+ * The default font-size for a grid cell button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-weight for a grid cell button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a grid cell button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a grid cell button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-weight for a grid cell button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a grid cell button when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-weight for a grid cell button when the button is focused and pressed
+ */
+/**
+ * @var {string}
+ * The default font-weight for a grid cell button when the button is disabled
+ */
+/**
+ * @var {string}
+ * The default font-family for a grid cell button
+ */
+/**
+ * @var {string}
+ * The default font-family for a grid cell button when the cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a grid cell button when the button is focused
+ */
+/**
+ * @var {string}
+ * The default font-family for a grid cell button when the button is pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a grid cell button when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {string}
+ * The default font-family for a grid cell button when the button is focused and pressed
+ */
+/**
+ * @var {string}
+ * The default font-family for a grid cell button when the button is disabled
+ */
+/**
+ * @var {number}
+ * The line-height for the text in a grid cell button
+ */
+/**
+ * @var {number}
+ * The default icon size for a grid cell button
+ */
+/**
+ * @var {color}
+ * The border-color for the `cell` button UI
+ */
+/**
+ * @var {color}
+ * The border-color for the `cell` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The border-color for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The border-color for the `cell` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The border-color for the `cell` button UI when the button is focused and the cursor
+ * is over the button
+ */
+/**
+ * @var {color}
+ * The border-color for the `cell` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The border-color for the `cell` button UI when the button is disabled
+ */
+/**
+ * @var {color}
+ * The background-color for the `cell` button UI
+ */
+/**
+ * @var {color}
+ * The background-color for the `cell` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The background-color for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The background-color for the `cell` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The background-color for the `cell` button UI when the button is focused and the cursor
+ * is over the button
+ */
+/**
+ * @var {color}
+ * The background-color for the `cell` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The background-color for the `cell` button UI when the button is disabled
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `cell` button UI.  Can be either the name of a
+ * predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `cell` button UI when the cursor is over the button.
+ * Can be either the name of a predefined gradient or a list of color stops. Used as the
+ * `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `cell` button UI when the button is focused.  Can be
+ * either the name of a predefined gradient or a list of color stops. Used as the `$type`
+ * parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `cell` button UI when the button is pressed.  Can be
+ * either the name of a predefined gradient or a list of color stops. Used as the `$type`
+ * parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `cell` button UI when the button is focused and the
+ * cursor is over the button.  Can be either the name of a predefined gradient or a list
+ * of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `cell` button UI when the button is focused and pressed.
+ * Can be either the name of a predefined gradient or a list of color stops. Used as the
+ * `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the `cell` button UI when the button is disabled.  Can be
+ * either the name of a predefined gradient or a list of color stops. Used as the `$type`
+ * parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The text color for the `cell` button UI
+ */
+/**
+ * @var {color}
+ * The text color for the `cell` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The text color for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The text color for the `cell` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The text color for the `cell` button UI when the button is focused and the cursor is
+ * over the button
+ */
+/**
+ * @var {color}
+ * The text color for the `cell` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The text color for the `cell` button UI when the button is disabled
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `cell` button UI
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `cell` button UI when the cursor is over the button
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `cell` button UI when the button is pressed
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `cell` button UI when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `cell` button UI when the button is focused and pressed
+ */
+/**
+ * @var {number/list}
+ * The inner border-width for the `cell` button UI when the button is disabled
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `cell` button UI
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `cell` button UI when the cursor is over the button
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `cell` button UI when the button is pressed
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `cell` button UI when the button is focused and the
+ * cursor is over the button
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `cell` button UI when the button is focused and pressed
+ */
+/**
+ * @var {color}
+ * The inner border-color for the `cell` button UI when the button is disabled
+ */
+/**
+ * @var {number}
+ * The body outline width for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {string}
+ * The body outline-style for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The body outline color for the `cell` button UI when the button is focused
+ */
+/**
+ * @var {color}
+ * The color of the {@link #glyph} icon for the `cell` button UI
+ */
+/**
+ * @var {color}
+ * The opacity of the {@link #glyph} icon for the `cell` button UI
+ */
+/**
+ * @var {number} $button-grid-cell-opacity-disabled
+ * opacity to apply to the button's main element when the button is disabled
+ */
+/**
+ * @var {number} $button-grid-cell-inner-opacity-disabled
+ * opacity to apply to the button's inner elements (icon and text) when the buton is disabled
+ */
+/**
+ * @class Ext.tab.Tab
+ */
+/**
+ * @var {color}
+ * The base color of Tabs
+ */
+/**
+ * @var {color}
+ * The base color of focused Tabs
+ */
+/**
+ * @var {color}
+ * The base color of hovered Tabs
+ */
+/**
+ * @var {color}
+ * The base color of the active Tabs
+ */
+/**
+ * @var {color}
+ * The base color of focused hovered Tabs
+ */
+/**
+ * @var {color}
+ * The base color of the active Tab when focused
+ */
+/**
+ * @var {color}
+ * The base color of disabled Tabs
+ */
+/**
+ * @var {color}
+ * The text color of Tabs
+ */
+/**
+ * @var {color}
+ * The text color of focused Tabs
+ */
+/**
+ * @var {color}
+ * The text color of hovered Tabs
+ */
+/**
+ * @var {color}
+ * The text color of the active Tab
+ */
+/**
+ * @var {color}
+ * The text color of focused hovered Tabs
+ */
+/**
+ * @var {color}
+ * The text color of the active Tab when focused
+ */
+/**
+ * @var {color}
+ * The text color of disabled Tabs
+ */
+/**
+ * @var {number}
+ * The font-size of Tabs
+ */
+/**
+ * @var {number}
+ * The font-size of focused Tabs
+ */
+/**
+ * @var {number}
+ * The font-size of hovered Tabs
+ */
+/**
+ * @var {number}
+ * The font-size of the active Tab
+ */
+/**
+ * @var {number}
+ * The font-size of focused hovered Tabs
+ */
+/**
+ * @var {number}
+ * The font-size of the active Tab when focused
+ */
+/**
+ * @var {number}
+ * The font-size of disabled Tabs
+ */
+/**
+ * @var {string}
+ * The font-family of Tabs
+ */
+/**
+ * @var {string}
+ * The font-family of focused Tabs
+ */
+/**
+ * @var {string}
+ * The font-family of hovered Tabs
+ */
+/**
+ * @var {string}
+ * The font-family of the active Tab
+ */
+/**
+ * @var {string}
+ * The font-family of focused hovered Tabs
+ */
+/**
+ * @var {string}
+ * The font-family of the active Tab when focused
+ */
+/**
+ * @var {string}
+ * The font-family of disabled Tabs
+ */
+/**
+ * @var {string}
+ * The font-weight of Tabs
+ */
+/**
+ * @var {string}
+ * The font-weight of focused Tabs
+ */
+/**
+ * @var {string}
+ * The font-weight of hovered Tabs
+ */
+/**
+ * @var {string}
+ * The font-weight of the active Tab
+ */
+/**
+ * @var {string}
+ * The font-weight of focused hovered Tabs
+ */
+/**
+ * @var {string}
+ * The font-weight of the active Tab when focused
+ */
+/**
+ * @var {string}
+ * The font-weight of disabled Tabs
+ */
+/**
+ * @var {string}
+ * The Tab cursor
+ */
+/**
+ * @var {string}
+ * The cursor of disabled Tabs
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for Tabs. Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for 
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for focused Tabs. Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for hovered Tabs. Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for 
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the active Tab. Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for 
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for focused hovered Tabs. Can be either the name of a
+ * predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for the active Tab when focused. Can be either the name of a
+ * predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for disabled Tabs. Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for 
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {list}
+ * The border-radius of Tabs
+ */
+/**
+ * @var {number/list}
+ * The border-width of Tabs
+ */
+/**
+ * @var {number/list}
+ * The border-width of focused Tabs
+ */
+/**
+ * @var {number/list}
+ * The border-width of hovered Tabs
+ */
+/**
+ * @var {number/list}
+ * The border-width of active Tabs
+ */
+/**
+ * @var {number/list}
+ * The border-width of focused hovered Tabs
+ */
+/**
+ * @var {number/list}
+ * The border-width of active Tabs when focused
+ */
+/**
+ * @var {number/list}
+ * The border-width of disabled Tabs
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of Tabs
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of focused Tabs
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of hovered Tabs
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of active Tabs
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of focused hovered Tabs
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of active Tabs when focused
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of disabled Tabs
+ */
+/**
+ * @var {color}
+ * The inner border-color of Tabs
+ */
+/**
+ * @var {color}
+ * The inner border-color of focused Tabs
+ */
+/**
+ * @var {color}
+ * The inner border-color of hovered Tabs
+ */
+/**
+ * @var {color}
+ * The inner border-color of active Tabs
+ */
+/**
+ * @var {color}
+ * The inner border-color of focused hovered Tabs
+ */
+/**
+ * @var {color}
+ * The inner border-color of active Tabs when focused
+ */
+/**
+ * @var {color}
+ * The inner border-color of disabled Tabs
+ */
+/**
+ * @var {boolean}
+ * `true` to suppress the inner border of the tab on the side adjacent to the tab strip
+ */
+/**
+ * @var {boolean}
+ * `true` to suppress the inner border of the tab on the side adjacent to the tab strip
+ * when the tab is focused
+ */
+/**
+ * @var {boolean}
+ * `true` to suppress the inner border of the tab on the side adjacent to the tab strip
+ * when the tab is hovered
+ */
+/**
+ * @var {boolean}
+ * `true` to suppress the inner border of the tab on the side adjacent to the tab strip
+ * when the tab is active
+ */
+/**
+ * @var {boolean}
+ * `true` to suppress the inner border of the tab on the side adjacent to the tab strip
+ * when the tab is focused and hovered
+ */
+/**
+ * @var {boolean}
+ * `true` to suppress the inner border of the tab on the side adjacent to the tab strip
+ * when the tab is focused and active
+ */
+/**
+ * @var {boolean}
+ * `true` to suppress the inner border of the tab on the side adjacent to the tab strip
+ * when the tab is disabled
+ */
+/**
+ * @var {number}
+ * The body outline width of focused Tabs
+ */
+/**
+ * @var {string}
+ * The body outline-style of focused Tabs
+ */
+/**
+ * @var {color}
+ * The body outline color of focused Tabs
+ */
+/**
+ * @var {color}
+ * The border-color of Tabs
+ */
+/**
+ * @var {color}
+ * The border-color of focused Tabs
+ */
+/**
+ * @var {color}
+ * The border-color of hovered Tabs
+ */
+/**
+ * @var {color}
+ * The border-color of the active Tab
+ */
+/**
+ * @var {color}
+ * The border-color of focused hovered Tabs
+ */
+/**
+ * @var {color}
+ * The border-color of the active Tab when focused
+ */
+/**
+ * @var {color}
+ * The border-color of disabled Tabs
+ */
+/**
+ * @var {number/list}
+ * The padding of Tabs
+ */
+/**
+ * @var {number}
+ * The horizontal padding to add to the left and right of the Tab's text element
+ */
+/**
+ * @var {number/list}
+ * The margin of Tabs. Typically used to add horizontal space between the tabs.
+ */
+/**
+ * @var {number}
+ * The width of the Tab close icon
+ */
+/**
+ * @var {number}
+ * The height of the Tab close icon
+ */
+/**
+ * @var {number}
+ * The distance to offset the Tab close icon from the top of the tab
+ */
+/**
+ * @var {number}
+ * The distance to offset the Tab close icon from the right of the tab
+ */
+/**
+ * @var {number}
+ * the space in between the text and the close button
+ */
+/**
+ * @var {number}
+ * The opacity of the Tab close icon
+ */
+/**
+ * @var {number}
+ * The opacity of the Tab close icon when hovered
+ */
+/**
+ * @var {number}
+ * The opacity of the Tab close icon when the Tab is disabled
+ */
+/**
+ * @var {boolean}
+ * True to change the x background-postition of the close icon background image on hover
+ * to allow for a horizontally aligned background image sprite
+ */
+/**
+ * @var {boolean}
+ * True to change the x background-postition of the close icon background image on click
+ * to allow for a horizontally aligned background image sprite
+ */
+/**
+ * @var {number}
+ * The width of Tab icons
+ */
+/**
+ * @var {number}
+ * The height of Tab icons
+ */
+/**
+ * @var {number}
+ * The line-height of Tabs
+ */
+/**
+ * @var {number}
+ * The space between the Tab icon and the Tab text
+ */
+/**
+ * @var {number}
+ * The background-position of Tab icons
+ */
+/**
+ * @var {color}
+ * The color of Tab glyph icons
+ */
+/**
+ * @var {color}
+ * The color of a Tab glyph icon when the Tab is focused
+ */
+/**
+ * @var {color}
+ * The color of a Tab glyph icon when the Tab is hovered
+ */
+/**
+ * @var {color}
+ * The color of a Tab glyph icon when the Tab is active
+ */
+/**
+ * @var {color}
+ * The color of a Tab glyph icon when the Tab is focused and hovered
+ */
+/**
+ * @var {color}
+ * The color of a Tab glyph icon when the Tab is focused and active
+ */
+/**
+ * @var {color}
+ * The color of a Tab glyph icon when the Tab is disabled
+ */
+/**
+ * @var {number}
+ * The opacity of a Tab glyph icon
+ */
+/**
+ * @var {number}
+ * The opacity of a Tab glyph icon when the Tab is disabled
+ */
+/**
+ * @var {number}
+ * opacity to apply to the tab's main element when the tab is disabled
+ */
+/**
+ * @var {number}
+ * opacity to apply to the tab's text element when the tab is disabled
+ */
+/**
+ * @var {number}
+ * opacity to apply to the tab's icon element when the tab is disabled
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" tab UI
+ */
+/**
+ * @class Ext.tab.Bar
+ */
+/**
+ * @var {number/list}
+ * The padding of the Tab Bar
+ */
+/**
+ * @var {color}
+ * The base color of the Tab Bar
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the Tab Bar. Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for 
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The border-color of the Tab Bar
+ */
+/**
+ * @var {number/list}
+ * The border-width of the Tab Bar
+ */
+/**
+ * @var {number}
+ * The height of the Tab Bar strip
+ */
+/**
+ * @var {color}
+ * The border-color of the Tab Bar strip
+ */
+/**
+ * @var {color}
+ * The background-color of the Tab Bar strip
+ */
+/**
+ * @var {number/list}
+ * The border-width of the Tab Bar strip
+ */
+/**
+ * @var {number}
+ * The width of the Tab Bar scrollers
+ */
+/**
+ * @var {number}
+ * The height of the Tab Bar scrollers
+ */
+/**
+ * @var {number/list}
+ * The margin of "top" Tab Bar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "right" Tab Bar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "bottom" Tab Bar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "left" Tab Bar scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of the Tab Bar scrollers
+ */
+/**
+ * @var {string}
+ * The cursor of disabled Tab Bar scrollers
+ */
+/**
+ * @var {number}
+ * The opacity of Tab Bar scrollers
+ */
+/**
+ * @var {number}
+ * The opacity of hovered Tab Bar scrollers
+ */
+/**
+ * @var {number}
+ * The opacity of pressed Tab Bar scrollers
+ */
+/**
+ * @var {number}
+ * The opacity of disabled Tab Bar scrollers
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-style scroller buttons.  When `true` scroller buttons are given their
+ * hover state by changing their background-position,  When `false` scroller buttons are
+ * given their hover state by applying opacity.
+ */
+/**
+ * @var {boolean}
+ * true to include separate scroller icons for "plain" tabbars
+ */
+/**
+ * @var {boolean}
+ * if true, the tabbar will use symmetrical scroller icons.  Top and bottom tabbars
+ * will share icons, and Left and right will share icons.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" tabbar UI
+ */
+/**
+ * @class Ext.window.Window
+ */
+/**
+ * @var {color}
+ * The base color of Windows
+ */
+/**
+ * @var {number}
+ * The padding of Windows
+ */
+/**
+ * @var {number}
+ * The border-radius of Windows
+ */
+/**
+ * @var {number}
+ * The border-width of Windows
+ */
+/**
+ * @var {color}
+ * The border-color of Windows
+ */
+/**
+ * @var {color}
+ * The inner border-color of Windows
+ */
+/**
+ * @var {number}
+ * The inner border-width of Windows
+ */
+/**
+ * @var {color}
+ * The background-color of Windows
+ */
+/**
+ * @var {number}
+ * The body border-width of Windows
+ */
+/**
+ * @var {string}
+ * The body border-style of Windows
+ */
+/**
+ * @var {color}
+ * The body border-color of Windows
+ */
+/**
+ * @var {color}
+ * The body background-color of Windows
+ */
+/**
+ * @var {color}
+ * The body text color of Windows
+ */
+/**
+ * @var {number/list}
+ * The padding of Window Headers
+ */
+/**
+ * @var {number}
+ * The font-size of Window Headers
+ */
+/**
+ * @var {number}
+ * The line-height of Window Headers
+ */
+/**
+ * @var {color}
+ * The text color of Window Headers
+ */
+/**
+ * @var {color}
+ * The background-color of Window Headers
+ */
+/**
+ * @var {string}
+ * The font-weight of Window Headers
+ */
+/**
+ * @var {number}
+ * The space between the Window {@link Ext.panel.Tool Tools}
+ */
+/**
+ * @var {string}
+ * The background sprite to use for Window {@link Ext.panel.Tool Tools}
+ */
+/**
+ * @var {string}
+ * The font-family of Window Headers
+ */
+/**
+ * @var {number/list}
+ * The padding of the Window Header's text element
+ */
+/**
+ * @var {string}
+ * The text-transform of Window Headers
+ */
+/**
+ * @var {number}
+ * The width of the Window Header icon
+ */
+/**
+ * @var {number}
+ * The height of the Window Header icon
+ */
+/**
+ * @var {number}
+ * The space between the Window Header icon and text
+ */
+/**
+ * @var {list}
+ * The background-position of  the Window Header icon
+ */
+/**
+ * @var {color}
+ * The color of the Window Header glyph icon
+ */
+/**
+ * @var {number}
+ * The opacity of the Window Header glyph icon
+ */
+/**
+ * @var {number}
+ * The border-width of Window Headers
+ */
+/**
+ * @var {color}
+ * The inner border-color of Window Headers
+ */
+/**
+ * @var {number}
+ * The inner border-width of Window Headers
+ */
+/**
+ * @var {boolean} $ui-force-header-border
+ * True to force the window header to have a border on the side facing the window body.
+ * Overrides dock layout's border management border removal rules.
+ */
+/**
+ * @var {number}
+ * The opacity of ghost Windows while dragging
+ */
+/**
+ * @var {boolean}
+ * True to include neptune style border management rules.
+ */
+/**
+ * @var {color}
+ * The color to apply to the border that wraps the body and docked items. The presence of
+ * the wrap border is controlled by the {@link #border} config. Only applicable when
+ * `$window-include-border-management-rules` is `true`.
+ */
+/**
+ * @var {number}
+ * The width to apply to the border that wraps the body and docked items. The presence of
+ * the wrap border is controlled by the {@link #border} config. Only applicable when
+ * `$window-include-border-management-rules` is `true`.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" window UI
+ */
+/**
+ * @var {boolean}
+ * True to ignore the frame padding.  By default, the frame mixin adds extra padding when
+ * border radius is larger than border width.  This is intended to prevent the content
+ * from colliding with the rounded corners of the frame.  Set this to true to prevent
+ * the window frame from adding this extra padding.
+ */
+/**
+ * @var {number}
+ * The default font-size of the Window body
+ */
+/**
+ * @var {string}
+ * The default font-weight of the Window body
+ */
+/**
+ * @var {string}
+ * The default font-family of the Window body
+ */
+/**
+ * @class Ext.tip.Tip
+ */
+/**
+ * @var {color}
+ * The background-color of the Tip
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the Tip. Can be either the name of a predefined gradient or a
+ * list of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {color}
+ * The text color of the Tip body
+ */
+/**
+ * @var {number}
+ * The font-size of the Tip body
+ */
+/**
+ * @var {string}
+ * The font-weight of the Tip body
+ */
+/**
+ * @var {number/list}
+ * The padding of the Tip body
+ */
+/**
+ * @var {color}
+ * The text color of any anchor tags inside the Tip body
+ */
+/**
+ * @var {color}
+ * The text color of the Tip header
+ */
+/**
+ * @var {number}
+ * The font-size of the Tip header
+ */
+/**
+ * @var {string}
+ * The font-weight of the Tip header
+ */
+/**
+ * @var {number/list}
+ * The padding of the Tip header's body element
+ */
+/**
+ * @var {color}
+ * The border-color of the Tip
+ */
+/**
+ * @var {number}
+ * The border-width of the Tip
+ */
+/**
+ * @var {number}
+ * The border-radius of the Tip
+ */
+/**
+ * @var {color}
+ * The inner border-color of the form field error Tip
+ */
+/**
+ * @var {number}
+ * The inner border-width of the form field error Tip
+ */
+/**
+ * @var {color}
+ * The border-color of the form field error Tip
+ */
+/**
+ * @var {number}
+ * The border-radius of the form field error Tip
+ */
+/**
+ * @var {number}
+ * The border-width of the form field error Tip
+ */
+/**
+ * @var {color}
+ * The background-color of the form field error Tip
+ */
+/**
+ * @var {number/list}
+ * The padding of the form field error Tip's body element
+ */
+/**
+ * @var {color}
+ * The text color of the form field error Tip's body element
+ */
+/**
+ * @var {number}
+ * The font-size of the form field error Tip's body element
+ */
+/**
+ * @var {string}
+ * The font-weight of the form field error Tip's body element
+ */
+/**
+ * @var {color}
+ * The color of anchor tags in the form field error Tip's body element
+ */
+/**
+ * @var {number}
+ * The space between {@link Ext.panel.Tool Tools} in the header
+ */
+/**
+ * @var {string}
+ * The sprite to use for the header {@link Ext.panel.Tool Tools}
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" tip UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "form-invalid" tip UI
+ */
+/**
+ * @class Ext.container.ButtonGroup
+ */
+/**
+ * @var {color}
+ * The background-color of the ButtonGroup
+ */
+/**
+ * @var {color}
+ * The border-color of the ButtonGroup
+ */
+/**
+ * @var {number}
+ * The border-radius of the ButtonGroup
+ */
+/**
+ * @var {number}
+ * The border-radius of framed ButtonGroups
+ */
+/**
+ * @var {number}
+ * The border-width of the ButtonGroup
+ */
+/**
+ * @var {number/list}
+ * The body padding of the ButtonGroup
+ */
+/**
+ * @var {number/list}
+ * The inner border-width of the ButtonGroup
+ */
+/**
+ * @var {color}
+ * The inner border-color of the ButtonGroup
+ */
+/**
+ * @var {number/list}
+ * The margin of the header element. Used to add space around the header.
+ */
+/**
+ * @var {number}
+ * The font-size of the header
+ */
+/**
+ * @var {number}
+ * The font-weight of the header
+ */
+/**
+ * @var {number}
+ * The font-family of the header
+ */
+/**
+ * @var {number}
+ * The line-height of the header
+ */
+/**
+ * @var {number}
+ * The text color of the header
+ */
+/**
+ * @var {number}
+ * The padding of the header
+ */
+/**
+ * @var {number}
+ * The background-color of the header
+ */
+/**
+ * @var {number}
+ * The border-spacing to use on the table layout element
+ */
+/**
+ * @var {number}
+ * The background-color of framed ButtonGroups
+ */
+/**
+ * @var {number}
+ * The border-width of framed ButtonGroups
+ */
+/**
+ * @var {string}
+ * Sprite image to use for header {@link Ext.panel.Tool Tools}
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" button group UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "default-framed" button group UI
+ */
+/**
+ * @class Ext.window.MessageBox
+ */
+/**
+ * @var {color}
+ * The background-color of the MessageBox body
+ */
+/**
+ * @var {number}
+ * The border-width of the MessageBox body
+ */
+/**
+ * @var {color}
+ * The border-color of the MessageBox body
+ */
+/**
+ * @var {string}
+ * The border-style of the MessageBox body
+ */
+/**
+ * @var {list}
+ * The background-position of the MessageBox icon
+ */
+/**
+ * @var {number}
+ * The size of the MessageBox icon
+ */
+/**
+ * @var {number}
+ * The amount of space between the MessageBox icon and the message text
+ */
+/**
+ * @class Ext.form.CheckboxGroup
+ */
+/**
+ * @var {number/list}
+ * The padding of the CheckboxGroup body element
+ */
+/**
+ * @var {color}
+ * The border color of the CheckboxGroup body element when in an invalid state.
+ */
+/**
+ * @var {string}
+ * The border style of the CheckboxGroup body element when in an invalid state.
+ */
+/**
+ * @var {number}
+ * The border width of the CheckboxGroup body element when in an invalid state.
+ */
+/**
+ * @var {string}
+ * The background image of the CheckboxGroup body element when in an invalid state.
+ */
+/**
+ * @var {string}
+ * The background-repeat of the CheckboxGroup body element when in an invalid state.
+ */
+/**
+ * @var {string}
+ * The background-position of the CheckboxGroup body element when in an invalid state.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" checkboxgroup UI
+ */
+/**
+ * @class Ext.form.FieldSet
+ */
+/**
+ * @var {number}
+ * The font-size of the FieldSet header
+ */
+/**
+ * @var {string}
+ * The font-weight of the FieldSet header
+ */
+/**
+ * @var {string}
+ * The font-family of the FieldSet header
+ */
+/**
+ * @var {number/string}
+ * The line-height of the FieldSet header
+ */
+/**
+ * @var {color}
+ * The text color of the FieldSet header
+ */
+/**
+ * @var {number}
+ * The border-width of the FieldSet
+ */
+/**
+ * @var {string}
+ * The border-style of the FieldSet
+ */
+/**
+ * @var {color}
+ * The border-color of the FieldSet
+ */
+/**
+ * @var {number}
+ * The border radius of FieldSet elements.
+ */
+/**
+ * @var {number/list}
+ * The FieldSet's padding
+ */
+/**
+ * @var {number/list}
+ * The FieldSet's margin
+ */
+/**
+ * @var {number/list}
+ * The padding to apply to the FieldSet's header
+ */
+/**
+ * @var {number}
+ * The size of the FieldSet's collapse tool
+ */
+/**
+ * @var {number/list}
+ * The margin to apply to the FieldSet's collapse tool
+ */
+/**
+ * @var {number/list}
+ * The padding to apply to the FieldSet's collapse tool
+ */
+/**
+ * @var {string} $fieldset-collapse-tool-background-image
+ * The background-image to use for the collapse tool. If 'none' the default tool
+ * sprite will be used.  Defaults to 'none'.
+ */
+/**
+ * @var {number}
+ * The opacity of the FieldSet's collapse tool
+ */
+/**
+ * @var {number}
+ * The opacity of the FieldSet's collapse tool when hovered
+ */
+/**
+ * @var {number}
+ * The opacity of the FieldSet's collapse tool when pressed
+ */
+/**
+ * @var {number/list}
+ * The margin to apply to the FieldSet's checkbox (for FieldSets that use
+ * {@link #checkboxToggle})
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" fieldset UI
+ */
+/**
+ * @class Ext.toolbar.Paging
+ */
+/**
+ * @var {boolean}
+ * True to include different icons when the paging toolbar buttons are disabled.
+ */
+/**
+ * @class Ext.view.BoundList
+ */
+/**
+ * @var {color}
+ * The background-color of the BoundList
+ */
+/**
+ * @var {color}
+ * The border-color of the BoundList
+ */
+/**
+ * @var {number}
+ * The border-width of the BoundList
+ */
+/**
+ * @var {string}
+ * The border-style of the BoundList
+ */
+/**
+ * @var {number}
+ * The height of BoundList items
+ */
+/**
+ * @var {string}
+ * The font family of the BoundList items
+ */
+/**
+ * @var {number}
+ * The font size of the BoundList items
+ */
+/**
+ * @var {string}
+ * The font-weight of the BoundList items
+ */
+/**
+ * @var {number/list}
+ * The padding of BoundList items
+ */
+/**
+ * @var {number}
+ * The border-width of BoundList items
+ */
+/**
+ * @var {string}
+ * The border-style of BoundList items
+ */
+/**
+ * @var {color}
+ * The border-color of BoundList items
+ */
+/**
+ * @var {color}
+ * The border-color of hovered BoundList items
+ */
+/**
+ * @var {color}
+ * The border-color of selected BoundList items
+ */
+/**
+ * @var {color}
+ * The background-color of hovered BoundList items
+ */
+/**
+ * @var {color}
+ * The background-color of selected BoundList items
+ */
+/**
+ * @class Ext.picker.Date
+ */
+/**
+ * @var {number}
+ * The border-width of the DatePicker
+ */
+/**
+ * @var {string}
+ * The border-style of the DatePicker
+ */
+/**
+ * @var {color}
+ * The background-color of the DatePicker
+ */
+/**
+ * @var {string}
+ * The background-image of the DatePicker next arrow
+ */
+/**
+ * @var {list}
+ * The background-position of the DatePicker next arrow
+ */
+/**
+ * @var {string}
+ * The background-image of the DatePicker previous arrow
+ */
+/**
+ * @var {list}
+ * The background-position of the DatePicker previous arrow
+ */
+/**
+ * @var {number}
+ * The width of DatePicker arrows
+ */
+/**
+ * @var {number}
+ * The height of DatePicker arrows
+ */
+/**
+ * @var {string}
+ * The type of cursor to display when the cursor is over a DatePicker arrow
+ */
+/**
+ * @var {number}
+ * The opacity of the DatePicker arrows
+ */
+/**
+ * @var {number}
+ * The opacity of the DatePicker arrows when hovered
+ */
+/**
+ * @var {string/list}
+ * The Date Picker header background gradient. Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {number/list}
+ * The padding of the Date Picker header
+ */
+/**
+ * @var {color}
+ * The color of the Date Picker month button
+ */
+/**
+ * @var {number}
+ * The width of the arrow on the Date Picker month button
+ */
+/**
+ * @var {string}
+ * The background-image of the arrow on the Date Picker month button
+ */
+/**
+ * @var {boolean}
+ * True to render the month button as transparent
+ */
+/**
+ * @var {string}
+ * The text-align of the Date Picker header
+ */
+/**
+ * @var {number}
+ * The height of Date Picker items
+ */
+/**
+ * @var {number}
+ * The width of Date Picker items
+ */
+/**
+ * @var {number/list}
+ * The padding of Date Picker items
+ */
+/**
+ * @var {string}
+ * The font-family of Date Picker items
+ */
+/**
+ * @var {number}
+ * The font-size of Date Picker items
+ */
+/**
+ * @var {string}
+ * The font-weight of Date Picker items
+ */
+/**
+ * @var {string}
+ * The text-align of Date Picker items
+ */
+/**
+ * @var {color}
+ * The text color of Date Picker items
+ */
+/**
+ * @var {string}
+ * The type of cursor to display when the cursor is over a Date Picker item
+ */
+/**
+ * @var {string}
+ * The font-family of Date Picker column headers
+ */
+/**
+ * @var {number}
+ * The font-size of Date Picker column headers
+ */
+/**
+ * @var {string}
+ * The font-weight of Date Picker column headers
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of Date Picker column headers. Can be either the name of a
+ * predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {string}
+ * The border-style of Date Picker column headers
+ */
+/**
+ * @var {number}
+ * The border-width of Date Picker column headers
+ */
+/**
+ * @var {string}
+ * The text-align of Date Picker column headers
+ */
+/**
+ * @var {number}
+ * The height of Date Picker column headers
+ */
+/**
+ * @var {number/list}
+ * The padding of Date Picker column headers
+ */
+/**
+ * @var {number}
+ * The border-width of Date Picker items
+ */
+/**
+ * @var {string}
+ * The border-style of Date Picker items
+ */
+/**
+ * @var {color}
+ * The border-color of Date Picker items
+ */
+/**
+ * @var {string}
+ * The border-style of today's date on the Date Picker
+ */
+/**
+ * @var {string}
+ * The border-style of the selected item
+ */
+/**
+ * @var {string}
+ * The font-weight of the selected item
+ */
+/**
+ * @var {color}
+ * The text color of the items in the previous and next months
+ */
+/**
+ * @var {string}
+ * The type of cursor to display when the cursor is over a disabled item
+ */
+/**
+ * @var {color}
+ * The text color of disabled Date Picker items
+ */
+/**
+ * @var {color}
+ * The background-color of disabled Date Picker items
+ */
+/**
+ * @var {color}
+ * The background-color of the Date Picker footer
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the Date Picker footer. Can be either the name of a
+ * predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {number/list}
+ * The border-width of the Date Picker footer
+ */
+/**
+ * @var {string}
+ * The border-style of the Date Picker footer
+ */
+/**
+ * @var {string}
+ * The text-align of the Date Picker footer
+ */
+/**
+ * @var {number/list}
+ * The padding of the Date Picker footer
+ */
+/**
+ * @var {number}
+ * The space between the footer buttons
+ */
+/**
+ * @var {color}
+ * The border-color of the Month Picker
+ */
+/**
+ * @var {number}
+ * The border-width of the Month Picker
+ */
+/**
+ * @var {string}
+ * The border-style of the Month Picker
+ */
+/**
+ * @var {color}
+ * The text color of Month Picker items
+ */
+/**
+ * @var {color}
+ * The text color of Month Picker items
+ */
+/**
+ * @var {color}
+ * The border-color of Month Picker items
+ */
+/**
+ * @var {string}
+ * The border-style of Month Picker items
+ */
+/**
+ * @var {string}
+ * The font-family of Month Picker items
+ */
+/**
+ * @var {number}
+ * The font-size of Month Picker items
+ */
+/**
+ * @var {string}
+ * The font-weight of Month Picker items
+ */
+/**
+ * @var {number/list}
+ * The margin of Month Picker items
+ */
+/**
+ * @var {string}
+ * The text-align of Month Picker items
+ */
+/**
+ * @var {number}
+ * The height of Month Picker items
+ */
+/**
+ * @var {string}
+ * The type of cursor to display when the cursor is over a Month Picker item
+ */
+/**
+ * @var {color}
+ * The background-color of hovered Month Picker items
+ */
+/**
+ * @var {color}
+ * The background-color of selected Month Picker items
+ */
+/**
+ * @var {string}
+ * The border-style of selected Month Picker items
+ */
+/**
+ * @var {color}
+ * The border-color of selected Month Picker items
+ */
+/**
+ * @var {number}
+ * The height of the Month Picker year navigation buttons 
+ */
+/**
+ * @var {number}
+ * The width of the Month Picker year navigation buttons 
+ */
+/**
+ * @var {string}
+ * The type of cursor to display when the cursor is over a Month Picker year navigation button 
+ */
+/**
+ * @var {number}
+ * The opacity of the Month Picker year navigation buttons 
+ */
+/**
+ * @var {number}
+ * The opacity of hovered Month Picker year navigation buttons 
+ */
+/**
+ * @var {string}
+ * The background-image of the Month Picker next year navigation button
+ */
+/**
+ * @var {string}
+ * The background-image of the Month Picker previous year navigation button
+ */
+/**
+ * @var {list}
+ * The background-poisition of the Month Picker next year navigation button
+ */
+/**
+ * @var {list}
+ * The background-poisition of the hovered Month Picker next year navigation button
+ */
+/**
+ * @var {list}
+ * The background-poisition of the Month Picker previous year navigation button
+ */
+/**
+ * @var {list}
+ * The background-poisition of the hovered Month Picker previous year navigation button
+ */
+/**
+ * @var {string}
+ * The border-style of the Month Picker separator
+ */
+/**
+ * @var {number}
+ * The border-width of the Month Picker separator
+ */
+/**
+ * @var {color}
+ * The border-color of the Month Picker separator
+ */
+/**
+ * @var {number/list}
+ * The margin of Month Picker items when the datepicker does not have footer buttons
+ */
+/**
+ * @var {number}
+ * The height of Month Picker items when the datepicker does not have footer buttons
+ */
+/**
+ * @class Ext.picker.Color
+ */
+/**
+ * @var {color}
+ * The background-color of Color Pickers
+ */
+/**
+ * @var {color}
+ * The border-color of Color Pickers
+ */
+/**
+ * @var {number}
+ * The border-width of Color Pickers
+ */
+/**
+ * @var {string}
+ * The border-style of Color Pickers
+ */
+/**
+ * @var {number}
+ * The number of columns to display in the Color Picker
+ */
+/**
+ * @var {number}
+ * The number of rows to display in the Color Picker
+ */
+/**
+ * @var {number}
+ * The height of each Color Picker item
+ */
+/**
+ * @var {number}
+ * The width of each Color Picker item
+ */
+/**
+ * @var {number}
+ * The padding of each Color Picker item
+ */
+/**
+ * @var {string}
+ * The cursor to display when the mouse is over a Color Picker item
+ */
+/**
+ * @var {color}
+ * The border-color of Color Picker items
+ */
+/**
+ * @var {number}
+ * The border-width of Color Picker items
+ */
+/**
+ * @var {string}
+ * The border-style of Color Picker items
+ */
+/**
+ * @var {color}
+ * The border-color of hovered Color Picker items
+ */
+/**
+ * @var {color}
+ * The background-color of Color Picker items
+ */
+/**
+ * @var {color}
+ * The background-color of hovered Color Picker items
+ */
+/**
+ * @var {color}
+ * The border-color of the selected Color Picker item
+ */
+/**
+ * @var {color}
+ * The background-color of the selected Color Picker item
+ */
+/**
+ * @var {color}
+ * The inner border-color of Color Picker items
+ */
+/**
+ * @var {number}
+ * The inner border-width of Color Picker items
+ */
+/**
+ * @var {string}
+ * The inner border-style of Color Picker items
+ */
+/**
+ * @class Ext.form.field.HtmlEditor
+ */
+/**
+ * @var {number}
+ * The border-width of the HtmlEditor
+ */
+/**
+ * @var {color}
+ * The border-color of the HtmlEditor
+ */
+/**
+ * @var {color}
+ * The background-color of the HtmlEditor
+ */
+/**
+ * @var {number}
+ * The size of the HtmlEditor toolbar icons
+ */
+/**
+ * @var {number}
+ * The font-size of the HtmlEditor's font selection control
+ */
+/**
+ * @var {number}
+ * The font-family of the HtmlEditor's font selection control
+ */
+/**
+ * @class Ext.grid.column.Action
+ */
+/**
+ * @var {number}
+ * The height of action column icons
+ */
+/**
+ * @var {number}
+ * The width of action column icons
+ */
+/**
+ * @var {string}
+ * The type of cursor to display when the cursor is over an action column icon
+ */
+/**
+ * @var {number}
+ * The opacity of disabled action column icons
+ */
+/**
+ * @var {number}
+ * The amount of padding to add to the left and right of the action column cell
+ */
+/**
+ * @class Ext.grid.column.Check
+ */
+/**
+ * @var {number}
+ * Opacity of disabled CheckColumns
+ */
+/**
+ * @class Ext.grid.column.RowNumberer
+ */
+/**
+ * @var {number}
+ * The horizontal space before the number in the RowNumberer cell
+ */
+/**
+ * @var {number}
+ * The horizontal space after the number in the RowNumberer cell
+ */
+/**
+ * @class Ext.form.field.Base
+ */
+/**
+ * @var {number} $form-field-height
+ * Height for form fields.
+ */
+/**
+ * @var {number} $form-toolbar-field-height
+ * Height for form fields in toolbar.
+ */
+/**
+ * @var {number} $form-field-padding
+ * Padding around form fields.
+ */
+/**
+ * @var {number} $form-field-font-size
+ * Font size for form fields.
+ */
+/**
+ * @var {string} $form-field-font-family
+ * Font family for form fields.
+ */
+/**
+ * @var {string} $form-field-font-weight
+ * Font weight for form fields.
+ */
+/**
+ * @var {number} $form-toolbar-field-font-size
+ * Font size for toolbar form fields.
+ */
+/**
+ * @var {string} $form-toolbar-field-font-family
+ * Font family for toolbar form fields.
+ */
+/**
+ * @var {string} $form-toolbar-field-font-weight
+ * Font weight for toolbar form fields.
+ */
+/**
+ * @var {color} $form-field-color
+ * Text color for form fields.
+ */
+/**
+ * @var {color} $form-field-empty-color
+ * Text color for empty form fields.
+ */
+/**
+ * @var {color} $form-field-border-color
+ * Border color for form fields.
+ */
+/**
+ * @var {number} $form-field-border-width
+ * Border width for form fields.
+ */
+/**
+ * @var {string} $form-field-border-style
+ * Border style for form fields.
+ */
+/**
+ * @var {color} $form-field-focus-border-color
+ * Border color for focused form fields.
+ *
+ * In the default Neptune color scheme this is the same as $base-highlight-color
+ * but it does not change automatically when one changes the $base-color.  This is because
+ * checkboxes and radio buttons have this focus color hard coded into their background
+ * images.  If this color is changed, you should also modify checkbox and radio button
+ * background images to match
+ */
+/**
+ * @var {color} $form-field-invalid-border-color
+ * Border color for invalid form fields.
+ */
+/**
+ * @var {color} $form-field-background-color
+ * Background color for form fields.
+ */
+/**
+ * @var {string} $form-field-background-image
+ * Background image for form fields.
+ */
+/**
+ * @var {color} $form-field-invalid-background-color
+ * Background color for invalid form fields.
+ */
+/**
+ * @var {string} $form-field-invalid-background-image
+ * Background image for invalid form fields.
+ */
+/**
+ * @var {string} $form-field-invalid-background-repeat
+ * Background repeat for invalid form fields.
+ */
+/**
+ * @var {string/list} $form-field-invalid-background-position
+ * Background position for invalid form fields.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" field UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" field UI
+ */
+/**
+ * @class Ext.form.Labelable
+ */
+/**
+ * @var {color}
+ * The text color of form field labels
+ */
+/**
+ * @var {string}
+ * The font-weight of form field labels
+ */
+/**
+ * @var {number}
+ * The font-size of form field labels
+ */
+/**
+ * @var {string}
+ * The font-family of form field labels
+ */
+/**
+ * @var {number}
+ * The line-height of form field labels
+ */
+/**
+ * @var {number}
+ * Horizontal space between the label and the field body when the label is left-aligned.
+ */
+/**
+ * @var {number}
+ * Vertical space between the label and the field body when the label is top-aligned.
+ */
+/**
+ * @var {string}
+ * The background image for error icons
+ */
+/**
+ * @var {number}
+ * Width for form error icons.
+ */
+/**
+ * @var {number}
+ * Height for form error icons.
+ */
+/**
+ * @var {number/list}
+ * Margin for error icons that are aligned to the side of the field
+ */
+/**
+ * @var {number}
+ * The space between the icon and the message for errors that display under the field
+ */
+/**
+ * @var {number/list}
+ * The padding on errors that display under the form field
+ */
+/**
+ * @var {color}
+ * The text color of form error messages
+ */
+/**
+ * @var {string}
+ * The font-weight of form error messages
+ */
+/**
+ * @var {number}
+ * The font-size of form error messages
+ */
+/**
+ * @var {string}
+ * The font-family of form error messages
+ */
+/**
+ * @var {number}
+ * The line-height of form error messages
+ */
+/**
+ * @var {number}
+ * The bottom margin to apply to form items when in auto, anchor, vbox, or table layout.
+ * This value is also used as the default border-spacing in a form-layout.
+ */
+/**
+ * @var {number}
+ * Opacity of disabled form fields
+ */
+/**
+ * @var {color}
+ * The text color of toolbar form field labels
+ */
+/**
+ * @var {string}
+ * The font-weight of toolbar form field labels
+ */
+/**
+ * @var {number}
+ * The font-size of toolbar form field labels
+ */
+/**
+ * @var {string}
+ * The font-family of toolbar form field labels
+ */
+/**
+ * @var {number}
+ * The line-height of toolbar form field labels
+ */
+/**
+ * @var {number}
+ * Horizontal space between the toolbar field's label and the field body when the label is left-aligned.
+ */
+/**
+ * @var {number}
+ * Vertical space between the toolbar field's label and the field body when the label is top-aligned.
+ */
+/**
+ * @var {string}
+ * The background image for toolbar field error icons
+ */
+/**
+ * @var {number}
+ * Width for toolbar field error icons.
+ */
+/**
+ * @var {number}
+ * Height for toolbar field error icons.
+ */
+/**
+ * @var {number/list}
+ * Margin for toolbar field error icons that are aligned to the side of the field
+ */
+/**
+ * @var {number}
+ * The space between the icon and the message for errors that display under a toolbar field
+ */
+/**
+ * @var {number/list}
+ * The padding on errors that display under the toolbar form field
+ */
+/**
+ * @var {color}
+ * The text color of toolbar form error messages
+ */
+/**
+ * @var {string}
+ * The font-weight of toolbar form field error messages
+ */
+/**
+ * @var {number}
+ * The font-size of toolbar form field error messages
+ */
+/**
+ * @var {string}
+ * The font-family of toolbar form field error messages
+ */
+/**
+ * @var {number}
+ * The line-height of toolbar form field error messages
+ */
+/**
+ * @var {number}
+ * Opacity of disabled toolbar form fields
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" label UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" label UI
+ */
+/**
+ * @class Ext.form.field.Text
+ */
+/**
+ * @var {number}
+ * The height of text fields
+ */
+/**
+ * @var {number}
+ * Font size for text fields.
+ */
+/**
+ * @var {string}
+ * Font family for text fields.
+ */
+/**
+ * @var {string}
+ * Font weight for text fields.
+ */
+/**
+ * @var {color}
+ * The color of the text field's input element
+ */
+/**
+ * @var {color}
+ * The background color of the text field's input element
+ */
+/**
+ * @var {number/list}
+ * The border width of text fields
+ */
+/**
+ * @var {string/list}
+ * The border style of text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of the focused text field
+ */
+/**
+ * @var {color}
+ * Border color for invalid text fields.
+ */
+/**
+ * @var {number/list}
+ * Border radius for text fields
+ */
+/**
+ * @var {string}
+ * The background image of the text field's input element
+ */
+/**
+ * @var {number/list}
+ * The padding of the text field's input element
+ */
+/**
+ * @var {color}
+ * Text color for empty text fields.
+ */
+/**
+ * @var {number}
+ * The default width of the text field's body element (the element that contains the input
+ * element and triggers) when the field is not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Background color of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background image of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background repeat of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string/list}
+ * Background position of the text field's input element when the field value is invalid.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-theme styled border for text fields.
+ */
+/**
+ * @var {number} $form-textarea-line-height
+ * The line-height to use for the TextArea's text
+ */
+/**
+ * @var {number} $form-textarea-body-height
+ * The default width of the TextArea's body element (the element that contains the textarea
+ * html element when the field is not sized explicitly using the {@link #width}config, or
+ * sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Text color for file fields
+ */
+/**
+ * @var {number}
+ * The width of the text field's trigger element
+ */
+/**
+ * @var {number/list}
+ * The width of the text field's trigger's border
+ */
+/**
+ * @var {color/list}
+ * The color of the text field's trigger's border
+ */
+/**
+ * @var {string/list}
+ * The style of the text field's trigger's border
+ */
+/**
+ * @var {color}
+ * The color of the text field's trigger's border when hovered
+ */
+/**
+ * @var {color}
+ * The color of the text field's trigger's border when the field is focused
+ */
+/**
+ * @var {color}
+ * The color of the text field's trigger's border when the field is focused and the trigger is hovered
+ */
+/**
+ * @var {string}
+ * The default background image for text field triggers
+ */
+/**
+ * @var {color}
+ * The background color of the text field's trigger element
+ */
+/**
+ * @var {number}
+ * The height of toolbar text fields
+ */
+/**
+ * @var {number}
+ * Font size for toolbar text fields.
+ */
+/**
+ * @var {string}
+ * Font family for toolbar text fields.
+ */
+/**
+ * @var {string}
+ * Font weight for toolbar text fields.
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's input element
+ */
+/**
+ * @var {color}
+ * The background color of the toolbar text field's input element
+ */
+/**
+ * @var {number/list}
+ * The border width of toolbar text fields
+ */
+/**
+ * @var {string/list}
+ * The border style of toolbar text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of toolbar text fields
+ */
+/**
+ * @var {color/list}
+ * The border color of the focused toolbar text field
+ */
+/**
+ * @var {color} $form-field-invalid-border-color
+ * Border color for invalid toolbar text fields.
+ */
+/**
+ * @var {number/list}
+ * Border radius for toolbar text fields
+ */
+/**
+ * @var {string}
+ * The background image of the toolbar text field's input element
+ */
+/**
+ * @var {number/list}
+ * The padding of the toolbar text field's input element
+ */
+/**
+ * @var {color}
+ * Text color for empty toolbar text fields.
+ */
+/**
+ * @var {number}
+ * The default width of the toolbar text field's body element (the element that contains the input
+ * element and triggers) when the field is not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Background color of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background image of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background repeat of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string/list}
+ * Background position of the toolbar text field's input element when the field value is invalid.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-theme styled border for toolbar text fields.
+ */
+/**
+ * @var {number/string}
+ * The line-height to use for the toolbar TextArea's text
+ */
+/**
+ * @var {number}
+ * The default width of the toolbar TextArea's body element (the element that contains the
+ * textarea html element when the field is not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Text color for toolbar file fields
+ */
+/**
+ * @var {number}
+ * The width of the toolbar text field's trigger element
+ */
+/**
+ * @var {number/list}
+ * The width of the toolbar text field's trigger's border
+ */
+/**
+ * @var {color/list}
+ * The color of the toolbar text field's trigger's border
+ */
+/**
+ * @var {string/list}
+ * The style of the toolbar text field's trigger's border
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's trigger's border when hovered
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's trigger's border when the field is focused
+ */
+/**
+ * @var {color}
+ * The color of the toolbar text field's trigger's border when the field is focused and the trigger is hovered
+ */
+/**
+ * @var {string}
+ * The default background image for toolbar text field triggers
+ */
+/**
+ * @var {color}
+ * The background color of the toolbar text field's trigger element
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" text field UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" text field UI
+ */
+/**
+ * @class Ext.form.field.Spinner
+ */
+/**
+ * @var {boolean}
+ * True to use vertically oriented triggers. False to use horizontally oriented triggers.
+ * Themes that set this property to true must also override the
+ * {@link Ext.form.trigger.Spinner#vertical} config to match. Defaults to true.  When
+ * 'vertical' orientation is used, the background image for both triggers is
+ * 'form/spinner'.  When 'horizontal' is used, the triggers use separate background
+ * images - 'form/spinner-up', and 'form/spinner-down'.
+ */
+/**
+ * @var {string}
+ * Background image for vertically oriented spinner triggers
+ */
+/**
+ * @var {string}
+ * Background image for the "up" trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {string}
+ * Background image for the "down" trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {boolean}
+ * `true` to use vertically oriented triggers for fields with the 'toolbar' UI.
+ */
+/**
+ * @var {string}
+ * Background image for vertically oriented toolbar spinner triggers
+ */
+/**
+ * @var {string}
+ * Background image for the "up" toolbar trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {string}
+ * Background image for the "down" toolbar trigger when trigger buttons are horizontally aligned
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" spinner UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" spinner UI
+ */
+/**
+ * @class Ext.form.field.Checkbox
+ */
+/**
+ * @var {number}
+ * The size of the checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the radio button
+ */
+/**
+ * @var {color}
+ * The color of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-weight of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-size of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-family of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The line-height of the checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {number}
+ * The space between the {@link #boxLabel} and the checkbox.
+ */
+/**
+ * @var {number}
+ * The size of the toolbar checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the toolbar checkbox
+ */
+/**
+ * @var {string}
+ * The background-image of the toolbar radio button
+ */
+/**
+ * @var {color}
+ * The color of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-weight of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-size of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The font-family of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {string}
+ * The line-height of the toolbar checkbox's {@link #boxLabel}
+ */
+/**
+ * @var {number}
+ * The space between the {@link #boxLabel} and the toolbar checkbox.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" checkbox UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" checkbox UI
+ */
+/**
+ * @class Ext.form.field.Display
+ */
+/**
+ * @var {color}
+ * The text color of display fields
+ */
+/**
+ * @var {number}
+ * The font-size of display fields
+ */
+/**
+ * @var {string}
+ * The font-family of display fields
+ */
+/**
+ * @var {string}
+ * The font-weight of display fields
+ */
+/**
+ * @var {number}
+ * The line-height of display fields
+ */
+/**
+ * @var {color}
+ * The text color of toolbar display fields
+ */
+/**
+ * @var {number}
+ * The font-size of toolbar display fields
+ */
+/**
+ * @var {string}
+ * The font-family of toolbar display fields
+ */
+/**
+ * @var {string}
+ * The font-weight of toolbar display fields
+ */
+/**
+ * @var {number}
+ * The line-height of toolbar display fields
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" display field UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "toolbar" display field UI
+ */
+/**
+ * @class Ext.view.Table
+ */
+/**
+ * @var {color}
+ * The color of the text in the grid cells
+ */
+/**
+ * @var {number}
+ * The font size of the text in the grid cells
+ */
+/**
+ * @var {number}
+ * The line-height of the text inside the grid cells.
+ */
+/**
+ * @var {string}
+ * The font-weight of the text in the grid cells
+ */
+/**
+ * @var {string}
+ * The font-family of the text in the grid cells
+ */
+/**
+ * @var {color}
+ * The background-color of the grid cells
+ */
+/**
+ * @var {color}
+ * The border-color of row/column borders. Can be specified as a single color, or as a list
+ * of colors containing the row border color followed by the column border color.
+ */
+/**
+ * @var {string}
+ * The border-style of the row/column borders.
+ */
+/**
+ * @var {number}
+ * The border-width of the row and column borders.
+ */
+/**
+ * @var {color}
+ * The background-color of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+/**
+ * @var {string}
+ * The background-gradient to use for "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+/**
+ * @var {number}
+ * The border-width of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the row border width is determined by
+ * {#$grid-row-cell-border-width}.
+ */
+/**
+ * @var {color}
+ * The border-color of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the row border color is determined by
+ * {#$grid-row-cell-border-color}.
+ */
+/**
+ * @var {string}
+ * The border-style of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the row border style is determined by
+ * {#$grid-row-cell-border-style}.
+ */
+/**
+ * @var {color}
+ * The border-color of "special" cells when the row is selected using a {@link
+ * Ext.selection.RowModel Row Selection Model}.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ * Only applies to the vertical border, since the selected row border color is determined by
+ * {#$grid-row-cell-selected-border-color}.
+ */
+/**
+ * @var {color}
+ * The background-color of "special" cells when the row is hovered. Special cells are
+ * created by {@link Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel
+ * Checkbox Selection Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+/**
+ * @var {color}
+ * The background-color color of odd-numbered rows when the table view is configured with
+ * `{@link Ext.view.Table#stripeRows stripeRows}: true`.
+ */
+/**
+ * @var {string}
+ * The border-style of the hovered row
+ */
+/**
+ * @var {color}
+ * The text color of the hovered row
+ */
+/**
+ * @var {color}
+ * The background-color of the hovered row
+ */
+/**
+ * @var {color}
+ * The border-color of the hovered row
+ */
+/**
+ * @var {string}
+ * The border-style of the selected row
+ */
+/**
+ * @var {color}
+ * The text color of the selected row
+ */
+/**
+ * @var {color}
+ * The background-color of the selected row
+ */
+/**
+ * @var {color}
+ * The border-color of the selected row
+ */
+/**
+ * @var {number}
+ * The border-width of the focused cell
+ */
+/**
+ * @var {color}
+ * The border-color of the focused cell
+ */
+/**
+ * @var {string}
+ * The border-style of the focused cell
+ */
+/**
+ * @var {number}
+ * The spacing between grid cell border and inner focus border
+ */
+/**
+ * @var {color}
+ * The text color of the focused cell
+ */
+/**
+ * @var {color}
+ * The background-color of the focused cell
+ */
+/**
+ * @var {boolean}
+ * True to show the focus border when a row is focused even if the grid has no
+ * {@link Ext.panel.Table#rowLines rowLines}.
+ */
+/**
+ * @var {color}
+ * The text color of a selected cell when using a {@link Ext.selection.CellModel
+ * Cell Selection Model}.
+ */
+/**
+ * @var {color}
+ * The background-color of a selected cell when using a {@link Ext.selection.CellModel
+ * Cell Selection Model}.
+ */
+/**
+ * @var {number}
+ * The amount of padding to apply to the grid cell's inner div element
+ */
+/**
+ * @var {string}
+ * The type of text-overflow to use on the grid cell's inner div element
+ */
+/**
+ * @var {color}
+ * The border-color of the grid body
+ */
+/**
+ * @var {number}
+ * The border-width of the grid body border
+ */
+/**
+ * @var {string}
+ * The border-style of the grid body border
+ */
+/**
+ * @var {color}
+ * The background-color of the grid body
+ */
+/**
+ * @var {number}
+ * The amount of padding to apply to the grid body when the grid contains no data.
+ */
+/**
+ * @var {color}
+ * The text color of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {color}
+ * The background color of the grid body when the grid contains no data.
+ */
+/**
+ * @var {number}
+ * The font-size of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {number}
+ * The font-weight of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {number}
+ * The font-family of the {@link Ext.view.Table#emptyText emptyText} in the grid body when
+ * the grid contains no data.
+ */
+/**
+ * @var {color}
+ * The color of the resize markers that display when dragging a column border to resize
+ * the column
+ */
+/*
+ * Vars for fields which are rendered to fit inside grid cells.
+ * This includes cell and row editor fields and fields in widget columns.
+ */
+/**
+ *  @class Ext.form.field.Base
+ */
+/**
+ * @var {number}
+ * The height of text fields rendered in the context of a grid cell.  Defaults to $form-field-height.  If grid row
+ * height is smaller than $form-field-height, defaults to the grid row height.  Grid row
+ * height is calculated by adding $grid-row-cell-line-height to the top and bottom values of
+ * $grid-cell-inner-padding.
+ */
+/**
+ * @var {number/list}
+ * The padding of grid fields.
+ */
+/**
+ * @var {number}
+ * The color of the grid field text
+ */
+/**
+ * @var {number}
+ * The font size of the grid field text
+ */
+/**
+ * @var {string}
+ * The font-weight of the grid field text
+ */
+/**
+ * @var {string}
+ * The font-family of the grid field text
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" form field UIs input fields rendered in the context of a grid cell.
+ *
+ * This defaults to `true`. It is required if either grid editors
+ * ({@link Ext.grid.plugin.CellEditing cell} or {@link Ext.grid.plugin.RowEditing row})
+ * are being used, or if a {@link Ext.grid.column.Widget WidgetColumn} is being used to
+ * house an input field.
+ */
+/**
+ *  @class Ext.form.field.Text
+ */
+/**
+ * @var {number}
+ * The height of text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * Font size for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * Font family for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * Font weight for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {color}
+ * The color of a text field's input element when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * The background color of a text field's input element when entered in the context of a grid cell
+ */
+/**
+ * @var {number/list}
+ * The border width of text fields entered in the context of a grid cell
+ */
+/**
+ * @var {string/list}
+ * The border style of text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {color/list}
+ * The border color of text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {color/list}
+ * The border color of the focused text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * Border color for invalid text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {number/list}
+ * Border radius for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * The background image of a text field's input element when rendered in the context of a grid cell
+ */
+/**
+ * @var {number/list}
+ * The padding of a text field's input element when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * Text color for empty text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {number}
+ * @private
+ * The default width of a text field's body element (the element that contains the input
+ * element and triggers) when the field is  rendered in the context of a grid cell and not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Background color of a text field's input element when rendered in the context of a grid cell and the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background image of a grid field text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background repeat of the grid field text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string/list}
+ * Background position of the grid field text field's input element when rendered in the context of a grid cell and the field value is invalid.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-theme styled border for text fields  rendered in the context of a grid cell.
+ */
+/**
+ * @var {number/string}
+ * The line-height to use for the TextArea's text when rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The default width of the grid field TextArea's body element (the element that
+ * contains the textarea html element when the field is rendered in the context of a grid cell and not sized explicitly using the
+ * {@link #width} config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Text color for file fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The width of a text field's trigger element when rendered in the context of a grid cell
+ */
+/**
+ * @var {number/list}
+ * The width of a text field's trigger's border when rendered in the context of a grid cell
+ */
+/**
+ * @var {color/list}
+ * The color of a text field's trigger's border when rendered in the context of a grid cell
+ */
+/**
+ * @var {string/list}
+ * The style of a text field's trigger's border when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * The color of a text field's trigger's border when  rendered in the context of a grid cell and hovered
+ */
+/**
+ * @var {color}
+ * The color of a text field's trigger's border when  rendered in the context of a grid cell and the field is focused
+ */
+/**
+ * @var {color}
+ * The color of a text field's trigger's border when rendered in the context of a grid cell and the field is focused and the trigger is hovered
+ */
+/**
+ * @var {string}
+ * The default background image for text field triggers when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * The background color of a text field's trigger element when rendered in the context of a grid cell
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" text field UI
+ */
+/**
+ * @class Ext.form.field.Spinner
+ */
+/**
+ * @var {boolean}
+ * True to use vertically oriented spinner triggers when rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * Background image for vertically oriented grid field spinner triggers when rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * Background image for the "up" trigger when grid field spinner trigger buttons are  rendered in the context of a grid cell and horizontally aligned
+ */
+/**
+ * @var {string}
+ * Background image for the "down" trigger when grid field spinner trigger buttons are  rendered in the context of a grid cell and horizontally aligned
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" spinner UI
+ */
+/**
+ * @var {number}
+ * The size of a checkbox when rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The background-image of a checkbox when rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The background-image of a radio button when rendered in the context of a grid cell
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" checkbox UI
+ */
+/**
+ *  @class Ext.form.field.Display
+ */
+/**
+ * @var {color}
+ * The text color of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The font-size of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The font-family of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The font-weight of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The line-height of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" display field UI
+ */
+/**
+ * @class Ext.grid.feature.Grouping
+ */
+/**
+ * @var {color}
+ * The background color of group headers
+ */
+/**
+ * @var {number/list}
+ * The border-width of group headers
+ */
+/**
+ * @var {string}
+ * The border-style of group headers
+ */
+/**
+ * @var {color}
+ * The border-color of group headers
+ */
+/**
+ * @var {number/list}
+ * The padding of group headers
+ */
+/**
+ * @var {string}
+ * The cursor of group headers
+ */
+/**
+ * @var {color}
+ * The text color of group header titles
+ */
+/**
+ * @var {string}
+ * The font-family of group header titles
+ */
+/**
+ * @var {number}
+ * The font-size of group header titles
+ */
+/**
+ * @var {string}
+ * The font-weight of group header titles
+ */
+/**
+ * @var {number}
+ * The line-height of group header titles
+ */
+/**
+ * @var {number/list}
+ * The amount of padding to add to the group title element.  This is typically used
+ * to reserve space for an icon by setting the amountof space to be reserved for the icon
+ * as the left value and setting the remaining sides to 0.
+ */
+/**
+ * @class Ext.grid.feature.RowBody
+ */
+/**
+ * @var {number}
+ * The font-size of the RowBody
+ */
+/**
+ * @var {number}
+ * The line-height of the RowBody
+ */
+/**
+ * @var {string}
+ * The font-family of the RowBody
+ */
+/**
+ * @var {number}
+ * The font-weight of the RowBody
+ */
+/**
+ * @var {number/list}
+ * The padding of the RowBody
+ */
+/**
+ * @class Ext.menu.Menu
+ */
+/**
+ * @var {color}
+ * The background-color of the Menu
+ */
+/**
+ * @var {color}
+ * The border-color of the Menu
+ */
+/**
+ * @var {string}
+ * The border-style of the Menu
+ */
+/**
+ * @var {number}
+ * The border-width of the Menu
+ */
+/**
+ * @var {number/list}
+ * The padding to apply to the Menu body element
+ */
+/**
+ * @var {color}
+ * The color of Menu Item text
+ */
+/**
+ * @var {string}
+ * The font-family of {@link Ext.menu.Item Menu Items}
+ */
+/**
+ * @var {number}
+ * The font-size of {@link Ext.menu.Item Menu Items}
+ */
+/**
+ * @var {string}
+ * The font-weight of {@link Ext.menu.Item Menu Items}
+ */
+/**
+ * @var {number}
+ * The height of {@link Ext.menu.Item Menu Items}
+ */
+/**
+ * @var {number}
+ * The border-width of {@link Ext.menu.Item Menu Items}
+ */
+/**
+ * @var {string}
+ * The style of cursor to display when the cursor is over a {@link Ext.menu.Item Menu Item}
+ */
+/**
+ * @var {string}
+ * The style of cursor to display when the cursor is over a disabled {@link Ext.menu.Item Menu Item}
+ */
+/**
+ * @var {color}
+ * The background-color of the active {@link Ext.menu.Item Menu Item}
+ */
+/**
+ * @var {color}
+ * The border-color of the active {@link Ext.menu.Item Menu Item}
+ */
+/**
+ * @var {string/list}
+ * The background-gradient for {@link Ext.menu.Item Menu Items}. Can be either the name
+ * of a predefined gradient or a list of color stops. Used as the `$type` parameter for
+ * {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {number}
+ * The border-radius of {@link Ext.menu.Item Menu Items}
+ */
+/**
+ * @var {number}
+ * The size of {@link Ext.menu.Item Menu Item} icons
+ */
+/**
+ * @var {color} $menu-glyph-color
+ * The color to use for menu icons configured using {@link Ext.menu.Item#glyph glyph}
+ */
+/**
+ * @var {number} $menu-glyph-opacity
+ * The opacity to use for menu icons configured using {@link Ext.menu.Item#glyph glyph}
+ */
+/**
+ * @var {number}
+ * The size of {@link Ext.menu.Item Menu Item} checkboxes
+ */
+/**
+ * @var {list}
+ * The background-position of {@link Ext.menu.Item Menu Item} icons
+ */
+/**
+ * @var {number}
+ * vertical offset for menu item icons/checkboxes.  By default the icons are roughly
+ * vertically centered, but it may be necessary in some cases to make minor adjustments
+ * to the vertical position.
+ */
+/**
+ * @var {number}
+ * vertical offset for menu item text.  By default the text is given a line-height
+ * equal to the menu item's content-height, however, depending on the font this may not
+ * result in perfect vertical centering.  Offset can be used to make small adjustments
+ * to the text's vertical position.
+ */
+/**
+ * @var {number/list}
+ * The space to the left and right of {@link Ext.menu.Item Menu Item} text. Can be specified
+ * as a number (e.g. 5px) or as a list with 2 items for different left/right values. e.g.
+ *
+ *     $menu-item-text-horizontal-spacing: 4px 8px !default; // 4px of space to the left, and 8px to the right
+ */
+/**
+ * @var {number}
+ * The space to the left and right of {@link Ext.menu.Item Menu Item} icons. Can be specified
+ * as a number (e.g. 5px) or as a list with 2 items for different left/right values. e.g.
+ *
+ *     $menu-item-icon-horizontal-spacing: 4px 8px !default; // 4px of space to the left, and 8px to the right
+ */
+/**
+ * @var {number}
+ * The space to the left and right of {@link Ext.menu.Item Menu Item} arrows. Can be specified
+ * as a number (e.g. 5px) or as a list with 2 items for different left/right values. e.g.
+ *
+ *     $menu-item-arrow-horizontal-spacing: 4px 8px !default; // 4px of space to the left, and 8px to the right
+ */
+/**
+ * @var {number/list}
+ * The margin of {@link Ext.menu.Separator Menu Separators}
+ */
+/**
+ * @var {number}
+ * The height of {@link Ext.menu.Item Menu Item} arrows
+ */
+/**
+ * @var {number}
+ * The width of {@link Ext.menu.Item Menu Item} arrows
+ */
+/**
+ * @var {number}
+ * The opacity of disabled {@link Ext.menu.Item Menu Items}
+ */
+/**
+ * @var {number/list}
+ * The margin non-MenuItems placed in a Menu
+ */
+/**
+ * @var {color}
+ * The border-color of {@link Ext.menu.Separator Menu Separators}
+ */
+/**
+ * @var {color}
+ * The background-color of {@link Ext.menu.Separator Menu Separators}
+ */
+/**
+ * @var {number}
+ * The size of {@link Ext.menu.Separator Menu Separators}
+ */
+/**
+ * @var {number}
+ * The width of Menu scrollers
+ */
+/**
+ * @var {number}
+ * The height of Menu scrollers
+ */
+/**
+ * @var {color}
+ * The border-color of Menu scroller buttons
+ */
+/**
+ * @var {number}
+ * The border-width of Menu scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "top" Menu scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "bottom" Menu scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of Menu scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of disabled Menu scroller buttons
+ */
+/**
+ * @var {number}
+ * The opacity of Menu scroller buttons. Only applicable when
+ * {@link #$menu-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of hovered Menu scroller buttons. Only applicable when
+ * {@link #$menu-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of pressed Menu scroller buttons. Only applicable when
+ * {@link #$menu-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of disabled Menu scroller buttons.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-style scroller buttons.  When `true` scroller buttons are given their
+ * hover state by changing their background-position,  When `false` scroller buttons are
+ * given their hover state by applying opacity.
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" menu UI
+ */
+/**
+ * @class Ext.grid.filters.Filters
+ */
+/**
+ * @var {string}
+ * The font-style of the filtered column.
+ */
+/**
+ * @var {string}
+ * The font-weight of the filtered column.
+ */
+/**
+ * @var {string}
+ * The text-decoration of the filtered column.
+ */
+/**
+ * @class Ext.grid.locking.Lockable
+ */
+/**
+ * @var {number}
+ * The width of the border between the locked views
+ */
+/**
+ * @var {string}
+ * The border-style of the border between the locked views
+ */
+/**
+ * @var {string}
+ * The border-color of the border between the locked views. Defaults to the
+ * panel border color. May be overridden in a theme.
+ */
+/*
+ * Vars for fields which are rendered to fit inside grid cells.
+ * This includes cell and row editor fields and fields in widget columns.
+ */
+/**
+ *  @class Ext.form.field.Base
+ */
+/**
+ * @var {number}
+ * The height of text fields rendered in the context of a grid cell.  Defaults to $form-field-height.  If grid row
+ * height is smaller than $form-field-height, defaults to the grid row height.  Grid row
+ * height is calculated by adding $grid-row-cell-line-height to the top and bottom values of
+ * $grid-cell-inner-padding.
+ */
+/**
+ * @var {number/list}
+ * The padding of grid fields.
+ */
+/**
+ * @var {number}
+ * The color of the grid field text
+ */
+/**
+ * @var {number}
+ * The font size of the grid field text
+ */
+/**
+ * @var {string}
+ * The font-weight of the grid field text
+ */
+/**
+ * @var {string}
+ * The font-family of the grid field text
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" form field UIs input fields rendered in the context of a grid cell.
+ *
+ * This defaults to `true`. It is required if either grid editors
+ * ({@link Ext.grid.plugin.CellEditing cell} or {@link Ext.grid.plugin.RowEditing row})
+ * are being used, or if a {@link Ext.grid.column.Widget WidgetColumn} is being used to
+ * house an input field.
+ */
+/**
+ *  @class Ext.form.field.Text
+ */
+/**
+ * @var {number}
+ * The height of text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * Font size for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * Font family for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * Font weight for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {color}
+ * The color of a text field's input element when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * The background color of a text field's input element when entered in the context of a grid cell
+ */
+/**
+ * @var {number/list}
+ * The border width of text fields entered in the context of a grid cell
+ */
+/**
+ * @var {string/list}
+ * The border style of text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {color/list}
+ * The border color of text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {color/list}
+ * The border color of the focused text fields rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * Border color for invalid text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {number/list}
+ * Border radius for text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * The background image of a text field's input element when rendered in the context of a grid cell
+ */
+/**
+ * @var {number/list}
+ * The padding of a text field's input element when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * Text color for empty text fields rendered in the context of a grid cell.
+ */
+/**
+ * @var {number}
+ * @private
+ * The default width of a text field's body element (the element that contains the input
+ * element and triggers) when the field is  rendered in the context of a grid cell and not sized explicitly using the {@link #width}
+ * config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Background color of a text field's input element when rendered in the context of a grid cell and the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background image of a grid field text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string}
+ * Background repeat of the grid field text field's input element when the field value is invalid.
+ */
+/**
+ * @var {string/list}
+ * Background position of the grid field text field's input element when rendered in the context of a grid cell and the field value is invalid.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-theme styled border for text fields  rendered in the context of a grid cell.
+ */
+/**
+ * @var {number/string}
+ * The line-height to use for the TextArea's text when rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The default width of the grid field TextArea's body element (the element that
+ * contains the textarea html element when the field is rendered in the context of a grid cell and not sized explicitly using the
+ * {@link #width} config, or sized by it's containing layout.
+ */
+/**
+ * @var {color}
+ * Text color for file fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The width of a text field's trigger element when rendered in the context of a grid cell
+ */
+/**
+ * @var {number/list}
+ * The width of a text field's trigger's border when rendered in the context of a grid cell
+ */
+/**
+ * @var {color/list}
+ * The color of a text field's trigger's border when rendered in the context of a grid cell
+ */
+/**
+ * @var {string/list}
+ * The style of a text field's trigger's border when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * The color of a text field's trigger's border when  rendered in the context of a grid cell and hovered
+ */
+/**
+ * @var {color}
+ * The color of a text field's trigger's border when  rendered in the context of a grid cell and the field is focused
+ */
+/**
+ * @var {color}
+ * The color of a text field's trigger's border when rendered in the context of a grid cell and the field is focused and the trigger is hovered
+ */
+/**
+ * @var {string}
+ * The default background image for text field triggers when rendered in the context of a grid cell
+ */
+/**
+ * @var {color}
+ * The background color of a text field's trigger element when rendered in the context of a grid cell
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" text field UI
+ */
+/**
+ * @class Ext.form.field.Spinner
+ */
+/**
+ * @var {boolean}
+ * True to use vertically oriented spinner triggers when rendered in the context of a grid cell.
+ */
+/**
+ * @var {string}
+ * Background image for vertically oriented grid field spinner triggers when rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * Background image for the "up" trigger when grid field spinner trigger buttons are  rendered in the context of a grid cell and horizontally aligned
+ */
+/**
+ * @var {string}
+ * Background image for the "down" trigger when grid field spinner trigger buttons are  rendered in the context of a grid cell and horizontally aligned
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" spinner UI
+ */
+/**
+ * @var {number}
+ * The size of a checkbox when rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The background-image of a checkbox when rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The background-image of a radio button when rendered in the context of a grid cell
+ */
+/**
+ * @var {boolean}
+ * True to include the "grid-cell" checkbox UI
+ */
+/**
+ *  @class Ext.form.field.Display
+ */
+/**
+ * @var {color}
+ * The text color of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The font-size of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The font-family of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {string}
+ * The font-weight of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {number}
+ * The line-height of display fields rendered in the context of a grid cell
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" display field UI
+ */
+/**
+ * @class Ext.grid.plugin.RowEditing
+ */
+/**
+ * @var {color}
+ * The background-color of the RowEditor
+ */
+/**
+ * @var {color}
+ * The border-color of the RowEditor
+ */
+/**
+ * @var {number}
+ * The border-width of the RowEditor
+ */
+/**
+ * @var {number/list}
+ * The padding of the RowEditor
+ */
+/**
+ * @var {number}
+ * The amount of space in between the editor fields
+ */
+/**
+ * @var {number}
+ * The space between the RowEditor buttons
+ */
+/**
+ * @var {number}
+ * The border-radius of the RowEditor button container
+ */
+/**
+ * @var {number/list}
+ * The padding of the RowEditor button container
+ */
+/**
+ * @var {number/list}
+ * Padding to apply to the body element of the error tooltip
+ */
+/**
+ * @var {string}
+ * The list-style of the error tooltip's list items
+ */
+/**
+ * @var {number}
+ * Space to add before each list item on the error tooltip
+ */
+/**
+ * @class Ext.grid.plugin.RowExpander
+ */
+/**
+ * @var {number}
+ * The height of the RowExpander icon
+ */
+/**
+ * @var {number}
+ * The width of the RowExpander icon
+ */
+/**
+ * @var {number}
+ * The horizontal space before the RowExpander icon
+ */
+/**
+ * @var {number}
+ * The horizontal space after the RowExpander icon
+ */
+/**
+ * @var {string}
+ * The cursor for the RowExpander icon
+ */
+/**
+ * @class Ext.grid.property.Grid
+ */
+/**
+ * @var {string}
+ * The background-image of property grid cells
+ */
+/**
+ * @var {string}
+ * The background-position of property grid cells
+ */
+/**
+ * @var {number/string}
+ * The padding to add before the text of property grid cells to make room for the
+ * background-image. Only applies if $grid-property-cell-background-image is not null
+ */
+/**
+ * @class Ext.layout.container.Accordion
+ */
+/**
+ * @var {color}
+ * The text color of Accordion headers
+ */
+/**
+ * @var {color}
+ * The background-color of Accordion headers
+ */
+/**
+ * @var {color}
+ * The background-color of Accordion headers when hovered
+ */
+/**
+ * @var {number}
+ * The size of {@link Ext.panel.Tool Tools} in Accordion headers
+ */
+/**
+ * @var {number/list}
+ * The border-width of Accordion headers
+ */
+/**
+ * @var {number/list}
+ * The border-color of Accordion headers
+ */
+/**
+ * @var {number/list}
+ * The padding of Accordion headers
+ */
+/**
+ * @var {string}
+ * The font-weight of Accordion headers
+ */
+/**
+ * @var {string}
+ * The font-family of Accordion headers
+ */
+/**
+ * @var {string}
+ * The text-transform property of Accordion headers
+ */
+/**
+ * @var {number}
+ * The body border-width of Accordion layout element
+ */
+/**
+ * @var {color}
+ * The background-color of the Accordion layout element
+ */
+/**
+ * @var {color}
+ * The background-color of the Accordion layout element
+ */
+/**
+ * @var {number/list}
+ * The padding of the Accordion layout element
+ */
+/**
+ * @var {string}
+ * The sprite image to use for {@link Ext.panel.Tool Tools} in Accordion headers
+ */
+/**
+ * @class Ext.selection.CheckboxModel
+ */
+/**
+ * @var {number}
+ * The horizontal space before the checkbox
+ */
+/**
+ * @var {number}
+ * The horizontal space after the checkbox
+ */
+/**
+ * @class Ext.slider.Multi
+ */
+/**
+ * @var {number}
+ * The horizontal slider thumb width
+ */
+/**
+ * @var {number}
+ * The horizontal slider thumb height
+ */
+/**
+ * @var {number}
+ * The width of the horizontal slider start cap
+ */
+/**
+ * @var {number}
+ * The width of the horizontal slider end cap
+ */
+/**
+ * @var {number}
+ * The vertical slider thumb width
+ */
+/**
+ * @var {number}
+ * The vertical slider thumb height
+ */
+/**
+ * @var {number}
+ * The height of the vertical slider start cap
+ */
+/**
+ * @var {number}
+ * The height of the vertical slider end cap
+ */
+/** @class Ext.toolbar.Breadcrumb */
+/**
+ * @class Ext.toolbar.Toolbar
+ */
+/**
+ * @var {number}
+ * The default font-size of Toolbar text
+ */
+/**
+ * @var {color}
+ * The background-color of the Toolbar
+ */
+/**
+ * @var {string/list}
+ * The background-gradient of the Toolbar.  Can be either the name of a predefined gradient
+ * or a list of color stops. Used as the `$type` parameter for {@link Global_CSS#background-gradient}.
+ */
+/**
+ * @var {number}
+ * The horizontal spacing of Toolbar items
+ */
+/**
+ * @var {number}
+ * The vertical spacing of Toolbar items
+ */
+/**
+ * @var {number}
+ * The horizontal spacing of {@link Ext.panel.Panel#fbar footer} Toolbar items
+ */
+/**
+ * @var {number}
+ * The vertical spacing of {@link Ext.panel.Panel#fbar footer} Toolbar items
+ */
+/**
+ * @var {color}
+ * The background-color of {@link Ext.panel.Panel#fbar footer} Toolbars
+ */
+/**
+ * @var {number}
+ * The border-width of {@link Ext.panel.Panel#fbar footer} Toolbars
+ */
+/**
+ * @var {color}
+ * The border-color of Toolbars
+ */
+/**
+ * @var {number}
+ * The border-width of Toolbars
+ */
+/**
+ * @var {string}
+ * The border-style of Toolbars
+ */
+/**
+ * @var {number}
+ * The width of Toolbar {@link Ext.toolbar.Spacer Spacers}
+ */
+/**
+ * @var {color}
+ * The main border-color of Toolbar {@link Ext.toolbar.Separator Separators}
+ */
+/**
+ * @var {color}
+ * The highlight border-color of Toolbar {@link Ext.toolbar.Separator Separators}
+ */
+/**
+ * @var {number/list}
+ * The margin of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {number}
+ * The height of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {string}
+ * The border-style of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {number}
+ * The border-width of {@link Ext.toolbar.Separator Separators} on a horizontally oriented Toolbar
+ */
+/**
+ * @var {number/list}
+ * The margin of {@link Ext.toolbar.Separator Separators} on a vertically oriented Toolbar
+ */
+/**
+ * @var {string}
+ * The border-style of {@link Ext.toolbar.Separator Separators} on a vertically oriented Toolbar
+ */
+/**
+ * @var {number}
+ * The border-width of {@link Ext.toolbar.Separator Separators} on a vertically oriented Toolbar
+ */
+/**
+ * @var {string}
+ * The default font-family of Toolbar text
+ */
+/**
+ * @var {number}
+ * The default font-size of Toolbar text
+ */
+/**
+ * @var {number}
+ * The default font-size of Toolbar text
+ */
+/**
+ * @var {color}
+ * The text-color of Toolbar text
+ */
+/**
+ * @var {number}
+ * The line-height of Toolbar text
+ */
+/**
+ * @var {number/list}
+ * The padding of Toolbar text
+ */
+/**
+ * @var {number}
+ * The width of Toolbar scrollers
+ */
+/**
+ * @var {number}
+ * The height of Toolbar scrollers
+ */
+/**
+ * @var {number}
+ * The width of scrollers on vertically aligned toolbars
+ */
+/**
+ * @var {number}
+ * The height of scrollers on vertically aligned toolbars
+ */
+/**
+ * @var {color}
+ * The border-color of Toolbar scroller buttons
+ */
+/**
+ * @var {number}
+ * The border-width of Toolbar scroller buttons
+ */
+/**
+ * @var {color}
+ * The border-color of scroller buttons on vertically aligned toolbars
+ */
+/**
+ * @var {number}
+ * The border-width of scroller buttons on vertically aligned toolbars
+ */
+/**
+ * @var {number/list}
+ * The margin of "top" Toolbar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "right" Toolbar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "bottom" Toolbar scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "left" Toolbar scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of Toolbar scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of disabled Toolbar scroller buttons
+ */
+/**
+ * @var {number}
+ * The opacity of Toolbar scroller buttons. Only applicable when
+ * {@link #$toolbar-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of hovered Toolbar scroller buttons. Only applicable when
+ * {@link #$toolbar-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of pressed Toolbar scroller buttons. Only applicable when
+ * {@link #$toolbar-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of disabled Toolbar scroller buttons.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-style scroller buttons.  When `true` scroller buttons are given their
+ * hover state by changing their background-position,  When `false` scroller buttons are
+ * given their hover state by applying opacity.
+ */
+/**
+ * @var {string}
+ * The sprite to use for {@link Ext.panel.Tool Tools} on a Toolbar
+ */
+/**
+ * @var {boolean}
+ * True to include the "default" toolbar UI
+ */
+/**
+ * @var {boolean}
+ * True to include the "footer" toolbar UI
+ */
+/**
+ * @var {string}
+ * The UI of buttons that are used in the "default" breadcrumb UI
+ */
+/**
+ * @var {number}
+ * The space between the breadcrumb buttons
+ */
+/**
+ * @var {number}
+ * The width of breadcrumb arrows when {@link #useSplitButtons} is `false`
+ */
+/**
+ * @var {number}
+ * The width of breadcrumb arrows when {@link #useSplitButtons} is `true`
+ */
+/**
+ * @var {string}
+ * The background-image for the default "folder" icon
+ */
+/**
+ * @var {string}
+ * The background-image for the default "leaf" icon
+ */
+/**
+ * @var {boolean}
+ * `true` to include a separate background-image for menu arrows when a breadcrumb button's
+ * menu is open
+ */
+/**
+ * @var {boolean}
+ * `true` to include a separate background-image for split arrows when a breadcrumb button's
+ * arrow is hovered
+ */
+/**
+ * @var {number}
+ * The width of Breadcrumb scrollers
+ */
+/**
+ * @var {number}
+ * The height of Breadcrumb scrollers
+ */
+/**
+ * @var {color}
+ * The border-color of Breadcrumb scrollers
+ */
+/**
+ * @var {number}
+ * The border-width of Breadcrumb scrollers
+ */
+/**
+ * @var {number/list}
+ * The margin of "top" Breadcrumb scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "right" Breadcrumb scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "bottom" Breadcrumb scroller buttons
+ */
+/**
+ * @var {number/list}
+ * The margin of "left" Breadcrumb scroller buttons
+ */
+/**
+ * @var {string}
+ * The cursor of Breadcrumb scrollers
+ */
+/**
+ * @var {string}
+ * The cursor of disabled Breadcrumb scrollers
+ */
+/**
+ * @var {number}
+ * The opacity of Breadcrumb scroller buttons. Only applicable when
+ * {@link #$breadcrumb-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of hovered Breadcrumb scroller buttons. Only applicable when
+ * {@link #$breadcrumb-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of pressed Breadcrumb scroller buttons. Only applicable when
+ * {@link #$breadcrumb-classic-scrollers} is `false`.
+ */
+/**
+ * @var {number}
+ * The opacity of disabled Breadcrumb scroller buttons. Only applicable when
+ * {@link #$breadcrumb-classic-scrollers} is `false`.
+ */
+/**
+ * @var {boolean}
+ * `true` to use classic-style scroller buttons.  When `true` scroller buttons are given their
+ * hover state by changing their background-position,  When `false` scroller buttons are
+ * given their hover state by applying opacity.
+ */
+/**
+ * @var {boolean}
+ * `true` to include the "default" breadcrumb UI
+ */
+/**
+ * @class Ext.view.MultiSelector
+ */
+/**
+ * @var {number}
+ * The font-size for the multiselector's remove glyph.
+ */
+/**
+ * @var {number/list}
+ * The padding of "Remove" cell's inner element
+ */
+/**
+ * @var {color}
+ * The color for the multiselector's remove glyph.
+ */
+/**
+ * @var {color}
+ * The color for the multiselector's remove glyph during mouse over.
+ */
+/**
+ * @var {string}
+ * The cursor style for the remove glyph.
+ */
+/* including package ext-theme-base */
+/**
+ * @class Global_CSS
+ */
+/**
+ * @var {string} $prefix
+ * The prefix to be applied to all CSS selectors. If this is changed, it must also be changed in your
+ * JavaScript application.
+ */
+/**
+ * @var {boolean/string} $relative-image-path-for-uis
+ * True to use a relative image path for all new UIs. If true, the path will be "../images/".
+ * It can also be a string of the path value.
+ * It defaults to false, which means it will look for the images in the ExtJS SDK folder.
+ */
+/**
+ * @var {boolean} $include-not-found-images
+ * True to include files which are not found when compiling your SASS
+ */
+/**
+ * @var {boolean} $include-ie
+ * True to include Internet Explorer specific rules for IE9 and lower.  IE10 and up are
+ * considered to be "modern" browsers, and as such do not need any of the CSS hacks required
+ * for IE9 and below.  Setting this property to false will result in a significantly smaller
+ * CSS file size, and may also result in a slight performance improvement, because the
+ * browser will have fewer rules to process.
+ */
+/**
+ * @var {boolean} $include-ff
+ * True to include Firefox specific rules
+ */
+/**
+ * @var {boolean} $include-opera
+ * True to include Opera specific rules
+ */
+/**
+ * @var {boolean} $include-webkit
+ * True to include Webkit specific rules
+ */
+/**
+ * @var {boolean} $include-safari
+ * True to include Safari specific rules
+ */
+/**
+ * @var {boolean} $include-chrome
+ * True to include Chrome specific rules
+ */
+/**
+ * @var {boolean} $include-slicer-border-radius
+ * True to include rules for rounded corners produced by the slicer.  Enables emulation
+ * of CSS3 border-radius in browsers that do not support it.
+ */
+/**
+ * @var {boolean} $include-slicer-gradient
+ * True to include rules for background gradients produced by the slicer.  Enables emulation
+ * of CSS3 background-gradient in browsers that do not support it.
+ */
+/**
+ * @var {number} $css-shadow-border-radius
+ * The border radius for CSS shadows
+ */
+/**
+ * @var {string} $image-extension
+ * default file extension to use for images (defaults to 'png').
+ */
+/**
+ * @var {string} $slicer-image-extension
+ * default file extension to use for slicer images (defaults to 'gif').
+ */
+/**
+ * Default search path for images
+ */
+/**
+ * @var {boolean}
+ * True to include the default UI for each component.
+ */
+/**
+ * @var {boolean}
+ * True to add font-smoothing styles to all components
+ */
+/**
+ * @var {string}
+ * The base path relative to the CSS output directory to use for theme resources.  For example
+ * if the theme's images live one directory up from the generated CSS output in a directory
+ * named 'foo/images/', you would need to set this variable to '../foo/' in order for the image
+ * paths in the CSS output to be generated correctly. By default this is the same as the
+ * CSS output directory.
+ */
+/**
+ * @private
+ * Flag to ensure GridField rules only get set once
+ */
+/* including package ext-ux */
+/* The actual pop window with the color picker components */
+/* line 2, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker {
+  overflow: visible; }
+  /* line 8, ../../../sass/src/colorpick/Selector.scss */
+  .x-colorpicker > .x-box-inner {
+    overflow: visible; }
+  /* line 13, ../../../sass/src/colorpick/Selector.scss */
+  .x-colorpicker .x-form-item-label {
+    text-align: center; }
+
+/* line 18, ../../../sass/src/colorpick/Selector.scss */
+.x-colopicker-escape-overflow {
+  overflow: visible; }
+  /* line 21, ../../../sass/src/colorpick/Selector.scss */
+  .x-colopicker-escape-overflow > .x-box-inner {
+    overflow: visible; }
+
+/* line 28, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-colormap {
+  background-image: url(images/colorpick/map_gradient.png); }
+
+/* line 35, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-colormap-draghandle-container {
+  overflow: visible;
+  z-index: 1; }
+
+/* line 41, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-colormap-blender {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+/* line 49, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-colormap-draghandle {
+  width: 15px;
+  height: 15px;
+  position: relative;
+  left: -7px;
+  top: -7px;
+  background-image: url(images/colorpick/drag_circle.png); }
+
+/* line 60, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-draghandle-container {
+  width: 20px; }
+
+/* line 64, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-draghandle {
+  width: 32px;
+  height: 9px;
+  position: relative;
+  left: -6px;
+  top: -4px;
+  background-image: url(images/colorpick/pickerslider.png);
+  background-repeat: no-repeat;
+  z-index: 1; }
+
+/* line 75, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-hue {
+  background-image: url(images/colorpick/huegradient.png); }
+
+/* line 82, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-hue-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+/* line 91, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-saturation > .x-colorpicker-draghandle-container {
+  background: -mox-linear-gradient(top, white 0%, black 100%);
+  /* FF3.6+ */
+  background: -webkit-linear-gradient(top, white 0%, black 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, white 0%, black 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, white 0%, black 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%, #000000 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */ }
+
+/* line 102, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-value > .x-colorpicker-draghandle-container {
+  background: -mox-linear-gradient(top, red 0%, black 100%);
+  /* FF3.6+ */
+  background: -webkit-linear-gradient(top, red 0%, black 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, red 0%, black 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, red 0%, black 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ff0000 0%, #000000 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */ }
+
+/* line 113, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-alpha > .x-colorpicker-draghandle-container {
+  background-image: url(images/colorpick/checkerboard.png); }
+
+/* line 119, ../../../sass/src/colorpick/Selector.scss */
+.x-colorpicker-preview {
+  background-image: url(images/colorpick/checkerboard.png); }
+
+/* line 2, ../../../sass/src/colorpick/Button.scss */
+.x-colorpicker-button {
+  position: relative;
+  border: 1px solid gray;
+  background-image: url(images/colorpick/checkerboard.png); }
+
+/* line 3, ../../../sass/src/colorpick/Field.scss */
+.x-colorpicker-field .x-form-item-body {
+  position: relative; }
+/* line 7, ../../../sass/src/colorpick/Field.scss */
+.x-colorpicker-field input {
+  padding-left: 26px; }
+
+/* line 12, ../../../sass/src/colorpick/Field.scss */
+.x-colorpicker-field-swatch {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 4px;
+  background-image: url(images/colorpick/checkerboard.png);
+  top: 0px;
+  bottom: 0px;
+  margin: auto; }
+
+/* line 25, ../../../sass/src/colorpick/Field.scss */
+.x-colorpicker-field-swatch-inner {
+  position: absolute;
+  height: 100%;
+  width: 100%; }
+
+/* line 1, ../../../sass/src/rating/Picker.scss */
+.ux-rating-picker {
+  overflow: hidden;
+  color: #cccccc;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1; }
+
+/* line 15, ../../../sass/src/rating/Picker.scss */
+.ux-rating-picker-inner {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+  white-space: nowrap; }
+
+/* line 28, ../../../sass/src/rating/Picker.scss */
+.ux-rating-picker-over.ux-rating-picker-track-over {
+  color: #cccccc; }
+  /* line 31, ../../../sass/src/rating/Picker.scss */
+  .ux-rating-picker-over.ux-rating-picker-track-over > * > .ux-rating-picker-value {
+    display: none;
+    width: 0; }
+  /* line 36, ../../../sass/src/rating/Picker.scss */
+  .ux-rating-picker-over.ux-rating-picker-track-over > * > .ux-rating-picker-value:hover {
+    color: inherit; }
+  /* line 40, ../../../sass/src/rating/Picker.scss */
+  .ux-rating-picker-over.ux-rating-picker-track-over > * > .ux-rating-picker-tracker {
+    display: inline-block; }
+
+/* line 46, ../../../sass/src/rating/Picker.scss */
+.ux-rating-picker-value,
+.ux-rating-picker-tracker {
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  top: 0;
+  width: 0;
+  height: 100%;
+  color: #ffe850; }
+
+/* line 58, ../../../sass/src/rating/Picker.scss */
+.ux-rating-picker-tracker {
+  display: none; }
+
+/* line 62, ../../../sass/src/rating/Picker.scss */
+.ux-rating-picker-over {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1; }
