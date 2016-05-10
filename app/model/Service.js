@@ -5,14 +5,26 @@ Ext.define('Rambox.model.Service', {
 	,proxy: {
 		 type: 'localstorage'
 		,id: 'services'
-    }
-	
+	}
+
 	,fields: [{
 		 name: 'id'
 		,type: 'int'
 	},{
+		 name: 'position'
+		,type: 'int'
+		,convert: function( value, record ) {
+			return value ? value : Ext.getStore('Services').getCount() + 1;
+		}
+	},{
 		 name: 'type'
 		,type: 'string'
+	},{
+		 name: 'logo'
+		,type: 'string'
+		,convert: function( value, record ) {
+			return value ? value : record.get('type') + '.png';
+		}
 	},{
 		 name: 'name'
 		,type: 'string'

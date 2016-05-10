@@ -17,14 +17,25 @@ Ext.define('Rambox.view.main.Main', {
 
 	,plugins: [
 		{
-			ptype: 'tabreorderer'
+			 ptype: 'tabreorderer'
+			,listeners: {
+				// I put the code here because it cannot be listened into the Controller
+				Drop: function( box, tabBar, tab, startIdx, index ) {
+					var idx = 0;
+					Ext.each(tabBar.items.items, function(t) {
+						if ( idx > 0 && t.xtype !== 'tbfill' ) { // Skip first tab because is the configuration tab
+							console.log(t, idx);
+							t.service.set('position', idx);
+						} else if ( t.xtype === 'tbfill' ) {
+							idx--;
+						}
+						idx++;
+					});
+				}
+			}
 		}
 	]
-	,tabBar: {
-		cls: 'allow-overflow'
-	}
 	
-	,hideMode: 'visibility'
 	,autoRender: true
 	,autoShow: true
 	,deferredRender: false
@@ -32,8 +43,9 @@ Ext.define('Rambox.view.main.Main', {
 		{
 			 icon: 'resources/logo_32.png'
 			,closable: false
-			,layout: 'center'
+			,reorderable: false
 			,autoScroll: true
+			,layout: 'center'
 			,items: [
 				{
 					 xtype: 'container'
@@ -50,9 +62,30 @@ Ext.define('Rambox.view.main.Main', {
 									 xtype: 'templatecolumn'
 									,width: 50
 									,variableRowHeight: true
-									,tpl: '<img src="resources/icons/{type}.png" width="32" />'
+									,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\" : \"\" ]}{logo}" data-qtip="{type:capitalize}" width="32" />'
 								}
 								,{ text: 'Name', dataIndex: 'name', variableRowHeight: true, flex: 1 }
+								,{
+									 xtype: 'actioncolumn'
+									,width: 60
+									,align: 'right'
+									,items: [
+										{
+											 glyph: 0xf1f7
+											,tooltip: 'Prevent notifications'
+											,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+												if ( record.get('notifications') ) return 'x-hidden';
+											}
+										}
+										,{
+											 glyph: 0xf026
+											,tooltip: 'Muted'
+											,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+												if ( !record.get('muted') ) return 'x-hidden';
+											}
+										}
+									]
+								}
 								,{
 									 xtype: 'actioncolumn'
 									,width: 60
@@ -111,7 +144,8 @@ Ext.define('Rambox.view.main.Main', {
 								}
 								,{
 									 type: 'plus'
-									,tooltip: 'Add a custom service (soon...)'
+									,tooltip: 'Add a custom service'
+									,handler: 'addCustomService'
 								}
 							]
 							,items: [

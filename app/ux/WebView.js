@@ -52,13 +52,20 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
+		// Show and hide spinner when is loading
+		webview.addEventListener("did-start-loading", function() {
+			console.info('Start loading...', me.src);
+			me.mask('Loading...');
+		});
+		webview.addEventListener("did-stop-loading", function() {
+			me.unmask();
+		});
 
 		webview.addEventListener("did-finish-load", function(e) {
-			console.info('finish load');
+			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
 			if ( Rambox.app.getTotalServicesLoaded() === Ext.getStore('Services').getCount() ) {
 				Ext.get('spinner').destroy();
 			}
-			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
 		});
 
 		webview.addEventListener("dom-ready", function(e) {
