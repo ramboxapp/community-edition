@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
-	"version": "0.1.0",
-	"description": "Free messaging app that combines chat and messaging common services into one application.",
+	"version": "0.2.0",
+	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron_main.js",
 	"scripts": {
 		"start": "electron electron_main.js"
