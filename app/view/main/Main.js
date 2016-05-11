@@ -35,13 +35,13 @@ Ext.define('Rambox.view.main.Main', {
 			}
 		}
 	]
-	
+
 	,autoRender: true
 	,autoShow: true
 	,deferredRender: false
 	,items: [
 		{
-			 icon: 'resources/logo_32.png'
+			 icon: 'resources/IconTray.png'
 			,closable: false
 			,reorderable: false
 			,autoScroll: true

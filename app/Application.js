@@ -9,7 +9,8 @@ Ext.define('Rambox.Application', {
 	]
 
 	,config: {
-		totalServicesLoaded: 0
+		 totalServicesLoaded: 0
+		,totalNotifications: 0
 	}
 
 	,launch: function () {
@@ -22,5 +23,14 @@ Ext.define('Rambox.Application', {
 				Ext.cq1('app-main').setActiveTab(key - 48);
 			}
 		});
+	}
+
+	,updateTotalNotifications: function( newValue, oldValue ) {
+		newValue = parseInt(newValue);
+		if ( newValue > 0 )	{
+			document.title = 'Rambox (' + newValue + ')';
+		} else {
+			document.title = 'Rambox';
+		}
 	}
 });

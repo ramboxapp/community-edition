@@ -40,12 +40,23 @@ Ext.define('Rambox.ux.WebView',{
 					,autosize: 'on'
 				}
 			}]
+			,tabConfig: {
+				listeners: {
+					badgetextchange: me.onBadgeTextChange
+				}
+			}
 			,listeners: {
-				afterrender: me.onAfterRender
+				 afterrender: me.onAfterRender
 			}
 		});
 
 		me.callParent(config);
+	}
+
+	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
+		if ( oldBadgeText === null ) oldBadgeText = 0;
+		var actualNotifications = Rambox.app.getTotalNotifications();
+		Rambox.app.setTotalNotifications(actualNotifications - parseInt(oldBadgeText) + parseInt(badgeText));
 	}
 
 	,onAfterRender: function() {
@@ -119,7 +130,7 @@ Ext.define('Rambox.ux.WebView',{
 						me.tab.setBadgeText(1);
 						me.notifications = 1;
 					} else {
-						me.tab.setBadgeText('');
+						me.tab.setBadgeText(0);
 						me.notifications = 0;
 					}
 					break;

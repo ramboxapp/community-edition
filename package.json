@@ -2,9 +2,9 @@
 	"name": "Rambox",
 	"version": "0.1.0",
 	"description": "Free messaging app that combines chat and messaging common services into one application.",
-	"main": "main.js",
+	"main": "electron_main.js",
 	"scripts": {
-		"start": "electron main.js"
+		"start": "electron electron_main.js"
 	},
 	"repository": {
 		"type": "git",
@@ -24,7 +24,7 @@
 		"skype"
 	],
 	"author": "Ramiro Saenz",
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/saenzramiro/rambox/issues"
 	},
