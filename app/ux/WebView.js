@@ -74,7 +74,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("did-finish-load", function(e) {
 			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
-			if ( Rambox.app.getTotalServicesLoaded() === Ext.getStore('Services').getCount() ) {
+			if ( Rambox.app.getTotalServicesLoaded() === Ext.getStore('Services').getCount() && Ext.get('spinner') !== null ) {
 				Ext.get('spinner').destroy();
 			}
 		});
@@ -89,20 +89,17 @@ Ext.define('Rambox.ux.WebView',{
 			});
 
 			// Injected code to detect new messages
-			switch ( me.type ) {
-				case 'inbox':
-					webview.executeJavaScript('function checkUnread(){updateBadge(document.getElementsByClassName("qG").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);');
-					break;
-				case 'hangouts':
-					webview.executeJavaScript('function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);');
-					break;
-				default:
-					break;
+			if ( me.record && me.record.get('js_unread') !== '' ) {
+				console.info('JS Injected', me.src);
+				console.log(me.record.get('js_unread'));
+				webview.executeJavaScript(me.record.get('js_unread'));
 			}
+
+			// Scroll always to top (bug)
+			webview.executeJavaScript('document.body.scrollTop=0;');
 		});
 
 		webview.addEventListener("page-title-updated", function(e) {
-			var ipc = require('electron').ipcRenderer;
 			var count = e.title.match(/\((\d+)\)/);
 				count = count ? parseInt(count[1]) : 0;
 
@@ -124,15 +121,6 @@ Ext.define('Rambox.ux.WebView',{
 						me.tab.setBadgeText(count);
 					}
 					if ( e.title === 'Google Hangouts' ) me.notifications = 0;
-					break;
-				case 'slack':
-					if ( e.title.indexOf('! ') >= 0 ) {
-						me.tab.setBadgeText(1);
-						me.notifications = 1;
-					} else {
-						me.tab.setBadgeText(0);
-						me.notifications = 0;
-					}
 					break;
 				default:
 					me.tab.setBadgeText(count);

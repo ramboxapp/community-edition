@@ -43,5 +43,9 @@ Ext.define('Rambox.model.Service', {
 		 name: 'muted'
 		,type: 'boolean'
 		,defaultValue: false
+	},{
+		 name: 'js_unread'
+		,type: 'string'
+		,defaultValue: ''
 	}]
 });

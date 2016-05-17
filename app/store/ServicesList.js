@@ -29,6 +29,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Slack'
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread_highlight"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'noysi'
@@ -57,6 +58,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Hangouts'
 			,url: 'https://hangouts.google.com/'
 			,type: 'messaging'
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'hipchat'
@@ -92,6 +94,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Inbox'
 			,url: 'http://inbox.google.com/?cid=imp'
 			,type: 'email'
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("qG").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'chatwork'

@@ -184,19 +184,22 @@ body {
 .x-title-icon { background-size: 16px; }
 
 // Fix for scroller tab bar
-.x-box-scroller-body-horizontal { width: auto !important; margin-right: 18px;}
-.x-box-scroller-tab-bar { z-index: 9999; }
+//.x-box-scroller-body-horizontal { width: auto !important; margin-right: 18px; padding-right: 18px; }
+//.x-box-scroller-tab-bar { z-index: 9999; }
 
 .service {
-	width:250px;
-	display:inline-block;
-	padding:10px;
-	cursor:pointer;
+	width: 230px;
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
 	img {
 		float: left;
 	}
 	span {
-		margin-left:10px;
-		line-height:48px;
+		margin-left: 10px;
+		line-height: 48px;
+	}
+	&:hover {
+		background-color: lighten($base-color, 55%);
 	}
 }

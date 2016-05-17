@@ -6,6 +6,14 @@ Ext.define('Rambox.view.main.MainController', {
 
 	,alias: 'controller.main'
 
+	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
+	,onTabChange: function( tabPanel, newTab, oldTab ) {
+		var me = this;
+		var webview = newTab.down('component').el.dom;
+
+		if ( webview ) webview.focus();
+	}
+
 	,showSimpleModal: function(record, edit) {
 		var me = this;
 
@@ -100,8 +108,10 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,js_unread: record.get('js_unread')
 							});
 							service.save();
+							Ext.getStore('Services').add(service);
 
 							var tabData = {
 								 xtype: 'webview'
@@ -113,6 +123,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,record: service
 								,tabConfig: {
 									service: service
 								}
@@ -242,8 +253,10 @@ Ext.define('Rambox.view.main.MainController', {
 							,align: formValues.align
 							,notifications: formValues.notifications
 							,muted: formValues.muted
+							,js_unread: record.get('js_unread')
 						});
 						service.save();
+						Ext.getStore('Services').add(service);
 
 						var tabData = {
 							 xtype: 'webview'
@@ -255,6 +268,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,align: formValues.align
 							,notifications: formValues.notifications
 							,muted: formValues.muted
+							,record: service
 							,tabConfig: {
 								service: service
 							}
@@ -286,26 +300,25 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,removeService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
-		Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove '+rec.get('name')+'?', function(btnId) {
+		Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove <b>'+rec.get('name')+'</b>?', function(btnId) {
 			if ( btnId === 'yes' ) {
+				var tab = Ext.getCmp('tab_'+rec.get('id'));
+
+				// Remove record from localStorage
 				gridView.getStore().remove(rec);
-				//webview.webContents.session.clearCache();
-				Ext.getCmp('tab_'+rec.get('id')).close();
+
+				// Clear all trash data
+				tab.down('component').el.dom.getWebContents().session.clearCache(Ext.emptyFn);
+				tab.down('component').el.dom.getWebContents().session.clearStorageData({}, Ext.emptyFn);
+
+				// Close tab
+				tab.close();
 			}
 		});
 	}
 
 	,configureService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
 		this.showSimpleModal(rec, true);
-	}
-
-	,doFilter: function( cg, newValue, oldValue ) {
-		var values = Ext.cq1('checkboxgroup').getValue();
-		Ext.getStore('ServicesList').getFilters().replaceAll({
-			fn: function(record) {
-				return Ext.Array.contains(Ext.Object.getKeys(values), record.get('type'));
-			}
-		});
 	}
 
 	,addCustomService: function( event, toolEl, owner, tool ) {
@@ -341,6 +354,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,emptyText: 'http://service.url.com'
 							,name: 'url'
 							,vtype: 'url'
+							,allowBlank: false
 							,listeners: {
 								specialkey: function(field, e) {
 									if(e.getKey() == e.ENTER && field.up('form').isValid()) {
@@ -355,6 +369,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,emptyText: 'http://image.url.com/image.png'
 							,name: 'logo'
 							,vtype: 'url'
+							,allowBlank: true
 							,listeners: {
 								specialkey: function(field, e) {
 									if(e.getKey() == e.ENTER && field.up('form').isValid()) {
@@ -394,6 +409,24 @@ Ext.define('Rambox.view.main.MainController', {
 								}
 							]
 						}
+						,{
+							 xtype: 'fieldset'
+							,title: 'Advanced'
+							,margin: '10 0 0 0'
+							,collapsible: true
+							,collapsed: true
+							,items: [
+								{
+									 xtype: 'textarea'
+									,fieldLabel: 'Unread Code'
+									,allowBlank: true
+									,name: 'js_unread'
+									,anchor: '100%'
+									,emptyText: 'Write code here if the service don\'t update the page title when have new activity. The code needs to return an integer, for example: document.body.getElementsByClassName("ee").length;'
+									,height: 120
+								}
+							]
+						}
 					]
 				}
 			]
@@ -420,8 +453,10 @@ Ext.define('Rambox.view.main.MainController', {
 							,align: formValues.align
 							,notifications: formValues.notifications
 							,muted: formValues.muted
+							,js_unread: 'function checkUnread(){updateBadge(' + formValues.js_unread + ')}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 						});
 						service.save();
+						Ext.getStore('Services').add(service);
 
 						var tabData = {
 							 xtype: 'webview'
@@ -433,6 +468,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,align: formValues.align
 							,notifications: formValues.notifications
 							,muted: formValues.muted
+							,record: service
 							,tabConfig: {
 								service: service
 							}
@@ -453,5 +489,62 @@ Ext.define('Rambox.view.main.MainController', {
 
 		// Make focus to the name field
 		win.down('textfield[name="serviceName"]').focus(true, 100);
+	}
+
+	,onSearchRender: function( field ) {
+		field.focus(false, 1000);
+	}
+
+	,onSearchEnter: function( field, e ) {
+		var me = this;
+
+		if ( e.getKey() == e.ENTER && Ext.getStore('ServicesList').getCount() === 1 ) {
+			me.onNewServiceSelect(field.up().down('dataview'), Ext.getStore('ServicesList').getAt(0));
+			me.onClearClick(field);
+		}
+	}
+
+	,doTypeFilter: function( cg, newValue, oldValue ) {
+		var me = this;
+
+		Ext.getStore('ServicesList').getFilters().replaceAll({
+			fn: function(record) {
+				return Ext.Array.contains(Ext.Object.getKeys(cg.getValue()), record.get('type'));
+			}
+		});
+	}
+
+	,onSearchServiceChange: function(field, newValue, oldValue) {
+		var me = this;
+
+		var cg = field.up().down('checkboxgroup');
+		if ( !Ext.isEmpty(newValue) && newValue.length > 0 ) {
+			field.getTrigger('clear').show();
+
+			Ext.getStore('ServicesList').getFilters().replaceAll({
+				fn: function(record) {
+					if ( !Ext.Array.contains(Ext.Object.getKeys(cg.getValue()), record.get('type')) ) return false;
+					return record.get('name').toLowerCase().indexOf(newValue.toLowerCase()) > -1 ? true : false;
+				}
+			});
+		} else {
+			field.getTrigger('clear').hide();
+			Ext.getStore('ServicesList').getFilters().removeAll();
+			me.doTypeFilter(cg);
+		}
+		field.updateLayout();
+	}
+
+	,onClearClick: function(field, trigger, e) {
+		var me = this;
+
+		var cg = field.up().down('checkboxgroup');
+
+		field.reset();
+		field.getTrigger('clear').hide();
+		field.updateLayout();
+
+		Ext.getStore('ServicesList').getFilters().removeAll();
+		me.doTypeFilter(cg);
 	}
 });
