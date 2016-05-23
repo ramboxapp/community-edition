@@ -24,8 +24,7 @@ Ext.define('Rambox.view.main.Main', {
 					var idx = 0;
 					Ext.each(tabBar.items.items, function(t) {
 						if ( idx > 0 && t.xtype !== 'tbfill' ) { // Skip first tab because is the configuration tab
-							console.log(t, idx);
-							t.service.set('position', idx);
+							t.card.record.set('position', idx);
 						} else if ( t.xtype === 'tbfill' ) {
 							idx--;
 						}
@@ -41,7 +40,7 @@ Ext.define('Rambox.view.main.Main', {
 	,deferredRender: false
 	,items: [
 		{
-			 icon: 'resources/IconTray.png'
+			 icon: 'resources/IconTray@2x.png'
 			,closable: false
 			,reorderable: false
 			,autoScroll: true
@@ -196,10 +195,6 @@ Ext.define('Rambox.view.main.Main', {
 				,{
 					 xtype: 'label'
 					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from Argentina as an Open Source project.'
-				}
-				,{
-					 text: 'www.rambox.io'
-					,href: 'http://www.rambox.io'
 				}
 				,'->'
 			]
