@@ -2,6 +2,7 @@
 /build
 .sass-cache/
 .sass_cache/
+/dist
 
 # OS generated files #
 ######################
@@ -24,3 +25,4 @@ bootstrap.json
 
 # Electron
 node_modules
+npm-debug.log
