@@ -1,35 +1,60 @@
 {
-	"name": "Rambox",
-	"version": "0.2.0",
-	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
-	"main": "electron_main.js",
+	"private": true,
 	"scripts": {
-		"start": "electron electron_main.js"
+		"start": "electron electron/main.js",
+		"start:dev": "electron electron/main.js --enable-logging",
+
+		"sencha:clean": "rm -rf ./build/production",
+		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/",
+
+		"clean": "rm -rf ./dist",
+		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
+		"clean:win": "rm -rf ./dist/Rambox-win32-*",
+
+		"pack": "npm run pack:osx && npm run pack:win",
+		"pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --overwrite",
+		"pack:win": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --overwrite",
+
+		"build": "npm run build:osx && npm run build:win",
+		"build:osx": "build \"dist/Rambox-darwin-x64/Rambox.app\" --platform=osx",
+		"build:win": "build \"dist/Rambox-win32-ia32\" --platform=win",
+
+		"all:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/saenzramiro/rambox.git"
+	"build": {
+		"productName": "Rambox",
+		"asar": true,
+		"osx" : {
+			"title": "Rambox",
+			"icon-size": 128,
+			"contents": [
+				{ "x": 355, "y": 125, "type": "link", "path": "/Applications" },
+				{ "x": 155, "y": 125, "type": "file" }
+			]
+		},
+		"win" : {
+			"title": "Rambox",
+			"icon": "resources/installer/Icon.ico"
+		}
 	},
-	"keywords": [
-		"Rambox",
-		"messaging",
-		"app",
-		"slack",
-		"whatsapp",
-		"facebook",
-		"messenger",
-		"telegram",
-		"google",
-		"hangouts",
-		"skype"
-	],
-	"author": "Ramiro Saenz",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/saenzramiro/rambox/issues"
+	"directories": {
+		"buildResources": "resources/installer/",
+		"output": "dist/",
+		"app": "build/production/Rambox/"
 	},
-	"homepage": "https://github.com/saenzramiro/rambox#readme",
 	"devDependencies": {
-		"electron-prebuilt": "^0.37.8"
+		"electron-prebuilt": "^1.1.0",
+		"electron-builder": "3.25.0",
+		"electron-packager": "7.0.1"
+	},
+	"config": {
+		"pre-git": {
+			"commit-msg": "",
+			"pre-commit": [],
+			"post-commit": "",
+			"pre-push": [],
+			"post-checkout": "",
+			"post-merge": ""
+		}
 	}
 }

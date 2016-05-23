@@ -1,6 +1,9 @@
 const path = require('path');
 const electron = require('electron');
 const app = electron.app;
+// Module to create tray icon
+const Tray = electron.Tray;
+
 const MenuItem = electron.MenuItem;
 let tray = null;
 
@@ -9,7 +12,7 @@ exports.create = win => {
 		return;
 	}
 
-	const icon = process.platform === 'linux' ? 'IconTray.png' : 'Icon.ico';
+	const icon = process.platform === 'linux' || process.platform === 'darwin' ? 'IconTray.png' : 'Icon.ico';
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
 
 	let showMB = new MenuItem({
@@ -50,7 +53,7 @@ exports.create = win => {
 		}
 	]);
 
-	tray = new electron.Tray(iconPath);
+	tray = new Tray('../resources/IconTray.png');
 	tray.setToolTip('Rambox');
 	tray.setContextMenu(contextMenu);
 	tray.on('click', function() {

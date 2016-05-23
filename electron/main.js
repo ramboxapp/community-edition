@@ -5,14 +5,12 @@ const electron = require('electron');
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-// Module to create tray icon
-const Tray = electron.Tray;
 // Module for shell
 const shell = require('electron').shell;
 // Require for menu file
-const appMenu = require('./electron/menu');
+const appMenu = require('./menu');
 // Require for tray file
-const tray = require('./electron/tray');
+const tray = require('./tray');
 
 const MenuItem = electron.MenuItem;
 
@@ -25,8 +23,8 @@ function createWindow () {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox'
-		,skipTaskbar: false
-		,icon: __dirname + '/resources/Icon.png'
+		,skipTaskbar: true
+		,icon: __dirname + '/../resources/Icon.png'
 		,webPreferences: {
 			 webSecurity: false
 			,nodeIntegration: true
@@ -39,7 +37,7 @@ function createWindow () {
 	mainWindow.maximize();
 
 	// and load the index.html of the app.
-	mainWindow.loadURL('file://' + __dirname + '/index.html');
+	mainWindow.loadURL('file://' + __dirname + '/../index.html');
 
 	electron.Menu.setApplicationMenu(appMenu);
 

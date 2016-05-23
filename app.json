@@ -277,9 +277,7 @@
      * Extra resources to be copied along when build
      */
     "resources": [
-		"electron",
-		"electron_main.js",
-		"package.json"
+		"electron"
     ],
 
     /**
