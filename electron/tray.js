@@ -53,7 +53,7 @@ exports.create = win => {
 		}
 	]);
 
-	tray = new Tray('../resources/IconTray.png');
+	tray = new Tray(iconPath);
 	tray.setToolTip('Rambox');
 	tray.setContextMenu(contextMenu);
 	tray.on('click', function() {
