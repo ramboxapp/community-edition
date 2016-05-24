@@ -2,37 +2,44 @@
 	"private": true,
 	"scripts": {
 		"start": "electron electron/main.js",
-		"start:dev": "electron electron/main.js --enable-logging",
-
+		"test": "electron electron/main.js --enable-logging",
+		"electron-version": "cat package.json | grep 'electron-prebuilt\": \"' | cut -d '\"' -f 4",
 		"sencha:clean": "rm -rf ./build/production",
 		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/",
-
 		"clean": "rm -rf ./dist",
 		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
 		"clean:win": "rm -rf ./dist/Rambox-win32-*",
-
 		"pack": "npm run pack:osx && npm run pack:win",
-		"pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --overwrite",
-		"pack:win": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --overwrite",
-
+		"pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --version=1.1.1 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --overwrite",
+		"pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --version=1.1.1 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --overwrite",
+		"pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --version=1.1.1 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --overwrite",
 		"build": "npm run build:osx && npm run build:win",
 		"build:osx": "build \"dist/Rambox-darwin-x64/Rambox.app\" --platform=osx",
-		"build:win": "build \"dist/Rambox-win32-ia32\" --platform=win",
-
-		"all:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx"
+		"build:win": "build \"dist/Rambox-win32-x64\" --platform=win",
+		"all:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
+		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win"
 	},
 	"build": {
 		"productName": "Rambox",
 		"asar": true,
-		"osx" : {
+		"osx": {
 			"title": "Rambox",
 			"icon-size": 128,
 			"contents": [
-				{ "x": 355, "y": 125, "type": "link", "path": "/Applications" },
-				{ "x": 155, "y": 125, "type": "file" }
+				{
+					"x": 355,
+					"y": 125,
+					"type": "link",
+					"path": "/Applications"
+				},
+				{
+					"x": 155,
+					"y": 125,
+					"type": "file"
+				}
 			]
 		},
-		"win" : {
+		"win": {
 			"title": "Rambox",
 			"icon": "resources/installer/Icon.ico"
 		}
@@ -43,9 +50,11 @@
 		"app": "build/production/Rambox/"
 	},
 	"devDependencies": {
-		"electron-prebuilt": "^1.1.0",
+		"asar": "^0.11.0",
 		"electron-builder": "3.25.0",
-		"electron-packager": "7.0.1"
+		"electron-packager": "7.0.1",
+		"electron-prebuilt": "1.1.1",
+		"electron-winstaller": "^2.3.0"
 	},
 	"config": {
 		"pre-git": {
