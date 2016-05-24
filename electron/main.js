@@ -23,7 +23,7 @@ function createWindow () {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox'
-		,skipTaskbar: true
+		,skipTaskbar: false
 		,icon: __dirname + '/../resources/Icon.png'
 		,webPreferences: {
 			 webSecurity: false
