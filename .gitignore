@@ -1,5 +1,7 @@
 # Sencha (ExtJS)
-/build
+/build/development
+/build/production
+/build/temp
 .sass-cache/
 .sass_cache/
 /dist
