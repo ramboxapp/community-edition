@@ -23,5 +23,8 @@
 		"skype"
 	],
 	"author": "Ramiro Saenz",
-	"license": "MIT"
+	"license": "MIT",
+	"dependencies": {
+		"electron-squirrel-startup": "^1.0.0"
+	}
 }
