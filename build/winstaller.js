@@ -12,7 +12,7 @@ if ( !arch ) {
 
 var resultPromise = electronInstaller.createWindowsInstaller({
      appDirectory: './dist/Rambox-win32-'+arch
-    ,outputDirectory: './dist'
+    ,outputDirectory: './dist/setup-'+arch
     ,title: 'Rambox'
     ,loadingGif: './resources/installer/loading.gif'
     ,authors: 'Rambox'
