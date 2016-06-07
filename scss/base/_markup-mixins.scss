@@ -1,0 +1,136 @@
+// breakpoints
+$mobile: 767px;  // mobile 767px and less 
+$tablet: 1025px; // tablet 1025px {desctop - 1} and less 
+$retina: 1.5;    // standart retina > 1.5x
+$retina-hd: 2.5; // hd retina > 2.5x
+
+// breakpoints mixin
+@mixin breakpoint($rule){
+  @if ($rule == $retina or $rule == $retina-hd){
+    @media only screen and ( min-resolution : #{$retina*96} ), ( -webkit-min-device-pixel-ratio : #{$retina} ){
+     @content;
+    }
+  }
+  @else{
+    @media only screen and (max-width: #{$rule}){
+     @content;
+    }  
+  }
+}
+
+/// breakpoints mixin usage
+/// selector{
+///   height:100px;
+///   @include breakpoint($tablet){
+///     height:50px;
+///   }
+/// }
+
+
+// clearfix
+%clearfix {
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+}
+
+// reset for list
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// hide text
+@mixin hide-text {
+  overflow: hidden;
+  text-indent: -9999px;
+}
+
+// placeholder
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &::-moz-placeholder {opacity: 1; @content}
+  &:-moz-placeholder {@content}
+  &:-ms-input-placeholder {@content}
+  &.placeholder {@content}
+}
+
+// full width
+%full-width {
+  padding-left: 9999px;
+  padding-right: 9999px;
+  margin-left: -9999px;
+  margin-right: -9999px;
+}
+
+// retina images
+@mixin img-retina($image, $extension, $width, $height) {
+  background: url('../images/' + $image + '.' + $extension) no-repeat;
+  width: $width;
+  height: $height;
+
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {    
+    background-image: url('../images/' + $image + '@2x' + '.' + $extension);
+    background-size: $width $height;
+  }
+}
+
+// from http://codepen.io/MichaelArestad/pen/IxFGj 
+@mixin arrow-lazy($al-direction: top, $al-size: 10px, $al-color: #ccc, $al-center: 50%, $al-margin: -1px, $al-pseudo: before){
+  position: relative;
+  border-color: $al-color;
+
+  &:#{$al-pseudo} {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 0;
+    border-color: $al-color;
+
+    @if $al-direction == "right" {
+      top: $al-center;
+      left: 100%;
+      margin-left: $al-margin;
+      margin-top: $al-size * -1;
+      border-top: $al-size solid transparent;
+      border-bottom: $al-size solid transparent;
+      border-left: $al-size solid $al-color;
+      border-left-color: inherit;
+    } @else if $al-direction == "down" {
+      top: 100%;
+      left: $al-center;
+      margin-top: $al-margin;
+      margin-left: $al-size * -1;
+      border-left: $al-size solid transparent;
+      border-right: $al-size solid transparent;
+      border-top: $al-size solid $al-color;
+      border-top-color: inherit;
+    } @else if $al-direction == "left" {
+      top: $al-center;
+      right: 100%;
+      margin-right: $al-margin;
+      margin-top: $al-size * -1;
+      border-top: $al-size solid transparent;
+      border-bottom: $al-size solid transparent; 
+      border-right:$al-size solid $al-color;
+      border-right-color: inherit;
+    } @else {
+      bottom: 100%;
+      left: $al-center;
+      margin-bottom: $al-margin;
+      margin-left: $al-size * -1;
+      border-left: $al-size solid transparent;
+      border-right: $al-size solid transparent;
+      border-bottom: $al-size solid $al-color;
+      border-bottom-color: inherit;
+    }
+  }
+}
