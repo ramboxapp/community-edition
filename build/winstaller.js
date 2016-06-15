@@ -18,7 +18,7 @@ var resultPromise = electronInstaller.createWindowsInstaller({
     ,authors: 'Rambox'
     ,owners: 'Rambox'
     ,exe: 'Rambox.exe'
-    ,setupExe: 'RamboxSetup-'+arch+'.exe'
+    ,setupExe: 'RamboxSetup.exe'
     ,noMsi: true
     ,iconUrl: 'https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/installer/icons/64x64.png'
     ,setupIcon: './resources/Icon.ico'
