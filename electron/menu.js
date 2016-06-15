@@ -20,7 +20,7 @@ const helpSubmenu = [
 	{
 		label: `Visit ${appName} Website`,
 		click() {
-			shell.openExternal('http://saenzramiro.github.io/rambox/');
+			shell.openExternal('http://rambox.pro');
 		}
 	},
 	{
