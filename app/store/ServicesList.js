@@ -139,6 +139,13 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
+			 id: 'outlook'
+			,logo: 'outlook.png'
+			,name: 'Outlook'
+			,url: 'https://mail.live.com/'
+			,type: 'email'
+		},
+		{
 			 id: 'protonmail'
 			,logo: 'protonmail.png'
 			,name: 'ProtonMail'
