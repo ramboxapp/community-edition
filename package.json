@@ -28,7 +28,7 @@
 		"zip:linux32": "bestzip \"dist/Rambox-linux-ia32.zip\" \"dist/Rambox-linux-ia32/*\"",
 		"zip:linux64": "bestzip \"dist/Rambox-linux-x64.zip\" \"dist/Rambox-linux-x64/*\"",
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
-		"all:linux": "npm run setup:win && npm run zip:linux32 && npm run zip:linux64"
+		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run pack:linux && npm run zip:linux32 && npm run zip:linux64"
 	},
 	"name": "Rambox",
 	"productName": "Rambox",
