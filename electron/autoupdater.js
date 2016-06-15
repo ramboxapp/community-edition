@@ -1,43 +1,36 @@
 'use strict';
 const electron = require('electron');
+const fs = require('fs');
+const path = require('path');
 const app = electron.app;
 const dialog = electron.dialog;
 
+const isDev = !fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'Update.exe'));
+
 const autoUpdater = electron.autoUpdater;
 
-const feedUrl = `https://getrambox.herokuapp.com/update/${process.platform}/${process.arch}/${app.getVersion()}`;
-
-autoUpdater.setFeedURL(feedUrl);
-autoUpdater.checkForUpdates();
+const feedUrl = `https://getrambox.herokuapp.com/update/${process.platform}/${app.getVersion()}`;
 
 exports.check = win => {
-	autoUpdater.on('update-available', function(a, b, c, d) {
+	if ( isDev ) return;
+
+	autoUpdater.on('update-available', function() {
 		dialog.showMessageBox({
-			 message: "There is a new version"
-			,buttons: ["OK"]
+			 message: 'New version'
+			,detail: 'There is a new version available.'
+			,buttons: ['Ok']
 		});
 	});
-	/*
-	autoUpdater.on('update-not-available', function(a, b, c, d) {
-
-	});
-	*/
+	
 	autoUpdater.on('update-downloaded', function(e, releaseNotes, releaseName, releaseDate, updateURL) {
 		var index = dialog.showMessageBox({
-			 message: "New version"
-			,detail: "Do you want to install the new version ("+releaseName+")?"
-			,buttons: ["Yes", "No"]
+			 message: 'A new update is ready to install'
+			,detail: 'Version ' + releaseName + ' is downloaded and will be automatically installed on Quit. Do you want to restart now?'
+			,buttons: ['Yes', 'No']
 		});
-		if (index === 0) {
-	      autoUpdater.quitAndInstall();
-	    }
+		if (index === 0) autoUpdater.quitAndInstall();
 	});
-	/*
-	autoUpdater.on("error", function(error){
-		dialog.showMessageBox({
-			 message: error.toString()
-			,buttons: ["OK"]
-		});
-	});
-	*/
+
+	autoUpdater.setFeedURL(feedUrl);
+	autoUpdater.checkForUpdates();
 };
