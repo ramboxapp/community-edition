@@ -3,32 +3,31 @@
 	"scripts": {
 		"start": "electron electron/main.js",
 		"test": "electron electron/main.js --enable-logging",
-		"electron-version": "cat package.json | grep 'electron-prebuilt\": \"' | cut -d '\"' -f 4",
 		"sencha:clean": "rm -rf ./build/production",
 		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/",
 		"clean": "rm -rf ./dist",
 		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
 		"clean:win": "rm -rf ./dist/Rambox-win32-*",
 		"pack": "npm run pack:osx && npm run pack:win",
-		"pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --version=1.1.1 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --version=1.2.2 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:win": "npm run pack:win32 && npm run pack:win64",
-		"pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --version=1.1.1 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --version=1.1.1 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --version=1.2.2 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --version=1.2.2 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:linux": "npm run pack:linux32 && npm run pack:linux64",
-		"pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --version=1.1.1 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --version=1.1.1 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --version=1.2.2 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --version=1.2.2 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"build": "npm run build:osx && npm run build:win",
 		"build:osx": "build \"dist/Rambox-darwin-x64/Rambox.app\" --platform=osx",
 		"build:win": "node ./build/winstaller.js ia32 && node ./build/winstaller.js x64",
 		"build:win32": "node ./build/winstaller.js ia32",
 		"build:win64": "node ./build/winstaller.js x64",
 		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
-		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win && mv ./dist/setup-ia32/RELEASES ./dist/setup-ia32/RELEASES-ia32 && mv ./dist/setup-x64/RELEASES ./dist/setup-x64/RELEASES-x64",
+		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
 		"zip:win32": "bestzip \"dist/Rambox-win32-ia32-portable.zip\" \"dist/Rambox-win32-ia32/*\"",
 		"zip:win64": "bestzip \"dist/Rambox-win32-x64-portable.zip\" \"dist/Rambox-win32-x64/*\"",
 		"zip:linux32": "bestzip \"dist/Rambox-linux-ia32.zip\" \"dist/Rambox-linux-ia32/*\"",
 		"zip:linux64": "bestzip \"dist/Rambox-linux-x64.zip\" \"dist/Rambox-linux-x64/*\"",
-		"all:win": "npm run setup:win && npm run zip:win32 && npm run zip:win64",
+		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
 		"all:linux": "npm run setup:win && npm run zip:linux32 && npm run zip:linux64"
 	},
 	"name": "Rambox",
@@ -85,7 +84,7 @@
 		"electron-builder": "3.25.0",
 		"electron-installer-windows": "^0.2.0",
 		"electron-packager": "7.0.1",
-		"electron-prebuilt": "1.1.1",
+		"electron-prebuilt": "1.2.2",
 		"electron-winstaller": "^2.3.0",
 		"electron-squirrel-startup": "^1.0.0"
 	},
@@ -100,6 +99,6 @@
 		}
 	},
 	"dependencies": {
-		"electron-squirrel-startup": "^1.0.0"
+
 	}
 }
