@@ -117,6 +117,10 @@ function createWindow () {
 
 	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
+	mainWindow.webContents.on('will-navigate', function(event, url) {
+		event.preventDefault();
+	});
+
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {
 		if ( !isQuitting ) {
