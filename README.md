@@ -1,6 +1,7 @@
 <img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="60px" align="center" alt="Spectron icon"> Rambox
 ===================
 
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA)
 [![Linux Build Status](https://travis-ci.org/saenzramiro/rambox.svg?branch=master)](https://travis-ci.org/saenzramiro/rambox)
 [![Gitter](https://badges.gitter.im/saenzramiro/rambox.svg)](https://gitter.im/saenzramiro/rambox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![license:mit](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
@@ -10,8 +11,6 @@ Free and Open Source messaging app that combines chat and messaging common servi
 Available for Windows, Mac and Linux.
 
 [![DOWNLOAD HERE](http://windows7-8activator.com/wp-content/uploads/2015/04/button1.png)](https://getrambox.herokuapp.com/download)
-
-[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA)
 
 ----------
 
