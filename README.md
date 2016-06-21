@@ -1,6 +1,8 @@
 Rambox
 ===================
 
+[![Join the chat at https://gitter.im/saenzramiro/rambox](https://badges.gitter.im/saenzramiro/rambox.svg)](https://gitter.im/saenzramiro/rambox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Free and Open Source messaging app that combines chat and messaging common services into one application.
 
 Available for Windows, Mac and Linux.
