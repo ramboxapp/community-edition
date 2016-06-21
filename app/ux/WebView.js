@@ -84,8 +84,11 @@ Ext.define('Rambox.ux.WebView',{
 			if ( !webview.isAudioMuted() && me.muted ) webview.setAudioMuted(me.muted);
 
 			// Open links in default browser
-			webview.addEventListener('new-window', function(e) {
-				require('remote').shell.openExternal(e.url);
+			webview.addEventListener('new-window', (e) => {
+				const protocol = require('url').parse(e.url).protocol;
+				if (protocol === 'http:' || protocol === 'https:') {
+					require('electron').shell.openExternal(e.url);
+				}
 			});
 
 			// Injected code to detect new messages
