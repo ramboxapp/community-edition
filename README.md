@@ -11,7 +11,7 @@ Available for Windows, Mac and Linux.
 
 [![DOWNLOAD HERE](http://windows7-8activator.com/wp-content/uploads/2015/04/button1.png)](https://getrambox.herokuapp.com/download)
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RGQ8NSYPA59FL)
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA)
 
 ----------
 
