@@ -108,8 +108,9 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		webview.addEventListener("page-title-updated", function(e) {
-			var count = e.title.match(/\((\d+)\)/);
+			var count = e.title.match(/\(([^)]+)\)/);
 				count = count ? parseInt(count[1]) : 0;
+				count = Ext.isNaN(count) ? 0 : count; // Some services have special characters. Example: (•)
 
 			switch ( me.type ) {
 				case 'messenger':
