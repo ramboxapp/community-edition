@@ -1,13 +1,35 @@
 language: node_js
+sudo: false
+os:
+  - linux
+  - osx
+branches:
+  only:
+    - master
 node_js:
   - '4.4.4'
+cache:
+  directories:
+    - node_modules
 addons:
   apt:
     packages:
       - xvfb
+env:
+  - SENCHA_CMD_VERSION="6.1.2.15"
+  - SENCHA_EXT_VERSION="5.1.1.451"
 install:
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+before_script:
+  - wget http://cdn.sencha.com/cmd/$SENCHA_CMD_VERSION/no-jre/SenchaCmd-$SENCHA_CMD_VERSION-linux-amd64.sh.zip
+  - unzip -q SenchaCmd-$SENCHA_CMD_VERSION-linux-amd64.sh.zip
+  - chmod +x SenchaCmd-$SENCHA_CMD_VERSION-linux-amd64.sh
+  - ./SenchaCmd-$SENCHA_CMD_VERSION-linux-amd64.sh --mode unattended
+script:
+  - npm run sencha:compile
+  - npm run pack:linux64
+  - npm test
 notifications:
   email: false
   webhooks:
