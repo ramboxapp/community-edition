@@ -146,6 +146,20 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
+			 id: 'office365'
+			,logo: 'office365.png'
+			,name: 'Office 365'
+			,url: 'https://outlook.office.com/owa/'
+			,type: 'email'
+		},
+		{
+			 id: 'yahoo'
+			,logo: 'yahoo.png'
+			,name: 'Yahoo! Mail'
+			,url: 'https://mail.yahoo.com/'
+			,type: 'email'
+		},
+		{
 			 id: 'protonmail'
 			,logo: 'protonmail.png'
 			,name: 'ProtonMail'
@@ -165,6 +179,42 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Hushmail'
 			,url: 'https://www.hushmail.com/hushmail/index.php'
 			,type: 'email'
+		},
+		{
+			 id: 'missive'
+			,logo: 'missive.png'
+			,name: 'Missive'
+			,url: 'https://mail.missiveapp.com/login'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unseen-count"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'rocketchat'
+			,logo: 'rocketchat.png'
+			,name: 'Rocket Chat'
+			,url: '___'
+			,type: 'messaging'
+		},
+		{
+			 id: 'wire'
+			,logo: 'wire.png'
+			,name: 'Wire'
+			,url: 'https://app.wire.com/auth/#login'
+			,type: 'messaging'
+		},
+		{
+			 id: 'sync'
+			,logo: 'sync.png'
+			,name: 'Sync'
+			,url: 'https://m.wantedly.com/login'
+			,type: 'messaging'
+		},
+		{
+			 id: 'bearychat'
+			,logo: 'bearychat.png'
+			,name: 'BearyChat'
+			,url: 'https://___.bearychat.com/'
+			,type: 'messaging'
 		}
 	]
 });
