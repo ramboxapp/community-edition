@@ -54,7 +54,7 @@ Available for Windows, Mac and Linux.
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/voxer.png" alt="Voxer" title="Voxer">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger">
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Features
 
