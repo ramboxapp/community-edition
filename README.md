@@ -1,5 +1,5 @@
-<div align="center"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="256px" align="center" alt="Rambox"></div>
-<h1 align="center">Rambox</h1>
+<div align="center"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="256px" align="center" alt="Rambox"></div><h1 align="center">Rambox</h1>
+
 ===================
 
 [![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA)
