@@ -21,7 +21,7 @@ Logo designed by Andriy Yurchenko (http://andyur.com/)
 
 ![Rambox](http://rambox.pro/images/img-01.png)
 
-## Services available - 21
+## Services available - 33
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
