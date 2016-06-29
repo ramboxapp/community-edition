@@ -745,8 +745,6 @@ Ext.define('Rambox.view.main.MainController', {
 								Ext.Msg.hide();
 							});
 						});
-					}).catch(function(error) {
-						console.error(error);
 					});
 				}
 			});
