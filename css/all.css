@@ -1223,12 +1223,12 @@ p {
 }
 
 .area.features li {
-    height: 140px;
+    height: 90px;
 }
 
 .area.features .fa {
     display: block;
-    font-size: 100px;
+    font-size: 60px;
     color: #0675A0;
 }
 
