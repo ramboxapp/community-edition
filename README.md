@@ -20,12 +20,47 @@ Available for Windows, Mac and Linux.
 
 ## Services available - 21
 
-<img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/skype.png" alt="Skype" title="Skype" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/slack.png" alt="Slack" title="Slack" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hangouts.png" alt="Hangouts" title="Hangouts" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/telegram.png" alt="Telegram" title="Telegram" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/wechat.png" alt="WeChat" title="WeChat" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/gmail.png" alt="Gmail" title="Gmail" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png" alt="Inbox" title="Inbox" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hipchat.png" alt="HipChat" title="HipChat" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/chatwork.png" alt="ChatWork" title="ChatWork" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/groupme.png" alt="GroupMe" title="GroupMe" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/grape.png" alt="Grape" title="Grape" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/gitter.png" alt="Gitter" title="Gitter" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/steam.png" alt="Steam" title="Steam" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/discord.png" alt="Discord" title="Discord" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/noysi.png" alt="Noysi" title="Noysi" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook.png" alt="Outlook" title="Outlook" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/tutanota.png" alt="TutaNota" title="TutaNota" width="80" align="left"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hushmail.png" alt="Hushmail" title="Hushmail" width="80" align="left">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/skype.png" alt="Skype" title="Skype">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/slack.png" alt="Slack" title="Slack">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hangouts.png" alt="Hangouts" title="Hangouts">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/telegram.png" alt="Telegram" title="Telegram">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/wechat.png" alt="WeChat" title="WeChat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/gmail.png" alt="Gmail" title="Gmail">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png" alt="Inbox" title="Inbox">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hipchat.png" alt="HipChat" title="HipChat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/chatwork.png" alt="ChatWork" title="ChatWork">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/groupme.png" alt="GroupMe" title="GroupMe">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/grape.png" alt="Grape" title="Grape">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/gitter.png" alt="Gitter" title="Gitter">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/steam.png" alt="Steam" title="Steam">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/discord.png" alt="Discord" title="Discord">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/noysi.png" alt="Noysi" title="Noysi">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook.png" alt="Outlook" title="Outlook">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/tutanota.png" alt="TutaNota" title="TutaNota">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hushmail.png" alt="Hushmail" title="Hushmail">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/bearychat.png" alt="BearyChat" title="BearyChat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/sync.png" alt="Sync" title="Sync">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/wire.png" alt="Wire" title="Wire">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/missive.png" alt="Missive" title="Missive">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoo.png" alt="Yahoo! Mail" title="Yahoo! Mail">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/office365.png" alt="OFfice 365" title="Office 365">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dasher.png" alt="Dasher" title="Dasher">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dingtalk.png" alt="DingTalk" title="DingTalk">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/flowdock.png" alt="FlowDock" title="FlowDock">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mattermost.png" alt="Mattermost" title="Mattermost">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/voxer.png" alt="Voxer" title="Voxer">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger">
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 
 ## Features
 
+- [x] Sync your configuration between multiple computers.
+- [x] Lock Rambox if you will be away for a period of time.
+- [x] Don't disturb mode.
 - [x] Reorder applications in the tab bar.
 - [x] Notification badge in the tab.
 - [x] Minimize to tray.
