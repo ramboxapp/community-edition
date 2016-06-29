@@ -40,9 +40,6 @@ exports.create = win => {
 		showMB,
 		hideMB,
 		{
-			label: 'Preferences'
-		},
-		{
 			type: 'separator'
 		},
 		{

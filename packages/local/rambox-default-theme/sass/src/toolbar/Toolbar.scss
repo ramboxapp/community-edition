@@ -1,0 +1,13 @@
+/*
+ * Aplica estilo a la barra de login
+ */
+@include extjs-toolbar-ui(
+	$ui: 'main',
+	$background-color: $base-color
+);
+
+.x-toolbar-main {
+	label {
+		color: #FFF;
+	}
+}

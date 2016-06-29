@@ -53,5 +53,14 @@ Ext.define('Rambox.store.Services', {
 				Ext.cq1('app-main').add(servicesRight);
 			}
 		}
+		,add: function(store, records, index) {
+			sync();
+		}
+		,update: function(store, record, operation, data) {
+			if ( operation === 'edit' ) sync();
+		}
+		,remove: function(store, records, index, isMove) {
+			sync();
+		}
 	}
 });

@@ -16,6 +16,12 @@ body {
 	position: absolute;
 	background-color: $base-color;
 	cursor: wait;
+	img {
+		position: absolute;
+		left: 50%;
+		margin-left: -128px;
+		top: 100px;
+	}
 	font {
 		font-family: 'Josefin Sans', sans-serif;
 		font-size: 150px;

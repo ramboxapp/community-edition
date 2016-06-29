@@ -5,6 +5,8 @@ Ext.define('Rambox.view.main.MainModel', {
 	,alias: 'viewmodel.main'
 
 	,data: {
-		name: 'Rambox'
+		 name: 'Rambox'
+		,username: localStorage.getItem('profile') ? JSON.parse(localStorage.getItem('profile')).name : ''
+		,avatar: localStorage.getItem('profile') ? JSON.parse(localStorage.getItem('profile')).picture : ''
 	}
 });

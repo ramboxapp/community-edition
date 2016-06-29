@@ -34,7 +34,7 @@ Ext.define('Rambox.ux.WebView',{
 					 tag: 'webview'
 					,src: me.src
 					,style: 'width:100%;height:100%;'
-					,partition: 'persist:' + me.type + '_' + me.id.replace('tab_', '')
+					,partition: 'persist:' + me.type + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
@@ -108,9 +108,10 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		webview.addEventListener("page-title-updated", function(e) {
-			var count = e.title.match(/\(([^)]+)\)/);
-				count = count ? parseInt(count[1]) : 0;
-				count = Ext.isNaN(count) ? 0 : count; // Some services have special characters. Example: (•)
+			var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
+				count = count ? count[1] : '0';
+				count = count.match(/\d+/g); // Some services have special characters. Example: (•)
+				count = count ? parseInt(count[0]) : 0;
 
 			switch ( me.type ) {
 				case 'messenger':

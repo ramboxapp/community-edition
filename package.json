@@ -1,104 +1,107 @@
 {
-    "private": true,
-    "scripts": {
-        "start": "electron electron/main.js",
-        "start:debug": "electron electron/main.js --enable-logging",
+	"private": true,
+	"scripts": {
+		"start": "electron electron/main.js",
+		"start:debug": "electron electron/main.js --enable-logging",
 		"test": "node electron/test.js",
-        "sencha:clean": "rm -rf ./build/production",
-        "sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/",
-        "clean": "rm -rf ./dist",
-        "clean:osx": "rm -rf ./dist/Rambox-darwin-*",
-        "clean:win": "rm -rf ./dist/Rambox-win32-*",
-        "pack": "npm run pack:osx && npm run pack:win",
-        "pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --version=1.2.4 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-        "pack:win": "npm run pack:win32 && npm run pack:win64",
-        "pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-        "pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-        "pack:linux": "npm run pack:linux32 && npm run pack:linux64",
-        "pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-        "pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-        "build": "npm run build:osx && npm run build:win",
-        "build:osx": "build \"dist/Rambox-darwin-x64/Rambox.app\" --platform=osx",
-        "build:win": "node ./build/winstaller.js ia32 && node ./build/winstaller.js x64",
-        "build:win32": "node ./build/winstaller.js ia32",
-        "build:win64": "node ./build/winstaller.js x64",
-        "setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
-        "setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
-        "zip:win32": "bestzip \"dist/Rambox-win32-ia32-portable.zip\" \"dist/Rambox-win32-ia32/*\"",
-        "zip:win64": "bestzip \"dist/Rambox-win32-x64-portable.zip\" \"dist/Rambox-win32-x64/*\"",
-        "zip:linux32": "bestzip \"dist/Rambox-linux-ia32.zip\" \"dist/Rambox-linux-ia32/*\"",
-        "zip:linux64": "bestzip \"dist/Rambox-linux-x64.zip\" \"dist/Rambox-linux-x64/*\"",
-        "all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
-        "all:linux": "npm run sencha:clean && npm run sencha:compile && npm run pack:linux && npm run zip:linux32 && npm run zip:linux64"
-    },
-    "name": "Rambox",
-    "productName": "Rambox",
-    "authors": [
-        "Ramiro Saenz"
-    ],
-    "copyright": "",
-    "homepage": "http://www.rambox.pro",
-    "build": {
-        "productName": "Rambox",
-        "asar": true,
-        "osx": {
-            "title": "Rambox",
-            "icon-size": 128,
-            "contents": [
-                {
-                    "x": 355,
-                    "y": 125,
-                    "type": "link",
-                    "path": "/Applications"
-                },
-                {
-                    "x": 155,
-                    "y": 125,
-                    "type": "file"
-                }
-            ]
-        },
-        "win": {
-            "title": "Rambox",
-            "licenseUrl": "https://raw.githubusercontent.com/saenzramiro/rambox/master/LICENSE",
-            "msi": false
-        },
-        "linux": {
-            "target": [
-                "deb",
-                "zip",
-                "tar.gz",
-                "rpm"
-            ],
-            "maintainer": "Rambox",
-            "vendor": "Rambox"
-        }
-    },
-    "directories": {
-        "buildResources": "resources/installer/",
-        "output": "dist/",
-        "app": "build/production/Rambox/"
-    },
-    "devDependencies": {
-        "asar": "^0.11.0",
-        "bestzip": "^1.1.3",
-        "electron-builder": "3.25.0",
-        "electron-installer-windows": "^0.2.0",
-        "electron-packager": "7.0.1",
-        "electron-prebuilt": "1.2.4",
-        "electron-squirrel-startup": "^1.0.0",
-        "electron-winstaller": "^2.3.0",
-        "spectron": "^3.2.3"
-    },
-    "config": {
-        "pre-git": {
-            "commit-msg": "",
-            "pre-commit": [],
-            "post-commit": "",
-            "pre-push": [],
-            "post-checkout": "",
-            "post-merge": ""
-        }
-    },
-    "dependencies": {}
+		"sencha:clean": "rm -rf ./build/production",
+		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/",
+		"clean": "rm -rf ./dist",
+		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
+		"clean:win": "rm -rf ./dist/Rambox-win32-*",
+		"pack": "npm run pack:osx && npm run pack:win",
+		"pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --version=1.2.4 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win": "npm run pack:win32 && npm run pack:win64",
+		"pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux": "npm run pack:linux32 && npm run pack:linux64",
+		"pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --version=1.2.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"build": "npm run build:osx && npm run build:win",
+		"build:osx": "build \"dist/Rambox-darwin-x64/Rambox.app\" --platform=osx",
+		"build:win": "node ./build/winstaller.js ia32 && node ./build/winstaller.js x64",
+		"build:win32": "node ./build/winstaller.js ia32",
+		"build:win64": "node ./build/winstaller.js x64",
+		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
+		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
+		"zip:win32": "bestzip \"dist/Rambox-win32-ia32-portable.zip\" \"dist/Rambox-win32-ia32/*\"",
+		"zip:win64": "bestzip \"dist/Rambox-win32-x64-portable.zip\" \"dist/Rambox-win32-x64/*\"",
+		"zip:linux32": "bestzip \"dist/Rambox-linux-ia32.zip\" \"dist/Rambox-linux-ia32/*\"",
+		"zip:linux64": "bestzip \"dist/Rambox-linux-x64.zip\" \"dist/Rambox-linux-x64/*\"",
+		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
+		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run pack:linux && npm run zip:linux32 && npm run zip:linux64"
+	},
+	"name": "Rambox",
+	"productName": "Rambox",
+	"authors": [
+		"Ramiro Saenz"
+	],
+	"copyright": "",
+	"homepage": "http://www.rambox.pro",
+	"build": {
+		"productName": "Rambox",
+		"asar": true,
+		"osx": {
+			"title": "Rambox",
+			"icon-size": 128,
+			"contents": [
+				{
+					"x": 355,
+					"y": 125,
+					"type": "link",
+					"path": "/Applications"
+				},
+				{
+					"x": 155,
+					"y": 125,
+					"type": "file"
+				}
+			]
+		},
+		"win": {
+			"title": "Rambox",
+			"licenseUrl": "https://raw.githubusercontent.com/saenzramiro/rambox/master/LICENSE",
+			"msi": false
+		},
+		"linux": {
+			"target": [
+				"deb",
+				"zip",
+				"tar.gz",
+				"rpm"
+			],
+			"maintainer": "Rambox",
+			"vendor": "Rambox"
+		}
+	},
+	"directories": {
+		"buildResources": "resources/installer/",
+		"output": "dist/",
+		"app": "build/production/Rambox/"
+	},
+	"devDependencies": {
+		"asar": "^0.11.0",
+		"bestzip": "^1.1.3",
+		"electron-builder": "3.25.0",
+		"electron-installer-windows": "^0.2.0",
+		"electron-packager": "7.0.1",
+		"electron-prebuilt": "1.2.4",
+		"electron-squirrel-startup": "^1.0.0",
+		"electron-winstaller": "^2.3.0",
+		"spectron": "^3.2.3"
+	},
+	"config": {
+		"pre-git": {
+			"commit-msg": "",
+			"pre-commit": [],
+			"post-commit": "",
+			"pre-push": [],
+			"post-checkout": "",
+			"post-merge": ""
+		}
+	},
+	"dependencies": {
+		"firebase": "^3.0.5",
+		"firebase-token-generator": "^2.0.0"
+	}
 }

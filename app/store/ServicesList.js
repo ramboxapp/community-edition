@@ -10,7 +10,12 @@ Ext.define('Rambox.store.ServicesList', {
 
 	,proxy: {
 		 type: 'memory'
-    }
+	}
+
+	,sorters: [{
+		 property: 'name'
+		,direction: 'ASC'
+	}]
 
 	,autoLoad: true
 	,autoSync: true
@@ -214,6 +219,48 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'bearychat.png'
 			,name: 'BearyChat'
 			,url: 'https://___.bearychat.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'yahoomessenger'
+			,logo: 'yahoomessenger.png'
+			,name: 'Yahoo! Messenger'
+			,url: 'https://messenger.yahoo.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'voxer'
+			,logo: 'voxer.png'
+			,name: 'Voxer'
+			,url: 'https://web.voxer.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'dasher'
+			,logo: 'dasher.png'
+			,name: 'Dasher'
+			,url: 'https://dasher.im/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'flowdock'
+			,logo: 'flowdock.png'
+			,name: 'Flowdock'
+			,url: 'https://www.flowdock.com/login'
+			,type: 'messaging'
+		},
+		{
+			 id: 'mattermost'
+			,logo: 'mattermost.png'
+			,name: 'Mattermost'
+			,url: '___'
+			,type: 'messaging'
+		},
+		{
+			 id: 'dingtalk'
+			,logo: 'dingtalk.png'
+			,name: 'DingTalk'
+			,url: 'https://im.dingtalk.com/'
 			,type: 'messaging'
 		}
 	]

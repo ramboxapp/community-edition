@@ -14,6 +14,7 @@ const tray = require('./tray');
 // Require for autpUpdate file
 const autoupdater = require('./autoupdater');
 
+
 const MenuItem = electron.MenuItem;
 
 // this should be placed at top of main.js to handle setup events quickly
@@ -103,6 +104,8 @@ function createWindow () {
 		}
 	});
 
+	process.setMaxListeners(100);
+
 	// Start maximize
 	mainWindow.maximize();
 
@@ -118,7 +121,7 @@ function createWindow () {
 	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
 	mainWindow.webContents.on('will-navigate', function(event, url) {
-		event.preventDefault();
+		//event.preventDefault();
 	});
 
 	// Emitted when the window is closed.

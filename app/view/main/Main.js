@@ -135,6 +135,14 @@ Ext.define('Rambox.view.main.Main', {
 					,margin: '0 0 0 5'
 					,flex: 1
 					,header: { height: 50 }
+					,tools: [
+						{
+							 xtype: 'button'
+							,glyph: 'xf1f8@FontAwesome'
+							,tooltip: 'Remove all Services'
+							,handler: 'removeAllServices'
+						}
+					]
 					,columns: [
 						{
 							 xtype: 'templatecolumn'
@@ -190,6 +198,73 @@ Ext.define('Rambox.view.main.Main', {
 					}
 				}
 			]
+			,tbar: {
+				 xtype: 'toolbar'
+				,height: 42
+				,ui: 'main'
+				,enableOverflow: true
+				,overflowHandler: 'menu'
+				,items: [
+					{
+						 glyph: 'xf1f7@FontAwesome'
+						,text: 'Don\'t Disturb: OFF'
+						,tooltip: 'Lock this app if you will be away for a period of time.'
+						,enableToggle: true
+						,handler: 'dontDisturb'
+						,reference: 'disturbBtn'
+					}
+					,{
+						 glyph: 'xf023@FontAwesome'
+						,text: 'Lock Rambox'
+						,tooltip: 'Lock this app if you will be away for a period of time.'
+						,handler: 'lockRambox'
+					}
+					,'->'
+					,{
+						 xtype: 'image'
+						,id: 'avatar'
+						,bind: {
+							 src: '{avatar}'
+							,hidden: '{!avatar}'
+						}
+						,width: 30
+						,height: 30
+						,style: 'border-radius: 50%;border:2px solid #d8d8d8;'
+					}
+					,{
+						 id: 'usernameBtn'
+						,bind: {
+							 text: '{username}'
+							,hidden: '{!username}'
+						}
+						,menu: [
+							{
+								 text: 'Logout'
+								,glyph: 'xf08b@FontAwesome'
+								,handler: 'logout'
+							}
+						]
+					}
+					,{
+						 xtype: 'label'
+						,id: 'explanationLabel'
+						,html: 'Login to save your configuration (no credentials stored) to sync with all your computers. <b>All current services will be removed.</b>'
+						,bind: {
+							hidden: '{username}'
+						}
+					}
+					,{
+						 text: 'Login'
+						,icon: 'resources/auth0.png'
+						,id: 'loginBtn'
+						,tooltip: 'Powered by Auth0 (http://auth0.com)'
+						,bind: {
+							hidden: '{username}'
+						}
+						,handler: 'login'
+					}
+				]
+			}
 			,bbar: [
 				'->'
 				,{
