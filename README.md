@@ -19,7 +19,7 @@ Logo designed by Andriy Yurchenko (http://andyur.com/)
 
 ## Screenshot
 
-![Rambox](http://rambox.pro/images/img-01.png)
+<img src="http://rambox.pro/images/img-01.png" alt="Screenshot" title="Screenshot">
 
 ## Services available - 33
 
