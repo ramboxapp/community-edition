@@ -262,6 +262,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'DingTalk'
 			,url: 'https://im.dingtalk.com/'
 			,type: 'messaging'
+		},
+		{
+			id: 'mysms'
+			,logo: 'mysms.png'
+			,name: 'mysms'
+			,url: 'https://app.mysms.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		}
 	]
 });
