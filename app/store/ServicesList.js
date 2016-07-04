@@ -151,9 +151,9 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
-			 id: 'office365'
-			,logo: 'office365.png'
-			,name: 'Office 365'
+			 id: 'outlook365'
+			,logo: 'outlook365.png'
+			,name: 'Outlook 365'
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
 		},
