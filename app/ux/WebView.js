@@ -44,6 +44,15 @@ Ext.define('Rambox.ux.WebView',{
 				listeners: {
 					badgetextchange: me.onBadgeTextChange
 				}
+				,clickEvent: 'dblclick'
+				,menu: [
+					{
+						 text: 'Reload'
+						,glyph: 'xf021@FontAwesome'
+						,scope: me
+						,handler: me.reloadService
+					}
+				]
 			}
 			,listeners: {
 				 afterrender: me.onAfterRender
@@ -138,5 +147,12 @@ Ext.define('Rambox.ux.WebView',{
 					break;
 			}
 		});
+	}
+
+	,reloadService: function(btn) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		webview.reload();
 	}
 });
