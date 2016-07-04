@@ -270,6 +270,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://app.mysms.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'icq'
+			,logo: 'icq.png'
+			,name: 'ICQ'
+			,url: 'https://web.icq.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("nwa-msg-counter")[0].style.display==="block"?document.getElementsByClassName("nwa-msg-counter")[0].innerHTML.trim():0))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		}
 	]
 });
