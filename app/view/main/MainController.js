@@ -579,7 +579,7 @@ Ext.define('Rambox.view.main.MainController', {
 	,onSearchEnter: function( field, e ) {
 		var me = this;
 
-		if ( e.getKey() == e.ENTER && Ext.getStore('ServicesList').getCount() === 1 ) {
+		if ( e.getKey() == e.ENTER && Ext.getStore('ServicesList').getCount() === 2 ) { // Two because we always shows Custom Service option
 			me.onNewServiceSelect(field.up().down('dataview'), Ext.getStore('ServicesList').getAt(0));
 			me.onClearClick(field);
 		}
