@@ -291,6 +291,13 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'custom.png'
 			,name: '_Custom Service'
 			,type: 'custom'
+		},
+		{
+			 id: 'zinc'
+			,logo: 'zinc.png'
+			,name: 'Zinc'
+			,url: 'https://zinc-app.com/'
+			,type: 'messaging'
 		}
 	]
 });
