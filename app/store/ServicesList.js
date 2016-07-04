@@ -285,6 +285,12 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'TweetDeck'
 			,url: 'https://tweetdeck.twitter.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'custom'
+			,logo: 'custom.png'
+			,name: '_Custom Service'
+			,type: 'custom'
 		}
 	]
 });

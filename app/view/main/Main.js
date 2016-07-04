@@ -101,11 +101,6 @@ Ext.define('Rambox.view.main.Main', {
 								,specialkey: 'onSearchEnter'
 							}
 						}
-						,{
-							 type: 'plus'
-							,tooltip: 'Add a custom service'
-							,handler: 'addCustomService'
-						}
 					]
 					,items: [
 						{
