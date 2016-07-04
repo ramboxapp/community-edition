@@ -22,9 +22,6 @@ Ext.define('Rambox.model.Service', {
 	},{
 		 name: 'logo'
 		,type: 'string'
-		,convert: function( value, record ) {
-			return value ? value : record.get('type') + '.png';
-		}
 	},{
 		 name: 'name'
 		,type: 'string'

@@ -105,6 +105,7 @@ Ext.define('Rambox.view.main.MainController', {
 						} else {
 							var service = Ext.create('Rambox.model.Service', {
 								 type: record.get('id')
+								,logo: record.get('logo')
 								,name: formValues.serviceName
 								,url: record.get('url')
 								,align: formValues.align
@@ -149,11 +150,11 @@ Ext.define('Rambox.view.main.MainController', {
 		win.down('textfield[name="serviceName"]').focus(true, 100);
 	}
 
-	,showCustomModal: function(record) {
+	,showCustomModal: function(record, edit) {
 		var me = this;
 
 		var win = Ext.create('Ext.window.Window', {
-			 title: 'Add '+record.get('name')
+			 title: (edit ? 'Edit ' : 'Add ') + record.get('name')
 			,modal: true
 			,width: 400
 			,resizable: false
@@ -210,7 +211,7 @@ Ext.define('Rambox.view.main.MainController', {
 								{
 									 xtype: 'checkbox'
 									,boxLabel: 'Align to Right'
-									,checked: false
+									,checked: edit ? (record.get('align') === 'right' ? true : false) : false
 									,name: 'align'
 									,uncheckedValue: 'left'
 									,inputValue: 'right'
@@ -219,7 +220,7 @@ Ext.define('Rambox.view.main.MainController', {
 									 xtype: 'checkbox'
 									,boxLabel: 'Show notifications'
 									,name: 'notifications'
-									,checked: true
+									,checked: edit ? record.get('notifications') : true
 									,uncheckedValue: false
 									,inputValue: true
 								}
@@ -227,7 +228,7 @@ Ext.define('Rambox.view.main.MainController', {
 									 xtype: 'checkbox'
 									,boxLabel: 'Mute all sounds'
 									,name: 'muted'
-									,checked: false
+									,checked: edit ? record.get('muted') : false
 									,uncheckedValue: false
 									,inputValue: true
 								}
@@ -253,39 +254,50 @@ Ext.define('Rambox.view.main.MainController', {
 
 						var formValues = win.down('form').getValues();
 
-						var service = Ext.create('Rambox.model.Service', {
-							 type: record.get('id')
-							,name: formValues.serviceName
-							,url: record.get('url').replace('___', formValues.url)
-							,align: formValues.align
-							,notifications: formValues.notifications
-							,muted: formValues.muted
-							,js_unread: record.get('js_unread')
-						});
-						service.save();
-						Ext.getStore('Services').add(service);
-
-						var tabData = {
-							 xtype: 'webview'
-							,id: 'tab_'+service.get('id')
-							,title: service.get('name')
-							,icon: 'resources/icons/'+record.get('logo')
-							,src: service.get('url')
-							,type: service.get('type')
-							,align: formValues.align
-							,notifications: formValues.notifications
-							,muted: formValues.muted
-							,record: service
-							,tabConfig: {
-								service: service
-							}
-						};
-
-						if ( formValues.align === 'left' ) {
-							var tbfill = me.getView().getTabBar().down('tbfill');
-							me.getView().insert(me.getView().getTabBar().items.indexOf(tbfill), tabData).show();
+						if ( edit ) {
+							record.set({
+								 name: formValues.serviceName
+								,align: formValues.align
+								,notifications: formValues.notifications
+								,muted: formValues.muted
+							});
+							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
 						} else {
-							me.getView().add(tabData).show();
+							var service = Ext.create('Rambox.model.Service', {
+								 type: record.get('id')
+								,logo: record.get('logo')
+								,name: formValues.serviceName
+								,url: record.get('url').replace('___', formValues.url)
+								,align: formValues.align
+								,notifications: formValues.notifications
+								,muted: formValues.muted
+								,js_unread: record.get('js_unread')
+							});
+							service.save();
+							Ext.getStore('Services').add(service);
+
+							var tabData = {
+								 xtype: 'webview'
+								,id: 'tab_'+service.get('id')
+								,title: service.get('name')
+								,icon: 'resources/icons/'+record.get('logo')
+								,src: service.get('url')
+								,type: service.get('type')
+								,align: formValues.align
+								,notifications: formValues.notifications
+								,muted: formValues.muted
+								,record: service
+								,tabConfig: {
+									service: service
+								}
+							};
+
+							if ( formValues.align === 'left' ) {
+								var tbfill = me.getView().getTabBar().down('tbfill');
+								me.getView().insert(me.getView().getTabBar().items.indexOf(tbfill), tabData).show();
+							} else {
+								me.getView().add(tabData).show();
+							}
 						}
 
 						win.close();
@@ -301,6 +313,8 @@ Ext.define('Rambox.view.main.MainController', {
 	,onNewServiceSelect: function( view, record, item, index, e ) {
 		if ( record.get('url').indexOf('___') >= 0 ) {
 			this.showCustomModal(record);
+		} else if ( record.get('type') === 'custom' ) {
+			this.addCustomService(record, false);
 		} else {
 			this.showSimpleModal(record, false);
 		}
@@ -355,14 +369,18 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,configureService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
-		this.showSimpleModal(rec, true);
+		if ( rec.get('type') === 'custom' ) {
+			this.addCustomService(rec, true);
+		} else {
+			this.showSimpleModal(rec, true);
+		}
 	}
 
-	,addCustomService: function( event, toolEl, owner, tool ) {
+	,addCustomService: function( record, edit ) {
 		var me = this;
 
 		var win = Ext.create('Ext.window.Window', {
-			 title: 'Add Custom Service'
+			 title: (edit ? 'Edit ' : 'Add ') + 'Custom Service'
 			,modal: true
 			,width: 400
 			,resizable: false
@@ -376,6 +394,7 @@ Ext.define('Rambox.view.main.MainController', {
 							 xtype: 'textfield'
 							,fieldLabel: 'Name'
 							,name: 'serviceName'
+							,value: (edit ? record.get('name') : '')
 							,allowBlank: true
 							,listeners: {
 								specialkey: function(field, e) {
@@ -391,6 +410,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,emptyText: 'http://service.url.com'
 							,name: 'url'
 							,vtype: 'url'
+							,value: (edit ? record.get('url') : '')
 							,allowBlank: false
 							,listeners: {
 								specialkey: function(field, e) {
@@ -406,6 +426,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,emptyText: 'http://image.url.com/image.png'
 							,name: 'logo'
 							,vtype: 'url'
+							,value: (edit ? record.get('logo') : '')
 							,allowBlank: true
 							,listeners: {
 								specialkey: function(field, e) {
@@ -423,7 +444,7 @@ Ext.define('Rambox.view.main.MainController', {
 								{
 									 xtype: 'checkbox'
 									,boxLabel: 'Align to Right'
-									,checked: false
+									,checked: edit ? (record.get('align') === 'right' ? true : false) : false
 									,name: 'align'
 									,uncheckedValue: 'left'
 									,inputValue: 'right'
@@ -432,7 +453,7 @@ Ext.define('Rambox.view.main.MainController', {
 									 xtype: 'checkbox'
 									,boxLabel: 'Show notifications'
 									,name: 'notifications'
-									,checked: true
+									,checked: edit ? record.get('notifications') : true
 									,uncheckedValue: false
 									,inputValue: true
 								}
@@ -440,7 +461,7 @@ Ext.define('Rambox.view.main.MainController', {
 									 xtype: 'checkbox'
 									,boxLabel: 'Mute all sounds'
 									,name: 'muted'
-									,checked: false
+									,checked: edit ? record.get('muted') : false
 									,uncheckedValue: false
 									,inputValue: true
 								}
@@ -455,11 +476,11 @@ Ext.define('Rambox.view.main.MainController', {
 							,items: [
 								{
 									 xtype: 'textarea'
-									,fieldLabel: 'Unread Code'
+									,fieldLabel: 'Unread Code (<a href="https://github.com/saenzramiro/rambox/wiki/Add-a-Custom-Service" target="_blank">read more</a>)'
 									,allowBlank: true
 									,name: 'js_unread'
+									,value: (edit ? record.get('js_unread') : '')
 									,anchor: '100%'
-									,emptyText: 'Write code here if the service don\'t update the page title when have new activity. The code needs to return an integer, for example: document.body.getElementsByClassName("ee").length;'
 									,height: 120
 								}
 							]
@@ -477,47 +498,68 @@ Ext.define('Rambox.view.main.MainController', {
 				}
 				,'->'
 				,{
-					 text: 'Add service'
+					 text: (edit ? 'Edit ' : 'Add ') + ' Service'
 					,itemId: 'submit'
 					,handler: function() {
 						if ( !win.down('form').isValid() ) return false;
 
 						var formValues = win.down('form').getValues();
 
-						var service = Ext.create('Rambox.model.Service', {
-							 type: 'custom'
-							,logo: formValues.logo
-							,name: formValues.serviceName
-							,url: formValues.url
-							,align: formValues.align
-							,notifications: formValues.notifications
-							,muted: formValues.muted
-							,js_unread: 'function checkUnread(){updateBadge(' + formValues.js_unread + ')}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
-						});
-						service.save();
-						Ext.getStore('Services').add(service);
+						if ( edit ) {
+							// If users change the URL, we change the URL of the Webview
+							if ( record.get('url') !== formValues.url ) Ext.getCmp('tab_'+record.get('id')).down('component').el.dom.loadURL(formValues.url);
 
-						var tabData = {
-							 xtype: 'webview'
-							,id: 'tab_'+service.get('id')
-							,title: service.get('name')
-							,icon: formValues.logo
-							,src: service.get('url')
-							,type: service.get('type')
-							,align: formValues.align
-							,notifications: formValues.notifications
-							,muted: formValues.muted
-							,record: service
-							,tabConfig: {
-								service: service
-							}
-						};
+							// Save the service
+							record.set({
+								 name: formValues.serviceName
+								,url: formValues.url
+								,logo: formValues.logo
+								,align: formValues.align
+								,notifications: formValues.notifications
+								,muted: formValues.muted
+								,js_unread: formValues.js_unread
+							});
 
-						if ( formValues.align === 'left' ) {
-							var tbfill = me.getView().getTabBar().down('tbfill');
-							me.getView().insert(me.getView().getTabBar().items.indexOf(tbfill), tabData).show();
+							// Change the title of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
+							// Change the icon of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setIcon(record.get('logo') === '' ? 'resources/icons/custom.png' : record.get('logo'));
 						} else {
-							me.getView().add(tabData).show();
+							var service = Ext.create('Rambox.model.Service', {
+								 type: 'custom'
+								,logo: formValues.logo
+								,name: formValues.serviceName
+								,url: formValues.url
+								,align: formValues.align
+								,notifications: formValues.notifications
+								,muted: formValues.muted
+								,js_unread: formValues.js_unread !== '' ? 'function checkUnread(){updateBadge(' + formValues.js_unread + ')}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);' : ''
+							});
+							service.save();
+							Ext.getStore('Services').add(service);
+
+							var tabData = {
+								 xtype: 'webview'
+								,id: 'tab_'+service.get('id')
+								,title: service.get('name')
+								,icon: formValues.logo
+								,src: service.get('url')
+								,type: service.get('type')
+								,align: formValues.align
+								,notifications: formValues.notifications
+								,muted: formValues.muted
+								,record: service
+								,tabConfig: {
+									service: service
+								}
+							};
+
+							if ( formValues.align === 'left' ) {
+								var tbfill = me.getView().getTabBar().down('tbfill');
+								me.getView().insert(me.getView().getTabBar().items.indexOf(tbfill), tabData).show();
+							} else {
+								me.getView().add(tabData).show();
+							}
 						}
 
 						win.close();

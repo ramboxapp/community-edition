@@ -33,7 +33,7 @@ Ext.define('Rambox.store.Services', {
 					 xtype: 'webview'
 					,id: 'tab_'+service.get('id')
 					,title: service.get('name')
-					,icon: service.get('type') !== 'custom' ? 'resources/icons/'+service.get('logo') : service.get('logo')
+					,icon: service.get('type') !== 'custom' ? 'resources/icons/'+service.get('logo') : ( service.get('logo') === '' ? 'resources/icons/custom.png' : service.get('logo'))
 					,src: service.get('url')
 					,type: service.get('type')
 					,muted: service.get('muted')
