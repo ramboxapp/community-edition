@@ -79,22 +79,22 @@ Ext.define('Rambox.ux.WebView',{
 			}
 		});
 
+		// Open links in default browser
+		webview.addEventListener('new-window', function(e) {
+			const protocol = require('url').parse(e.url).protocol;
+			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
+				e.preventDefault();
+				require('electron').shell.openExternal(e.url);
+			}
+		});
+
+		webview.addEventListener('will-navigate', function(e, url) {
+			e.preventDefault();
+		});
+
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
 			if ( !webview.isAudioMuted() && me.muted ) webview.setAudioMuted(me.muted);
-
-			// Open links in default browser
-			webview.addEventListener('new-window', function(e) {
-				const protocol = require('url').parse(e.url).protocol;
-				if (protocol === 'http:' || protocol === 'https:') {
-					e.preventDefault();
-					require('electron').shell.openExternal(e.url);
-				}
-			});
-
-			webview.addEventListener('will-navigate', function(e, url) {
-				e.preventDefault();
-			});
 
 			// Injected code to detect new messages
 			if ( me.record && me.record.get('js_unread') !== '' ) {
