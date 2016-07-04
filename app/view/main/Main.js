@@ -173,15 +173,15 @@ Ext.define('Rambox.view.main.Main', {
 							,align: 'center'
 							,items: [
 								{
-									 glyph: 0xf1f8
-									,tooltip: 'Remove'
-									,handler: 'removeService'
-									,getClass: function(){ return 'x-hidden-display'; }
-								}
-								,{
 									 glyph: 0xf013
 									,tooltip: 'Configure'
 									,handler: 'configureService'
+									,getClass: function(){ return 'x-hidden-display'; }
+								}
+								,{
+									 glyph: 0xf1f8
+									,tooltip: 'Remove'
+									,handler: 'removeService'
 									,getClass: function(){ return 'x-hidden-display'; }
 								}
 							]
