@@ -13,7 +13,7 @@ const feedUrl = `https://getrambox.herokuapp.com/update/${process.platform}/${ap
 
 exports.check = win => {
 	if ( isDev ) return;
-
+	/*
 	autoUpdater.on('update-available', function() {
 		dialog.showMessageBox({
 			 message: 'New version'
@@ -21,7 +21,7 @@ exports.check = win => {
 			,buttons: ['Ok']
 		});
 	});
-	
+	*/
 	autoUpdater.on('update-downloaded', function(e, releaseNotes, releaseName, releaseDate, updateURL) {
 		var index = dialog.showMessageBox({
 			 message: 'A new update is ready to install'
