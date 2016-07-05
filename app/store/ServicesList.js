@@ -310,6 +310,13 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'FreeNode'
 			,url: 'https://webchat.freenode.net/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'mightytext'
+			,logo: 'mightytext.png'
+			,name: 'Mighty Text'
+			,url: 'https://mightytext.net/web/'
+			,type: 'messaging'
 		}
 	]
 });
