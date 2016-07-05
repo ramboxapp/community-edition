@@ -38,6 +38,7 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
+					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
 					,useragent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586' // Used to enable video and audio calls in Skype
 				}
 			}]
