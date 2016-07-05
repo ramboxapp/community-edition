@@ -36,6 +36,6 @@ function sync() {
 	});
 }
 
-require('electron').ipcRenderer.on('showAbout', (event, message) => {
+require('electron').ipcRenderer.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
 });
