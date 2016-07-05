@@ -38,12 +38,23 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
+					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
+					,useragent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586' // Used to enable video and audio calls in Skype
 				}
 			}]
 			,tabConfig: {
 				listeners: {
 					badgetextchange: me.onBadgeTextChange
 				}
+				,clickEvent: 'dblclick'
+				,menu: [
+					{
+						 text: 'Reload'
+						,glyph: 'xf021@FontAwesome'
+						,scope: me
+						,handler: me.reloadService
+					}
+				]
 			}
 			,listeners: {
 				 afterrender: me.onAfterRender
@@ -66,7 +77,9 @@ Ext.define('Rambox.ux.WebView',{
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
-			me.mask('Loading...');
+			me.mask('Loading...', 'bottomMask');
+			// Manually remove modal from mask
+			Ext.cq1('#'+me.id).el.dom.getElementsByClassName('bottomMask')[0].parentElement.className = '';
 		});
 		webview.addEventListener("did-stop-loading", function() {
 			me.unmask();
@@ -74,27 +87,24 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("did-finish-load", function(e) {
 			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
-			if ( Rambox.app.getTotalServicesLoaded() === Ext.getStore('Services').getCount() && Ext.get('spinner') !== null ) {
-				Ext.get('spinner').destroy();
+		});
+
+		// Open links in default browser
+		webview.addEventListener('new-window', function(e) {
+			const protocol = require('url').parse(e.url).protocol;
+			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
+				e.preventDefault();
+				require('electron').shell.openExternal(e.url);
 			}
+		});
+
+		webview.addEventListener('will-navigate', function(e, url) {
+			e.preventDefault();
 		});
 
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
 			if ( !webview.isAudioMuted() && me.muted ) webview.setAudioMuted(me.muted);
-
-			// Open links in default browser
-			webview.addEventListener('new-window', function(e) {
-				const protocol = require('url').parse(e.url).protocol;
-				if (protocol === 'http:' || protocol === 'https:') {
-					e.preventDefault();
-					require('electron').shell.openExternal(e.url);
-				}
-			});
-
-			webview.addEventListener('will-navigate', function(e, url) {
-				e.preventDefault();
-			});
 
 			// Injected code to detect new messages
 			if ( me.record && me.record.get('js_unread') !== '' ) {
@@ -138,5 +148,12 @@ Ext.define('Rambox.ux.WebView',{
 					break;
 			}
 		});
+	}
+
+	,reloadService: function(btn) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		webview.reload();
 	}
 });

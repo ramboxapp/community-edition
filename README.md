@@ -7,7 +7,7 @@
 [![Gitter](https://badges.gitter.im/saenzramiro/rambox.svg)](https://gitter.im/saenzramiro/rambox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![license:mit](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
 
-Free and Open Source messaging app that combines chat and messaging common services into one application.
+Free and Open Source messaging and emailing app that combines common web applications into one.
 
 Available for Windows, Mac and Linux.
 

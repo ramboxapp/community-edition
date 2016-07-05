@@ -248,7 +248,10 @@
      *
      */
     "output": {
-        "base": "${workspace.build.dir}/${build.environment}/${app.name}"
+        "base": "${workspace.build.dir}/${build.environment}/${app.name}",
+        "appCache": {
+            "enable": true
+        }
     },
 
     /**
@@ -259,7 +262,10 @@
          * List of items in the CACHE MANIFEST section
          */
         "cache": [
-            "index.html"
+            "index.html",
+            "app.js",
+            "resources/Rambox-all.css",
+            "resources/Icon.png"
         ],
         /**
          * List of items in the NETWORK section

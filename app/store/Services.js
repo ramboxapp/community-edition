@@ -21,7 +21,6 @@ Ext.define('Rambox.store.Services', {
 	,listeners: {
 		load: function( store, records, successful ) {
 			if ( Ext.isEmpty(records) ) {
-				Ext.get('spinner').destroy();
 				Ext.cq1('app-main').add({ tabConfig : { xtype : 'tbfill' } });
 				return;
 			}
@@ -33,7 +32,7 @@ Ext.define('Rambox.store.Services', {
 					 xtype: 'webview'
 					,id: 'tab_'+service.get('id')
 					,title: service.get('name')
-					,icon: service.get('type') !== 'custom' ? 'resources/icons/'+service.get('logo') : service.get('logo')
+					,icon: service.get('type') !== 'custom' ? 'resources/icons/'+service.get('logo') : ( service.get('logo') === '' ? 'resources/icons/custom.png' : service.get('logo'))
 					,src: service.get('url')
 					,type: service.get('type')
 					,muted: service.get('muted')

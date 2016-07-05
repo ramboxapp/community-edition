@@ -151,9 +151,9 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
-			 id: 'office365'
-			,logo: 'office365.png'
-			,name: 'Office 365'
+			 id: 'outlook365'
+			,logo: 'outlook365.png'
+			,name: 'Outlook 365'
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
 		},
@@ -261,6 +261,49 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'dingtalk.png'
 			,name: 'DingTalk'
 			,url: 'https://im.dingtalk.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'mysms'
+			,logo: 'mysms.png'
+			,name: 'mysms'
+			,url: 'https://app.mysms.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'icq'
+			,logo: 'icq.png'
+			,name: 'ICQ'
+			,url: 'https://web.icq.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("nwa-msg-counter")[0].style.display==="block"?document.getElementsByClassName("nwa-msg-counter")[0].innerHTML.trim():0))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'tweetdeck'
+			,logo: 'tweetdeck.png'
+			,name: 'TweetDeck'
+			,url: 'https://tweetdeck.twitter.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'custom'
+			,logo: 'custom.png'
+			,name: '_Custom Service'
+			,type: 'custom'
+		},
+		{
+			 id: 'zinc'
+			,logo: 'zinc.png'
+			,name: 'Zinc'
+			,url: 'https://zinc-app.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'freenode'
+			,logo: 'freenode.png'
+			,name: 'FreeNode'
+			,url: 'https://webchat.freenode.net/'
 			,type: 'messaging'
 		}
 	]

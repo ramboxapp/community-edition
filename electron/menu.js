@@ -122,7 +122,7 @@ let tpl = [
 				label: 'Close',
 				accelerator: 'CmdOrCtrl+W',
 				role: 'close'
-			},
+			}
 		]
 	},
 	{
@@ -137,7 +137,9 @@ if (process.platform === 'darwin') {
 		submenu: [
 			{
 				label: `About ${appName}`,
-				role: 'about'
+				click() {
+					sendAction('showAbout')
+				}
 			},
 			{
 				type: 'separator'
@@ -194,7 +196,9 @@ if (process.platform === 'darwin') {
 	});
 	helpSubmenu.push({
 		label: `About ${appName}`,
-		role: 'about'
+		click() {
+			sendAction('showAbout')
+		}
 	});
 }
 
