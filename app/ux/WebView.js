@@ -7,6 +7,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	// private
 	,notifications: 0
+	,zoomLevel: 0
 
 	// CONFIG
 	,hideMode: 'offsets'
