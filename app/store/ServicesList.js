@@ -49,6 +49,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Messenger'
 			,url: 'https://www.messenger.com/login/'
 			,type: 'messaging'
+			,note: 'To enable desktop notifications, you have to go to Options inside Messenger.'
 		},
 		{
 			 id: 'skype'
@@ -56,6 +57,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Skype'
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
+			,note: 'Text and Audio calls support only. Video for now is not working.'
 		},
 		{
 			 id: 'hangouts'
@@ -107,6 +109,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'ChatWork'
 			,url: 'https://www.chatwork.com/login.php'
 			,type: 'messaging'
+			,note: 'To enable desktop notifications, you have to go to Options inside ChatWork.'
 		},
 		{
 			 id: 'groupme'
@@ -114,6 +117,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'GroupMe'
 			,url: 'https://web.groupme.com/signin'
 			,type: 'messaging'
+			,note: 'To enable desktop notifications, you have to go to Options inside GroupMe.'
 		},
 		{
 			 id: 'grape'
@@ -267,9 +271,10 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'mysms'
 			,logo: 'mysms.png'
 			,name: 'mysms'
-			,url: 'https://app.mysms.com/'
+			,url: 'https://app.mysms.com/#login'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,note: 'You have to use this service by signing in with your mobile number.'
 		},
 		{
 			 id: 'icq'

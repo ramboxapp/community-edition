@@ -74,6 +74,17 @@ Ext.define('Rambox.view.main.MainController', {
 								}
 							]
 						}
+						,{
+							 xtype: 'container'
+							,hidden: record.get('note') === ''
+							,data: { note: record.get('note') }
+							,margin: '10 0 0 0'
+							,style: 'background-color:#93CFE0;color:#053767;'
+							,tpl: [
+								 '<i class="fa fa-info-circle" aria-hidden="true" style="font-size:40px;margin:20px;"></i>'
+								,'<span style="font-size: 15px;position: absolute;top: 25px;padding-right: 10px;">{note}</span>'
+							]
+						}
 					]
 				}
 			]

@@ -20,5 +20,9 @@ Ext.define('Rambox.model.ServiceList', {
 		 name: 'js_unread'
 		,type: 'string'
 		,defaultValue: ''
+	},{
+		 name: 'note'
+		,type: 'string'
+		,defaultValue: ''
 	}]
 });
