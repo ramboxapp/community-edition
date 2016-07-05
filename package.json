@@ -101,7 +101,6 @@
 		}
 	},
 	"dependencies": {
-		"firebase": "^3.0.5",
-		"firebase-token-generator": "^2.0.0"
+
 	}
 }
