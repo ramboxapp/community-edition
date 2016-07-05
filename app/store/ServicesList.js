@@ -298,6 +298,13 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Zinc'
 			,url: 'https://zinc-app.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'freenode'
+			,logo: 'freenode.png'
+			,name: 'FreeNode'
+			,url: 'https://webchat.freenode.net/'
+			,type: 'messaging'
 		}
 	]
 });
