@@ -83,9 +83,6 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("did-finish-load", function(e) {
 			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
-			if ( Rambox.app.getTotalServicesLoaded() === Ext.getStore('Services').getCount() && Ext.get('spinner') !== null ) {
-				Ext.get('spinner').destroy();
-			}
 		});
 
 		// Open links in default browser

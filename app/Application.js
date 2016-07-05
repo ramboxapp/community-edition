@@ -26,6 +26,9 @@ Ext.define('Rambox.Application', {
 				Ext.cq1('app-main').setActiveTab(key - 48);
 			}
 		});
+
+		// Remove spinner after 3 secs
+		Ext.defer(function() { Ext.get('spinner').destroy(); }, 3000);
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {

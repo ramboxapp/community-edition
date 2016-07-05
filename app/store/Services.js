@@ -21,7 +21,6 @@ Ext.define('Rambox.store.Services', {
 	,listeners: {
 		load: function( store, records, successful ) {
 			if ( Ext.isEmpty(records) ) {
-				Ext.get('spinner').destroy();
 				Ext.cq1('app-main').add({ tabConfig : { xtype : 'tbfill' } });
 				return;
 			}
