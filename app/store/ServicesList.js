@@ -34,7 +34,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Slack'
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread_highlight"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread_highlights"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'noysi'
