@@ -76,7 +76,9 @@ Ext.define('Rambox.ux.WebView',{
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
-			me.mask('Loading...');
+			me.mask('Loading...', 'bottomMask');
+			// Manually remove modal from mask
+			Ext.cq1('#'+me.id).el.dom.getElementsByClassName('bottomMask')[0].parentElement.className = '';
 		});
 		webview.addEventListener("did-stop-loading", function() {
 			me.unmask();

@@ -1,0 +1,14 @@
+.bottomMask {
+	bottom: 0;
+	height: 32px;
+	position: fixed;
+	top: auto !important;
+	left: 0 !important;
+	width: 120px;
+	.x-mask-msg-text {
+		padding: 0 0 0 24px;
+		background-image: url(images/loadmask/loading.gif);
+		background-repeat: no-repeat;
+		background-position: 0 0;
+	}
+}
