@@ -21,7 +21,7 @@ Logo designed by Andriy Yurchenko (http://andyur.com/)
 
 ![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/mac.png)
 
-## Services available - 34
+## Services available - 33
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -56,7 +56,6 @@ Logo designed by Andriy Yurchenko (http://andyur.com/)
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mattermost.png" alt="Mattermost" title="Mattermost">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/voxer.png" alt="Voxer" title="Voxer">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger">
-<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mysms.png" alt="mysms" title="mysms">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
