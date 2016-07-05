@@ -134,8 +134,17 @@ function createWindow () {
 
 	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
+	// Open links in default browser
+	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
+		const protocol = require('url').parse(url).protocol;
+		if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
+			e.preventDefault();
+			shell.openExternal(url);
+		}
+	});
+
 	mainWindow.webContents.on('will-navigate', function(event, url) {
-		//event.preventDefault();
+		event.preventDefault();
 	});
 
 	// Emitted when the window is closed.
