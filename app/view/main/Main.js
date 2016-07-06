@@ -262,12 +262,28 @@ Ext.define('Rambox.view.main.Main', {
 				]
 			}
 			,bbar: [
-				'->'
+				{
+					 text: 'Donate'
+					,href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA'
+				}
+				,'->'
 				,{
 					 xtype: 'label'
 					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from Argentina as an Open Source project.'
 				}
 				,'->'
+				,{
+					 glyph: 'xf082@FontAwesome'
+					,href: 'https://www.facebook.com/ramboxapp'
+				}
+				,{
+					 glyph: 'xf099@FontAwesome'
+					,href: 'https://www.twitter.com/ramboxapp'
+				}
+				,{
+					 glyph: 'xf09b@FontAwesome'
+					,href: 'https://www.github.com/saenzramiro/rambox'
+				}
 			]
 		}
 	]
