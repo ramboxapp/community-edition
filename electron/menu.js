@@ -24,6 +24,27 @@ const helpSubmenu = [
 		}
 	},
 	{
+		label: `Facebook`,
+		click() {
+			shell.openExternal('https://www.facebook.com/ramboxapp');
+		}
+	},
+	{
+		label: `Twitter`,
+		click() {
+			shell.openExternal('https://www.twitter.com/ramboxapp');
+		}
+	},
+	{
+		label: `GitHub`,
+		click() {
+			shell.openExternal('https://www.github.com/saenzramiro/rambox');
+		}
+	},
+	{
+		type: 'separator'
+	},
+	{
 		label: 'Report an Issue...',
 		click() {
 			const body = `
@@ -44,6 +65,15 @@ const helpSubmenu = [
 		label: `Ask for Help`,
 		click() {
 			shell.openExternal('https://gitter.im/saenzramiro/rambox');
+		}
+	},
+	{
+		type: 'separator'
+	},
+	{
+		label: `Donate`,
+		click() {
+			shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
 		}
 	}
 ];
