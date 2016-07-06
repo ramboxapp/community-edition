@@ -203,6 +203,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Rocket Chat'
 			,url: '___'
 			,type: 'messaging'
+			,note: 'You have to use this service by signing in with your email or username (No SSO allowed yet).'
 		},
 		{
 			 id: 'wire'
