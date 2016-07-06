@@ -39,6 +39,12 @@ const helpSubmenu = [
 
 			shell.openExternal(`https://github.com/saenzramiro/rambox/issues/new?body=${encodeURIComponent(body)}`);
 		}
+	},
+	{
+		label: `Ask for Help`,
+		click() {
+			shell.openExternal('https://gitter.im/saenzramiro/rambox');
+		}
 	}
 ];
 
