@@ -122,6 +122,7 @@ Ext.define('Rambox.view.main.Main', {
 						{
 							 xtype: 'button'
 							,glyph: 'xf1f8@FontAwesome'
+							,baseCls: ''
 							,tooltip: 'Remove all Services'
 							,handler: 'removeAllServices'
 						}

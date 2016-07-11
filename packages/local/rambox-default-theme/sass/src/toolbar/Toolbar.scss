@@ -6,8 +6,13 @@
 	$background-color: $base-color
 );
 
-.x-toolbar-main {
+@include extjs-toolbar-ui(
+	$ui: 'newversion',
+	$background-color: #31B96E
+);
+
+.x-toolbar-newversion {
 	label {
-		color: #FFF;
+		color: #1B1112;
 	}
 }
