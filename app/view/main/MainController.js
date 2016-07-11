@@ -1,9 +1,6 @@
 Ext.define('Rambox.view.main.MainController', {
 	 extend: 'Ext.app.ViewController'
 
-	,requires: [
-	]
-
 	,alias: 'controller.main'
 
 	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
@@ -12,6 +9,26 @@ Ext.define('Rambox.view.main.MainController', {
 		var webview = newTab.down('component').el.dom;
 
 		if ( webview ) webview.focus();
+	}
+
+	,updatePositions: function(tabPanel, tab) {
+		if ( tab.id === 'ramboxTab' || tab.id === 'tbfill' ) return true;
+
+		console.log('Updating Tabs positions...');
+
+		var store = Ext.getStore('Services');
+		store.suspendEvent('remove');
+		Ext.each(tabPanel.items.items, function(t, i) {
+			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' ) {
+				if ( t.record.get('align') === 'right' ) i--;
+				var rec = store.getById(t.record.get('id'));
+				rec.set('position', i);
+				rec.save();
+			}
+		});
+
+		store.load();
+		store.resumeEvent('remove');
 	}
 
 	,showSimpleModal: function(record, edit) {
@@ -76,10 +93,10 @@ Ext.define('Rambox.view.main.MainController', {
 						}
 						,{
 							 xtype: 'container'
-							,hidden: record.get('note') === ''
-							,data: { note: record.get('note') }
+							,hidden: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') === '' : record.get('note') === '')
+							,data: { note: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') : record.get('note')) }
 							,margin: '10 0 0 0'
-							,style: 'background-color:#93CFE0;color:#053767;'
+							,style: 'background-color:#93CFE0;color:#053767;border-radius:6px;'
 							,tpl: [
 								 '<i class="fa fa-info-circle" aria-hidden="true" style="font-size:40px;margin:20px;"></i>'
 								,'<span style="font-size: 15px;position: absolute;padding: 10px 10px 10px 0;">{note}</span>'
@@ -122,7 +139,6 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
-								,js_unread: record.get('js_unread')
 							});
 							service.save();
 							Ext.getStore('Services').add(service);
@@ -131,7 +147,7 @@ Ext.define('Rambox.view.main.MainController', {
 								 xtype: 'webview'
 								,id: 'tab_'+service.get('id')
 								,title: service.get('name')
-								,icon: 'resources/icons/'+record.get('logo')
+								,icon: 'resources/icons/'+service.get('logo')
 								,src: service.get('url')
 								,type: service.get('type')
 								,align: formValues.align
@@ -201,6 +217,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,submitEmptyText: false
 								,emptyText: record.get('url') === '___' ? 'http://' : ''
 								,vtype: record.get('url') === '___' ? 'url' : ''
+								,width: 220
 								,listeners: {
 									specialkey: function(field, e) {
 										if(e.getKey() == e.ENTER && field.up('form').isValid()) {
@@ -247,10 +264,10 @@ Ext.define('Rambox.view.main.MainController', {
 						}
 						,{
 							 xtype: 'container'
-							,hidden: record.get('note') === ''
-							,data: { note: record.get('note') }
+							,hidden: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') === '' : record.get('note') === '')
+ 							,data: { note: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') : record.get('note')) }
 							,margin: '10 0 0 0'
-							,style: 'background-color:#93CFE0;color:#053767;'
+							,style: 'background-color:#93CFE0;color:#053767;border-radius:6px;'
 							,tpl: [
 								 '<i class="fa fa-info-circle" aria-hidden="true" style="font-size:40px;margin:20px;"></i>'
 								,'<span style="font-size: 15px;position: absolute;padding: 10px 10px 10px 0;">{note}</span>'
@@ -293,7 +310,6 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
-								,js_unread: record.get('js_unread')
 							});
 							service.save();
 							Ext.getStore('Services').add(service);
@@ -302,7 +318,7 @@ Ext.define('Rambox.view.main.MainController', {
 								 xtype: 'webview'
 								,id: 'tab_'+service.get('id')
 								,title: service.get('name')
-								,icon: 'resources/icons/'+record.get('logo')
+								,icon: 'resources/icons/'+service.get('logo')
 								,src: service.get('url')
 								,type: service.get('type')
 								,align: formValues.align
@@ -352,11 +368,11 @@ Ext.define('Rambox.view.main.MainController', {
 		tab.down('component').el.dom.getWebContents().session.clearCache(Ext.emptyFn);
 		tab.down('component').el.dom.getWebContents().session.clearStorageData({}, Ext.emptyFn);
 
-		// Close tab
-		tab.close();
-
 		// Remove record from localStorage
 		Ext.getStore('Services').remove(Ext.getStore('Services').getById(serviceId));
+
+		// Close tab
+		tab.close();
 	}
 
 	,removeService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
@@ -376,17 +392,23 @@ Ext.define('Rambox.view.main.MainController', {
 		if ( btn ) {
 			Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove all services?', function(btnId) {
 				if ( btnId === 'yes' ) {
+					Ext.cq1('app-main').suspendEvent('remove');
 					Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 						me.removeServiceFn(serviceId);
 					});
+					Ext.getStore('Services').load();
 					if ( Ext.isFunction(callback) ) callback();
+					Ext.cq1('app-main').resumeEvent('remove');
 				}
 			});
 		} else {
+			Ext.cq1('app-main').suspendEvent('remove');
 			Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 				me.removeServiceFn(serviceId);
 			});
+			Ext.getStore('Services').load();
 			if ( Ext.isFunction(callback) ) callback();
+			Ext.cq1('app-main').resumeEvent('remove');
 		}
 	}
 
@@ -564,7 +586,7 @@ Ext.define('Rambox.view.main.MainController', {
 								 xtype: 'webview'
 								,id: 'tab_'+service.get('id')
 								,title: service.get('name')
-								,icon: formValues.logo
+								,icon: 'resources/icons/'+service.get('logo')
 								,src: service.get('url')
 								,type: service.get('type')
 								,align: formValues.align
@@ -745,7 +767,8 @@ Ext.define('Rambox.view.main.MainController', {
 			icon: 'resources/Icon.png'
 		}, function(err, profile, id_token) {
 			// There was an error logging the user in
-			if (err) return console.error(err);
+			//if (err) return console.error(err);
+			console.log('LOGIN', err, profile, id_token);
 
 			// Display a spinner while waiting
 			Ext.Msg.wait('Please wait until we get your configuration.', 'Connecting...');
@@ -763,61 +786,79 @@ Ext.define('Rambox.view.main.MainController', {
 				if ( !err ) {
 					// Exchange the delegate token for a Firebase auth token
 					firebase.auth().signInWithCustomToken(result.id_token).then(function(snapshot) {
-						fireRef.database().ref('users/' + profile.user_id).once('value').then(function(snapshot) {
-							me.removeAllServices(false, function() {
-								if ( snapshot.val() === null || Ext.isEmpty(snapshot.val().services) ) return;
+						fireRef.database().ref('test/' + profile.user_id).child('services').orderByChild('position').once('value', function(snapshot2) {
+							Ext.Msg.hide();
 
-								Ext.each(snapshot.val().services, function(s) {
-									var service = Ext.create('Rambox.model.Service', {
-										 id: s.id
-										,position: s.position
-										,type: s.type
-										,logo: s.logo
-										,name: s.name
-										,url: s.url
-										,align: s.align
-										,notifications: s.notifications
-										,muted: s.muted
-										,js_unread: s.js_unread
-									});
+							// Import Services function
+							var importServices = function(snap) {
+								snap.forEach(function(data) {
+									var s = data.val();
+									s.firebase_key = data.key;
+									var service = Ext.create('Rambox.model.Service', s);
 									service.save();
 									Ext.getStore('Services').add(service);
+								});
+								Ext.getStore('Services').resumeEvent('load');
+								Ext.getStore('Services').load();
 
-									var tabData = {
-										 xtype: 'webview'
-										,id: 'tab_'+service.get('id')
-										,title: service.get('name')
-										,icon: 'resources/icons/' + s.logo
-										,src: service.get('url')
-										,type: service.get('type')
-										,align: s.align
-										,notifications: s.notifications
-										,muted: s.muted
-										,record: service
-										,tabConfig: {
-											service: service
-										}
-									};
+								// User is logged in
+								// Save the profile and JWT.
+								localStorage.setItem('profile', JSON.stringify(profile));
+								localStorage.setItem('id_token', id_token);
+								Rambox.ux.Firebase.createEvents();
+							}
 
-									if ( s.align === 'left' ) {
-										var tbfill = Ext.cq1('app-main').getTabBar().down('tbfill');
-										Ext.cq1('app-main').insert(Ext.cq1('app-main').getTabBar().items.indexOf(tbfill), tabData);
+							// Firebase empty and Have Services
+							if ( !snapshot2.hasChildren() && Ext.getStore('Services').getCount() > 0 ) {
+								Ext.Msg.confirm('Import', 'You don\'t have any service saved. Do you want to import your current services?', function(btnId) {
+									if ( btnId === 'yes' ) {
+										var services = [];
+										Ext.getStore('Services').each(function(service, index) {
+											service.set('firebase_key', index);
+											// Prevent saving local ID into Firebase
+											var data = Ext.clone(service.data);
+											delete data.id;
+
+											services.push(data);
+										});
+										fireRef.database().ref('test/' + profile.user_id).set({
+											services: services
+										});
+
+										// User is logged in
+										// Save the profile and JWT.
+										localStorage.setItem('profile', JSON.stringify(profile));
+										localStorage.setItem('id_token', id_token);
+										Rambox.ux.Firebase.createEvents();
 									} else {
-										Ext.cq1('app-main').add(tabData);
+										Ext.Msg.confirm('Clear services', 'Do you want to remove all your current services to start over?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
+											if ( btnId === 'yes' ) {
+												me.removeAllServices(false);
+											} else {
+												me.logout();
+											}
+										});
 									}
 								});
-
-								Ext.Msg.hide();
-							});
+							// Firebase not empty and Have Services
+							} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() > 0 ) {
+								Ext.Msg.confirm('Confirm', 'To import your configuration, I need to remove all your current services. Do you want to continue?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
+									if ( btnId === 'yes' ) {
+										me.removeAllServices(false, function() {
+											importServices(snapshot2);
+										});
+									} else {
+										me.logout();
+									}
+								});
+							// Firebase not empty and Have no Services
+							} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() === 0 ) {
+								importServices(snapshot2);
+							}
 						});
 					});
 				}
 			});
-
-			// User is logged in
-			// Save the profile and JWT.
-			localStorage.setItem('profile', JSON.stringify(profile));
-			localStorage.setItem('id_token', id_token);
 
 			Ext.cq1('app-main').getViewModel().set('username', profile.name);
 			Ext.cq1('app-main').getViewModel().set('avatar', profile.picture);
@@ -829,22 +870,34 @@ Ext.define('Rambox.view.main.MainController', {
 	,logout: function(btn) {
 		var me = this;
 
-		Ext.Msg.confirm('Logout', 'Are you sure you want to logout?', function(btnId) {
-			if ( btnId === 'yes' ) {
+		var logoutFn = function(callback) {
+			Ext.Msg.wait('Closing you session...', 'Logout');
+
+			firebase.auth().signOut().then(function() {
 				localStorage.removeItem('profile');
 				localStorage.removeItem('id_token');
 
 				Ext.cq1('app-main').getViewModel().set('username', '');
 				Ext.cq1('app-main').getViewModel().set('avatar', '');
 
-				firebase.auth().signOut().then(function() {
-					Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
-						me.removeServiceFn(serviceId);
+				if ( Ext.isFunction(callback) ) callback();
+
+				Ext.Msg.hide();
+			}, function(error) {
+				console.error(error);
+			});
+		}
+
+		if ( btn ) {
+			Ext.Msg.confirm('Logout', 'Are you sure you want to logout?', function(btnId) {
+				if ( btnId === 'yes' ) {
+					logoutFn(function() {
+						me.removeAllServices();
 					});
-				}, function(error) {
-					console.error(error);
-				});
-			}
-		})
+				}
+			});
+		} else {
+			logoutFn();
+		}
 	}
 });

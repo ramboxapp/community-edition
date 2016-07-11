@@ -18,20 +18,6 @@ Ext.define('Rambox.view.main.Main', {
 	,plugins: [
 		{
 			 ptype: 'tabreorderer'
-			,listeners: {
-				// I put the code here because it cannot be listened into the Controller
-				Drop: function( box, tabBar, tab, startIdx, index ) {
-					var idx = 0;
-					Ext.each(tabBar.items.items, function(t) {
-						if ( idx > 0 && t.xtype !== 'tbfill' ) { // Skip first tab because is the configuration tab
-							t.card.record.set('position', idx);
-						} else if ( t.xtype === 'tbfill' ) {
-							idx--;
-						}
-						idx++;
-					});
-				}
-			}
 		}
 	]
 
@@ -41,6 +27,7 @@ Ext.define('Rambox.view.main.Main', {
 	,items: [
 		{
 			 icon: 'resources/IconTray@2x.png'
+			,id: 'ramboxTab'
 			,closable: false
 			,reorderable: false
 			,autoScroll: true
@@ -289,6 +276,9 @@ Ext.define('Rambox.view.main.Main', {
 	]
 
 	,listeners: {
-		tabchange: 'onTabChange'
+		 tabchange: 'onTabChange'
+		,add: 'updatePositions'
+		,remove: 'updatePositions'
+		,childmove: 'updatePositions'
 	}
 });

@@ -22,20 +22,6 @@ Ext.application({
 	,autoCreateViewport: 'Rambox.view.main.Main'
 });
 
-// Syncronize with Firebase
-function sync() {
-	// Is not logged, Skip
-	if ( !localStorage.getItem('id_token') ) return;
-
-	var services = [];
-	Ext.getStore('Services').each(function(service) {
-		services.push(service.data);
-	});
-	fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id).set({
-		services: services
-	});
-}
-
 require('electron').ipcRenderer.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
 });

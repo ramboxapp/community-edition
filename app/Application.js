@@ -3,9 +3,18 @@ Ext.define('Rambox.Application', {
 
 	,name: 'Rambox'
 
+	,requires: [
+		'Rambox.ux.Firebase'
+	]
+
 	,stores: [
 		 'ServicesList'
 		,'Services'
+	]
+
+	,profiles: [
+		 'Offline'
+		,'Online'
 	]
 
 	,config: {

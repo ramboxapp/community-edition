@@ -13,9 +13,6 @@ Ext.define('Rambox.model.Service', {
 	},{
 		 name: 'position'
 		,type: 'int'
-		,convert: function( value, record ) {
-			return value ? value : Ext.getStore('Services').getCount() + 1;
-		}
 	},{
 		 name: 'type'
 		,type: 'string'
@@ -44,5 +41,8 @@ Ext.define('Rambox.model.Service', {
 		 name: 'js_unread'
 		,type: 'string'
 		,defaultValue: ''
+	},{
+		 name: 'firebase_key'
+		,type: 'int'
 	}]
 });
