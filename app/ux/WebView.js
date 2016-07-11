@@ -55,6 +55,12 @@ Ext.define('Rambox.ux.WebView',{
 						,scope: me
 						,handler: me.reloadService
 					}
+					,{
+						 text: 'Toogle Developers Tools'
+						,glyph: 'xf121@FontAwesome'
+						,scope: me
+						,handler: me.toggleDevTools
+					}
 				]
 			}
 			,listeners: {
@@ -157,5 +163,12 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		webview.reload();
+	}
+
+	,toggleDevTools: function(btn) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
 	}
 });
