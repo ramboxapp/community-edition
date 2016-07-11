@@ -103,8 +103,8 @@ Ext.define('Rambox.Application', {
 			]
 		});
 
-		// Remove spinner after 3 secs
-		Ext.defer(function() { Ext.get('spinner').destroy(); }, 3000);
+		// Remove spinner
+		Ext.get('spinner').destroy();
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {
