@@ -97,7 +97,7 @@ Ext.define('Rambox.view.main.Main', {
 							,itemSelector: 'div.service'
 							,tpl: [
 								 '<tpl for=".">'
-									,'<div class="service">'
+									,'<div class="service" data-qtip="{description}">'
 										,'<img src="resources/icons/{logo}" width="48" />'
 										,'<span>{name}</span>'
 									,'</div>'
