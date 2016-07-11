@@ -116,7 +116,7 @@ Ext.define('Rambox.ux.WebView',{
 			// Injected code to detect new messages
 			if ( me.record && me.record.get('js_unread') !== '' ) {
 				console.info('JS Injected to Detect New Messages', me.src);
-				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
+				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type') === 'office365' ? 'outlook365' : me.record.get('type')).get('js_unread');
 				console.log(js_unread);
 				webview.executeJavaScript(js_unread);
 			}
