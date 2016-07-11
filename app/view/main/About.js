@@ -4,7 +4,10 @@ Ext.define('Rambox.view.main.About', {
 	,title: 'About Rambox'
 	,autoShow: true
 	,modal: true
+	,resizable: false
+	,constrain: true
 	,width: 300
+	,height: 385
 	,bodyPadding: 10
 	,data: {
 		 version: require('electron').remote.app.getVersion()
@@ -24,5 +27,7 @@ Ext.define('Rambox.view.main.About', {
 		,'<div><b>Node:</b> {node}</div>'
 		,'<br />'
 		,'<div style="text-align:center;"><a href="https://github.com/saenzramiro/rambox" target="_blank">GitHub</a> - <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA" target="_blank">Donate</a> - <a href="http://rambox.pro" target="_blank">rambox.pro</a></div>'
+		,'<br />'
+		,'<div style="text-align:center;"><i>Developed by Ramiro Saenz</i></div>'
 	]
 });
