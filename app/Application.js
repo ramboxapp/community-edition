@@ -38,11 +38,8 @@ Ext.define('Rambox.Application', {
 					,handler: function(key) {
 						var tabPanel = Ext.cq1('app-main');
 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-						if ( !tabPanel.items.items[activeIndex + 1] ) {
-							activeIndex = -1;
-						} else if ( tabPanel.items.items[activeIndex + 1].tabConfig.xtype === 'tbfill' ) {
-							activeIndex++;
-						}
+						if ( tabPanel.items.items[activeIndex + 1] && tabPanel.items.items[activeIndex + 1].id === 'tbfill' ) activeIndex++;
+						if ( !tabPanel.items.items[activeIndex + 1] ) activeIndex = -1;
 						tabPanel.setActiveTab( activeIndex + 1 );
 					}
 				}
@@ -54,12 +51,10 @@ Ext.define('Rambox.Application', {
  					,handler: function(key) {
  						var tabPanel = Ext.cq1('app-main');
  						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
- 						if ( !tabPanel.items.items[activeIndex - 1] ) {
- 							activeIndex = tabPanel.items.length;
- 						} else if ( tabPanel.items.items[activeIndex - 1].tabConfig.xtype === 'tbfill' ) {
- 							activeIndex--;
- 						}
- 						tabPanel.setActiveTab( activeIndex - 1 );
+						if ( tabPanel.items.items[activeIndex - 1] && tabPanel.items.items[activeIndex - 1].id === 'tbfill' ) activeIndex--;
+						if ( !tabPanel.items.items[activeIndex - 1] && tabPanel.items.items.length !== 2 ) activeIndex = tabPanel.items.items.length;
+						if ( tabPanel.items.items.length === 2 ) activeIndex = 1;
+						tabPanel.setActiveTab( activeIndex - 1 );
  					}
 				}
 				,{
