@@ -229,18 +229,10 @@ Ext.define('Rambox.view.main.Main', {
 						]
 					}
 					,{
-						 xtype: 'label'
-						,id: 'explanationLabel'
-						,html: 'Login to save your configuration (no credentials stored) to sync with all your computers. <b>All current services will be removed.</b>'
-						,bind: {
-							hidden: '{username}'
-						}
-					}
-					,{
 						 text: 'Login'
 						,icon: 'resources/auth0.png'
 						,id: 'loginBtn'
-						,tooltip: 'Powered by Auth0 (http://auth0.com)'
+						,tooltip: 'Login to save your configuration (no credentials stored) to sync with all your computers.<br /><br /><i>Powered by Auth0 (http://auth0.com)</i>'
 						,bind: {
 							hidden: '{username}'
 						}
@@ -251,6 +243,7 @@ Ext.define('Rambox.view.main.Main', {
 			,bbar: [
 				{
 					 text: 'Donate'
+					,glyph: 'xf1ed@FontAwesome'
 					,href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA'
 				}
 				,'->'
@@ -273,6 +266,7 @@ Ext.define('Rambox.view.main.Main', {
 				}
 			]
 		}
+		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 	]
 
 	,listeners: {
