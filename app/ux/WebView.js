@@ -109,9 +109,10 @@ Ext.define('Rambox.ux.WebView',{
 
 			// Injected code to detect new messages
 			if ( me.record && me.record.get('js_unread') !== '' ) {
-				console.info('JS Injected', me.src);
-				console.log(me.record.get('js_unread'));
-				webview.executeJavaScript(me.record.get('js_unread'));
+				console.info('JS Injected to Detect New Messages', me.src);
+				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
+				console.log(js_unread);
+				webview.executeJavaScript(js_unread);
 			}
 
 			// Scroll always to top (bug)
