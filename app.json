@@ -99,8 +99,16 @@
      *
      */
     "js": [
-        {
+		{
             "path": "${framework.dir}/build/ext-all-rtl-debug.js"
+        },
+        {
+            "path": "https://cdn.auth0.com/w2/auth0-6.7.js",
+            "remote": true
+        },
+        {
+            "path": "https://cdn.auth0.com/js/lock-9.1.js",
+            "remote": true
         },
         {
             "path": "app.js",
