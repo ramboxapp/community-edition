@@ -54,7 +54,7 @@ Ext.define('Rambox.store.Services', {
 
 			console.info('Saving into Firebase...', record.data);
 
-			var ref = fireRef.database().ref('test/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services');
+			var ref = fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services');
 
 			ref.once('value', function(snap) {
 				// Generate Key
@@ -83,14 +83,14 @@ Ext.define('Rambox.store.Services', {
 					obj[prop] = record.get(prop);
 				});
 
-				fireRef.database().ref('test/' + Ext.decode(localStorage.getItem('profile')).user_id + '/services').child(record.get('firebase_key')).update(obj);
+				fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id + '/services').child(record.get('firebase_key')).update(obj);
 			}
 		}
 		,remove: function(store, records, index, isMove) {
 			if ( !localStorage.getItem('id_token') ) return;
 
 			Ext.each(records, function(rec) {
-				fireRef.database().ref('test/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services').child(rec.get('firebase_key')).remove();
+				fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services').child(rec.get('firebase_key')).remove();
 			});
 		}
 	}

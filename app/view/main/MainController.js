@@ -786,7 +786,7 @@ Ext.define('Rambox.view.main.MainController', {
 				if ( !err ) {
 					// Exchange the delegate token for a Firebase auth token
 					firebase.auth().signInWithCustomToken(result.id_token).then(function(snapshot) {
-						fireRef.database().ref('test/' + profile.user_id).child('services').orderByChild('position').once('value', function(snapshot2) {
+						fireRef.database().ref('users/' + profile.user_id).child('services').orderByChild('position').once('value', function(snapshot2) {
 							Ext.Msg.hide();
 
 							// Import Services function
@@ -821,7 +821,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 											services.push(data);
 										});
-										fireRef.database().ref('test/' + profile.user_id).set({
+										fireRef.database().ref('users/' + profile.user_id).set({
 											services: services
 										});
 

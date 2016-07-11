@@ -9,7 +9,7 @@ Ext.define('Rambox.ux.Firebase', {
 
 		console.log('Define listeners for Firebase');
 
-		var ref = fireRef.database().ref('test/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services');
+		var ref = fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services');
 
 		// Attach an asynchronous callback to read the data at our posts reference
 		ref.on("child_changed", function(snapshot, prevChildKey) {
