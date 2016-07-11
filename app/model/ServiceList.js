@@ -11,6 +11,9 @@ Ext.define('Rambox.model.ServiceList', {
 		 name: 'name'
 		,type: 'string'
 	},{
+		 name: 'description'
+		,type: 'string'
+	},{
 		 name: 'url'
 		,type: 'string'
 	},{
