@@ -28,3 +28,6 @@ bootstrap.json
 # Electron
 node_modules
 npm-debug.log
+
+# Vagrant
+/.vagrant
