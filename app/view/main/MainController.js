@@ -805,6 +805,8 @@ Ext.define('Rambox.view.main.MainController', {
 								// Save the profile and JWT.
 								localStorage.setItem('profile', JSON.stringify(profile));
 								localStorage.setItem('id_token', id_token);
+
+								// Define Events for Firebase
 								Rambox.ux.Firebase.createEvents();
 							}
 
@@ -829,6 +831,8 @@ Ext.define('Rambox.view.main.MainController', {
 										// Save the profile and JWT.
 										localStorage.setItem('profile', JSON.stringify(profile));
 										localStorage.setItem('id_token', id_token);
+
+										// Define Events for Firebase
 										Rambox.ux.Firebase.createEvents();
 									} else {
 										Ext.Msg.confirm('Clear services', 'Do you want to remove all your current services to start over?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
@@ -874,6 +878,9 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.Msg.wait('Closing you session...', 'Logout');
 
 			firebase.auth().signOut().then(function() {
+				// Remove Events for Firebase
+				Rambox.ux.Firebase.removeEvents();
+
 				localStorage.removeItem('profile');
 				localStorage.removeItem('id_token');
 

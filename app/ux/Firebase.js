@@ -4,8 +4,9 @@ Ext.define('Rambox.ux.Firebase', {
 	// private
 	,eventsDefined: false
 
-	,createEvents: function(createTabs) {
-		if ( this.eventsDefined || !localStorage.getItem('id_token') ) return;
+	,createEvents: function() {
+		//if ( this.eventsDefined || !localStorage.getItem('id_token') ) return;
+		if ( !localStorage.getItem('id_token') ) return;
 
 		console.log('Define listeners for Firebase');
 
@@ -41,12 +42,18 @@ Ext.define('Rambox.ux.Firebase', {
 			Ext.getStore('Services').suspendEvents(['add', 'update']);
 			var rec = Ext.getStore('Services').findRecord('firebase_key', snapshot.key);
 
+			// For all version of Rambox (0.3.0)
+			if ( rec === null ) rec = Ext.getStore('Services').getById(snapshot.val().id);
+
+			var data = snapshot.val();
+			
 			// Update current services
 			if ( rec ) {
-				rec.set(snapshot.val());
+				delete data.id;
+				data.firebase_key = snapshot.key;
+				rec.set(data);
 				rec.save();
 			} else { // Add new ones if exist
-				var data = snapshot.val();
 				data.firebase_key = snapshot.key;
 				rec = Ext.create('Rambox.model.Service', data);
 				rec.save();
@@ -103,5 +110,25 @@ Ext.define('Rambox.ux.Firebase', {
 		});
 
 		this.eventsDefined = true;
+	}
+
+	,removeEvents: function() {
+		//if ( !this.eventsDefined ) return;
+
+		console.log('Remove listeners for Firebase');
+
+		var ref = fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services');
+
+		ref.off('child_changed', function() {
+			console.warn('Firebase - Child Changed event removed');
+		});
+
+		ref.off('child_added', function() {
+			console.warn('Firebase - Child Added event removed');
+		});
+
+		ref.off('child_removed', function() {
+			console.warn('Firebase - Child Removed event removed');
+		});
 	}
 });
