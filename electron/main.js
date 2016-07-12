@@ -136,6 +136,7 @@ function createWindow () {
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
+		if ( disposition !== 'foreground-tab' ) return;
 		const protocol = require('url').parse(url).protocol;
 		if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
 			e.preventDefault();
