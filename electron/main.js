@@ -121,7 +121,7 @@ function createWindow () {
 	// and restore the maximized or full screen state
 	mainWindowState.manage(mainWindow);
 
-	process.setMaxListeners(100);
+	process.setMaxListeners(10000);
 
 	// and load the index.html of the app.
 	mainWindow.loadURL('file://' + __dirname + '/../index.html');
