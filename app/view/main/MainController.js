@@ -8,6 +8,9 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 		var webview = newTab.down('component').el.dom;
 
+		// Set Google Analytics event
+		ga_storage._trackPageview('/index.html', 'main');
+
 		if ( webview ) webview.focus();
 	}
 
