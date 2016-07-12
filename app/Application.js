@@ -149,7 +149,7 @@ Ext.define('Rambox.Application', {
 	,updateTotalNotifications: function( newValue, oldValue ) {
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
-			document.title = 'Rambox (' + newValue + ')';
+			document.title = 'Rambox (' + Rambox.util.Format.formatNumber(newValue) + ')';
 		} else {
 			document.title = 'Rambox';
 		}

@@ -5,6 +5,10 @@ Ext.define('Rambox.ux.WebView',{
 	 extend: 'Ext.panel.Panel'
 	,xtype: 'webview'
 
+	,requires: [
+		'Rambox.util.Format'
+	]
+
 	// private
 	,notifications: 0
 	,zoomLevel: 0
@@ -74,7 +78,11 @@ Ext.define('Rambox.ux.WebView',{
 	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
 		if ( oldBadgeText === null ) oldBadgeText = 0;
 		var actualNotifications = Rambox.app.getTotalNotifications();
-		Rambox.app.setTotalNotifications(actualNotifications - parseInt(oldBadgeText) + parseInt(badgeText));
+
+		oldBadgeText = Rambox.util.Format.stripNumber(oldBadgeText);
+		badgeText = Rambox.util.Format.stripNumber(badgeText);
+
+		Rambox.app.setTotalNotifications(actualNotifications - oldBadgeText + badgeText);
 	}
 
 	,onAfterRender: function() {
@@ -131,8 +139,10 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener("page-title-updated", function(e) {
 			var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
-				count = count.match(/\d+/g); // Some services have special characters. Example: (•)
-				count = count ? parseInt(count[0]) : 0;
+				count = count.match(/\d+/g).join(""); // Some services have special characters. Example: (•)
+				count = count ? parseInt(count) : 0;
+
+			var formattedCount = Rambox.util.Format.formatNumber(count);
 
 			switch ( me.type ) {
 				case 'messenger':
@@ -140,7 +150,7 @@ Ext.define('Rambox.ux.WebView',{
 						me.notifications = count;
 					}
 					if ( count || e.title === 'Messenger' ) {
-						me.tab.setBadgeText(count);
+						me.tab.setBadgeText(formattedCount);
 					}
 					if ( e.title === 'Messenger' ) me.notifications = 0;
 					break;
@@ -149,12 +159,12 @@ Ext.define('Rambox.ux.WebView',{
 						me.notifications = count;
 					}
 					if ( count || e.title === 'Google Hangouts' ) {
-						me.tab.setBadgeText(count);
+						me.tab.setBadgeText(formattedCount);
 					}
 					if ( e.title === 'Google Hangouts' ) me.notifications = 0;
 					break;
 				default:
-					me.tab.setBadgeText(count);
+					me.tab.setBadgeText(formattedCount);
 					me.notifications = count;
 					break;
 			}

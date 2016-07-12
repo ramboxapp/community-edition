@@ -1,49 +1,49 @@
 /**
- * Created by whiskeredwonder on 7/30/2015.
- */
+* Created by whiskeredwonder on 7/30/2015.
+*/
 Ext.define('Rambox.ux.mixin.Badge', {
-    extend: 'Ext.Mixin',
+	extend: 'Ext.Mixin',
 
-    requires: [
-        //require this for the override
-        'Ext.button.Button'
-    ],
+	requires: [
+		//require this for the override
+		'Ext.button.Button'
+	],
 
-    mixinConfig: {
-        id: 'badge',
-        after: {
-            onRender: 'renderBadgeText'
-        }
-    },
+	mixinConfig: {
+		id: 'badge',
+		after: {
+			onRender: 'renderBadgeText'
+		}
+	},
 
-    config: {
-        badgeText: null
-    },
+	config: {
+		badgeText: null
+	},
 
-    renderBadgeText: function() {
-        var badgeText = this.getBadgeText();
+	renderBadgeText: function() {
+		var badgeText = this.getBadgeText();
 
-        if (badgeText) {
-            this.updateBadgeText(badgeText);
-        }
-    },
+		if (badgeText) {
+			this.updateBadgeText(badgeText);
+		}
+	},
 
-    updateBadgeText: function(badgeText, oldBadgeText) {
-        var me = this,
-            el = me.el;
+	updateBadgeText: function(badgeText, oldBadgeText) {
+		var me = this,
+			el = me.el;
 
-        if (me.rendered) {
-            el.set({
-                'data-badge-text': badgeText
-            });
+		if (me.rendered && badgeText !== '0') {
+			el.set({
+				'data-badge-text': badgeText
+			});
 
-            el.toggleCls(Ext.baseCSSPrefix + 'badge', !! badgeText);
+			el.toggleCls(Ext.baseCSSPrefix + 'badge', !! badgeText);
 
-            me.fireEvent('badgetextchange', me, badgeText, oldBadgeText);
-        }
-    }
+			me.fireEvent('badgetextchange', me, badgeText, oldBadgeText);
+		}
+	}
 }, function(BadgeMixin) {
-    Ext.override(Ext.button.Button, {
-        mixins: [BadgeMixin]
-    });
+	Ext.override(Ext.button.Button, {
+		mixins: [BadgeMixin]
+	});
 });
