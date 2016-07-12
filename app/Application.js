@@ -103,6 +103,45 @@ Ext.define('Rambox.Application', {
 			]
 		});
 
+		fireRef.database().ref('config').on('value', function(snapshot) {
+			var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
+			if ( appVersion.isLessThan(snapshot.val().latestVersion) ) {
+				console.info('New version is available', snapshot.val().latestVersion);
+				var newVersionTB = Ext.cq1('app-main').addDocked({
+					 xtype: 'toolbar'
+					,dock: 'top'
+					,ui: 'newversion'
+					,items: [
+						'->'
+						,{
+							 xtype: 'label'
+							,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')'
+						}
+						,{
+							 xtype: 'button'
+							,text: 'Download'
+							,href: 'https://getrambox.herokuapp.com/download'
+						}
+						,{
+							 xtype: 'button'
+							,text: 'Changelog'
+							,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+snapshot.val().latestVersion
+						}
+						,'->'
+						,{
+							 glyph: 'xf00d@FontAwesome'
+							,baseCls: ''
+							,style: 'cursor:pointer;'
+							,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+						}
+					]
+				});
+				return;
+			}
+
+			console.info('Your version is the latest. No need to update.')
+		});
+
 		// Remove spinner
 		Ext.get('spinner').destroy();
 	}
