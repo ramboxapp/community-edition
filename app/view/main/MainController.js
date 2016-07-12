@@ -674,8 +674,12 @@ Ext.define('Rambox.view.main.MainController', {
 		me.doTypeFilter(cg);
 	}
 
-	,dontDisturb: function(btn) {
+	,dontDisturb: function(btn, e, called) {
 		console.info('Dont Disturb:', btn.pressed ? 'Enabled' : 'Disabled');
+
+		// Google Analytics Event
+		if ( !called ) ga_storage._trackEvent('Usability', 'dontDisturb', ( btn.pressed ? 'on' : 'off' ));
+
 		Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 			// Get Tab
 			var tab = Ext.getCmp('tab_'+serviceId);
@@ -699,8 +703,11 @@ Ext.define('Rambox.view.main.MainController', {
 
 		var msgbox = Ext.Msg.prompt('Lock Rambox', 'Enter a temporal password to unlock it later', function(btnId, text) {
 			if ( btnId === 'ok' ) {
+				// Google Analytics Event
+				ga_storage._trackEvent('Usability', 'locked');
+
 				me.lookupReference('disturbBtn').setPressed(true);
-				me.dontDisturb(me.lookupReference('disturbBtn'));
+				me.dontDisturb(me.lookupReference('disturbBtn'), false, true);
 				var winLock = Ext.create('Ext.window.Window', {
 					 width: '100%'
 					,height: '100%'
@@ -772,6 +779,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 			// Display a spinner while waiting
 			Ext.Msg.wait('Please wait until we get your configuration.', 'Connecting...');
+
+			// Google Analytics Event
+			ga_storage._trackEvent('Users', 'loggedIn');
 
 			// Set the options to retreive a firebase delegation token
 			var options = {
@@ -876,6 +886,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 		var logoutFn = function(callback) {
 			Ext.Msg.wait('Closing you session...', 'Logout');
+
+			// Google Analytics Event
+			ga_storage._trackEvent('Users', 'loggedOut');
 
 			firebase.auth().signOut().then(function() {
 				// Remove Events for Firebase

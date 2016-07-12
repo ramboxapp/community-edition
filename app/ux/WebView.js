@@ -81,6 +81,9 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
+		// Google Analytics Event
+		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
+
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);

@@ -23,6 +23,11 @@ Ext.define('Rambox.Application', {
 	}
 
 	,launch: function () {
+		// Set Google Analytics events
+		ga_storage._setAccount('UA-80680424-1');
+		ga_storage._trackPageview('/index.html', 'main');
+
+		// Auth0 Config
 		lock = new Auth0Lock('y9am0DVawe2tvlA3ucD7OufpJHZZMjsO', 'rambox.auth0.com');
 		auth0 = new Auth0({ domain : 'rambox.auth0.com', clientID: 'y9am0DVawe2tvlA3ucD7OufpJHZZMjsO'})
 
