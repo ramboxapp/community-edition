@@ -9,6 +9,6 @@ Ext.define('Rambox.util.Format', {
 	}
 
 	,stripNumber: function(n) {
-		return (typeof n == "number") ? n : parseInt(n.match(/\d+/g).join(""));
+		return (typeof n == "number") ? n : n.match(/\d+/g) ? parseInt(n.match(/\d+/g).join("")) : 0;
 	}
 });

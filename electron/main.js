@@ -163,7 +163,7 @@ function createWindow () {
 }
 
 function updateBadge(title) {
-	const messageCount = (/\(([0-9]+)\)/).exec(title);
+	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
 
 	if (process.platform === 'win32') {
 		tray.setBadge(messageCount);
