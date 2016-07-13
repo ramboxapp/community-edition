@@ -11,8 +11,6 @@ const shell = require('electron').shell;
 const appMenu = require('./menu');
 // Require for tray file
 const tray = require('./tray');
-// Require for autpUpdate file
-const autoupdater = require('./autoupdater');
 // Window State Plugin
 const windowStateKeeper = require('electron-window-state');
 
@@ -129,8 +127,6 @@ function createWindow () {
 	electron.Menu.setApplicationMenu(appMenu);
 
 	tray.create(mainWindow);
-
-	autoupdater.check(mainWindow);
 
 	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
