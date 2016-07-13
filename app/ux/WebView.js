@@ -122,7 +122,11 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
-			if ( !webview.isAudioMuted() && me.muted ) webview.setAudioMuted(me.muted);
+			if ( me.muted ) me.setAudioMuted(me.muted);
+
+			// Notifications in Webview
+			webview.executeJavaScript('var originalNotification = Notification;');
+			if ( me.notifications ) me.setNotifications(me.notifications);
 
 			// Injected code to detect new messages
 			if ( me.record && me.record.get('js_unread') !== '' ) {
@@ -183,5 +187,23 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
+	}
+
+	,setAudioMuted: function(muted) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		webview.setAudioMuted(muted);
+	}
+
+	,setNotifications: function(notification) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		if ( !notification ) {
+			webview.executeJavaScript('(function() { Notification = function() { } })();');
+		} else {
+			webview.executeJavaScript('(function() { Notification = originalNotification })();');
+		}
 	}
 });

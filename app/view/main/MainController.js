@@ -135,6 +135,10 @@ Ext.define('Rambox.view.main.MainController', {
 							});
 							// Change the title of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
+							// Change sound of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setAudioMuted(formValues.muted);
+							// Change notifications of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setNotifications(formValues.notifications);
 							// Change the align of the Tab
 							if ( oldData.align !== formValues.align ) {
 								if ( formValues.align === 'left' ) {
@@ -316,6 +320,10 @@ Ext.define('Rambox.view.main.MainController', {
 							});
 							// Change the title of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
+							// Change sound of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setAudioMuted(formValues.muted);
+							// Change notifications of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setNotifications(formValues.notifications);
 							// Change the align of the Tab
 							if ( oldData.align !== formValues.align ) {
 								if ( formValues.align === 'left' ) {
@@ -590,6 +598,10 @@ Ext.define('Rambox.view.main.MainController', {
 
 							// Change the title of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
+							// Change sound of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setAudioMuted(formValues.muted);
+							// Change notifications of the Tab
+							Ext.getCmp('tab_'+record.get('id')).setNotifications(formValues.notifications);
 							// Change the icon of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setIcon(record.get('logo') === '' ? 'resources/icons/custom.png' : record.get('logo'));
 							// Change the align of the Tab
@@ -717,7 +729,7 @@ Ext.define('Rambox.view.main.MainController', {
 			var tab = Ext.getCmp('tab_'+serviceId);
 
 			// Mute sounds
-			tab.down('component').el.dom.getWebContents().setAudioMuted(btn.pressed);
+			tab.setAudioMuted(btn.pressed);
 
 			// Prevent Notifications
 			if ( btn.pressed ) {
