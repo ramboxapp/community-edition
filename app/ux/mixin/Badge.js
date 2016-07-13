@@ -32,9 +32,9 @@ Ext.define('Rambox.ux.mixin.Badge', {
 		var me = this,
 			el = me.el;
 
-		if (me.rendered && badgeText !== '0') {
+		if (me.rendered) {
 			el.set({
-				'data-badge-text': badgeText
+				'data-badge-text': badgeText !== '0' ? badgeText : ''
 			});
 
 			el.toggleCls(Ext.baseCSSPrefix + 'badge', !! badgeText);
