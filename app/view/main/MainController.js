@@ -133,7 +133,9 @@ Ext.define('Rambox.view.main.MainController', {
 								,notifications: formValues.notifications
 								,muted: formValues.muted
 							});
+							// Change the title of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
+							// Change the align of the Tab
 							if ( oldData.align !== formValues.align ) {
 								if ( formValues.align === 'left' ) {
 									me.getView().moveBefore(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
@@ -305,13 +307,23 @@ Ext.define('Rambox.view.main.MainController', {
 						var formValues = win.down('form').getValues();
 
 						if ( edit ) {
+							var oldData = record.getData();
 							record.set({
 								 name: formValues.serviceName
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
 							});
+							// Change the title of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
+							// Change the align of the Tab
+							if ( oldData.align !== formValues.align ) {
+								if ( formValues.align === 'left' ) {
+									me.getView().moveBefore(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
+								} else {
+									me.getView().moveAfter(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
+								}
+							}
 						} else {
 							var service = Ext.create('Rambox.model.Service', {
 								 type: record.get('id')
@@ -561,6 +573,7 @@ Ext.define('Rambox.view.main.MainController', {
 						var formValues = win.down('form').getValues();
 
 						if ( edit ) {
+							var oldData = record.getData();
 							// If users change the URL, we change the URL of the Webview
 							if ( record.get('url') !== formValues.url ) Ext.getCmp('tab_'+record.get('id')).down('component').el.dom.loadURL(formValues.url);
 
@@ -579,6 +592,14 @@ Ext.define('Rambox.view.main.MainController', {
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
 							// Change the icon of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setIcon(record.get('logo') === '' ? 'resources/icons/custom.png' : record.get('logo'));
+							// Change the align of the Tab
+							if ( oldData.align !== formValues.align ) {
+								if ( formValues.align === 'left' ) {
+									me.getView().moveBefore(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
+								} else {
+									me.getView().moveAfter(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
+								}
+							}
 						} else {
 							var service = Ext.create('Rambox.model.Service', {
 								 type: 'custom'
