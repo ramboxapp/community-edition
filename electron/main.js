@@ -165,11 +165,11 @@ function createWindow () {
 function updateBadge(title) {
 	const messageCount = (/\(([0-9]+)\)/).exec(title);
 
-	if (process.platform === 'darwin') {
-		app.dock.setBadge(messageCount ? messageCount[1] : '');
-	} else {
+	if (process.platform === 'win32') {
 		tray.setBadge(messageCount);
 	}
+
+	app.setBadgeCount(messageCount);
 }
 
 // This method will be called when Electron has finished
