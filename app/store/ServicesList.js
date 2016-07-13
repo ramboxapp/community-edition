@@ -155,6 +155,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Steam is a digital distribution platform developed by Valve Corporation offering digital rights management (DRM), multiplayer gaming and social networking services.'
 			,url: 'https://steamcommunity.com/chat'
 			,type: 'messaging'
+			,note: 'To enable desktop notifications, you have to go to Options inside Steam Chat.'
 		},
 		{
 			 id: 'discord'
