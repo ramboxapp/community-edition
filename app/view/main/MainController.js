@@ -23,8 +23,8 @@ Ext.define('Rambox.view.main.MainController', {
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
 			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' ) {
-				if ( t.record.get('align') === 'right' ) i--;
 				var rec = store.getById(t.record.get('id'));
+				if ( rec.get('align') === 'right' ) i--;
 				rec.set('position', i);
 				rec.save();
 			}
@@ -126,6 +126,7 @@ Ext.define('Rambox.view.main.MainController', {
 						var formValues = win.down('form').getValues();
 
 						if ( edit ) {
+							var oldData = record.getData();
 							record.set({
 								 name: formValues.serviceName
 								,align: formValues.align
@@ -133,6 +134,13 @@ Ext.define('Rambox.view.main.MainController', {
 								,muted: formValues.muted
 							});
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
+							if ( oldData.align !== formValues.align ) {
+								if ( formValues.align === 'left' ) {
+									me.getView().moveBefore(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
+								} else {
+									me.getView().moveAfter(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
+								}
+							}
 						} else {
 							var service = Ext.create('Rambox.model.Service', {
 								 type: record.get('id')
