@@ -109,6 +109,11 @@ Ext.define('Rambox.ux.WebView',{
 
 		// Open links in default browser
 		webview.addEventListener('new-window', function(e) {
+			// hack to fix multiple browser tabs on Skype link click, re #11
+			if (e.url === 'https://web.skype.com/en/undefined') {
+				console.log(e);
+				return;
+			}
 			const protocol = require('url').parse(e.url).protocol;
 			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
 				e.preventDefault();
