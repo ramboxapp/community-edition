@@ -172,6 +172,9 @@ function updateBadge(title) {
 	app.setBadgeCount(messageCount);
 }
 
+// Allow Custom sites with self certificates
+app.commandLine.appendSwitch('ignore-certificate-errors');
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', createWindow);
