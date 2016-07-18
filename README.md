@@ -56,6 +56,12 @@ Logo designed by Andriy Yurchenko (http://andyur.com/)
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mattermost.png" alt="Mattermost" title="Mattermost">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/voxer.png" alt="Voxer" title="Voxer">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mysms.png" alt="mysms" title="mysms">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/icq.png" alt="ICQ" title="ICQ">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/tweetdeck.png" alt="TweetDeck" title="TweetDeck">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zinc.png" alt="Zinc" title="Zinc">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/freenode.png" alt="FreeNode" title="FreeNode">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mightytext.png" alt="MightyText" title="MightyText">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -69,6 +75,12 @@ Logo designed by Andriy Yurchenko (http://andyur.com/)
 - [x] Minimize to tray.
 - [x] Mute audio to specific service.
 - [x] Separate tabs floating to the right.
+
+## Privacy
+
+No personal information will be saved
+
+Sync feature use Auth0 for Single Sign On & Token Based Authentication with the integration with Firebase to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
 ## [To Do](https://github.com/saenzramiro/rambox/blob/master/TODO.md)
 
@@ -97,6 +109,14 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 2. `npm install`
 3. `sencha app watch`
 4. `npm start`
+
+#### Install and run Rambox-Linux-xx.zip on native Linux
+
+1. Download the file
+2. Extract to a directory
+3. cd to directory
+4. sudo chmo +x Rambox
+5. ./Rambox
 
 ----------
 
