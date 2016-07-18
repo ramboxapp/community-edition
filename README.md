@@ -82,6 +82,8 @@ No personal information will be saved
 
 Sync feature use Auth0 for Single Sign On & Token Based Authentication with the integration with Firebase to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
+## [Install on Linux - Steps](https://github.com/saenzramiro/rambox/wiki/Install-on-Linux)
+
 ## [To Do](https://github.com/saenzramiro/rambox/blob/master/TODO.md)
 
 ## Getting Involved
@@ -109,14 +111,6 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 2. `npm install`
 3. `sencha app watch`
 4. `npm start`
-
-#### Install and run Rambox-Linux-xx.zip on native Linux
-
-1. Download the file
-2. Extract to a directory
-3. cd to directory
-4. sudo chmo +x Rambox
-5. ./Rambox
 
 ----------
 
