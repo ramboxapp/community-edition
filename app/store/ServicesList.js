@@ -145,7 +145,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'gitter.png'
 			,name: 'Gitter'
 			,description: 'Gitter is built on top of GitHub and is tightly integrated with your organisations, repositories, issues and activity.'
-			,url: 'https://gitter.im/login'
+			,url: 'https://gitter.im/'
 			,type: 'messaging'
 		},
 		{
