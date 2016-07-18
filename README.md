@@ -110,6 +110,14 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 3. `sencha app watch`
 4. `npm start`
 
+#### Install and run Rambox-Linux-xx.zip on native Linux
+
+1. Download the file
+2. Extract to a directory
+3. cd to directory
+4. sudo chmo +x Rambox
+5. ./Rambox
+
 ----------
 
 Disclosure
