@@ -137,11 +137,16 @@ Ext.define('Rambox.ux.WebView',{
 			if ( me.notifications ) me.setNotifications(me.notifications);
 
 			// Injected code to detect new messages
-			if ( me.record && me.record.get('js_unread') !== '' ) {
-				console.info('JS Injected to Detect New Messages', me.src);
+			if ( me.record ) {
 				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type') === 'office365' ? 'outlook365' : me.record.get('type')).get('js_unread');
-				console.log(js_unread);
-				webview.executeJavaScript(js_unread);
+				js_unread = me.type === 'custom' ? me.record.get('js_unread') : js_unread;
+				if ( js_unread !== '' ) {
+					console.groupCollapsed('JS Injected to Detect New Messages');
+					console.info(me.type);
+					console.log(js_unread);
+					console.groupEnd()
+					webview.executeJavaScript(js_unread);
+				}
 			}
 
 			// Scroll always to top (bug)
