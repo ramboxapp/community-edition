@@ -5,10 +5,10 @@ require('firebase/auth');
 
 // Firebug Config
 var config = {
-	apiKey: "AIzaSyAXedcpudidIUVhvn0jjrMHHWXv7YzWAR0",
-	authDomain: "rambox-d1326.firebaseapp.com",
-	databaseURL: "https://rambox-d1326.firebaseio.com",
-	storageBucket: "rambox-d1326.appspot.com"
+	apiKey: "",
+	authDomain: "",
+	databaseURL: "",
+	storageBucket: ""
 };
 var fireRef = firebase.initializeApp(config); // Firebase Ref
 var FirebaseTokenGenerator = require('firebase-token-generator');
