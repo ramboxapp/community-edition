@@ -173,6 +173,10 @@ Ext.define('Rambox.ux.WebView',{
 					break;
 			}
 		});
+
+		webview.addEventListener('did-get-redirect-request', function( e ) {
+			if ( e.isMainFrame ) Ext.defer(function() { webview.loadURL(e.newURL); }, 1000);
+		});
 	}
 
 	,reloadService: function(btn) {
