@@ -60,6 +60,14 @@ Ext.define('Rambox.ux.WebView',{
 						,handler: me.reloadService
 					}
 					,{
+						 text: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? 'Go Online' : 'Go Offline'
+						,glyph: 'xf0ac@FontAwesome'
+						,scope: me
+						,offline: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? true : false
+						,handler: me.setOffline
+					}
+					,'-'
+					,{
 						 text: 'Toogle Developers Tools'
 						,glyph: 'xf121@FontAwesome'
 						,scope: me
@@ -209,5 +217,19 @@ Ext.define('Rambox.ux.WebView',{
 		} else {
 			webview.executeJavaScript('(function() { Notification = originalNotification })();');
 		}
+	}
+
+	,setOffline: function(btn, e) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		console.log(btn, e);
+
+		console.info(me.type, 'Going '+ (!btn.offline ? 'offline' : 'online') + '...');
+
+		webview.getWebContents().session.setProxy({ proxyRules: !btn.offline ? 'offline' : '' }, Ext.emptyFn);
+		btn.offline = !btn.offline;
+		btn.setText(Ext.String.toggle(btn.text, 'Go Online', 'Go Offline'));
+		btn.offline ? localStorage.setItem('offline_'+me.id.replace('tab_', ''), true) : localStorage.removeItem('offline_'+me.id.replace('tab_', ''));
 	}
 });
