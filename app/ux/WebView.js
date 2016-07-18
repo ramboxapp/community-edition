@@ -183,7 +183,7 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.reload();
+		webview.loadURL(me.src);
 	}
 
 	,toggleDevTools: function(btn) {
