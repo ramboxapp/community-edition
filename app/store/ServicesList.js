@@ -166,6 +166,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Step up your game with a modern voice & text chat app. Crystal clear voice, multiple server and channel support, mobile apps, and more.'
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
+			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
 		},
 		{
 			 id: 'outlook'
