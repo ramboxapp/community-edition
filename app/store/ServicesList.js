@@ -157,6 +157,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://steamcommunity.com/chat'
 			,type: 'messaging'
 			,note: 'To enable desktop notifications, you have to go to Options inside Steam Chat.'
+			,js_unread: 'CTitleManager.UpdateTitle = function(){};function checkUnread(){var e=document.getElementsByClassName("unread_message_count_value"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) || e[i].parentNode.style.display === "none" ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t/2)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'discord'
