@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"private": true,
@@ -22,7 +22,7 @@
 		"hangouts",
 		"skype"
 	],
-	"author": "Ramiro Saenz",
+	"author": "Ramiro Saenz <saenzramiro@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
 		"electron-window-state": "^3.0.3",
