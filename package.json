@@ -17,9 +17,11 @@
 		"pack:linux": "npm run pack:linux32 && npm run pack:linux64",
 		"pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --version=1.2.7 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --version=1.2.7 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
-		"build": "npm run build:osx && npm run build:win",
+		"build": "npm run build:linux && npm run build:osx && npm run build:win",
 		"build:osx": "build \"dist/Rambox-darwin-x64/Rambox.app\" --platform=osx",
-		"build:linux64": "build \"dist/Rambox-linux-x64\" --platform=linux --arch=x64",
+		"build:linux": "npm run build:linux32 && npm run build:linux64",
+		"build:linux32": "build --linux --ia32",
+		"build:linux64": "build --linux --x64",
 		"build:win": "node ./build/winstaller.js ia32 && node ./build/winstaller.js x64",
 		"build:win32": "node ./build/winstaller.js ia32",
 		"build:win64": "node ./build/winstaller.js x64",
@@ -30,7 +32,7 @@
 		"zip:linux32": "bestzip \"dist/Rambox-linux-ia32.zip\" \"dist/Rambox-linux-ia32/*\"",
 		"zip:linux64": "bestzip \"dist/Rambox-linux-x64.zip\" \"dist/Rambox-linux-x64/*\"",
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
-		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run pack:linux && npm run zip:linux32 && npm run zip:linux64"
+		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux"
 	},
 	"name": "Rambox",
 	"productName": "Rambox",
