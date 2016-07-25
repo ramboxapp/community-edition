@@ -72,7 +72,9 @@
 				"zip",
 				"tar.gz",
 				"rpm"
-			]
+			],
+			"depends": ["libappindicator1", "libnotify-bin"],
+			"icon": "./resources/Icon.png"
 		}
 	},
 	"directories": {
