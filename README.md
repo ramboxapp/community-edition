@@ -14,6 +14,8 @@
   <a href="https://gitter.im/saenzramiro/rambox" target="_blank"><img src="https://badges.gitter.im/saenzramiro/rambox.svg" alt="Gitter"></a>
   <a href="https://github.com/saenzramiro/rambox/releases/latest" target="_blank"><img src="https://img.shields.io/github/release/saenzramiro/rambox.svg" alt="Release"></a>
   <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-mit-blue.svg" alt="MIT Licence"></a>
+  <a href="https://david-dm.org/saenzramiro/rambox" title="Dependency status"><img src="https://david-dm.org/saenzramiro/rambox.svg"/></a>
+  <a href="https://david-dm.org/saenzramiro/rambox#info=devDependencies" title="devDependency status"><img src="https://david-dm.org/saenzramiro/rambox/dev-status.svg"/></a>
 </p>
 
 <h5 align="center">Available for Windows, Mac and Linux.</h5>
