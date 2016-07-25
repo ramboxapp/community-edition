@@ -175,6 +175,19 @@ function updateBadge(title) {
 // Allow Custom sites with self certificates
 app.commandLine.appendSwitch('ignore-certificate-errors');
 
+const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
+	// Someone tried to run a second instance, we should focus our window.
+	if (mainWindow) {
+		if (mainWindow.isMinimized()) mainWindow.restore();
+		mainWindow.focus();
+	}
+});
+
+if (shouldQuit) {
+	app.quit();
+	return;
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', createWindow);
