@@ -36,7 +36,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Slack brings all your communication together in one place. It’s real-time messaging, archiving and search for modern teams.'
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread_highlights"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var t=0;$(".unread_msgs").each(function() { t += parseInt($(this).html()) });$("#im-list .unread_highlights").each(function() { t += parseInt($(this).html()) });updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'noysi'
