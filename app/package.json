@@ -25,6 +25,7 @@
 	"author": "Ramiro Saenz <saenzramiro@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
+		"auto-launch": "^2.1.0",
 		"electron-window-state": "^3.0.3",
 		"firebase": "^3.0.5",
 		"firebase-token-generator": "^2.0.0"

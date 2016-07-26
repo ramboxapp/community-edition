@@ -13,9 +13,8 @@ const appMenu = require('./menu');
 const tray = require('./tray');
 // Window State Plugin
 const windowStateKeeper = require('electron-window-state');
-
-
-const MenuItem = electron.MenuItem;
+// Global Settings
+var globalSettings = require('./global_settings.js');
 
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent()) {
@@ -92,20 +91,26 @@ let isQuitting = false;
 
 function createWindow () {
 	// Load the previous state with fallback to defaults
+
 	let mainWindowState = windowStateKeeper({
 		 defaultWidth: 1000
 		,defaultHeight: 800
-		,maximize: true
+		,maximize: false
 	});
+
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox'
-		,skipTaskbar: false
 		,icon: __dirname + '/../resources/Icon.png'
 		,x: mainWindowState.x
 		,y: mainWindowState.y
 		,width: mainWindowState.width
 		,height: mainWindowState.height
+		,backgroundColor: '#2E658E'
+		,alwaysOnTop: parseInt(globalSettings.get('always_on_top')) ? true : false
+		,autoHideMenuBar: parseInt(globalSettings.get('hide_menu_bar')) ? true : false
+		,skipTaskbar: parseInt(globalSettings.get('skip_taskbar')) ? true : false
+		,show: parseInt(globalSettings.get('start_minimized')) ? false : true
 		,webPreferences: {
 			 webSecurity: false
 			,nodeIntegration: true
@@ -113,6 +118,8 @@ function createWindow () {
 			,partition: 'persist:rambox'
 		}
 	});
+
+	if ( !parseInt(globalSettings.get('start_minimized')) && mainWindowState.isMaximized ) mainWindow.maximize();
 
 	// Let us register listeners on the window, so we can update the state
 	// automatically (the listeners will be removed when the window is closed)
@@ -126,7 +133,7 @@ function createWindow () {
 
 	electron.Menu.setApplicationMenu(appMenu);
 
-	tray.create(mainWindow);
+	tray.create(mainWindow, mainWindowState);
 
 	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
@@ -152,7 +159,7 @@ function createWindow () {
 			if (process.platform === 'darwin') {
 				app.hide();
 			} else {
-				mainWindow.hide();
+				parseInt(globalSettings.get('keep_in_taskbar_on_close')) ? mainWindow.minimize() : mainWindow.hide();
 			}
 		}
 	});

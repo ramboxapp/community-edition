@@ -7,7 +7,7 @@ const Tray = electron.Tray;
 const MenuItem = electron.MenuItem;
 var appIcon = null;
 
-exports.create = win => {
+exports.create = function(win, mainWindowState) {
 	if (process.platform === 'darwin' || appIcon) {
 		return;
 	}
@@ -45,7 +45,7 @@ exports.create = win => {
 	appIcon.setToolTip('Rambox');
 	appIcon.setContextMenu(contextMenu);
 	appIcon.on('double-click', () => {
-		win.show();
+		mainWindowState.isMaximized ? win.maximize() : win.show();
 	});
 };
 
