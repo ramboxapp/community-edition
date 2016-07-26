@@ -4,7 +4,8 @@ Ext.define('Rambox.Application', {
 	,name: 'Rambox'
 
 	,requires: [
-		'Rambox.ux.Firebase'
+		 'Rambox.ux.Firebase'
+		,'Rambox.util.MD5'
 	]
 
 	,stores: [
@@ -108,7 +109,7 @@ Ext.define('Rambox.Application', {
 					,handler: function(key) {
 						var btn = Ext.getCmp('disturbBtn');
 						btn.toggle();
-						Ext.cq1('app-main').getController().dontDisturb(btn);
+						Ext.cq1('app-main').getController().dontDisturb(btn, true);
 					}
 				}
 				,{
@@ -162,6 +163,11 @@ Ext.define('Rambox.Application', {
 
 			console.info('Your version is the latest. No need to update.')
 		});
+
+		if ( localStorage.getItem('locked') ) {
+			console.info('Lock Rambox:', 'Enabled');
+			Ext.cq1('app-main').getController().showLockWindow();
+		}
 
 		// Remove spinner
 		Ext.get('spinner').destroy();

@@ -130,11 +130,15 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
-			if ( me.muted ) me.setAudioMuted(me.muted);
+			if ( me.muted || localStorage.getItem('locked') ) me.setAudioMuted(true);
 
 			// Notifications in Webview
 			webview.executeJavaScript('var originalNotification = Notification;');
-			if ( me.notifications ) me.setNotifications(me.notifications);
+			if ( me.notifications ) {
+				me.setNotifications(me.notifications);
+			} else if ( localStorage.getItem('locked') ) {
+				me.setNotifications(false);
+			}
 
 			// Injected code to detect new messages
 			if ( me.record ) {

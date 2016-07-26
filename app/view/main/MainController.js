@@ -750,6 +750,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 		btn.setText('Don\'t Disturb: ' + ( btn.pressed ? 'ON' : 'OFF' ));
 
+		// If this method is called from Lock method, prevent showing toast
+		if ( !e ) return;
 		Ext.toast({
 			 html: btn.pressed ? 'ENABLED' : 'DISABLED'
 			,title: 'Don\'t Disturb'
@@ -776,71 +778,97 @@ Ext.define('Rambox.view.main.MainController', {
 							});
 							return false;
 						}
+
+						console.info('Lock Rambox:', 'Enabled');
+
+						// Save encrypted password in localStorage to show locked when app is reopen
+						localStorage.setItem('locked', Rambox.util.MD5.encypt(text));
+
 						// Google Analytics Event
 						ga_storage._trackEvent('Usability', 'locked');
 
 						me.lookupReference('disturbBtn').setPressed(true);
 						me.dontDisturb(me.lookupReference('disturbBtn'), false, true);
-						var winLock = Ext.create('Ext.window.Window', {
-							 width: '100%'
-							,height: '100%'
-							,closable: false
-							,minimizable: false
-							,maximizable: false
-							,draggable: false
-							,onEsc: Ext.emptyFn
-							,layout: 'center'
-							,bodyStyle: 'background-color:#2e658e;'
-							,items: [
-								{
-									 xtype: 'container'
-									,layout: 'vbox'
-									,items: [
-										{
-											 xtype: 'image'
-											,src: 'resources/Icon.png'
-											,width: 256
-											,height: 256
-										}
-										,{
-											 xtype: 'component'
-											,autoEl: {
-												 tag: 'h1'
-												,html: 'Rambox is locked'
-												,style: 'text-align:center;width:256px;'
-										   }
-										}
-										,{
-											 xtype: 'textfield'
-											,inputType: 'password'
-											,width: 256
-										}
-										,{
-											 xtype: 'button'
-											,text: 'UNLOCK'
-											,glyph: 'xf13e@FontAwesome'
-											,width: 256
-											,scale: 'large'
-											,handler: function() {
-												if ( text === winLock.down('textfield').getValue() ) {
-													winLock.close();
-													me.lookupReference('disturbBtn').setPressed(false);
-													me.dontDisturb(me.lookupReference('disturbBtn'));
-												} else {
-													winLock.down('textfield').markInvalid('Unlock password is invalid');
-												}
-											}
-										}
-									]
-								}
-							]
-						}).show();
+
+						me.showLockWindow();
 					}
 				});
 				msgbox2.textField.inputEl.dom.type = 'password';
 			}
 		});
 		msgbox.textField.inputEl.dom.type = 'password';
+	}
+
+	,showLockWindow: function() {
+		var me = this;
+
+		var validateFn = function() {
+			if ( localStorage.getItem('locked') === Rambox.util.MD5.encypt(winLock.down('textfield').getValue()) ) {
+				console.info('Lock Rambox:', 'Disabled');
+				localStorage.removeItem('locked');
+				winLock.close();
+				me.lookupReference('disturbBtn').setPressed(false);
+				me.dontDisturb(me.lookupReference('disturbBtn'), false);
+			} else {
+				winLock.down('textfield').reset();
+				winLock.down('textfield').markInvalid('Unlock password is invalid');
+			}
+		};
+
+		var winLock = Ext.create('Ext.window.Window', {
+			 width: '100%'
+			,height: '100%'
+			,closable: false
+			,minimizable: false
+			,maximizable: false
+			,draggable: false
+			,onEsc: Ext.emptyFn
+			,layout: 'center'
+			,bodyStyle: 'background-color:#2e658e;'
+			,items: [
+				{
+					 xtype: 'container'
+					,layout: 'vbox'
+					,items: [
+						{
+							 xtype: 'image'
+							,src: 'resources/Icon.png'
+							,width: 256
+							,height: 256
+						}
+						,{
+							 xtype: 'component'
+							,autoEl: {
+								 tag: 'h1'
+								,html: 'Rambox is locked'
+								,style: 'text-align:center;width:256px;'
+						   }
+						}
+						,{
+							 xtype: 'textfield'
+							,inputType: 'password'
+							,width: 256
+							,listeners: {
+								specialkey: function(field, e){
+									if ( e.getKey() == e.ENTER ) {
+										validateFn();
+									}
+								}
+							}
+						}
+						,{
+							 xtype: 'button'
+							,text: 'UNLOCK'
+							,glyph: 'xf13e@FontAwesome'
+							,width: 256
+							,scale: 'large'
+							,handler: validateFn
+						}
+					]
+				}
+			]
+		}).show();
+		winLock.down('textfield').focus(1000);
 	}
 
 	,login: function(btn) {
