@@ -38,6 +38,10 @@ Ext.define('Rambox.model.Service', {
 		,type: 'boolean'
 		,defaultValue: false
 	},{
+		 name: 'trust'
+		,type: 'boolean'
+		,defaultValue: false
+	},{
 		 name: 'js_unread'
 		,type: 'string'
 		,defaultValue: ''

@@ -179,9 +179,6 @@ function updateBadge(title) {
 	app.setBadgeCount(messageCount);
 }
 
-// Allow Custom sites with self certificates
-app.commandLine.appendSwitch('ignore-certificate-errors');
-
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
 	// Someone tried to run a second instance, we should focus our window.
 	if (mainWindow) {
@@ -194,6 +191,27 @@ if (shouldQuit) {
 	app.quit();
 	return;
 }
+
+var allowedURLCertificates = [];
+electron.ipcMain.on('allowCertificate', (event, url) => {
+	allowedURLCertificates.push(require('url').parse(url).host);
+});
+app.on('certificate-error', function(event, webContents, url, error, certificate, callback) {
+	if ( allowedURLCertificates.indexOf(require('url').parse(url).host) >= 0 ) {
+		event.preventDefault();
+		callback(true);
+	} else {
+		callback(false);
+		electron.dialog.showMessageBox(mainWindow, {
+			 title: 'Certification Error'
+			,message: 'The service with the following URL has an invalid authority certification.\n\n'+url+'\n\nYou have to remove the service and add it again, enabling the "Trust invalid authority certificates" in the Options.'
+			,buttons: ['OK']
+			,type: 'error'
+		}, function() {
+
+		});
+	}
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

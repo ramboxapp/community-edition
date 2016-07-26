@@ -549,6 +549,14 @@ Ext.define('Rambox.view.main.MainController', {
 									,uncheckedValue: false
 									,inputValue: true
 								}
+								,{
+									 xtype: 'checkbox'
+									,boxLabel: 'Trust invalid authority certificates'
+									,name: 'trust'
+									,checked: edit ? record.get('trust') : false
+									,uncheckedValue: false
+									,inputValue: true
+								}
 							]
 						}
 						,{
@@ -602,6 +610,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,trust: formValues.trust
 								,js_unread: formValues.js_unread
 							});
 
@@ -630,6 +639,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,trust: formValues.trust
 								,js_unread: formValues.js_unread !== '' ? 'function checkUnread(){updateBadge(' + formValues.js_unread + ')}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);' : ''
 							});
 							service.save();
