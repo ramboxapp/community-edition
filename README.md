@@ -1,19 +1,28 @@
-<div align="center"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="256px" align="center" alt="Rambox"></div><h1 align="center">Rambox</h1>
+<h1 align="center">
+  <br>
+  <a href="http://rambox.pro"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="256px" alt="Rambox"></a>
+  <br>
+  Rambox
+  <br>
+  <br>
+</h1>
 
-===================
+<h4 align="center">Free and Open Source messaging and emailing app that combines common web applications into one.</h4>
 
-[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA)
-[![Linux Build Status](https://travis-ci.org/saenzramiro/rambox.svg?branch=master)](https://travis-ci.org/saenzramiro/rambox)
-[![Gitter](https://badges.gitter.im/saenzramiro/rambox.svg)](https://gitter.im/saenzramiro/rambox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![license:mit](https://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
+<p align="center">
+  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate with PayPal"></a>
+  <a href="https://gitter.im/saenzramiro/rambox" target="_blank"><img src="https://badges.gitter.im/saenzramiro/rambox.svg" alt="Gitter"></a>
+  <a href="https://github.com/saenzramiro/rambox/releases/latest" target="_blank"><img src="https://img.shields.io/github/release/saenzramiro/rambox.svg" alt="Release"></a>
+  <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-mit-blue.svg" alt="MIT Licence"></a>
+  <a href="https://david-dm.org/saenzramiro/rambox" title="Dependency status"><img src="https://david-dm.org/saenzramiro/rambox.svg"/></a>
+  <a href="https://david-dm.org/saenzramiro/rambox#info=devDependencies" title="devDependency status"><img src="https://david-dm.org/saenzramiro/rambox/dev-status.svg"/></a>
+</p>
 
-Free and Open Source messaging and emailing app that combines common web applications into one.
+<h5 align="center">Available for Windows, Mac and Linux.</h5>
 
-Available for Windows, Mac and Linux.
+<h5 align="center"><a href="http://rambox.pro/#download" target="_blank"><img src="http://windows7-8activator.com/wp-content/uploads/2015/04/button1.png" width="250" alt="DOWNLOAD HERE"></a></h5>
 
-[![DOWNLOAD HERE](http://windows7-8activator.com/wp-content/uploads/2015/04/button1.png)](https://getrambox.herokuapp.com/download)
-
-Logo designed by Andriy Yurchenko (http://andyur.com/) 
+<h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 
 ----------
 
