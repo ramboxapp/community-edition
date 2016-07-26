@@ -11,6 +11,7 @@ Ext.define('Rambox.store.Services', {
 	,autoLoad: true
 	,autoSync: true
 
+	,groupField: 'align'
 	,sorters: [
 		{
 			 property: 'position'

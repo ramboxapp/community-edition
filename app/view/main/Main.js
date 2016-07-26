@@ -118,6 +118,16 @@ Ext.define('Rambox.view.main.Main', {
 					,margin: '0 0 0 5'
 					,flex: 1
 					,header: { height: 50 }
+					,features: [
+						{
+							 ftype:'grouping'
+							,groupHeaderTpl: '{columnName:uppercase}: {name:capitalize} ({rows.length} Item{[values.rows.length > 1 ? "s" : ""]})'
+						}
+					]
+					,plugins: {
+						 ptype: 'cellediting'
+						,clicksToEdit: 2
+					}
 					,tools: [
 						{
 							 xtype: 'button'
@@ -134,7 +144,16 @@ Ext.define('Rambox.view.main.Main', {
 							,variableRowHeight: true
 							,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" />'
 						}
-						,{ text: 'Name', dataIndex: 'name', variableRowHeight: true, flex: 1 }
+						,{
+							 text: 'Name'
+							,dataIndex: 'name'
+							,variableRowHeight: true
+							,flex: 1
+							,editor: {
+								 xtype: 'textfield'
+								,allowBlank: true
+							}
+						}
 						,{
 							 xtype: 'actioncolumn'
 							,width: 60
@@ -179,6 +198,10 @@ Ext.define('Rambox.view.main.Main', {
 					,viewConfig: {
 						 emptyText: 'No services added...'
 						,forceFit: true
+						,stripeRows: true
+					}
+					,listeners: {
+						edit: 'onRenameService'
 					}
 				}
 			]

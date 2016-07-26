@@ -34,6 +34,15 @@ Ext.define('Rambox.view.main.MainController', {
 		store.resumeEvent('remove');
 	}
 
+	,onRenameService: function(editor, e) {
+		var me = this;
+
+		e.record.commit();
+
+		// Change the title of the Tab
+		Ext.getCmp('tab_'+e.record.get('id')).setTitle(e.record.get('name'));
+	}
+
 	,showSimpleModal: function(record, edit) {
 		var me = this;
 
