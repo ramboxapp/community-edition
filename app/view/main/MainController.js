@@ -749,6 +749,14 @@ Ext.define('Rambox.view.main.MainController', {
 		});
 
 		btn.setText('Don\'t Disturb: ' + ( btn.pressed ? 'ON' : 'OFF' ));
+
+		Ext.toast({
+			 html: btn.pressed ? 'ENABLED' : 'DISABLED'
+			,title: 'Don\'t Disturb'
+			,width: 200
+			,align: 't'
+			,closable: false
+		});
 	}
 
 	,lockRambox: function(btn) {

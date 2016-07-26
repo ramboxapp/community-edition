@@ -100,6 +100,27 @@ Ext.define('Rambox.Application', {
 						Ext.cq1('app-main').setActiveTab(key - 48);
 					}
 				}
+				,{
+					 key: Ext.event.Event.F1
+					,ctrl: false
+					,alt: false
+					,shift: false
+					,handler: function(key) {
+						var btn = Ext.getCmp('disturbBtn');
+						btn.toggle();
+						Ext.cq1('app-main').getController().dontDisturb(btn);
+					}
+				}
+				,{
+					 key: Ext.event.Event.F2
+					,ctrl: false
+					,alt: false
+					,shift: false
+					,handler: function(key) {
+						var btn = Ext.getCmp('lockRamboxBtn');
+						Ext.cq1('app-main').getController().lockRambox(btn);
+					}
+				}
 			]
 		});
 
