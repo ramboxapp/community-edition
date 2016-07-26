@@ -756,65 +756,80 @@ Ext.define('Rambox.view.main.MainController', {
 
 		var msgbox = Ext.Msg.prompt('Lock Rambox', 'Enter a temporal password to unlock it later', function(btnId, text) {
 			if ( btnId === 'ok' ) {
-				// Google Analytics Event
-				ga_storage._trackEvent('Usability', 'locked');
+				var msgbox2 = Ext.Msg.prompt('Lock Rambox', 'Repeat the temporal password', function(btnId, text2) {
+					if ( btnId === 'ok' ) {
+						if ( text !== text2 ) {
+							Ext.Msg.show({
+								 title: 'Warning'
+								,message: 'Passwords are not the same. Please try again...'
+								,icon: Ext.Msg.WARNING
+								,buttons: Ext.Msg.OK
+								,fn: me.lockRambox
+							});
+							return false;
+						}
+						// Google Analytics Event
+						ga_storage._trackEvent('Usability', 'locked');
 
-				me.lookupReference('disturbBtn').setPressed(true);
-				me.dontDisturb(me.lookupReference('disturbBtn'), false, true);
-				var winLock = Ext.create('Ext.window.Window', {
-					 width: '100%'
-					,height: '100%'
-					,closable: false
-					,minimizable: false
-					,maximizable: false
-					,draggable: false
-					,onEsc: Ext.emptyFn
-					,layout: 'center'
-					,bodyStyle: 'background-color:#2e658e;'
-					,items: [
-						{
-							 xtype: 'container'
-							,layout: 'vbox'
+						me.lookupReference('disturbBtn').setPressed(true);
+						me.dontDisturb(me.lookupReference('disturbBtn'), false, true);
+						var winLock = Ext.create('Ext.window.Window', {
+							 width: '100%'
+							,height: '100%'
+							,closable: false
+							,minimizable: false
+							,maximizable: false
+							,draggable: false
+							,onEsc: Ext.emptyFn
+							,layout: 'center'
+							,bodyStyle: 'background-color:#2e658e;'
 							,items: [
 								{
-									 xtype: 'image'
-									,src: 'resources/Icon.png'
-									,width: 256
-									,height: 256
-								}
-								,{
-									 xtype: 'component'
-									,autoEl: {
-										 tag: 'h1'
-										,html: 'Rambox is locked'
-										,style: 'text-align:center;width:256px;'
-								   }
-								}
-								,{
-									 xtype: 'textfield'
-									,inputType: 'password'
-									,width: 256
-								}
-								,{
-									 xtype: 'button'
-									,text: 'UNLOCK'
-									,glyph: 'xf13e@FontAwesome'
-									,width: 256
-									,scale: 'large'
-									,handler: function() {
-										if ( text === winLock.down('textfield').getValue() ) {
-											winLock.close();
-											me.lookupReference('disturbBtn').setPressed(false);
-											me.dontDisturb(me.lookupReference('disturbBtn'));
-										} else {
-											winLock.down('textfield').markInvalid('Unlock password is invalid');
+									 xtype: 'container'
+									,layout: 'vbox'
+									,items: [
+										{
+											 xtype: 'image'
+											,src: 'resources/Icon.png'
+											,width: 256
+											,height: 256
 										}
-									}
+										,{
+											 xtype: 'component'
+											,autoEl: {
+												 tag: 'h1'
+												,html: 'Rambox is locked'
+												,style: 'text-align:center;width:256px;'
+										   }
+										}
+										,{
+											 xtype: 'textfield'
+											,inputType: 'password'
+											,width: 256
+										}
+										,{
+											 xtype: 'button'
+											,text: 'UNLOCK'
+											,glyph: 'xf13e@FontAwesome'
+											,width: 256
+											,scale: 'large'
+											,handler: function() {
+												if ( text === winLock.down('textfield').getValue() ) {
+													winLock.close();
+													me.lookupReference('disturbBtn').setPressed(false);
+													me.dontDisturb(me.lookupReference('disturbBtn'));
+												} else {
+													winLock.down('textfield').markInvalid('Unlock password is invalid');
+												}
+											}
+										}
+									]
 								}
 							]
-						}
-					]
-				}).show();
+						}).show();
+					}
+				});
+				msgbox2.textField.inputEl.dom.type = 'password';
 			}
 		});
 		msgbox.textField.inputEl.dom.type = 'password';
