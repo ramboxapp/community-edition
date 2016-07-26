@@ -215,7 +215,7 @@ Ext.define('Rambox.view.main.Main', {
 					{
 						 glyph: 'xf1f7@FontAwesome'
 						,text: 'Don\'t Disturb: OFF'
-						,tooltip: 'Lock this app if you will be away for a period of time.'
+						,tooltip: 'Disable notifications and sounds in all services. Perfect to be concentrated and focused.'
 						,enableToggle: true
 						,handler: 'dontDisturb'
 						,reference: 'disturbBtn'
@@ -278,14 +278,17 @@ Ext.define('Rambox.view.main.Main', {
 				,'->'
 				,{
 					 glyph: 'xf082@FontAwesome'
+					,tooltip: 'Facebook'
 					,href: 'https://www.facebook.com/ramboxapp'
 				}
 				,{
 					 glyph: 'xf099@FontAwesome'
+					,tooltip: 'Twitter'
 					,href: 'https://www.twitter.com/ramboxapp'
 				}
 				,{
 					 glyph: 'xf09b@FontAwesome'
+					,tooltip: 'GitHub'
 					,href: 'https://www.github.com/saenzramiro/rambox'
 				}
 			]
