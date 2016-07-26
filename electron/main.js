@@ -213,6 +213,48 @@ app.on('certificate-error', function(event, webContents, url, error, certificate
 	}
 });
 
+
+// Code for downloading images as temporal files
+// Credit: Ghetto Skype (https://github.com/stanfieldr/ghetto-skype)
+const tmp = require('tmp');
+const mime = require('mime');
+var imageCache = {};
+electron.ipcMain.on('image:download', function(event, url, partition) {
+	let file = imageCache[url];
+	if (file) {
+		if (file.complete) {
+			electron.shell.openItem(file.path);
+		}
+
+		// Pending downloads intentionally do not proceed
+		return;
+	}
+
+	let tmpWindow = new BrowserWindow({
+		 show: false
+		,webPreferences: {
+			partition: partition
+		}
+	});
+
+	tmpWindow.webContents.session.once('will-download', (event, downloadItem) => {
+		imageCache[url] = file = {
+			 path: tmp.tmpNameSync() + '.' + mime.extension(downloadItem.getMimeType())
+			,complete: false
+		};
+
+		downloadItem.setSavePath(file.path);
+		downloadItem.once('done', () => {
+			tmpWindow.destroy();
+			tmpWindow = null;
+			electron.shell.openItem(file.path);
+			file.complete = true;
+		});
+	});
+
+	tmpWindow.webContents.downloadURL(url);
+});
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', createWindow);

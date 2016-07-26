@@ -120,6 +120,15 @@ Ext.define('Rambox.ux.WebView',{
 
 		// Open links in default browser
 		webview.addEventListener('new-window', function(e) {
+			// hack to fix multiple browser tabs on Skype link click, re #11
+			if ( e.url.match('https:\/\/web.skype.com\/..\/undefined') ) {
+				e.preventDefault();
+				return;
+			} else if ( e.url.indexOf('imgpsh_fullsize') >= 0 ) {
+				require('electron').ipcRenderer.send('image:download', e.url, e.target.partition);
+				e.preventDefault();
+				return;
+			}
 			const protocol = require('url').parse(e.url).protocol;
 			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
 				e.preventDefault();
