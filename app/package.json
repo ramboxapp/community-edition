@@ -1,5 +1,5 @@
 {
-	"name": "Rambox",
+	"name": "rambox",
 	"productName": "Rambox",
 	"version": "0.4.1",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
@@ -7,8 +7,12 @@
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/saenzramiro/rambox.git"
+		"url": "https://github.com/saenzramiro/rambox.git"
 	},
+	"bugs": {
+		"url": "https://github.com/saenzramiro/rambox/issues"
+	},
+	"homepage": "http://rambox.pro",
 	"keywords": [
 		"Rambox",
 		"messaging",
@@ -30,6 +34,7 @@
 		"firebase": "^3.0.5",
 		"firebase-token-generator": "^2.0.0",
 		"tmp": "0.0.28",
-		"mime": "^1.3.4"
+		"mime": "^1.3.4",
+		"electron-is-dev": "^0.1.1"
 	}
 }

@@ -383,6 +383,16 @@ if (process.platform === 'darwin') {
 		type: 'separator'
 	});
 	helpSubmenu.push({
+		label: `Check for updates...`,
+		click(item, win) {
+			const webContents = win.webContents;
+			const send = webContents.send.bind(win.webContents);
+			electron.autoUpdater.checkForUpdates();
+			electron.autoUpdater.once('update-available', (event) => send('autoUpdater:update-available'));
+			electron.autoUpdater.once('update-not-available', (event) => send('autoUpdater:update-not-available'));
+		}
+	});
+	helpSubmenu.push({
 		label: `About ${appName}`,
 		click() {
 			sendAction('showAbout')

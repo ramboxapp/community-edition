@@ -1,20 +1,17 @@
 'use strict';
 
-const electron = require('electron');
-// Module to control application life.
-const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
-// Module for shell
-const shell = require('electron').shell;
-// Require for menu file
+const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain} = require('electron');
+// Menu
 const appMenu = require('./menu');
-// Require for tray file
+// Tray
 const tray = require('./tray');
 // Window State Plugin
 const windowStateKeeper = require('electron-window-state');
 // Global Settings
 var globalSettings = require('./global_settings.js');
+
+const isDev = require('electron-is-dev');
+const updater = require('./updater');
 
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent()) {
@@ -131,9 +128,11 @@ function createWindow () {
 	// and load the index.html of the app.
 	mainWindow.loadURL('file://' + __dirname + '/../index.html');
 
-	electron.Menu.setApplicationMenu(appMenu);
+	Menu.setApplicationMenu(appMenu);
 
 	tray.create(mainWindow, mainWindowState);
+
+	if ( !isDev ) updater.initialize(mainWindow);
 
 	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
@@ -193,7 +192,7 @@ if (shouldQuit) {
 }
 
 var allowedURLCertificates = [];
-electron.ipcMain.on('allowCertificate', (event, url) => {
+ipcMain.on('allowCertificate', (event, url) => {
 	allowedURLCertificates.push(require('url').parse(url).host);
 });
 app.on('certificate-error', function(event, webContents, url, error, certificate, callback) {
@@ -202,7 +201,7 @@ app.on('certificate-error', function(event, webContents, url, error, certificate
 		callback(true);
 	} else {
 		callback(false);
-		electron.dialog.showMessageBox(mainWindow, {
+		dialog.showMessageBox(mainWindow, {
 			 title: 'Certification Error'
 			,message: 'The service with the following URL has an invalid authority certification.\n\n'+url+'\n\nYou have to remove the service and add it again, enabling the "Trust invalid authority certificates" in the Options.'
 			,buttons: ['OK']
@@ -219,11 +218,11 @@ app.on('certificate-error', function(event, webContents, url, error, certificate
 const tmp = require('tmp');
 const mime = require('mime');
 var imageCache = {};
-electron.ipcMain.on('image:download', function(event, url, partition) {
+ipcMain.on('image:download', function(event, url, partition) {
 	let file = imageCache[url];
 	if (file) {
 		if (file.complete) {
-			electron.shell.openItem(file.path);
+			shell.openItem(file.path);
 		}
 
 		// Pending downloads intentionally do not proceed
@@ -247,7 +246,7 @@ electron.ipcMain.on('image:download', function(event, url, partition) {
 		downloadItem.once('done', () => {
 			tmpWindow.destroy();
 			tmpWindow = null;
-			electron.shell.openItem(file.path);
+			shell.openItem(file.path);
 			file.complete = true;
 		});
 	});
