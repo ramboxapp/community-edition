@@ -126,45 +126,8 @@ Ext.define('Rambox.Application', {
 			]
 		});
 
-		if ( process.platform !== 'win32' && process.platform !== 'darwin' ) {
-			fireRef.database().ref('config').on('value', function(snapshot) {
-				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
-				if ( appVersion.isLessThan(snapshot.val().latestVersion) ) {
-					console.info('New version is available', snapshot.val().latestVersion);
-					Ext.cq1('app-main').addDocked({
-						 xtype: 'toolbar'
-						,dock: 'top'
-						,ui: 'newversion'
-						,items: [
-							'->'
-							,{
-								 xtype: 'label'
-								,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')'
-							}
-							,{
-								 xtype: 'button'
-								,text: 'Download'
-								,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
-							}
-							,{
-								 xtype: 'button'
-								,text: 'Changelog'
-								,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+snapshot.val().latestVersion
-							}
-							,'->'
-							,{
-								 glyph: 'xf00d@FontAwesome'
-								,baseCls: ''
-								,style: 'cursor:pointer;'
-								,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
-							}
-						]
-					});
-					return;
-				}
-
-				console.info('Your version is the latest. No need to update.')
-			});
+		if ( process.platform !== 'win32' ) {
+			this.checkUpdate(true);
 		}
 
 		if ( localStorage.getItem('locked') ) {
@@ -183,5 +146,53 @@ Ext.define('Rambox.Application', {
 		} else {
 			document.title = 'Rambox';
 		}
+	}
+
+	,checkUpdate: function(silence) {
+		fireRef.database().ref('config').once('value', function(snapshot) {
+			var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
+			if ( appVersion.isLessThan(snapshot.val().latestVersion) ) {
+				console.info('New version is available', snapshot.val().latestVersion);
+				Ext.cq1('app-main').addDocked({
+					 xtype: 'toolbar'
+					,dock: 'top'
+					,ui: 'newversion'
+					,items: [
+						'->'
+						,{
+							 xtype: 'label'
+							,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')'
+						}
+						,{
+							 xtype: 'button'
+							,text: 'Download'
+							,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
+						}
+						,{
+							 xtype: 'button'
+							,text: 'Changelog'
+							,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+snapshot.val().latestVersion
+						}
+						,'->'
+						,{
+							 glyph: 'xf00d@FontAwesome'
+							,baseCls: ''
+							,style: 'cursor:pointer;'
+							,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+						}
+					]
+				});
+				return;
+			} else if ( !silence ) {
+				Ext.Msg.show({
+					 title: 'You are up to date!'
+					,message: 'You have the latest version of Rambox.'
+					,icon: Ext.Msg.INFO
+					,buttons: Ext.Msg.OK
+				});
+			}
+
+			console.info('Your version is the latest. No need to update.');
+		});
 	}
 });

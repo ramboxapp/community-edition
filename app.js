@@ -32,6 +32,9 @@ ipc.on('showAbout', function(event, message) {
 ipc.on('autoUpdater:checking-for-update:', function() {
 	Ext.Msg.wait('Please wait...', 'Checking for update');
 });
+ipc.on('autoUpdater:check-update', function() {
+	Rambox.app.checkUpdate();
+});
 ipc.on('autoUpdater:update-not-available', function() {
 	Ext.Msg.show({
 		 title: 'You are up to date!'

@@ -310,6 +310,14 @@ if (process.platform === 'darwin') {
 		label: appName,
 		submenu: [
 			{
+				label: `Check for updates...`,
+				click(item, win) {
+					const webContents = win.webContents;
+					const send = webContents.send.bind(win.webContents);
+					send('autoUpdater:check-update');
+				}
+			},
+			{
 				label: `About ${appName}`,
 				click() {
 					sendAction('showAbout')
@@ -387,9 +395,13 @@ if (process.platform === 'darwin') {
 		click(item, win) {
 			const webContents = win.webContents;
 			const send = webContents.send.bind(win.webContents);
-			electron.autoUpdater.checkForUpdates();
-			electron.autoUpdater.once('update-available', (event) => send('autoUpdater:update-available'));
-			electron.autoUpdater.once('update-not-available', (event) => send('autoUpdater:update-not-available'));
+			if ( process.platform === 'win32' ) {
+				electron.autoUpdater.checkForUpdates();
+				electron.autoUpdater.once('update-available', (event) => send('autoUpdater:update-available'));
+				electron.autoUpdater.once('update-not-available', (event) => send('autoUpdater:update-not-available'));
+			} else {
+				send('autoUpdater:check-update');
+			}
 		}
 	});
 	helpSubmenu.push({

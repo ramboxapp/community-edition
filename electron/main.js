@@ -132,7 +132,7 @@ function createWindow () {
 
 	tray.create(mainWindow, mainWindowState);
 
-	if ( !isDev ) updater.initialize(mainWindow);
+	if ( !isDev && process.platform === 'win32' ) updater.initialize(mainWindow);
 
 	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
