@@ -121,6 +121,7 @@ Ext.define('Rambox.view.main.Main', {
 					,features: [
 						{
 							 ftype:'grouping'
+							,collapsible: false
 							,groupHeaderTpl: '{columnName:uppercase}: {name:capitalize} ({rows.length} Item{[values.rows.length > 1 ? "s" : ""]})'
 						}
 					]
