@@ -104,6 +104,24 @@ Ext.define('Rambox.view.main.MainController', {
 							]
 						}
 						,{
+							 xtype: 'fieldset'
+							,title: 'Advanced'
+							,margin: '10 0 0 0'
+							,collapsible: true
+							,collapsed: true
+							,items: [
+								{
+									 xtype: 'textarea'
+									,fieldLabel: 'Custom Code (<a href="https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code" target="_blank">read more</a>)'
+									,allowBlank: true
+									,name: 'js_unread'
+									,value: edit ? record.get('js_unread') : ''
+									,anchor: '100%'
+									,height: 120
+								}
+							]
+						}
+						,{
 							 xtype: 'container'
 							,hidden: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') === '' : record.get('note') === '')
 							,data: { note: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') : record.get('note')) }
@@ -141,6 +159,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,js_unread: formValues.js_unread
 							});
 							// Change the title of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
@@ -156,6 +175,8 @@ Ext.define('Rambox.view.main.MainController', {
 									me.getView().moveAfter(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
 								}
 							}
+
+							Ext.getCmp('tab_'+record.get('id')).record = record;
 						} else {
 							var service = Ext.create('Rambox.model.Service', {
 								 type: record.get('id')
@@ -165,6 +186,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,js_unread: formValues.js_unread
 							});
 							service.save();
 							Ext.getStore('Services').add(service);
@@ -289,6 +311,24 @@ Ext.define('Rambox.view.main.MainController', {
 							]
 						}
 						,{
+							 xtype: 'fieldset'
+							,title: 'Advanced'
+							,margin: '10 0 0 0'
+							,collapsible: true
+							,collapsed: true
+							,items: [
+								{
+									 xtype: 'textarea'
+									,fieldLabel: 'Custom Code (<a href="https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code" target="_blank">read more</a>)'
+									,allowBlank: true
+									,name: 'js_unread'
+									,value: edit ? record.get('js_unread') : ''
+									,anchor: '100%'
+									,height: 120
+								}
+							]
+						}
+						,{
 							 xtype: 'container'
 							,hidden: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') === '' : record.get('note') === '')
  							,data: { note: (edit ? Ext.getStore('ServicesList').getById(record.get('type')).get('note') : record.get('note')) }
@@ -326,6 +366,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,js_unread: formValues.js_unread
 							});
 							// Change the title of the Tab
 							Ext.getCmp('tab_'+record.get('id')).setTitle(formValues.serviceName);
@@ -341,6 +382,8 @@ Ext.define('Rambox.view.main.MainController', {
 									me.getView().moveAfter(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
 								}
 							}
+
+							Ext.getCmp('tab_'+record.get('id')).record = record;
 						} else {
 							var service = Ext.create('Rambox.model.Service', {
 								 type: record.get('id')
@@ -350,6 +393,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,align: formValues.align
 								,notifications: formValues.notifications
 								,muted: formValues.muted
+								,js_unread: formValues.js_unread
 							});
 							service.save();
 							Ext.getStore('Services').add(service);
@@ -568,7 +612,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,items: [
 								{
 									 xtype: 'textarea'
-									,fieldLabel: 'Unread Code (<a href="https://github.com/saenzramiro/rambox/wiki/Add-a-Custom-Service" target="_blank">read more</a>)'
+									,fieldLabel: 'Custom Code (<a href="https://github.com/saenzramiro/rambox/wiki/Add-a-Custom-Service" target="_blank">read more</a>)'
 									,allowBlank: true
 									,name: 'js_unread'
 									,value: (edit ? record.get('js_unread') : '')
@@ -630,6 +674,8 @@ Ext.define('Rambox.view.main.MainController', {
 									me.getView().moveAfter(Ext.getCmp('tab_'+record.get('id')), Ext.getCmp('tbfill'));
 								}
 							}
+
+							Ext.getCmp('tab_'+record.get('id')).record = record;
 						} else {
 							var service = Ext.create('Rambox.model.Service', {
 								 type: 'custom'
@@ -640,7 +686,7 @@ Ext.define('Rambox.view.main.MainController', {
 								,notifications: formValues.notifications
 								,muted: formValues.muted
 								,trust: formValues.trust
-								,js_unread: formValues.js_unread !== '' ? 'function checkUnread(){updateBadge(' + formValues.js_unread + ')}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);' : ''
+								,js_unread: formValues.js_unread
 							});
 							service.save();
 							Ext.getStore('Services').add(service);
