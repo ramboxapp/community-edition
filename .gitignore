@@ -31,3 +31,4 @@ npm-debug.log
 
 # Vagrant
 /.vagrant
+env.js
