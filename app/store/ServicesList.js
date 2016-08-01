@@ -362,6 +362,33 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Text from your computer, sync\'d with your Android phone & number.'
 			,url: 'https://mightytext.net/web/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'roundcube'
+			,logo: 'roundcube.png'
+			,name: 'Roundcube'
+			,description: 'Free and open source webmail software for the masses, written in PHP.'
+			,url: '___'
+			,type: 'email'
+		},
+		{
+			 id: 'horde'
+			,logo: 'horde.png'
+			,name: 'Horde'
+			,description: 'Horde is a free and open source web-based groupware.'
+			,url: '___'
+			,type: 'email'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("count"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.match(/\d+/g));updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,note: 'To enable desktop notifications and automatic mail check, you have to go to Options inside Horde.'
+		},
+		{
+			 id: 'squirrelmail'
+			,logo: 'squirrelmail.png'
+			,name: 'SquirrelMail'
+			,description: 'SquirrelMail is a standards-based webmail package written in PHP.'
+			,url: '___'
+			,type: 'email'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("leftunseen"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML);updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		}
 	]
 });
