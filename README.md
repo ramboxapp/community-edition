@@ -71,8 +71,13 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zinc.png" alt="Zinc" title="Zinc">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/freenode.png" alt="FreeNode" title="FreeNode">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mightytext.png" alt="MightyText" title="MightyText">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zohoemail.png" alt="Zoho Email" title="Zoho Email">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zohochat.png" alt="Zoho Chat" title="Zoho Chat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/roundcube.png" alt="Roundcube" title="Roundcube">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/horde.png" alt="Horde" title="Horde">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail">
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Features
 
@@ -84,10 +89,16 @@
 - [x] Minimize to tray.
 - [x] Mute audio to specific service.
 - [x] Separate tabs floating to the right.
+- [x] Go Offline on specific service.
+- [x] Start automatically on system startup.
+- [x] Custom Code Injection.
+- [x] Keyboard Shortcuts.
 
 ## Privacy
 
 No personal information will be saved
+
+Sessions will persist using the [partition:persist](http://electron.atom.io/docs/api/web-view-tag/#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
 
 Sync feature use Auth0 for Single Sign On & Token Based Authentication with the integration with Firebase to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
