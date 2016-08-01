@@ -30,8 +30,8 @@ Ext.define('Rambox.Application', {
 		ga_storage._trackPageview('/index.html', 'main');
 
 		// Auth0 Config
-		lock = new Auth0Lock('XXXXXX', 'XXXXXX');
-		auth0 = new Auth0({ domain : 'XXXXXX', clientID: 'XXXXXX'})
+		lock = new Auth0Lock(auth0Cfg.clientID, auth0Cfg.domain);
+		auth0 = new Auth0({ clientID: auth0Cfg.clientID, domain : auth0Cfg.domain });
 
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({

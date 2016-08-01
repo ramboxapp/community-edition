@@ -5,10 +5,10 @@ require('firebase/auth');
 
 // Firebase Config
 var config = {
-	apiKey: "",
-	authDomain: "",
-	databaseURL: "",
-	storageBucket: ""
+	 apiKey: firebaseCfg.apiKey
+	,authDomain: firebaseCfg.authDomain
+	,databaseURL: firebaseCfg.databaseURL
+	,storageBucket: firebaseCfg.storageBucket
 };
 var fireRef = firebase.initializeApp(config); // Firebase Ref
 var FirebaseTokenGenerator = require('firebase-token-generator');

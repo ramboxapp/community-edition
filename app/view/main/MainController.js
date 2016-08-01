@@ -948,7 +948,7 @@ Ext.define('Rambox.view.main.MainController', {
 				id_token : id_token,
 				api : 'firebase',
 				scope : 'openid name email displayName',
-				target: 'y9am0DVawe2tvlA3ucD7OufpJHZZMjsO'
+				target: auth0Cfg.clientID
 			};
 
 			// Make a call to the Auth0 '/delegate'
