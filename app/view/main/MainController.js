@@ -1028,6 +1028,10 @@ Ext.define('Rambox.view.main.MainController', {
 							// Firebase not empty and Have no Services
 							} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() === 0 ) {
 								importServices(snapshot2);
+							} else {
+								// Save the profile and JWT.
+								localStorage.setItem('profile', JSON.stringify(profile));
+								localStorage.setItem('id_token', id_token);
 							}
 						});
 					});
@@ -1038,6 +1042,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.cq1('app-main').getViewModel().set('avatar', profile.picture);
 		}, function() {
 			// Error callback
+			Ext.Msg.hide();
 		});
 	}
 
