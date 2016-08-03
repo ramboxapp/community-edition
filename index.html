@@ -38,6 +38,7 @@
 					<div class="nav-drop">
 						<ul>
 							<li class="active visible-sm visible-xs"><a href="#">Home</a></li>
+							<li><div class="fb-follow" data-href="https://www.facebook.com/rambox" data-layout="button_count" data-size="large" data-show-faces="false"></div></li>
 							<li><a href="https://github.com/saenzramiro/rambox" target="_blank">GitHub</a></li>
 							<li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA" target="_blank">Donate</a></li>
 						</ul>
@@ -299,6 +300,7 @@
 						</div>
 						<div class="row text-center">Latest version: v0.4.1</div>
 						<div class="row text-center" style="margin-top:20px;">
+							<h3>Spread the word!</h3>
 							<!-- Sharingbutton Facebook -->
 							<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Frambox.pro" target="_blank" aria-label="">
 							  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
@@ -509,5 +511,13 @@
   ga('create', 'UA-80680424-2', 'auto');
   ga('send', 'pageview');
 </script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1280363035314814";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>
