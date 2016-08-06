@@ -1,4 +1,4 @@
-<!-- Please complete the follow issue template. If is not an issue, feel free to remove the steps and behaviours -->
+<!-- Please complete the follow issue template. If is not an issue, feel free to remove the steps and behaviors -->
 
 ### Steps to reproduce
 
@@ -6,11 +6,11 @@
 2. 
 3. 
 
-### Expected behaviour
+### Expected behavior
 
 <!-- Write here -->
 
-### Actual behaviour
+### Actual behavior
 
 <!-- Write here -->
 
