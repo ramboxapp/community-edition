@@ -46,18 +46,18 @@ deploy:
     secure: F7z4j9xzhpVyfovrf33jbVdW9dwgpIgbn85dxe8y/kZbQ9sAVU8LzoBZ3PlfeXmoV5CnSUa5j/fe8BmPKiG31kgAH7cktsCOgyOLggO1Sy+vnx7RQwwE/jzb7PzEqI2BP6TG/eOfylBxGBInWeaoSRfK3IRAvLHvvxY1eL4Wq/KRaanzMvh+JdCaStIKJSnI/rc9noI7vtOtgHot+F162s1G1k5/UcdbsfXWzotMVsonhlGgB/Jz9srnJpMpxYxaknR8UFPVRzOM5UzzMo64hXRUDnCFlYcTHcSAkvgKHI0SIPIS3kOdvgrYGavPLK2CAteQk7Dy1lHnEixmKPxG7eVAFwleUo8ePR82WXFkv5gacCvcrGrRLQ9nC/ygeMVgC5XxcHq3ykkcrstu5yjC1yEYFs23gA1Z4DIctwq1diyO72/FNxghV5ckN5WtJQs1QTT+Ec2NjLrWgFYuaEHYgAGopzTPN8gT9fyIv/lAq1S/l4P/z3EDS42UL+UTM77gyXSYShCKneDnFC34ATlYNDhJFRzLZ6qJG5UlOwrfXxUYeGUpQZlV41jg+VFWmPDAeQTMjGP5fRA3w1hFobBotBVyrtbcovTb4TFVTKJWOC/0wyiwku7YTY/nqMU/hR4IluTyRh9Z4NMn5xT5UW63OZd4DJvE573JxmJmnPc0fbo=
   file:
     - if [ $TRAVIS_OS_NAME == "linux" ]; then
-      - "dist/rambox-0.4.1.1-ia32.zip"
-      - "dist/rambox-0.4.1.1.zip"
-      - "dist/rambox-0.4.1.1-ia32.deb"
-      - "dist/rambox-0.4.1.1.deb"
-      - "dist/rambox-0.4.1.1-ia32.tar.gz"
-      - "dist/rambox-0.4.1.1.tar.gz"
-      - "dist/Rambox-0.4.1.1-ia32.AppImage"
-      - "dist/Rambox-0.4.1.1.AppImage"
+      - "dist/rambox-0.4.2-ia32.zip"
+      - "dist/rambox-0.4.2.zip"
+      - "dist/rambox-0.4.2-ia32.deb"
+      - "dist/rambox-0.4.2.deb"
+      - "dist/rambox-0.4.2-ia32.tar.gz"
+      - "dist/rambox-0.4.2.tar.gz"
+      - "dist/Rambox-0.4.2-ia32.AppImage"
+      - "dist/Rambox-0.4.2.AppImage"
       fi
     - if [ $TRAVIS_OS_NAME == "osx" ]; then
-      - "dist/mac/Rambox-0.4.1.1-mac.zip"
-      - "dist/mac/Rambox-0.4.1.1.dmg"
+      - "dist/mac/Rambox-0.4.2-mac.zip"
+      - "dist/mac/Rambox-0.4.2.dmg"
       fi
   skip_cleanup: true
   on:
