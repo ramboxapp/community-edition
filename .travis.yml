@@ -54,11 +54,11 @@ deploy:
       - "dist/rambox-0.4.1.1.tar.gz"
       - "dist/Rambox-0.4.1.1-ia32.AppImage"
       - "dist/Rambox-0.4.1.1.AppImage"
-    fi
+      fi
     - if [ $TRAVIS_OS_NAME == "osx" ]; then
       - "dist/mac/Rambox-0.4.1.1-mac.zip"
       - "dist/mac/Rambox-0.4.1.1.dmg"
-    fi
+      fi
   skip_cleanup: true
   on:
     repo: saenzramiro/rambox
