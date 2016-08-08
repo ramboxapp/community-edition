@@ -8,6 +8,7 @@ branches:
 
 os:
   - linux
+  - osx
 
 cache:
   directories:
