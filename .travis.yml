@@ -1,8 +1,6 @@
 language: node_js
 node_js:
   - $NODE_VERSION
-env:
-  - CXX=g++-4.8
 addons:
   apt:
     sources:
@@ -19,18 +17,20 @@ before_install:
   # native dependencies
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
       sudo apt-get update -qq;
-      sudo apt-get install -qq libxml2-dev libappindicator1;
+      sudo apt-get install -qq libxml2-dev;
+      sudo apt-get install -qq libappindicator1;
     fi
 install:
   - git config --global core.autocrlf input
   - git reset --hard HEAD
   - npm run sencha:clean
-  - git clone https://github.com/saenzramiro/rambox-build.git $TRAVIS_BUILD_DIR\build\production\Rambox\
+  - git clone https://github.com/saenzramiro/rambox-build.git $TRAVIS_BUILD_DIR/build/production/Rambox/
   - npm install
   - npm uninstall electron-prebuilt
   - npm i electron-prebuilt@$ELECTRON
-  - npm --prefix $TRAVIS_BUILD_DIR\build\production\Rambox\ install $TRAVIS_BUILD_DIR\build\production\Rambox\
+  - npm --prefix $TRAVIS_BUILD_DIR/build/production/Rambox/ install $TRAVIS_BUILD_DIR/build/production/Rambox/
 script:
+  - echo $TRAVIS_OS_NAME
   - node --version
   - npm --version
   - npm run build:$TRAVIS_OS_NAME
