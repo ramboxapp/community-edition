@@ -6,9 +6,12 @@ branches:
   only:
     - master
 
-#cache:
-#  directories:
-#    - node_modules
+os:
+  - linux
+
+cache:
+  directories:
+    - $HOME/.electron
 
 addons:
   apt:
@@ -16,12 +19,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: required
-    - os: osx
+
 before_install:
   # native dependencies
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
