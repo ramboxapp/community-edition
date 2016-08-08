@@ -12,6 +12,7 @@ os:
 
 cache:
   directories:
+    - node_modules
     - $HOME/.electron
 
 addons:
