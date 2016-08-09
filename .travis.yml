@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - $NODE_VERSION
 
+branches:
+  only:
+    - /\d+\.\d+\.\d+/
+
 os:
   - linux
   - osx
@@ -55,7 +59,7 @@ deploy:
     - "dist/mac/*.dmg"
   skip_cleanup: true
   overwrite: true
-  edge: true
+  draft: true
   on:
     repo: saenzramiro/rambox
     tags: true
