@@ -59,7 +59,7 @@ deploy:
     - "dist/mac/*.dmg"
   skip_cleanup: true
   overwrite: true
-  draft: $TRAVIS_TAG
+  prerelease: true
   on:
     repo: saenzramiro/rambox
     tags: true
