@@ -2,9 +2,6 @@ sudo: required
 language: node_js
 node_js:
   - $NODE_VERSION
-branches:
-  only:
-    - master
 
 os:
   - linux
@@ -61,6 +58,7 @@ deploy:
   on:
     repo: saenzramiro/rambox
     tags: true
+    all_branches: true
 
 notifications:
   email:
