@@ -50,6 +50,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/discord.png" alt="Discord" title="Discord">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/noysi.png" alt="Noysi" title="Noysi">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook.png" alt="Outlook" title="Outlook">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook365.png" alt="Outlook 365" title="Outlook 365">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/tutanota.png" alt="TutaNota" title="TutaNota">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hushmail.png" alt="Hushmail" title="Hushmail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/bearychat.png" alt="BearyChat" title="BearyChat">
