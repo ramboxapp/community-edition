@@ -413,7 +413,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'aol.png'
 			,name: 'Aol'
 			,description: 'Free and simple webmail service.'
-			,url: 'https://my.screenname.aol.com/'
+			,url: 'https://mail.aol.com/'
 			,type: 'email'
 		}
 	]
