@@ -35,7 +35,7 @@
 
 ![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/mac.png)
 
-## Services available - 45
+## Services available - 46
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -82,6 +82,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/roundcube.png" alt="Roundcube" title="Roundcube">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/horde.png" alt="Horde" title="Horde">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail">
+<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/aol.png" alt="Aol" title="Aol">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
