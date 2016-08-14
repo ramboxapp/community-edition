@@ -407,6 +407,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://chat.zoho.com/'
 			,type: 'messaging'
 			,js_unread: 'NotifyByTitle.show = function(){};NotifyByTitle.start = function(){};NotifyByTitle.stop = function(){};function checkUnread(){var t=0;$(".msgnotify").each(function() { t += isNaN(parseInt($(this).html())) ? 0 : parseInt(parseInt($(this).html())) });updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'aol'
+			,logo: 'aol.png'
+			,name: 'Aol'
+			,description: 'Free and simple webmail service.'
+			,url: 'https://my.screenname.aol.com/'
+			,type: 'email'
 		}
 	]
 });
