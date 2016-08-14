@@ -415,6 +415,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Free and simple webmail service.'
 			,url: 'https://mail.aol.com/'
 			,type: 'email'
+		},
+		{
+			 id: 'glip'
+			,logo: 'glip.png'
+			,name: 'Glip'
+			,description: 'Real-time messaging with integrated task management, video conferencing, shared calendars and more.'
+			,url: 'https://glip.com/'
+			,type: 'messaging'
+			,js_unread: 'function simulateClick(a){var b,c=document.getElementById(a);document.createEvent&&(b=document.createEvent("MouseEvents"),b.initMouseEvent("click",!0,!0,window,0,0,0,0,0,!1,!1,!1,!1,0,null)),b?c.dispatchEvent(b):c.click&&c.click()}setTimeout(function(){simulateClick("sign_in")},1e3);'
 		}
 	]
 });
