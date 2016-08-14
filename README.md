@@ -59,6 +59,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/tutanota.png" alt="TutaNota" title="TutaNota">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hushmail.png" alt="Hushmail" title="Hushmail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/bearychat.png" alt="BearyChat" title="BearyChat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/aol.png" alt="Aol" title="Aol">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/sync.png" alt="Sync" title="Sync">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/wire.png" alt="Wire" title="Wire">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat">
@@ -82,7 +83,6 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/roundcube.png" alt="Roundcube" title="Roundcube">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/horde.png" alt="Horde" title="Horde">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail">
-<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/aol.png" alt="Aol" title="Aol">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
