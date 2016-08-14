@@ -412,7 +412,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'aol'
 			,logo: 'aol.png'
 			,name: 'Aol'
-			,description: 'Free and simple webmail service.'
+			,description: 'Free and simple (old) webmail service.'
 			,url: 'https://mail.aol.com/'
 			,type: 'email'
 		},
@@ -420,7 +420,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'glip'
 			,logo: 'glip.png'
 			,name: 'Glip'
-			,description: 'Real-time messaging with integrated task management, video conferencing, shared calendars and more.'
+			,description: 'Glip is fully searchable, real-time group chat & video chat, task management, file sharing, calendars and more.'
 			,url: 'https://glip.com/'
 			,type: 'messaging'
 			,js_unread: 'function simulateClick(a){var b,c=document.getElementById(a);document.createEvent&&(b=document.createEvent("MouseEvents"),b.initMouseEvent("click",!0,!0,window,0,0,0,0,0,!1,!1,!1,!1,0,null)),b?c.dispatchEvent(b):c.click&&c.click()}setTimeout(function(){simulateClick("sign_in")},1e3);'
@@ -429,7 +429,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'yandex'
 			,logo: 'yandex.png'
 			,name: 'Yandex'
-			,description: 'Free webmail service with unlimited mail storage.'
+			,description: 'Yandex is a free webmail service with unlimited mail storage, protection from viruses and spam, access from web interface, etc.'
 			,url: 'https://passport.yandex.com/'
 			,type: 'email'
 		}
