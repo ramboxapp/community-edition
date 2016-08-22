@@ -6,6 +6,7 @@
 		"test": "node electron/test.js",
 		"sencha:clean": "rm -rf ./build/production",
 		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
+		"sencha:compile:build": "sencha app build && cp app/package.json build/production/Rambox/ && cp -R build/production/Rambox/* ../rambox-build",
 		"clean": "rm -rf ./dist",
 		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
 		"clean:win": "rm -rf ./dist/Rambox-win32-*",
