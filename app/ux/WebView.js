@@ -160,10 +160,15 @@ Ext.define('Rambox.ux.WebView',{
 					console.groupCollapsed('JS Injected to Detect New Messages');
 					console.info(me.type);
 					console.log(js_unread);
-					console.groupEnd()
 					webview.executeJavaScript(js_unread);
 				}
 			}
+
+			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
+			var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
+			console.log(js_preventBlink);
+			console.groupEnd()
+			webview.executeJavaScript(js_preventBlink);
 
 			// Scroll always to top (bug)
 			webview.executeJavaScript('document.body.scrollTop=0;');
