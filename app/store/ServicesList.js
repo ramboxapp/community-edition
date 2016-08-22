@@ -149,7 +149,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Gitter is built on top of GitHub and is tightly integrated with your organisations, repositories, issues and activity.'
 			,url: 'https://gitter.im/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("room-item__unread-indicator"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("room-item__unread-indicator"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'steam'
