@@ -78,7 +78,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'hipchat.png'
 			,name: 'HipChat'
 			,description: 'HipChat is hosted group chat and video chat built for teams. Supercharge real-time collaboration with persistent chat rooms, file sharing, and screen sharing.'
-			,url: 'https://___.hipchat.com/'
+			,url: 'https://___.hipchat.com/chat'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("hc-badge"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
