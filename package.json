@@ -90,13 +90,10 @@
 		"linux": {
 			"target": [
 				"AppImage",
-				"deb",
+			        "deb",
+                                "rpm",
 				"zip",
 				"tar.gz"
-			],
-			"depends": [
-				"libappindicator1",
-				"libnotify-bin"
 			],
 			"icon": "./resources/Icon.png"
 		}
