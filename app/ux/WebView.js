@@ -71,7 +71,7 @@ Ext.define('Rambox.ux.WebView',{
 					}
 					,'-'
 					,{
-						 text: 'Toogle Developers Tools'
+						 text: 'Toggle Developer Tools'
 						,glyph: 'xf121@FontAwesome'
 						,scope: me
 						,handler: me.toggleDevTools

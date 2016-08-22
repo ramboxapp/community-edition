@@ -146,8 +146,7 @@ Ext.define('Rambox.view.main.Main', {
 							,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" />'
 						}
 						,{
-							 text: 'Name'
-							,dataIndex: 'name'
+							 dataIndex: 'name'
 							,variableRowHeight: true
 							,flex: 1
 							,editor: {

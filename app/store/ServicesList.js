@@ -395,7 +395,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zohoemail'
 			,logo: 'zohoemail.png'
 			,name: 'Zoho Email'
-			,description: 'Free and open source webmail software for the masses, written in PHP.'
+			,description: 'Ad-free business Email Hosting with a clean, minimalist interface. Integrated Calendar, Contacts, Notes, Tasks apps.'
 			,url: 'https://mail.zoho.com/'
 			,type: 'email'
 		},
@@ -403,7 +403,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zohochat'
 			,logo: 'zohochat.png'
 			,name: 'Zoho Chat'
-			,description: 'Free and open source webmail software for the masses, written in PHP.'
+			,description: 'Zoho chat is a secure and scalable real-time communication and collaboration platform for teams to improve their productivity.'
 			,url: 'https://chat.zoho.com/'
 			,type: 'messaging'
 			,js_unread: 'NotifyByTitle.show = function(){};NotifyByTitle.start = function(){};NotifyByTitle.stop = function(){};function checkUnread(){var t=0;$(".msgnotify").each(function() { t += isNaN(parseInt($(this).html())) ? 0 : parseInt(parseInt($(this).html())) });updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'

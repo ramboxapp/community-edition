@@ -352,7 +352,7 @@ Ext.define('Rambox.view.main.MainController', {
 				}
 				,'->'
 				,{
-					 text: 'Add service'
+					 text: edit ? 'Save' : 'Add service'
 					,itemId: 'submit'
 					,handler: function() {
 						if ( !win.down('form').isValid() ) return false;
