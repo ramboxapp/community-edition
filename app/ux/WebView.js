@@ -87,6 +87,25 @@ Ext.define('Rambox.ux.WebView',{
 						}
 						,'-'
 						,{
+							 text: 'Zoom In'
+							,glyph: 'xf00e@FontAwesome'
+							,scope: me
+							,handler: me.zoomIn
+						}
+						,{
+							 text: 'Zoom Out'
+							,glyph: 'xf010@FontAwesome'
+							,scope: me
+							,handler: me.zoomOut
+						}
+						,{
+							 text: 'Reset Zoom'
+							,glyph: 'xf002@FontAwesome'
+							,scope: me
+							,handler: me.resetZoom
+						}
+						,'-'
+						,{
 							 text: 'Reload'
 							,glyph: 'xf021@FontAwesome'
 							,scope: me
@@ -304,5 +323,29 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		webview.goForward();
+	}
+
+	,zoomIn: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.zoomLevel = me.zoomLevel + 0.25;
+		webview.getWebContents().setZoomLevel(me.zoomLevel);
+	}
+
+	,zoomOut: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.zoomLevel = me.zoomLevel - 0.25;
+		webview.getWebContents().setZoomLevel(me.zoomLevel);
+	}
+
+	,resetZoom: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.zoomLevel = 0;
+		webview.getWebContents().setZoomLevel(0);
 	}
 });

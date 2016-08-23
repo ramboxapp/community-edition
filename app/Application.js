@@ -53,53 +53,55 @@ Ext.define('Rambox.Application', {
 				,{
 					 key: "\t"
 					,ctrl: true
- 					,alt: false
- 					,shift: true
- 					,handler: function(key) {
- 						var tabPanel = Ext.cq1('app-main');
- 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+					,alt: false
+					,shift: true
+					,handler: function(key) {
+						var tabPanel = Ext.cq1('app-main');
+						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 						if ( tabPanel.items.items[activeIndex - 1] && tabPanel.items.items[activeIndex - 1].id === 'tbfill' ) activeIndex--;
 						if ( !tabPanel.items.items[activeIndex - 1] && tabPanel.items.items.length !== 2 ) activeIndex = tabPanel.items.items.length;
 						if ( tabPanel.items.items.length === 2 ) activeIndex = 1;
 						tabPanel.setActiveTab( activeIndex - 1 );
- 					}
+					}
 				}
 				,{
-					 key: [Ext.event.Event.NUM_PLUS, Ext.event.Event.NUM_MINUS]
+					 key: [Ext.event.Event.NUM_PLUS, Ext.event.Event.NUM_MINUS, 187, 189]
 					,ctrl: true
- 					,alt: false
- 					,shift: false
- 					,handler: function(key) {
+					,alt: false
+					,shift: false
+					,handler: function(key) {
 						var tabPanel = Ext.cq1('app-main');
 						if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-						var currentLevel = tabPanel.getActiveTab().zoomLevel;
-						if ( key === Ext.event.Event.NUM_PLUS ) { // Plus key
-							currentLevel = currentLevel + 0.25;
-						} else { // Minus Key
-							currentLevel = currentLevel - 0.25;
-						}
- 						tabPanel.getActiveTab().down('component').el.dom.getWebContents().setZoomLevel(currentLevel);
-						tabPanel.getActiveTab().zoomLevel = currentLevel;
- 					}
+
+						key === Ext.event.Event.NUM_PLUS || key === 187 ? tabPanel.getActiveTab().zoomIn() : tabPanel.getActiveTab().zoomOut();
+					}
 				}
 				,{
-					 key: Ext.event.Event.NUM_ZERO
+					 key: [Ext.event.Event.NUM_ZERO, '0']
 					,ctrl: true
- 					,alt: false
- 					,shift: false
- 					,handler: function(key) {
+					,alt: false
+					,shift: false
+					,handler: function(key) {
 						var tabPanel = Ext.cq1('app-main');
 						if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
- 						tabPanel.getActiveTab().down('component').el.dom.getWebContents().setZoomLevel(0);
-						tabPanel.getActiveTab().zoomLevel = 0;
- 					}
+
+						tabPanel.getActiveTab().resetZoom();
+					}
 				}
 				,{
-					 key: "0123456789"
+					 key: "123456789"
 					,ctrl: true
 					,alt: false
 					,handler: function(key) {
 						Ext.cq1('app-main').setActiveTab(key - 48);
+					}
+				}
+				,{
+					 key: 188 // comma
+					,ctrl: true
+					,alt: false
+					,handler: function(key) {
+						Ext.cq1('app-main').setActiveTab(0);
 					}
 				}
 				,{
