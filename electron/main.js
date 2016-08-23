@@ -98,7 +98,7 @@ function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox'
-		,icon: __dirname + '/../resources/Icon.png'
+		,icon: __dirname + '/../resources/Icon.ico'
 		,x: mainWindowState.x
 		,y: mainWindowState.y
 		,width: mainWindowState.width
