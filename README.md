@@ -65,7 +65,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/missive.png" alt="Missive" title="Missive">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoo.png" alt="Yahoo! Mail" title="Yahoo! Mail">
-<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yandex.png" alt="Yandex" title="Yandex">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yandex.png" alt="Yandex Mail" title="Yandex Mail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/office365.png" alt="OFfice 365" title="Office 365">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dasher.png" alt="Dasher" title="Dasher">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dingtalk.png" alt="DingTalk" title="DingTalk">
