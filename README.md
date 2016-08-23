@@ -35,7 +35,7 @@
 
 ![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/mac.png)
 
-## Services available - 45
+## Services available - 48
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -59,17 +59,29 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/tutanota.png" alt="TutaNota" title="TutaNota">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hushmail.png" alt="Hushmail" title="Hushmail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/bearychat.png" alt="BearyChat" title="BearyChat">
+
+<!-- Please edit this with your githubusercontent link if you accept pull request -->
+<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/aol.png" alt="Aol" title="Aol">
+
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/sync.png" alt="Sync" title="Sync">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/wire.png" alt="Wire" title="Wire">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/missive.png" alt="Missive" title="Missive">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoo.png" alt="Yahoo! Mail" title="Yahoo! Mail">
+
+<!-- Please edit this with your githubusercontent link if you accept pull request -->
+<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/yandex.png" alt="Yandex" title="Yandex">
+
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/office365.png" alt="OFfice 365" title="Office 365">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dasher.png" alt="Dasher" title="Dasher">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dingtalk.png" alt="DingTalk" title="DingTalk">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/flowdock.png" alt="FlowDock" title="FlowDock">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mattermost.png" alt="Mattermost" title="Mattermost">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/voxer.png" alt="Voxer" title="Voxer">
+
+<!-- Please edit this with your githubusercontent link if you accept pull request -->
+<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/glip.png" alt="Glip" title="Glip">
+
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mysms.png" alt="mysms" title="mysms">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/icq.png" alt="ICQ" title="ICQ">
