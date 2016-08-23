@@ -43,6 +43,7 @@
 	"copyright": "",
 	"homepage": "http://www.rambox.pro",
 	"build": {
+		"name": "Rambox",
 		"productName": "Rambox",
 		"appId": "com.saenzramiro.rambox",
 		"app-category-type": "public.app-category.productivity",
@@ -77,8 +78,14 @@
 				}
 			]
 		},
+		"win32metadata": {
+			"CompanyName": "Rambox",
+			"ProductName": "Rambox",
+			"InternalName": "Rambox"
+		},
 		"win": {
 			"title": "Rambox",
+
 			"target": [
 				"squirrel",
 				"zip"
@@ -91,8 +98,8 @@
 		"linux": {
 			"target": [
 				"AppImage",
-			        "deb",
-                                "rpm",
+				"deb",
+				"rpm",
 				"zip",
 				"tar.gz"
 			],
