@@ -179,8 +179,8 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener("page-title-updated", function(e) {
 			var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
-				count = Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
-				count = count ? parseInt(count) : 0;
+				count = count === '•' ? count : Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
+				count = count === null ? '0' : count;
 
 			var formattedCount = Rambox.util.Format.formatNumber(count);
 
