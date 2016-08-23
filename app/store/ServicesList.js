@@ -425,7 +425,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Glip is fully searchable, real-time group chat & video chat, task management, file sharing, calendars and more.'
 			,url: 'https://glip.com/'
 			,type: 'messaging'
-			,js_unread: 'setTimeout(function(){$("#sign_in").click();},1000);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Glip.'
 		},
 		{
