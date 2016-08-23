@@ -157,7 +157,7 @@ Ext.define('Rambox.ux.WebView',{
 				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type') === 'office365' ? 'outlook365' : me.record.get('type')).get('js_unread');
 				js_unread = js_unread + me.record.get('js_unread');
 				if ( js_unread !== '' ) {
-					console.groupCollapsed('JS Injected to Detect New Messages');
+					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - JS Injected to Detect New Messages');
 					console.info(me.type);
 					console.log(js_unread);
 					webview.executeJavaScript(js_unread);
@@ -165,10 +165,12 @@ Ext.define('Rambox.ux.WebView',{
 			}
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
-			var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
-			console.log(js_preventBlink);
-			console.groupEnd()
-			webview.executeJavaScript(js_preventBlink);
+			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
+				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
+				console.log(js_preventBlink);
+				webview.executeJavaScript(js_preventBlink);
+			}
+			console.groupEnd();
 
 			// Scroll always to top (bug)
 			webview.executeJavaScript('document.body.scrollTop=0;');
