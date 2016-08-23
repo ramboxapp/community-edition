@@ -150,6 +150,13 @@ function createWindow () {
 		event.preventDefault();
 	});
 
+	mainWindow.on('app-command', (e, cmd) => {
+		// Navigate the window back when the user hits their mouse back button
+		if ( cmd === 'browser-backward' ) mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").getActiveTab().goBack();');
+		// Navigate the window forward when the user hits their mouse forward button
+		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").getActiveTab().goForward();');
+	})
+
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {
 		if ( !isQuitting ) {

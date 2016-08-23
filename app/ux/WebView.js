@@ -55,28 +55,59 @@ Ext.define('Rambox.ux.WebView',{
 					badgetextchange: me.onBadgeTextChange
 				}
 				,clickEvent: 'dblclick'
-				,menu: [
-					{
-						 text: 'Reload'
-						,glyph: 'xf021@FontAwesome'
-						,scope: me
-						,handler: me.reloadService
-					}
-					,{
-						 text: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? 'Go Online' : 'Go Offline'
-						,glyph: 'xf0ac@FontAwesome'
-						,scope: me
-						,offline: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? true : false
-						,handler: me.setOffline
-					}
-					,'-'
-					,{
-						 text: 'Toggle Developer Tools'
-						,glyph: 'xf121@FontAwesome'
-						,scope: me
-						,handler: me.toggleDevTools
-					}
-				]
+				,menu:  {
+					 plain: true
+					,items: [
+						{
+							 xtype: 'toolbar'
+							,items: [
+								{
+									 xtype: 'segmentedbutton'
+									,allowToggle: false
+									,flex: 1
+									,items: [
+										{
+											 text: 'Back'
+											,glyph: 'xf053@FontAwesome'
+											,flex: 1
+											,scope: me
+											,handler: me.goBack
+										}
+										,{
+											 text: 'Foward'
+											,glyph: 'xf054@FontAwesome'
+											,iconAlign: 'right'
+											,flex: 1
+											,scope: me
+											,handler: me.goForward
+										}
+									]
+								}
+							]
+						}
+						,'-'
+						,{
+							 text: 'Reload'
+							,glyph: 'xf021@FontAwesome'
+							,scope: me
+							,handler: me.reloadService
+						}
+						,{
+							 text: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? 'Go Online' : 'Go Offline'
+							,glyph: 'xf0ac@FontAwesome'
+							,scope: me
+							,offline: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? true : false
+							,handler: me.setOffline
+						}
+						,'-'
+						,{
+							 text: 'Toggle Developer Tools'
+							,glyph: 'xf121@FontAwesome'
+							,scope: me
+							,handler: me.toggleDevTools
+						}
+					]
+				}
 			}
 			,listeners: {
 				 afterrender: me.onAfterRender
@@ -259,5 +290,19 @@ Ext.define('Rambox.ux.WebView',{
 		btn.offline = !btn.offline;
 		btn.setText(Ext.String.toggle(btn.text, 'Go Online', 'Go Offline'));
 		btn.offline ? localStorage.setItem('offline_'+me.id.replace('tab_', ''), true) : localStorage.removeItem('offline_'+me.id.replace('tab_', ''));
+	}
+
+	,goBack: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		webview.goBack();
+	}
+
+	,goForward: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		webview.goForward();
 	}
 });
