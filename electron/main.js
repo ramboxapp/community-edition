@@ -159,6 +159,7 @@ function createWindow () {
 
 	mainWindow.on('focus', (e) => {
 		// Make focus on current service when user use Alt + Tab to activate Rambox
+		mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").fireEvent("tabchange", Ext.cq1("app-main"), Ext.cq1("app-main").getActiveTab());');
 	});
 
 	// Emitted when the window is closed.
