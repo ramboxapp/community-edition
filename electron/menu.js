@@ -98,38 +98,32 @@ let tpl = [
 		label: 'Edit',
 		submenu: [
 			{
-				label: 'Undo',
-				accelerator: 'CmdOrCtrl+Z',
 				role: 'undo'
 			},
 			{
-				label: 'Redo',
-				accelerator: 'Shift+CmdOrCtrl+Z',
 				role: 'redo'
 			},
 			{
 				type: 'separator'
 			},
 			{
-				label: 'Cut',
-				accelerator: 'CmdOrCtrl+X',
 				role: 'cut'
 			},
 			{
-				label: 'Copy',
-				accelerator: 'CmdOrCtrl+C',
 				role: 'copy'
 			},
 			{
-				label: 'Paste',
-				accelerator: 'CmdOrCtrl+V',
 				role: 'paste'
 			},
 			{
-				label: 'Select All',
-				accelerator: 'CmdOrCtrl+A',
+				role: 'pasteandmatchstyle'
+			},
+			{
 				role: 'selectall'
 			},
+			{
+				role: 'delete'
+			}
 		]
 	},
 	{
@@ -143,21 +137,17 @@ let tpl = [
 				}
 			},
 			{
-				label: 'Toggle Full Screen',
-				accelerator: process.platform === 'darwin' ? 'Ctrl+Command+F' : 'F11',
-				click(item, focusedWindow) {
-					if (focusedWindow)
-					focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
-				}
+				type: 'separator'
 			},
 			{
-				label: 'Toggle Developer Tools',
-				accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
-				click(item, focusedWindow) {
-					if (focusedWindow)
-					focusedWindow.webContents.toggleDevTools();
-				}
+				role: 'zoomin'
 			},
+			{
+				role: 'zoomout'
+			},
+			{
+				role: 'resetzoom'
+			}
 		]
 	},
 	{
@@ -178,18 +168,13 @@ let tpl = [
 				type: 'separator'
 			},
 			{
-				label: 'Always on top',
-				type: 'checkbox',
-				checked: parseInt(globalSettings.get('always_on_top')) ? true : false,
-				click: function(item, mainWindow) {
-					if ( item.checked ) {
-						globalSettings.set('always_on_top', 1);
-						if (mainWindow) mainWindow.setAlwaysOnTop(true);
-					} else {
-						globalSettings.set('always_on_top', 0);
-						mainWindow.setAlwaysOnTop(false);
-					}
-					globalSettings.save();
+				role: 'togglefullscreen'
+			},
+			{
+				label: 'Toggle Developer Tools',
+				accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+				click(item, focusedWindow) {
+					if (focusedWindow) focusedWindow.webContents.toggleDevTools();
 				}
 			}
 		]
@@ -359,11 +344,7 @@ if (process.platform === 'darwin') {
 				type: 'separator'
 			},
 			{
-				label: `Quit ${appName}`,
-				accelerator: 'Cmd+Q',
-				click() {
-					app.quit();
-				}
+				role: 'quit'
 			}
 		]
 	});
@@ -379,11 +360,7 @@ if (process.platform === 'darwin') {
 				type: 'separator'
 			},
 			{
-				label: `Quit ${appName}`,
-				accelerator: 'Cmd+Q',
-				click() {
-					app.quit();
-				}
+				role: 'quit'
 			}
 		]
 	});
