@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain} = require('electron');
+const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage} = require('electron');
 // Menu
 const appMenu = require('./menu');
 // Tray
@@ -183,12 +183,24 @@ function createWindow () {
 function updateBadge(title) {
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
 
-	if (process.platform === 'win32') {
+	if (process.platform === 'win32') { // Windows
 		tray.setBadge(messageCount);
-	}
 
-	app.setBadgeCount(messageCount);
+		if (messageCount === 0) {
+			mainWindow.setOverlayIcon(null, "");
+			return;
+		}
+
+		mainWindow.webContents.send('setBadge', messageCount);
+	} else { // Linux and macOS
+		app.setBadgeCount(messageCount);
+	}
 }
+
+ipcMain.on('setBadge', function(event, messageCount, value) {
+	var img = nativeImage.createFromDataURL(value);
+	mainWindow.setOverlayIcon(img, messageCount.toString());
+});
 
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
 	// Someone tried to run a second instance, we should focus our window.
