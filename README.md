@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">Free and Open Source messaging and emailing app that combines common web applications into one.</h4>
+<h4 align="center">Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one.</h4>
 
 <p align="center">
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate with PayPal"></a>
@@ -127,6 +127,7 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 
 * Sencha Ext JS 5.1.1.451
 * Electron
+* Node JS
 
 #### Environment:
 
@@ -138,8 +139,9 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 
 1. `git clone https://github.com/saenzramiro/rambox.git`
 2. `npm install`
-3. `sencha app watch`
-4. `npm start`
+3. Configure `env-sample.js` and rename it to `env.js`.
+4. `sencha app watch`
+5. `npm start`
 
 ----------
 
