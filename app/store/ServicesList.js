@@ -433,6 +433,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Yandex is a free webmail service with unlimited mail storage, protection from viruses and spam, access from web interface, etc.'
 			,url: 'https://passport.yandex.com/'
 			,type: 'email'
+		},
+		{
+			 id: 'trello'
+			,logo: 'trello.png'
+			,name: 'Trello'
+			,description: 'Infinitely flexible. Incredibly easy to use. Great mobile apps. It\'s free. Trello keeps track of everything, from the big picture to the minute details.'
+			,url: 'https://trello.com/login'
+			,type: 'Task'
 		}
 	]
 });
