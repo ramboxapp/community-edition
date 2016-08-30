@@ -433,6 +433,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Yandex is a free webmail service with unlimited mail storage, protection from viruses and spam, access from web interface, etc.'
 			,url: 'https://passport.yandex.com/'
 			,type: 'email'
+		},
+		{
+			 id: 'ryver'
+			,logo: 'ryver.png'
+			,name: 'Ryver'
+			,description: 'Ryver is a team communication tool that organizes team collaboration, chats, files, and even emails into a single location, for any size team, for FREE.'
+			,url: 'https://signup.ryver.com/login'
+			,type: 'messaging'
 		}
+	]
 	]
 });
