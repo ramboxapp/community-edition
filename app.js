@@ -82,7 +82,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, r
 });
 
 // Set Badge in taskbar for Windows
-ipc.on('setBadge', (event, messageCount) => {
+ipc.on('setBadge', function(event, messageCount) {
 	messageCount = messageCount.toString();
 	var canvas = document.createElement("canvas");
 	canvas.height = 140;
