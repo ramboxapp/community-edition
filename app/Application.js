@@ -179,16 +179,19 @@ Ext.define('Rambox.Application', {
 						'->'
 						,{
 							 xtype: 'label'
-							,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')'
+							,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
 						}
 						,{
 							 xtype: 'button'
 							,text: 'Download'
 							,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
+							,hidden: process.platform === 'win32'
 						}
 						,{
 							 xtype: 'button'
 							,text: 'Changelog'
+							,ui: 'decline'
+							,tooltip: 'Click here to see more information about the new version.'
 							,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+snapshot.val().latestVersion
 						}
 						,'->'
@@ -200,6 +203,7 @@ Ext.define('Rambox.Application', {
 						}
 					]
 				});
+				if ( process.platform === 'win32' ) ipc.send('autoUpdater:check-for-updates');
 				return;
 			} else if ( !silence ) {
 				Ext.Msg.show({

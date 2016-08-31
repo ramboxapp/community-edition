@@ -29,9 +29,6 @@ const ipc = require('electron').ipcRenderer;
 ipc.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
 });
-ipc.on('autoUpdater:checking-for-update:', function() {
-	Ext.Msg.wait('Please wait...', 'Checking for update');
-});
 ipc.on('autoUpdater:check-update', function() {
 	Rambox.app.checkUpdate();
 });
@@ -60,16 +57,17 @@ ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, r
 			'->'
 			,{
 				 xtype: 'label'
-				,html: '<b>New version is available!</b> ('+releaseName+')'
+				,html: '<b>New version ready to install ('+releaseName+')!</b> It will be installed the next time Rambox is relaunched.'
 			}
 			,{
 				 xtype: 'button'
-				,text: 'Install'
+				,text: 'Relaunch Now'
 				,handler: function(btn) { ipc.send('autoUpdater:quit-and-install'); }
 			}
 			,{
 				 xtype: 'button'
 				,text: 'Changelog'
+				,ui: 'decline'
 				,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+releaseName
 			}
 			,'->'

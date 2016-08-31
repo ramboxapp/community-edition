@@ -9,6 +9,7 @@ const initialize = (window) => {
 	autoUpdater.on('checking-for-update', (event) => send('autoUpdater:checking-for-update:'));
 	autoUpdater.on('update-downloaded', (event, ...args) => send('autoUpdater:update-downloaded', ...args));
 	ipcMain.on('autoUpdater:quit-and-install', (event) => autoUpdater.quitAndInstall());
+	ipcMain.on('autoUpdater:check-for-updates', (event) => autoUpdater.checkForUpdates());
 	webContents.on('did-finish-load', () => {
 		autoUpdater.setFeedURL(url);
 		autoUpdater.checkForUpdates();
