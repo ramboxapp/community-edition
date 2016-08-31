@@ -216,7 +216,7 @@ Ext.define('Rambox.ux.WebView',{
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
 			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
-				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
+				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
 				console.log(js_preventBlink);
 				webview.executeJavaScript(js_preventBlink);
 			}

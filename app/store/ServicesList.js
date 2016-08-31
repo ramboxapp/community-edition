@@ -171,6 +171,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Step up your game with a modern voice & text chat app. Crystal clear voice, multiple server and channel support, mobile apps, and more.'
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
+			,titleBlink: true
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("guild unread").length,b=0,c=document.getElementsByClassName("badge");for(i=0;i<c.length;i++)b+=parseInt(c[i].innerHTML.trim());updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
 		},
 		{
