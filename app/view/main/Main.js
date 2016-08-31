@@ -264,6 +264,11 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,handler: 'login'
 					}
+					,{
+						 tooltip: 'Preferences'
+						,glyph: 'xf013@FontAwesome'
+						,handler: 'openPreferences'
+					}
 				]
 			}
 			,bbar: [

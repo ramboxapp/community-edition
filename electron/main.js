@@ -5,13 +5,39 @@ const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage} 
 const appMenu = require('./menu');
 // Tray
 const tray = require('./tray');
-// Window State Plugin
-const windowStateKeeper = require('electron-window-state');
-// Global Settings
-var globalSettings = require('./global_settings.js');
-
+// AutoLaunch
+var AutoLaunch = require('auto-launch');
+// Configuration
+const Config = require('electron-config');
+// Development
 const isDev = require('electron-is-dev');
+// Updater
 const updater = require('./updater');
+
+// Initial Config
+const config = new Config({
+	 defaults: {
+		 always_on_top: false
+		,hide_menu_bar: false
+		,skip_taskbar: true
+		,auto_launch: !isDev
+		,keep_in_taskbar_on_close: true
+		,start_minimized: false
+
+		,x: undefined
+		,y: undefined
+		,width: 1000
+		,height: 800
+		,maximized: false
+	}
+});
+
+// Configure AutoLaunch
+const appLauncher = new AutoLaunch({
+	 name: 'Rambox'
+	,isHiddenOnLaunch: config.get('start_minimized')
+});
+config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
 
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent()) {
@@ -87,27 +113,19 @@ let mainWindow;
 let isQuitting = false;
 
 function createWindow () {
-	// Load the previous state with fallback to defaults
-
-	let mainWindowState = windowStateKeeper({
-		 defaultWidth: 1000
-		,defaultHeight: 800
-		,maximize: false
-	});
-
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox'
 		,icon: __dirname + '/../resources/Icon.ico'
-		,x: mainWindowState.x
-		,y: mainWindowState.y
-		,width: mainWindowState.width
-		,height: mainWindowState.height
-		,backgroundColor: '#2E658E'
-		,alwaysOnTop: parseInt(globalSettings.get('always_on_top')) ? true : false
-		,autoHideMenuBar: parseInt(globalSettings.get('hide_menu_bar')) ? true : false
-		,skipTaskbar: parseInt(globalSettings.get('skip_taskbar')) ? true : false
-		,show: parseInt(globalSettings.get('start_minimized')) ? false : true
+		,backgroundColor: '#FFF'
+		,x: config.get('x')
+		,y: config.get('y')
+		,width: config.get('width')
+		,height: config.get('height')
+		,alwaysOnTop: config.get('always_on_top')
+		,autoHideMenuBar: config.get('hide_menu_bar')
+		,skipTaskbar: !config.get('skip_taskbar')
+		,show: !config.get('start_minimized')
 		,webPreferences: {
 			 webSecurity: false
 			,nodeIntegration: true
@@ -116,25 +134,21 @@ function createWindow () {
 		}
 	});
 
-	if ( !parseInt(globalSettings.get('start_minimized')) && mainWindowState.isMaximized ) mainWindow.maximize();
-
-	// Let us register listeners on the window, so we can update the state
-	// automatically (the listeners will be removed when the window is closed)
-	// and restore the maximized or full screen state
-	mainWindowState.manage(mainWindow);
+	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
 
 	process.setMaxListeners(10000);
+
+	// Open the DevTools.
+	if ( isDev ) mainWindow.webContents.openDevTools();
 
 	// and load the index.html of the app.
 	mainWindow.loadURL('file://' + __dirname + '/../index.html');
 
 	Menu.setApplicationMenu(appMenu);
 
-	tray.create(mainWindow, mainWindowState);
+	tray.create(mainWindow, config);
 
 	if ( !isDev && process.platform === 'win32' ) updater.initialize(mainWindow);
-
-	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
@@ -150,18 +164,22 @@ function createWindow () {
 		event.preventDefault();
 	});
 
+	// BrowserWindow events
+	mainWindow.on('page-title-updated', (e, title) => updateBadge(title));
+	mainWindow.on('maximize', function(e) { config.set('maximized', true); });
+	mainWindow.on('unmaximize', function(e) { config.set('maximized', false); });
+	mainWindow.on('resize', function(e) { if (!mainWindow.isMaximized()) config.set(mainWindow.getBounds()); });
+	mainWindow.on('move', function(e) { if (!mainWindow.isMaximized()) config.set(mainWindow.getBounds()); });
 	mainWindow.on('app-command', (e, cmd) => {
 		// Navigate the window back when the user hits their mouse back button
 		if ( cmd === 'browser-backward' ) mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").getActiveTab().goBack();');
 		// Navigate the window forward when the user hits their mouse forward button
 		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").getActiveTab().goForward();');
 	});
-
 	mainWindow.on('focus', (e) => {
 		// Make focus on current service when user use Alt + Tab to activate Rambox
 		mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").fireEvent("tabchange", Ext.cq1("app-main"), Ext.cq1("app-main").getActiveTab());');
 	});
-
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {
 		if ( !isQuitting ) {
@@ -170,11 +188,10 @@ function createWindow () {
 			if (process.platform === 'darwin') {
 				app.hide();
 			} else {
-				parseInt(globalSettings.get('keep_in_taskbar_on_close')) ? mainWindow.minimize() : mainWindow.hide();
+				config.get('keep_in_taskbar_on_close') ? mainWindow.minimize() : mainWindow.hide();
 			}
 		}
 	});
-
 	mainWindow.on('closed', function(e) {
 		mainWindow = null;
 	});
@@ -200,6 +217,24 @@ function updateBadge(title) {
 ipcMain.on('setBadge', function(event, messageCount, value) {
 	var img = nativeImage.createFromDataURL(value);
 	mainWindow.setOverlayIcon(img, messageCount.toString());
+});
+
+ipcMain.on('getConfig', function(event, arg) {
+	event.returnValue = config.store;
+});
+
+ipcMain.on('setConfig', function(event, values) {
+	config.set(values);
+
+	// hide_menu_bar
+	mainWindow.setAutoHideMenuBar(values.hide_menu_bar);
+	if ( !values.hide_menu_bar ) mainWindow.setMenuBarVisibility(true);
+	// skip_taskbar
+	mainWindow.setSkipTaskbar(!values.skip_taskbar);
+	// always_on_top
+	mainWindow.setAlwaysOnTop(values.always_on_top);
+	// auto_launch
+	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
 });
 
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {

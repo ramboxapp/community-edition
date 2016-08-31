@@ -7,7 +7,7 @@ const Tray = electron.Tray;
 const MenuItem = electron.MenuItem;
 var appIcon = null;
 
-exports.create = function(win, mainWindowState) {
+exports.create = function(win, config) {
 	if (process.platform === 'darwin' || appIcon) {
 		return;
 	}
@@ -16,19 +16,25 @@ exports.create = function(win, mainWindowState) {
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
 
 	const toggleWin = () => {
-		if (win.isVisible()) {
-			win.hide();
+		if ( !config.get('keep_in_taskbar_on_close') ) {
+			if ( win.isVisible() ) {
+				win.hide();
+			} else {
+				config.get('maximized') ? win.maximize() : win.show();
+			}
 		} else {
-			win.show();
+			if ( win.isVisible() && !win.isMinimized() ) {
+				win.minimize();
+			} else {
+				config.get('maximized') ? win.maximize() : win.show();
+			}
 		}
 	};
 
 	const contextMenu = electron.Menu.buildFromTemplate([
 		{
 			 label: 'Show/Hide Window'
-			,click() {
-				toggleWin();
-			}
+			,click: toggleWin
 		},
 		{
 			type: 'separator'

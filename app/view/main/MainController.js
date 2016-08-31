@@ -927,6 +927,12 @@ Ext.define('Rambox.view.main.MainController', {
 		winLock.down('textfield').focus(1000);
 	}
 
+	,openPreferences: function( btn ) {
+		var me = this;
+
+		Ext.create('Rambox.view.preferences.Preferences').show();
+	}
+
 	,login: function(btn) {
 		var me = this;
 
