@@ -19,7 +19,7 @@ Ext.define('Rambox.view.main.About', {
 	}
 	,tpl: [
 		 '<div style="text-align:center;"><img src="resources/Icon.png" width="100" /></div>'
-		,'<h3>Free and Open Source messaging and emailing app that combines common web applications into one.</h3>'
+		,'<h3>Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one.</h3>'
 		,'<div><b>Version:</b> {version}</div>'
 		,'<div><b>Platform:</b> {platform} ({arch})</div>'
 		,'<div><b>Electron:</b> {electron}</div>'
