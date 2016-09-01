@@ -52,9 +52,15 @@ Ext.define('Rambox.ux.WebView',{
 			}]
 			,tabConfig: {
 				listeners: {
-					badgetextchange: me.onBadgeTextChange
+					 badgetextchange: me.onBadgeTextChange
+					,afterrender : function( btn ) {
+						btn.el.on('contextmenu', function(e) {
+							btn.showMenu('contextmenu');
+							e.stopEvent();
+						});
+					}
 				}
-				,clickEvent: 'dblclick'
+				,clickEvent: ''
 				,menu:  {
 					 plain: true
 					,items: [
