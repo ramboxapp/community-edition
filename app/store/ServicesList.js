@@ -441,6 +441,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Ryver is a team communication tool that organizes team collaboration, chats, files, and even emails into a single location, for any size team, for FREE.'
 			,url: 'https://signup.ryver.com/login'
 			,type: 'messaging'
+		},
+		{
+			 id: 'aim'
+			,logo: 'aim.png'
+			,name: 'Aim'
+			,description: 'Aim offers free Text Messaging, Group Conversations, Media Sharing, Social Notifications, and more.'
+			,url: 'https://aim.com/'
+			,type: 'messaging'
 		}
 	]
 	]

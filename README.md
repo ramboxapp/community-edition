@@ -35,7 +35,7 @@
 
 ![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/mac.png)
 
-## Services available - 49
+## Services available - 50
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -61,6 +61,11 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/bearychat.png" alt="BearyChat" title="BearyChat">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/aol.png" alt="Aol" title="Aol">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/sync.png" alt="Sync" title="Sync">
+
+<!-- Please edit this with your githubusercontent link if you accept pull request -->
+<!-- <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/aim.png" alt="Aim" title="Aim"> -->
+<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/aim.png" alt="Aim" title="Aim">
+
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/wire.png" alt="Wire" title="Wire">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/missive.png" alt="Missive" title="Missive">
