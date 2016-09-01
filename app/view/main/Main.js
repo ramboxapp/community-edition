@@ -281,7 +281,7 @@ Ext.define('Rambox.view.main.Main', {
 				,'->'
 				,{
 					 xtype: 'label'
-					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from Argentina as an Open Source project.'
+					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from <img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" /> as an Open Source project.'
 				}
 				,'->'
 				,{
