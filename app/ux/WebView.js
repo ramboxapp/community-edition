@@ -10,7 +10,6 @@ Ext.define('Rambox.ux.WebView',{
 	]
 
 	// private
-	,notifications: 0
 	,zoomLevel: 0
 
 	// CONFIG
@@ -233,32 +232,7 @@ Ext.define('Rambox.ux.WebView',{
 				count = count === '•' ? count : Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
 				count = count === null ? '0' : count;
 
-			var formattedCount = Rambox.util.Format.formatNumber(count);
-
-			switch ( me.type ) {
-				case 'messenger':
-					if ( count !== me.notifications && count > 0 ) {
-						me.notifications = count;
-					}
-					if ( count || e.title === 'Messenger' ) {
-						me.tab.setBadgeText(formattedCount);
-					}
-					if ( e.title === 'Messenger' ) me.notifications = 0;
-					break;
-				case 'hangouts':
-					if ( count !== me.notifications && count > 0 ) {
-						me.notifications = count;
-					}
-					if ( count || e.title === 'Google Hangouts' ) {
-						me.tab.setBadgeText(formattedCount);
-					}
-					if ( e.title === 'Google Hangouts' ) me.notifications = 0;
-					break;
-				default:
-					me.tab.setBadgeText(formattedCount);
-					me.notifications = count;
-					break;
-			}
+			me.tab.setBadgeText(Rambox.util.Format.formatNumber(count));
 		});
 
 		webview.addEventListener('did-get-redirect-request', function( e ) {

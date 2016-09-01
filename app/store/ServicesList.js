@@ -53,6 +53,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Instantly reach the people in your life for free. Messenger is just like texting, but you don\'t have to pay for every message.'
 			,url: 'https://www.messenger.com/login/'
 			,type: 'messaging'
+			,titleBlink: true
 			,note: 'To enable desktop notifications, you have to go to Options inside Messenger.'
 		},
 		{
@@ -71,6 +72,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Hangouts bring conversations to life with photos, emoji, and even group video calls for free. Connect with friends across computers, Android, and Apple devices.'
 			,url: 'https://hangouts.google.com/'
 			,type: 'messaging'
+			,titleBlink: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
