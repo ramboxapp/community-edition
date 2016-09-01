@@ -148,6 +148,9 @@ Ext.define('Rambox.Application', {
 			this.checkUpdate(true);
 		}
 
+		// Define default value
+		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
+
 		if ( localStorage.getItem('locked') ) {
 			console.info('Lock Rambox:', 'Enabled');
 			Ext.cq1('app-main').getController().showLockWindow();

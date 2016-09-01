@@ -153,6 +153,9 @@ Ext.define('Rambox.ux.WebView',{
 		// Google Analytics Event
 		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
 
+		// Notifications in Webview
+		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
+
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
@@ -192,15 +195,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
-			if ( me.muted || localStorage.getItem('locked') ) me.setAudioMuted(true);
-
-			// Notifications in Webview
-			webview.executeJavaScript('var originalNotification = Notification;');
-			if ( me.notifications ) {
-				me.setNotifications(me.notifications);
-			} else if ( localStorage.getItem('locked') ) {
-				me.setNotifications(false);
-			}
+			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true);
 
 			// Injected code to detect new messages
 			if ( me.record ) {
@@ -290,18 +285,12 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		if ( !notification ) {
-			webview.executeJavaScript('(function() { Notification = function() { } })();');
-		} else {
-			webview.executeJavaScript('(function() { Notification = originalNotification })();');
-		}
+		ipc.send('setServiceNotifications', webview.partition, notification);
 	}
 
 	,setOffline: function(btn, e) {
 		var me = this;
 		var webview = me.down('component').el.dom;
-
-		console.log(btn, e);
 
 		console.info(me.type, 'Going '+ (!btn.offline ? 'offline' : 'online') + '...');
 

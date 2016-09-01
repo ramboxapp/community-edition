@@ -214,12 +214,13 @@ Ext.define('Rambox.view.main.Main', {
 				,items: [
 					{
 						 glyph: 'xf1f7@FontAwesome'
-						,text: 'Don\'t Disturb: OFF'
+						,text: 'Don\'t Disturb: '+(JSON.parse(localStorage.getItem('dontDisturb')) ? 'ON' : 'OFF')
 						,tooltip: 'Disable notifications and sounds in all services. Perfect to be concentrated and focused.<br/><b>Shortcut key: F1</b>'
 						,enableToggle: true
 						,handler: 'dontDisturb'
 						,reference: 'disturbBtn'
 						,id: 'disturbBtn'
+						,pressed: JSON.parse(localStorage.getItem('dontDisturb'))
 					}
 					,{
 						 glyph: 'xf023@FontAwesome'

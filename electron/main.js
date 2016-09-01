@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage} = require('electron');
+const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session} = require('electron');
 // Menu
 const appMenu = require('./menu');
 // Tray
@@ -235,6 +235,14 @@ ipcMain.on('setConfig', function(event, values) {
 	mainWindow.setAlwaysOnTop(values.always_on_top);
 	// auto_launch
 	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
+});
+
+// Handle Service Notifications
+ipcMain.on('setServiceNotifications', function(event, partition, op) {
+	session.fromPartition(partition).setPermissionRequestHandler(function(webContents, permission, callback) {
+		if (permission === 'notifications') return callback(op);
+		callback(true)
+	});
 });
 
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {

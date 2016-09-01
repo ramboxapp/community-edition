@@ -797,12 +797,10 @@ Ext.define('Rambox.view.main.MainController', {
 			tab.setAudioMuted(btn.pressed);
 
 			// Prevent Notifications
-			if ( btn.pressed ) {
-				tab.down('component').el.dom.getWebContents().executeJavaScript('var originalNotification = Notification; (function() { Notification = function() { } })();');
-			} else {
-				tab.down('component').el.dom.getWebContents().executeJavaScript('(function() { Notification = originalNotification })();');
-			}
+			tab.setNotifications(!btn.pressed);
 		});
+
+		localStorage.setItem('dontDisturb', btn.pressed);
 
 		btn.setText('Don\'t Disturb: ' + ( btn.pressed ? 'ON' : 'OFF' ));
 
