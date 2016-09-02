@@ -47,7 +47,7 @@ Ext.define('Rambox.ux.WebView',{
 					,autosize: 'on'
 					,allowpopups: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
-					,useragent: me.type === 'skype' ? 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586' : '' // Used to enable video and audio calls in Skype
+					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
 				}
 			}]
 			,tabConfig: {

@@ -28,6 +28,10 @@ Ext.define('Rambox.model.ServiceList', {
 		,type: 'boolean'
 		,defaultValue: false
 	},{
+		 name: 'userAgent'
+		,type: 'string'
+		,defaultValue: ''
+	},{
 		 name: 'note'
 		,type: 'string'
 		,defaultValue: ''

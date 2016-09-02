@@ -63,6 +63,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Stay in touch with family and friends for free. Get international calling, free online calls and Skype for Business on desktop and mobile.'
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
 			,note: 'Text and Audio calls are supported only. <a href="https://github.com/saenzramiro/rambox/wiki/Skype" target="_blank">Read more...</a>'
 		},
 		{
