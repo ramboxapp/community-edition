@@ -26,6 +26,11 @@ var globalSettings = {
 	}
 };
 
+if (process.platform === 'linux') {
+	// default setting for linux: exit app on close
+	globalSettings.settings.keep_in_taskbar_on_close = 0;
+}
+
 try {
 	//test to see if settings exist
 	fs.openSync(settingsPathname, 'r+'); //throws error if file doesn't exist
