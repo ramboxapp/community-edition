@@ -324,6 +324,26 @@ ipcMain.on('image:download', function(event, url, partition) {
 	tmpWindow.webContents.downloadURL(url);
 });
 
+// Hangouts
+ipcMain.on('image:popup', function(event, url, partition) {
+	let tmpWindow = new BrowserWindow({
+		 width: mainWindow.getBounds().width
+		,height: mainWindow.getBounds().height
+		,parent: mainWindow
+		,icon: __dirname + '/../resources/Icon.ico'
+		,backgroundColor: '#FFF'
+		,autoHideMenuBar: true
+		,skipTaskbar: true
+		,webPreferences: {
+			partition: partition
+		}
+	});
+
+	tmpWindow.maximize();
+
+	tmpWindow.loadURL(url);
+});
+
 // Proxy
 if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
 
