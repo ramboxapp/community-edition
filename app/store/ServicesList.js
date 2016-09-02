@@ -119,7 +119,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Inbox by Gmail is a new app from the Gmail team. Inbox is an organized place to get things done and get back to what matters. Bundles keep emails organized.'
 			,url: 'http://inbox.google.com/?cid=imp'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("qG").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Inbox",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'chatwork'
