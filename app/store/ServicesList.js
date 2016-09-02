@@ -251,8 +251,9 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'wire.png'
 			,name: 'Wire'
 			,description: 'HD quality calls, private and group chats with inline photos, music and video. Also available for your phone or tablet.'
-			,url: 'https://app.wire.com/auth/#login'
+			,url: 'https://app.wire.com/'
 			,type: 'messaging'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
 		},
 		{
 			 id: 'sync'
