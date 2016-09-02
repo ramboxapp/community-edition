@@ -23,6 +23,9 @@ const config = new Config({
 		,auto_launch: !isDev
 		,keep_in_taskbar_on_close: true
 		,start_minimized: false
+		,proxy: false
+		,proxyHost: ''
+		,proxyPort: ''
 
 		,x: undefined
 		,y: undefined
@@ -320,6 +323,9 @@ ipcMain.on('image:download', function(event, url, partition) {
 
 	tmpWindow.webContents.downloadURL(url);
 });
+
+// Proxy
+if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

@@ -11,7 +11,12 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 	,save: function( btn ) {
 		var me = this;
 
-		ipc.send('setConfig', me.getView().down('form').getForm().getFieldValues());
+		var values = me.getView().down('form').getForm().getFieldValues();
+
+		// Proxy
+		if ( values.proxy && (Ext.isEmpty(values.proxyHost) || Ext.isEmpty(values.proxyPort)) ) return;
+
+		ipc.send('setConfig', values);
 		me.getView().close();
 	}
 });

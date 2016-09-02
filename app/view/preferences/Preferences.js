@@ -83,6 +83,35 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: 'Start automatically on system startup'
 						,value: config.auto_launch
 					}
+					,{
+						 xtype: 'fieldset'
+						,title: 'Proxy (needs to relaunch) - <a href="http://proxylist.hidemyass.com/" target="_blank">Free IP:PORT Proxy List</a>'
+						,collapsed: !config.proxy
+						,checkboxToggle: true
+						,checkboxName: 'proxy'
+						,margin: '10 0 0 0'
+						,padding: 10
+						,layout: 'hbox'
+						,defaults: { labelAlign: 'top' }
+						,items: [
+							{
+								 xtype: 'textfield'
+								,vtype: 'url'
+								,fieldLabel: 'Host'
+								,name: 'proxyHost'
+								,value: config.proxyHost
+								,flex: 1
+							}
+							,{
+								 xtype: 'numberfield'
+								,fieldLabel: 'Port'
+								,name: 'proxyPort'
+								,width: 100
+								,value: config.proxyPort
+								,margin: '0 0 0 10'
+							}
+						]
+					}
 				]
 			}
 		];
