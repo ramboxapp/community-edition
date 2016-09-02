@@ -55,16 +55,14 @@ exports.create = function(win, config) {
 	});
 };
 
-exports.setBadge = shouldDisplayUnread => {
-	if (process.platform === 'darwin' || !appIcon) {
-		return;
-	}
+exports.setBadge = function(messageCount, showUnreadTray) {
+	if (process.platform === 'darwin' || !appIcon) return;
 
 	let icon;
 	if (process.platform === 'linux') {
-		icon = shouldDisplayUnread ? 'IconTrayUnread.png' : 'IconTray.png';
+		icon = messageCount && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
 	} else {
-		icon = shouldDisplayUnread ? 'IconTrayUnread.ico' : 'Icon.ico';
+		icon = messageCount && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
 	}
 
 	const iconPath = path.join(__dirname, `../resources/${icon}`);

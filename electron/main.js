@@ -23,6 +23,7 @@ const config = new Config({
 		,auto_launch: !isDev
 		,keep_in_taskbar_on_close: true
 		,start_minimized: false
+		,systemtray_indicator: true
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''
@@ -203,16 +204,16 @@ function createWindow () {
 function updateBadge(title) {
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
 
-	if (process.platform === 'win32') { // Windows
-		tray.setBadge(messageCount);
+	tray.setBadge(messageCount, config.get('systemtray_indicator'));
 
+	if (process.platform === 'win32') { // Windows
 		if (messageCount === 0) {
 			mainWindow.setOverlayIcon(null, "");
 			return;
 		}
 
 		mainWindow.webContents.send('setBadge', messageCount);
-	} else { // Linux and macOS
+	} else { // macOS
 		app.setBadgeCount(messageCount);
 	}
 }
@@ -238,6 +239,8 @@ ipcMain.on('setConfig', function(event, values) {
 	mainWindow.setAlwaysOnTop(values.always_on_top);
 	// auto_launch
 	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
+	// systemtray_indicator
+	updateBadge(mainWindow.getTitle());
 });
 
 // Handle Service Notifications

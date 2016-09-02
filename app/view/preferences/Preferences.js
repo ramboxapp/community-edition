@@ -44,6 +44,18 @@ Ext.define('Rambox.view.preferences.Preferences',{
 				,items: [
 					{
 						 xtype: 'checkbox'
+						,name: 'auto_launch'
+						,boxLabel: 'Start automatically on system startup'
+						,value: config.auto_launch
+					}
+					,{
+						 xtype: 'checkbox'
+						,name: 'start_minimized'
+						,boxLabel: 'Start minimized'
+						,value: config.start_minimized
+					}
+					,{
+						 xtype: 'checkbox'
 						,name: 'hide_menu_bar'
 						,boxLabel: 'Auto-hide Menu bar (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar
@@ -73,15 +85,10 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'checkbox'
-						,name: 'start_minimized'
-						,boxLabel: 'Start minimized'
-						,value: config.start_minimized
-					}
-					,{
-						 xtype: 'checkbox'
-						,name: 'auto_launch'
-						,boxLabel: 'Start automatically on system startup'
-						,value: config.auto_launch
+						,name: 'systemtray_indicator'
+						,boxLabel: 'Show System Tray indicator on unread messages'
+						,value: config.systemtray_indicator
+						,hidden: Ext.os.is.MacOS
 					}
 					,{
 						 xtype: 'fieldset'
