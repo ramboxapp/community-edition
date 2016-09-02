@@ -31,7 +31,7 @@ Ext.define('Rambox.ux.WebView',{
 		}
 
 		// Allow Custom sites with self certificates
-		if ( me.record.get('trust') ) require('electron').ipcRenderer.send('allowCertificate', me.src)
+		if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
 		Ext.apply(me, {
 			 items: [{
