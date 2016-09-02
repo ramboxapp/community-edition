@@ -184,6 +184,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Take control. Do more. Outlook is the free email and calendar service that helps you stay on top of what matters and get things done.'
 			,url: 'https://mail.live.com/'
 			,type: 'email'
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'outlook365'
@@ -192,6 +193,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Outlook for Business'
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook 365",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook365.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'yahoo'
