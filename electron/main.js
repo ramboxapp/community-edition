@@ -155,6 +155,19 @@ function createWindow () {
 		if ( !isQuitting ) {
 			e.preventDefault();
 
+			switch (process.platform) {
+				case 'darwin':
+					app.hide();
+					break;
+				case 'linux':
+					parseInt(globalSettings.get('keep_in_taskbar_on_close')) ? mainWindow.hide() : app.quit();
+					break;
+				case 'win32':
+				default:
+					parseInt(globalSettings.get('keep_in_taskbar_on_close')) ? mainWindow.minimize() : mainWindow.hide();
+					break;
+			}
+
 			if (process.platform === 'darwin') {
 				app.hide();
 			} else {
