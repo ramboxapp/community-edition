@@ -447,9 +447,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'aim.png'
 			,name: 'Aim'
 			,description: 'Aim offers free Text Messaging, Group Conversations, Media Sharing, Social Notifications, and more.'
-			,url: 'https://aim.com/'
+			,url: 'http://aim.com/'
 			,type: 'messaging'
 		}
-	]
 	]
 });
