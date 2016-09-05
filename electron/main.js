@@ -14,9 +14,9 @@ const isDev = require('electron-is-dev');
 const updater = require('./updater');
 
 require('electron-context-menu')({
-    prepend: params => [{
-        label: 'Rambox'
-    }]
+	prepend: params => [{
+		label: 'Rambox'
+	}]
 });
 
 // this should be placed at top of main.js to handle setup events quickly
