@@ -123,7 +123,7 @@ Ext.define("Ext.locale.de.toolbar.Paging", {
     nextText: "nächste Seite",
     lastText: "letzte Seite",
     refreshText: "Aktualisieren",
-    displayMsg: "Anzeige Eintrag {0} - {1} von {2}",
+    displayMsg: "Eintrag anzeigen {0} - {1} von {2}",
     emptyMsg: "Keine Daten vorhanden"
 });
 
@@ -168,8 +168,8 @@ Ext.define("Ext.locale.de.form.field.VTypes", {
     override: "Ext.form.field.VTypes",
     emailText: 'Dieses Feld sollte eine E-Mail-Adresse enthalten. Format: "user@example.com"',
     urlText: 'Dieses Feld sollte eine URL enthalten. Format: "http:/' + '/www.example.com"',
-    alphaText: 'Dieses Feld darf nur Buchstaben enthalten und _',
-    alphanumText: 'Dieses Feld darf nur Buchstaben und Zahlen enthalten und _'
+    alphaText: 'Dieses Feld darf nur Buchstaben und _ enthalten',
+    alphanumText: 'Dieses Feld darf nur Buchstaben, Zahlen und _ enthalten'
 });
 
 Ext.define("Ext.locale.de.form.field.HtmlEditor", {
@@ -235,7 +235,7 @@ Ext.define("Ext.locale.de.form.field.HtmlEditor", {
             },
             insertorderedlist: {
                 title: 'Numerierte Liste',
-                text: 'Beginnt eine numerierte Liste.',
+                text: 'Beginnt eine nummerierte Liste.',
                 cls: Ext.baseCSSPrefix + 'html-editor-tip'
             },
             createlink: {
