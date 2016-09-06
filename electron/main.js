@@ -13,6 +13,9 @@ const Config = require('electron-config');
 const isDev = require('electron-is-dev');
 // Updater
 const updater = require('./updater');
+// File System
+var fs = require("fs");
+const path = require('path');
 
 // Initial Config
 const config = new Config({
@@ -55,7 +58,6 @@ function handleSquirrelEvent() {
 	}
 
 	const ChildProcess = require('child_process');
-	const path = require('path');
 
 	const appFolder = path.resolve(process.execPath, '..');
 	const rootAtomFolder = path.resolve(appFolder, '..');
@@ -152,7 +154,7 @@ function createWindow () {
 
 	tray.create(mainWindow, config);
 
-	if ( !isDev && process.platform === 'win32' ) updater.initialize(mainWindow);
+	if ( fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'Update.exe')) ) updater.initialize(mainWindow);
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
