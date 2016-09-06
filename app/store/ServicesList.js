@@ -277,6 +277,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Allows you to instant message with anyone on the Yahoo server. Tells you when you get mail, and gives stock quotes.'
 			,url: 'https://messenger.yahoo.com/'
 			,type: 'messaging'
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("list-item-unread-indicator").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'voxer'
