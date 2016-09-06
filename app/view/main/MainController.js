@@ -6,11 +6,13 @@ Ext.define('Rambox.view.main.MainController', {
 	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
 	,onTabChange: function( tabPanel, newTab, oldTab ) {
 		var me = this;
-		var webview = newTab.down('component').el.dom;
 
 		// Set Google Analytics event
 		ga_storage._trackPageview('/index.html', 'main');
 
+		if ( newTab.id === 'ramboxTab' || !newTab.record.get('enabled') ) return;
+		
+		var webview = newTab.down('component').el.dom;
 		if ( webview ) webview.focus();
 	}
 
@@ -430,6 +432,12 @@ Ext.define('Rambox.view.main.MainController', {
 
 		// Make focus to the name field
 		win.down('textfield[name="serviceName"]').focus(true, 100);
+	}
+
+	,onEnableDisableService: function(cc, rowIndex, checked) {
+		var rec = Ext.getStore('Services').getAt(rowIndex);
+
+		Ext.getCmp('tab_'+rec.get('id')).setEnabled(checked);
 	}
 
 	,onNewServiceSelect: function( view, record, item, index, e ) {

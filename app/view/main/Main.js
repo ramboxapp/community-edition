@@ -194,6 +194,18 @@ Ext.define('Rambox.view.main.Main', {
 								}
 							]
 						}
+						,{
+							 xtype: 'checkcolumn'
+							,width: 40
+							,dataIndex: 'enabled'
+							,renderer: function(value, metaData) {
+								metaData.tdAttr = 'data-qtip="Service '+(value ? 'Enabled' : 'Disabled')+'"';
+								return this.defaultRenderer(value, metaData);
+							}
+							,listeners: {
+								checkchange: 'onEnableDisableService'
+							}
+						}
 					]
 					,viewConfig: {
 						 emptyText: 'No services added...'

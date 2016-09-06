@@ -34,6 +34,7 @@ Ext.define('Rambox.store.Services', {
 					,src: service.get('url')
 					,type: service.get('type')
 					,muted: service.get('muted')
+					,enabled: service.get('enabled')
 					,record: service
 					,tabConfig: {
 						service: service

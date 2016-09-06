@@ -42,6 +42,10 @@ Ext.define('Rambox.model.Service', {
 		,type: 'boolean'
 		,defaultValue: false
 	},{
+		 name: 'enabled'
+		,type: 'boolean'
+		,defaultValue: true
+	},{
 		 name: 'js_unread'
 		,type: 'string'
 		,defaultValue: ''

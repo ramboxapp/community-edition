@@ -34,22 +34,7 @@ Ext.define('Rambox.ux.WebView',{
 		if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
 		Ext.apply(me, {
-			 items: [{
-				 xtype: 'component'
-				,hideMode: 'offsets'
-				,autoEl: {
-					 tag: 'webview'
-					,src: me.src
-					,style: 'width:100%;height:100%;'
-					,partition: 'persist:' + me.type + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
-					,plugins: 'true'
-					,allowtransparency: 'on'
-					,autosize: 'on'
-					,allowpopups: 'on'
-					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
-					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
-				}
-			}]
+			 items: me.webViewConstructor()
 			,tabConfig: {
 				listeners: {
 					 badgetextchange: me.onBadgeTextChange
@@ -61,6 +46,7 @@ Ext.define('Rambox.ux.WebView',{
 					}
 				}
 				,clickEvent: ''
+				,style: !me.enabled ? '-webkit-filter: grayscale(1)' : ''
 				,menu:  {
 					 plain: true
 					,items: [
@@ -117,13 +103,6 @@ Ext.define('Rambox.ux.WebView',{
 							,scope: me
 							,handler: me.reloadService
 						}
-						,{
-							 text: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? 'Go Online' : 'Go Offline'
-							,glyph: 'xf0ac@FontAwesome'
-							,scope: me
-							,offline: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? true : false
-							,handler: me.setOffline
-						}
 						,'-'
 						,{
 							 text: 'Toggle Developer Tools'
@@ -142,6 +121,41 @@ Ext.define('Rambox.ux.WebView',{
 		me.callParent(config);
 	}
 
+	,webViewConstructor: function() {
+		var me = this;
+
+		var cfg;
+		if ( !me.record.get('enabled') ) {
+			cfg = {
+				 xtype: 'container'
+				,html: '<h3>Service Disabled</h3>'
+				,style: 'text-align:center;'
+				,padding: 100
+			};
+		} else {
+			cfg = {
+				 xtype: 'component'
+				,hideMode: 'offsets'
+				,autoRender: true
+				,autoShow: true
+				,autoEl: {
+					 tag: 'webview'
+					,src: me.src
+					,style: 'width:100%;height:100%;'
+					,partition: 'persist:' + me.type + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+					,plugins: 'true'
+					,allowtransparency: 'on'
+					,autosize: 'on'
+					,allowpopups: 'on'
+					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
+					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
+				}
+			};
+		}
+
+		return cfg;
+	}
+
 	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
 		if ( oldBadgeText === null ) oldBadgeText = 0;
 		var actualNotifications = Rambox.app.getTotalNotifications();
@@ -154,6 +168,9 @@ Ext.define('Rambox.ux.WebView',{
 
 	,onAfterRender: function() {
 		var me = this;
+
+		if ( !me.record.get('enabled') ) return;
+
 		var webview = me.down('component').el.dom;
 
 		// Google Analytics Event
@@ -283,16 +300,19 @@ Ext.define('Rambox.ux.WebView',{
 		ipc.send('setServiceNotifications', webview.partition, notification);
 	}
 
-	,setOffline: function(btn, e) {
+	,setEnabled: function(enabled) {
 		var me = this;
-		var webview = me.down('component').el.dom;
 
-		console.info(me.type, 'Going '+ (!btn.offline ? 'offline' : 'online') + '...');
-
-		webview.getWebContents().session.setProxy({ proxyRules: !btn.offline ? 'offline' : '' }, Ext.emptyFn);
-		btn.offline = !btn.offline;
-		btn.setText(Ext.String.toggle(btn.text, 'Go Online', 'Go Offline'));
-		btn.offline ? localStorage.setItem('offline_'+me.id.replace('tab_', ''), true) : localStorage.removeItem('offline_'+me.id.replace('tab_', ''));
+		me.removeAll();
+		me.add(me.webViewConstructor());
+		if ( enabled ) {
+			me.resumeEvent('afterrender');
+			me.show();
+			me.tab.setStyle('-webkit-filter', 'grayscale(0)');
+		} else {
+			me.suspendEvent('afterrender');
+			me.tab.setStyle('-webkit-filter', 'grayscale(1)');
+		}
 	}
 
 	,goBack: function() {
