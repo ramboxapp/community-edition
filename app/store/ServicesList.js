@@ -445,6 +445,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Yandex is a free webmail service with unlimited mail storage, protection from viruses and spam, access from web interface, etc.'
 			,url: 'https://mail.yandex.com/'
 			,type: 'email'
+		},
+		{
+			 id:' irccloud'
+			,logo: 'irccloud.png'
+			,name: 'IRCCloud'
+			,description: 'IRCCloud is a modern IRC client that keeps you connected, with none of the baggage.'
+			,url: 'https://www.irccloud.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var t=0;[].map.call(document.querySelectorAll(".bufferBadges > .badge"),n=>n.textContent?parseInt(n.textContent,10):0).reduce((x,y)=>x+y,0);updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		}
 	]
 });
