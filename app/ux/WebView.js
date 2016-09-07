@@ -34,7 +34,7 @@ Ext.define('Rambox.ux.WebView',{
 		if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
 		Ext.apply(me, {
-			 items: me.webViewConstructor()
+			 items: me.webViewConstructor(me.record.get('enabled'))
 			,tabConfig: {
 				listeners: {
 					 badgetextchange: me.onBadgeTextChange
@@ -46,7 +46,7 @@ Ext.define('Rambox.ux.WebView',{
 					}
 				}
 				,clickEvent: ''
-				,style: !me.enabled ? '-webkit-filter: grayscale(1)' : ''
+				,style: !me.record.get('enabled') ? '-webkit-filter: grayscale(1)' : ''
 				,menu:  {
 					 plain: true
 					,items: [
@@ -121,19 +121,18 @@ Ext.define('Rambox.ux.WebView',{
 		me.callParent(config);
 	}
 
-	,webViewConstructor: function() {
+	,webViewConstructor: function(enabled) {
 		var me = this;
 
-		var cfg;
-		if ( !me.record.get('enabled') ) {
-			cfg = {
+		if ( !enabled ) {
+			return {
 				 xtype: 'container'
 				,html: '<h3>Service Disabled</h3>'
 				,style: 'text-align:center;'
 				,padding: 100
 			};
 		} else {
-			cfg = {
+			return {
 				 xtype: 'component'
 				,hideMode: 'offsets'
 				,autoRender: true
@@ -152,8 +151,6 @@ Ext.define('Rambox.ux.WebView',{
 				}
 			};
 		}
-
-		return cfg;
 	}
 
 	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
@@ -304,7 +301,7 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 
 		me.removeAll();
-		me.add(me.webViewConstructor());
+		me.add(me.webViewConstructor(enabled));
 		if ( enabled ) {
 			me.resumeEvent('afterrender');
 			me.show();
