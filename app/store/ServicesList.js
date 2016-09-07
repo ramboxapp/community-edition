@@ -488,6 +488,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://www.icloud.com/#mail'
 			,type: 'email'
 			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){var t  = document.getElementsByName("mail")[0].contentWindow.document.body.getElementsByClassName("count digit");t = t.length===1?t[0].innerHTML:0;document.getElementsByTagName("title")[0].innerHTML="("+t+") iCloud Mail"},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
+		},
+		{
+			 id: 'rainloop'
+			,logo: 'rainloop.png'
+			,name: 'RainLoop'
+			,description: 'RainLoop Webmail - Simple, modern & fast web-based email client.'
+			,url: '___'
+			,type: 'email'
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge pull-right count"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
 		}
 	]
 });
