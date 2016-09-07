@@ -505,6 +505,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Amium turns any file into a real-time activity feed and conversation. So you can work better, together.'
 			,url: 'https://___.amium.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'hootsuite'
+			,logo: 'hootsuite.png'
+			,name: 'Hootsuite'
+			,description: 'Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your campaign results.'
+			,url: 'https://hootsuite.com/dashboard'
+			,type: 'messaging'
 		}
 	]
 });
