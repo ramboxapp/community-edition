@@ -513,6 +513,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your campaign results.'
 			,url: 'https://hootsuite.com/dashboard'
 			,type: 'messaging'
+		},
+		{
+			 id: 'zimbra'
+			,logo: 'zimbra.png'
+			,name: 'Zimbra'
+			,description: 'Over 500 million people rely on Zimbra and enjoy enterprise-class open source email collaboration at the lowest TCO in the industry. Discover the benefits!'
+			,url: '___'
+			,type: 'email'
+			,js_unread: 'function check_unread(){update_badge(appCtxt.getById(ZmFolder.ID_INBOX).numUnread)}function update_badge(a){document.title=a>0?"("+a+") "+original_title:original_title}const original_title=document.title;setInterval(check_unread,3e3);'
 		}
 	]
 });
