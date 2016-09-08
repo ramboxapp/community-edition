@@ -11,7 +11,7 @@ Ext.define('Rambox.view.main.MainController', {
 		ga_storage._trackPageview('/index.html', 'main');
 
 		if ( newTab.id === 'ramboxTab' || !newTab.record.get('enabled') ) return;
-		
+
 		var webview = newTab.down('component').el.dom;
 		if ( webview ) webview.focus();
 	}
@@ -802,10 +802,10 @@ Ext.define('Rambox.view.main.MainController', {
 			var tab = Ext.getCmp('tab_'+serviceId);
 
 			// Mute sounds
-			tab.setAudioMuted(btn.pressed);
+			tab.setAudioMuted(btn.pressed ? true : tab.record.get('muted'), true);
 
 			// Prevent Notifications
-			tab.setNotifications(!btn.pressed);
+			tab.setNotifications(btn.pressed ? false : tab.record.get('notifications'), true);
 		});
 
 		localStorage.setItem('dontDisturb', btn.pressed);

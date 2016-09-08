@@ -229,7 +229,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
-			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true);
+			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
 
 			// Injected code to detect new messages
 			if ( me.record ) {
@@ -273,28 +273,32 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.loadURL(me.src);
+		if ( me.record.get('enabled') ) webview.loadURL(me.src);
 	}
 
 	,toggleDevTools: function(btn) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
+		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
 	}
 
-	,setAudioMuted: function(muted) {
+	,setAudioMuted: function(muted, calledFromDisturb) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.setAudioMuted(muted);
+		if ( !muted && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
+
+		if ( me.record.get('enabled') ) webview.setAudioMuted(muted);
 	}
 
-	,setNotifications: function(notification) {
+	,setNotifications: function(notification, calledFromDisturb) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		ipc.send('setServiceNotifications', webview.partition, notification);
+		if ( notification && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
+
+		if ( me.record.get('enabled') ) ipc.send('setServiceNotifications', webview.partition, notification);
 	}
 
 	,setEnabled: function(enabled) {
@@ -316,14 +320,14 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.goBack();
+		if ( me.record.get('enabled') ) webview.goBack();
 	}
 
 	,goForward: function() {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.goForward();
+		if ( me.record.get('enabled') ) webview.goForward();
 	}
 
 	,zoomIn: function() {
@@ -331,7 +335,7 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		me.zoomLevel = me.zoomLevel + 0.25;
-		webview.getWebContents().setZoomLevel(me.zoomLevel);
+		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(me.zoomLevel);
 	}
 
 	,zoomOut: function() {
@@ -339,7 +343,7 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		me.zoomLevel = me.zoomLevel - 0.25;
-		webview.getWebContents().setZoomLevel(me.zoomLevel);
+		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(me.zoomLevel);
 	}
 
 	,resetZoom: function() {
@@ -347,6 +351,6 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		me.zoomLevel = 0;
-		webview.getWebContents().setZoomLevel(0);
+		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(0);
 	}
 });

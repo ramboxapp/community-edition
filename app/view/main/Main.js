@@ -286,9 +286,22 @@ Ext.define('Rambox.view.main.Main', {
 			}
 			,bbar: [
 				{
-					 text: 'Donate'
-					,glyph: 'xf1ed@FontAwesome'
-					,href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA'
+					 xtype: 'segmentedbutton'
+					,allowToggle: false
+					,items: [
+						{
+							 text: '<b>Donate</b> with'
+							,overCls: ''
+						}
+						,{
+							 glyph: 'xf1ed@FontAwesome'
+							,href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA'
+						}
+						,{
+							 glyph: 'xf15a@FontAwesome'
+							,href: 'https://www.coinbase.com/saenzramiro'
+						}
+					]
 				}
 				,'->'
 				,{
