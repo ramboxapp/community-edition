@@ -278,7 +278,7 @@ app.on('certificate-error', function(event, webContents, url, error, certificate
 		callback(false);
 		dialog.showMessageBox(mainWindow, {
 			 title: 'Certification Error'
-			,message: 'The service with the following URL has an invalid authority certification.\n\n'+url+'\n\nYou have to remove the service and add it again, enabling the "Trust invalid authority certificates" in the Options.'
+			,message: 'The service with the following URL has an invalid authority certification.\n\n'+url+'\n\nIf is a Custom Service, you have to remove it and add it again, enabling the "Trust invalid authority certificates" in the Options.'
 			,buttons: ['OK']
 			,type: 'error'
 		}, function() {
