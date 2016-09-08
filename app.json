@@ -100,15 +100,15 @@
      */
     "js": [
 		{
-            "path": "${framework.dir}/build/ext-all-rtl-debug.js"
+            "path": "${framework.dir}/build/ext-all-rtl.js"
         },
         {
-            "path": "https://cdn.auth0.com/w2/auth0-6.7.js",
-            "remote": true
+            "path": "resources/js/auth0-7.1.0.min.js",
+			"remote": true
         },
 		{
-            "path": "https://cdn.auth0.com/js/lock-9.1.js",
-            "remote": true
+            "path": "resources/js/lock-10.2.2/lock.min.js",
+			"remote": true
         },
         {
             "path": "resources/js/GALocalStorage.js"
@@ -151,11 +151,7 @@
         {
             "path": "bootstrap.css",
             "bootstrap": true
-        },
-		{
-			"path": "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css",
-			"remote": true
-		}
+        }
     ],
 
     /**
