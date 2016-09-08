@@ -4,6 +4,10 @@
 
 $base-color: #2E658E;
 $font-family: 'Roboto', sans-serif;
+$include-ie: false;
+$include-ff: false;
+$include-safari: false;
+$include-opera: false;
 
 // Spinner
 body {
