@@ -27,6 +27,7 @@ const config = new Config({
 		,keep_in_taskbar_on_close: true
 		,start_minimized: false
 		,systemtray_indicator: true
+		,master_password: false
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''
@@ -203,6 +204,16 @@ function createWindow () {
 	});
 }
 
+let mainMasterPasswordWindow;
+function createMasterPasswordWindow() {
+	mainMasterPasswordWindow = new BrowserWindow({
+		 backgroundColor: '#0675A0'
+		,frame: false
+	});
+	mainMasterPasswordWindow.loadURL('file://' + __dirname + '/../masterpassword.html');
+	mainMasterPasswordWindow.on('close', function() { mainMasterPasswordWindow = null });
+}
+
 function updateBadge(title) {
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
 
@@ -243,6 +254,15 @@ ipcMain.on('setConfig', function(event, values) {
 	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
+});
+
+ipcMain.on('validateMasterPassword', function(event, pass) {
+	if ( config.get('master_password') === require('crypto').createHash('md5').update(pass).digest('hex') ) {
+		createWindow();
+		mainMasterPasswordWindow.close();
+		event.returnValue = true;
+	}
+	event.returnValue = false;
 });
 
 // Handle Service Notifications
@@ -354,7 +374,9 @@ if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.g
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
-app.on('ready', createWindow);
+app.on('ready', function() {
+	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -368,8 +390,8 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
 	// On OS X it's common to re-create a window in the app when the
 	// dock icon is clicked and there are no other windows open.
-	if (mainWindow === null) {
-		createWindow();
+	if (mainWindow === null && mainMasterPasswordWindow === null ) {
+		config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	}
 });
 

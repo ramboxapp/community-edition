@@ -92,6 +92,45 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'fieldset'
+						,title: 'Master Password - Ask for password on startup'
+						,collapsed: !config.master_password
+						,checkboxToggle: true
+						,checkboxName: 'master_password'
+						,margin: '10 0 0 0'
+						,padding: 10
+						,layout: 'hbox'
+						,defaults: { labelAlign: 'top' }
+						,items: [
+							{
+								 xtype: 'textfield'
+								,inputType: 'password'
+								,fieldLabel: 'Password'
+								,name: 'master_password1'
+								,itemId: 'pass'
+								,flex: 1
+								,listeners: {
+									validitychange: function(field) {
+										field.next().validate();
+									},
+									blur: function(field) {
+										field.next().validate();
+									}
+								}
+							}
+							,{
+								 xtype: 'textfield'
+								,inputType: 'password'
+								,fieldLabel: 'Repeat Password'
+								,name: 'master_password2'
+								,margin: '0 0 0 10'
+								,vtype: 'password'
+								,initialPassField: 'pass'
+								,flex: 1
+							}
+						]
+					}
+					,{
+						 xtype: 'fieldset'
 						,title: 'Proxy (needs to relaunch) - <a href="http://proxylist.hidemyass.com/" target="_blank">Free IP:PORT Proxy List</a>'
 						,collapsed: !config.proxy
 						,checkboxToggle: true
