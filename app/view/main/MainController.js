@@ -703,7 +703,7 @@ Ext.define('Rambox.view.main.MainController', {
 								 xtype: 'webview'
 								,id: 'tab_'+service.get('id')
 								,title: service.get('name')
-								,icon: 'resources/icons/'+service.get('logo')
+								,icon: service.get('logo') === '' ? 'resources/icons/custom.png' : service.get('logo')
 								,src: service.get('url')
 								,type: service.get('type')
 								,align: formValues.align
