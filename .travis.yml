@@ -56,6 +56,7 @@ deploy:
     - "dist/*.deb"
     - "dist/*.tar.gz"
     - "dist/*.AppImage"
+    - "dist/*.rpm"
     - "dist/mac/*.zip"
     - "dist/mac/*.dmg"
   skip_cleanup: true
