@@ -37,6 +37,7 @@
 
 ## Services available - 57
 
+<div>
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/skype.png" alt="Skype" title="Skype">
@@ -94,8 +95,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/icloud.png" alt="iCloud Mail" title="iCloud Mail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/irccloud.png" alt="IRC Cloud" title="IRC Cloud">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/kiwi.png" alt="Kiwi IRC" title="Kiwi IRC">
-
-<hr />
+</div>
 
 ## Features
 
