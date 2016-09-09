@@ -87,12 +87,19 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/roundcube.png" alt="Roundcube" title="Roundcube">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/horde.png" alt="Horde" title="Horde">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail">
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zimbra.png" alt="Zimbra" title="Zimbra">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hootsuite.png" alt="Hootsuite" title="Hootsuite">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/amium.png" alt="Amium" title="Amium">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/rainloop.png" alt="RainLoop" title="RainLoop">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/icloud.png" alt="iCloud Mail" title="iCloud Mail">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/irccloud.png" alt="IRC Cloud" title="IRC Cloud">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/kiwi.png" alt="Kiwi IRC" title="Kiwi IRC">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Features
 
 - [x] Sync your configuration between multiple computers.
+- [x] Master Password.
 - [x] Lock Rambox if you will be away for a period of time.
 - [x] Don't disturb mode.
 - [x] Reorder applications in the tab bar.
@@ -104,6 +111,7 @@
 - [x] Start automatically on system startup.
 - [x] Custom Code Injection.
 - [x] Keyboard Shortcuts.
+- [x] Proxy.
 
 ## Privacy
 
