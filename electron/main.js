@@ -201,10 +201,17 @@ function createWindow () {
 		if ( !isQuitting ) {
 			e.preventDefault();
 
-			if (process.platform === 'darwin') {
-				app.hide();
-			} else {
-				config.get('keep_in_taskbar_on_close') ? mainWindow.minimize() : mainWindow.hide();
+			switch (process.platform) {
+				case 'darwin':
+					app.hide();
+					break;
+				case 'linux':
+					config.get('keep_in_taskbar_on_close') ? mainWindow.hide() : app.quit();
+					break;
+				case 'win32':
+				default:
+					config.get('keep_in_taskbar_on_close') ? mainWindow.minimize() : mainWindow.hide();
+					break;
 			}
 		}
 	});
