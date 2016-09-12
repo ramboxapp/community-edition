@@ -5,6 +5,7 @@ Ext.define('Rambox.Application', {
 
 	,requires: [
 		 'Rambox.ux.Firebase'
+		,'Rambox.ux.Auth0'
 		,'Rambox.util.MD5'
 		,'Ext.window.Toast'
 	]
@@ -29,9 +30,8 @@ Ext.define('Rambox.Application', {
 		ga_storage._setAccount('UA-80680424-1');
 		ga_storage._trackPageview('/index.html', 'main');
 
-		// Auth0 Config
-		lock = new Auth0Lock(auth0Cfg.clientID, auth0Cfg.domain);
-		auth0 = new Auth0({ clientID: auth0Cfg.clientID, domain : auth0Cfg.domain });
+		// Initialize Auth0
+		Rambox.ux.Auth0.init();
 
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({

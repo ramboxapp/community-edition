@@ -254,3 +254,8 @@ body {
 		background-color: lighten($base-color, 55%);
 	}
 }
+
+// Auth0
+.auth0-lock.auth0-lock .auth0-lock-header-logo {
+	height: 50px !important;
+}

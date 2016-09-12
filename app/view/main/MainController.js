@@ -946,120 +946,7 @@ Ext.define('Rambox.view.main.MainController', {
 	,login: function(btn) {
 		var me = this;
 
-		lock.show({
-			icon: 'resources/Icon.png'
-		}, function(err, profile, id_token) {
-			// There was an error logging the user in
-			//if (err) return console.error(err);
-			console.log('LOGIN', err, profile, id_token);
-
-			// Display a spinner while waiting
-			Ext.Msg.wait('Please wait until we get your configuration.', 'Connecting...');
-
-			// Google Analytics Event
-			ga_storage._trackEvent('Users', 'loggedIn');
-
-			// Set the options to retreive a firebase delegation token
-			var options = {
-				id_token : id_token,
-				api : 'firebase',
-				scope : 'openid name email displayName',
-				target: auth0Cfg.clientID
-			};
-
-			// Make a call to the Auth0 '/delegate'
-			auth0.getDelegationToken(options, function(err, result) {
-				if ( !err ) {
-					// Exchange the delegate token for a Firebase auth token
-					firebase.auth().signInWithCustomToken(result.id_token).then(function(snapshot) {
-						fireRef.database().ref('users/' + profile.user_id).child('services').orderByChild('position').once('value', function(snapshot2) {
-							Ext.Msg.hide();
-
-							// Import Services function
-							var importServices = function(snap) {
-								snap.forEach(function(data) {
-									var s = data.val();
-									s.firebase_key = data.key;
-									var service = Ext.create('Rambox.model.Service', s);
-									service.save();
-									Ext.getStore('Services').add(service);
-								});
-								Ext.getStore('Services').resumeEvent('load');
-								Ext.getStore('Services').load();
-
-								// User is logged in
-								// Save the profile and JWT.
-								localStorage.setItem('profile', JSON.stringify(profile));
-								localStorage.setItem('id_token', id_token);
-
-								// Define Events for Firebase
-								Rambox.ux.Firebase.createEvents();
-							}
-
-							// Firebase empty and Have Services
-							if ( !snapshot2.hasChildren() && Ext.getStore('Services').getCount() > 0 ) {
-								Ext.Msg.confirm('Import', 'You don\'t have any service saved. Do you want to import your current services?', function(btnId) {
-									if ( btnId === 'yes' ) {
-										var services = [];
-										Ext.getStore('Services').each(function(service, index) {
-											service.set('firebase_key', index);
-											// Prevent saving local ID into Firebase
-											var data = Ext.clone(service.data);
-											delete data.id;
-
-											services.push(data);
-										});
-										fireRef.database().ref('users/' + profile.user_id).set({
-											services: services
-										});
-
-										// User is logged in
-										// Save the profile and JWT.
-										localStorage.setItem('profile', JSON.stringify(profile));
-										localStorage.setItem('id_token', id_token);
-
-										// Define Events for Firebase
-										Rambox.ux.Firebase.createEvents();
-									} else {
-										Ext.Msg.confirm('Clear services', 'Do you want to remove all your current services to start over?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
-											if ( btnId === 'yes' ) {
-												me.removeAllServices(false);
-											} else {
-												me.logout();
-											}
-										});
-									}
-								});
-							// Firebase not empty and Have Services
-							} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() > 0 ) {
-								Ext.Msg.confirm('Confirm', 'To import your configuration, I need to remove all your current services. Do you want to continue?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
-									if ( btnId === 'yes' ) {
-										me.removeAllServices(false, function() {
-											importServices(snapshot2);
-										});
-									} else {
-										me.logout();
-									}
-								});
-							// Firebase not empty and Have no Services
-							} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() === 0 ) {
-								importServices(snapshot2);
-							} else {
-								// Save the profile and JWT.
-								localStorage.setItem('profile', JSON.stringify(profile));
-								localStorage.setItem('id_token', id_token);
-							}
-						});
-					});
-				}
-			});
-
-			Ext.cq1('app-main').getViewModel().set('username', profile.name);
-			Ext.cq1('app-main').getViewModel().set('avatar', profile.picture);
-		}, function() {
-			// Error callback
-			Ext.Msg.hide();
-		});
+		Rambox.ux.Auth0.login();
 	}
 
 	,logout: function(btn) {
@@ -1075,8 +962,8 @@ Ext.define('Rambox.view.main.MainController', {
 				// Remove Events for Firebase
 				Rambox.ux.Firebase.removeEvents();
 
-				localStorage.removeItem('profile');
-				localStorage.removeItem('id_token');
+				// Logout from Auth0
+				Rambox.ux.Auth0.logout();
 
 				Ext.cq1('app-main').getViewModel().set('username', '');
 				Ext.cq1('app-main').getViewModel().set('avatar', '');
