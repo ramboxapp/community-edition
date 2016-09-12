@@ -110,6 +110,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Gmail, Google\'s free email service, is one of the world\'s most popular email programs.'
 			,url: 'https://mail.google.com/mail/'
 			,type: 'email'
+			,allow_popups: true
 			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){var b=document.getElementsByClassName("aim")[0];t=0,b.textContent.indexOf("(")!=-1&&(t=parseInt(b.textContent.replace(/[^0-9]/g,""))),document.getElementsByTagName("title")[0].innerHTML="("+t+") Gmail"},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
 			,note: 'To enable desktop notifications, you have to go to Settings inside Gmail. <a href="https://support.google.com/mail/answer/1075549?ref_topic=3394466" target="_blank">Read more...</a>'
 		},
@@ -352,6 +353,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: '_Custom Service'
 			,description: 'Add a custom service if is not listed above.'
 			,type: 'custom'
+			,allow_popups: true
 		},
 		{
 			 id: 'zinc'

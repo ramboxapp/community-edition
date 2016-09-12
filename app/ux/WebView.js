@@ -124,15 +124,16 @@ Ext.define('Rambox.ux.WebView',{
 	,webViewConstructor: function(enabled) {
 		var me = this;
 
+		var cfg;
 		if ( !enabled ) {
-			return {
+			cfg = {
 				 xtype: 'container'
 				,html: '<h3>Service Disabled</h3>'
 				,style: 'text-align:center;'
 				,padding: 100
 			};
 		} else {
-			return {
+			cfg = {
 				 xtype: 'component'
 				,hideMode: 'offsets'
 				,autoRender: true
@@ -145,13 +146,16 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,allowpopups: 'on'
 					,disablewebsecurity: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
 					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
 				}
 			};
+
+			if ( Ext.getStore('ServicesList').getById(me.type).get('allow_popups') ) cfg.autoEl.allowpopups = 'on';
 		}
+
+		return cfg;
 	}
 
 	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
@@ -194,6 +198,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		// Open links in default browser
 		webview.addEventListener('new-window', function(e) {
+			console.log('new-window', e);
 			switch ( me.type ) {
 				case 'skype':
 					// hack to fix multiple browser tabs on Skype link click, re #11
