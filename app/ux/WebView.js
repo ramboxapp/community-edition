@@ -146,6 +146,7 @@ Ext.define('Rambox.ux.WebView',{
 					,allowtransparency: 'on'
 					,autosize: 'on'
 					,allowpopups: 'on'
+					,disablewebsecurity: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
 					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
 				}
