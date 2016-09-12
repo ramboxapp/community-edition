@@ -36,7 +36,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Slack brings all your communication together in one place. It’s real-time messaging, archiving and search for modern teams.'
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var a=0,b=0;$(".unread_msgs").each(function(){a+=parseInt($(this).html())}),$(".unread_highlights").each(function(){b+=parseInt($(this).html())}),updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c.originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var a=0,b=0;$(".unread_msgs").each(function(){a+=parseInt($(this).html())}),$(".unread_highlights").each(function(){b+=parseInt($(this).html())}),updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'noysi'
@@ -53,6 +53,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Instantly reach the people in your life for free. Messenger is just like texting, but you don\'t have to pay for every message.'
 			,url: 'https://www.messenger.com/login/'
 			,type: 'messaging'
+			,titleBlink: true
 			,note: 'To enable desktop notifications, you have to go to Options inside Messenger.'
 		},
 		{
@@ -62,6 +63,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Stay in touch with family and friends for free. Get international calling, free online calls and Skype for Business on desktop and mobile.'
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
 			,note: 'Text and Audio calls are supported only. <a href="https://github.com/saenzramiro/rambox/wiki/Skype" target="_blank">Read more...</a>'
 		},
 		{
@@ -71,6 +73,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Hangouts bring conversations to life with photos, emoji, and even group video calls for free. Connect with friends across computers, Android, and Apple devices.'
 			,url: 'https://hangouts.google.com/'
 			,type: 'messaging'
+			,titleBlink: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
@@ -89,6 +92,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Telegram is a messaging app with a focus on speed and security. It’s super-fast, simple, secure and free.'
 			,url: 'https://web.telegram.org/'
 			,type: 'messaging'
+			,titleBlink: true
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){document.title="("+e+") RamboxService"}setInterval(checkUnread,3000);'
 		},
 		{
@@ -106,6 +110,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Gmail, Google\'s free email service, is one of the world\'s most popular email programs.'
 			,url: 'https://mail.google.com/mail/'
 			,type: 'email'
+			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){var b=document.getElementsByClassName("aim")[0];t=0,b.textContent.indexOf("(")!=-1&&(t=parseInt(b.textContent.replace(/[^0-9]/g,""))),document.getElementsByTagName("title")[0].innerHTML="("+t+") Gmail"},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
+			,note: 'To enable desktop notifications, you have to go to Settings inside Gmail. <a href="https://support.google.com/mail/answer/1075549?ref_topic=3394466" target="_blank">Read more...</a>'
 		},
 		{
 			 id: 'inbox'
@@ -114,7 +120,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Inbox by Gmail is a new app from the Gmail team. Inbox is an organized place to get things done and get back to what matters. Bundles keep emails organized.'
 			,url: 'http://inbox.google.com/?cid=imp'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("qG").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Inbox",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'chatwork'
@@ -168,6 +174,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Step up your game with a modern voice & text chat app. Crystal clear voice, multiple server and channel support, mobile apps, and more.'
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
+			,titleBlink: true
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("guild unread").length,b=0,c=document.getElementsByClassName("badge");for(i=0;i<c.length;i++)b+=parseInt(c[i].innerHTML.trim());updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
 		},
 		{
@@ -177,6 +185,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Take control. Do more. Outlook is the free email and calendar service that helps you stay on top of what matters and get things done.'
 			,url: 'https://mail.live.com/'
 			,type: 'email'
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'outlook365'
@@ -185,6 +194,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Outlook for Business'
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook 365",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook365.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'yahoo'
@@ -241,8 +251,9 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'wire.png'
 			,name: 'Wire'
 			,description: 'HD quality calls, private and group chats with inline photos, music and video. Also available for your phone or tablet.'
-			,url: 'https://app.wire.com/auth/#login'
+			,url: 'https://app.wire.com/'
 			,type: 'messaging'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
 		},
 		{
 			 id: 'sync'
@@ -266,6 +277,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Allows you to instant message with anyone on the Yahoo server. Tells you when you get mail, and gives stock quotes.'
 			,url: 'https://messenger.yahoo.com/'
 			,type: 'messaging'
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("list-item-unread-indicator").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'voxer'
@@ -314,7 +326,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'The mysms family of applications helps you text anywhere and enhances your messaging experience on your smartphone, tablet and computer.'
 			,url: 'https://app.mysms.com/#login'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}"https://app.mysms.com/#login"===document.baseURI&&(document.getElementsByClassName("innerPanel")[0].rows[0].style.display="none",document.getElementsByClassName("innerPanel")[0].rows[1].cells[0].firstElementChild.style.display="none",document.getElementsByClassName("msisdnLoginPanel")[0].style.display="inline");var originalTitle=document.title;setInterval(checkUnread,3000);'
 			,note: 'You have to use this service by signing in with your mobile number.'
 		},
 		{
@@ -424,15 +436,92 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Glip is fully searchable, real-time group chat & video chat, task management, file sharing, calendars and more.'
 			,url: 'https://glip.com/'
 			,type: 'messaging'
-			,js_unread: 'function simulateClick(a){var b,c=document.getElementById(a);document.createEvent&&(b=document.createEvent("MouseEvents"),b.initMouseEvent("click",!0,!0,window,0,0,0,0,0,!1,!1,!1,!1,0,null)),b?c.dispatchEvent(b):c.click&&c.click()}setTimeout(function(){simulateClick("sign_in")},1e3);'
+			,note: 'To enable desktop notifications, you have to go to Options inside Glip.'
 		},
 		{
 			 id: 'yandex'
 			,logo: 'yandex.png'
-			,name: 'Yandex'
+			,name: 'Yandex Mail'
 			,description: 'Yandex is a free webmail service with unlimited mail storage, protection from viruses and spam, access from web interface, etc.'
-			,url: 'https://passport.yandex.com/'
+			,url: 'https://mail.yandex.com/'
 			,type: 'email'
+		},
+		{
+			 id:' irccloud'
+			,logo: 'irccloud.png'
+			,name: 'IRCCloud'
+			,description: 'IRCCloud is a modern IRC client that keeps you connected, with none of the baggage.'
+			,url: 'https://www.irccloud.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var t=0;[].map.call(document.querySelectorAll(".bufferBadges > .badge"),n=>n.textContent?parseInt(n.textContent,10):0).reduce((x,y)=>x+y,0);updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'ryver'
+			,logo: 'ryver.png'
+			,name: 'Ryver'
+			,description: 'Ryver is a team communication tool that organizes team collaboration, chats, files, and even emails into a single location, for any size team, for FREE.'
+			,url: 'https://___.ryver.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'aim'
+			,logo: 'aim.png'
+			,name: 'Aim'
+			,description: 'Aim offers free Text Messaging, Group Conversations, Media Sharing, Social Notifications, and more.'
+			,url: 'http://aim.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'kiwi'
+			,logo: 'kiwi.png'
+			,name: 'Kiwi IRC'
+			,description: 'KiwiIRC makes Web IRC easy. A hand-crafted IRC client that you can enjoy. Designed to be used easily and freely.'
+			,url: 'https://kiwiirc.com/client'
+			,type: 'messaging'
+			,js_unread: 'function getUnreadCount(){var a=0;$(".activity").each(function(){a+=parseInt($(this).html())});var b=!1;return $(".panel[style*=display: block] .msg").each(function(){b?a++:$(this).hasClass("last_seen")&&(b=!0)}),a}function updateTitle(a){count=getUnreadCount(),cleanTitle=a.match(re),null!==cleanTitle&&cleanTitle.length>1?cleanTitle=cleanTitle[1]:cleanTitle=a,a=count>0?"("+getUnreadCount()+") "+cleanTitle:cleanTitle,$("title").text(a)}var re=/\(\d+\)[ ](.*)/;Object.defineProperty(document,"title",{configurable:!0,set:function(a){updateTitle(a)},get:function(){return $("title").text()}}),setInterval(function(){updateTitle(document.title)},3e3);'
+		},
+		{
+			 id: 'icloud'
+			,logo: 'icloud.png'
+			,name: 'iCloud Mail'
+			,description: 'iCloud makes sure you always have the latest versions of your most important things — documents, photos, notes, contacts, and more — on all your devices. It can even help you locate a missing iPhone, iPad, iPod touch or Mac.'
+			,url: 'https://www.icloud.com/#mail'
+			,type: 'email'
+			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){var t  = document.getElementsByName("mail")[0].contentWindow.document.body.getElementsByClassName("count digit");t = t.length===1?t[0].innerHTML:0;document.getElementsByTagName("title")[0].innerHTML="("+t+") iCloud Mail"},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
+		},
+		{
+			 id: 'rainloop'
+			,logo: 'rainloop.png'
+			,name: 'RainLoop'
+			,description: 'RainLoop Webmail - Simple, modern & fast web-based email client.'
+			,url: '___'
+			,type: 'email'
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge pull-right count"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
+		},
+		{
+			 id: 'amium'
+			,logo: 'amium.png'
+			,name: 'Amium'
+			,description: 'Amium turns any file into a real-time activity feed and conversation. So you can work better, together.'
+			,url: 'https://___.amium.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'hootsuite'
+			,logo: 'hootsuite.png'
+			,name: 'Hootsuite'
+			,description: 'Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your campaign results.'
+			,url: 'https://hootsuite.com/dashboard'
+			,type: 'messaging'
+		},
+		{
+			 id: 'zimbra'
+			,logo: 'zimbra.png'
+			,name: 'Zimbra'
+			,description: 'Over 500 million people rely on Zimbra and enjoy enterprise-class open source email collaboration at the lowest TCO in the industry. Discover the benefits!'
+			,url: '___'
+			,type: 'email'
+			,js_unread: 'function check_unread(){update_badge(appCtxt.getById(ZmFolder.ID_INBOX).numUnread)}function update_badge(a){document.title=a>0?"("+a+") "+original_title:original_title}const original_title=document.title;setInterval(check_unread,3e3);'
 		}
 	]
 });

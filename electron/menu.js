@@ -5,21 +5,6 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
 const appName = app.getName();
-// AutoLaunch
-var AutoLaunch = require('auto-launch');
-// Global Settings
-var globalSettings = require('./global_settings.js');
-
-// Configure AutoLaunch
-const appLauncher = new AutoLaunch({
-	name: 'Rambox'
-});
-appLauncher.isEnabled().then(function(enabled){
-	if(enabled) return;
-	return appLauncher.enable();
-}).then(function(err){
-
-});
 
 function sendAction(action) {
 	const win = BrowserWindow.getAllWindows()[0];
@@ -98,38 +83,32 @@ let tpl = [
 		label: 'Edit',
 		submenu: [
 			{
-				label: 'Undo',
-				accelerator: 'CmdOrCtrl+Z',
 				role: 'undo'
 			},
 			{
-				label: 'Redo',
-				accelerator: 'Shift+CmdOrCtrl+Z',
 				role: 'redo'
 			},
 			{
 				type: 'separator'
 			},
 			{
-				label: 'Cut',
-				accelerator: 'CmdOrCtrl+X',
 				role: 'cut'
 			},
 			{
-				label: 'Copy',
-				accelerator: 'CmdOrCtrl+C',
 				role: 'copy'
 			},
 			{
-				label: 'Paste',
-				accelerator: 'CmdOrCtrl+V',
 				role: 'paste'
 			},
 			{
-				label: 'Select All',
-				accelerator: 'CmdOrCtrl+A',
+				role: 'pasteandmatchstyle'
+			},
+			{
 				role: 'selectall'
 			},
+			{
+				role: 'delete'
+			}
 		]
 	},
 	{
@@ -143,21 +122,17 @@ let tpl = [
 				}
 			},
 			{
-				label: 'Toggle Full Screen',
-				accelerator: process.platform === 'darwin' ? 'Ctrl+Command+F' : 'F11',
-				click(item, focusedWindow) {
-					if (focusedWindow)
-					focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
-				}
+				type: 'separator'
 			},
 			{
-				label: 'Toggle Developer Tools',
-				accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
-				click(item, focusedWindow) {
-					if (focusedWindow)
-					focusedWindow.webContents.toggleDevTools();
-				}
+				role: 'zoomin'
 			},
+			{
+				role: 'zoomout'
+			},
+			{
+				role: 'resetzoom'
+			}
 		]
 	},
 	{
@@ -178,18 +153,13 @@ let tpl = [
 				type: 'separator'
 			},
 			{
-				label: 'Always on top',
-				type: 'checkbox',
-				checked: parseInt(globalSettings.get('always_on_top')) ? true : false,
-				click: function(item, mainWindow) {
-					if ( item.checked ) {
-						globalSettings.set('always_on_top', 1);
-						if (mainWindow) mainWindow.setAlwaysOnTop(true);
-					} else {
-						globalSettings.set('always_on_top', 0);
-						mainWindow.setAlwaysOnTop(false);
-					}
-					globalSettings.save();
+				role: 'togglefullscreen'
+			},
+			{
+				label: 'Toggle Developer Tools',
+				accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+				click(item, focusedWindow) {
+					if (focusedWindow) focusedWindow.webContents.toggleDevTools();
 				}
 			}
 		]
@@ -197,111 +167,6 @@ let tpl = [
 	{
 		label: 'Help',
 		role: 'help'
-	}
-];
-
-let preferences = [
-	{
-		label: 'Auto-hide Menu bar',
-		visible: process.platform === 'win32',
-		type: 'checkbox',
-		checked: parseInt(globalSettings.get('hide_menu_bar')) ? true : false,
-		click: function(item, mainWindow) {
-			if ( item.checked ) {
-				electron.dialog.showMessageBox(mainWindow, {
-					 title: 'Don\'t need to see the menu bar all the time?'
-					,message: 'To temporarily show the menu bar, just press the Alt key.'
-					,buttons: ['OK']
-					,type: 'info'
-				}, function() {
-					mainWindow.focus();
-				});
-				globalSettings.set('hide_menu_bar', 1);
-				if (mainWindow) mainWindow.setAutoHideMenuBar(true);
-			} else {
-				globalSettings.set('hide_menu_bar', 0);
-				mainWindow.setAutoHideMenuBar(false);
-			}
-			globalSettings.save();
-		}
-	},
-	{
-		label: 'Show in Taskbar',
-		type: 'checkbox',
-		checked: parseInt(globalSettings.get('skip_taskbar')) ? false : true,
-		click: function(item, mainWindow) {
-			if ( item.checked ) {
-				globalSettings.set('skip_taskbar', 0);
-				globalSettings.set('keep_in_taskbar_on_close', 1);
-				menu.items[0].submenu.items[process.platform === 'darwin' ? 2 : 0].submenu.items[2].enabled = true;
-				menu.items[0].submenu.items[process.platform === 'darwin' ? 2 : 0].submenu.items[2].checked = true;
-				if (mainWindow) mainWindow.setSkipTaskbar(false);
-			} else {
-				globalSettings.set('skip_taskbar', 1);
-				globalSettings.set('keep_in_taskbar_on_close', 0);
-				menu.items[0].submenu.items[process.platform === 'darwin' ? 2 : 0].submenu.items[2].enabled = false;
-				menu.items[0].submenu.items[process.platform === 'darwin' ? 2 : 0].submenu.items[2].checked = false;
-				mainWindow.setSkipTaskbar(true);
-			}
-			globalSettings.save();
-		}
-	},
-	{
-		label: 'Keep Rambox in the taskbar when close it',
-		type: 'checkbox',
-		enabled: parseInt(globalSettings.get('skip_taskbar')) ? false : true,
-		checked: parseInt(globalSettings.get('keep_in_taskbar_on_close')) ? true : false,
-		click: function(item) {
-			if ( item.checked ) {
-				globalSettings.set('keep_in_taskbar_on_close', 1);
-			} else {
-				globalSettings.set('keep_in_taskbar_on_close', 0);
-			}
-			globalSettings.save();
-		}
-	},
-	{
-		label: 'Always on top',
-		type: 'checkbox',
-		checked: parseInt(globalSettings.get('always_on_top')) ? true : false,
-		click: function(item, mainWindow) {
-			if ( item.checked ) {
-				globalSettings.set('always_on_top', 1);
-				if (mainWindow) mainWindow.setAlwaysOnTop(true);
-			} else {
-				globalSettings.set('always_on_top', 0);
-				mainWindow.setAlwaysOnTop(false);
-			}
-			globalSettings.save();
-		}
-	},
-	{
-		label: 'Start minimized',
-		type: 'checkbox',
-		checked: parseInt(globalSettings.get('start_minimized')) ? true : false,
-		click: function(item) {
-			if ( item.checked ) {
-				globalSettings.set('start_minimized', 1);
-			} else {
-				globalSettings.set('start_minimized', 0);
-			}
-			globalSettings.save();
-		}
-	},
-	{
-		label: 'Start automatically on system startup',
-		type: 'checkbox',
-		checked: parseInt(globalSettings.get('auto_launch')) ? true : false,
-		click: function(item) {
-			if ( item.checked ) {
-				appLauncher.enable();
-				globalSettings.set('auto_launch', 1);
-			} else {
-				appLauncher.disable();
-				globalSettings.set('auto_launch', 0);
-			}
-			globalSettings.save();
-		}
 	}
 ];
 
@@ -322,13 +187,6 @@ if (process.platform === 'darwin') {
 				click() {
 					sendAction('showAbout')
 				}
-			},
-			{
-				type: 'separator'
-			},
-			{
-				label: 'Preferences',
-				submenu: preferences
 			},
 			{
 				type: 'separator'
@@ -359,11 +217,7 @@ if (process.platform === 'darwin') {
 				type: 'separator'
 			},
 			{
-				label: `Quit ${appName}`,
-				accelerator: 'Cmd+Q',
-				click() {
-					app.quit();
-				}
+				role: 'quit'
 			}
 		]
 	});
@@ -372,18 +226,7 @@ if (process.platform === 'darwin') {
 		label: 'File',
 		submenu: [
 			{
-				label: 'Preferences',
-				submenu: preferences
-			},
-			{
-				type: 'separator'
-			},
-			{
-				label: `Quit ${appName}`,
-				accelerator: 'Cmd+Q',
-				click() {
-					app.quit();
-				}
+				role: 'quit'
 			}
 		]
 	});

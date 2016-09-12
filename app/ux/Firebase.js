@@ -22,11 +22,15 @@ Ext.define('Rambox.ux.Firebase', {
 
 			Ext.getCmp('tab_'+rec.get('id')).setTitle(snapshot.val().name);
 
+			// Position
 			if ( rec.get('position') !== snapshot.val().position ) {
 				var pos = parseInt(snapshot.val().position);
 				if ( rec.get('align') === 'right' ) pos++;
 				Ext.cq1('app-main').move(Ext.getCmp('tab_'+rec.get('id')), pos);
 			}
+
+			// Enable/Disable
+			if ( rec.get('enable') !== snapshot.val().enable ) Ext.getCmp('tab_'+rec.get('id')).setEnabled(snapshot.val().enabled);
 
 			rec.set(snapshot.val());
 			rec.save();
@@ -46,7 +50,7 @@ Ext.define('Rambox.ux.Firebase', {
 			if ( rec === null ) rec = Ext.getStore('Services').getById(snapshot.val().id);
 
 			var data = snapshot.val();
-			
+
 			// Update current services
 			if ( rec ) {
 				delete data.id;

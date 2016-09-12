@@ -6,11 +6,13 @@ Ext.define('Rambox.view.main.MainController', {
 	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
 	,onTabChange: function( tabPanel, newTab, oldTab ) {
 		var me = this;
-		var webview = newTab.down('component').el.dom;
 
 		// Set Google Analytics event
 		ga_storage._trackPageview('/index.html', 'main');
 
+		if ( newTab.id === 'ramboxTab' || !newTab.record.get('enabled') ) return;
+
+		var webview = newTab.down('component').el.dom;
 		if ( webview ) webview.focus();
 	}
 
@@ -432,6 +434,12 @@ Ext.define('Rambox.view.main.MainController', {
 		win.down('textfield[name="serviceName"]').focus(true, 100);
 	}
 
+	,onEnableDisableService: function(cc, rowIndex, checked) {
+		var rec = Ext.getStore('Services').getAt(rowIndex);
+
+		Ext.getCmp('tab_'+rec.get('id')).setEnabled(checked);
+	}
+
 	,onNewServiceSelect: function( view, record, item, index, e ) {
 		if ( record.get('url').indexOf('___') >= 0 ) {
 			this.showCustomModal(record);
@@ -695,7 +703,7 @@ Ext.define('Rambox.view.main.MainController', {
 								 xtype: 'webview'
 								,id: 'tab_'+service.get('id')
 								,title: service.get('name')
-								,icon: 'resources/icons/'+service.get('logo')
+								,icon: service.get('logo') === '' ? 'resources/icons/custom.png' : service.get('logo')
 								,src: service.get('url')
 								,type: service.get('type')
 								,align: formValues.align
@@ -794,15 +802,13 @@ Ext.define('Rambox.view.main.MainController', {
 			var tab = Ext.getCmp('tab_'+serviceId);
 
 			// Mute sounds
-			tab.setAudioMuted(btn.pressed);
+			tab.setAudioMuted(btn.pressed ? true : tab.record.get('muted'), true);
 
 			// Prevent Notifications
-			if ( btn.pressed ) {
-				tab.down('component').el.dom.getWebContents().executeJavaScript('var originalNotification = Notification; (function() { Notification = function() { } })();');
-			} else {
-				tab.down('component').el.dom.getWebContents().executeJavaScript('(function() { Notification = originalNotification })();');
-			}
+			tab.setNotifications(btn.pressed ? false : tab.record.get('notifications'), true);
 		});
+
+		localStorage.setItem('dontDisturb', btn.pressed);
 
 		btn.setText('Don\'t Disturb: ' + ( btn.pressed ? 'ON' : 'OFF' ));
 
@@ -925,6 +931,12 @@ Ext.define('Rambox.view.main.MainController', {
 			]
 		}).show();
 		winLock.down('textfield').focus(1000);
+	}
+
+	,openPreferences: function( btn ) {
+		var me = this;
+
+		Ext.create('Rambox.view.preferences.Preferences').show();
 	}
 
 	,login: function(btn) {

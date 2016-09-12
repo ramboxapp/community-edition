@@ -10,7 +10,6 @@ Ext.define('Rambox.ux.WebView',{
 	]
 
 	// private
-	,notifications: 0
 	,zoomLevel: 0
 
 	// CONFIG
@@ -32,12 +31,112 @@ Ext.define('Rambox.ux.WebView',{
 		}
 
 		// Allow Custom sites with self certificates
-		if ( me.record.get('trust') ) require('electron').ipcRenderer.send('allowCertificate', me.src)
+		if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
 		Ext.apply(me, {
-			 items: [{
+			 items: me.webViewConstructor(me.record.get('enabled'))
+			,tabConfig: {
+				listeners: {
+					 badgetextchange: me.onBadgeTextChange
+					,afterrender : function( btn ) {
+						btn.el.on('contextmenu', function(e) {
+							btn.showMenu('contextmenu');
+							e.stopEvent();
+						});
+					}
+				}
+				,clickEvent: ''
+				,style: !me.record.get('enabled') ? '-webkit-filter: grayscale(1)' : ''
+				,menu:  {
+					 plain: true
+					,items: [
+						{
+							 xtype: 'toolbar'
+							,items: [
+								{
+									 xtype: 'segmentedbutton'
+									,allowToggle: false
+									,flex: 1
+									,items: [
+										{
+											 text: 'Back'
+											,glyph: 'xf053@FontAwesome'
+											,flex: 1
+											,scope: me
+											,handler: me.goBack
+										}
+										,{
+											 text: 'Foward'
+											,glyph: 'xf054@FontAwesome'
+											,iconAlign: 'right'
+											,flex: 1
+											,scope: me
+											,handler: me.goForward
+										}
+									]
+								}
+							]
+						}
+						,'-'
+						,{
+							 text: 'Zoom In'
+							,glyph: 'xf00e@FontAwesome'
+							,scope: me
+							,handler: me.zoomIn
+						}
+						,{
+							 text: 'Zoom Out'
+							,glyph: 'xf010@FontAwesome'
+							,scope: me
+							,handler: me.zoomOut
+						}
+						,{
+							 text: 'Reset Zoom'
+							,glyph: 'xf002@FontAwesome'
+							,scope: me
+							,handler: me.resetZoom
+						}
+						,'-'
+						,{
+							 text: 'Reload'
+							,glyph: 'xf021@FontAwesome'
+							,scope: me
+							,handler: me.reloadService
+						}
+						,'-'
+						,{
+							 text: 'Toggle Developer Tools'
+							,glyph: 'xf121@FontAwesome'
+							,scope: me
+							,handler: me.toggleDevTools
+						}
+					]
+				}
+			}
+			,listeners: {
+				 afterrender: me.onAfterRender
+			}
+		});
+
+		me.callParent(config);
+	}
+
+	,webViewConstructor: function(enabled) {
+		var me = this;
+
+		if ( !enabled ) {
+			return {
+				 xtype: 'container'
+				,html: '<h3>Service Disabled</h3>'
+				,style: 'text-align:center;'
+				,padding: 100
+			};
+		} else {
+			return {
 				 xtype: 'component'
 				,hideMode: 'offsets'
+				,autoRender: true
+				,autoShow: true
 				,autoEl: {
 					 tag: 'webview'
 					,src: me.src
@@ -46,44 +145,12 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
+					,allowpopups: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
-					,useragent: me.type === 'skype' ? 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586' : '' // Used to enable video and audio calls in Skype
+					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
 				}
-			}]
-			,tabConfig: {
-				listeners: {
-					badgetextchange: me.onBadgeTextChange
-				}
-				,clickEvent: 'dblclick'
-				,menu: [
-					{
-						 text: 'Reload'
-						,glyph: 'xf021@FontAwesome'
-						,scope: me
-						,handler: me.reloadService
-					}
-					,{
-						 text: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? 'Go Online' : 'Go Offline'
-						,glyph: 'xf0ac@FontAwesome'
-						,scope: me
-						,offline: localStorage.getItem('offline_'+me.id.replace('tab_', '')) ? true : false
-						,handler: me.setOffline
-					}
-					,'-'
-					,{
-						 text: 'Toggle Developer Tools'
-						,glyph: 'xf121@FontAwesome'
-						,scope: me
-						,handler: me.toggleDevTools
-					}
-				]
-			}
-			,listeners: {
-				 afterrender: me.onAfterRender
-			}
-		});
-
-		me.callParent(config);
+			};
+		}
 	}
 
 	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
@@ -98,10 +165,16 @@ Ext.define('Rambox.ux.WebView',{
 
 	,onAfterRender: function() {
 		var me = this;
+
+		if ( !me.record.get('enabled') ) return;
+
 		var webview = me.down('component').el.dom;
 
 		// Google Analytics Event
 		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
+
+		// Notifications in Webview
+		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
 
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
@@ -120,15 +193,29 @@ Ext.define('Rambox.ux.WebView',{
 
 		// Open links in default browser
 		webview.addEventListener('new-window', function(e) {
-			// hack to fix multiple browser tabs on Skype link click, re #11
-			if ( e.url.match('https:\/\/web.skype.com\/..\/undefined') ) {
-				e.preventDefault();
-				return;
-			} else if ( e.url.indexOf('imgpsh_fullsize') >= 0 ) {
-				require('electron').ipcRenderer.send('image:download', e.url, e.target.partition);
-				e.preventDefault();
-				return;
+			switch ( me.type ) {
+				case 'skype':
+					// hack to fix multiple browser tabs on Skype link click, re #11
+					if ( e.url.match('https:\/\/web.skype.com\/..\/undefined') ) {
+						e.preventDefault();
+						return;
+					} else if ( e.url.indexOf('imgpsh_fullsize') >= 0 ) {
+						ipc.send('image:download', e.url, e.target.partition);
+						e.preventDefault();
+						return;
+					}
+					break;
+				case 'hangouts':
+					if ( e.url.indexOf('plus.google.com/u/0/photos/albums') >= 0 ) {
+						ipc.send('image:popup', e.url, e.target.partition);
+						e.preventDefault();
+						return;
+					}
+					break;
+				default:
+					break;
 			}
+
 			const protocol = require('url').parse(e.url).protocol;
 			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
 				e.preventDefault();
@@ -142,22 +229,14 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
-			if ( me.muted || localStorage.getItem('locked') ) me.setAudioMuted(true);
-
-			// Notifications in Webview
-			webview.executeJavaScript('var originalNotification = Notification;');
-			if ( me.notifications ) {
-				me.setNotifications(me.notifications);
-			} else if ( localStorage.getItem('locked') ) {
-				me.setNotifications(false);
-			}
+			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
 
 			// Injected code to detect new messages
 			if ( me.record ) {
 				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type') === 'office365' ? 'outlook365' : me.record.get('type')).get('js_unread');
 				js_unread = js_unread + me.record.get('js_unread');
 				if ( js_unread !== '' ) {
-					console.groupCollapsed('JS Injected to Detect New Messages');
+					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - JS Injected to Detect New Messages');
 					console.info(me.type);
 					console.log(js_unread);
 					webview.executeJavaScript(js_unread);
@@ -165,10 +244,12 @@ Ext.define('Rambox.ux.WebView',{
 			}
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
-			var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
-			console.log(js_preventBlink);
-			console.groupEnd()
-			webview.executeJavaScript(js_preventBlink);
+			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
+				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
+				console.log(js_preventBlink);
+				webview.executeJavaScript(js_preventBlink);
+			}
+			console.groupEnd();
 
 			// Scroll always to top (bug)
 			webview.executeJavaScript('document.body.scrollTop=0;');
@@ -177,35 +258,10 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener("page-title-updated", function(e) {
 			var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
-				count = Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
-				count = count ? parseInt(count) : 0;
+				count = count === '•' ? count : Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
+				count = count === null ? '0' : count;
 
-			var formattedCount = Rambox.util.Format.formatNumber(count);
-
-			switch ( me.type ) {
-				case 'messenger':
-					if ( count !== me.notifications && count > 0 ) {
-						me.notifications = count;
-					}
-					if ( count || e.title === 'Messenger' ) {
-						me.tab.setBadgeText(formattedCount);
-					}
-					if ( e.title === 'Messenger' ) me.notifications = 0;
-					break;
-				case 'hangouts':
-					if ( count !== me.notifications && count > 0 ) {
-						me.notifications = count;
-					}
-					if ( count || e.title === 'Google Hangouts' ) {
-						me.tab.setBadgeText(formattedCount);
-					}
-					if ( e.title === 'Google Hangouts' ) me.notifications = 0;
-					break;
-				default:
-					me.tab.setBadgeText(formattedCount);
-					me.notifications = count;
-					break;
-			}
+			me.tab.setBadgeText(Rambox.util.Format.formatNumber(count));
 		});
 
 		webview.addEventListener('did-get-redirect-request', function( e ) {
@@ -217,45 +273,84 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.loadURL(me.src);
+		if ( me.record.get('enabled') ) webview.loadURL(me.src);
 	}
 
 	,toggleDevTools: function(btn) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
+		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
 	}
 
-	,setAudioMuted: function(muted) {
+	,setAudioMuted: function(muted, calledFromDisturb) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		webview.setAudioMuted(muted);
+		if ( !muted && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
+
+		if ( me.record.get('enabled') ) webview.setAudioMuted(muted);
 	}
 
-	,setNotifications: function(notification) {
+	,setNotifications: function(notification, calledFromDisturb) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		if ( !notification ) {
-			webview.executeJavaScript('(function() { Notification = function() { } })();');
+		if ( notification && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
+
+		if ( me.record.get('enabled') ) ipc.send('setServiceNotifications', webview.partition, notification);
+	}
+
+	,setEnabled: function(enabled) {
+		var me = this;
+
+		me.removeAll();
+		me.add(me.webViewConstructor(enabled));
+		if ( enabled ) {
+			me.resumeEvent('afterrender');
+			me.show();
+			me.tab.setStyle('-webkit-filter', 'grayscale(0)');
 		} else {
-			webview.executeJavaScript('(function() { Notification = originalNotification })();');
+			me.suspendEvent('afterrender');
+			me.tab.setStyle('-webkit-filter', 'grayscale(1)');
 		}
 	}
 
-	,setOffline: function(btn, e) {
+	,goBack: function() {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		console.log(btn, e);
+		if ( me.record.get('enabled') ) webview.goBack();
+	}
 
-		console.info(me.type, 'Going '+ (!btn.offline ? 'offline' : 'online') + '...');
+	,goForward: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
 
-		webview.getWebContents().session.setProxy({ proxyRules: !btn.offline ? 'offline' : '' }, Ext.emptyFn);
-		btn.offline = !btn.offline;
-		btn.setText(Ext.String.toggle(btn.text, 'Go Online', 'Go Offline'));
-		btn.offline ? localStorage.setItem('offline_'+me.id.replace('tab_', ''), true) : localStorage.removeItem('offline_'+me.id.replace('tab_', ''));
+		if ( me.record.get('enabled') ) webview.goForward();
+	}
+
+	,zoomIn: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.zoomLevel = me.zoomLevel + 0.25;
+		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(me.zoomLevel);
+	}
+
+	,zoomOut: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.zoomLevel = me.zoomLevel - 0.25;
+		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(me.zoomLevel);
+	}
+
+	,resetZoom: function() {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.zoomLevel = 0;
+		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(0);
 	}
 });

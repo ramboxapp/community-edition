@@ -194,6 +194,18 @@ Ext.define('Rambox.view.main.Main', {
 								}
 							]
 						}
+						,{
+							 xtype: 'checkcolumn'
+							,width: 40
+							,dataIndex: 'enabled'
+							,renderer: function(value, metaData) {
+								metaData.tdAttr = 'data-qtip="Service '+(value ? 'Enabled' : 'Disabled')+'"';
+								return this.defaultRenderer(value, metaData);
+							}
+							,listeners: {
+								checkchange: 'onEnableDisableService'
+							}
+						}
 					]
 					,viewConfig: {
 						 emptyText: 'No services added...'
@@ -214,12 +226,13 @@ Ext.define('Rambox.view.main.Main', {
 				,items: [
 					{
 						 glyph: 'xf1f7@FontAwesome'
-						,text: 'Don\'t Disturb: OFF'
+						,text: 'Don\'t Disturb: '+(JSON.parse(localStorage.getItem('dontDisturb')) ? 'ON' : 'OFF')
 						,tooltip: 'Disable notifications and sounds in all services. Perfect to be concentrated and focused.<br/><b>Shortcut key: F1</b>'
 						,enableToggle: true
 						,handler: 'dontDisturb'
 						,reference: 'disturbBtn'
 						,id: 'disturbBtn'
+						,pressed: JSON.parse(localStorage.getItem('dontDisturb'))
 					}
 					,{
 						 glyph: 'xf023@FontAwesome'
@@ -264,18 +277,36 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,handler: 'login'
 					}
+					,{
+						 tooltip: 'Preferences'
+						,glyph: 'xf013@FontAwesome'
+						,handler: 'openPreferences'
+					}
 				]
 			}
 			,bbar: [
 				{
-					 text: 'Donate'
-					,glyph: 'xf1ed@FontAwesome'
-					,href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA'
+					 xtype: 'segmentedbutton'
+					,allowToggle: false
+					,items: [
+						{
+							 text: '<b>Donate</b> with'
+							,overCls: ''
+						}
+						,{
+							 glyph: 'xf1ed@FontAwesome'
+							,href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA'
+						}
+						,{
+							 glyph: 'xf15a@FontAwesome'
+							,href: 'https://www.coinbase.com/saenzramiro'
+						}
+					]
 				}
 				,'->'
 				,{
 					 xtype: 'label'
-					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from Argentina as an Open Source project.'
+					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from <img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" /> as an Open Source project.'
 				}
 				,'->'
 				,{

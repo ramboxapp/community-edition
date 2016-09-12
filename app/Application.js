@@ -53,53 +53,55 @@ Ext.define('Rambox.Application', {
 				,{
 					 key: "\t"
 					,ctrl: true
- 					,alt: false
- 					,shift: true
- 					,handler: function(key) {
- 						var tabPanel = Ext.cq1('app-main');
- 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+					,alt: false
+					,shift: true
+					,handler: function(key) {
+						var tabPanel = Ext.cq1('app-main');
+						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 						if ( tabPanel.items.items[activeIndex - 1] && tabPanel.items.items[activeIndex - 1].id === 'tbfill' ) activeIndex--;
 						if ( !tabPanel.items.items[activeIndex - 1] && tabPanel.items.items.length !== 2 ) activeIndex = tabPanel.items.items.length;
 						if ( tabPanel.items.items.length === 2 ) activeIndex = 1;
 						tabPanel.setActiveTab( activeIndex - 1 );
- 					}
+					}
 				}
 				,{
-					 key: [Ext.event.Event.NUM_PLUS, Ext.event.Event.NUM_MINUS]
+					 key: [Ext.event.Event.NUM_PLUS, Ext.event.Event.NUM_MINUS, 187, 189]
 					,ctrl: true
- 					,alt: false
- 					,shift: false
- 					,handler: function(key) {
+					,alt: false
+					,shift: false
+					,handler: function(key) {
 						var tabPanel = Ext.cq1('app-main');
 						if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-						var currentLevel = tabPanel.getActiveTab().zoomLevel;
-						if ( key === Ext.event.Event.NUM_PLUS ) { // Plus key
-							currentLevel = currentLevel + 0.25;
-						} else { // Minus Key
-							currentLevel = currentLevel - 0.25;
-						}
- 						tabPanel.getActiveTab().down('component').el.dom.getWebContents().setZoomLevel(currentLevel);
-						tabPanel.getActiveTab().zoomLevel = currentLevel;
- 					}
+
+						key === Ext.event.Event.NUM_PLUS || key === 187 ? tabPanel.getActiveTab().zoomIn() : tabPanel.getActiveTab().zoomOut();
+					}
 				}
 				,{
-					 key: Ext.event.Event.NUM_ZERO
+					 key: [Ext.event.Event.NUM_ZERO, '0']
 					,ctrl: true
- 					,alt: false
- 					,shift: false
- 					,handler: function(key) {
+					,alt: false
+					,shift: false
+					,handler: function(key) {
 						var tabPanel = Ext.cq1('app-main');
 						if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
- 						tabPanel.getActiveTab().down('component').el.dom.getWebContents().setZoomLevel(0);
-						tabPanel.getActiveTab().zoomLevel = 0;
- 					}
+
+						tabPanel.getActiveTab().resetZoom();
+					}
 				}
 				,{
-					 key: "0123456789"
+					 key: "123456789"
 					,ctrl: true
 					,alt: false
 					,handler: function(key) {
 						Ext.cq1('app-main').setActiveTab(key - 48);
+					}
+				}
+				,{
+					 key: 188 // comma
+					,ctrl: true
+					,alt: false
+					,handler: function(key) {
+						Ext.cq1('app-main').setActiveTab(0);
 					}
 				}
 				,{
@@ -126,9 +128,28 @@ Ext.define('Rambox.Application', {
 			]
 		});
 
+		// Mouse Wheel zooming
+		document.addEventListener('mousewheel', function(e) {
+			if( e.ctrlKey ) {
+				var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+
+				var tabPanel = Ext.cq1('app-main');
+				if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+				if ( delta === 1 ) { // Zoom In
+					tabPanel.getActiveTab().zoomIn();
+				} else { // Zoom Out
+					tabPanel.getActiveTab().zoomOut();
+				}
+			}
+		});
+
 		if ( process.platform !== 'win32' ) {
 			this.checkUpdate(true);
 		}
+
+		// Define default value
+		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
 
 		if ( localStorage.getItem('locked') ) {
 			console.info('Lock Rambox:', 'Enabled');
@@ -161,16 +182,19 @@ Ext.define('Rambox.Application', {
 						'->'
 						,{
 							 xtype: 'label'
-							,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')'
+							,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
 						}
 						,{
 							 xtype: 'button'
 							,text: 'Download'
 							,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
+							,hidden: process.platform === 'win32'
 						}
 						,{
 							 xtype: 'button'
 							,text: 'Changelog'
+							,ui: 'decline'
+							,tooltip: 'Click here to see more information about the new version.'
 							,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+snapshot.val().latestVersion
 						}
 						,'->'
@@ -182,6 +206,7 @@ Ext.define('Rambox.Application', {
 						}
 					]
 				});
+				if ( process.platform === 'win32' ) ipc.send('autoUpdater:check-for-updates');
 				return;
 			} else if ( !silence ) {
 				Ext.Msg.show({

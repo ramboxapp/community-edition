@@ -1,0 +1,50 @@
+version: 0.4.2
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - master
+skip_non_tags: true
+init:
+- cmd: git config --global core.autocrlf input
+install:
+- cmd: >-
+    git reset --hard HEAD
+
+    npm run sencha:clean
+
+    git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
+
+    npm install npm -g
+
+    npm install
+
+    npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
+
+    npm prune
+cache:
+- '%APPDATA%\npm-cache'
+- '%USERPROFILE%\.electron'
+- node_modules
+- build\production\Rambox\node_modules
+build_script:
+- cmd: >-
+    node --version
+
+    npm --version
+
+    node_modules/.bin/build --win --x64
+test: off
+artifacts:
+- path: dist\win\*.exe
+- path: dist\win\*.nupkg
+- path: dist\win\RELEASES
+- path: dist\*.zip
+deploy:
+- provider: GitHub
+  tag: $(appveyor_build_version)
+  release: $(appveyor_build_version)
+  auth_token:
+    secure: RKFkz2S89dkYXdW+k47Wv42yrUeE1bDDMkM1PNuxrb0ZOcVVXPO88+t5dUllyvOG
+  draft: true
+  prerelease: false
