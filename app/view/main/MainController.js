@@ -455,13 +455,17 @@ Ext.define('Rambox.view.main.MainController', {
 
 		// Get Tab
 		var tab = Ext.getCmp('tab_'+serviceId);
+		// Get Record
+		var rec = Ext.getStore('Services').getById(serviceId);
 
 		// Clear all trash data
-		tab.down('component').el.dom.getWebContents().session.clearCache(Ext.emptyFn);
-		tab.down('component').el.dom.getWebContents().session.clearStorageData({}, Ext.emptyFn);
+		if ( rec.get('enabled') ) {
+			tab.down('component').el.dom.getWebContents().session.clearCache(Ext.emptyFn);
+			tab.down('component').el.dom.getWebContents().session.clearStorageData({}, Ext.emptyFn);
+		}
 
 		// Remove record from localStorage
-		Ext.getStore('Services').remove(Ext.getStore('Services').getById(serviceId));
+		Ext.getStore('Services').remove(rec);
 
 		// Close tab
 		tab.close();
