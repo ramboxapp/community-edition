@@ -48,9 +48,9 @@ const appLauncher = new AutoLaunch({
 config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
 
 require('electron-context-menu')({
-    prepend: params => [{
-        label: 'Rambox'
-    }]
+	prepend: params => [{
+		label: 'Rambox'
+	}]
 });
 
 // this should be placed at top of main.js to handle setup events quickly
