@@ -24,7 +24,7 @@ const config = new Config({
 		,hide_menu_bar: false
 		,skip_taskbar: true
 		,auto_launch: !isDev
-		,keep_in_taskbar_on_close: true
+		,keep_in_taskbar_on_close: getDefaultValueForkeep_in_taskbar_on_close()
 		,start_minimized: false
 		,systemtray_indicator: true
 		,master_password: false
@@ -39,6 +39,15 @@ const config = new Config({
 		,maximized: false
 	}
 });
+
+/**
+ * Returns the default value for "keep_in_taskbar_on_close".
+ * On all platforms except linux: true
+ * On linux: false (because it's uncommon for apps on linux to stay in the taskbar on close)
+ */
+function getDefaultValueForkeep_in_taskbar_on_close() {
+	return process.platform !== 'linux';
+}
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
