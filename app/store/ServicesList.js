@@ -413,6 +413,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Ad-free business Email Hosting with a clean, minimalist interface. Integrated Calendar, Contacts, Notes, Tasks apps.'
 			,url: 'https://mail.zoho.com/'
 			,type: 'email'
+			,js_unread: 'zmail.aInfo[zmail.accId].mailId = "a";'
+			,note: 'To enable desktop notifications, you have to go to Settings inside Zoho Email.'
 		},
 		{
 			 id: 'zohochat'
