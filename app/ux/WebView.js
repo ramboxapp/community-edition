@@ -306,7 +306,10 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		if ( me.record.get('enabled') ) webview.loadURL(me.src);
+		if ( me.record.get('enabled') ) {
+			me.tab.setBadgeText('');
+			webview.loadURL(me.src);
+		}
 	}
 
 	,toggleDevTools: function(btn) {
@@ -337,6 +340,7 @@ Ext.define('Rambox.ux.WebView',{
 	,setEnabled: function(enabled) {
 		var me = this;
 
+		me.tab.setBadgeText('');
 		me.removeAll();
 		me.add(me.webViewConstructor(enabled));
 		if ( enabled ) {
