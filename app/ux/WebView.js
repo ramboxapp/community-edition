@@ -44,6 +44,7 @@ Ext.define('Rambox.ux.WebView',{
 							e.stopEvent();
 						});
 					}
+					,scope: me
 				}
 				,clickEvent: ''
 				,style: !me.record.get('enabled') ? '-webkit-filter: grayscale(1)' : ''
@@ -159,6 +160,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
+		var me = this;
 		if ( oldBadgeText === null ) oldBadgeText = 0;
 		var actualNotifications = Rambox.app.getTotalNotifications();
 
@@ -166,6 +168,31 @@ Ext.define('Rambox.ux.WebView',{
 		badgeText = Rambox.util.Format.stripNumber(badgeText);
 
 		Rambox.app.setTotalNotifications(actualNotifications - oldBadgeText + badgeText);
+
+		// Some services dont have Desktop Notifications, so we add that functionality =)
+		if ( Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') && oldBadgeText < badgeText && me.record.get('notifications') && !JSON.parse(localStorage.getItem('dontDisturb')) ) {
+			var text;
+			switch ( Ext.getStore('ServicesList').getById(me.type).get('type') ) {
+				case 'messaging':
+					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new message', 'new messages') + '.';
+					break;
+				case 'email':
+					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new email', 'new emails') + '.';
+					break;
+				default:
+					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new activity', 'new activities') + '.';
+					break;
+			}
+			var not = new Notification(me.record.get('name'), {
+				 body: text
+				,icon: tab.icon
+				,silent: me.record.get('muted')
+			});
+			not.onclick = function() {
+				require('electron').remote.getCurrentWindow().show();
+				Ext.cq1('app-main').setActiveTab(me);
+			};
+		}
 	}
 
 	,onAfterRender: function() {

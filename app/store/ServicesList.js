@@ -74,6 +74,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://hangouts.google.com/'
 			,type: 'messaging'
 			,titleBlink: true
+			,manual_notifications: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
@@ -121,7 +122,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Inbox by Gmail is a new app from the Gmail team. Inbox is an organized place to get things done and get back to what matters. Bundles keep emails organized.'
 			,url: 'http://inbox.google.com/?cid=imp'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Inbox",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,manual_notifications: true
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'chatwork'
@@ -186,7 +188,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Take control. Do more. Outlook is the free email and calendar service that helps you stay on top of what matters and get things done.'
 			,url: 'https://mail.live.com/'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,manual_notifications: true
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'outlook365'
@@ -195,7 +198,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Outlook for Business'
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook 365",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook365.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,manual_notifications: true
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'yahoo'

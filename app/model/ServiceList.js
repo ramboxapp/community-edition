@@ -32,6 +32,10 @@ Ext.define('Rambox.model.ServiceList', {
 		,type: 'boolean'
 		,defaultValue: false
 	},{
+		 name: 'manual_notifications'
+		,type: 'boolean'
+		,defaultValue: false
+	},{
 		 name: 'userAgent'
 		,type: 'string'
 		,defaultValue: ''
