@@ -316,6 +316,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Mattermost is an open source, self-hosted Slack-alternative. As an alternative to proprietary SaaS messaging, Mattermost brings all your team communication into one place, making it searchable and accessible anywhere.'
 			,url: '___'
 			,type: 'messaging'
+			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){document.getElementsByTagName("title")[0].innerHTML=a[0]==="*"?"(•) Mattermost":a},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
 		},
 		{
 			 id: 'dingtalk'
