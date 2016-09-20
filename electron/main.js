@@ -29,6 +29,7 @@ const config = new Config({
 		,start_minimized: false
 		,systemtray_indicator: true
 		,master_password: false
+		,disable_gpu: process.platform === 'linux'
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''
@@ -379,6 +380,12 @@ ipcMain.on('image:popup', function(event, url, partition) {
 
 // Proxy
 if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
+
+// Disable GPU Acceleration for Linux
+// to prevent White Page bug
+// https://github.com/electron/electron/issues/6139
+// https://github.com/saenzramiro/rambox/issues/181
+if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
