@@ -208,6 +208,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Web-based email service offered by the American company Yahoo!. The service is free for personal use, and paid-for business email plans are available.'
 			,url: 'https://mail.yahoo.com/'
 			,type: 'email'
+			,note: 'To enable desktop notifications, you have to go to Options inside Yahoo! Mail.'
 		},
 		{
 			 id: 'protonmail'
