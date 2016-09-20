@@ -459,7 +459,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var rec = Ext.getStore('Services').getById(serviceId);
 
 		// Clear all trash data
-		if ( rec.get('enabled') ) {
+		if ( rec.get('enabled') && tab.down('component').el ) {
 			tab.down('component').el.dom.getWebContents().session.clearCache(Ext.emptyFn);
 			tab.down('component').el.dom.getWebContents().session.clearStorageData({}, Ext.emptyFn);
 		}
@@ -495,6 +495,7 @@ Ext.define('Rambox.view.main.MainController', {
 					Ext.getStore('Services').load();
 					if ( Ext.isFunction(callback) ) callback();
 					Ext.cq1('app-main').resumeEvent('remove');
+					document.title = 'Rambox';
 				}
 			});
 		} else {
@@ -505,6 +506,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.getStore('Services').load();
 			if ( Ext.isFunction(callback) ) callback();
 			Ext.cq1('app-main').resumeEvent('remove');
+			document.title = 'Rambox';
 		}
 	}
 
