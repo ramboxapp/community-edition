@@ -121,6 +121,10 @@ Sessions will persist using the [partition:persist](http://electron.atom.io/docs
 
 Sync feature use Auth0 for Single Sign On & Token Based Authentication with the integration with Firebase to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
+## Translations
+
+Help us translate Rambox on https://crowdin.com/project/rambox/invite.
+
 ## [Install on Linux - Steps](https://github.com/saenzramiro/rambox/wiki/Install-on-Linux)
 
 ## [To Do](https://github.com/saenzramiro/rambox/blob/master/TODO.md)
