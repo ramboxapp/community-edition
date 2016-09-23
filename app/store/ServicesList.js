@@ -587,6 +587,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Socialcast is the premier enterprise social networking platform that connects people to the knowledge, ideas and resources they need to work more effectively.'
 			,url: 'https://___.socialcast.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'fleep'
+			,logo: 'fleep.png'
+			,name: 'Fleep'
+			,description: 'Fleep enables communication within and across organizations - be it your team chats, project communication or 1:1 conversations.'
+			,url: 'https://fleep.io/chat'
+			,type: 'messaging'
+			,js_unread: 'document.getElementsByClassName("google-login-area")[0].remove();document.getElementsByClassName("microsoft-login-area")[0].remove();'
 		}
     ]
 });
