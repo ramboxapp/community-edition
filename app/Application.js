@@ -93,7 +93,9 @@ Ext.define('Rambox.Application', {
 					,ctrl: true
 					,alt: false
 					,handler: function(key) {
-						Ext.cq1('app-main').setActiveTab(key - 48);
+						key = key - 48;
+						if ( key >= Ext.cq1('app-main').items.indexOf(Ext.getCmp('tbfill')) ) key++;
+						Ext.cq1('app-main').setActiveTab(key);
 					}
 				}
 				,{
