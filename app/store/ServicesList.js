@@ -596,6 +596,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://fleep.io/chat'
 			,type: 'messaging'
 			,js_unread: 'document.getElementsByClassName("google-login-area")[0].remove();document.getElementsByClassName("microsoft-login-area")[0].remove();'
+		},
+		{
+			 id: 'spark'
+			,logo: 'spark.png'
+			,name: 'Cisco Spark'
+			,description: 'Cisco Spark is for group chat, video calling, and sharing documents with your team. It’s all backed by Cisco security and reliability.'
+			,url: 'https://web.ciscospark.com/'
+			,type: 'messaging'
 		}
     ]
 });
