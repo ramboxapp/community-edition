@@ -563,6 +563,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Pushbullet connects your devices, making them feel like one.'
 			,url: 'https://www.pushbullet.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'riot'
+			,logo: 'riot.png'
+			,name: 'Riot'
+			,description: 'Riot is a simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app.'
+			,url: 'https://riot.im/app/'
+			,type: 'messaging'
 		}
     ]
 });
