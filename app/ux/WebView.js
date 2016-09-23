@@ -34,7 +34,14 @@ Ext.define('Rambox.ux.WebView',{
 		if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
 		Ext.apply(me, {
-			 items: me.webViewConstructor(me.record.get('enabled'))
+			 items: me.webViewConstructor()
+			,title: me.record.get('name')
+ 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
+ 			,src: me.record.get('url')
+ 			,type: me.record.get('type')
+ 			,align: me.record.get('align')
+ 			,notifications: me.record.get('notifications')
+ 			,muted: me.record.get('muted')
 			,tabConfig: {
 				listeners: {
 					 badgetextchange: me.onBadgeTextChange
@@ -122,11 +129,11 @@ Ext.define('Rambox.ux.WebView',{
 		me.callParent(config);
 	}
 
-	,webViewConstructor: function(enabled) {
+	,webViewConstructor: function() {
 		var me = this;
 
 		var cfg;
-		if ( !enabled ) {
+		if ( !me.record.get('enabled') ) {
 			cfg = {
 				 xtype: 'container'
 				,html: '<h3>Service Disabled</h3>'
@@ -141,19 +148,19 @@ Ext.define('Rambox.ux.WebView',{
 				,autoShow: true
 				,autoEl: {
 					 tag: 'webview'
-					,src: me.src
+					,src: me.record.get('url')
 					,style: 'width:100%;height:100%;'
-					,partition: 'persist:' + me.type + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
 					,disablewebsecurity: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
-					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
+					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 				}
 			};
 
-			if ( Ext.getStore('ServicesList').getById(me.type).get('allow_popups') ) cfg.autoEl.allowpopups = 'on';
+			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') ) cfg.autoEl.allowpopups = 'on';
 		}
 
 		return cfg;
@@ -319,9 +326,20 @@ Ext.define('Rambox.ux.WebView',{
 		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
 	}
 
+	,setURL: function(url) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.src = url;
+
+		if ( me.record.get('enabled') ) webview.loadURL(url);
+	}
+
 	,setAudioMuted: function(muted, calledFromDisturb) {
 		var me = this;
 		var webview = me.down('component').el.dom;
+
+		me.muted = muted;
 
 		if ( !muted && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 
@@ -331,6 +349,8 @@ Ext.define('Rambox.ux.WebView',{
 	,setNotifications: function(notification, calledFromDisturb) {
 		var me = this;
 		var webview = me.down('component').el.dom;
+
+		me.notifications = notification;
 
 		if ( notification && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 
@@ -342,7 +362,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		me.tab.setBadgeText('');
 		me.removeAll();
-		me.add(me.webViewConstructor(enabled));
+		me.add(me.webViewConstructor());
 		if ( enabled ) {
 			me.resumeEvent('afterrender');
 			me.show();

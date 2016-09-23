@@ -85,6 +85,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://___.hipchat.com/chat'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("hc-badge"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,custom_domain: true
 		},
 		{
 			 id: 'telegram'
@@ -358,6 +359,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'custom.png'
 			,name: '_Custom Service'
 			,description: 'Add a custom service if is not listed above.'
+			,url: '___'
 			,type: 'custom'
 			,allow_popups: true
 		},
@@ -457,13 +459,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
-			 id:' irccloud'
+			 id: ' irccloud'
 			,logo: 'irccloud.png'
 			,name: 'IRCCloud'
 			,description: 'IRCCloud is a modern IRC client that keeps you connected, with none of the baggage.'
 			,url: 'https://www.irccloud.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t=0;[].map.call(document.querySelectorAll(".bufferBadges > .badge"),n=>n.textContent?parseInt(n.textContent,10):0).reduce((x,y)=>x+y,0);updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,custom_domain: true
 		},
 		{
 			 id: 'ryver'
@@ -489,6 +492,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://kiwiirc.com/client'
 			,type: 'messaging'
 			,js_unread: 'function getUnreadCount(){var a=0;$(".activity").each(function(){a+=parseInt($(this).html())});var b=!1;return $(".panel[style*=display: block] .msg").each(function(){b?a++:$(this).hasClass("last_seen")&&(b=!0)}),a}function updateTitle(a){count=getUnreadCount(),cleanTitle=a.match(re),null!==cleanTitle&&cleanTitle.length>1?cleanTitle=cleanTitle[1]:cleanTitle=a,a=count>0?"("+getUnreadCount()+") "+cleanTitle:cleanTitle,$("title").text(a)}var re=/\(\d+\)[ ](.*)/;Object.defineProperty(document,"title",{configurable:!0,set:function(a){updateTitle(a)},get:function(){return $("title").text()}}),setInterval(function(){updateTitle(document.title)},3e3);'
+			,custom_domain: true
 		},
 		{
 			 id: 'icloud'

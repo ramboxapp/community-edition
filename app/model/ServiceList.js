@@ -43,5 +43,9 @@ Ext.define('Rambox.model.ServiceList', {
 		 name: 'note'
 		,type: 'string'
 		,defaultValue: ''
+	},{
+		 name: 'custom_domain'
+		,type: 'boolean'
+		,defaultValue: false
 	}]
 });
