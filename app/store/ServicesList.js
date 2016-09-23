@@ -579,6 +579,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Free and Secure text, photo and voice messages over 2G/3G or Wi-Fi.'
 			,url: 'https://app.actor.im/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'socialcast'
+			,logo: 'socialcast.png'
+			,name: 'Socialcast'
+			,description: 'Socialcast is the premier enterprise social networking platform that connects people to the knowledge, ideas and resources they need to work more effectively.'
+			,url: 'https://___.socialcast.com/'
+			,type: 'messaging'
 		}
     ]
 });
