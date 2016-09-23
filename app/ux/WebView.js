@@ -129,11 +129,13 @@ Ext.define('Rambox.ux.WebView',{
 		me.callParent(config);
 	}
 
-	,webViewConstructor: function() {
+	,webViewConstructor: function( enabled ) {
 		var me = this;
-
+		
 		var cfg;
-		if ( !me.record.get('enabled') ) {
+		enabled = enabled || me.record.get('enabled');
+
+		if ( !enabled ) {
 			cfg = {
 				 xtype: 'container'
 				,html: '<h3>Service Disabled</h3>'
@@ -362,7 +364,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		me.tab.setBadgeText('');
 		me.removeAll();
-		me.add(me.webViewConstructor());
+		me.add(me.webViewConstructor(enabled));
 		if ( enabled ) {
 			me.resumeEvent('afterrender');
 			me.show();
