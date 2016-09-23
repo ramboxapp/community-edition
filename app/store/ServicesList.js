@@ -541,10 +541,20 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'kaiwa'
 			,logo: 'kaiwa.png'
 			,name: 'Kaiwa'
-			,description: 'A modern and Open Source Web client for XMPP'
+			,description: 'A modern and Open Source Web client for XMPP.'
 			,url: '___'
 			,type: 'messaging'
 			,js_unread: 'function check_unread() { let count=0; for (let node of document.getElementsByClassName("unread")){ if (node.innerHTML){ count += parseInt(node.innerHTML); } } update_badge(count);}function update_badge(a) { document.title = a > 0 ? "(" + a + ") " + original_title : original_title}const original_title = document.title;setInterval(check_unread, 3e3);'
+		},
+		{
+			 id: 'movim'
+			,logo: 'movim.png'
+			,name: 'Movim'
+			,description: 'Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol.'
+			,url: 'https://___.movim.eu/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("color dark"),b=0;for(i=0;i<a.length;i++){var c=a[i].getElementsByClassName("counter");for(ii=0;ii<c.length;ii++)parseInt(c[ii].textContent.trim())%1===0&&(b+=parseInt(c[ii].textContent.trim()))}updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,custom_domain: true
 		}
     ]
 });
