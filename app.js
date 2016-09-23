@@ -130,3 +130,8 @@ ipc.on('setBadge', function(event, messageCount) {
 
 	ipc.send('setBadge', messageCount, canvas.toDataURL());
 });
+// Reload Current Service
+ipc.on('reloadCurrentService', function(e) {
+	var tab = Ext.cq1('app-main').getActiveTab();
+	if ( tab.id !== 'ramboxTab' ) tab.reloadService();
+});

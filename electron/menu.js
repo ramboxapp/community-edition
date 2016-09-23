@@ -122,6 +122,13 @@ let tpl = [
 				}
 			},
 			{
+				label: 'Reload current Service',
+				accelerator: 'CmdOrCtrl+Shift+R',
+				click() {
+					sendAction('reloadCurrentService');
+				}
+			},
+			{
 				type: 'separator'
 			},
 			{
