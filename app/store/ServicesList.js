@@ -524,6 +524,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: '___'
 			,type: 'email'
 			,js_unread: 'function check_unread(){update_badge(appCtxt.getById(ZmFolder.ID_INBOX).numUnread)}function update_badge(a){document.title=a>0?"("+a+") "+original_title:original_title}const original_title=document.title;setInterval(check_unread,3e3);'
-		}
-	]
+		},
+		{
+			id: 'kaiwa'
+			,logo: 'kaiwa.png'
+			,name: 'Kaiwa'
+			,description: 'A modern and Open Source Web client for XMPP'
+			,url: '___'
+			,type: 'messaging'
+			,js_unread: 'function check_unread() { let count=0; for (let node of document.getElementsByClassName("unread")){ if (node.innerHTML){ count += parseInt(node.innerHTML); } } update_badge(count);}function update_badge(a) { document.title = a > 0 ? "(" + a + ") " + original_title : original_title}const original_title = document.title;setInterval(check_unread, 3e3);'
+		},
+    ]
 });
