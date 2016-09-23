@@ -571,6 +571,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Riot is a simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app.'
 			,url: 'https://riot.im/app/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'actor'
+			,logo: 'actor.png'
+			,name: 'Actor'
+			,description: 'Free and Secure text, photo and voice messages over 2G/3G or Wi-Fi.'
+			,url: 'https://app.actor.im/'
+			,type: 'messaging'
 		}
     ]
 });
