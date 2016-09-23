@@ -68,7 +68,6 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yahoo.png" alt="Yahoo! Mail" title="Yahoo! Mail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/ryver.png" alt="Ryver" title="Ryver">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/yandex.png" alt="Yandex Mail" title="Yandex Mail">
-<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/office365.png" alt="OFfice 365" title="Office 365">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dasher.png" alt="Dasher" title="Dasher">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/dingtalk.png" alt="DingTalk" title="DingTalk">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/flowdock.png" alt="FlowDock" title="FlowDock">
