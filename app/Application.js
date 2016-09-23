@@ -30,9 +30,6 @@ Ext.define('Rambox.Application', {
 		ga_storage._setAccount('UA-80680424-1');
 		ga_storage._trackPageview('/index.html', 'main');
 
-		// Initialize Auth0
-		Rambox.ux.Auth0.init();
-
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({
 			 target: document

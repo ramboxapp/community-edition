@@ -113,7 +113,7 @@ Ext.define('Rambox.ux.Auth0', {
 										} else {
 											Ext.Msg.confirm('Clear services', 'Do you want to remove all your current services to start over?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
 												if ( btnId === 'yes' ) {
-													me.removeAllServices(false);
+													Ext.cq1('app-main').getController().removeAllServices(false);
 												} else {
 													me.logout();
 												}
@@ -124,7 +124,7 @@ Ext.define('Rambox.ux.Auth0', {
 								} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() > 0 ) {
 									Ext.Msg.confirm('Confirm', 'To import your configuration, I need to remove all your current services. Do you want to continue?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
 										if ( btnId === 'yes' ) {
-											me.removeAllServices(false, function() {
+											Ext.cq1('app-main').getController().removeAllServices(false, function() {
 												importServices(snapshot2);
 											});
 										} else {
@@ -163,6 +163,8 @@ Ext.define('Rambox.ux.Auth0', {
 
 	,login: function() {
 		var me = this;
+
+		if ( !me.auth0 ) Rambox.ux.Auth0.init();
 
 		me.lock.show();
 	}
