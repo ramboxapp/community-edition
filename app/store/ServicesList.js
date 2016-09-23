@@ -555,6 +555,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("color dark"),b=0;for(i=0;i<a.length;i++){var c=a[i].getElementsByClassName("counter");for(ii=0;ii<c.length;ii++)parseInt(c[ii].textContent.trim())%1===0&&(b+=parseInt(c[ii].textContent.trim()))}updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 			,custom_domain: true
+		},
+		{
+			 id: 'pushbullet'
+			,logo: 'pushbullet.png'
+			,name: 'Pushbullet'
+			,description: 'Pushbullet connects your devices, making them feel like one.'
+			,url: 'https://www.pushbullet.com/'
+			,type: 'messaging'
 		}
     ]
 });
