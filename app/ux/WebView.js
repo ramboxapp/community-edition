@@ -305,7 +305,7 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		webview.addEventListener('did-get-redirect-request', function( e ) {
-			if ( e.isMainFrame ) Ext.defer(function() { webview.loadURL(e.newURL); }, 1000);
+			if ( e.isMainFrame ) webview.loadURL(e.newURL);
 		});
 	}
 
