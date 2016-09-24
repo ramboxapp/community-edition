@@ -604,6 +604,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Cisco Spark is for group chat, video calling, and sharing documents with your team. It’s all backed by Cisco security and reliability.'
 			,url: 'https://web.ciscospark.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'mmmelon'
+			,logo: 'mmmelon.png'
+			,name: 'mmmelon'
+			,description: 'The ultimate tool for daily management of projects and teams. Cloud-based, web and mobile.'
+			,url: '___'
+			,type: 'messaging'
 		}
     ]
 });
