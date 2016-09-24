@@ -628,6 +628,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Typetalk brings fun and ease to team discussions through instant messaging on desktop and mobile devices.'
 			,url: 'https://typetalk.in/signin'
 			,type: 'messaging'
+		},
+		{
+			 id: 'openmailbox'
+			,logo: 'openmailbox.png'
+			,name: 'Openmailbox'
+			,description: 'Free mail hosting. Respect your rights and your privacy.'
+			,url: 'https://www.openmailbox.org/webmail/'
+			,type: 'email'
 		}
     ]
 });
