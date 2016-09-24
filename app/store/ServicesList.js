@@ -636,6 +636,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Free mail hosting. Respect your rights and your privacy.'
 			,url: 'https://www.openmailbox.org/webmail/'
 			,type: 'email'
+		},
+		{
+			 id: 'flock'
+			,logo: 'flock.png'
+			,name: 'Flock'
+			,description: 'Flock is a free enterprise tool for business communication. Packed with tons of productivity features, Flock drives efficiency and boosts speed of execution.'
+			,url: 'https://web.flock.co/'
+			,type: 'messaging'
 		}
     ]
 });
