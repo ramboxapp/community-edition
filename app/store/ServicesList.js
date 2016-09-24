@@ -612,6 +612,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'The ultimate tool for daily management of projects and teams. Cloud-based, web and mobile.'
 			,url: '___'
 			,type: 'messaging'
+		},
+		{
+			 id: 'drift'
+			,logo: 'drift.png'
+			,name: 'Drift'
+			,description: 'Drift is a messaging app that makes it easy for businesses to talk to their website visitors and customers in real-time, from anywhere.'
+			,url: 'https://app.drift.com/'
+			,type: 'messaging'
 		}
     ]
 });
