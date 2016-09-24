@@ -644,6 +644,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Flock is a free enterprise tool for business communication. Packed with tons of productivity features, Flock drives efficiency and boosts speed of execution.'
 			,url: 'https://web.flock.co/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'crisp'
+			,logo: 'crisp.png'
+			,name: 'Crisp'
+			,description: 'Connect your customers to your team.'
+			,url: 'https://app.crisp.im/'
+			,type: 'messaging'
 		}
     ]
 });
