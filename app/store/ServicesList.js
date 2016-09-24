@@ -620,6 +620,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Drift is a messaging app that makes it easy for businesses to talk to their website visitors and customers in real-time, from anywhere.'
 			,url: 'https://app.drift.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'typetalk'
+			,logo: 'typetalk.png'
+			,name: 'Typetalk'
+			,description: 'Typetalk brings fun and ease to team discussions through instant messaging on desktop and mobile devices.'
+			,url: 'https://typetalk.in/signin'
+			,type: 'messaging'
 		}
     ]
 });
