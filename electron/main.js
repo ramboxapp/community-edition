@@ -219,6 +219,9 @@ function createMasterPasswordWindow() {
 		 backgroundColor: '#0675A0'
 		,frame: false
 	});
+	// Open the DevTools.
+	if ( isDev ) mainMasterPasswordWindow.webContents.openDevTools();
+
 	mainMasterPasswordWindow.loadURL('file://' + __dirname + '/../masterpassword.html');
 	mainMasterPasswordWindow.on('close', function() { mainMasterPasswordWindow = null });
 }
