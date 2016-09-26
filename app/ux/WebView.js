@@ -131,7 +131,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,webViewConstructor: function( enabled ) {
 		var me = this;
-		
+
 		var cfg;
 		enabled = enabled || me.record.get('enabled');
 
@@ -368,6 +368,7 @@ Ext.define('Rambox.ux.WebView',{
 			me.resumeEvent('afterrender');
 			me.show();
 			me.tab.setStyle('-webkit-filter', 'grayscale(0)');
+			me.onAfterRender();
 		} else {
 			me.suspendEvent('afterrender');
 			me.tab.setStyle('-webkit-filter', 'grayscale(1)');
