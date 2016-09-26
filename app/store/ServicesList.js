@@ -652,6 +652,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Connect your customers to your team.'
 			,url: 'https://app.crisp.im/inbox'
 			,type: 'messaging'
+		},
+		{
+			 id: 'smooch'
+			,logo: 'smooch.png'
+			,name: 'Smooch'
+			,description: 'Unified multi-channel messaging for businesses, bots and software makers.'
+			,url: 'https://app.smooch.io/'
+			,type: 'messaging'
 		}
     ]
 });
