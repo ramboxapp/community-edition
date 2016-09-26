@@ -113,7 +113,10 @@
         {
             "path": "resources/js/GALocalStorage.js"
         },
-		{
+        {
+            "path": "resources/js/loadscreen.js"
+        },
+        {
             "path": "env.js"
         },
         {
