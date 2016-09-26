@@ -402,12 +402,14 @@ app.on('window-all-closed', function () {
 	}
 });
 
+// Only macOS: On OS X it's common to re-create a window in the app when the
+// dock icon is clicked and there are no other windows open.
 app.on('activate', function () {
-	// On OS X it's common to re-create a window in the app when the
-	// dock icon is clicked and there are no other windows open.
 	if (mainWindow === null && mainMasterPasswordWindow === null ) {
 		config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	}
+
+	if ( mainWindow !== null ) mainWindow.show();
 });
 
 app.on('before-quit', function () {
