@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate with PayPal"></a>
-  <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-mit-blue.svg" alt="MIT Licence"></a>
+  <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/github/license/saenzramiro/rambox.svg?maxAge=2592000" alt="MIT Licence"></a>
   <a href="https://gitter.im/saenzramiro/rambox" target="_blank"><img src="https://badges.gitter.im/saenzramiro/rambox.svg" alt="Gitter"></a>
   <a href="https://github.com/saenzramiro/rambox/releases/latest" target="_blank"><img src="https://img.shields.io/github/release/saenzramiro/rambox.svg" alt="Release"></a>
   <a target="_blank" href="https://crowdin.com/project/rambox"><img src="https://d322cqt584bo4o.cloudfront.net/rambox/localized.svg"></a>
