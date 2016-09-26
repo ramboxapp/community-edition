@@ -140,10 +140,10 @@ Ext.define('Rambox.ux.Auth0', {
 									localStorage.setItem('id_token', authResult.idToken);
 								}
 							});
-						}).catch(function(error) {
+						})['catch'](function(error) {
 							Ext.Msg.hide();
 							Ext.Msg.show({
-								 title: 'Firebug Error'
+								 title: 'Firebase Error'
 								,message: error.message+'<br><br>Code: '+error.code+'<br><br>Sorry, try again later.'
 								,icon: Ext.Msg.ERROR
 								,buttons: Ext.Msg.OK
