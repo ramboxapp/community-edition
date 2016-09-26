@@ -650,7 +650,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'crisp.png'
 			,name: 'Crisp'
 			,description: 'Connect your customers to your team.'
-			,url: 'https://app.crisp.im/'
+			,url: 'https://app.crisp.im/inbox'
 			,type: 'messaging'
 		}
     ]
