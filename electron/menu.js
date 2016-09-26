@@ -68,6 +68,29 @@ const helpSubmenu = [
 		}
 	},
 	{
+		label: `Tools`,
+		submenu: [
+			{
+				label: `Clear Cache`,
+				click(item, win) {
+					win.webContents.session.clearCache(function() {
+						win.reload();
+					});
+				}
+			},
+			{
+				label: `Clear Local Storage`,
+				click(item, win) {
+					win.webContents.session.clearStorageData({
+						storages: ['localstorage']
+					}, function() {
+						win.reload();
+					});
+				}
+			}
+		]
+	},
+	{
 		type: 'separator'
 	},
 	{
