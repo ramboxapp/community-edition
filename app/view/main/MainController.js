@@ -378,6 +378,6 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,showDonate: function( btn ) {
-		Tooltip.API.show('tChaoq3PwSG9wswhn');
+		Tooltip.API.show('zxzKWZfcmgRtHXgth');
 	}
 });
