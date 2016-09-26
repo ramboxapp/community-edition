@@ -29,6 +29,7 @@ Ext.define('Rambox.Application', {
 		// Set Google Analytics events
 		ga_storage._setAccount('UA-80680424-1');
 		ga_storage._trackPageview('/index.html', 'main');
+		ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({
