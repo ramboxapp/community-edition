@@ -27,10 +27,6 @@
 		"build:win64": "build --win --x64",
 		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
 		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
-		"zip:win32": "bestzip \"dist/Rambox-win32-ia32-portable.zip\" \"dist/Rambox-win32-ia32/*\"",
-		"zip:win64": "bestzip \"dist/Rambox-win32-x64-portable.zip\" \"dist/Rambox-win32-x64/*\"",
-		"zip:linux32": "bestzip \"dist/Rambox-linux-ia32.zip\" \"dist/Rambox-linux-ia32/*\"",
-		"zip:linux64": "bestzip \"dist/Rambox-linux-x64.zip\" \"dist/Rambox-linux-x64/*\"",
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
 		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux"
 	},
@@ -93,7 +89,6 @@
 	},
 	"devDependencies": {
 		"asar": "^0.12.1",
-		"bestzip": "^1.1.3",
 		"electron-builder": "6.5.2",
 		"electron-prebuilt": "1.4.1",
 		"electron-squirrel-startup": "^1.0.0"
