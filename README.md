@@ -169,7 +169,7 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 1. `git clone https://github.com/saenzramiro/rambox.git`
 2. `npm install`
 3. Configure `env-sample.js` and rename it to `env.js`.
-4. `sencha app watch`
+4. `npm run sencha:compile`
 5. `npm start`
 
 ----------
