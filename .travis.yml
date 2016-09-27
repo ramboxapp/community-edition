@@ -1,7 +1,7 @@
 sudo: required
 language: node_js
 node_js:
-  - $NODE_VERSION
+  - node
 
 branches:
   only:
