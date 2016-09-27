@@ -1,7 +1,7 @@
 sudo: required
 language: node_js
 node_js:
-  - node
+  - "4"
 
 branches:
   only:
@@ -37,7 +37,6 @@ install:
   - npm run sencha:clean
   - git clone https://github.com/saenzramiro/rambox-build.git $TRAVIS_BUILD_DIR/build/production/Rambox/
   - npm install
-  - npm install npm@2
   - npm uninstall electron-prebuilt
   - npm i electron-prebuilt@$ELECTRON
   - npm --prefix $TRAVIS_BUILD_DIR/build/production/Rambox/ install $TRAVIS_BUILD_DIR/build/production/Rambox/
