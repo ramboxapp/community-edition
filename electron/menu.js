@@ -18,25 +18,25 @@ function sendAction(action) {
 
 const helpSubmenu = [
 	{
-		label: `Visit ${appName} Website`,
+		label: `&Visit ${appName} Website`,
 		click() {
 			shell.openExternal('http://rambox.pro');
 		}
 	},
 	{
-		label: `Facebook`,
+		label: `&Facebook`,
 		click() {
 			shell.openExternal('https://www.facebook.com/ramboxapp');
 		}
 	},
 	{
-		label: `Twitter`,
+		label: `&Twitter`,
 		click() {
 			shell.openExternal('https://www.twitter.com/ramboxapp');
 		}
 	},
 	{
-		label: `GitHub`,
+		label: `&GitHub`,
 		click() {
 			shell.openExternal('https://www.github.com/saenzramiro/rambox');
 		}
@@ -45,7 +45,7 @@ const helpSubmenu = [
 		type: 'separator'
 	},
 	{
-		label: 'Report an Issue...',
+		label: '&Report an Issue...',
 		click() {
 			const body = `
 <!-- Please describe here your issue and steps to reproduce it. -->
@@ -62,16 +62,16 @@ const helpSubmenu = [
 		}
 	},
 	{
-		label: `Ask for Help`,
+		label: `&Ask for Help`,
 		click() {
 			shell.openExternal('https://gitter.im/saenzramiro/rambox');
 		}
 	},
 	{
-		label: `Tools`,
+		label: `&Tools`,
 		submenu: [
 			{
-				label: `Clear Cache`,
+				label: `&Clear Cache`,
 				click(item, win) {
 					win.webContents.session.clearCache(function() {
 						win.reload();
@@ -79,7 +79,7 @@ const helpSubmenu = [
 				}
 			},
 			{
-				label: `Clear Local Storage`,
+				label: `&Clear Local Storage`,
 				click(item, win) {
 					win.webContents.session.clearStorageData({
 						storages: ['localstorage']
@@ -94,7 +94,7 @@ const helpSubmenu = [
 		type: 'separator'
 	},
 	{
-		label: `Donate`,
+		label: `&Donate`,
 		click() {
 			shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
 		}
@@ -103,7 +103,7 @@ const helpSubmenu = [
 
 let tpl = [
 	{
-		label: 'Edit',
+		label: '&Edit',
 		submenu: [
 			{
 				role: 'undo'
@@ -135,17 +135,17 @@ let tpl = [
 		]
 	},
 	{
-		label: 'View',
+		label: '&View',
 		submenu: [
 			{
-				label: 'Reload',
+				label: '&Reload',
 				accelerator: 'CmdOrCtrl+R',
 				click(item, focusedWindow) {
 					if (focusedWindow) focusedWindow.reload();
 				}
 			},
 			{
-				label: 'Reload current Service',
+				label: '&Reload current Service',
 				accelerator: 'CmdOrCtrl+Shift+R',
 				click() {
 					sendAction('reloadCurrentService');
@@ -166,16 +166,16 @@ let tpl = [
 		]
 	},
 	{
-		label: 'Window',
+		label: '&Window',
 		role: 'window',
 		submenu: [
 			{
-				label: 'Minimize',
+				label: '&Minimize',
 				accelerator: 'CmdOrCtrl+M',
 				role: 'minimize'
 			},
 			{
-				label: 'Close',
+				label: '&Close',
 				accelerator: 'CmdOrCtrl+W',
 				role: 'close'
 			},
@@ -186,7 +186,7 @@ let tpl = [
 				role: 'togglefullscreen'
 			},
 			{
-				label: 'Toggle Developer Tools',
+				label: '&Toggle Developer Tools',
 				accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
 				click(item, focusedWindow) {
 					if (focusedWindow) focusedWindow.webContents.toggleDevTools();
@@ -195,7 +195,7 @@ let tpl = [
 		]
 	},
 	{
-		label: 'Help',
+		label: '&Help',
 		role: 'help'
 	}
 ];
@@ -253,7 +253,7 @@ if (process.platform === 'darwin') {
 	});
 } else {
 	tpl.unshift({
-		label: 'File',
+		label: '&File',
 		submenu: [
 			{
 				role: 'quit'
@@ -264,7 +264,7 @@ if (process.platform === 'darwin') {
 		type: 'separator'
 	});
 	helpSubmenu.push({
-		label: `Check for updates...`,
+		label: `&Check for updates...`,
 		click(item, win) {
 			const webContents = win.webContents;
 			const send = webContents.send.bind(win.webContents);
@@ -278,7 +278,7 @@ if (process.platform === 'darwin') {
 		}
 	});
 	helpSubmenu.push({
-		label: `About ${appName}`,
+		label: `&About ${appName}`,
 		click() {
 			sendAction('showAbout')
 		}
