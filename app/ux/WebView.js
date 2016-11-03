@@ -34,7 +34,14 @@ Ext.define('Rambox.ux.WebView',{
 		if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
 		Ext.apply(me, {
-			 items: me.webViewConstructor(me.record.get('enabled'))
+			 items: me.webViewConstructor()
+			,title: me.record.get('name')
+ 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
+ 			,src: me.record.get('url')
+ 			,type: me.record.get('type')
+ 			,align: me.record.get('align')
+ 			,notifications: me.record.get('notifications')
+ 			,muted: me.record.get('muted')
 			,tabConfig: {
 				listeners: {
 					 badgetextchange: me.onBadgeTextChange
@@ -44,6 +51,7 @@ Ext.define('Rambox.ux.WebView',{
 							e.stopEvent();
 						});
 					}
+					,scope: me
 				}
 				,clickEvent: ''
 				,style: !me.record.get('enabled') ? '-webkit-filter: grayscale(1)' : ''
@@ -121,10 +129,12 @@ Ext.define('Rambox.ux.WebView',{
 		me.callParent(config);
 	}
 
-	,webViewConstructor: function(enabled) {
+	,webViewConstructor: function( enabled ) {
 		var me = this;
 
 		var cfg;
+		enabled = enabled || me.record.get('enabled');
+
 		if ( !enabled ) {
 			cfg = {
 				 xtype: 'container'
@@ -140,25 +150,26 @@ Ext.define('Rambox.ux.WebView',{
 				,autoShow: true
 				,autoEl: {
 					 tag: 'webview'
-					,src: me.src
+					,src: me.record.get('url')
 					,style: 'width:100%;height:100%;'
-					,partition: 'persist:' + me.type + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
 					,disablewebsecurity: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
-					,useragent: Ext.getStore('ServicesList').getById(me.type).get('userAgent')
+					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 				}
 			};
 
-			if ( Ext.getStore('ServicesList').getById(me.type).get('allow_popups') ) cfg.autoEl.allowpopups = 'on';
+			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') ) cfg.autoEl.allowpopups = 'on';
 		}
 
 		return cfg;
 	}
 
 	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
+		var me = this;
 		if ( oldBadgeText === null ) oldBadgeText = 0;
 		var actualNotifications = Rambox.app.getTotalNotifications();
 
@@ -166,6 +177,31 @@ Ext.define('Rambox.ux.WebView',{
 		badgeText = Rambox.util.Format.stripNumber(badgeText);
 
 		Rambox.app.setTotalNotifications(actualNotifications - oldBadgeText + badgeText);
+
+		// Some services dont have Desktop Notifications, so we add that functionality =)
+		if ( Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') && oldBadgeText < badgeText && me.record.get('notifications') && !JSON.parse(localStorage.getItem('dontDisturb')) ) {
+			var text;
+			switch ( Ext.getStore('ServicesList').getById(me.type).get('type') ) {
+				case 'messaging':
+					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new message', 'new messages') + '.';
+					break;
+				case 'email':
+					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new email', 'new emails') + '.';
+					break;
+				default:
+					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new activity', 'new activities') + '.';
+					break;
+			}
+			var not = new Notification(me.record.get('name'), {
+				 body: text
+				,icon: tab.icon
+				,silent: me.record.get('muted')
+			});
+			not.onclick = function() {
+				require('electron').remote.getCurrentWindow().show();
+				Ext.cq1('app-main').setActiveTab(me);
+			};
+		}
 	}
 
 	,onAfterRender: function() {
@@ -198,7 +234,6 @@ Ext.define('Rambox.ux.WebView',{
 
 		// Open links in default browser
 		webview.addEventListener('new-window', function(e) {
-			console.log('new-window', e);
 			switch ( me.type ) {
 				case 'skype':
 					// hack to fix multiple browser tabs on Skype link click, re #11
@@ -271,7 +306,7 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		webview.addEventListener('did-get-redirect-request', function( e ) {
-			if ( e.isMainFrame ) Ext.defer(function() { webview.loadURL(e.newURL); }, 1000);
+			if ( e.isMainFrame ) webview.loadURL(e.newURL);
 		});
 	}
 
@@ -279,7 +314,10 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		if ( me.record.get('enabled') ) webview.loadURL(me.src);
+		if ( me.record.get('enabled') ) {
+			me.tab.setBadgeText('');
+			webview.loadURL(me.src);
+		}
 	}
 
 	,toggleDevTools: function(btn) {
@@ -289,9 +327,20 @@ Ext.define('Rambox.ux.WebView',{
 		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
 	}
 
+	,setURL: function(url) {
+		var me = this;
+		var webview = me.down('component').el.dom;
+
+		me.src = url;
+
+		if ( me.record.get('enabled') ) webview.loadURL(url);
+	}
+
 	,setAudioMuted: function(muted, calledFromDisturb) {
 		var me = this;
 		var webview = me.down('component').el.dom;
+
+		me.muted = muted;
 
 		if ( !muted && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 
@@ -302,6 +351,8 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
+		me.notifications = notification;
+
 		if ( notification && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 
 		if ( me.record.get('enabled') ) ipc.send('setServiceNotifications', webview.partition, notification);
@@ -310,12 +361,14 @@ Ext.define('Rambox.ux.WebView',{
 	,setEnabled: function(enabled) {
 		var me = this;
 
+		me.tab.setBadgeText('');
 		me.removeAll();
 		me.add(me.webViewConstructor(enabled));
 		if ( enabled ) {
 			me.resumeEvent('afterrender');
 			me.show();
 			me.tab.setStyle('-webkit-filter', 'grayscale(0)');
+			me.onAfterRender();
 		} else {
 			me.suspendEvent('afterrender');
 			me.tab.setStyle('-webkit-filter', 'grayscale(1)');

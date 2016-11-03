@@ -51,7 +51,7 @@ exports.create = function(win, config) {
 	appIcon.setToolTip('Rambox');
 	appIcon.setContextMenu(contextMenu);
 	appIcon.on('double-click', () => {
-		win.isVisible() && config.get('maximized') ? win.maximize() : win.show();
+		if ( !win.isVisible() || win.isMinimized() ) config.get('maximized') ? win.maximize() : win.show();
 	});
 };
 

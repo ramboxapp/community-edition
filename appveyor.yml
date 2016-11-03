@@ -1,4 +1,4 @@
-version: 0.4.2
+version: 0.4.4
 pull_requests:
   do_not_increment_build_number: true
 branches:
@@ -33,12 +33,13 @@ build_script:
 
     npm --version
 
-    node_modules/.bin/build --win --x64
+    node_modules/.bin/build --win --ia32 --x64
 test: off
 artifacts:
 - path: dist\win\*.exe
 - path: dist\win\*.nupkg
 - path: dist\win\RELEASES
+- path: dist\win-ia32\*.exe
 - path: dist\*.zip
 deploy:
 - provider: GitHub

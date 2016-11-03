@@ -24,10 +24,12 @@ const config = new Config({
 		,hide_menu_bar: false
 		,skip_taskbar: true
 		,auto_launch: !isDev
-		,keep_in_taskbar_on_close: getDefaultValueForkeep_in_taskbar_on_close()
+		// On Linux false because it's uncommon for apps on linux to stay in the taskbar on close
+		,keep_in_taskbar_on_close: process.platform !== 'linux'
 		,start_minimized: false
 		,systemtray_indicator: true
 		,master_password: false
+		,disable_gpu: process.platform === 'linux'
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''
@@ -39,15 +41,6 @@ const config = new Config({
 		,maximized: false
 	}
 });
-
-/**
- * Returns the default value for "keep_in_taskbar_on_close".
- * On all platforms except linux: true
- * On linux: false (because it's uncommon for apps on linux to stay in the taskbar on close)
- */
-function getDefaultValueForkeep_in_taskbar_on_close() {
-	return process.platform !== 'linux';
-}
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
@@ -232,6 +225,9 @@ function createMasterPasswordWindow() {
 		 backgroundColor: '#0675A0'
 		,frame: false
 	});
+	// Open the DevTools.
+	if ( isDev ) mainMasterPasswordWindow.webContents.openDevTools();
+
 	mainMasterPasswordWindow.loadURL('file://' + __dirname + '/../masterpassword.html');
 	mainMasterPasswordWindow.on('close', function() { mainMasterPasswordWindow = null });
 }
@@ -319,10 +315,10 @@ app.on('certificate-error', function(event, webContents, url, error, certificate
 	} else {
 		callback(false);
 		dialog.showMessageBox(mainWindow, {
-			 title: 'Certification Error'
+			 title: 'Certification Warning'
 			,message: 'The service with the following URL has an invalid authority certification.\n\n'+url+'\n\nIf is a Custom Service, you have to remove it and add it again, enabling the "Trust invalid authority certificates" in the Options.'
 			,buttons: ['OK']
-			,type: 'error'
+			,type: 'warning'
 		}, function() {
 
 		});
@@ -394,6 +390,12 @@ ipcMain.on('image:popup', function(event, url, partition) {
 // Proxy
 if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
 
+// Disable GPU Acceleration for Linux
+// to prevent White Page bug
+// https://github.com/electron/electron/issues/6139
+// https://github.com/saenzramiro/rambox/issues/181
+if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
@@ -409,12 +411,14 @@ app.on('window-all-closed', function () {
 	}
 });
 
+// Only macOS: On OS X it's common to re-create a window in the app when the
+// dock icon is clicked and there are no other windows open.
 app.on('activate', function () {
-	// On OS X it's common to re-create a window in the app when the
-	// dock icon is clicked and there are no other windows open.
 	if (mainWindow === null && mainMasterPasswordWindow === null ) {
 		config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	}
+
+	if ( mainWindow !== null ) mainWindow.show();
 });
 
 app.on('before-quit', function () {

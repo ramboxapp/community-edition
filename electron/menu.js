@@ -68,6 +68,29 @@ const helpSubmenu = [
 		}
 	},
 	{
+		label: `Tools`,
+		submenu: [
+			{
+				label: `Clear Cache`,
+				click(item, win) {
+					win.webContents.session.clearCache(function() {
+						win.reload();
+					});
+				}
+			},
+			{
+				label: `Clear Local Storage`,
+				click(item, win) {
+					win.webContents.session.clearStorageData({
+						storages: ['localstorage']
+					}, function() {
+						win.reload();
+					});
+				}
+			}
+		]
+	},
+	{
 		type: 'separator'
 	},
 	{
@@ -119,6 +142,13 @@ let tpl = [
 				accelerator: 'CmdOrCtrl+R',
 				click(item, focusedWindow) {
 					if (focusedWindow) focusedWindow.reload();
+				}
+			},
+			{
+				label: 'Reload current Service',
+				accelerator: 'CmdOrCtrl+Shift+R',
+				click() {
+					sendAction('reloadCurrentService');
 				}
 			},
 			{

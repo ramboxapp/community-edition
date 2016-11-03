@@ -59,7 +59,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,name: 'hide_menu_bar'
 						,boxLabel: 'Auto-hide Menu bar (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar
-						,hidden: Ext.os.is.MacOS
+						,hidden: process.platform !== 'win32'
 					}
 					,{
 						 xtype: 'checkbox'
@@ -67,7 +67,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: 'Show in Taskbar'
 						,value: config.skip_taskbar
 						,reference: 'skipTaskbar'
-						,hidden: Ext.os.is.MacOS
+						,hidden: process.platform !== 'win32'
 					}
 					,{
 						 xtype: 'checkbox'
@@ -75,7 +75,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: 'Keep Rambox in the Taskbar when close it'
 						,value: config.keep_in_taskbar_on_close
 						,bind: { disabled: '{!skipTaskbar.checked}' }
-						,hidden: Ext.os.is.MacOS
+						,hidden: process.platform !== 'win32'
 					}
 					,{
 						 xtype: 'checkbox'
@@ -88,7 +88,13 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,name: 'systemtray_indicator'
 						,boxLabel: 'Show System Tray indicator on unread messages'
 						,value: config.systemtray_indicator
-						,hidden: Ext.os.is.MacOS
+						,hidden: process.platform === 'darwin'
+					}
+					,{
+						 xtype: 'checkbox'
+						,name: 'disable_gpu'
+						,boxLabel: 'Disable Hardware Acceleration (needs to relaunch)'
+						,value: config.disable_gpu
 					}
 					,{
 						 xtype: 'fieldset'

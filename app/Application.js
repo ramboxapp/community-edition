@@ -29,9 +29,7 @@ Ext.define('Rambox.Application', {
 		// Set Google Analytics events
 		ga_storage._setAccount('UA-80680424-1');
 		ga_storage._trackPageview('/index.html', 'main');
-
-		// Initialize Auth0
-		Rambox.ux.Auth0.init();
+		ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({
@@ -45,9 +43,10 @@ Ext.define('Rambox.Application', {
 					,handler: function(key) {
 						var tabPanel = Ext.cq1('app-main');
 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-						if ( tabPanel.items.items[activeIndex + 1] && tabPanel.items.items[activeIndex + 1].id === 'tbfill' ) activeIndex++;
-						if ( !tabPanel.items.items[activeIndex + 1] ) activeIndex = -1;
-						tabPanel.setActiveTab( activeIndex + 1 );
+						var i = activeIndex + 1;
+						if ( i >= tabPanel.items.items.length - 1 ) i = 0;
+						while ( tabPanel.items.items[i].id === 'tbfill' ) i++;
+						tabPanel.setActiveTab( i );
 					}
 				}
 				,{
@@ -58,10 +57,38 @@ Ext.define('Rambox.Application', {
 					,handler: function(key) {
 						var tabPanel = Ext.cq1('app-main');
 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-						if ( tabPanel.items.items[activeIndex - 1] && tabPanel.items.items[activeIndex - 1].id === 'tbfill' ) activeIndex--;
-						if ( !tabPanel.items.items[activeIndex - 1] && tabPanel.items.items.length !== 2 ) activeIndex = tabPanel.items.items.length;
-						if ( tabPanel.items.items.length === 2 ) activeIndex = 1;
-						tabPanel.setActiveTab( activeIndex - 1 );
+						var i = activeIndex - 1;
+						if ( i < 0 ) i = tabPanel.items.items.length - 1;
+						while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
+						tabPanel.setActiveTab( i );
+					}
+				}
+				,{
+					 key: Ext.event.Event.PAGE_DOWN
+					,ctrl: true
+					,alt: false
+					,shift: false
+					,handler: function(key) {
+						var tabPanel = Ext.cq1('app-main');
+						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+						var i = activeIndex + 1;
+						if ( i >= tabPanel.items.items.length - 1 ) i = 0;
+						while ( tabPanel.items.items[i].id === 'tbfill' ) i++;
+						tabPanel.setActiveTab( i );
+					}
+				}
+				,{
+					 key: Ext.event.Event.PAGE_UP
+					,ctrl: true
+					,alt: false
+					,shift: false
+					,handler: function(key) {
+						var tabPanel = Ext.cq1('app-main');
+						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+						var i = activeIndex - 1;
+						if ( i < 0 ) i = tabPanel.items.items.length - 1;
+						while ( tabPanel.items.items[i].id === 'tbfill' ) i--;
+						tabPanel.setActiveTab( i );
 					}
 				}
 				,{
@@ -93,7 +120,9 @@ Ext.define('Rambox.Application', {
 					,ctrl: true
 					,alt: false
 					,handler: function(key) {
-						Ext.cq1('app-main').setActiveTab(key - 48);
+						key = key - 48;
+						if ( key >= Ext.cq1('app-main').items.indexOf(Ext.getCmp('tbfill')) ) key++;
+						Ext.cq1('app-main').setActiveTab(key);
 					}
 				}
 				,{

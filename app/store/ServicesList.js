@@ -74,6 +74,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://hangouts.google.com/'
 			,type: 'messaging'
 			,titleBlink: true
+			,manual_notifications: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
@@ -84,6 +85,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://___.hipchat.com/chat'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("hc-badge"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,custom_domain: true
 		},
 		{
 			 id: 'telegram'
@@ -121,7 +123,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Inbox by Gmail is a new app from the Gmail team. Inbox is an organized place to get things done and get back to what matters. Bundles keep emails organized.'
 			,url: 'http://inbox.google.com/?cid=imp'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Inbox",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,manual_notifications: true
+			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'chatwork'
@@ -186,7 +189,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Take control. Do more. Outlook is the free email and calendar service that helps you stay on top of what matters and get things done.'
 			,url: 'https://mail.live.com/'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,manual_notifications: true
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'outlook365'
@@ -195,7 +199,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Outlook for Business'
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle,checked&&a>oldUnread&&new Notification("Outlook 365",{body:"You have a new email",icon:"https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/outlook365.png"}),checked=!0,oldUnread=a}var checked=!1,oldUnread,originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,manual_notifications: true
+			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'yahoo'
@@ -204,6 +209,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Web-based email service offered by the American company Yahoo!. The service is free for personal use, and paid-for business email plans are available.'
 			,url: 'https://mail.yahoo.com/'
 			,type: 'email'
+			,note: 'To enable desktop notifications, you have to go to Options inside Yahoo! Mail.'
 		},
 		{
 			 id: 'protonmail'
@@ -311,6 +317,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Mattermost is an open source, self-hosted Slack-alternative. As an alternative to proprietary SaaS messaging, Mattermost brings all your team communication into one place, making it searchable and accessible anywhere.'
 			,url: '___'
 			,type: 'messaging'
+			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){document.getElementsByTagName("title")[0].innerHTML=a[0]==="*"?"(•) Mattermost":a},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
 		},
 		{
 			 id: 'dingtalk'
@@ -352,6 +359,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'custom.png'
 			,name: '_Custom Service'
 			,description: 'Add a custom service if is not listed above.'
+			,url: '___'
 			,type: 'custom'
 			,allow_popups: true
 		},
@@ -413,6 +421,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Ad-free business Email Hosting with a clean, minimalist interface. Integrated Calendar, Contacts, Notes, Tasks apps.'
 			,url: 'https://mail.zoho.com/'
 			,type: 'email'
+			,js_unread: 'zmail.aInfo[zmail.accId].mailId = "a";'
+			,note: 'To enable desktop notifications, you have to go to Settings inside Zoho Email.'
 		},
 		{
 			 id: 'zohochat'
@@ -449,13 +459,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
-			 id:' irccloud'
+			 id: ' irccloud'
 			,logo: 'irccloud.png'
 			,name: 'IRCCloud'
 			,description: 'IRCCloud is a modern IRC client that keeps you connected, with none of the baggage.'
 			,url: 'https://www.irccloud.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t=0;[].map.call(document.querySelectorAll(".bufferBadges > .badge"),n=>n.textContent?parseInt(n.textContent,10):0).reduce((x,y)=>x+y,0);updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,custom_domain: true
 		},
 		{
 			 id: 'ryver'
@@ -481,6 +492,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://kiwiirc.com/client'
 			,type: 'messaging'
 			,js_unread: 'function getUnreadCount(){var a=0;$(".activity").each(function(){a+=parseInt($(this).html())});var b=!1;return $(".panel[style*=display: block] .msg").each(function(){b?a++:$(this).hasClass("last_seen")&&(b=!0)}),a}function updateTitle(a){count=getUnreadCount(),cleanTitle=a.match(re),null!==cleanTitle&&cleanTitle.length>1?cleanTitle=cleanTitle[1]:cleanTitle=a,a=count>0?"("+getUnreadCount()+") "+cleanTitle:cleanTitle,$("title").text(a)}var re=/\(\d+\)[ ](.*)/;Object.defineProperty(document,"title",{configurable:!0,set:function(a){updateTitle(a)},get:function(){return $("title").text()}}),setInterval(function(){updateTitle(document.title)},3e3);'
+			,custom_domain: true
 		},
 		{
 			 id: 'icloud'
@@ -524,6 +536,130 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: '___'
 			,type: 'email'
 			,js_unread: 'function check_unread(){update_badge(appCtxt.getById(ZmFolder.ID_INBOX).numUnread)}function update_badge(a){document.title=a>0?"("+a+") "+original_title:original_title}const original_title=document.title;setInterval(check_unread,3e3);'
+		},
+		{
+			 id: 'kaiwa'
+			,logo: 'kaiwa.png'
+			,name: 'Kaiwa'
+			,description: 'A modern and Open Source Web client for XMPP.'
+			,url: '___'
+			,type: 'messaging'
+			,js_unread: 'function check_unread() { let count=0; for (let node of document.getElementsByClassName("unread")){ if (node.innerHTML){ count += parseInt(node.innerHTML); } } update_badge(count);}function update_badge(a) { document.title = a > 0 ? "(" + a + ") " + original_title : original_title}const original_title = document.title;setInterval(check_unread, 3e3);'
+		},
+		{
+			 id: 'movim'
+			,logo: 'movim.png'
+			,name: 'Movim'
+			,description: 'Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol.'
+			,url: 'https://___.movim.eu/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("color dark"),b=0;for(i=0;i<a.length;i++){var c=a[i].getElementsByClassName("counter");for(ii=0;ii<c.length;ii++)parseInt(c[ii].textContent.trim())%1===0&&(b+=parseInt(c[ii].textContent.trim()))}updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,custom_domain: true
+		},
+		{
+			 id: 'pushbullet'
+			,logo: 'pushbullet.png'
+			,name: 'Pushbullet'
+			,description: 'Pushbullet connects your devices, making them feel like one.'
+			,url: 'https://www.pushbullet.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'riot'
+			,logo: 'riot.png'
+			,name: 'Riot'
+			,description: 'Riot is a simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app.'
+			,url: 'https://riot.im/app/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'actor'
+			,logo: 'actor.png'
+			,name: 'Actor'
+			,description: 'Free and Secure text, photo and voice messages over 2G/3G or Wi-Fi.'
+			,url: 'https://app.actor.im/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'socialcast'
+			,logo: 'socialcast.png'
+			,name: 'Socialcast'
+			,description: 'Socialcast is the premier enterprise social networking platform that connects people to the knowledge, ideas and resources they need to work more effectively.'
+			,url: 'https://___.socialcast.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'fleep'
+			,logo: 'fleep.png'
+			,name: 'Fleep'
+			,description: 'Fleep enables communication within and across organizations - be it your team chats, project communication or 1:1 conversations.'
+			,url: 'https://fleep.io/chat'
+			,type: 'messaging'
+			,js_unread: 'document.getElementsByClassName("google-login-area")[0].remove();document.getElementsByClassName("microsoft-login-area")[0].remove();'
+		},
+		{
+			 id: 'spark'
+			,logo: 'spark.png'
+			,name: 'Cisco Spark'
+			,description: 'Cisco Spark is for group chat, video calling, and sharing documents with your team. It’s all backed by Cisco security and reliability.'
+			,url: 'https://web.ciscospark.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'mmmelon'
+			,logo: 'mmmelon.png'
+			,name: 'mmmelon'
+			,description: 'The ultimate tool for daily management of projects and teams. Cloud-based, web and mobile.'
+			,url: '___'
+			,type: 'messaging'
+		},
+		{
+			 id: 'drift'
+			,logo: 'drift.png'
+			,name: 'Drift'
+			,description: 'Drift is a messaging app that makes it easy for businesses to talk to their website visitors and customers in real-time, from anywhere.'
+			,url: 'https://app.drift.com/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'typetalk'
+			,logo: 'typetalk.png'
+			,name: 'Typetalk'
+			,description: 'Typetalk brings fun and ease to team discussions through instant messaging on desktop and mobile devices.'
+			,url: 'https://typetalk.in/signin'
+			,type: 'messaging'
+		},
+		{
+			 id: 'openmailbox'
+			,logo: 'openmailbox.png'
+			,name: 'Openmailbox'
+			,description: 'Free mail hosting. Respect your rights and your privacy.'
+			,url: 'https://www.openmailbox.org/webmail/'
+			,type: 'email'
+		},
+		{
+			 id: 'flock'
+			,logo: 'flock.png'
+			,name: 'Flock'
+			,description: 'Flock is a free enterprise tool for business communication. Packed with tons of productivity features, Flock drives efficiency and boosts speed of execution.'
+			,url: 'https://web.flock.co/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'crisp'
+			,logo: 'crisp.png'
+			,name: 'Crisp'
+			,description: 'Connect your customers to your team.'
+			,url: 'https://app.crisp.im/inbox'
+			,type: 'messaging'
+		},
+		{
+			 id: 'smooch'
+			,logo: 'smooch.png'
+			,name: 'Smooch'
+			,description: 'Unified multi-channel messaging for businesses, bots and software makers.'
+			,url: 'https://app.smooch.io/'
+			,type: 'messaging'
 		}
-	]
+    ]
 });

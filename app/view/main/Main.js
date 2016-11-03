@@ -5,6 +5,7 @@ Ext.define('Rambox.view.main.Main', {
 		,'Rambox.view.main.MainModel'
 		,'Rambox.ux.WebView'
 		,'Rambox.ux.mixin.Badge'
+		,'Rambox.view.add.Add'
 		,'Ext.ux.TabReorderer'
 	]
 
@@ -290,16 +291,18 @@ Ext.define('Rambox.view.main.Main', {
 					,allowToggle: false
 					,items: [
 						{
-							 text: '<b>Donate</b> with'
-							,overCls: ''
+							 text: '<b>Help us</b> with'
+							,pressed: true
 						}
 						,{
-							 glyph: 'xf1ed@FontAwesome'
-							,href: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA'
+							 text: 'Donation'
+							,glyph: 'xf21e@FontAwesome'
+							,handler: 'showDonate'
 						}
 						,{
-							 glyph: 'xf15a@FontAwesome'
-							,href: 'https://www.coinbase.com/saenzramiro'
+							 text: 'Translation'
+							,glyph: 'xf0ac@FontAwesome'
+							,href: 'https://crowdin.com/project/rambox/invite'
 						}
 					]
 				}
@@ -310,19 +313,26 @@ Ext.define('Rambox.view.main.Main', {
 				}
 				,'->'
 				,{
-					 glyph: 'xf082@FontAwesome'
-					,tooltip: 'Facebook'
-					,href: 'https://www.facebook.com/ramboxapp'
-				}
-				,{
-					 glyph: 'xf099@FontAwesome'
-					,tooltip: 'Twitter'
-					,href: 'https://www.twitter.com/ramboxapp'
-				}
-				,{
-					 glyph: 'xf09b@FontAwesome'
-					,tooltip: 'GitHub'
-					,href: 'https://www.github.com/saenzramiro/rambox'
+					xtype: 'segmentedbutton'
+					,allowToggle: false
+					,items: [
+						{
+							 text: '<b>Follow us</b>'
+							,pressed: true
+						}
+						,{
+							 glyph: 'xf082@FontAwesome'
+							,href: 'https://www.facebook.com/ramboxapp'
+						}
+						,{
+							 glyph: 'xf099@FontAwesome'
+							,href: 'https://www.twitter.com/ramboxapp'
+						}
+						,{
+							 glyph: 'xf09b@FontAwesome'
+							,href: 'https://www.github.com/saenzramiro/rambox'
+						}
+					]
 				}
 			]
 		}
