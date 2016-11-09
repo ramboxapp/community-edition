@@ -45,7 +45,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					{
 						 xtype: 'checkbox'
 						,name: 'auto_launch'
-						,boxLabel: 'Start automatically on system startup'
+						,boxLabel: 'Start automatically'
 						,value: config.auto_launch
 					}
 					,{
