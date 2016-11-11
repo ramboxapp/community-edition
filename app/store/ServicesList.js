@@ -459,7 +459,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
-			 id: ' irccloud'
+			 id: 'irccloud'
 			,logo: 'irccloud.png'
 			,name: 'IRCCloud'
 			,description: 'IRCCloud is a modern IRC client that keeps you connected, with none of the baggage.'
