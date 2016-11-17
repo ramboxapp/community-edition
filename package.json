@@ -90,7 +90,7 @@
 	"devDependencies": {
 		"asar": "^0.12.1",
 		"electron-builder": "6.5.2",
-		"electron-prebuilt": "1.4.1",
+		"electron": "1.4.7",
 		"electron-squirrel-startup": "^1.0.0"
 	},
 	"dependencies": {
