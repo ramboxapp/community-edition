@@ -95,7 +95,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.telegram.org/'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){document.title="("+e+") RamboxService"}setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)if(!e[i].classList.contains("im_dialog_badge_muted")){t+=parseInt(e[i].innerHTML.trim())}}function updateBadge(e){document.title="("+e+") RamboxService"}setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'wechat'
