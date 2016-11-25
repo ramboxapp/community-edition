@@ -33,8 +33,10 @@ Ext.define('Rambox.store.Services', {
 					,icon: service.get('type') !== 'custom' ? 'resources/icons/'+service.get('logo') : ( service.get('logo') === '' ? 'resources/icons/custom.png' : service.get('logo'))
 					,src: service.get('url')
 					,type: service.get('type')
-					,muted: service.get('muted')
-					,enabled: service.get('enabled')
+					,muted: service.get('muted'),
+					includeInGlobalUnreadCounter: service.get('includeInGlobalUnreadCounter'),
+					displayTabUnreadCounter: service.get('displayTabUnreadCounter'),
+					enabled: service.get('enabled')
 					,record: service
 					,tabConfig: {
 						service: service
