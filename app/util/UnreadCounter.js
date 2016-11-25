@@ -49,7 +49,6 @@ Ext.define('Rambox.util.UnreadCounter', {
 		this.setUnreadCountForService = function(id, unreadCount) {
 			unreadCount = parseInt(unreadCount, 10);
 
-			console.log('Rambox.util.UnreadCounter#setUnreadCountForService(' + id + ', ' + unreadCount + ')');
 			if (unreadCountByService.has(id)) {
 				totalUnreadCount -= unreadCountByService.get(id);
 			}
