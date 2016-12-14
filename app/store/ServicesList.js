@@ -660,6 +660,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Unified multi-channel messaging for businesses, bots and software makers.'
 			,url: 'https://app.smooch.io/'
 			,type: 'messaging'
+		},
+		{
+			id: 'xing',
+			logo: 'xing.png',
+			name: 'XING',
+			description: 'Career-oriented social networking',
+			url: 'https://www.xing.com/messages/conversations',
+			type: 'messaging',
+			js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { let newTitle = originalTitle; if (count && count >= 1) { newTitle += ` (${count})`; } document.title = newTitle; } setInterval(checkUnread, 3000); checkUnread(); })();'
 		}
     ]
 });
