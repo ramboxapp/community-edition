@@ -97,6 +97,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,value: config.disable_gpu
 					}
 					,{
+						 xtype: 'checkbox'
+						,name: 'spellcheck'
+						,boxLabel: 'Enable spellcheck (en_US)'
+						,value: config.spellcheck
+					}
+					,{
 						 xtype: 'fieldset'
 						,title: 'Master Password - Ask for password on startup'
 						,collapsed: !config.master_password

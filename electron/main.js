@@ -30,6 +30,7 @@ const config = new Config({
 		,systemtray_indicator: true
 		,master_password: false
 		,disable_gpu: process.platform === 'linux'
+		,spellcheck: false
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''

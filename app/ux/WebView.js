@@ -309,9 +309,11 @@ Ext.define('Rambox.ux.WebView',{
 			if ( e.isMainFrame ) webview.loadURL(e.newURL);
 		});
 
-		var webFrame = require('electron').webFrame;
-		var SpellCheckProvider = require('electron-spell-check-provider');
-		webFrame.setSpellCheckProvider('en-US', true, new SpellCheckProvider('en-US'));
+		if(ipc.sendSync('getConfig').spellcheck) {
+			var webFrame = require('electron').webFrame;
+			var SpellCheckProvider = require('electron-spell-check-provider');
+			webFrame.setSpellCheckProvider('en-US', true, new SpellCheckProvider('en-US'));
+		}
 	}
 
 	,reloadService: function(btn) {
