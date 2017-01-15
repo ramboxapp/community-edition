@@ -43,7 +43,7 @@ const config = new Config({
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
-	 name: 'Rambox'
+	 name: 'Rambox.app'
 	,isHiddenOnLaunch: config.get('start_minimized')
 });
 config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
