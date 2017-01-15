@@ -1,8 +1,12 @@
 Ext.define('Rambox.view.add.AddController', {
-	 extend: 'Ext.app.ViewController'
-	,alias: 'controller.add-add'
+	extend: 'Ext.app.ViewController',
+	alias: 'controller.add-add',
 
-	,doCancel: function( btn ) {
+	requires: [
+		'Rambox.util.UnreadCounter'
+	],
+
+	doCancel: function( btn ) {
 		var me = this;
 
 		me.getView().close();
@@ -29,37 +33,44 @@ Ext.define('Rambox.view.add.AddController', {
 				,url: formValues.url
 				,align: formValues.align
 				,notifications: formValues.notifications
-				,muted: formValues.muted
-				,trust: formValues.trust
+				,muted: formValues.muted,
+				displayTabUnreadCounter: formValues.displayTabUnreadCounter,
+				includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter,
+				trust: formValues.trust
 				,js_unread: formValues.js_unread
 			});
+
+			var view = Ext.getCmp('tab_'+win.record.get('id'));
+
 			// Change the title of the Tab
-			Ext.getCmp('tab_'+win.record.get('id')).setTitle(formValues.serviceName);
+			view.setTitle(formValues.serviceName);
 			// Change sound of the Tab
-			Ext.getCmp('tab_'+win.record.get('id')).setAudioMuted(formValues.muted);
+			view.setAudioMuted(formValues.muted);
 			// Change notifications of the Tab
-			Ext.getCmp('tab_'+win.record.get('id')).setNotifications(formValues.notifications);
+			view.setNotifications(formValues.notifications);
 			// Change the icon of the Tab
 			if ( win.record.get('type') === 'custom' && oldData.logo !== formValues.logo ) Ext.getCmp('tab_'+win.record.get('id')).setConfig('icon', formValues.logo === '' ? 'resources/icons/custom.png' : formValues.logo);
 			// Change the URL of the Tab
-			if ( oldData.url !== formValues.url ) Ext.getCmp('tab_'+win.record.get('id')).setURL(formValues.url);
+			if ( oldData.url !== formValues.url ) view.setURL(formValues.url);
 			// Change the align of the Tab
 			if ( oldData.align !== formValues.align ) {
 				if ( formValues.align === 'left' ) {
-					Ext.cq1('app-main').moveBefore(Ext.getCmp('tab_'+win.record.get('id')), Ext.getCmp('tbfill'));
+					Ext.cq1('app-main').moveBefore(view, Ext.getCmp('tbfill'));
 				} else {
-					Ext.cq1('app-main').moveAfter(Ext.getCmp('tab_'+win.record.get('id')), Ext.getCmp('tbfill'));
+					Ext.cq1('app-main').moveAfter(view, Ext.getCmp('tbfill'));
 				}
 			}
 			// Apply the JS Code of the Tab
 			if ( win.down('textarea').isDirty() ) {
 				Ext.Msg.confirm('CUSTOM CODE', 'Rambox needs to reload the service to execute the new JavaScript code. Do you want to do it now?', function( btnId ) {
-					if ( btnId === 'yes' ) Ext.getCmp('tab_'+win.record.get('id')).reloadService();
+					if ( btnId === 'yes' ) view.reloadService();
 				});
 			}
 
-			Ext.getCmp('tab_'+win.record.get('id')).record = win.record;
-			Ext.getCmp('tab_'+win.record.get('id')).tabConfig.service = win.record;
+			view.record = win.record;
+			view.tabConfig.service = win.record;
+
+			view.refreshUnreadCount();
 		} else {
 			// Format data
 			if ( win.record.get('url').indexOf('___') >= 0 ) {
@@ -73,8 +84,10 @@ Ext.define('Rambox.view.add.AddController', {
 				,url: formValues.url
 				,align: formValues.align
 				,notifications: formValues.notifications
-				,muted: formValues.muted
-				,trust: formValues.trust
+				,muted: formValues.muted,
+				displayTabUnreadCounter: formValues.displayTabUnreadCounter,
+				includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter,
+				trust: formValues.trust
 				,js_unread: formValues.js_unread
 			});
 			service.save();
@@ -121,5 +134,4 @@ Ext.define('Rambox.view.add.AddController', {
 		// Make focus to the name field
 		win.down('textfield[name="serviceName"]').focus(true, 100);
 	}
-
 });
