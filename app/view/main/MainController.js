@@ -276,9 +276,9 @@ Ext.define('Rambox.view.main.MainController', {
 		};
 
 		var winLock = Ext.create('Ext.window.Window', {
-			 width: '100%'
-			,height: '100%'
+			 maximized: true
 			,closable: false
+			,resizable: false
 			,minimizable: false
 			,maximizable: false
 			,draggable: false
