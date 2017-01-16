@@ -660,6 +660,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Unified multi-channel messaging for businesses, bots and software makers.'
 			,url: 'https://app.smooch.io/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'Workplace'
+			,logo: 'workplace.png'
+			,name: 'Workplace by Facebook'
+			,description: 'Connect everyone in your company and turn ideas into action. Through group discussion, a personalised News Feed, and voice and video calling, work together and get more done. Workplace is an ad-free space, separate from your personal Facebook account.'
+			,url: 'https://___.facebook.com/'
+			,type: 'messaging'
 		}
     ]
 });
