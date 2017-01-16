@@ -36,6 +36,12 @@ Ext.define('Rambox.view.main.MainController', {
 		store.resumeEvent('remove');
 	}
 
+	,showServiceTab: function( grid, record, tr, rowIndex, e ) {
+		if ( e.position.colIdx === 0 ) { // Service Logo
+			Ext.getCmp('tab_'+record.get('id')).show();
+		}
+	}
+
 	,onRenameService: function(editor, e) {
 		var me = this;
 

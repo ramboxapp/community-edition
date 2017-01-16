@@ -214,7 +214,8 @@ Ext.define('Rambox.view.main.Main', {
 						,stripeRows: true
 					}
 					,listeners: {
-						edit: 'onRenameService'
+						 edit: 'onRenameService'
+						,rowdblclick: 'showServiceTab'
 					}
 				}
 			]
