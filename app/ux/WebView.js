@@ -160,7 +160,8 @@ Ext.define('Rambox.ux.WebView',{
 					,autosize: 'on'
 					,disablewebsecurity: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
-					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent'),
+					preload: './resources/js/rambox-service-api.js'
 				}
 			};
 
@@ -262,14 +263,54 @@ Ext.define('Rambox.ux.WebView',{
 			webview.executeJavaScript('document.body.scrollTop=0;');
 		});
 
-		webview.addEventListener("page-title-updated", function(e) {
-			var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
+		webview.addEventListener('ipc-message', function(event) {
+			var channel = event.channel;
+			switch (channel) {
+				case 'rambox.setUnreadCount':
+					handleSetUnreadCount(event);
+					break;
+				case 'rambox.clearUnreadCount':
+					handleClearUnreadCount(event);
+					break;
+			}
+
+			/**
+			 * Handles 'rambox.clearUnreadCount' messages.
+			 * Clears the unread count.
+			 */
+			function handleClearUnreadCount() {
+				me.tab.setBadgeText('');
+			}
+
+			/**
+			 * Handles 'rambox.setUnreadCount' messages.
+			 * Sets the badge text if the event contains an integer as first argument.
+			 *
+			 * @param event
+			 */
+			function handleSetUnreadCount(event) {
+				if (Array.isArray(event.args) === true && event.args.length > 0) {
+					var count = event.args[0];
+					if (count === parseInt(count, 10)) {
+						me.tab.setBadgeText(Rambox.util.Format.formatNumber(count));
+					}
+				}
+			}
+		});
+
+		/**
+		 * Register page title update event listener only for services that don't prevent it by setting 'dont_update_unread_from_title' to true.
+		 */
+		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('dont_update_unread_from_title') !== true) {
+			webview.addEventListener("page-title-updated", function(e) {
+				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
 				count = count === '•' ? count : Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
 				count = count === null ? '0' : count;
 
-			me.setUnreadCount(count);
-		});
+        me.setUnreadCount(count);
+			});
+		}
 
 		webview.addEventListener('did-get-redirect-request', function( e ) {
 			if ( e.isMainFrame ) webview.loadURL(e.newURL);
