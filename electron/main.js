@@ -23,9 +23,9 @@ const config = new Config({
 		 always_on_top: false
 		,hide_menu_bar: false
 		,skip_taskbar: true
-		,auto_launch: !isDev,
-		 window_close_behavior: 'keep_in_tray',
-		start_minimized: false
+		,auto_launch: !isDev
+		,window_close_behavior: 'keep_in_tray'
+		,start_minimized: false
 		,systemtray_indicator: true
 		,master_password: false
 		,disable_gpu: process.platform === 'linux'
@@ -43,7 +43,7 @@ const config = new Config({
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
-	 name: 'Rambox.app'
+	 name: process.platform === 'darwin' ? 'Rambox.app' : 'Rambox'
 	,isHiddenOnLaunch: config.get('start_minimized')
 });
 config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
