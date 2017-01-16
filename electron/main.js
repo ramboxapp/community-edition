@@ -24,8 +24,7 @@ const config = new Config({
 		,hide_menu_bar: false
 		,skip_taskbar: true
 		,auto_launch: !isDev
-		// On Linux false because it's uncommon for apps on linux to stay in the taskbar on close
-		,keep_in_taskbar_on_close: process.platform !== 'linux'
+		,window_close_behavior: 'keep_in_tray'
 		,start_minimized: false
 		,systemtray_indicator: true
 		,master_password: false
@@ -45,7 +44,7 @@ const config = new Config({
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
-	 name: 'Rambox'
+	 name: process.platform === 'darwin' ? 'Rambox.app' : 'Rambox'
 	,isHiddenOnLaunch: config.get('start_minimized')
 });
 config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
@@ -200,11 +199,19 @@ function createWindow () {
 					app.hide();
 					break;
 				case 'linux':
-					config.get('keep_in_taskbar_on_close') ? mainWindow.hide() : app.quit();
-					break;
 				case 'win32':
 				default:
-					config.get('keep_in_taskbar_on_close') ? mainWindow.minimize() : mainWindow.hide();
+					switch (config.get('window_close_behavior')) {
+						case 'keep_in_tray':
+							mainWindow.hide();
+							break;
+						case 'keep_in_tray_and_taskbar':
+							mainWindow.minimize();
+							break;
+						case 'quit':
+							app.quit();
+							break;
+					}
 					break;
 			}
 		}

@@ -67,17 +67,28 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: 'Show in Taskbar'
 						,value: config.skip_taskbar
 						,reference: 'skipTaskbar'
-						,hidden: process.platform !== 'win32'
-					}
-					,{
-						 xtype: 'checkbox'
-						,name: 'keep_in_taskbar_on_close'
-						,boxLabel: 'Keep Rambox in the Taskbar when close it'
-						,value: config.keep_in_taskbar_on_close
-						,bind: { disabled: '{!skipTaskbar.checked}' }
-						,hidden: process.platform !== 'win32'
-					}
-					,{
+						,hidden: process.platform === 'darwin'
+					},
+					{
+						xtype: 'combo',
+						name: 'window_close_behavior',
+						fieldLabel: 'When closing the main window',
+						labelAlign: 'top',
+						value: config.window_close_behavior,
+						displayField: 'label',
+						valueField: 'value',
+						editable: false,
+						store: Ext.create('Ext.data.Store', {
+							fields: ['value', 'label'],
+							data : [
+								{ 'value': 'keep_in_tray', 'label': 'Keep in tray' },
+								{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and taskbar' },
+								{ 'value': 'quit', 'label': 'Quit' }
+							]
+						}),
+						hidden: process.platform === 'darwin'
+					},
+					{
 						 xtype: 'checkbox'
 						,name: 'always_on_top'
 						,boxLabel: 'Always on top'

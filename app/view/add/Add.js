@@ -162,8 +162,31 @@ Ext.define('Rambox.view.add.Add',{
 								,inputValue: true
 							}
 						]
-					}
-					,{
+					},
+					{
+						xtype: 'fieldset',
+						title: 'Unread counter',
+						margin: '10 0 0 0',
+						items: [
+							{
+								xtype: 'checkbox',
+								boxLabel: 'Display tab unread counter',
+								name: 'displayTabUnreadCounter',
+								checked: me.edit ? me.record.get('displayTabUnreadCounter') : true,
+								uncheckedValue: false,
+								inputValue: true
+							},
+							{
+								xtype: 'checkbox',
+								boxLabel: 'Include in global unread counter',
+								name: 'includeInGlobalUnreadCounter',
+								checked: me.edit ? me.record.get('includeInGlobalUnreadCounter') : true,
+								uncheckedValue: false,
+								inputValue: true
+							}
+						]
+					},
+					{
 						 xtype: 'fieldset'
 						,title: 'Advanced'
 						,margin: '10 0 0 0'
