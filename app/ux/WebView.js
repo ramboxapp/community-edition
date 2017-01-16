@@ -39,12 +39,12 @@ Ext.define('Rambox.ux.WebView',{
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
 			,title: me.record.get('name')
- 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
- 			,src: me.record.get('url')
- 			,type: me.record.get('type')
- 			,align: me.record.get('align')
- 			,notifications: me.record.get('notifications')
- 			,muted: me.record.get('muted')
+			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
+			,src: me.record.get('url')
+			,type: me.record.get('type')
+			,align: me.record.get('align')
+			,notifications: me.record.get('notifications')
+			,muted: me.record.get('muted')
 			,tabConfig: {
 				listeners: {
 					afterrender : function( btn ) {
@@ -315,6 +315,12 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener('did-get-redirect-request', function( e ) {
 			if ( e.isMainFrame ) webview.loadURL(e.newURL);
 		});
+
+		if(ipc.sendSync('getConfig').spellcheck) {
+			var webFrame = require('electron').webFrame;
+			var SpellCheckProvider = require('electron-spell-check-provider');
+			webFrame.setSpellCheckProvider('en-US', true, new SpellCheckProvider('en-US'));
+		}
 	},
 
 	setUnreadCount: function(newUnreadCount) {
