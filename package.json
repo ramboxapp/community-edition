@@ -89,8 +89,8 @@
 	},
 	"devDependencies": {
 		"asar": "^0.12.1",
-		"electron-builder": "6.5.2",
-		"electron": "1.4.7",
+		"electron-builder": "11.3.0",
+		"electron": "1.4.14",
 		"electron-squirrel-startup": "^1.0.0"
 	},
 	"dependencies": {
