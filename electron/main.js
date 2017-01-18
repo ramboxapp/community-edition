@@ -181,13 +181,13 @@ function createWindow () {
 	mainWindow.on('move', function(e) { if (!mainWindow.isMaximized()) config.set(mainWindow.getBounds()); });
 	mainWindow.on('app-command', (e, cmd) => {
 		// Navigate the window back when the user hits their mouse back button
-		if ( cmd === 'browser-backward' ) mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").getActiveTab().goBack();');
+		if ( cmd === 'browser-backward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goBack();');
 		// Navigate the window forward when the user hits their mouse forward button
-		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").getActiveTab().goForward();');
+		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
 	});
 	mainWindow.on('focus', (e) => {
 		// Make focus on current service when user use Alt + Tab to activate Rambox
-		mainWindow.webContents.executeJavaScript('Ext.cq1("app-main").fireEvent("tabchange", Ext.cq1("app-main"), Ext.cq1("app-main").getActiveTab());');
+		mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").fireEvent("tabchange", Ext.cq1("app-main"), Ext.cq1("app-main").getActiveTab());');
 	});
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {
