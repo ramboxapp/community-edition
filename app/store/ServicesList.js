@@ -711,6 +711,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Manage your professional identity. Build and engage with your professional network. Access knowledge, insights and opportunities.'
 			,url: 'https://www.linkedin.com/messaging'
 			,type: 'messaging'
+		},
+		{
+			 id: 'zyptonite'
+			,logo: 'zyptonite.png'
+			,name: 'Zyptonite'
+			,description: 'Zyptonite is the ultimate cyber secure communication tool for enterprise customers designed to address the need to securely communicate via voice, video, and chat, and transfer files and information across a global mobile workforce.'
+			,url: 'https://app.zyptonite.com/'
+			,type: 'messaging'
+			,titleBlink: true
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("z-messages"),b=0;for(i=0;i<a.length;i++)b+=parseInt(a[i].innerHTML.trim());updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		}
   ]
 });
