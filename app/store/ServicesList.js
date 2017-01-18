@@ -686,6 +686,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
 			,url: 'https://teams.microsoft.com'
 			,type: 'messaging'
+		},
+		{
+			 id: 'kezmo'
+			,logo: 'kezmo.png'
+			,name: 'Kezmo'
+			,description: 'Kezmo is an enterprise chat and collaboration tool to help teams get things done. It’s an email alternative for secure team communication.'
+			,url: 'https://app.kezmo.com/web/'
+			,type: 'messaging'
 		}
   ]
 });
