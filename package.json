@@ -3,7 +3,7 @@
 	"scripts": {
 		"start": "electron electron/main.js",
 		"start:debug": "electron electron/main.js --enable-logging",
-		"test": "node electron/test.js",
+		"test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
 		"sencha:clean": "rm -rf ./build/production",
 		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
 		"sencha:compile:build": "sencha app build && cp app/package.json build/production/Rambox/ && cp -R build/production/Rambox/* ../rambox-build",
@@ -89,9 +89,12 @@
 	},
 	"devDependencies": {
 		"asar": "^0.12.1",
+    "electron": "1.4.14",
 		"electron-builder": "11.3.0",
-		"electron": "1.4.14",
-		"electron-squirrel-startup": "^1.0.0"
+		"electron-squirrel-startup": "^1.0.0",
+    "chai": "3.5.0",
+    "mocha": "3.2.0",
+	  "spectron": "3.4.0"
 	},
 	"dependencies": {
 		"auto-launch": "4.0.0",
