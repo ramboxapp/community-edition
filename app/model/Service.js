@@ -60,8 +60,5 @@ Ext.define('Rambox.model.Service', {
 		 name: 'js_unread'
 		,type: 'string'
 		,defaultValue: ''
-	},{
-		 name: 'firebase_key'
-		,type: 'int'
 	}]
 });

@@ -65,50 +65,5 @@ Ext.define('Rambox.store.Services', {
 			store.suspendEvent('load');
 			Ext.cq1('app-main').resumeEvent('add');
 		}
-		,add: function(store, records, index) {
-			var record = records[0];
-			if ( !localStorage.getItem('id_token') || (!Ext.isEmpty(record.previousValues) && !Ext.isEmpty(record.previousValues.position)) ) return true;
-
-			console.info('Saving into Firebase...', record.data);
-
-			var ref = fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services');
-
-			ref.once('value', function(snap) {
-				// Generate Key
-				var i = 0;
-				while ( snap.child(i).exists() ) { i++; }
-
-				// Save Firebase Key into record
-				record.set('firebase_key', i);
-
-				// Prevent saving local ID and Firebase Key into Firebase
-				var data = Ext.clone(record.data);
-				delete data.id;
-				delete data.firebase_key;
-
-				// Make the call
-				ref.child(i).set(data);
-			});
-		}
-		,update: function(store, record, operation, data) {
-			// Is not logged, Skip
-			if ( !localStorage.getItem('id_token') || operation === 'commit' ) return;
-
-			if ( operation === 'edit' && data[0] !== 'firebase_key' ) {
-				var obj = {};
-				Ext.each(data, function(prop) {
-					obj[prop] = record.get(prop);
-				});
-
-				fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id + '/services').child(record.get('firebase_key')).update(obj);
-			}
-		}
-		,remove: function(store, records, index, isMove) {
-			if ( !localStorage.getItem('id_token') ) return;
-
-			Ext.each(records, function(rec) {
-				fireRef.database().ref('users/' + Ext.decode(localStorage.getItem('profile')).user_id).child('services').child(rec.get('firebase_key')).remove();
-			});
-		}
 	}
 });

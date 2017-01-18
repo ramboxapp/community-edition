@@ -352,22 +352,15 @@ Ext.define('Rambox.view.main.MainController', {
 			// Google Analytics Event
 			ga_storage._trackEvent('Users', 'loggedOut');
 
-			firebase.auth().signOut().then(function() {
-				// Remove Events for Firebase
-				Rambox.ux.Firebase.removeEvents();
+			// Logout from Auth0
+			Rambox.ux.Auth0.logout();
 
-				// Logout from Auth0
-				Rambox.ux.Auth0.logout();
+			Ext.cq1('app-main').getViewModel().set('username', '');
+			Ext.cq1('app-main').getViewModel().set('avatar', '');
 
-				Ext.cq1('app-main').getViewModel().set('username', '');
-				Ext.cq1('app-main').getViewModel().set('avatar', '');
+			if ( Ext.isFunction(callback) ) callback();
 
-				if ( Ext.isFunction(callback) ) callback();
-
-				Ext.Msg.hide();
-			}, function(error) {
-				console.error(error);
-			});
+			Ext.Msg.hide();
 		}
 
 		if ( btn ) {

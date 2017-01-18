@@ -41,130 +41,128 @@ Ext.define('Rambox.ux.Auth0', {
 					return;
 				}
 
-				console.log('LOGIN', err, profile, authResult.idToken);
-
 				// Display a spinner while waiting
 				Ext.Msg.wait('Please wait until we get your configuration.', 'Connecting...');
 
 				// Google Analytics Event
 				ga_storage._trackEvent('Users', 'loggedIn');
 
-				// Set the options to retreive a firebase delegation token
-				var options = {
-					 id_token: authResult.idToken
-					,api: 'firebase'
-					,scope: 'openid name email displayName'
-					,target: auth0Cfg.clientID
-				};
+				// User is logged in
+				// Save the profile and JWT.
+				localStorage.setItem('profile', JSON.stringify(profile));
+				localStorage.setItem('id_token', authResult.idToken);
 
-				// Make a call to the Auth0 '/delegate'
-				me.auth0.getDelegationToken(options, function(err, result) {
-					if ( !err ) {
-						// Exchange the delegate token for a Firebase auth token
-						firebase.auth().signInWithCustomToken(result.id_token).then(function(snapshot) {
-							fireRef.database().ref('users/' + profile.user_id).child('services').orderByChild('position').once('value', function(snapshot2) {
-								Ext.Msg.hide();
+				if ( !Ext.isEmpty(profile.user_metadata.services) ) {
+					Ext.each(profile.user_metadata.services, function(s) {
+						var service = Ext.create('Rambox.model.Service', s);
+						service.save();
+						Ext.getStore('Services').add(service);
+					});
 
-								// Import Services function
-								var importServices = function(snap) {
-									snap.forEach(function(data) {
-										var s = data.val();
-										s.firebase_key = data.key;
-										var service = Ext.create('Rambox.model.Service', s);
-										service.save();
-										Ext.getStore('Services').add(service);
-									});
-									Ext.getStore('Services').resumeEvent('load');
-									Ext.getStore('Services').load();
+					require('electron').remote.getCurrentWindow().reload();
+				}
 
-									// User is logged in
-									// Save the profile and JWT.
-									localStorage.setItem('profile', JSON.stringify(profile));
-									localStorage.setItem('id_token', authResult.idToken);
-
-									// Define Events for Firebase
-									Rambox.ux.Firebase.createEvents();
-								}
-
-								// Firebase empty and Have Services
-								if ( !snapshot2.hasChildren() && Ext.getStore('Services').getCount() > 0 ) {
-									Ext.Msg.confirm('Import', 'You don\'t have any service saved. Do you want to import your current services?', function(btnId) {
-										if ( btnId === 'yes' ) {
-											var services = [];
-											Ext.getStore('Services').each(function(service, index) {
-												service.set('firebase_key', index);
-												// Prevent saving local ID into Firebase
-												var data = Ext.clone(service.data);
-												delete data.id;
-
-												services.push(data);
-											});
-											fireRef.database().ref('users/' + profile.user_id).set({
-												services: services
-											});
-
-											// User is logged in
-											// Save the profile and JWT.
-											localStorage.setItem('profile', JSON.stringify(profile));
-											localStorage.setItem('id_token', authResult.idToken);
-
-											// Define Events for Firebase
-											Rambox.ux.Firebase.createEvents();
-										} else {
-											Ext.Msg.confirm('Clear services', 'Do you want to remove all your current services to start over?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
-												if ( btnId === 'yes' ) {
-													Ext.cq1('app-main').getController().removeAllServices(false);
-												} else {
-													me.logout();
-												}
-											});
-										}
-									});
-								// Firebase not empty and Have Services
-								} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() > 0 ) {
-									Ext.Msg.confirm('Confirm', 'To import your configuration, I need to remove all your current services. Do you want to continue?<br /><br />If <b>NO</b>, you will be logged out.', function(btnId) {
-										if ( btnId === 'yes' ) {
-											Ext.cq1('app-main').getController().removeAllServices(false, function() {
-												importServices(snapshot2);
-											});
-										} else {
-											me.logout();
-										}
-									});
-								// Firebase not empty and Have no Services
-								} else if ( snapshot2.hasChildren() && Ext.getStore('Services').getCount() === 0 ) {
-									importServices(snapshot2);
-								} else {
-									// Save the profile and JWT.
-									localStorage.setItem('profile', JSON.stringify(profile));
-									localStorage.setItem('id_token', authResult.idToken);
-								}
-							});
-						})['catch'](function(error) {
-							Ext.Msg.hide();
-							Ext.Msg.show({
-								 title: 'Firebase Error'
-								,message: error.message+'<br><br>Code: '+error.code+'<br><br>Sorry, try again later.'
-								,icon: Ext.Msg.ERROR
-								,buttons: Ext.Msg.OK
-							});
-							me.logout();
-							Ext.cq1('app-main').getViewModel().set('username', '');
-							Ext.cq1('app-main').getViewModel().set('avatar', '');
-						});
-					}
-				});
-
+				Ext.Msg.hide();
 				Ext.cq1('app-main').getViewModel().set('username', profile.name);
 				Ext.cq1('app-main').getViewModel().set('avatar', profile.picture);
 			});
 		});
 	}
 
-	,login: function() {
+	,backupConfiguration: function() {
 		var me = this;
 
-		if ( !me.auth0 ) Rambox.ux.Auth0.init();
+		Ext.Msg.wait('Saving backup...', 'Please wait...');
+
+		// Getting all services
+		var lastupdate = (new Date()).toJSON();
+		var services = [];
+		Ext.getStore('Services').each(function(service) {
+			delete service.data.id;
+			services.push(service.data);
+		});
+
+		Ext.Ajax.request({
+			 url: 'https://rambox.auth0.com/api/v2/users/'+Ext.decode(localStorage.getItem('profile')).user_id
+			,method: 'PATCH'
+			,headers: { authorization: "Bearer " + localStorage.getItem('id_token') }
+			,jsonData: { user_metadata: { services: services, services_lastupdate: lastupdate } }
+			,success: function(response) {
+				Ext.Msg.hide();
+				// Save the last update in localStorage
+				var profile = Ext.decode(localStorage.getItem('profile'));
+				profile.user_metadata.services_lastupdate = lastupdate;
+				localStorage.setItem('profile', Ext.encode(profile));
+				Ext.cq1('app-main').getViewModel().set('last_sync', new Date(lastupdate).toUTCString());
+
+				Ext.toast({
+					 html: '<i class="fa fa-check fa-3x fa-pull-left" aria-hidden="true"></i> Your configuration were successfully backed up.'
+					,title: 'Synchronize Configuration'
+					,width: 300
+					,align: 't'
+					,closable: false
+				});
+			}
+			,failure: function(response) {
+				Ext.Msg.hide();
+				Ext.toast({
+					 html: '<i class="fa fa-times fa-3x fa-pull-left" aria-hidden="true"></i> Error ocurred when trying to backup your configuration.'
+					,title: 'Synchronize Configuration'
+					,width: 300
+					,align: 't'
+					,closable: false
+				});
+				console.error(response);
+			}
+		});
+	}
+
+	,restoreConfiguration: function() {
+		var me = this;
+
+		Ext.cq1('app-main').getController().removeAllServices(false, function() {
+			me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
+				if (err) return alert('There was an error getting the profile: ' + err.message);
+
+				Ext.each(profile.user_metadata.services, function(s) {
+					var service = Ext.create('Rambox.model.Service', s);
+					service.save();
+					Ext.getStore('Services').add(service);
+				});
+
+				require('electron').remote.getCurrentWindow().reload();
+			});
+		});
+	}
+
+	,checkConfiguration: function() {
+		var me = this;
+
+		me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
+			if (err) return alert('There was an error getting the profile: ' + err.message);
+
+			if ( Math.floor(new Date(profile.user_metadata.services_lastupdate) / 1000) > Math.floor(new Date(Ext.decode(localStorage.getItem('profile')).user_metadata.services_lastupdate) / 1000) ) {
+				Ext.toast({
+					 html: 'Your settings are out of date.'
+					,title: 'Synchronize Configuration'
+					,width: 300
+					,align: 't'
+					,closable: false
+				});
+			} else {
+				Ext.toast({
+					 html: 'Latest backup is already applied.'
+					,title: 'Synchronize Configuration'
+					,width: 300
+					,align: 't'
+					,closable: false
+				});
+			}
+		});
+	}
+
+	,login: function() {
+		var me = this;
 
 		me.lock.show();
 	}

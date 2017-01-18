@@ -6,7 +6,5 @@ Ext.define('Rambox.profile.Online', {
 
 	,launch: function() {
 		console.info('USER LOGGED IN');
-
-		Rambox.ux.Firebase.createEvents(false);
 	}
 });

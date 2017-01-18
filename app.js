@@ -1,17 +1,3 @@
-// Initialize Firebase
-var firebase = require('firebase/app');
-require('firebase/database');
-require('firebase/auth');
-
-// Firebase Config
-var config = {
-	 apiKey: firebaseCfg.apiKey
-	,authDomain: firebaseCfg.authDomain
-	,databaseURL: firebaseCfg.databaseURL
-	,storageBucket: firebaseCfg.storageBucket
-};
-var fireRef = firebase.initializeApp(config); // Firebase Ref
-var FirebaseTokenGenerator = require('firebase-token-generator');
 var auth0, lock; // Auth0 vars
 
 // Sencha App

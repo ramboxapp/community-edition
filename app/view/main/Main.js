@@ -263,6 +263,37 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,menu: [
 							{
+								 text: 'Synchronize Configuration'
+								,glyph: 'xf0c2@FontAwesome'
+								,menu: [
+									{
+										 xtype: 'label'
+										,bind: {
+											html: '<b class="menu-title">Last Sync: {last_sync}</b>'
+										}
+									}
+									,{
+										 text: 'Backup'
+										,glyph: 'xf0ee@FontAwesome'
+										,scope: Rambox.ux.Auth0
+										,handler: Rambox.ux.Auth0.backupConfiguration
+									}
+									,{
+										 text: 'Restore'
+										,glyph: 'xf0ed@FontAwesome'
+										,scope: Rambox.ux.Auth0
+										,handler: Rambox.ux.Auth0.restoreConfiguration
+									}
+									,{
+										 text: 'Check for updated backup'
+										,glyph: 'xf021@FontAwesome'
+										,scope: Rambox.ux.Auth0
+										,handler: Rambox.ux.Auth0.checkConfiguration
+									}
+								]
+							}
+							,'-'
+							,{
 								 text: 'Logout'
 								,glyph: 'xf08b@FontAwesome'
 								,handler: 'logout'

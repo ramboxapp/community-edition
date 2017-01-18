@@ -4,8 +4,7 @@ Ext.define('Rambox.Application', {
 	,name: 'Rambox'
 
 	,requires: [
-		 'Rambox.ux.Firebase'
-		,'Rambox.ux.Auth0'
+		 'Rambox.ux.Auth0'
 		,'Rambox.util.MD5'
 		,'Ext.window.Toast'
 	]
@@ -30,6 +29,12 @@ Ext.define('Rambox.Application', {
 		ga_storage._setAccount('UA-80680424-1');
 		ga_storage._trackPageview('/index.html', 'main');
 		ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
+
+		// Initialize Auth0
+		Rambox.ux.Auth0.init();
+
+		// Check for updates
+		Rambox.app.checkUpdate(true);
 
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({
@@ -204,54 +209,60 @@ Ext.define('Rambox.Application', {
 	}
 
 	,checkUpdate: function(silence) {
-		fireRef.database().ref('config').once('value', function(snapshot) {
-			var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
-			if ( appVersion.isLessThan(snapshot.val().latestVersion) ) {
-				console.info('New version is available', snapshot.val().latestVersion);
-				Ext.cq1('app-main').addDocked({
-					 xtype: 'toolbar'
-					,dock: 'top'
-					,ui: 'newversion'
-					,items: [
-						'->'
-						,{
-							 xtype: 'label'
-							,html: '<b>New version is available!</b> ('+snapshot.val().latestVersion+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
-						}
-						,{
-							 xtype: 'button'
-							,text: 'Download'
-							,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
-							,hidden: process.platform === 'win32'
-						}
-						,{
-							 xtype: 'button'
-							,text: 'Changelog'
-							,ui: 'decline'
-							,tooltip: 'Click here to see more information about the new version.'
-							,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+snapshot.val().latestVersion
-						}
-						,'->'
-						,{
-							 glyph: 'xf00d@FontAwesome'
-							,baseCls: ''
-							,style: 'cursor:pointer;'
-							,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
-						}
-					]
-				});
-				if ( process.platform === 'win32' ) ipc.send('autoUpdater:check-for-updates');
-				return;
-			} else if ( !silence ) {
-				Ext.Msg.show({
-					 title: 'You are up to date!'
-					,message: 'You have the latest version of Rambox.'
-					,icon: Ext.Msg.INFO
-					,buttons: Ext.Msg.OK
-				});
-			}
+		console.info('Checking for updates...');
+		Ext.Ajax.request({
+			 url: 'http://rambox.pro/api/latestversion.json'
+			,method: 'GET'
+			,success: function(response) {
+				var json = Ext.decode(response.responseText);
+				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
+				if ( appVersion.isLessThan(json.version) ) {
+					console.info('New version is available', json.version);
+					Ext.cq1('app-main').addDocked({
+						 xtype: 'toolbar'
+						,dock: 'top'
+						,ui: 'newversion'
+						,items: [
+							'->'
+							,{
+								 xtype: 'label'
+								,html: '<b>New version is available!</b> ('+json.version+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
+							}
+							,{
+								 xtype: 'button'
+								,text: 'Download'
+								,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
+								,hidden: process.platform === 'win32'
+							}
+							,{
+								 xtype: 'button'
+								,text: 'Changelog'
+								,ui: 'decline'
+								,tooltip: 'Click here to see more information about the new version.'
+								,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+json.version
+							}
+							,'->'
+							,{
+								 glyph: 'xf00d@FontAwesome'
+								,baseCls: ''
+								,style: 'cursor:pointer;'
+								,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+							}
+						]
+					});
+					if ( process.platform === 'win32' ) ipc.send('autoUpdater:check-for-updates');
+					return;
+				} else if ( !silence ) {
+					Ext.Msg.show({
+						 title: 'You are up to date!'
+						,message: 'You have the latest version of Rambox.'
+						,icon: Ext.Msg.INFO
+						,buttons: Ext.Msg.OK
+					});
+				}
 
-			console.info('Your version is the latest. No need to update.');
+				console.info('Your version is the latest. No need to update.');
+			}
 		});
 	}
 });

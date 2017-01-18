@@ -12,7 +12,7 @@ const initialize = (window) => {
 	ipcMain.on('autoUpdater:check-for-updates', (event) => autoUpdater.checkForUpdates());
 	webContents.on('did-finish-load', () => {
 		autoUpdater.setFeedURL(url);
-		autoUpdater.checkForUpdates();
+		//autoUpdater.checkForUpdates();
 	});
 };
 
