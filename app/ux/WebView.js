@@ -6,14 +6,17 @@ Ext.define('Rambox.ux.WebView',{
 	,xtype: 'webview'
 
 	,requires: [
-		'Rambox.util.Format'
-	]
+		'Rambox.util.Format',
+		'Rambox.util.Notifier',
+		'Rambox.util.UnreadCounter'
+	],
 
 	// private
-	,zoomLevel: 0
+	zoomLevel: 0,
+	currentUnreadCount: 0,
 
 	// CONFIG
-	,hideMode: 'offsets'
+	hideMode: 'offsets'
 	,initComponent: function(config) {
 		var me = this;
 
@@ -36,16 +39,15 @@ Ext.define('Rambox.ux.WebView',{
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
 			,title: me.record.get('name')
- 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
- 			,src: me.record.get('url')
- 			,type: me.record.get('type')
- 			,align: me.record.get('align')
- 			,notifications: me.record.get('notifications')
- 			,muted: me.record.get('muted')
+			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
+			,src: me.record.get('url')
+			,type: me.record.get('type')
+			,align: me.record.get('align')
+			,notifications: me.record.get('notifications')
+			,muted: me.record.get('muted')
 			,tabConfig: {
 				listeners: {
-					 badgetextchange: me.onBadgeTextChange
-					,afterrender : function( btn ) {
+					afterrender : function( btn ) {
 						btn.el.on('contextmenu', function(e) {
 							btn.showMenu('contextmenu');
 							e.stopEvent();
@@ -158,7 +160,8 @@ Ext.define('Rambox.ux.WebView',{
 					,autosize: 'on'
 					,disablewebsecurity: 'on'
 					,blinkfeatures: 'ApplicationCache,GlobalCacheStorage'
-					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent'),
+					preload: './resources/js/rambox-service-api.js'
 				}
 			};
 
@@ -166,42 +169,6 @@ Ext.define('Rambox.ux.WebView',{
 		}
 
 		return cfg;
-	}
-
-	,onBadgeTextChange: function( tab, badgeText, oldBadgeText ) {
-		var me = this;
-		if ( oldBadgeText === null ) oldBadgeText = 0;
-		var actualNotifications = Rambox.app.getTotalNotifications();
-
-		oldBadgeText = Rambox.util.Format.stripNumber(oldBadgeText);
-		badgeText = Rambox.util.Format.stripNumber(badgeText);
-
-		Rambox.app.setTotalNotifications(actualNotifications - oldBadgeText + badgeText);
-
-		// Some services dont have Desktop Notifications, so we add that functionality =)
-		if ( Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') && oldBadgeText < badgeText && me.record.get('notifications') && !JSON.parse(localStorage.getItem('dontDisturb')) ) {
-			var text;
-			switch ( Ext.getStore('ServicesList').getById(me.type).get('type') ) {
-				case 'messaging':
-					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new message', 'new messages') + '.';
-					break;
-				case 'email':
-					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new email', 'new emails') + '.';
-					break;
-				default:
-					text = 'You have ' + Ext.util.Format.plural(badgeText, 'new activity', 'new activities') + '.';
-					break;
-			}
-			var not = new Notification(me.record.get('name'), {
-				 body: text
-				,icon: tab.icon
-				,silent: me.record.get('muted')
-			});
-			not.onclick = function() {
-				require('electron').remote.getCurrentWindow().show();
-				Ext.cq1('app-main').setActiveTab(me);
-			};
-		}
 	}
 
 	,onAfterRender: function() {
@@ -274,7 +241,7 @@ Ext.define('Rambox.ux.WebView',{
 
 			// Injected code to detect new messages
 			if ( me.record ) {
-				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type') === 'office365' ? 'outlook365' : me.record.get('type')).get('js_unread');
+				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
 				js_unread = js_unread + me.record.get('js_unread');
 				if ( js_unread !== '' ) {
 					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - JS Injected to Detect New Messages');
@@ -296,26 +263,129 @@ Ext.define('Rambox.ux.WebView',{
 			webview.executeJavaScript('document.body.scrollTop=0;');
 		});
 
-		webview.addEventListener("page-title-updated", function(e) {
-			var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
+		webview.addEventListener('ipc-message', function(event) {
+			var channel = event.channel;
+			switch (channel) {
+				case 'rambox.setUnreadCount':
+					handleSetUnreadCount(event);
+					break;
+				case 'rambox.clearUnreadCount':
+					handleClearUnreadCount(event);
+					break;
+			}
+
+			/**
+			 * Handles 'rambox.clearUnreadCount' messages.
+			 * Clears the unread count.
+			 */
+			function handleClearUnreadCount() {
+				me.tab.setBadgeText('');
+			}
+
+			/**
+			 * Handles 'rambox.setUnreadCount' messages.
+			 * Sets the badge text if the event contains an integer as first argument.
+			 *
+			 * @param event
+			 */
+			function handleSetUnreadCount(event) {
+				if (Array.isArray(event.args) === true && event.args.length > 0) {
+					var count = event.args[0];
+					if (count === parseInt(count, 10)) {
+						me.tab.setBadgeText(Rambox.util.Format.formatNumber(count));
+					}
+				}
+			}
+		});
+
+		/**
+		 * Register page title update event listener only for services that don't prevent it by setting 'dont_update_unread_from_title' to true.
+		 */
+		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('dont_update_unread_from_title') !== true) {
+			webview.addEventListener("page-title-updated", function(e) {
+				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
 				count = count === '•' ? count : Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
 				count = count === null ? '0' : count;
 
-			me.tab.setBadgeText(Rambox.util.Format.formatNumber(count));
-		});
+        me.setUnreadCount(count);
+			});
+		}
 
 		webview.addEventListener('did-get-redirect-request', function( e ) {
 			if ( e.isMainFrame ) webview.loadURL(e.newURL);
 		});
-	}
 
-	,reloadService: function(btn) {
+		if(ipc.sendSync('getConfig').spellcheck) {
+			var webFrame = require('electron').webFrame;
+			var SpellCheckProvider = require('electron-spell-check-provider');
+			webFrame.setSpellCheckProvider('en-US', true, new SpellCheckProvider('en-US'));
+		}
+	},
+
+	setUnreadCount: function(newUnreadCount) {
+		var me = this;
+
+		if (me.record.get('includeInGlobalUnreadCounter') === true) {
+			Rambox.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
+		} else {
+			Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
+		}
+
+		me.setTabBadgeText(Rambox.util.Format.formatNumber(newUnreadCount));
+
+		/**
+		 * Dispatch manual notification if
+		 * • service doesn't have notifications, so Rambox does them
+		 * • count increased
+		 * • not in dnd mode
+		 * • notifications enabled
+		 */
+		if (Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') &&
+			me.currentUnreadCount < newUnreadCount &&
+			me.record.get('notifications') &&
+			!JSON.parse(localStorage.getItem('dontDisturb'))) {
+			Rambox.util.Notifier.dispatchNotification(me, newUnreadCount);
+		}
+
+		me.currentUnreadCount = newUnreadCount;
+	},
+
+	refreshUnreadCount: function() {
+		this.setUnreadCount(this.currentUnreadCount);
+	},
+
+	/**
+	 * Sets the tab badge text depending on the service config param "displayTabUnreadCounter".
+	 *
+	 * @param {string} badgeText
+	 */
+	setTabBadgeText: function(badgeText) {
+		var me = this;
+		if (me.record.get('displayTabUnreadCounter') === true) {
+			me.tab.setBadgeText(badgeText);
+		} else {
+			me.tab.setBadgeText('');
+		}
+	},
+
+	/**
+	 * Clears the unread counter for this view:
+	 * • clears the badge text
+	 * • clears the global unread counter
+	 */
+	clearUnreadCounter: function() {
+		var me = this;
+		me.tab.setBadgeText('');
+		Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
+	},
+
+	reloadService: function(btn) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
 		if ( me.record.get('enabled') ) {
-			me.tab.setBadgeText('');
+			me.clearUnreadCounter();
 			webview.loadURL(me.src);
 		}
 	}
@@ -361,7 +431,8 @@ Ext.define('Rambox.ux.WebView',{
 	,setEnabled: function(enabled) {
 		var me = this;
 
-		me.tab.setBadgeText('');
+		me.clearUnreadCounter();
+
 		me.removeAll();
 		me.add(me.webViewConstructor(enabled));
 		if ( enabled ) {

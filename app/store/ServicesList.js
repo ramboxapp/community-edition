@@ -95,7 +95,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.telegram.org/'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){document.title="("+e+") RamboxService"}setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)if(!e[i].classList.contains("im_dialog_badge_muted")){t+=parseInt(e[i].innerHTML.trim())}}function updateBadge(e){document.title="("+e+") RamboxService"}setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'wechat'
@@ -459,7 +459,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
-			 id: ' irccloud'
+			 id: 'irccloud'
 			,logo: 'irccloud.png'
 			,name: 'IRCCloud'
 			,description: 'IRCCloud is a modern IRC client that keeps you connected, with none of the baggage.'
@@ -660,6 +660,24 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Unified multi-channel messaging for businesses, bots and software makers.'
 			,url: 'https://app.smooch.io/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'xing'
+			,logo: 'xing.png'
+			,name: 'XING'
+			,description: 'Career-oriented social networking'
+			,url: 'https://www.xing.com/messages/conversations'
+			,type: 'messaging'
+			,js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();'
+			,dont_update_unread_from_title: true
+    },
+    {
+			 id: 'Workplace'
+			,logo: 'workplace.png'
+			,name: 'Workplace by Facebook'
+			,description: 'Connect everyone in your company and turn ideas into action. Through group discussion, a personalised News Feed, and voice and video calling, work together and get more done. Workplace is an ad-free space, separate from your personal Facebook account.'
+			,url: 'https://___.facebook.com/'
+			,type: 'messaging'
 		}
-    ]
+  ]
 });

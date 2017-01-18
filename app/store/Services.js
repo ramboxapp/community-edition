@@ -26,6 +26,19 @@ Ext.define('Rambox.store.Services', {
 			var servicesLeft = [];
 			var servicesRight = [];
 			store.each(function(service) {
+				// Fix some services with bad IDs
+				// TODO: Remove in next release
+				switch ( service.get('type') ) {
+					case 'office365':
+						service.set('type', 'outlook365');
+						break;
+					case ' irccloud':
+						service.set('type', 'irccloud');
+						break;
+					default:
+						break;
+				}
+
 				var cfg = {
 					 xtype: 'webview'
 					,id: 'tab_'+service.get('id')
@@ -34,6 +47,8 @@ Ext.define('Rambox.store.Services', {
 					,src: service.get('url')
 					,type: service.get('type')
 					,muted: service.get('muted')
+					,includeInGlobalUnreadCounter: service.get('includeInGlobalUnreadCounter')
+					,displayTabUnreadCounter: service.get('displayTabUnreadCounter')
 					,enabled: service.get('enabled')
 					,record: service
 					,tabConfig: {
