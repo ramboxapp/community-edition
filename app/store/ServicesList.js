@@ -678,6 +678,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Connect everyone in your company and turn ideas into action. Through group discussion, a personalised News Feed, and voice and video calling, work together and get more done. Workplace is an ad-free space, separate from your personal Facebook account.'
 			,url: 'https://___.facebook.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'teams'
+			,logo: 'teams.png'
+			,name: 'Teams'
+			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
+			,url: 'https://teams.microsoft.com'
+			,type: 'messaging'
 		}
   ]
 });
