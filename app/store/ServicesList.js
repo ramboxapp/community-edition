@@ -703,6 +703,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: '___'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge highlight"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
+		},
+		{
+			 id: 'linkedin'
+			,logo: 'linkedin.png'
+			,name: 'LinkedIn Messaging'
+			,description: 'Manage your professional identity. Build and engage with your professional network. Access knowledge, insights and opportunities.'
+			,url: 'https://www.linkedin.com/messaging'
+			,type: 'messaging'
 		}
   ]
 });
