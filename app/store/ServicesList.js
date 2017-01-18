@@ -670,11 +670,11 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();'
 			,dont_update_unread_from_title: true
-    },
-    {
-			 id: 'Workplace'
+		},
+		{
+			 id: 'workplace'
 			,logo: 'workplace.png'
-			,name: 'Workplace by Facebook'
+			,name: 'Workplace'
 			,description: 'Connect everyone in your company and turn ideas into action. Through group discussion, a personalised News Feed, and voice and video calling, work together and get more done. Workplace is an ad-free space, separate from your personal Facebook account.'
 			,url: 'https://___.facebook.com/'
 			,type: 'messaging'
