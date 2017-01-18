@@ -694,6 +694,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Kezmo is an enterprise chat and collaboration tool to help teams get things done. It’s an email alternative for secure team communication.'
 			,url: 'https://app.kezmo.com/web/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'lounge'
+			,logo: 'lounge.png'
+			,name: 'The Lounge'
+			,description: 'Self-hosted web IRC client.'
+			,url: '___'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge highlight"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
 		}
   ]
 });
