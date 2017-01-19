@@ -457,6 +457,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Yandex is a free webmail service with unlimited mail storage, protection from viruses and spam, access from web interface, etc.'
 			,url: 'https://mail.yandex.com/'
 			,type: 'email'
+			,js_unread: 'function checkUnread(){var t=parseInt($(".mail-MessagesFilters-Item_unread .mail-LabelList-Item_count").html());updateBadge(isNaN(t)?0:t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'irccloud'
