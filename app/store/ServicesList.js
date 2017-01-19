@@ -94,8 +94,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Telegram is a messaging app with a focus on speed and security. It’s super-fast, simple, secure and free.'
 			,url: 'https://web.telegram.org/'
 			,type: 'messaging'
-			,titleBlink: true
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)if(!e[i].classList.contains("im_dialog_badge_muted")){t+=parseInt(e[i].innerHTML.trim())}}function updateBadge(e){document.title="("+e+") RamboxService"}setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)if(!e[i].classList.contains("im_dialog_badge_muted")){t+=parseInt(e[i].innerHTML.trim())}updateBadge(t)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
+			,dont_update_unread_from_title: true
 		},
 		{
 			 id: 'wechat'

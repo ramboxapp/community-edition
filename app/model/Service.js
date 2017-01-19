@@ -37,18 +37,15 @@ Ext.define('Rambox.model.Service', {
 		 name: 'muted'
 		,type: 'boolean'
 		,defaultValue: false
-	},
-	{
-		name: 'displayTabUnreadCounter',
-		type: 'boolean',
-		defaultValue: true
-	},
-	{
-		name: 'includeInGlobalUnreadCounter',
-		type: 'boolean',
-		defaultValue: true
-	},
-	{
+	},{
+		 name: 'displayTabUnreadCounter'
+		,type: 'boolean'
+		,defaultValue: true
+	},{
+		 name: 'includeInGlobalUnreadCounter'
+		,type: 'boolean'
+		,defaultValue: true
+	},{
 		 name: 'trust'
 		,type: 'boolean'
 		,defaultValue: false
