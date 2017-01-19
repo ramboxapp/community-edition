@@ -468,7 +468,7 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		me.zoomLevel = me.zoomLevel + 0.25;
-		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(me.zoomLevel);
+		if ( me.record.get('enabled') ) webview.setZoomLevel(me.zoomLevel);
 	}
 
 	,zoomOut: function() {
@@ -476,7 +476,7 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		me.zoomLevel = me.zoomLevel - 0.25;
-		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(me.zoomLevel);
+		if ( me.record.get('enabled') ) webview.setZoomLevel(me.zoomLevel);
 	}
 
 	,resetZoom: function() {
@@ -484,6 +484,6 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		me.zoomLevel = 0;
-		if ( me.record.get('enabled') ) webview.getWebContents().setZoomLevel(0);
+		if ( me.record.get('enabled') ) webview.setZoomLevel(0);
 	}
 });
