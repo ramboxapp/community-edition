@@ -79,6 +79,7 @@ Ext.define('Rambox.ux.Auth0', {
 		var services = [];
 		Ext.getStore('Services').each(function(service) {
 			delete service.data.id;
+			delete service.data.zoomLevel;
 			services.push(service.data);
 		});
 
