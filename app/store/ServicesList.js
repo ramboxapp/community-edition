@@ -729,6 +729,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Mastodon is is a free, open-source social microblogging network/twitter alternative, based on GNU Social.'
 			,url: 'https://mastodon.social/auth/sign_in'
 			,type: 'messaging'
+		},
+		{
+			 id: 'redbooth'
+			,logo: 'redbooth.png'
+			,name: 'Redbooth'
+			,description: 'Redbooth is easy-to-use online task and project management software for busy teams.'
+			,url: 'https://redbooth.com/login'
+			,type: 'messaging'
 		}
   ]
 });
