@@ -35,7 +35,7 @@
 
 ![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/mac.png)
 
-## Services available - 72
+## Services available - 73
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -97,6 +97,11 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/rainloop.png" alt="RainLoop" title="RainLoop">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/icloud.png" alt="iCloud Mail" title="iCloud Mail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/irccloud.png" alt="IRC Cloud" title="IRC Cloud">
+
+<!-- Please edit this with your githubusercontent link if you accept pull request -->
+<!-- <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/Mastodon.png" alt="Mastodon" title="Mastodon"> -->
+<img width="80" align="left" src="https://raw.githubusercontent.com/triinoxys/rambox/master/resources/icons/mastodon.png" alt="Mastodon" title="Mastodon">
+
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/kiwi.png" alt="Kiwi IRC" title="Kiwi IRC">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/smooch.png" alt="Smooch" title="Smooch">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/crisp.png" alt="Crisp" title="Crisp">
