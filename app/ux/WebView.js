@@ -6,9 +6,9 @@ Ext.define('Rambox.ux.WebView',{
 	,xtype: 'webview'
 
 	,requires: [
-		'Rambox.util.Format',
-		'Rambox.util.Notifier',
-		'Rambox.util.UnreadCounter'
+		 'Rambox.util.Format'
+		,'Rambox.util.Notifier'
+		,'Rambox.util.UnreadCounter'
 	]
 
 	// private
@@ -34,7 +34,7 @@ Ext.define('Rambox.ux.WebView',{
 		}
 
 		// Allow Custom sites with self certificates
-		if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
+		//if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
@@ -123,6 +123,18 @@ Ext.define('Rambox.ux.WebView',{
 					]
 				}
 			}
+			,bbar: {
+				 xtype: 'statusbar'
+				,defaultText: '<i class="fa fa-check fa-fw" aria-hidden="true"></i> Ready'
+				,busyIconCls : ''
+				,busyText: '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Loading...'
+				,items: [
+					,{
+						 xtype: 'tbtext'
+						,itemId: 'url'
+					}
+				]
+			}
 			,listeners: {
 				 afterrender: me.onAfterRender
 			}
@@ -186,17 +198,15 @@ Ext.define('Rambox.ux.WebView',{
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
-			me.mask('Loading...', 'bottomMask');
-			// Manually remove modal from mask
-			Ext.cq1('#'+me.id).el.dom.getElementsByClassName('bottomMask')[0].parentElement.className = '';
+			me.down('statusbar').showBusy();
 		});
 		webview.addEventListener("did-stop-loading", function() {
-			me.unmask();
+			me.down('statusbar').clearStatus({useDefaults: true});
 		});
 
 		webview.addEventListener("did-finish-load", function(e) {
 			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
-			
+
 			// Apply saved zoom level
 			webview.setZoomLevel(me.record.get('zoomLevel'));
 		});
@@ -262,10 +272,21 @@ Ext.define('Rambox.ux.WebView',{
 			*/
 			console.groupEnd();
 
-
-
 			// Scroll always to top (bug)
 			webview.executeJavaScript('document.body.scrollTop=0;');
+
+			// Handles Certificate Errors
+			webview.getWebContents().on('certificate-error', function(event, url, error, certificate, callback) {
+				if ( me.record.get('trust') ) {
+					event.preventDefault();
+					callback(true);
+				} else {
+					callback(false);
+				}
+				me.down('statusbar').setStatus({
+					text: '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Certification Warning'
+				});
+			});
 		});
 
 		webview.addEventListener('ipc-message', function(event) {
@@ -319,6 +340,10 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener('did-get-redirect-request', function( e ) {
 			if ( e.isMainFrame ) webview.loadURL(e.newURL);
+		});
+
+		webview.addEventListener('update-target-url', function( url ) {
+			me.down('statusbar #url').setText(url.url);
 		});
 
 		if(ipc.sendSync('getConfig').spellcheck) {

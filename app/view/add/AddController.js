@@ -33,10 +33,10 @@ Ext.define('Rambox.view.add.AddController', {
 				,url: formValues.url
 				,align: formValues.align
 				,notifications: formValues.notifications
-				,muted: formValues.muted,
-				displayTabUnreadCounter: formValues.displayTabUnreadCounter,
-				includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter,
-				trust: formValues.trust
+				,muted: formValues.muted
+				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
+				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
+				,trust: formValues.trust
 				,js_unread: formValues.js_unread
 			});
 
@@ -76,7 +76,7 @@ Ext.define('Rambox.view.add.AddController', {
 			if ( win.record.get('url').indexOf('___') >= 0 ) {
 				formValues.url = formValues.cycleValue === '1' ? win.record.get('url').replace('___', formValues.url) : formValues.url;
 			}
-			
+
 			var service = Ext.create('Rambox.model.Service', {
 				 type: win.record.get('id')
 				,logo: formValues.logo
@@ -84,10 +84,10 @@ Ext.define('Rambox.view.add.AddController', {
 				,url: formValues.url
 				,align: formValues.align
 				,notifications: formValues.notifications
-				,muted: formValues.muted,
-				displayTabUnreadCounter: formValues.displayTabUnreadCounter,
-				includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter,
-				trust: formValues.trust
+				,muted: formValues.muted
+				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
+				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
+				,trust: formValues.trust
 				,js_unread: formValues.js_unread
 			});
 			service.save();

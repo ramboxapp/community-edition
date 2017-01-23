@@ -260,3 +260,11 @@ body {
 .auth0-lock.auth0-lock .auth0-lock-header-logo {
 	height: 50px !important;
 }
+
+.x-statusbar {
+	padding: 0px !important;
+	&.x-docked-bottom {
+		border-top: 1px solid #CCC !important;
+		border-top-width: 1px !important;
+	}
+}

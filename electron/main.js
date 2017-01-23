@@ -306,28 +306,6 @@ if (shouldQuit) {
 	return;
 }
 
-var allowedURLCertificates = [];
-ipcMain.on('allowCertificate', (event, url) => {
-	allowedURLCertificates.push(require('url').parse(url).host);
-});
-app.on('certificate-error', function(event, webContents, url, error, certificate, callback) {
-	if ( allowedURLCertificates.indexOf(require('url').parse(url).host) >= 0 ) {
-		event.preventDefault();
-		callback(true);
-	} else {
-		callback(false);
-		dialog.showMessageBox(mainWindow, {
-			 title: 'Certification Warning'
-			,message: 'The service with the following URL has an invalid authority certification.\n\n'+url+'\n\nIf is a Custom Service, you have to remove it and add it again, enabling the "Trust invalid authority certificates" in the Options.'
-			,buttons: ['OK']
-			,type: 'warning'
-		}, function() {
-
-		});
-	}
-});
-
-
 // Code for downloading images as temporal files
 // Credit: Ghetto Skype (https://github.com/stanfieldr/ghetto-skype)
 const tmp = require('tmp');

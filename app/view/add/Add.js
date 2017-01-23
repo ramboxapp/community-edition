@@ -157,7 +157,7 @@ Ext.define('Rambox.view.add.Add',{
 								,boxLabel: 'Trust invalid authority certificates'
 								,name: 'trust'
 								,hidden: me.record.get('type') !== 'custom'
-								,checked: me.edit ? me.record.get('trust') : false
+								,checked: me.edit ? me.record.get('trust') : true
 								,uncheckedValue: false
 								,inputValue: true
 							}
