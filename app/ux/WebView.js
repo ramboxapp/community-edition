@@ -262,14 +262,14 @@ Ext.define('Rambox.ux.WebView',{
 					webview.executeJavaScript(js_unread);
 				}
 			}
-			/*
+
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
 			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
 				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
 				console.log(js_preventBlink);
 				webview.executeJavaScript(js_preventBlink);
 			}
-			*/
+
 			console.groupEnd();
 
 			// Scroll always to top (bug)
@@ -298,6 +298,9 @@ Ext.define('Rambox.ux.WebView',{
 				case 'rambox.clearUnreadCount':
 					handleClearUnreadCount(event);
 					break;
+				case 'rambox.showNotification':
+					showNotification(event);
+					break;
 			}
 
 			/**
@@ -306,6 +309,7 @@ Ext.define('Rambox.ux.WebView',{
 			 */
 			function handleClearUnreadCount() {
 				me.tab.setBadgeText('');
+				me.currentUnreadCount = 0;
 			}
 
 			/**
@@ -319,8 +323,14 @@ Ext.define('Rambox.ux.WebView',{
 					var count = event.args[0];
 					if (count === parseInt(count, 10)) {
 						me.tab.setBadgeText(Rambox.util.Format.formatNumber(count));
+
+						me.doManualNotification(count);
 					}
 				}
+			}
+
+			function showNotification(event) {
+				console.log('showNotification', event);
 			}
 		});
 
@@ -353,9 +363,9 @@ Ext.define('Rambox.ux.WebView',{
 			webFrame.setSpellCheckProvider('en-US', true, new SpellCheckProvider('en-US'));
 			*/
 		}
-	},
+	}
 
-	setUnreadCount: function(newUnreadCount) {
+	,setUnreadCount: function(newUnreadCount) {
 		var me = this;
 
 		if (me.record.get('includeInGlobalUnreadCounter') === true) {
@@ -366,53 +376,62 @@ Ext.define('Rambox.ux.WebView',{
 
 		me.setTabBadgeText(Rambox.util.Format.formatNumber(newUnreadCount));
 
-		/**
-		 * Dispatch manual notification if
-		 * • service doesn't have notifications, so Rambox does them
-		 * • count increased
-		 * • not in dnd mode
-		 * • notifications enabled
-		 */
+		me.doManualNotification(parseInt(newUnreadCount));
+	}
+
+	,refreshUnreadCount: function() {
+		this.setUnreadCount(this.currentUnreadCount);
+	}
+
+	/**
+	 * Dispatch manual notification if
+	 * • service doesn't have notifications, so Rambox does them
+	 * • count increased
+	 * • not in dnd mode
+	 * • notifications enabled
+	 *
+	 * @param {int} count
+	 */
+	,doManualNotification: function(count) {
+		var me = this;
+
 		if (Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') &&
-			me.currentUnreadCount < newUnreadCount &&
+			me.currentUnreadCount < count &&
 			me.record.get('notifications') &&
 			!JSON.parse(localStorage.getItem('dontDisturb'))) {
-			Rambox.util.Notifier.dispatchNotification(me, newUnreadCount);
+				console.log(me.currentUnreadCount, count);
+				Rambox.util.Notifier.dispatchNotification(me, count);
 		}
 
-		me.currentUnreadCount = newUnreadCount;
-	},
-
-	refreshUnreadCount: function() {
-		this.setUnreadCount(this.currentUnreadCount);
-	},
+		me.currentUnreadCount = count;
+	}
 
 	/**
 	 * Sets the tab badge text depending on the service config param "displayTabUnreadCounter".
 	 *
 	 * @param {string} badgeText
 	 */
-	setTabBadgeText: function(badgeText) {
+	,setTabBadgeText: function(badgeText) {
 		var me = this;
 		if (me.record.get('displayTabUnreadCounter') === true) {
 			me.tab.setBadgeText(badgeText);
 		} else {
 			me.tab.setBadgeText('');
 		}
-	},
+	}
 
 	/**
 	 * Clears the unread counter for this view:
 	 * • clears the badge text
 	 * • clears the global unread counter
 	 */
-	clearUnreadCounter: function() {
+	,clearUnreadCounter: function() {
 		var me = this;
 		me.tab.setBadgeText('');
 		Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
-	},
+	}
 
-	reloadService: function(btn) {
+	,reloadService: function(btn) {
 		var me = this;
 		var webview = me.down('component').el.dom;
 
