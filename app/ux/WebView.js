@@ -298,8 +298,8 @@ Ext.define('Rambox.ux.WebView',{
 				case 'rambox.clearUnreadCount':
 					handleClearUnreadCount(event);
 					break;
-				case 'rambox.showNotification':
-					showNotification(event);
+				case 'rambox.showWindowAndActivateTab':
+					showWindowAndActivateTab(event);
 					break;
 			}
 
@@ -329,8 +329,9 @@ Ext.define('Rambox.ux.WebView',{
 				}
 			}
 
-			function showNotification(event) {
-				console.log('showNotification', event);
+			function showWindowAndActivateTab(event) {
+				require('electron').remote.getCurrentWindow().show();
+				Ext.cq1('app-main').setActiveTab(me);
 			}
 		});
 
