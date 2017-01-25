@@ -407,14 +407,6 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener('update-target-url', function( url ) {
 			me.down('statusbar #url').setText(url.url);
 		});
-
-		if(ipc.sendSync('getConfig').spellcheck) {
-			/*
-			var webFrame = require('electron').webFrame;
-			var SpellCheckProvider = require('electron-spell-check-provider');
-			webFrame.setSpellCheckProvider('en-US', true, new SpellCheckProvider('en-US'));
-			*/
-		}
 	}
 
 	,setUnreadCount: function(newUnreadCount) {
