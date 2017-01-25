@@ -89,12 +89,12 @@
 	},
 	"devDependencies": {
 		"asar": "^0.12.1",
-    "electron": "1.4.14",
+		"electron": "1.4.15",
 		"electron-builder": "11.3.0",
 		"electron-squirrel-startup": "^1.0.0",
-    "chai": "3.5.0",
-    "mocha": "3.2.0",
-	  "spectron": "3.4.0"
+		"chai": "3.5.0",
+		"mocha": "3.2.0",
+		"spectron": "3.4.0"
 	},
 	"dependencies": {
 		"auto-launch": "4.0.0",
