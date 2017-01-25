@@ -38,7 +38,7 @@ install:
   - git clone https://github.com/saenzramiro/rambox-build.git $TRAVIS_BUILD_DIR/build/production/Rambox/
   - npm install
   - npm uninstall electron-prebuilt
-  - npm i electron-prebuilt@$ELECTRON
+  - npm i electron@$ELECTRON
   - npm --prefix $TRAVIS_BUILD_DIR/build/production/Rambox/ install $TRAVIS_BUILD_DIR/build/production/Rambox/
 script:
   - echo $TRAVIS_OS_NAME
