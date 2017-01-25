@@ -263,8 +263,12 @@ body {
 
 .x-statusbar {
 	padding: 0px !important;
+	background-color: $base-color !important;
 	&.x-docked-bottom {
 		border-top: 1px solid #CCC !important;
 		border-top-width: 1px !important;
+	}
+	.x-toolbar-text-default {
+		color: #FFF !important;
 	}
 }
