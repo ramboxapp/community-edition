@@ -170,6 +170,7 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
+					//,webpreferences: 'nodeIntegration=no'
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 					,preload: './resources/js/rambox-service-api.js'
@@ -226,8 +227,57 @@ Ext.define('Rambox.ux.WebView',{
 					}
 					break;
 				case 'hangouts':
+					e.preventDefault();
 					if ( e.url.indexOf('plus.google.com/u/0/photos/albums') >= 0 ) {
 						ipc.send('image:popup', e.url, e.target.partition);
+						return;
+					} else if ( e.url.indexOf('https://hangouts.google.com/hangouts/_/CONVERSATION/') >= 0 ) {
+						console.log('hangouts', e);
+						me.add({
+							 xtype: 'window'
+							,title: 'Video Call'
+							,width: '80%'
+							,height: '80%'
+							,modal: true
+							,items: {
+								 xtype: 'component'
+								,hideMode: 'offsets'
+								,autoRender: true
+								,autoShow: true
+								,autoEl: {
+									 tag: 'webview'
+									,src: e.url
+									,style: 'width:100%;height:100%;'
+									,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+								}
+							}
+						}).show();
+						return;
+					}
+					break;
+				case 'slack':
+					if ( e.url.indexOf('slack.com/call/') >= 0 ) {
+						me.add({
+							 xtype: 'window'
+							,title: e.options.title
+							,width: e.options.width
+							,height: e.options.height
+							,modal: true
+							,items: {
+								 xtype: 'component'
+								,hideMode: 'offsets'
+								,autoRender: true
+								,autoShow: true
+								,autoEl: {
+									 tag: 'webview'
+									,src: e.url
+									,style: 'width:100%;height:100%;'
+									,partition: e.options.webPreferences.partition
+									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+								}
+							}
+						}).show();
 						e.preventDefault();
 						return;
 					}
@@ -400,7 +450,6 @@ Ext.define('Rambox.ux.WebView',{
 			me.currentUnreadCount < count &&
 			me.record.get('notifications') &&
 			!JSON.parse(localStorage.getItem('dontDisturb'))) {
-				console.log(me.currentUnreadCount, count);
 				Rambox.util.Notifier.dispatchNotification(me, count);
 		}
 
