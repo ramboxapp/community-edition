@@ -232,12 +232,12 @@ Ext.define('Rambox.ux.WebView',{
 						ipc.send('image:popup', e.url, e.target.partition);
 						return;
 					} else if ( e.url.indexOf('https://hangouts.google.com/hangouts/_/CONVERSATION/') >= 0 ) {
-						console.log('hangouts', e);
 						me.add({
 							 xtype: 'window'
 							,title: 'Video Call'
 							,width: '80%'
 							,height: '80%'
+							,maximizable: true
 							,modal: true
 							,items: {
 								 xtype: 'component'
@@ -263,6 +263,7 @@ Ext.define('Rambox.ux.WebView',{
 							,title: e.options.title
 							,width: e.options.width
 							,height: e.options.height
+							,maximizable: true
 							,modal: true
 							,items: {
 								 xtype: 'component'
