@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"description": "Rambox",
 	"main": "electron/main.js",
 	"private": true,
