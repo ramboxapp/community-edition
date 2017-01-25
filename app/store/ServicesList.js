@@ -145,7 +145,9 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'GroupMe brings group text messaging to every phone. Group message with the people in your life that are important to you.'
 			,url: 'https://web.groupme.com/signin'
 			,type: 'messaging'
-			,note: 'To enable desktop notifications, you have to go to Options inside GroupMe.'
+			,note: 'To enable desktop notifications, you have to go to Options inside GroupMe. To count unread messages, be sure to be in Chats.'
+			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".badge-count"),b=0;for(i=0;i<a.length;i++)b+=parseInt(a[i].innerHTML.trim());updateBadge(b)}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,dont_update_unread_from_title: true
 		},
 		{
 			 id: 'grape'
