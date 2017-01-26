@@ -729,6 +729,22 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("z-messages"),b=0;for(i=0;i<a.length;i++)b+=parseInt(a[i].innerHTML.trim());updateBadge(b)}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
+		},
+		{
+			 id: 'mastodon'
+			,logo: 'mastodon.png'
+			,name: 'Mastodon'
+			,description: 'Mastodon is is a free, open-source social microblogging network/twitter alternative, based on GNU Social.'
+			,url: 'https://mastodon.social/auth/sign_in'
+			,type: 'messaging'
+		},
+		{
+			 id: 'redbooth'
+			,logo: 'redbooth.png'
+			,name: 'Redbooth'
+			,description: 'Redbooth is easy-to-use online task and project management software for busy teams.'
+			,url: 'https://redbooth.com/login'
+			,type: 'messaging'
 		}
   ]
 });
