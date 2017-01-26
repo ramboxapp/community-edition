@@ -44,7 +44,7 @@
 		"dmg": {
 			"title": "Rambox",
 			"icon": "./resources/installer/Icon.icns",
-			"icon-size": 128,
+			"iconSize": 128,
 			"contents": [
 				{
 					"x": 355,
