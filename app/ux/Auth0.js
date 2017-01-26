@@ -22,6 +22,9 @@ Ext.define('Rambox.ux.Auth0', {
 			,languageDictionary: {
 				title: 'Rambox Account'
 			}
+			,popupOptions: {
+				nodeIntegration: 'no'
+			}
 			//,language: 'en'
 		});
 
