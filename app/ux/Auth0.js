@@ -55,7 +55,7 @@ Ext.define('Rambox.ux.Auth0', {
 				localStorage.setItem('profile', JSON.stringify(profile));
 				localStorage.setItem('id_token', authResult.idToken);
 
-				if ( !Ext.isEmpty(profile.user_metadata.services) ) {
+				if ( !Ext.isEmpty(profile.user_metadata) && !Ext.isEmpty(profile.user_metadata.services) ) {
 					Ext.each(profile.user_metadata.services, function(s) {
 						var service = Ext.create('Rambox.model.Service', s);
 						service.save();
