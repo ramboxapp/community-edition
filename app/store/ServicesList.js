@@ -731,12 +731,29 @@ Ext.define('Rambox.store.ServicesList', {
 			,dont_update_unread_from_title: true
 		},
 		{
-			 id: 'ciscospark'
+			 id: 'fastmail'
+			,logo: 'fastmail.png'
+			,name: 'FastMail'
+			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
+			,url: 'https://www.fastmail.com/login/'
+			,type: 'mail'
+		},
+    {
+      id: 'hibox'
+			,logo: 'hibox.png'
+			,name: 'Hibox'
+			,description: 'Hibox is a secure and private messaging platform for your business.'
+			,url: 'https://app.hibox.co/'
+			,type: 'messaging'
+    },
+    {
+      id: 'ciscospark'
 			,logo: 'ciscospark.png'
 			,name: 'Cisco Spark'
 			,description: 'A simple, secure space where you can get things done from anywhere in the world. Connecting your endpoints to the cloud and exchange with your mates.'
 			,url: 'https://web.ciscospark.com/'
 			,type: 'messaging'
 		}
+
   ]
 });
