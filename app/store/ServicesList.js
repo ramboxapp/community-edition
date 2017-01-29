@@ -745,6 +745,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Hibox is a secure and private messaging platform for your business.'
 			,url: 'https://app.hibox.co/'
 			,type: 'messaging'
-    }
+    },
+    {
+      id: 'ciscospark'
+			,logo: 'ciscospark.png'
+			,name: 'Cisco Spark'
+			,description: 'A simple, secure space where you can get things done from anywhere in the world. Connecting your endpoints to the cloud and exchange with your mates.'
+			,url: 'https://web.ciscospark.com/'
+			,type: 'messaging'
+		}
+
   ]
 });
