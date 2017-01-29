@@ -729,6 +729,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("z-messages"),b=0;for(i=0;i<a.length;i++)b+=parseInt(a[i].innerHTML.trim());updateBadge(b)}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
+		},
+		{
+			 id: 'ciscospark'
+			,logo: 'ciscospark.png'
+			,name: 'Cisco Spark'
+			,description: 'A simple, secure space where you can get things done from anywhere in the world. Connecting your endpoints to the cloud and exchange with your mates.'
+			,url: 'https://web.ciscospark.com/'
+			,type: 'messaging'
 		}
   ]
 });
