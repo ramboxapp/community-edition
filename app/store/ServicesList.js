@@ -753,7 +753,13 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'A simple, secure space where you can get things done from anywhere in the world. Connecting your endpoints to the cloud and exchange with your mates.'
 			,url: 'https://web.ciscospark.com/'
 			,type: 'messaging'
-		}
-
+		},
+    {
+      id: 'jandi'
+			,logo: 'jandi.png'
+			,name: 'Jandi'
+			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
+			,url: 'https://___.jandi.com/'
+    }
   ]
 });
