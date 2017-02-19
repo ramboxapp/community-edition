@@ -670,14 +670,24 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
-			 id: 'xing'
-			,logo: 'xing.png'
-			,name: 'XING'
-			,description: 'Career-oriented social networking'
-			,url: 'https://www.xing.com/messages/conversations'
-			,type: 'messaging'
-			,js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();'
-			,dont_update_unread_from_title: true
+			id: 'xing',
+			logo: 'xing.png',
+			name: 'XING',
+			description: 'Career-oriented social networking',
+			url: 'https://www.xing.com/messages/conversations',
+			type: 'messaging',
+			js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
+			dont_update_unread_from_title: true
+		},
+		{
+			id: 'threema',
+			logo: 'threema.png',
+			name: 'Threema',
+			description: 'Seriously secure messaging',
+			url: 'https://web.threema.ch/',
+			type: 'messaging',
+			js_unread: '(function () { let unreadCount = 0; function checkUnread() { let newUnread = 0; try { let webClientService = angular.element(document.documentElement).injector().get(\'WebClientService\'); let conversations = webClientService.conversations.conversations; conversations.forEach(function(conversation) { newUnread += conversation.unreadCount; }); } catch (e) { } if (newUnread !== unreadCount) { unreadCount = newUnread; updateBadge(unreadCount); } } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
+			dont_update_unread_from_title: true
 		},
 		{
 			 id: 'workplace'
