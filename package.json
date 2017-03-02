@@ -33,7 +33,7 @@
 	"build": {
 		"productName": "Rambox",
 		"appId": "com.saenzramiro.rambox",
-		"category": "public.app-category.productivity",
+			"category": "public.app-category.productivity",
 		"asar": true,
 		"mac": {
 			"target": [
@@ -72,6 +72,7 @@
 			"msi": false
 		},
 		"linux": {
+			"category": "Office",
 			"target": [
 				"AppImage",
 				"deb",
