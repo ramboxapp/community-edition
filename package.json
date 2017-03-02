@@ -80,12 +80,12 @@
 				"tar.gz"
 			],
 			"icon": "./resources/Icon.png"
+		},
+		"directories": {
+			"buildResources": "resources/installer/",
+			"output": "dist/",
+			"app": "build/production/Rambox/"
 		}
-	},
-	"directories": {
-		"buildResources": "resources/installer/",
-		"output": "dist/",
-		"app": "build/production/Rambox/"
 	},
 	"devDependencies": {
 		"asar": "^0.12.1",
