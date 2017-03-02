@@ -76,7 +76,7 @@ Ext.define('Rambox.ux.WebView',{
 											,handler: me.goBack
 										}
 										,{
-											 text: 'Foward'
+											 text: 'Forward'
 											,glyph: 'xf054@FontAwesome'
 											,iconAlign: 'right'
 											,flex: 1
