@@ -33,17 +33,15 @@
 	"build": {
 		"productName": "Rambox",
 		"appId": "com.saenzramiro.rambox",
-			"category": "public.app-category.productivity",
 		"asar": true,
 		"mac": {
+			"category": "public.app-category.productivity",
 			"target": [
 				"default"
-			],
-			"icon": "./resources/installer/Icon.icns"
+			]
 		},
 		"dmg": {
 			"title": "Rambox",
-			"icon": "./resources/installer/Icon.icns",
 			"iconSize": 128,
 			"contents": [
 				{
@@ -59,17 +57,15 @@
 				}
 			]
 		},
+		"squirrelWindows": {
+			"iconUrl": "https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.ico"
+		},
 		"win": {
-			"title": "Rambox",
-
 			"target": [
 				"squirrel",
+				"portable",
 				"zip"
-			],
-			"loadingGif": "./resources/installer/loading.gif",
-			"iconUrl": "https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.ico",
-			"icon": "./resources/Icon.ico",
-			"msi": false
+			]
 		},
 		"linux": {
 			"category": "Office",
@@ -79,8 +75,7 @@
 				"rpm",
 				"zip",
 				"tar.gz"
-			],
-			"icon": "./resources/Icon.png"
+			]
 		},
 		"directories": {
 			"buildResources": "resources/installer/",
@@ -91,8 +86,8 @@
 	"devDependencies": {
 		"asar": "^0.12.1",
 		"electron": "^1.6.1",
-		"electron-builder": "^14.1.1",
-		"electron-builder-squirrel-windows": "11.6.1",
+		"electron-builder": "^14.5.3",
+		"electron-builder-squirrel-windows": "15.0.0",
 		"electron-squirrel-startup": "^1.0.0",
 		"chai": "3.5.0",
 		"mocha": "3.2.0",
