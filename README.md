@@ -174,6 +174,8 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 #### Environment:
 
 * Sencha Cmd 6.1.2.15
+** Make sure to check (Compass extension) during install
+* Ruby 2.3
 * NPM 3.8.7
 * Node.js 4.0.0
 
