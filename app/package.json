@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.5.3",
+	"version": "0.5.7",
 	"description": "Rambox",
 	"main": "electron/main.js",
 	"private": true,
@@ -27,7 +27,7 @@
 		"skype"
 	],
 	"author": "Ramiro Saenz <saenzramiro@gmail.com>",
-	"license": "MIT",
+	"license": "GPL-3.0",
 	"dependencies": {
 		"auto-launch": "4.0.0",
 		"tmp": "0.0.28",

@@ -25,7 +25,7 @@
 
 <h5 align="center">Available for Windows, Mac and Linux.</h5>
 
-<h5 align="center"><a href="http://rambox.pro/#download" target="_blank"><img src="http://windows7-8activator.com/wp-content/uploads/2015/04/button1.png" width="250" alt="DOWNLOAD HERE"></a></h5>
+<h5 align="center"><a href="http://rambox.pro/#download" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE"></a></h5>
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 
@@ -114,6 +114,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/riot.png" alt="Riot" title="Riot">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/pushbullet.png" alt="Pushbullet" title="Pushbullet">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/movim.png" alt="Movim" title="Movim">
+
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/kaiwa.png" alt="Kaiwa" title="Kaiwa">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zyptonite.png" alt="Zyptonite" title="Zyptonite">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/linkedin.png" alt="LinkedIn" title="LinkedIn">
@@ -124,9 +125,8 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/workplace.png" alt="Workplace" title="Workplace">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/fastmail.png" alt="FastMail" title="FastMail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hibox.png" alt="Hibox" title="Hibox">
-<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/ciscospark.png" alt="Cisco Spark" title="Cisco Spark">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/jandi.png" alt="Jandi" title="Jandi">
-
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/threema.png" alt="Threema" title="Threema">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -179,7 +179,8 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 
 #### Environment:
 
-* Sencha Cmd 6.1.2.15
+* Sencha Cmd 6.1.2.15 (make sure to check "Compass extension" during install if you don't have installed yet)
+* Ruby 2.3
 * NPM 3.8.7
 * Node.js 4.0.0
 
@@ -191,7 +192,20 @@ If you're comfortable getting up and running from a `git clone`, this method is 
 4. `npm run sencha:compile`
 5. `npm start`
 
-----------
+#### Compile on Ubuntu:
+
+These instructions were tested with Ubuntu 17.04.
+1. Install dependencies: `sudo apt install nodejs-legacy npm git`
+2. Build and install electron: `sudo npm install electron-prebuilt -g`
+3. Install Sencha Cmd (non-free): https://www.sencha.com/products/extjs/cmd-download/
+4. Clone repository: `git clone https://github.com/saenzramiro/rambox.git`
+5. Install npm dependencies: `npm install`
+6. Configure `env-sample.js` and rename it to `env.js`.
+7. Compile: `npm run sencha:compile`
+8. Start program: `npm start`
+
+
+-------------------
 
 Disclosure
 -------------------

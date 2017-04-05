@@ -76,7 +76,7 @@ Ext.define('Rambox.ux.WebView',{
 											,handler: me.goBack
 										}
 										,{
-											 text: 'Foward'
+											 text: 'Forward'
 											,glyph: 'xf054@FontAwesome'
 											,iconAlign: 'right'
 											,flex: 1
@@ -412,7 +412,7 @@ Ext.define('Rambox.ux.WebView',{
 	,setUnreadCount: function(newUnreadCount) {
 		var me = this;
 
-		if (me.record.get('includeInGlobalUnreadCounter') === true) {
+		if (newUnreadCount === parseInt(newUnreadCount,10) && me.record.get('includeInGlobalUnreadCounter') === true) {
 			Rambox.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
 		} else {
 			Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));

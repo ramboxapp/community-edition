@@ -265,7 +265,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'HD quality calls, private and group chats with inline photos, music and video. Also available for your phone or tablet.'
 			,url: 'https://app.wire.com/'
 			,type: 'messaging'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
 		},
 		{
 			 id: 'sync'
@@ -516,7 +515,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'RainLoop Webmail - Simple, modern & fast web-based email client.'
 			,url: '___'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge pull-right count"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
+			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".e-item .e-link:not(.hidden) .badge.pull-right.count"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
 		},
 		{
 			 id: 'amium'
@@ -670,14 +669,24 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
-			 id: 'xing'
-			,logo: 'xing.png'
-			,name: 'XING'
-			,description: 'Career-oriented social networking'
-			,url: 'https://www.xing.com/messages/conversations'
-			,type: 'messaging'
-			,js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();'
-			,dont_update_unread_from_title: true
+			id: 'xing',
+			logo: 'xing.png',
+			name: 'XING',
+			description: 'Career-oriented social networking',
+			url: 'https://www.xing.com/messages/conversations',
+			type: 'messaging',
+			js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
+			dont_update_unread_from_title: true
+		},
+		{
+			id: 'threema',
+			logo: 'threema.png',
+			name: 'Threema',
+			description: 'Seriously secure messaging',
+			url: 'https://web.threema.ch/',
+			type: 'messaging',
+			js_unread: '(function () { let unreadCount = 0; function checkUnread() { let newUnread = 0; try { let webClientService = angular.element(document.documentElement).injector().get(\'WebClientService\'); let conversations = webClientService.conversations.conversations; conversations.forEach(function(conversation) { newUnread += conversation.unreadCount; }); } catch (e) { } if (newUnread !== unreadCount) { unreadCount = newUnread; updateBadge(unreadCount); } } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
+			dont_update_unread_from_title: true
 		},
 		{
 			 id: 'workplace'

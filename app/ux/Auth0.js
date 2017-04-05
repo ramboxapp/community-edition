@@ -110,7 +110,7 @@ Ext.define('Rambox.ux.Auth0', {
 			,failure: function(response) {
 				Ext.Msg.hide();
 				Ext.toast({
-					 html: '<i class="fa fa-times fa-3x fa-pull-left" aria-hidden="true"></i> Error ocurred when trying to backup your configuration.'
+					 html: '<i class="fa fa-times fa-3x fa-pull-left" aria-hidden="true"></i> Error occurred when trying to backup your configuration.'
 					,title: 'Synchronize Configuration'
 					,width: 300
 					,align: 't'
