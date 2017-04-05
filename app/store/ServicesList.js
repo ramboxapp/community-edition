@@ -515,7 +515,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'RainLoop Webmail - Simple, modern & fast web-based email client.'
 			,url: '___'
 			,type: 'email'
-			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge pull-right count"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
+			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".e-item .e-link:not(.hidden) .badge.pull-right.count"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
 		},
 		{
 			 id: 'amium'
@@ -669,14 +669,24 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
-			 id: 'xing'
-			,logo: 'xing.png'
-			,name: 'XING'
-			,description: 'Career-oriented social networking'
-			,url: 'https://www.xing.com/messages/conversations'
-			,type: 'messaging'
-			,js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();'
-			,dont_update_unread_from_title: true
+			id: 'xing',
+			logo: 'xing.png',
+			name: 'XING',
+			description: 'Career-oriented social networking',
+			url: 'https://www.xing.com/messages/conversations',
+			type: 'messaging',
+			js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
+			dont_update_unread_from_title: true
+		},
+		{
+			id: 'threema',
+			logo: 'threema.png',
+			name: 'Threema',
+			description: 'Seriously secure messaging',
+			url: 'https://web.threema.ch/',
+			type: 'messaging',
+			js_unread: '(function () { let unreadCount = 0; function checkUnread() { let newUnread = 0; try { let webClientService = angular.element(document.documentElement).injector().get(\'WebClientService\'); let conversations = webClientService.conversations.conversations; conversations.forEach(function(conversation) { newUnread += conversation.unreadCount; }); } catch (e) { } if (newUnread !== unreadCount) { unreadCount = newUnread; updateBadge(unreadCount); } } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
+			dont_update_unread_from_title: true
 		},
 		{
 			 id: 'workplace'
@@ -728,6 +738,30 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("z-messages"),b=0;for(i=0;i<a.length;i++)b+=parseInt(a[i].innerHTML.trim());updateBadge(b)}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
-		}
-  ]
+		},
+		{
+			 id: 'fastmail'
+			,logo: 'fastmail.png'
+			,name: 'FastMail'
+			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
+			,url: 'https://www.fastmail.com/login/'
+			,type: 'mail'
+		},
+    		{
+      			 id: 'hibox'
+			,logo: 'hibox.png'
+			,name: 'Hibox'
+			,description: 'Hibox is a secure and private messaging platform for your business.'
+			,url: 'https://app.hibox.co/'
+			,type: 'messaging'
+ 		},
+    		{
+      			 id: 'jandi'
+			,logo: 'jandi.png'
+			,name: 'Jandi'
+			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
+			,url: 'https://___.jandi.com/'
+			,type: 'messaging'
+    		}
+  	]
 });
