@@ -50,8 +50,12 @@ exports.create = function(win, config) {
 	appIcon = new Tray(iconPath);
 	appIcon.setToolTip('Rambox');
 	appIcon.setContextMenu(contextMenu);
-	appIcon.on('double-click', () => {
-		if ( !win.isVisible() || win.isMinimized() ) config.get('maximized') ? win.maximize() : win.show();
+	appIcon.on('click', () => {
+		if ( !win.isVisible() ) {
+			win.isVisible() ? win.hide() : win.show();
+		} else {
+			win.focus();
+		}
 	});
 };
 
