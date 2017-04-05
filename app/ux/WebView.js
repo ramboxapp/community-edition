@@ -412,7 +412,7 @@ Ext.define('Rambox.ux.WebView',{
 	,setUnreadCount: function(newUnreadCount) {
 		var me = this;
 
-		if (newUnreadCount === parseInt(newUnreadCount,10) && me.record.get('includeInGlobalUnreadCounter') === true) {
+		if ( !isNaN(newUnreadCount) && (function(x) { return (x | 0) === x; })(parseFloat(newUnreadCount)) && me.record.get('includeInGlobalUnreadCounter') === true) {
 			Rambox.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
 		} else {
 			Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
