@@ -580,14 +580,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,custom_domain: true
 		},
 		{
-			 id: 'actor'
-			,logo: 'actor.png'
-			,name: 'Actor'
-			,description: 'Free and Secure text, photo and voice messages over 2G/3G or Wi-Fi.'
-			,url: 'https://app.actor.im/'
-			,type: 'messaging'
-		},
-		{
 			 id: 'socialcast'
 			,logo: 'socialcast.png'
 			,name: 'Socialcast'
