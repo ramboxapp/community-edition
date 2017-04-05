@@ -142,7 +142,7 @@
 - [x] Mute audio to specific service.
 - [x] Separate tabs floating to the right.
 - [x] Go Offline on specific service.
-- [x] Start automatically on system startup.
+- [x] Start automatically.
 - [x] Custom Code Injection.
 - [x] Keyboard Shortcuts.
 - [x] Proxy.
