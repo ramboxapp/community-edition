@@ -16,18 +16,30 @@ exports.create = function(win, config) {
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
 
 	const toggleWin = () => {
-		if ( !config.get('keep_in_taskbar_on_close') ) {
-			if ( win.isVisible() ) {
-				win.hide();
-			} else {
-				config.get('maximized') ? win.maximize() : win.show();
-			}
-		} else {
-			if ( win.isVisible() && !win.isMinimized() ) {
-				win.minimize();
-			} else {
-				config.get('maximized') ? win.maximize() : win.show();
-			}
+		switch ( config.get('window_close_behavior') ) {
+			case 'keep_in_tray':
+			case 'quit':
+				if ( win.isVisible() ) {
+					win.hide();
+				} else if ( config.get('maximized') ) {
+					win.maximize();
+					win.focus();
+				} else {
+					win.show();
+				}
+				break;
+			case 'keep_in_tray_and_taskbar':
+				if ( win.isVisible() && !win.isMinimized() ) {
+					win.minimize();
+				} else if ( config.get('maximized') ) {
+					win.maximize();
+					win.focus();
+				} else {
+					win.show();
+				}
+				break;
+			default:
+				break;
 		}
 	};
 
@@ -50,9 +62,9 @@ exports.create = function(win, config) {
 	appIcon = new Tray(iconPath);
 	appIcon.setToolTip('Rambox');
 	appIcon.setContextMenu(contextMenu);
-	appIcon.on('click', () => {
+	appIcon.on('double-click', () => {
 		if ( !win.isVisible() ) {
-			win.isVisible() ? win.hide() : win.show();
+			win.show();
 		} else {
 			win.focus();
 		}
