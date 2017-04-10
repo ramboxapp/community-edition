@@ -755,6 +755,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
 			,url: 'https://___.jandi.com/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'messengerpages'
+			,logo: 'messengerpages.png'
+			,name: 'Messenger for Pages'
+			,description: 'Chat with the people of your Facebook Page.'
+			,url: 'https://www.facebook.com/___/messages/'
+			,type: 'messaging'
+			,css: '#pagelet_bluebar{display:none;}#pages_manager_top_bar_container{display:none;}#pagelet_sidebar{display:none;}#pagelet_dock{display:none;}#pages_manager_top_bar_container + div{margin:0;width:100%;}#pages_manager_top_bar_container + div > div > div{padding:0;}#pages_manager_top_bar_container + div > div > div div div:last-child{top:0!important;}'
 		}
   	]
 });
