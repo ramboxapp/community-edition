@@ -764,6 +764,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://www.facebook.com/___/messages/'
 			,type: 'messaging'
 			,css: '#pagelet_bluebar{display:none;}#pages_manager_top_bar_container{display:none;}#pagelet_sidebar{display:none;}#pagelet_dock{display:none;}#pages_manager_top_bar_container + div{margin:0;width:100%;}#pages_manager_top_bar_container + div > div > div{padding:0;}#pages_manager_top_bar_container + div > div > div div div:last-child{top:0!important;}'
+		},
+		{
+			 id: 'vk'
+			,logo: 'vk.png'
+			,name: 'VK Messenger'
+			,description: 'Simple and Easy App for Messaging on VK.'
+			,url: 'https://vk.com/im'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/\D+/g,"")))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,css: '#page_header_cont{display:none;}#side_bar{display:none;}#page_body{width:100%!important;margin-top:0;}.im-page_classic.im-page{width:700px!important;}.im-right-menu.ui_rmenu{margin-left:715px!important;}.im-page{padding-top:0!important;}.im-page_classic.im-page .im-page--header{border-top:0!important;width:700px!important;max-width:700px!important;top:0!important;margin-top:0!important;}.im-page_classic.im-page .im-page--dialogs-footer{width:700px!important;max-width:700px!important;}.im-page .im-page--dialogs{padding-top:6px!important;}.im-page_classic .im-page--chat-header{top:0!important;width:700px!important;}.im-page_classic.im-page .im-page--chat-input{width:700px!important;border-bottom:0!important;}.im-chat-input.im-chat-input_classic .im-chat-input--textarea{width:588px!important;}.im-right-menu.ui_rmenu{top:0!important;}'
 		}
   	]
 });
