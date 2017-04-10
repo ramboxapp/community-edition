@@ -15,6 +15,9 @@ const ipc = require('electron').ipcRenderer;
 ipc.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
 });
+ipc.on('showPreferences', function(event, message) {
+	!Ext.cq1('preferences') ? Ext.create('Rambox.view.preferences.Preferences').show() : '';
+});
 ipc.on('autoUpdater:check-update', function() {
 	Rambox.app.checkUpdate();
 });

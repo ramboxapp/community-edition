@@ -205,6 +205,12 @@ if (process.platform === 'darwin') {
 		label: appName,
 		submenu: [
 			{
+				label: 'Preferences',
+				click() {
+					sendAction('showPreferences')
+				}
+			},
+			{
 				label: `Check for updates...`,
 				click(item, win) {
 					const webContents = win.webContents;
@@ -255,6 +261,15 @@ if (process.platform === 'darwin') {
 	tpl.unshift({
 		label: '&File',
 		submenu: [
+			{
+				label: 'Preferences',
+				click() {
+					sendAction('showPreferences')
+				}
+			},
+			{
+				type: 'separator'
+			},
 			{
 				role: 'quit'
 			}
