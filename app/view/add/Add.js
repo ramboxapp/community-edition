@@ -36,6 +36,7 @@ Ext.define('Rambox.view.add.Add',{
 					{
 						 xtype: 'textfield'
 						,fieldLabel: 'Name'
+						,labelWidth: 40
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
 						,name: 'serviceName'
 						,allowBlank: true
@@ -43,12 +44,22 @@ Ext.define('Rambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'container'
-						,layout: 'column'
+						,layout: 'hbox'
 						,hidden: me.edit ? me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain') : me.record.get('url').indexOf('___') === -1 && !me.record.get('custom_domain')
 						,items: [
 							{
+								 xtype: 'label'
+								,text: 'URL:'
+								,width: 45
+							}
+							,{
+								 xtype: 'button'
+								,text: me.edit ? me.service.get('url').split('___')[0] : me.record.get('url').split('___')[0]
+								,style: 'border-top-right-radius:0;border-bottom-right-radius:0;'
+								,hidden: me.edit ? me.service.get('url').indexOf('___') === -1 ? true : me.service.get('type') === 'custom' || me.service.get('url') === '___' : me.record.get('url').indexOf('___') === -1 ? true : me.record.get('type') === 'custom' || me.record.get('url') === '___'
+							}
+							,{
 								 xtype: 'textfield'
-								,fieldLabel: 'URL'
 								,name: 'url'
 								,value: me.edit && me.service.get('url').indexOf('___') >= 0 ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '') : (me.record.get('url').indexOf('___') === -1 ? me.record.get('url') : '')
 								,readOnly: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain')) : me.record.get('url').indexOf('___') === -1 && me.record.get('custom_domain')
@@ -56,8 +67,8 @@ Ext.define('Rambox.view.add.Add',{
 								,submitEmptyText: false
 								,emptyText: me.record.get('url') === '___' ? 'http://' : ''
 								,vtype: me.record.get('url') === '___' ? 'url' : ''
-								,width: 275
 								,listeners: { specialkey: 'onEnter' }
+								,flex: 1
 							}
 							,{
 								 xtype: 'cycle'
@@ -99,6 +110,8 @@ Ext.define('Rambox.view.add.Add',{
 									} else if ( !me.edit && cycleBtn.nextSibling().originalValue === '1' ) {
 										activeItem.custom ? cycleBtn.previousSibling().setValue('') : cycleBtn.previousSibling().reset();
 									}
+
+									cycleBtn.previousSibling().previousSibling().setHidden(activeItem.custom ? true : me.edit ? me.service.get('url').indexOf('___') === -1 ? true : me.service.get('type') === 'custom' || me.service.get('url') === '___' : me.record.get('url').indexOf('___') === -1 ? true : me.record.get('type') === 'custom' || me.record.get('url') === '___');
 
 									cycleBtn.previousSibling().setReadOnly( activeItem.custom ? false : (me.edit ? me.service.get('url').indexOf('___') === -1 : me.record.get('url').indexOf('___') === -1) );
 									cycleBtn.nextSibling().setValue( activeItem.custom ? 2 : 1 );
