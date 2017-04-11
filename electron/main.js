@@ -184,10 +184,7 @@ function createWindow () {
 		// Navigate the window forward when the user hits their mouse forward button
 		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
 	});
-	mainWindow.on('focus', (e) => {
-		// Make focus on current service when user use Alt + Tab to activate Rambox
-		mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").fireEvent("tabchange", Ext.cq1("app-main"), Ext.cq1("app-main").getActiveTab());');
-	});
+	
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {
 		if ( !isQuitting ) {
