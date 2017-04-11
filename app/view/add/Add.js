@@ -133,6 +133,7 @@ Ext.define('Rambox.view.add.Add',{
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('logo') : '') : me.record.get('logo')
 						,allowBlank: true
 						,hidden: me.record.get('type') !== 'custom'
+						,labelWidth: 40
 						,margin: '5 0 0 0'
 						,listeners: { specialkey: 'onEnter' }
 					}
