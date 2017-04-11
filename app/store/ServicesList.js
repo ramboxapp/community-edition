@@ -225,6 +225,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 		},
 		{
+			 id: 'protonmailch'
+			,logo: 'protonmail.png'
+			,name: 'ProtonMail CH'
+			,description: 'Free and web-based encrypted email service founded in 2013 at the CERN research facility. ProtonMail is designed as a zero-knowledge system,[note 1] using client-side encryption to protect emails and user data before they are sent to ProtonMail servers, in contrast to other common webmail services such as Gmail and Hotmail.'
+			,url: 'https://app.protonmail.ch/inbox'
+			,type: 'email'
+			,note: 'Read <a href="https://protonmail.com/support/knowledge-base/what-is-the-difference-between-protonmail-com-and-protonmail-ch/" target="_blank">HERE</a> to see the differences between protonmail.com and protonmail.ch.'
+		},
+		{
 			 id: 'tutanota'
 			,logo: 'tutanota.png'
 			,name: 'Tutanota'
