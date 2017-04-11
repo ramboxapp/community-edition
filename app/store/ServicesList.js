@@ -730,6 +730,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Manage your professional identity. Build and engage with your professional network. Access knowledge, insights and opportunities.'
 			,url: 'https://www.linkedin.com/messaging'
 			,type: 'messaging'
+			,css: 'nav, .ad-banner-container, .right-rail { display: none !important; } .neptune-grid { width: 100% !important; padding:0!important; } .authentication-outlet { margin: 0 !important; }.neptune-grid.two-column .core-rail{width:100%!important;}.msg-messaging-container{height:calc(100%)!important;}.msg-conversations-container{flex:1!important;}.msg-thread{flex:3!important;max-width:none!important;min-width:none!important;}#messaging{height:calc(100vh)!important;}#msg-overlay{display:none!important;}body{overflow-y:hidden!important;}'
 		},
 		{
 			 id: 'zyptonite'
