@@ -82,9 +82,14 @@ Ext.define('Rambox.Application', {
 						var tabPanel = Ext.cq1('app-main');
 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 						var i = activeIndex + 1;
-						if ( i >= tabPanel.items.items.length - 1 ) i = 0;
-						while ( tabPanel.items.items[i].id === 'tbfill' ) i++;
-						tabPanel.setActiveTab( i );
+
+						// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
+						if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
+
+						// skip spacer
+						while (tabPanel.items.items[i].id === 'tbfill') i++;
+
+						tabPanel.setActiveTab(i);
 					}
 				}
 				,{
@@ -97,7 +102,7 @@ Ext.define('Rambox.Application', {
 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 						var i = activeIndex - 1;
 						if ( i < 0 ) i = tabPanel.items.items.length - 1;
-						while ( tabPanel.items.items[i].id === 'tbfill' ) i--;
+						while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
 						tabPanel.setActiveTab( i );
 					}
 				}
