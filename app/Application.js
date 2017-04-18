@@ -236,7 +236,7 @@ Ext.define('Rambox.Application', {
 							,{
 								 xtype: 'button'
 								,text: 'Download'
-								,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
+								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/saenzramiro/rambox/releases/latest'
 								,hidden: process.platform === 'win32'
 							}
 							,{
