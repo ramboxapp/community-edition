@@ -762,6 +762,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
 			,url: 'https://___.jandi.com/'
 			,type: 'messaging'
-    		}
+    		},
+		{
+			 id: 'sococo'
+			,logo: 'sococo.png'
+			,name: 'Sococo'
+			,description: 'Sococo is an online workplace that adds the magic of co-location back into the day to day life of distributed Agile teams.'
+			,url: 'https://app.sococo.com/a/login'
+			,type: 'messaging'
+		}
   	]
 });
