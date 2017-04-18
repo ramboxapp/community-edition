@@ -762,6 +762,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
 			,url: 'https://___.jandi.com/'
 			,type: 'messaging'
-    		}
+    		},
+
+		    {
+			 id: 'mastodon'
+			,logo: 'mastodon.png'
+			,name: 'Mastodon'
+			,description: 'Mastodon is a free, open-source social network. A decentralized alternative to commercial platforms, it avoids the risks of a single company monopolizing your communication'
+			,url: '___'
+			,type: 'messaging'
+			,note: 'To enable desktop notifications, you have to go to Options inside Mastodon.'
+		},
   	]
 });
