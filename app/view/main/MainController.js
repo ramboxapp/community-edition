@@ -102,10 +102,10 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove all services?', function(btnId) {
 				if ( btnId === 'yes' ) {
 					Ext.cq1('app-main').suspendEvent('remove');
+					Ext.getStore('Services').load();
 					Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 						me.removeServiceFn(serviceId);
 					});
-					Ext.getStore('Services').load();
 					if ( Ext.isFunction(callback) ) callback();
 					Ext.cq1('app-main').resumeEvent('remove');
 					document.title = 'Rambox';
@@ -113,10 +113,10 @@ Ext.define('Rambox.view.main.MainController', {
 			});
 		} else {
 			Ext.cq1('app-main').suspendEvent('remove');
+			Ext.getStore('Services').load();
 			Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 				me.removeServiceFn(serviceId);
 			});
-			Ext.getStore('Services').load();
 			if ( Ext.isFunction(callback) ) callback();
 			Ext.cq1('app-main').resumeEvent('remove');
 			document.title = 'Rambox';
