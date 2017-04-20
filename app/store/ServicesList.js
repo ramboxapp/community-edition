@@ -794,6 +794,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,custom_domain: true
 			,note: '<a href="https://instances.mastodon.xyz/" target="_blank">List of instances</a>'
+		},
+		{
+			 id: 'teamworkchat'
+			,logo: 'teamworkchat.png'
+			,name: 'Teamwork Chat'
+			,description: 'Say goodbye to email. Take your online collaboration to the next level with Teamwork Chat and keep all team discussions in one place. Chat to your team in a fun and informal way with Teamwork Chat.'
+			,url: 'https://___.teamwork.com/chat'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("sidebar-notification-indicator").length > 0 ? document.getElementsByClassName("sidebar-notification-indicator")[0].innerHTML : 0))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,dont_update_unread_from_title: true
 		}
-  	]
+	]
 });
