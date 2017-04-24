@@ -69,6 +69,7 @@
 		"linux": {
 			"category": "Office",
 			"target": [
+				"snap",
 				"AppImage",
 				"deb",
 				"rpm",
@@ -76,6 +77,10 @@
 				"tar.gz"
 			]
 		},
+		"snap": {
+ 			"confinement": "classic",
+ 			"grade": "stable"
+      		},
 		"directories": {
 			"buildResources": "resources/installer/",
 			"output": "dist/",
