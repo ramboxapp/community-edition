@@ -8,9 +8,7 @@ const MenuItem = electron.MenuItem;
 var appIcon = null;
 
 exports.create = function(win, config) {
-	if (process.platform === 'darwin' || appIcon) {
-		return;
-	}
+	if (process.platform === 'darwin' || appIcon || config.get('window_display_behavior') === 'show_taskbar' ) return;
 
 	const icon = process.platform === 'linux' || process.platform === 'darwin' ? 'IconTray.png' : 'Icon.ico';
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
@@ -39,6 +37,11 @@ exports.create = function(win, config) {
 	appIcon.on('double-click', function() {
 		win.webContents.executeJavaScript('ipc.send("toggleWin", true);');
 	});
+};
+
+exports.destroy = function() {
+	appIcon.destroy();
+	appIcon = null;
 };
 
 exports.setBadge = function(messageCount, showUnreadTray) {

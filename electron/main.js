@@ -22,7 +22,7 @@ const config = new Config({
 	 defaults: {
 		 always_on_top: false
 		,hide_menu_bar: false
-		,skip_taskbar: true
+		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,window_close_behavior: 'keep_in_tray'
 		,start_minimized: false
@@ -132,7 +132,7 @@ function createWindow () {
 		,height: config.get('height')
 		,alwaysOnTop: config.get('always_on_top')
 		,autoHideMenuBar: config.get('hide_menu_bar')
-		,skipTaskbar: !config.get('skip_taskbar')
+		,skipTaskbar: config.get('window_display_behavior') === 'show_trayIcon'
 		,show: !config.get('start_minimized')
 		,webPreferences: {
 			 webSecurity: false
@@ -262,14 +262,29 @@ ipcMain.on('setConfig', function(event, values) {
 	// hide_menu_bar
 	mainWindow.setAutoHideMenuBar(values.hide_menu_bar);
 	if ( !values.hide_menu_bar ) mainWindow.setMenuBarVisibility(true);
-	// skip_taskbar
-	mainWindow.setSkipTaskbar(!values.skip_taskbar);
 	// always_on_top
 	mainWindow.setAlwaysOnTop(values.always_on_top);
 	// auto_launch
 	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
+
+	switch ( values.window_display_behavior ) {
+		case 'show_taskbar':
+			mainWindow.setSkipTaskbar(false);
+			tray.destroy();
+			break;
+		case 'show_trayIcon':
+			mainWindow.setSkipTaskbar(true);
+			tray.create(mainWindow, config);
+			break;
+		case 'taskbar_tray':
+			mainWindow.setSkipTaskbar(false);
+			tray.create(mainWindow, config);
+			break;
+		default:
+			break;
+	}
 });
 
 ipcMain.on('validateMasterPassword', function(event, pass) {

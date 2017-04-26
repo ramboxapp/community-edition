@@ -15,12 +15,13 @@ Ext.define('Rambox.view.preferences.Preferences',{
 	}
 
 	,title: 'Preferences'
-	,width: 400
+	,width: 420
 	,modal: true
 	,closable: true
 	,minimizable: false
 	,maximizable: false
 	,draggable: true
+	,resizable: false
 	,buttons: [
 		{
 			 text: 'Cancel'
@@ -62,33 +63,48 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,hidden: process.platform !== 'win32'
 					}
 					,{
-						 xtype: 'checkbox'
-						,name: 'skip_taskbar'
-						,boxLabel: 'Show in Taskbar'
-						,value: config.skip_taskbar
-						,reference: 'skipTaskbar'
-						,hidden: process.platform === 'darwin'
-					},
-					{
-						xtype: 'combo',
-						name: 'window_close_behavior',
-						fieldLabel: 'When closing the main window',
-						labelAlign: 'top',
-						value: config.window_close_behavior,
-						displayField: 'label',
-						valueField: 'value',
-						editable: false,
-						store: Ext.create('Ext.data.Store', {
-							fields: ['value', 'label'],
-							data : [
-								{ 'value': 'keep_in_tray', 'label': 'Keep in tray' },
-								{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and taskbar' },
-								{ 'value': 'quit', 'label': 'Quit' }
+						 xtype: 'combo'
+						,name: 'window_display_behavior'
+						,fieldLabel: 'Display behaviour'
+						,labelAlign: 'left'
+						,width: 380
+						,labelWidth: 105
+						,value: config.window_display_behavior
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: [
+								 { 'value': 'show_taskbar', 'label': 'Show in Taskbar' }
+								,{ 'value': 'show_trayIcon', 'label': 'Show Tray Icon' }
+								,{ 'value': 'taskbar_tray', 'label': 'Show in Taskbar and Tray Icon' }
 							]
-						}),
-						hidden: process.platform === 'darwin'
-					},
-					{
+						})
+						,hidden: process.platform === 'darwin'
+					}
+					,{
+						 xtype: 'combo'
+						,name: 'window_close_behavior'
+						,fieldLabel: 'When closing the main window'
+						,labelAlign: 'left'
+						,width: 380
+						,labelWidth: 180
+						,value: config.window_close_behavior
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: [
+								 { 'value': 'keep_in_tray', 'label': 'Keep in tray' }
+								,{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and taskbar' }
+								,{ 'value': 'quit', 'label': 'Quit' }
+							]
+						})
+						,hidden: process.platform === 'darwin'
+					}
+					,{
 						 xtype: 'checkbox'
 						,name: 'always_on_top'
 						,boxLabel: 'Always on top'
