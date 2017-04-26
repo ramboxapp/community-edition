@@ -15,38 +15,12 @@ exports.create = function(win, config) {
 	const icon = process.platform === 'linux' || process.platform === 'darwin' ? 'IconTray.png' : 'Icon.ico';
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
 
-	const toggleWin = () => {
-		switch ( config.get('window_close_behavior') ) {
-			case 'keep_in_tray':
-			case 'quit':
-				if ( win.isVisible() ) {
-					win.hide();
-				} else if ( config.get('maximized') ) {
-					win.maximize();
-					win.focus();
-				} else {
-					win.show();
-				}
-				break;
-			case 'keep_in_tray_and_taskbar':
-				if ( win.isVisible() && !win.isMinimized() ) {
-					win.minimize();
-				} else if ( config.get('maximized') ) {
-					win.maximize();
-					win.focus();
-				} else {
-					win.show();
-				}
-				break;
-			default:
-				break;
-		}
-	};
-
 	const contextMenu = electron.Menu.buildFromTemplate([
 		{
 			 label: 'Show/Hide Window'
-			,click: toggleWin
+			,click() {
+				win.webContents.executeJavaScript('ipc.send("toggleWin", false);');
+			}
 		},
 		{
 			type: 'separator'
@@ -62,12 +36,8 @@ exports.create = function(win, config) {
 	appIcon = new Tray(iconPath);
 	appIcon.setToolTip('Rambox');
 	appIcon.setContextMenu(contextMenu);
-	appIcon.on('double-click', () => {
-		if ( !win.isVisible() ) {
-			win.show();
-		} else {
-			win.focus();
-		}
+	appIcon.on('double-click', function() {
+		win.webContents.executeJavaScript('ipc.send("toggleWin", true);');
 	});
 };
 

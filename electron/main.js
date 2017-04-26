@@ -363,6 +363,26 @@ ipcMain.on('image:popup', function(event, url, partition) {
 	tmpWindow.loadURL(url);
 });
 
+ipcMain.on('toggleWin', function(event, allwaysShow) {
+	if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && mainWindow.isVisible() ) { // Maximized
+		!allwaysShow ? mainWindow.close() : mainWindow.show();
+	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Minimized
+		mainWindow.restore();
+	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Windowed mode
+		!allwaysShow ? mainWindow.close() : mainWindow.show();
+	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Closed to taskbar
+		mainWindow.restore();
+	} else if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed maximized to tray
+		mainWindow.show();
+	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed windowed to tray
+		mainWindow.show();
+	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed minimized to tray
+		mainWindow.restore();
+	} else {
+		mainWindow.show();
+	}
+});
+
 // Proxy
 if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
 
