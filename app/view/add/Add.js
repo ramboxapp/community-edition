@@ -143,64 +143,84 @@ Ext.define('Rambox.view.add.Add',{
 						,margin: '10 0 0 0'
 						,items: [
 							{
-								 xtype: 'checkbox'
-								,boxLabel: 'Align to Right'
-								,checked: me.edit ? (me.record.get('align') === 'right' ? true : false) : false
-								,name: 'align'
-								,uncheckedValue: 'left'
-								,inputValue: 'right'
-							}
-							,{
-								 xtype: 'checkbox'
-								,boxLabel: 'Show notifications'
-								,name: 'notifications'
-								,checked: me.edit ? me.record.get('notifications') : true
-								,uncheckedValue: false
-								,inputValue: true
-							}
-							,{
-								 xtype: 'checkbox'
-								,boxLabel: 'Mute all sounds'
-								,name: 'muted'
-								,checked: me.edit ? me.record.get('muted') : false
-								,uncheckedValue: false
-								,inputValue: true
-							}
-							,{
-								 xtype: 'checkbox'
-								,boxLabel: 'Trust invalid authority certificates'
-								,name: 'trust'
-								,hidden: me.record.get('type') !== 'custom'
-								,checked: me.edit ? me.record.get('trust') : true
-								,uncheckedValue: false
-								,inputValue: true
-							}
-						]
-					},
-					{
-						xtype: 'fieldset',
-						title: 'Unread counter',
-						margin: '10 0 0 0',
-						items: [
-							{
-								xtype: 'checkbox',
-								boxLabel: 'Display tab unread counter',
-								name: 'displayTabUnreadCounter',
-								checked: me.edit ? me.record.get('displayTabUnreadCounter') : true,
-								uncheckedValue: false,
-								inputValue: true
-							},
-							{
-								xtype: 'checkbox',
-								boxLabel: 'Include in global unread counter',
-								name: 'includeInGlobalUnreadCounter',
-								checked: me.edit ? me.record.get('includeInGlobalUnreadCounter') : true,
-								uncheckedValue: false,
-								inputValue: true
+								 xtype: 'checkboxgroup'
+								,columns: 2
+								,items: [
+									{
+										 xtype: 'checkbox'
+										,boxLabel: 'Align to Right'
+										,checked: me.edit ? (me.record.get('align') === 'right' ? true : false) : false
+										,name: 'align'
+										,uncheckedValue: 'left'
+										,inputValue: 'right'
+									}
+									,{
+										 xtype: 'checkbox'
+										,boxLabel: 'Show notifications'
+										,name: 'notifications'
+										,checked: me.edit ? me.record.get('notifications') : true
+										,uncheckedValue: false
+										,inputValue: true
+									}
+									,{
+										 xtype: 'checkbox'
+										,boxLabel: 'Mute all sounds'
+										,name: 'muted'
+										,checked: me.edit ? me.record.get('muted') : false
+										,uncheckedValue: false
+										,inputValue: true
+									}
+									,{
+										 xtype: 'checkbox'
+										,boxLabel: 'Always display Status Bar'
+										,name: 'statusbar'
+										,checked: me.edit ? me.record.get('statusbar') : true
+										,uncheckedValue: false
+										,inputValue: true
+									}
+									,{
+										 xtype: 'checkbox'
+										,boxLabel: 'Trust invalid authority certificates'
+										,name: 'trust'
+										,hidden: me.record.get('type') !== 'custom'
+										,checked: me.edit ? me.record.get('trust') : true
+										,uncheckedValue: false
+										,inputValue: true
+									}
+								]
 							}
 						]
-					},
-					{
+					}
+					,{
+						 xtype: 'fieldset'
+						,title: 'Unread counter'
+						,margin: '10 0 0 0'
+						,items: [
+							{
+								 xtype: 'checkboxgroup'
+								,columns: 2
+								,items: [
+									{
+										xtype: 'checkbox',
+										boxLabel: 'Display tab unread counter',
+										name: 'displayTabUnreadCounter',
+										checked: me.edit ? me.record.get('displayTabUnreadCounter') : true,
+										uncheckedValue: false,
+										inputValue: true
+									},
+									{
+										xtype: 'checkbox',
+										boxLabel: 'Include in global unread counter',
+										name: 'includeInGlobalUnreadCounter',
+										checked: me.edit ? me.record.get('includeInGlobalUnreadCounter') : true,
+										uncheckedValue: false,
+										inputValue: true
+									}
+								]
+							}
+						]
+					}
+					,{
 						 xtype: 'fieldset'
 						,title: 'Advanced'
 						,margin: '10 0 0 0'

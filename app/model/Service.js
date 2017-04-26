@@ -38,6 +38,10 @@ Ext.define('Rambox.model.Service', {
 		,type: 'boolean'
 		,defaultValue: false
 	},{
+		 name: 'statusbar'
+		,type: 'boolean'
+		,defaultValue: true
+	},{
 		 name: 'displayTabUnreadCounter'
 		,type: 'boolean'
 		,defaultValue: true

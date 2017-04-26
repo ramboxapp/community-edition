@@ -123,22 +123,18 @@ Ext.define('Rambox.ux.WebView',{
 					]
 				}
 			}
-			,bbar: {
-				 xtype: 'statusbar'
-				,defaultText: '<i class="fa fa-check fa-fw" aria-hidden="true"></i> Ready'
-				,busyIconCls : ''
-				,busyText: '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Loading...'
-				,items: [
-					,{
-						 xtype: 'tbtext'
-						,itemId: 'url'
-					}
-				]
-			}
 			,listeners: {
 				 afterrender: me.onAfterRender
 			}
 		});
+
+		if ( me.record.get('statusbar') ) {
+			Ext.apply(me, {
+				bbar: me.statusBarConstructor(false)
+			});
+		} else {
+			me.items.push(me.statusBarConstructor(true));
+		}
 
 		me.callParent(config);
 	}
@@ -157,7 +153,7 @@ Ext.define('Rambox.ux.WebView',{
 				,padding: 100
 			};
 		} else {
-			cfg = {
+			cfg = [{
 				 xtype: 'component'
 				,hideMode: 'offsets'
 				,autoRender: true
@@ -175,12 +171,48 @@ Ext.define('Rambox.ux.WebView',{
 					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 					,preload: './resources/js/rambox-service-api.js'
 				}
-			};
+			}];
 
 			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') ) cfg.autoEl.allowpopups = 'on';
 		}
 
 		return cfg;
+	}
+
+	,statusBarConstructor: function(floating) {
+		var me = this;
+
+		return {
+			 xtype: 'statusbar'
+			,hidden: !me.record.get('statusbar')
+			,keep: me.record.get('statusbar')
+			,y: floating ? '-18px' : 'auto'
+			,height: 19
+			,dock: 'bottom'
+			,defaultText: '<i class="fa fa-check fa-fw" aria-hidden="true"></i> Ready'
+			,busyIconCls : ''
+			,busyText: '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Loading...'
+			,items: [
+				{
+					 xtype: 'tbtext'
+					,itemId: 'url'
+				}
+				,{
+					 xtype: 'button'
+					,glyph: 'xf00d@FontAwesome'
+					,scale: 'small'
+					,ui: 'decline'
+					,padding: 0
+					,scope: me
+					,hidden: floating
+					,handler: me.closeStatusBar
+					,tooltip: {
+						 text: 'Close statusbar until next time'
+						,mouseOffset: [0,-60]
+					}
+				}
+			]
+		};
 	}
 
 	,onAfterRender: function() {
@@ -199,10 +231,12 @@ Ext.define('Rambox.ux.WebView',{
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
+			if ( !me.down('statusbar').closed || !me.down('statusbar').keep ) me.down('statusbar').show();
 			me.down('statusbar').showBusy();
 		});
 		webview.addEventListener("did-stop-loading", function() {
 			me.down('statusbar').clearStatus({useDefaults: true});
+			if ( !me.down('statusbar').keep ) me.down('statusbar').hide();
 		});
 
 		webview.addEventListener("did-finish-load", function(e) {
@@ -338,9 +372,13 @@ Ext.define('Rambox.ux.WebView',{
 				} else {
 					callback(false);
 				}
+
+				me.down('statusbar').keep = true;
+				me.down('statusbar').show();
 				me.down('statusbar').setStatus({
 					text: '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Certification Warning'
 				});
+				me.down('statusbar').down('button').show();
 			});
 		});
 
@@ -513,6 +551,27 @@ Ext.define('Rambox.ux.WebView',{
 		if ( !muted && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 
 		if ( me.record.get('enabled') ) webview.setAudioMuted(muted);
+	}
+
+	,closeStatusBar: function() {
+		var me = this;
+
+		me.down('statusbar').hide();
+		me.down('statusbar').closed = true;
+		me.down('statusbar').keep = me.record.get('statusbar');
+	}
+
+	,setStatusBar: function(keep) {
+		var me = this;
+
+		me.down('statusbar').destroy();
+
+		if ( keep ) {
+			me.addDocked(me.statusBarConstructor(false));
+		} else {
+			me.add(me.statusBarConstructor(true));
+		}
+		me.down('statusbar').keep = keep;
 	}
 
 	,setNotifications: function(notification, calledFromDisturb) {
