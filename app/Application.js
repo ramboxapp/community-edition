@@ -34,7 +34,7 @@ Ext.define('Rambox.Application', {
 		Rambox.ux.Auth0.init();
 
 		// Check for updates
-		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
+		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 && process.platform !== 'win32' ) Rambox.app.checkUpdate(true);
 
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({
@@ -187,10 +187,6 @@ Ext.define('Rambox.Application', {
 				}
 			}
 		});
-
-		if ( process.platform !== 'win32' ) {
-			this.checkUpdate(true);
-		}
 
 		// Define default value
 		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
