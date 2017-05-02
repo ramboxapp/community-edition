@@ -407,6 +407,7 @@ Ext.define('Rambox.ux.WebView',{
 			function handleClearUnreadCount() {
 				me.tab.setBadgeText('');
 				me.currentUnreadCount = 0;
+				me.setUnreadCount(0);
 			}
 
 			/**
