@@ -272,7 +272,9 @@ Ext.define('Rambox.ux.WebView',{
 							,width: '80%'
 							,height: '80%'
 							,maximizable: true
-							,modal: true
+							,resizable: true
+							,draggable: true
+							,collapsible: true
 							,items: {
 								 xtype: 'component'
 								,hideMode: 'offsets'
@@ -298,7 +300,9 @@ Ext.define('Rambox.ux.WebView',{
 							,width: e.options.width
 							,height: e.options.height
 							,maximizable: true
-							,modal: true
+							,resizable: true
+							,draggable: true
+							,collapsible: true
 							,items: {
 								 xtype: 'component'
 								,hideMode: 'offsets'
