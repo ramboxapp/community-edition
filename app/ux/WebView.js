@@ -415,9 +415,7 @@ Ext.define('Rambox.ux.WebView',{
 				if (Array.isArray(event.args) === true && event.args.length > 0) {
 					var count = event.args[0];
 					if (count === parseInt(count, 10)) {
-						me.tab.setBadgeText(Rambox.util.Format.formatNumber(count));
-
-						me.doManualNotification(count);
+						me.setUnreadCount(count);
 					}
 				}
 			}
