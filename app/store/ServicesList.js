@@ -517,7 +517,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'iCloud makes sure you always have the latest versions of your most important things — documents, photos, notes, contacts, and more — on all your devices. It can even help you locate a missing iPhone, iPad, iPod touch or Mac.'
 			,url: 'https://www.icloud.com/#mail'
 			,type: 'email'
-			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){var t  = document.getElementsByName("mail")[0].contentWindow.document.body.getElementsByClassName("count digit");t = t.length===1?t[0].innerHTML:0;document.getElementsByTagName("title")[0].innerHTML="("+t+") iCloud Mail"},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
+			,js_unread: 'function checkUnread(){updateBadge(document.querySelector(".current-app").querySelector(".sb-badge").style.display==="none"?0:parseInt(document.querySelector(".current-app").querySelector(".text").innerHTML.trim()))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,dont_update_unread_from_title: true
 		},
 		{
 			 id: 'rainloop'
