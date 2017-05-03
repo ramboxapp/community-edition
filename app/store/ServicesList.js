@@ -762,6 +762,19 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
 			,url: 'https://___.jandi.com/'
 			,type: 'messaging'
-    		}
+    		},
+		{
+			id: 'trello'
+			,
+			logo: 'trello.png'
+			,
+			name: 'Trello'
+			,
+			description: 'Infinitely flexible. Incredibly easy to use. Great mobile apps. It\'s free. Trello keeps track of everything, from the big picture to the minute details.'
+			,
+			url: 'https://trello.com/login'
+			,
+			type: 'Task'
+		}
   	]
 });
