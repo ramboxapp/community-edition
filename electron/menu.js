@@ -17,123 +17,101 @@ function sendAction(action) {
 }
 
 const helpSubmenu = [
-	{
-		label: `&Visit ${appName} Website`,
-		click() {
-			shell.openExternal('http://rambox.pro');
-		}
-	},
-	{
-		label: `&Facebook`,
-		click() {
-			shell.openExternal('https://www.facebook.com/ramboxapp');
-		}
-	},
-	{
-		label: `&Twitter`,
-		click() {
-			shell.openExternal('https://www.twitter.com/ramboxapp');
-		}
-	},
-	{
-		label: `&GitHub`,
-		click() {
-			shell.openExternal('https://www.github.com/saenzramiro/rambox');
-		}
-	},
-	{
-		type: 'separator'
-	},
-	{
-		label: '&Report an Issue...',
-		click() {
-			const body = `
-<!-- Please describe here your issue and steps to reproduce it. -->
+// 	{
+// 		label: `&Visit ${appName} Website`,
+// 		click() {
+// 			shell.openExternal('http://rambox.pro');
+// 		}
+// 	},
+// 	{
+// 		label: `&Facebook`,
+// 		click() {
+// 			shell.openExternal('https://www.facebook.com/ramboxapp');
+// 		}
+// 	},
+// 	{
+// 		label: `&Twitter`,
+// 		click() {
+// 			shell.openExternal('https://www.twitter.com/ramboxapp');
+// 		}
+// 	},
+// 	{
+// 		label: `&GitHub`,
+// 		click() {
+// 			shell.openExternal('https://www.github.com/saenzramiro/rambox');
+// 		}
+// 	},
+// 	{
+// 		type: 'separator'
+// 	},
+// 	{
+// 		label: '&Report an Issue...',
+// 		click() {
+// 			const body = `
+// <!-- Please describe here your issue and steps to reproduce it. -->
+//
+//
+//
+// <!-- DON'T REMOVE THE FOLLOWING LINES -->
+// -
+// > ${app.getName()} ${app.getVersion()}
+// > Electron ${process.versions.electron}
+// > ${process.platform} ${process.arch} ${os.release()}`;
+//
+// 			shell.openExternal(`https://github.com/saenzramiro/rambox/issues/new?body=${encodeURIComponent(body)}`);
+// 		}
+// 	},
+// 	{
+// 		label: `&Ask for Help`,
+// 		click() {
+// 			shell.openExternal('https://gitter.im/saenzramiro/rambox');
+// 		}
+// 	},
 
-
-
-<!-- DON'T REMOVE THE FOLLOWING LINES -->
--
-> ${app.getName()} ${app.getVersion()}
-> Electron ${process.versions.electron}
-> ${process.platform} ${process.arch} ${os.release()}`;
-
-			shell.openExternal(`https://github.com/saenzramiro/rambox/issues/new?body=${encodeURIComponent(body)}`);
-		}
-	},
-	{
-		label: `&Ask for Help`,
-		click() {
-			shell.openExternal('https://gitter.im/saenzramiro/rambox');
-		}
-	},
-	{
-		label: `&Tools`,
-		submenu: [
-			{
-				label: `&Clear Cache`,
-				click(item, win) {
-					win.webContents.session.clearCache(function() {
-						win.reload();
-					});
-				}
-			},
-			{
-				label: `&Clear Local Storage`,
-				click(item, win) {
-					win.webContents.session.clearStorageData({
-						storages: ['localstorage']
-					}, function() {
-						win.reload();
-					});
-				}
-			}
-		]
-	},
-	{
-		type: 'separator'
-	},
-	{
-		label: `&Donate`,
-		click() {
-			shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
-		}
-	}
+	// {
+	// 	type: 'separator'
+	// },
+	// {
+	// 	label: `&Donate`,
+	// 	click() {
+	// 		shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
+	// 	}
+	// }
 ];
 
 let tpl = [
-	{
-		label: '&Edit',
-		submenu: [
-			{
-				role: 'undo'
-			},
-			{
-				role: 'redo'
-			},
-			{
-				type: 'separator'
-			},
-			{
-				role: 'cut'
-			},
-			{
-				role: 'copy'
-			},
-			{
-				role: 'paste'
-			},
-			{
-				role: 'pasteandmatchstyle'
-			},
-			{
-				role: 'selectall'
-			},
-			{
-				role: 'delete'
-			}
-		]
-	},
+	// {
+	// 	label: '&Edit',
+	// 	submenu: [
+	// 		{
+	// 			role: 'undo'
+	// 		},
+	// 		{
+	// 			role: 'redo'
+	// 		},
+	// 		{
+	// 			type: 'separator'
+	// 		},
+	// 		{
+	// 			role: 'cut'
+	// 		},
+	// 		{
+	// 			role: 'copy'
+	// 		},
+	// 		{
+	// 			role: 'paste'
+	// 		},
+	// 		{
+	// 			role: 'pasteandmatchstyle'
+	// 		},
+	// 		{
+	// 			role: 'selectall'
+	// 		},
+	// 		{
+	// 			role: 'delete'
+	// 		}
+	// 	]
+	// },
 	{
 		label: '&View',
 		submenu: [
@@ -162,6 +140,27 @@ let tpl = [
 			},
 			{
 				role: 'resetzoom'
+			},
+			{
+				type: 'separator'
+			},
+			{
+				label: `&Clear Cache`,
+				click(item, win) {
+					win.webContents.session.clearCache(function() {
+						win.reload();
+					});
+				}
+			},
+			{
+				label: `&Clear Local Storage`,
+				click(item, win) {
+					win.webContents.session.clearStorageData({
+						storages: ['localstorage']
+					}, function() {
+						win.reload();
+					});
+				}
 			}
 		]
 	},
@@ -194,10 +193,10 @@ let tpl = [
 			}
 		]
 	},
-	{
-		label: '&Help',
-		role: 'help'
-	}
+	// {
+	// 	label: '&Help',
+	// 	role: 'help'
+	// }
 ];
 
 if (process.platform === 'darwin') {
@@ -252,34 +251,34 @@ if (process.platform === 'darwin') {
 		]
 	});
 } else {
-	tpl.unshift({
-		label: '&File',
-		submenu: [
-			{
-				role: 'quit'
-			}
-		]
-	});
-	helpSubmenu.push({
-		type: 'separator'
-	});
-	helpSubmenu.push({
-		label: `&Check for updates...`,
-		click(item, win) {
-			const webContents = win.webContents;
-			const send = webContents.send.bind(win.webContents);
-			send('autoUpdater:check-update');
-		}
-	});
-	helpSubmenu.push({
-		label: `&About ${appName}`,
-		click() {
-			sendAction('showAbout')
-		}
-	});
+	// tpl.unshift({
+	// 	label: '&File',
+	// 	submenu: [
+	// 		{
+	// 			role: 'quit'
+	// 		}
+	// 	]
+	// });
+	// helpSubmenu.push({
+	// 	type: 'separator'
+	// });
+	// helpSubmenu.push({
+	// 	label: `&Check for updates...`,
+	// 	click(item, win) {
+	// 		const webContents = win.webContents;
+	// 		const send = webContents.send.bind(win.webContents);
+	// 		send('autoUpdater:check-update');
+	// 	}
+	// });
+	// helpSubmenu.push({
+	// 	label: `&About ${appName}`,
+	// 	click() {
+	// 		sendAction('showAbout')
+	// 	}
+	// });
 }
 
-tpl[tpl.length - 1].submenu = helpSubmenu;
+// tpl[tpl.length - 1].submenu = helpSubmenu;
 
 var menu = electron.Menu.buildFromTemplate(tpl);
 module.exports = menu;
