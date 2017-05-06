@@ -7,13 +7,16 @@
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/saenzramiro/rambox.git"
+		"url": "https://github.com/phischdev/pdhBox.git"
 	},
 	"bugs": {
 		"url": "https://github.com/saenzramiro/rambox/issues"
 	},
-	"homepage": "http://rambox.pro",
+	"homepage": "https://parteiderhumanisten.de/wp2/mitmachen/plattformen/",
 	"keywords": [
+	  	"Humanisten",
+	  	"pdhBox",
+	  	"HumanistenBox",
 		"Rambox",
 		"messaging",
 		"app",
@@ -34,5 +37,10 @@
 		"mime": "^1.3.4",
 		"electron-is-dev": "^0.1.1",
 		"electron-config": "0.2.1"
+	},
+	"scripts": {
+	  "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=resources/icons/icon.ico --prune=true --out=release-builds",
+	  "package-win": "electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=resources/icons/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+	  "package-linux" : "electron-packager . --overwrite --platform=linux --arch=x64 --icon=resources/icons/icon.ico --prune=true --out=release-builds"
 	}
 }

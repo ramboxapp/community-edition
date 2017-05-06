@@ -27,7 +27,7 @@ Ext.define('Rambox.view.main.Main', {
 	,deferredRender: false
 	,items: [
 		{
-			 icon: 'resources/IconTray@2x.png'
+			 icon: 'resources/IconCyan@2x.png'
 			,id: 'ramboxTab'
 			,closable: false
 			,reorderable: false
