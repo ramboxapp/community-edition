@@ -96,7 +96,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		// Clear counter for unread messaging
-		document.title = 'Rambox';
+		document.title = 'HumanistenBox';
 
 		if ( btn ) {
 			Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove all services?', function(btnId) {
@@ -108,7 +108,7 @@ Ext.define('Rambox.view.main.MainController', {
 					Ext.getStore('Services').load();
 					if ( Ext.isFunction(callback) ) callback();
 					Ext.cq1('app-main').resumeEvent('remove');
-					document.title = 'Rambox';
+					document.title = 'HumanistenBox';
 				}
 			});
 		} else {
@@ -119,7 +119,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.getStore('Services').load();
 			if ( Ext.isFunction(callback) ) callback();
 			Ext.cq1('app-main').resumeEvent('remove');
-			document.title = 'Rambox';
+			document.title = 'HumanistenBox';
 		}
 	}
 

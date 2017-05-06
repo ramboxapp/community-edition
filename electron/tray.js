@@ -48,7 +48,7 @@ exports.create = function(win, config) {
 	]);
 
 	appIcon = new Tray(iconPath);
-	appIcon.setToolTip('Rambox');
+	appIcon.setToolTip('HumanistenBox');
 	appIcon.setContextMenu(contextMenu);
 	appIcon.on('click', () => {
 		if ( !win.isVisible() ) {

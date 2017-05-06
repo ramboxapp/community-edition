@@ -463,6 +463,33 @@ this file in most cases.
             depends="init,-before-publish,-publish,-after-publish"
             description="Publish app to Sencha Web Application Manager"/>
 
+    <!--
+    ===============================================================
+    Build Dependencies
+    uses the compiler to build metadata files for all detected
+    file-to-file dependencies
+    ===============================================================
+    -->
+    <target name="build-dependencies" depends="init, -detect-app-build-properties">
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+            restore
+                page
+            and
+            meta
+                -infoType=Dependencies
+                -basePath=${build.dir}
+                -tpl={0}
+                -out=${build.dir}/dependencies.json
+            and
+            meta
+                -infoType=AppManifest
+                -basePath=${build.dir}
+                -tpl={0}
+                -out=${build.dir}/bootsequence.json
+            ]]>
+        </x-compile>
+    </target>
 
     <!--
     ===============================================================

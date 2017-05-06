@@ -2,15 +2,22 @@
 
     <macrodef name="x-build-microload-markup">
         <sequential>
-            <x-sencha-command dir="${app.dir}" inheritall="true">
-                <![CDATA[
-                fs
-                    minify
-                        ${build.embedded.microloader.compressor}
-                        -from=${build.microloader.path}
-                        -to=${build.microloader.path}
-                ]]>
-            </x-sencha-command>
+            <if>
+                <not>
+                    <equals arg1="${build.compression}" arg2=""/>
+                </not>
+                <then>
+                    <x-sencha-command dir="${app.dir}" inheritall="true">
+                        <![CDATA[
+                    fs
+                        minify
+                            ${build.embedded.microloader.compressor}
+                            -from=${build.microloader.path}
+                            -to=${build.microloader.path}
+                    ]]>
+                    </x-sencha-command>
+                </then>
+            </if>
             <if>
                 <x-is-true value="${build.enable.embedded.microloader}"/>
                 <then>
@@ -55,6 +62,7 @@
                         # generate json file
                         microload
                             -operation=manifest
+                            -jsonp=Ext.Microloader.setManifest
                             -fashion=${use.fashion}
                             -tpl=${build.microloader.json.tpl.embedded}
                             -out=${build.microloader.path}
@@ -77,6 +85,7 @@
                         # generate json file
                         microload
                             -operation=manifest
+                            -jsonp=Ext.Microloader.setManifest
                             -fashion=${use.fashion}
                             -tpl=${build.microloader.json.tpl.standalone}
                             -out=${build.out.json.path}
@@ -85,6 +94,7 @@
                         and
                         microload
                             -operation=manifest
+                            -jsonp=Ext.Microloader.setManifest
                             -fashion=${use.fashion}
                             -tpl=${build.microloader.json.tpl.external}
                             -out=${build.microloader.path}

@@ -182,6 +182,7 @@ Ext.Boot.loadSync([
             <![CDATA[
                 slicer-manifest
                     -exclude=${manifest.root.excludes}
+                    -jsonp=Ext.Microloader.setManifest
                     -removeBootstrapCssEntries=${remove.slicer.css.bootstrap.entries}
                     +ignoreDisabled
                     -basePath=${bootstrap.base.path}

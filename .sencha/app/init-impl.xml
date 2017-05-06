@@ -144,6 +144,8 @@
         <property name="app.sass.fashion" value="false"/>
         <property name="app.sass.rhino" value="false"/>
         <property name="app.sass.dynamic" value="false"/>
+        <property name="app.sass.generated.var" value="${app.sass.save}"/>
+
     </target>
     <target name="-after-init"/>
 
@@ -403,7 +405,9 @@
                   defaultSassFile="${app.out.scss}"
                   defaultCssFile="${app.out.css}"
                   refid="app.web.server"
-                  saveVariablesProp="app.sass.save"
+                  saveVariablesProp="app.sass.generated.var"
+                  uiDirProp="app.sass.generated.src"
+                  sassNamespaceProp="app.sass.namespace"
                   j2eeMode="${use.webxml}">
             <mapping name="~cmd" path="${cmd.dir}"/>
             <mapping name="" path="${build.web.root}"/>

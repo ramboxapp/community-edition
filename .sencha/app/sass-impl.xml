@@ -209,17 +209,74 @@
                                                    compress="${build.css.compress}"
                                                    compilerRefId="${compiler.ref.id}"/>
 
+                            <x-compile refid="${compiler.ref.id}">
+                                <![CDATA[
+                                microload
+                                    -operation=manifest
+                                    -fashion=false
+                                    -tpl=${build.microloader.json.tpl.standalone}
+                                    -out=${build.out.json.path}
+                                    -resourcePath=${build.out.base.path}
+                                    -basePath=${build.out.metadata.dir}
+                                ]]>
+                            </x-compile>
+
                             <x-sencha-command>
                                 fashion
+                                    -config=${build.out.json.path}
                                     -compress=${build.css.compress}
                                     -split=${build.css.selector.limit}
-                                    -saveFile=${app.dir}/${app.sass.save}
+                                    -saveFile=${app.dir}/${app.sass.generated.var}
                                     ${app.out.scss}
                                     ${app.out.css}
                             </x-sencha-command>
 
                             <x-update-css-array input="${app.out.css}"
                                                 compilerRefId="${compiler.ref.id}"/>
+
+                            <if>
+                                <and>
+                                    <available file="${build.out.css.dir}/css-vars.js"/>
+                                </and>
+                                <then>
+
+                                    <x-sencha-command>
+                                        <![CDATA[
+                                        fs
+                                            concat
+                                                -to=${build.out.css.dir}/css-vars.js.tmp
+                                                ${cmd.dir}/extensions/sencha-fashion/fashion/fashion-export-min.js
+                                                ${build.out.css.dir}/css-vars.js
+                                        ]]>
+                                    </x-sencha-command>
+
+                                    <if>
+                                        <not>
+                                            <equals arg1="${build.compression}" arg2=""/>
+                                        </not>
+                                        <then>
+                                            <x-compress-js srcFile="${build.out.css.dir}/css-vars.js.tmp"
+                                                           outFile="${build.out.css.dir}/css-vars.js.tmp"/>
+                                        </then>
+                                    </if>
+
+                                    <delete file="${build.out.css.dir}/css-vars.js"/>
+                                    <move file="${build.out.css.dir}/css-vars.js.tmp"
+                                          tofile="${build.out.css.dir}/css-vars.js"/>
+
+                                    <if>
+                                        <not>
+                                            <equals arg1="${build.environment}" arg2="development"/>
+                                        </not>
+                                        <then>
+                                            <concat destfile="${build.out.js.path}" append="true">
+                                                <filelist files="${build.out.css.dir}/css-vars.js"/>
+                                            </concat>
+                                        </then>
+                                    </if>
+
+                                </then>
+                            </if>
                         </else>
                     </if>
                 </then>

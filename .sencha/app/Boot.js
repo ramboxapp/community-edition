@@ -537,9 +537,27 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
 
             init: function () {
                 var scriptEls = doc.getElementsByTagName('script'),
+                    script = scriptEls[0],
                     len = scriptEls.length,
                     re = /\/ext(\-[a-z\-]+)?\.js$/,
-                    entry, script, src, state, baseUrl, key, n, origin;
+                    entry, src, state, baseUrl, key, n, origin;
+
+                // No check for script definedness because there always should be at least one
+                Boot.hasReadyState = ("readyState" in script);
+                Boot.hasAsync = ("async" in script);
+                Boot.hasDefer = ("defer" in script);
+                Boot.hasOnLoad = ("onload" in script);
+                
+                // Feature detecting IE
+                Boot.isIE8 = Boot.hasReadyState && !Boot.hasAsync && Boot.hasDefer && !Boot.hasOnLoad;
+                Boot.isIE9 = Boot.hasReadyState && !Boot.hasAsync && Boot.hasDefer && Boot.hasOnLoad;
+                Boot.isIE10p = Boot.hasReadyState && Boot.hasAsync && Boot.hasDefer && Boot.hasOnLoad;
+
+                Boot.isIE10 = (new Function('/*@cc_on return @_jscript_version @*/')()) === 10;
+                Boot.isIE10m = Boot.isIE10 || Boot.isIE9 || Boot.isIE8;
+                
+                // IE11 does not support conditional compilation so we detect it by exclusion
+                Boot.isIE11 = Boot.isIE10p && !Boot.isIE10;
 
                 // Since we are loading after other scripts, and we needed to gather them
                 // anyway, we track them in _scripts so we don't have to ask for them all
@@ -552,12 +570,8 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                     state = script.readyState || null;
 
                     // If we find a script file called "ext-*.js", then the base path is that file's base path.
-                    if (!baseUrl) {
-                        if (re.test(src)) {
-                            Boot.hasReadyState = ("readyState" in script);
-                            Boot.hasAsync = ("async" in script) || !Boot.hasReadyState;
-                            baseUrl = src;
-                        }
+                    if (!baseUrl && re.test(src)) {
+                        baseUrl = src;
                     }
 
                     if (!Boot.scripts[key = Boot.canonicalUrl(src)]) {
@@ -578,8 +592,6 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 if (!baseUrl) {
                     script = scriptEls[scriptEls.length - 1];
                     baseUrl = script.src;
-                    Boot.hasReadyState = ('readyState' in script);
-                    Boot.hasAsync = ("async" in script) || !Boot.hasReadyState;
                 }
 
                 Boot.baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/') + 1);
@@ -1394,27 +1406,36 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
 
         createLoadElement: function(callback) {
             var me = this,
-                el = me.getElement(),
-                readyStateChange = function(){
+                el = me.getElement();
+            
+            me.preserve = true;
+            
+            el.onerror = function() {
+                me.error = true;
+                
+                if (callback) {
+                    callback();
+                    callback = null;
+                }
+            };
+            
+            if (Boot.isIE10m) {
+                el.onreadystatechange = function() {
                     if (this.readyState === 'loaded' || this.readyState === 'complete') {
-                        if(callback) {
+                        if (callback) {
                             callback();
+                            callback = this.onreadystatechange = this.onerror = null;
                         }
                     }
-                },
-                errorFn = function() {
-                    me.error = true;
-                    if(callback) {
-                        callback();
-                    }
                 };
-            me.preserve = true;
-            el.onerror = errorFn;
-            if(Boot.hasReadyState) {
-                el.onreadystatechange = readyStateChange;
-            } else {
-                el.onload = callback;
             }
+            else {
+                el.onload = function() {
+                    callback();
+                    callback = this.onload = this.onerror = null;
+                };
+            }
+            
             // IE starts loading here
             el[me.prop] = me.getLoadUrl();
         },
@@ -1541,8 +1562,11 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                 // for async modes, we have some options
                 if (!sync) {
                     // if cross domain, just inject the script tag and let the onload
-                    // events drive the progression
-                    if(me.isCrossDomain()) {
+                    // events drive the progression.
+                    // IE10 also needs sequential loading because of a bug that makes it
+                    // fire readystate event prematurely:
+                    // https://connect.microsoft.com/IE/feedback/details/729164/ie10-dynamic-script-element-fires-loaded-readystate-prematurely
+                    if (Boot.isIE10 || me.isCrossDomain()) {
                         return me.loadCrossDomain();
                     }
                     // for IE, use the readyStateChange allows us to load scripts in parallel
