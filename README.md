@@ -1,8 +1,8 @@
 <h1 align="center">
   <br>
-  <a href="http://rambox.pro"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="256px" alt="Rambox"></a>
+  <a href="http://rambox.pro"><img src="https://raw.githubusercontent.com/phischdev/pdhBox/master/resources/IconCyan.ico" width="256px" alt="Rambox"></a>
   <br>
-  Rambox
+  pdhBox
   <br>
   <br>
 </h1>
