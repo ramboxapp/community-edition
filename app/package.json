@@ -1,8 +1,8 @@
 {
-	"name": "Rambox",
-	"productName": "Rambox",
+	"name": "HumanistenBox",
+	"productName": "HumanistenBox",
 	"version": "0.5.7",
-	"description": "Rambox",
+	"description": "HumanistenBox",
 	"main": "electron/main.js",
 	"private": true,
 	"repository": {

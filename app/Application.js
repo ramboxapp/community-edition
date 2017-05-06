@@ -23,15 +23,236 @@ Ext.define('Rambox.Application', {
 		 totalServicesLoaded: 0
 		,totalNotifications: 0
 	}
+	,getStoredServices: function () {
+		var stored = Ext.getStore('Services').load();
+		stored = stored.data.items;
+		stored = stored.map(g => g.data);
+		return stored;
+	}
+	,defaultServices: function () {
+		const stored = this.getStoredServices();
+		console.log("STORED SERVICES", stored);
+		if (stored.length === 0) {
+			console.log('KEINE SERVICES');
+			const defaults =[
+					{
+						"position": 1,
+						"type": "custom",
+						"logo": "",
+						"name": "Info",
+						"url": "https://tools.diehumanisten.de",
+						"align": "left",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": false,
+						"includeInGlobalUnreadCounter": false,
+						"trust": false,
+						"enabled": true,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 11
+					},
+					{
+						"position": 2,
+						"type": "slack",
+						"logo": "slack.png",
+						"name": "Chat (Slack)",
+						"url": "https://pgs-diehumanisten.slack.com/",
+						"align": "left",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": true,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 1
+					},
+					{
+						"position": 3,
+						"type": "trello",
+						"logo": "trello.png",
+						"name": "Trello",
+						"url": "https://trello.com/login",
+						"align": "left",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": true,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 10
+					},
+					{
+						"position": 4,
+						"type": "custom",
+						"logo": "",
+						"name": "Disk",
+						"url": "https://disk.diehumanisten.de",
+						"align": "left",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": true,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 2
+					},
+					{
+						"position": 5,
+						"type": "custom",
+						"logo": "",
+						"name": "Wiki",
+						"url": "https://wiki.diehumanisten.de",
+						"align": "left",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": true,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 7
+					},
+					{
+						"position": 6,
+						"type": "custom",
+						"logo": "",
+						"name": "Facebook",
+						"url": "https://facebook.com",
+						"align": "left",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": true,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 8
+					},
+					{
+						"position": 7,
+						"type": "roundcube",
+						"logo": "roundcube.png",
+						"name": "Mail",
+						"url": "https://webmail.diehumanisten.de",
+						"align": "right",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": false,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 3
+					},
+					{
+						"position": 8,
+						"type": "hangouts",
+						"logo": "hangouts.png",
+						"name": "Hangouts",
+						"url": "https://hangouts.google.com/",
+						"align": "right",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": false,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 4
+					},
+					{
+						"position": 9,
+						"type": "tweetdeck",
+						"logo": "tweetdeck.png",
+						"name": "Twitter",
+						"url": "https://tweetdeck.twitter.com/",
+						"align": "right",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": false,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 5
+					},
+					{
+						"position": 10,
+						"type": "custom",
+						"logo": "",
+						"name": "Facebook Manager",
+						"url": "https://facebook.com",
+						"align": "right",
+						"notifications": true,
+						"muted": false,
+						"displayTabUnreadCounter": true,
+						"includeInGlobalUnreadCounter": true,
+						"trust": true,
+						"enabled": false,
+						"js_unread": "",
+						"zoomLevel": 0,
+						"id": 9
+					}
+				];
+
+			defaults.forEach( function(s) {
+				var service = Ext.create('Rambox.model.Service', s);
+				service.save();
+				Ext.getStore('Services').add(service);
+
+				var tabData = {
+					xtype: 'webview'
+					,id: 'tab_'+service.get('id')
+					,record: service
+					,tabConfig: {
+						service: service
+					}
+				};
+
+				if ( s['align'] === 'left' ) {
+					var tbfill = Ext.cq1('app-main').getTabBar().down('tbfill');
+					Ext.cq1('app-main').insert(Ext.cq1('app-main').getTabBar().items.indexOf(tbfill), tabData).show();
+				} else {
+					Ext.cq1('app-main').add(tabData).show();
+				}
+			});
+		}
+	}
+	,exportDefaultServices: function () {
+		const stored = this.getStoredServices();
+		const json = Ext.encode(stored);
+		console.log("SERVICES:", json);
+	}
 
 	,launch: function () {
 		// Set Google Analytics events
-		ga_storage._setAccount('UA-80680424-1');
-		ga_storage._trackPageview('/index.html', 'main');
-		ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
+		// ga_storage._setAccount('UA-80680424-1');
+		// ga_storage._trackPageview('/index.html', 'main');
+		// ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
 		// Initialize Auth0
-		Rambox.ux.Auth0.init();
+		// PHISCH: Deactivated
+		//Rambox.ux.Auth0.init();
+
+		// EXPORT DEFUALT SERVICES
+
+		this.defaultServices();
+
+		//TestForEmptyServices();
+
+
 
 		// Check for updates
 		Rambox.app.checkUpdate(true);

@@ -123,7 +123,7 @@ let isQuitting = false;
 function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
-		 title: 'Rambox'
+		 title: 'HumanistenBox'
 		,icon: __dirname + '/../resources/Icon.ico'
 		,backgroundColor: '#FFF'
 		,x: config.get('x')

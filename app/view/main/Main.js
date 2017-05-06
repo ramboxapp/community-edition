@@ -45,19 +45,37 @@ Ext.define('Rambox.view.main.Main', {
 						{
 							 xtype: 'checkboxgroup'
 							,items: [
-								{
-									 xtype: 'checkbox'
-									,boxLabel: 'Messaging'
-									,name: 'messaging'
+								// {
+								// 	 xtype: 'checkbox'
+								// 	,boxLabel: 'Messaging'
+								// 	,name: 'messaging'
+								// 	,checked: false
+								// 	,uncheckedValue: false
+								// 	,inputValue: true
+								// }
+								// ,{
+								// 	 xtype: 'checkbox'
+								// 	,boxLabel: 'Email'
+								// 	,margin: '0 10 0 10'
+								// 	,name: 'email'
+								// 	,checked: false
+								// 	,uncheckedValue: false
+								// 	,inputValue: true
+								// }
+							   	,{
+									xtype: 'checkbox'
+									,boxLabel: 'Mitglieder'
+									,margin: '0 10 0 10'
+									,name: 'mitglieder'
 									,checked: true
 									,uncheckedValue: false
 									,inputValue: true
 								}
 								,{
-									 xtype: 'checkbox'
-									,boxLabel: 'Email'
+									xtype: 'checkbox'
+									,boxLabel: 'Mitarbeiter'
 									,margin: '0 10 0 10'
-									,name: 'email'
+									,name: 'mitarbeiter'
 									,checked: true
 									,uncheckedValue: false
 									,inputValue: true
@@ -135,7 +153,7 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'button'
 							,glyph: 'xf1f8@FontAwesome'
 							,baseCls: ''
-							,tooltip: 'Remove all Services'
+							,tooltip: 'Zurücksetzen'
 							,handler: 'removeAllServices'
 						}
 					]
@@ -300,16 +318,16 @@ Ext.define('Rambox.view.main.Main', {
 							}
 						]
 					}
-					,{
-						 text: 'Login'
-						,icon: 'resources/auth0.png'
-						,id: 'loginBtn'
-						,tooltip: 'Login to save your configuration (no credentials stored) to sync with all your computers.<br /><br /><i>Powered by Auth0 (http://auth0.com)</i>'
-						,bind: {
-							hidden: '{username}'
-						}
-						,handler: 'login'
-					}
+					// ,{
+					// 	 text: 'Login'
+					// 	,icon: 'resources/auth0.png'
+					// 	,id: 'loginBtn'
+					// 	,tooltip: 'Login to save your configuration (no credentials stored) to sync with all your computers.<br /><br /><i>Powered by Auth0 (http://auth0.com)</i>'
+					// 	,bind: {
+					// 		hidden: '{username}'
+					// 	}
+					// 	,handler: 'login'
+					// }
 					,{
 						 tooltip: 'Preferences'
 						,glyph: 'xf013@FontAwesome'
@@ -318,54 +336,54 @@ Ext.define('Rambox.view.main.Main', {
 				]
 			}
 			,bbar: [
-				{
-					 xtype: 'segmentedbutton'
-					,allowToggle: false
-					,items: [
-						{
-							 text: '<b>Help us</b> with'
-							,pressed: true
-						}
-						,{
-							 text: 'Donation'
-							,glyph: 'xf21e@FontAwesome'
-							,handler: 'showDonate'
-						}
-						,{
-							 text: 'Translation'
-							,glyph: 'xf0ac@FontAwesome'
-							,href: 'https://crowdin.com/project/rambox/invite'
-						}
-					]
-				}
-				,'->'
-				,{
-					 xtype: 'label'
-					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from <img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" /> as an Open Source project.'
-				}
-				,'->'
-				,{
-					xtype: 'segmentedbutton'
-					,allowToggle: false
-					,items: [
-						{
-							 text: '<b>Follow us</b>'
-							,pressed: true
-						}
-						,{
-							 glyph: 'xf082@FontAwesome'
-							,href: 'https://www.facebook.com/ramboxapp'
-						}
-						,{
-							 glyph: 'xf099@FontAwesome'
-							,href: 'https://www.twitter.com/ramboxapp'
-						}
-						,{
-							 glyph: 'xf09b@FontAwesome'
-							,href: 'https://www.github.com/saenzramiro/rambox'
-						}
-					]
-				}
+				// {
+				// 	 xtype: 'segmentedbutton'
+				// 	,allowToggle: false
+				// 	,items: [
+				// 		{
+				// 			 text: '<b>Help us</b> with'
+				// 			,pressed: true
+				// 		}
+				// 		,{
+				// 			 text: 'Donation'
+				// 			,glyph: 'xf21e@FontAwesome'
+				// 			,handler: 'showDonate'
+				// 		}
+				// 		,{
+				// 			 text: 'Translation'
+				// 			,glyph: 'xf0ac@FontAwesome'
+				// 			,href: 'https://crowdin.com/project/rambox/invite'
+				// 		}
+				// 	]
+				// }
+				// ,'->'
+				// ,{
+				// 	 xtype: 'label'
+				// 	,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from <img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" /> as an Open Source project.'
+				// }
+				// ,'->'
+				// ,{
+				// 	xtype: 'segmentedbutton'
+				// 	,allowToggle: false
+				// 	,items: [
+				// 		{
+				// 			 text: '<b>Follow us</b>'
+				// 			,pressed: true
+				// 		}
+				// 		,{
+				// 			 glyph: 'xf082@FontAwesome'
+				// 			,href: 'https://www.facebook.com/ramboxapp'
+				// 		}
+				// 		,{
+				// 			 glyph: 'xf099@FontAwesome'
+				// 			,href: 'https://www.twitter.com/ramboxapp'
+				// 		}
+				// 		,{
+				// 			 glyph: 'xf09b@FontAwesome'
+				// 			,href: 'https://www.github.com/saenzramiro/rambox'
+				// 		}
+				// 	]
+				// }
 			]
 		}
 		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
