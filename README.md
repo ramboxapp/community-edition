@@ -134,7 +134,7 @@ These instructions were tested with Ubuntu 17.04.
 1. Install dependencies: `sudo apt install nodejs-legacy npm git`
 2. Build and install electron: `sudo npm install electron-prebuilt -g`
 3. Install Sencha Cmd (non-free): https://www.sencha.com/products/extjs/cmd-download/
-4. Clone repository: `git clone https://github.com/saenzramiro/rambox.git`
+4. Clone repository: `git clone https://github.com/phischdev/pdhBox.git`
 5. Install npm dependencies: `npm install`
 6. Configure `env-sample.js` and rename it to `env.js`.
 7. Compile: `npm run sencha:compile`
