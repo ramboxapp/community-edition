@@ -136,8 +136,7 @@ These instructions were tested with Ubuntu 17.04.
 3. Install Sencha Cmd (non-free): https://www.sencha.com/products/extjs/cmd-download/
 4. Clone repository: `git clone https://github.com/phischdev/pdhBox.git`
 5. Install npm dependencies: `npm install`
-6. Configure `env-sample.js` and rename it to `env.js`.
-7. Compile: `npm run sencha:compile`
-8. Start program: `npm start`
+6. Compile: `npm run sencha:compile`
+7. Start program: `npm start`
 
 [GNU GPL v3](https://github.com/saenzramiro/rambox/LICENSE)
