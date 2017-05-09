@@ -755,6 +755,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
 			,url: 'https://www.fastmail.com/mail/'
 			,type: 'mail'
+			,js_unread: 'setTimeout(function(){O.WindowController.openExternal=function(a){var b=document.createElement("a");b.href=a,b.setAttribute("target","_blank"),b.click()};},3000);'
 		},
 		{
 			 id: 'hibox'
