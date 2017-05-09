@@ -51,9 +51,5 @@ Ext.define('Rambox.model.ServiceList', {
 		 name: 'dont_update_unread_from_title'
 		,type: 'boolean'
 		,defaultValue: false
-	},{
-		 name: 'css'
-		,type: 'string'
-		,defaultValue: ''
 	}]
 });

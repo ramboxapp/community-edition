@@ -236,15 +236,6 @@ Ext.define('Rambox.view.add.Add',{
 								,anchor: '100%'
 								,height: 120
 							}
-							,{
-								 xtype: 'textarea'
-								,fieldLabel: 'Custom CSS (<a href="https://github.com/saenzramiro/rambox/wiki/Inject-CSS-Code" target="_blank">read more</a>)'
-								,allowBlank: true
-								,name: 'css'
-								,value: me.edit ? me.record.get('css') : ''
-								,anchor: '100%'
-								,height: 120
-							}
 						]
 					}
 					,{

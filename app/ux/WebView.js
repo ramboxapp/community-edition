@@ -364,10 +364,6 @@ Ext.define('Rambox.ux.WebView',{
 			// Scroll always to top (bug)
 			webview.executeJavaScript('document.body.scrollTop=0;');
 
-			// Inject CSS
-			webview.insertCSS(Ext.getStore('ServicesList').getById(me.record.get('type')).get('css')); // native
-			webview.insertCSS(me.record.get('css')); // custom
-
 			// Handles Certificate Errors
 			webview.getWebContents().on('certificate-error', function(event, url, error, certificate, callback) {
 				if ( me.record.get('trust') ) {
