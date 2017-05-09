@@ -38,7 +38,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
-			,title: me.record.get('name')
+			,title: me.record.get('tabname') ? me.record.get('name') : ''
 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
 			,src: me.record.get('url')
 			,type: me.record.get('type')
@@ -173,7 +173,7 @@ Ext.define('Rambox.ux.WebView',{
 				}
 			}];
 
-			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') ) cfg.autoEl.allowpopups = 'on';
+			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') ) cfg[0].autoEl.allowpopups = 'on';
 		}
 
 		return cfg;

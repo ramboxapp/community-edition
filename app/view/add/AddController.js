@@ -35,6 +35,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,notifications: formValues.notifications
 				,muted: formValues.muted
 				,statusbar: formValues.statusbar
+				,tabname: formValues.tabname
 				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
 				,trust: formValues.trust
@@ -44,7 +45,7 @@ Ext.define('Rambox.view.add.AddController', {
 			var view = Ext.getCmp('tab_'+win.record.get('id'));
 
 			// Change the title of the Tab
-			view.setTitle(formValues.serviceName);
+			view.setTitle( formValues.tabname ? formValues.serviceName : '' );
 			// Change sound of the Tab
 			view.setAudioMuted(formValues.muted);
 			// Change statusbar of the Tab
@@ -88,6 +89,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,align: formValues.align
 				,notifications: formValues.notifications
 				,muted: formValues.muted
+				,tabname: formValues.tabname
 				,statusbar: formValues.statusbar
 				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
