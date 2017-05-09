@@ -753,7 +753,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'fastmail.png'
 			,name: 'FastMail'
 			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
-			,url: 'https://www.fastmail.com/login/'
+			,url: 'https://www.fastmail.com/mail/'
 			,type: 'mail'
 		},
 		{
