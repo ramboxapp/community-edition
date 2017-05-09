@@ -24,7 +24,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var store = Ext.getStore('Services');
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
-			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' ) {
+			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
 				var rec = store.getById(t.record.get('id'));
 				if ( rec.get('align') === 'right' ) i--;
 				rec.set('position', i);
@@ -54,7 +54,26 @@ Ext.define('Rambox.view.main.MainController', {
 	,onEnableDisableService: function(cc, rowIndex, checked) {
 		var rec = Ext.getStore('Services').getAt(rowIndex);
 
-		Ext.getCmp('tab_'+rec.get('id')).setEnabled(checked);
+		if ( !checked ) {
+			Ext.getCmp('tab_'+rec.get('id')).destroy();
+		} else {
+			Ext.cq1('app-main').insert(rec.get('align') === 'left' ? rec.get('position') : rec.get('position')+1, {
+				 xtype: 'webview'
+				,id: 'tab_'+rec.get('id')
+				,title: rec.get('name')
+				,icon: rec.get('type') !== 'custom' ? 'resources/icons/'+rec.get('logo') : ( rec.get('logo') === '' ? 'resources/icons/custom.png' : rec.get('logo'))
+				,src: rec.get('url')
+				,type: rec.get('type')
+				,muted: rec.get('muted')
+				,includeInGlobalUnreadCounter: rec.get('includeInGlobalUnreadCounter')
+				,displayTabUnreadCounter: rec.get('displayTabUnreadCounter')
+				,enabled: rec.get('enabled')
+				,record: rec
+				,tabConfig: {
+					service: rec
+				}
+			});
+		}
 	}
 
 	,onNewServiceSelect: function( view, record, item, index, e ) {
