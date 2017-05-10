@@ -125,6 +125,7 @@ Ext.define('Rambox.ux.WebView',{
 			}
 			,listeners: {
 				 afterrender: me.onAfterRender
+				,beforedestroy: me.onBeforeDestroy
 			}
 		});
 
@@ -137,6 +138,12 @@ Ext.define('Rambox.ux.WebView',{
 		}
 
 		me.callParent(config);
+	}
+
+	,onBeforeDestroy: function() {
+		var me = this;
+
+		me.setUnreadCount(0);
 	}
 
 	,webViewConstructor: function( enabled ) {
