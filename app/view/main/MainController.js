@@ -10,10 +10,20 @@ Ext.define('Rambox.view.main.MainController', {
 		// Set Google Analytics event
 		ga_storage._trackPageview('/index.html', 'main');
 
-		if ( newTab.id === 'ramboxTab' || !newTab.record.get('enabled') ) return;
+		if ( newTab.id === 'ramboxTab' ) {
+			document.title = 'Rambox';
+			return;
+		}
+		
+		if (!newTab.record.get('enabled') ) {
+			return;
+		}
 
 		var webview = newTab.down('component').el.dom;
 		if ( webview ) webview.focus();
+
+		// Update the main window so it includes the active tab title.
+		document.title = 'Rambox - ' + newTab.title;
 	}
 
 	,updatePositions: function(tabPanel, tab) {
