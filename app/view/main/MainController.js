@@ -243,39 +243,57 @@ Ext.define('Rambox.view.main.MainController', {
 	,lockRambox: function(btn) {
 		var me = this;
 
-		var msgbox = Ext.Msg.prompt('Lock Rambox', 'Enter a temporal password to unlock it later', function(btnId, text) {
-			if ( btnId === 'ok' ) {
-				var msgbox2 = Ext.Msg.prompt('Lock Rambox', 'Repeat the temporal password', function(btnId, text2) {
-					if ( btnId === 'ok' ) {
-						if ( text !== text2 ) {
-							Ext.Msg.show({
-								 title: 'Warning'
-								,message: 'Passwords are not the same. Please try again...'
-								,icon: Ext.Msg.WARNING
-								,buttons: Ext.Msg.OK
-								,fn: me.lockRambox
-							});
-							return false;
+		if ( ipc.sendSync('getConfig').master_password ) {
+			Ext.Msg.confirm('Lock Rambox', 'Do you want to use the Master Password as your temporal password?', function(btnId) {
+				if ( btnId === 'yes' ) {
+					setLock(ipc.sendSync('getConfig').master_password);
+				} else {
+					showTempPass();
+				}
+			});
+		} else {
+			showTempPass();
+		}
+
+		function showTempPass() {
+			var msgbox = Ext.Msg.prompt('Lock Rambox', 'Enter a temporal password to unlock it later', function(btnId, text) {
+				if ( btnId === 'ok' ) {
+					var msgbox2 = Ext.Msg.prompt('Lock Rambox', 'Repeat the temporal password', function(btnId, text2) {
+						if ( btnId === 'ok' ) {
+							if ( text !== text2 ) {
+								Ext.Msg.show({
+									 title: 'Warning'
+									,message: 'Passwords are not the same. Please try again...'
+									,icon: Ext.Msg.WARNING
+									,buttons: Ext.Msg.OK
+									,fn: me.lockRambox
+								});
+								return false;
+							}
+
+							setLock(Rambox.util.MD5.encypt(text));
 						}
+					});
+					msgbox2.textField.inputEl.dom.type = 'password';
+				}
+			});
+			msgbox.textField.inputEl.dom.type = 'password';
+		}
 
-						console.info('Lock Rambox:', 'Enabled');
+		function setLock(text) {
+			console.info('Lock Rambox:', 'Enabled');
 
-						// Save encrypted password in localStorage to show locked when app is reopen
-						localStorage.setItem('locked', Rambox.util.MD5.encypt(text));
+			// Save encrypted password in localStorage to show locked when app is reopen
+			localStorage.setItem('locked', text);
 
-						// Google Analytics Event
-						ga_storage._trackEvent('Usability', 'locked');
+			// Google Analytics Event
+			ga_storage._trackEvent('Usability', 'locked');
 
-						me.lookupReference('disturbBtn').setPressed(true);
-						me.dontDisturb(me.lookupReference('disturbBtn'), false, true);
+			me.lookupReference('disturbBtn').setPressed(true);
+			me.dontDisturb(me.lookupReference('disturbBtn'), false, true);
 
-						me.showLockWindow();
-					}
-				});
-				msgbox2.textField.inputEl.dom.type = 'password';
-			}
-		});
-		msgbox.textField.inputEl.dom.type = 'password';
+			me.showLockWindow();
+		}
 	}
 
 	,showLockWindow: function() {
