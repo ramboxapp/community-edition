@@ -247,7 +247,7 @@ function updateBadge(title) {
 		app.setBadgeCount(messageCount);
 	}
 
-	if ( messageCount > 0 ) mainWindow.flashFrame(true);
+	if ( messageCount > 0 && !mainWindow.isFocused() ) mainWindow.flashFrame(true);
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
