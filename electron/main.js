@@ -215,6 +215,7 @@ function createWindow () {
 	mainWindow.on('closed', function(e) {
 		mainWindow = null;
 	});
+	mainWindow.once('focus', () => mainWindow.flashFrame(false));
 }
 
 let mainMasterPasswordWindow;
@@ -242,9 +243,11 @@ function updateBadge(title) {
 		}
 
 		mainWindow.webContents.send('setBadge', messageCount);
-	} else { // macOS
+	} else { // macOS & Linux
 		app.setBadgeCount(messageCount);
 	}
+
+	if ( messageCount > 0 ) mainWindow.flashFrame(true);
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
