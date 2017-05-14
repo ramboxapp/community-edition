@@ -755,13 +755,21 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://app.hibox.co/'
 			,type: 'messaging'
  		},
-    		{
-      			 id: 'jandi'
+    	{
+      		id: 'jandi'
 			,logo: 'jandi.png'
 			,name: 'Jandi'
 			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
 			,url: 'https://___.jandi.com/'
 			,type: 'messaging'
-    		}
+    	},
+    	{
+      		 id: 'intercom'
+			,logo: 'intercom.png'
+			,name: 'Intercom'
+			,description: 'Intercom is a comercial customer chat platform for sales, marketing, and support, connected on one platform.'
+			,url: 'https://app.intercom.io/'
+			,type: 'messaging'
+    	}
   	]
 });
