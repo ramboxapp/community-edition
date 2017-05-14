@@ -32,6 +32,14 @@ Ext.define('Rambox.store.ServicesList', {
 		// 	,dont_update_unread_from_title: true
 		// },
 		{
+			id: 'trello',
+			logo: 'trello.png'			,
+			name: 'Trello'			,
+			description: 'Infinitely flexible. Incredibly easy to use. Great mobile apps. It\'s free. Trello keeps track of everything, from the big picture to the minute details.',
+			url: 'https://trello.com/login',
+			type: 'mitglieder'
+		},
+		{
 			 id: 'slack'
 			,logo: 'slack.png'
 			,name: 'Slack'
@@ -39,6 +47,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://___.slack.com/'
 			,type: 'mitglieder'
 			,js_unread: 'function checkUnread(){var a=0,b=0;$(".unread_msgs").each(function(){a+=isNaN(parseInt($(this).html())) ? 0 : parseInt($(this).html())}),$(".unread_highlights").each(function(){b+=isNaN(parseInt($(this).html())) ? 0 : parseInt($(this).html())}),updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'discourse'
+			,logo: 'discourse.png'
+			,name: 'Discourse'
+			,type: 'mitglieder'
+			,custom_domain: true
+			,allow_popups: true
+			,url: "https://___"
+			,js_unread: 'function checkUnread(){var a=0,b=0;document.querySelector(".widget-link.badge-notification.unread-private-messages")&&(a=parseInt(document.querySelector(".widget-link.badge-notification.unread-private-messages").title,10)),document.querySelector(".widget-link.badge-notification.unread-notifications")&&(b=parseInt(document.querySelector(".widget-link.badge-notification.unread-notifications").title,10)),updateBadge(a+b)}function updateBadge(a){document.title=a>=1?"("+a+") "+originalTitle:originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		// {
 		// 	 id: 'noysi'
@@ -763,13 +781,5 @@ Ext.define('Rambox.store.ServicesList', {
 		// 	,url: 'https://___.jandi.com/'
 		// 	,type: 'messaging'
 		// },
-		{
-			id: 'trello',
-			logo: 'trello.png'			,
-			name: 'Trello'			,
-			description: 'Infinitely flexible. Incredibly easy to use. Great mobile apps. It\'s free. Trello keeps track of everything, from the big picture to the minute details.',
-			url: 'https://trello.com/login',
-			type: 'mitglieder'
-		}
   	]
 });

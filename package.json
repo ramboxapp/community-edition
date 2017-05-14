@@ -31,8 +31,8 @@
     "all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux"
   },
   "build": {
-    "productName": "Rambox",
-    "appId": "com.saenzramiro.rambox",
+    "productName": "HumanistenBox",
+    "appId": "com.diehumanisten.pdhBox",
     "asar": true,
     "mac": {
       "category": "public.app-category.productivity",
@@ -41,7 +41,7 @@
       ]
     },
     "dmg": {
-      "title": "Rambox",
+      "title": "HumanistenBox",
       "iconSize": 128,
       "contents": [
         {
@@ -58,7 +58,7 @@
       ]
     },
     "squirrelWindows": {
-      "iconUrl": "https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.ico"
+      "iconUrl": "https://raw.githubusercontent.com/phischdev/pdhBox/master/resources/Icon.ico"
     },
     "win": {
       "target": [
