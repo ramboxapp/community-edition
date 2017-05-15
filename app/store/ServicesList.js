@@ -819,6 +819,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Schedule your Tweets with love. Save time and manage your social media strategy easily.'
 			,url: 'https://clocktweets.com/dashboard/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'intercom'
+			,logo: 'intercom.png'
+			,name: 'Intercom'
+			,description: 'Intercom makes it easy to communicate with your customers personally, at scale. Designed to feel like the messaging apps you use every day, Intercom lets you talk to consumers almost anywhere: inside your app, on your website, across social media and via email.'
+			,url: 'https://app.intercom.io'
+			,type: 'messaging'
 		}
 	]
 });
