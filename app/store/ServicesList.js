@@ -811,6 +811,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("sidebar-notification-indicator").length > 0 ? document.getElementsByClassName("sidebar-notification-indicator")[0].innerHTML : 0))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
+		},
+		{
+			 id: 'clocktweets'
+			,logo: 'clocktweets.png'
+			,name: 'ClockTweets'
+			,description: 'Schedule your Tweets with love. Save time and manage your social media strategy easily.'
+			,url: 'https://clocktweets.com/dashboard/'
+			,type: 'messaging'
 		}
 	]
 });
