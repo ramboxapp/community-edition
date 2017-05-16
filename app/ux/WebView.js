@@ -168,7 +168,7 @@ Ext.define('Rambox.ux.WebView',{
 				,autoEl: {
 					 tag: 'webview'
 					,src: me.record.get('url')
-					,style: 'width:100%;height:100%;'
+					,style: 'width:100%;height:100%;visibility:visible;'
 					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
 					,plugins: 'true'
 					,allowtransparency: 'on'
