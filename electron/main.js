@@ -6,7 +6,7 @@ const appMenu = require('./menu');
 // Tray
 const tray = require('./tray');
 // AutoLaunch
-var AutoLaunch = require('auto-launch');
+var AutoLaunch = require('auto-launch-patched');
 // Configuration
 const Config = require('electron-config');
 // Development
@@ -43,8 +43,8 @@ const config = new Config({
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
-	 name: process.platform === 'darwin' ? 'Rambox.app' : 'Rambox'
-	,isHiddenOnLaunch: config.get('start_minimized')
+	 name: 'Rambox'
+	,isHidden: config.get('start_minimized')
 });
 config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
 
