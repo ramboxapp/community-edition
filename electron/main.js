@@ -159,16 +159,22 @@ function createWindow () {
 	if ( fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'Update.exe')) ) updater.initialize(mainWindow);
 
 	// Open links in default browser
+	//TODO: link services
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
 		if ( disposition !== 'foreground-tab' ) return;
 		const protocol = require('url').parse(url).protocol;
-		if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
+		if (protocol === 'mailto:') {
+			e.preventDefault();
+			shell.openExternal(url);
+		} else if (protocol === 'http:' || protocol === 'https:') {
+			console.log("NEW_WINDOW: ", url, frameName, disposition, options);
 			e.preventDefault();
 			shell.openExternal(url);
 		}
 	});
 
 	mainWindow.webContents.on('will-navigate', function(event, url) {
+		console.log("SAME_WINDOW: ", url, frameName, disposition, options);
 		event.preventDefault();
 	});
 

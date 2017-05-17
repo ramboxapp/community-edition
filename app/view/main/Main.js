@@ -155,6 +155,7 @@ Ext.define('Rambox.view.main.Main', {
 							,baseCls: ''
 							,tooltip: 'Zurücksetzen'
 							,handler: 'removeAllServices'
+							,title: 'Zurücksetzen'
 						}
 					]
 					,columns: [

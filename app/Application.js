@@ -108,10 +108,10 @@ Ext.define('Rambox.Application', {
 
 					{
 						"position": 5,
-						"type": "custom",
-						"logo": "",
+						"type": "wiki",
+						"logo": "wiki.png",
 						"name": "Wiki",
-						"url": "https://wiki.diehumanisten.de",
+						"url": "http://wiki.diehumanisten.de/wiki",
 						"align": "left",
 						"notifications": true,
 						"muted": false,
@@ -121,14 +121,13 @@ Ext.define('Rambox.Application', {
 						"enabled": true,
 						"js_unread": "",
 						"zoomLevel": 0,
-						"id": 7
-					},
-					{
+						"id": 18
+					}, {
 						"position": 6,
-						"type": "custom",
-						"logo": "",
+						"type": "facebook",
+						"logo": "facebook.png",
 						"name": "Facebook",
-						"url": "https://facebook.com",
+						"url": "https://www.facebook.com/parteiderhumanisten",
 						"align": "left",
 						"notifications": true,
 						"muted": false,
@@ -138,7 +137,7 @@ Ext.define('Rambox.Application', {
 						"enabled": true,
 						"js_unread": "",
 						"zoomLevel": 0,
-						"id": 8
+						"id": 20
 					},
 					{
 						"position": 7,
@@ -151,7 +150,7 @@ Ext.define('Rambox.Application', {
 						"muted": false,
 						"displayTabUnreadCounter": true,
 						"includeInGlobalUnreadCounter": true,
-						"trust": true,
+						"trust": false,
 						"enabled": false,
 						"js_unread": "",
 						"zoomLevel": 0,
