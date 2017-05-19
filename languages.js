@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const replaceall = require("replaceall");
 const csvjson = require('csvjson');
 const Crowdin = require('crowdin');
 
