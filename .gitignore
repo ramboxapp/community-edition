@@ -34,3 +34,4 @@ npm-debug.log
 /.vagrant
 env.js
 rambox_cfg.json
+languages.js
