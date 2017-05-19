@@ -108,14 +108,14 @@ Ext.define('Rambox.ux.WebView',{
 						}
 						,'-'
 						,{
-							 text: 'Reload'
+							 text: locale['app.webview[0]']
 							,glyph: 'xf021@FontAwesome'
 							,scope: me
 							,handler: me.reloadService
 						}
 						,'-'
 						,{
-							 text: 'Toggle Developer Tools'
+							 text: locale['app.webview[3]']
 							,glyph: 'xf121@FontAwesome'
 							,scope: me
 							,handler: me.toggleDevTools
@@ -198,7 +198,7 @@ Ext.define('Rambox.ux.WebView',{
 			,dock: 'bottom'
 			,defaultText: '<i class="fa fa-check fa-fw" aria-hidden="true"></i> Ready'
 			,busyIconCls : ''
-			,busyText: '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i> Loading...'
+			,busyText: '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i> '+locale['app.webview[4]']
 			,items: [
 				{
 					 xtype: 'tbtext'

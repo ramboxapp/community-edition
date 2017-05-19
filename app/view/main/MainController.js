@@ -106,7 +106,7 @@ Ext.define('Rambox.view.main.MainController', {
 	,removeService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
 		var me = this;
 
-		Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove <b>'+rec.get('name')+'</b>?', function(btnId) {
+		Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[13]']+' <b>'+rec.get('name')+'</b>?', function(btnId) {
 			if ( btnId === 'yes' ) me.removeServiceFn(rec.get('id'));
 		});
 	}
@@ -118,7 +118,7 @@ Ext.define('Rambox.view.main.MainController', {
 		document.title = 'Rambox';
 
 		if ( btn ) {
-			Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove all services?', function(btnId) {
+			Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[14]'], function(btnId) {
 				if ( btnId === 'yes' ) {
 					Ext.cq1('app-main').suspendEvent('remove');
 					Ext.getStore('Services').load();
@@ -227,7 +227,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 		localStorage.setItem('dontDisturb', btn.pressed);
 
-		btn.setText('Don\'t Disturb: ' + ( btn.pressed ? 'ON' : 'OFF' ));
+		btn.setText(locale['app.main[16]']+': ' + ( btn.pressed ? locale['app.window[20]'] : locale['app.window[21]'] ));
 
 		// If this method is called from Lock method, prevent showing toast
 		if ( !e ) return;
@@ -244,7 +244,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		if ( ipc.sendSync('getConfig').master_password ) {
-			Ext.Msg.confirm('Lock Rambox', 'Do you want to use the Master Password as your temporal password?', function(btnId) {
+			Ext.Msg.confirm(locale['app.main[19]'], 'Do you want to use the Master Password as your temporal password?', function(btnId) {
 				if ( btnId === 'yes' ) {
 					setLock(ipc.sendSync('getConfig').master_password);
 				} else {
@@ -256,14 +256,14 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		function showTempPass() {
-			var msgbox = Ext.Msg.prompt('Lock Rambox', 'Enter a temporal password to unlock it later', function(btnId, text) {
+			var msgbox = Ext.Msg.prompt(locale['app.main[19]'], locale['app.window[22]'], function(btnId, text) {
 				if ( btnId === 'ok' ) {
-					var msgbox2 = Ext.Msg.prompt('Lock Rambox', 'Repeat the temporal password', function(btnId, text2) {
+					var msgbox2 = Ext.Msg.prompt(locale['app.main[19]'], locale['app.window[23]'], function(btnId, text2) {
 						if ( btnId === 'ok' ) {
 							if ( text !== text2 ) {
 								Ext.Msg.show({
-									 title: 'Warning'
-									,message: 'Passwords are not the same. Please try again...'
+									 title: locale['app.window[24]']
+									,message: locale['app.window[25]']
 									,icon: Ext.Msg.WARNING
 									,buttons: Ext.Msg.OK
 									,fn: me.lockRambox
@@ -337,7 +337,7 @@ Ext.define('Rambox.view.main.MainController', {
 							 xtype: 'component'
 							,autoEl: {
 								 tag: 'h1'
-								,html: 'Rambox is locked'
+								,html: locale['app.window[26]']
 								,style: 'text-align:center;width:256px;'
 						   }
 						}
@@ -355,7 +355,7 @@ Ext.define('Rambox.view.main.MainController', {
 						}
 						,{
 							 xtype: 'button'
-							,text: 'UNLOCK'
+							,text: locale['app.window[27]']
 							,glyph: 'xf13e@FontAwesome'
 							,width: 256
 							,scale: 'large'
@@ -384,7 +384,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		var logoutFn = function(callback) {
-			Ext.Msg.wait('Closing you session...', 'Logout');
+			Ext.Msg.wait(locale['app.window[37]'], locale['app.main[21]']);
 
 			// Google Analytics Event
 			ga_storage._trackEvent('Users', 'loggedOut');
@@ -401,7 +401,7 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		if ( btn ) {
-			Ext.Msg.confirm('Logout', 'Are you sure you want to logout?', function(btnId) {
+			Ext.Msg.confirm(locale['app.main[21]'], locale['app.window[38]'], function(btnId) {
 				if ( btnId === 'yes' ) {
 					logoutFn(function() {
 						me.removeAllServices();

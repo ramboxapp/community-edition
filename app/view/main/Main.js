@@ -37,7 +37,7 @@ Ext.define('Rambox.view.main.Main', {
 			,items: [
 				{
 					 xtype: 'panel'
-					,title: 'Add a new Service'
+					,title: locale['app.main[0]']
 					,margin: '0 5 0 0'
 					,flex: 1
 					,header: { height: 50 }
@@ -47,7 +47,7 @@ Ext.define('Rambox.view.main.Main', {
 							,items: [
 								{
 									 xtype: 'checkbox'
-									,boxLabel: 'Messaging'
+									,boxLabel: locale['app.main[1]']
 									,name: 'messaging'
 									,checked: true
 									,uncheckedValue: false
@@ -55,7 +55,7 @@ Ext.define('Rambox.view.main.Main', {
 								}
 								,{
 									 xtype: 'checkbox'
-									,boxLabel: 'Email'
+									,boxLabel: locale['app.main[2]']
 									,margin: '0 10 0 10'
 									,name: 'email'
 									,checked: true
@@ -104,7 +104,7 @@ Ext.define('Rambox.view.main.Main', {
 									,'</div>'
 								,'</tpl>'
 							]
-							,emptyText: '<div style="padding: 20px;">No services found... Try another search.</div>'
+							,emptyText: '<div style="padding: 20px;">'+locale['app.main[3]']+'</div>'
 							,listeners: {
 								itemclick: 'onNewServiceSelect'
 							}
@@ -113,7 +113,7 @@ Ext.define('Rambox.view.main.Main', {
 				}
 				,{
 					 xtype: 'grid'
-					,title: 'Enabled Services'
+					,title: locale['app.main[4]']
 					,store: 'Services'
 					,hideHeaders: true
 					,margin: '0 0 0 5'
@@ -123,7 +123,7 @@ Ext.define('Rambox.view.main.Main', {
 						{
 							 ftype:'grouping'
 							,collapsible: false
-							,groupHeaderTpl: '{columnName:uppercase}: {name:capitalize} ({rows.length} Item{[values.rows.length > 1 ? "s" : ""]})'
+							,groupHeaderTpl: '{columnName:uppercase}: {name:capitalize} ({rows.length} {[values.rows.length > 1 ? "'+locale['app.main[9]']+'" : "'+locale['app.main[8]']+'"]})'
 						}
 					]
 					,plugins: {
@@ -135,7 +135,7 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'button'
 							,glyph: 'xf1f8@FontAwesome'
 							,baseCls: ''
-							,tooltip: 'Remove all Services'
+							,tooltip: locale['app.main[10]']
 							,handler: 'removeAllServices'
 						}
 					]
@@ -162,14 +162,14 @@ Ext.define('Rambox.view.main.Main', {
 							,items: [
 								{
 									 glyph: 0xf1f7
-									,tooltip: 'Prevent notifications'
+									,tooltip: locale['app.main[11]']
 									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
 										if ( record.get('notifications') ) return 'x-hidden';
 									}
 								}
 								,{
 									 glyph: 0xf026
-									,tooltip: 'Muted'
+									,tooltip: locale['app.main[12]']
 									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
 										if ( !record.get('muted') ) return 'x-hidden';
 									}
@@ -183,13 +183,13 @@ Ext.define('Rambox.view.main.Main', {
 							,items: [
 								{
 									 glyph: 0xf013
-									,tooltip: 'Configure'
+									,tooltip: locale['app.main[13]']
 									,handler: 'configureService'
 									,getClass: function(){ return 'x-hidden-display'; }
 								}
 								,{
 									 glyph: 0xf1f8
-									,tooltip: 'Remove'
+									,tooltip: locale['app.main[14]']
 									,handler: 'removeService'
 									,getClass: function(){ return 'x-hidden-display'; }
 								}
@@ -209,7 +209,7 @@ Ext.define('Rambox.view.main.Main', {
 						}
 					]
 					,viewConfig: {
-						 emptyText: 'No services added...'
+						 emptyText: locale['app.main[15]']
 						,forceFit: true
 						,stripeRows: true
 					}
@@ -228,8 +228,8 @@ Ext.define('Rambox.view.main.Main', {
 				,items: [
 					{
 						 glyph: 'xf1f7@FontAwesome'
-						,text: 'Don\'t Disturb: '+(JSON.parse(localStorage.getItem('dontDisturb')) ? 'ON' : 'OFF')
-						,tooltip: 'Disable notifications and sounds in all services. Perfect to be concentrated and focused.<br/><b>Shortcut key: F1</b>'
+						,text: locale['app.main[16]']+': '+(JSON.parse(localStorage.getItem('dontDisturb')) ? locale['app.window[20]'] : locale['app.window[21]'])
+						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+': F1</b>'
 						,enableToggle: true
 						,handler: 'dontDisturb'
 						,reference: 'disturbBtn'
@@ -238,8 +238,8 @@ Ext.define('Rambox.view.main.Main', {
 					}
 					,{
 						 glyph: 'xf023@FontAwesome'
-						,text: 'Lock Rambox'
-						,tooltip: 'Lock this app if you will be away for a period of time.<br/><b>Shortcut key: F2</b>'
+						,text: locale['app.main[19]']
+						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+': F2</b>'
 						,handler: 'lockRambox'
 						,id: 'lockRamboxBtn'
 					}
@@ -294,24 +294,24 @@ Ext.define('Rambox.view.main.Main', {
 							}
 							,'-'
 							,{
-								 text: 'Logout'
+								 text: locale['app.main[21]']
 								,glyph: 'xf08b@FontAwesome'
 								,handler: 'logout'
 							}
 						]
 					}
 					,{
-						 text: 'Login'
+						 text: locale['app.main[22]']
 						,icon: 'resources/auth0.png'
 						,id: 'loginBtn'
-						,tooltip: 'Login to save your configuration (no credentials stored) to sync with all your computers.<br /><br /><i>Powered by Auth0 (http://auth0.com)</i>'
+						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (http://auth0.com)</i>'
 						,bind: {
 							hidden: '{username}'
 						}
 						,handler: 'login'
 					}
 					,{
-						 tooltip: 'Preferences'
+						 tooltip: locale['preferences[0]']
 						,glyph: 'xf013@FontAwesome'
 						,handler: 'openPreferences'
 					}
@@ -327,7 +327,7 @@ Ext.define('Rambox.view.main.Main', {
 							,pressed: true
 						}
 						,{
-							 text: 'Donation'
+							 text: locale['app.main[25]']
 							,glyph: 'xf21e@FontAwesome'
 							,handler: 'showDonate'
 						}
@@ -341,7 +341,7 @@ Ext.define('Rambox.view.main.Main', {
 				,'->'
 				,{
 					 xtype: 'label'
-					,html: '<span class="fa fa-code" style="color:black;"></span> with <span class="fa fa-heart" style="color:red;"></span> from <img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" /> as an Open Source project.'
+					,html: '<span class="fa fa-code" style="color:black;"></span> '+locale['app.main[26]']+' <span class="fa fa-heart" style="color:red;"></span> '+locale['app.main[27]'].replace('Argentina', '<img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" />')
 				}
 				,'->'
 				,{

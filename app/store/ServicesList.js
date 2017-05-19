@@ -25,7 +25,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'whatsapp'
 			,logo: 'whatsapp.png'
 			,name: 'WhatsApp'
-			,description: 'WhatsApp is a cross-platform mobile messaging app for iPhone, BlackBerry, Android, Windows Phone and Nokia. Send text, video, images, audio for free.'
+			,description: locale['services[0]']
 			,url: 'https://web.whatsapp.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("infinite-list-item"),b=0;for(i=0;i<a.length;i++)if(!(a[i].getElementsByClassName("icon-muted").length>0||0===a[i].getElementsByClassName("unread-count").length)){var c=parseInt(a[i].getElementsByClassName("unread-count")[0].innerHTML.trim());b+=isNaN(c)?0:c}updateBadge(b)}function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } }setInterval(checkUnread,1e3);'
@@ -35,7 +35,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'slack'
 			,logo: 'slack.png'
 			,name: 'Slack'
-			,description: 'Slack brings all your communication together in one place. It’s real-time messaging, archiving and search for modern teams.'
+			,description: locale['services[1]']
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=0,b=0;$(".unread_msgs").each(function(){a+=isNaN(parseInt($(this).html())) ? 0 : parseInt($(this).html())}),$(".unread_highlights").each(function(){b+=isNaN(parseInt($(this).html())) ? 0 : parseInt($(this).html())}),updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -44,7 +44,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'noysi'
 			,logo: 'noysi.png'
 			,name: 'Noysi'
-			,description: 'Noysi is a communication tool for teams where privacy is guaranteed. With Noysi you can access all your conversations and files in seconds from anywhere and unlimited.'
+			,description: locale['services[2]']
 			,url: 'https://noysi.com/#/identity/sign-in'
 			,type: 'messaging'
 		},
@@ -52,7 +52,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'messenger'
 			,logo: 'messenger.png'
 			,name: 'Messenger'
-			,description: 'Instantly reach the people in your life for free. Messenger is just like texting, but you don\'t have to pay for every message.'
+			,description: locale['services[3]']
 			,url: 'https://www.messenger.com/login/'
 			,type: 'messaging'
 			,titleBlink: true
@@ -62,7 +62,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'skype'
 			,logo: 'skype.png'
 			,name: 'Skype'
-			,description: 'Stay in touch with family and friends for free. Get international calling, free online calls and Skype for Business on desktop and mobile.'
+			,description: locale['services[4]']
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
@@ -72,7 +72,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'hangouts'
 			,logo: 'hangouts.png'
 			,name: 'Hangouts'
-			,description: 'Hangouts bring conversations to life with photos, emoji, and even group video calls for free. Connect with friends across computers, Android, and Apple devices.'
+			,description: locale['services[5]']
 			,url: 'https://hangouts.google.com/'
 			,type: 'messaging'
 			,titleBlink: true
@@ -84,7 +84,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'hipchat'
 			,logo: 'hipchat.png'
 			,name: 'HipChat'
-			,description: 'HipChat is hosted group chat and video chat built for teams. Supercharge real-time collaboration with persistent chat rooms, file sharing, and screen sharing.'
+			,description: locale['services[6]']
 			,url: 'https://___.hipchat.com/chat'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("hc-badge"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -94,7 +94,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'telegram'
 			,logo: 'telegram.png'
 			,name: 'Telegram'
-			,description: 'Telegram is a messaging app with a focus on speed and security. It’s super-fast, simple, secure and free.'
+			,description: locale['services[7]']
 			,url: 'https://web.telegram.org/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("im_dialog_badge badge"),t=0;for(i=0;i<e.length;i++)if(!e[i].classList.contains("im_dialog_badge_muted")){t+=parseInt(e[i].innerHTML.trim())}updateBadge(t)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
@@ -104,7 +104,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'wechat'
 			,logo: 'wechat.png'
 			,name: 'WeChat'
-			,description: 'WeChat is a free messaging calling app that allows you to easily connect with family; friends across countries. It’s the all-in-one communications app for free text (SMS/MMS), voice; video calls, moments, photo sharing, and games.'
+			,description: locale['services[8]']
 			,url: 'https://web.wechat.com/'
 			,type: 'messaging'
 		},
@@ -112,7 +112,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'gmail'
 			,logo: 'gmail.png'
 			,name: 'Gmail'
-			,description: 'Gmail, Google\'s free email service, is one of the world\'s most popular email programs.'
+			,description: locale['services[9]']
 			,url: 'https://mail.google.com/mail/'
 			,type: 'email'
 			,allow_popups: true
@@ -123,7 +123,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'inbox'
 			,logo: 'inbox.png'
 			,name: 'Inbox'
-			,description: 'Inbox by Gmail is a new app from the Gmail team. Inbox is an organized place to get things done and get back to what matters. Bundles keep emails organized.'
+			,description: locale['services[10]']
 			,url: 'http://inbox.google.com/?cid=imp'
 			,type: 'email'
 			,manual_notifications: true
@@ -134,7 +134,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'chatwork'
 			,logo: 'chatwork.png'
 			,name: 'ChatWork'
-			,description: 'ChatWork is a group chat app for business. Secure messaging, video chat, task management and file sharing. Real-time communication and increase productivity for teams.'
+			,description: locale['services[11]']
 			,url: 'https://www.chatwork.com/login.php'
 			,type: 'messaging'
 			,note: 'To enable desktop notifications, you have to go to Options inside ChatWork.'
@@ -143,7 +143,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'groupme'
 			,logo: 'groupme.png'
 			,name: 'GroupMe'
-			,description: 'GroupMe brings group text messaging to every phone. Group message with the people in your life that are important to you.'
+			,description: locale['services[12]']
 			,url: 'https://web.groupme.com/signin'
 			,type: 'messaging'
 			,note: 'To enable desktop notifications, you have to go to Options inside GroupMe. To count unread messages, be sure to be in Chats.'
@@ -154,7 +154,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'grape'
 			,logo: 'grape.png'
 			,name: 'Grape'
-			,description: 'The world\'s most advanced team chat meets enterprise search'
+			,description: locale['services[13]']
 			,url: 'https://chatgrape.com/accounts/login/'
 			,type: 'messaging'
 		},
@@ -162,7 +162,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'gitter'
 			,logo: 'gitter.png'
 			,name: 'Gitter'
-			,description: 'Gitter is built on top of GitHub and is tightly integrated with your organisations, repositories, issues and activity.'
+			,description: locale['services[14]']
 			,url: 'https://gitter.im/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("room-item__unread-indicator"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -171,7 +171,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'steam'
 			,logo: 'steam.png'
 			,name: 'Steam Chat'
-			,description: 'Steam is a digital distribution platform developed by Valve Corporation offering digital rights management (DRM), multiplayer gaming and social networking services.'
+			,description: locale['services[15]']
 			,url: 'https://steamcommunity.com/chat'
 			,type: 'messaging'
 			,note: 'To enable desktop notifications, you have to go to Options inside Steam Chat.'
@@ -181,7 +181,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'discord'
 			,logo: 'discord.png'
 			,name: 'Discord'
-			,description: 'Step up your game with a modern voice & text chat app. Crystal clear voice, multiple server and channel support, mobile apps, and more.'
+			,description: locale['services[16]']
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
 			,titleBlink: true
@@ -192,7 +192,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'outlook'
 			,logo: 'outlook.png'
 			,name: 'Outlook'
-			,description: 'Take control. Do more. Outlook is the free email and calendar service that helps you stay on top of what matters and get things done.'
+			,description: locale['services[17]']
 			,url: 'https://mail.live.com/'
 			,type: 'email'
 			,manual_notifications: true
@@ -202,7 +202,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'outlook365'
 			,logo: 'outlook365.png'
 			,name: 'Outlook 365'
-			,description: 'Outlook for Business'
+			,description: locale['services[18]']
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
 			,manual_notifications: true
@@ -212,7 +212,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'yahoo'
 			,logo: 'yahoo.png'
 			,name: 'Yahoo! Mail'
-			,description: 'Web-based email service offered by the American company Yahoo!. The service is free for personal use, and paid-for business email plans are available.'
+			,description: locale['services[19]']
 			,url: 'https://mail.yahoo.com/'
 			,type: 'email'
 			,note: 'To enable desktop notifications, you have to go to Options inside Yahoo! Mail.'
@@ -221,7 +221,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'protonmail'
 			,logo: 'protonmail.png'
 			,name: 'ProtonMail'
-			,description: 'Free and web-based encrypted email service founded in 2013 at the CERN research facility. ProtonMail is designed as a zero-knowledge system,[note 1] using client-side encryption to protect emails and user data before they are sent to ProtonMail servers, in contrast to other common webmail services such as Gmail and Hotmail.'
+			,description: locale['services[20]']
 			,url: 'https://mail.protonmail.com/inbox'
 			,type: 'email'
 		},
@@ -229,7 +229,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'protonmailch'
 			,logo: 'protonmail.png'
 			,name: 'ProtonMail CH'
-			,description: 'Free and web-based encrypted email service founded in 2013 at the CERN research facility. ProtonMail is designed as a zero-knowledge system,[note 1] using client-side encryption to protect emails and user data before they are sent to ProtonMail servers, in contrast to other common webmail services such as Gmail and Hotmail.'
+			,description: locale['services[20]']
 			,url: 'https://app.protonmail.ch/inbox'
 			,type: 'email'
 			,note: 'Read <a href="https://protonmail.com/support/knowledge-base/what-is-the-difference-between-protonmail-com-and-protonmail-ch/" target="_blank">HERE</a> to see the differences between protonmail.com and protonmail.ch.'
@@ -238,7 +238,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'tutanota'
 			,logo: 'tutanota.png'
 			,name: 'Tutanota'
-			,description: 'Tutanota is an open-source end-to-end encrypted email software and freemium hosted secure email service based on this software'
+			,description: locale['services[21]']
 			,url: 'https://app.tutanota.de/'
 			,type: 'email'
 		},
@@ -246,7 +246,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'hushmail'
 			,logo: 'hushmail.png'
 			,name: 'Hushmail'
-			,description: 'Web-based email service offering PGP-encrypted e-mail and vanity domain service. Hushmail offers "free" and "paid" versions of service. Hushmail uses OpenPGP standards and the source is available for download.'
+			,description: locale['services[22]']
 			,url: 'https://www.hushmail.com/hushmail/index.php'
 			,type: 'email'
 		},
@@ -254,7 +254,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'missive'
 			,logo: 'missive.png'
 			,name: 'Missive'
-			,description: 'Collaborative email and threaded group chat for productive teams. A single app for all your internal and external communication.'
+			,description: locale['services[23]']
 			,url: 'https://mail.missiveapp.com/login'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unseen-count"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -263,7 +263,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'rocketchat'
 			,logo: 'rocketchat.png'
 			,name: 'Rocket Chat'
-			,description: 'From group messages and video calls all the way to helpdesk killer features our goal is to become the number one cross-platform open source chat solution.'
+			,description: locale['services[24]']
 			,url: '___'
 			,type: 'messaging'
 			,note: 'You have to use this service by signing in with your email or username (No SSO allowed yet).'
@@ -272,7 +272,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'wire'
 			,logo: 'wire.png'
 			,name: 'Wire'
-			,description: 'HD quality calls, private and group chats with inline photos, music and video. Also available for your phone or tablet.'
+			,description: locale['services[25]']
 			,url: 'https://app.wire.com/'
 			,type: 'messaging'
 		},
@@ -280,7 +280,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'sync'
 			,logo: 'sync.png'
 			,name: 'Sync'
-			,description: 'Sync is a business chat tool that will boost productivity for your team.'
+			,description: locale['services[26]']
 			,url: 'https://m.wantedly.com/login'
 			,type: 'messaging'
 		},
@@ -295,7 +295,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'yahoomessenger'
 			,logo: 'yahoomessenger.png'
 			,name: 'Yahoo! Messenger'
-			,description: 'Allows you to instant message with anyone on the Yahoo server. Tells you when you get mail, and gives stock quotes.'
+			,description: locale['services[28]']
 			,url: 'https://messenger.yahoo.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("list-item-unread-indicator").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -304,7 +304,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'voxer'
 			,logo: 'voxer.png'
 			,name: 'Voxer'
-			,description: 'Voxer is a messaging app for your smartphone with live voice (like a PTT walkie talkie), text, photo and location sharing.'
+			,description: locale['services[29]']
 			,url: 'https://web.voxer.com/'
 			,type: 'messaging'
 		},
@@ -312,7 +312,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'dasher'
 			,logo: 'dasher.png'
 			,name: 'Dasher'
-			,description: 'Dasher lets you say what you really want with pics, GIFs, links and more. Take a poll to find out what your friends really think of your new boo.'
+			,description: locale['services[30]']
 			,url: 'https://dasher.im/'
 			,type: 'messaging'
 		},
@@ -320,7 +320,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'flowdock'
 			,logo: 'flowdock.png'
 			,name: 'Flowdock'
-			,description: 'Flowdock is your team\'s chat with a shared inbox. Teams using Flowdock stay up-to-date, react in seconds instead of days, and never forget anything'
+			,description: locale['services[31]']
 			,url: 'https://www.flowdock.com/login'
 			,type: 'messaging'
 		},
@@ -328,7 +328,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'mattermost'
 			,logo: 'mattermost.png'
 			,name: 'Mattermost'
-			,description: 'Mattermost is an open source, self-hosted Slack-alternative. As an alternative to proprietary SaaS messaging, Mattermost brings all your team communication into one place, making it searchable and accessible anywhere.'
+			,description: locale['services[32]']
 			,url: '___'
 			,type: 'messaging'
 			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){document.getElementsByTagName("title")[0].innerHTML=a[0]==="*"?"(•) Mattermost":a},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
@@ -337,7 +337,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'dingtalk'
 			,logo: 'dingtalk.png'
 			,name: 'DingTalk'
-			,description: 'DingTalk is a multi-sided platform empowers small and medium-sized business to communicate effectively.'
+			,description: locale['services[33]']
 			,url: 'https://im.dingtalk.com/'
 			,type: 'messaging'
 		},
@@ -345,7 +345,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'mysms'
 			,logo: 'mysms.png'
 			,name: 'mysms'
-			,description: 'The mysms family of applications helps you text anywhere and enhances your messaging experience on your smartphone, tablet and computer.'
+			,description: locale['services[34]']
 			,url: 'https://app.mysms.com/#login'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}"https://app.mysms.com/#login"===document.baseURI&&(document.getElementsByClassName("innerPanel")[0].rows[0].style.display="none",document.getElementsByClassName("innerPanel")[0].rows[1].cells[0].firstElementChild.style.display="none",document.getElementsByClassName("msisdnLoginPanel")[0].style.display="inline");var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -355,7 +355,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'icq'
 			,logo: 'icq.png'
 			,name: 'ICQ'
-			,description: 'ICQ is an open source instant messaging computer program that was first developed and popularized.'
+			,description: locale['services[35]']
 			,url: 'https://web.icq.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("nwa-msg-counter")[0].style.display==="block"?document.getElementsByClassName("nwa-msg-counter")[0].innerHTML.trim():0))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -364,7 +364,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'tweetdeck'
 			,logo: 'tweetdeck.png'
 			,name: 'TweetDeck'
-			,description: 'TweetDeck is a social media dashboard application for management of Twitter accounts.'
+			,description: locale['services[36]']
 			,url: 'https://tweetdeck.twitter.com/'
 			,type: 'messaging'
 		},
@@ -372,7 +372,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'custom'
 			,logo: 'custom.png'
 			,name: '_Custom Service'
-			,description: 'Add a custom service if is not listed above.'
+			,description: locale['services[38]']
 			,url: '___'
 			,type: 'custom'
 			,allow_popups: true
@@ -381,7 +381,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zinc'
 			,logo: 'zinc.png'
 			,name: 'Zinc'
-			,description: 'Zinc is a secure communication app for mobile workers, with text, voice, video, file sharing and more.'
+			,description: locale['services[39]']
 			,url: 'https://zinc-app.com/'
 			,type: 'messaging'
 		},
@@ -389,7 +389,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'freenode'
 			,logo: 'freenode.png'
 			,name: 'FreeNode'
-			,description: 'Freenode, formerly known as Open Projects Network, is an IRC network used to discuss peer-directed projects.'
+			,description: locale['services[40]']
 			,url: 'https://webchat.freenode.net/'
 			,type: 'messaging'
 		},
@@ -397,7 +397,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'mightytext'
 			,logo: 'mightytext.png'
 			,name: 'Mighty Text'
-			,description: 'Text from your computer, sync\'d with your Android phone & number.'
+			,description: locale['services[41]']
 			,url: 'https://mightytext.net/web/'
 			,type: 'messaging'
 		},
@@ -405,7 +405,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'roundcube'
 			,logo: 'roundcube.png'
 			,name: 'Roundcube'
-			,description: 'Free and open source webmail software for the masses, written in PHP.'
+			,description: locale['services[42]']
 			,url: '___'
 			,type: 'email'
 		},
@@ -413,7 +413,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'horde'
 			,logo: 'horde.png'
 			,name: 'Horde'
-			,description: 'Horde is a free and open source web-based groupware.'
+			,description: locale['services[43]']
 			,url: '___'
 			,type: 'email'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("count"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML.match(/\d+/g));updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -423,7 +423,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'squirrelmail'
 			,logo: 'squirrelmail.png'
 			,name: 'SquirrelMail'
-			,description: 'SquirrelMail is a standards-based webmail package written in PHP.'
+			,description: locale['services[44]']
 			,url: '___'
 			,type: 'email'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("leftunseen"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].innerHTML);updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -432,7 +432,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zohoemail'
 			,logo: 'zohoemail.png'
 			,name: 'Zoho Email'
-			,description: 'Ad-free business Email Hosting with a clean, minimalist interface. Integrated Calendar, Contacts, Notes, Tasks apps.'
+			,description: locale['services[45]']
 			,url: 'https://mail.zoho.com/'
 			,type: 'email'
 			,js_unread: 'zmail.aInfo[zmail.accId].mailId = "a";'
@@ -442,7 +442,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zohochat'
 			,logo: 'zohochat.png'
 			,name: 'Zoho Chat'
-			,description: 'Zoho chat is a secure and scalable real-time communication and collaboration platform for teams to improve their productivity.'
+			,description: locale['services[46]']
 			,url: 'https://chat.zoho.com/'
 			,type: 'messaging'
 			,js_unread: 'NotifyByTitle.show = function(){};NotifyByTitle.start = function(){};NotifyByTitle.stop = function(){};function checkUnread(){var t=0;$(".msgnotify").each(function() { t += isNaN(parseInt($(this).html())) ? 0 : parseInt(parseInt($(this).html())) });updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'

@@ -33,6 +33,16 @@
 	<!-- The line below must be kept intact for Sencha Cmd to build your application -->
 	<script id="microloader" type="text/javascript" src="bootstrap.js"></script>
 
+	<!--- Localization -->
+	<script type='text/javascript'>
+	    (function(d, s){
+			var t = d.createElement(s), e = d.getElementsByTagName(s)[0];
+			t.type = "text/javascript"; e.parentNode.insertBefore(t, e);
+			t.src = "resources/languages/"+require('electron').ipcRenderer.sendSync('getConfig').locale+".js";
+		})(document, "script");
+	</script>
+	<!--- Localization -->
+
 	<!--- Tooltip player -->
 	<script type='text/javascript'>
 	    (function(d, s){

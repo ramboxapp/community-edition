@@ -27,7 +27,7 @@ Ext.define('Rambox.view.add.Add',{
 	,initComponent: function() {
 		var me = this;
 
-		me.title = (!me.edit ? 'Add ' : 'Edit ') + me.record.get('name');
+		me.title = (!me.edit ? locale['app.window[0]'] : locale['app.window[1]']) + ' ' + me.record.get('name');
 		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'resources/icons/'+me.record.get('logo');
 		me.items = [
 			{
@@ -35,7 +35,7 @@ Ext.define('Rambox.view.add.Add',{
 				,items: [
 					{
 						 xtype: 'textfield'
-						,fieldLabel: 'Name'
+						,fieldLabel: locale['app.window[2]']
 						,labelWidth: 40
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
 						,name: 'serviceName'
@@ -49,7 +49,7 @@ Ext.define('Rambox.view.add.Add',{
 						,items: [
 							{
 								 xtype: 'label'
-								,text: 'URL:'
+								,text: locale['app.window[17]']+':'
 								,width: 45
 							}
 							,{
@@ -126,7 +126,7 @@ Ext.define('Rambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'textfield'
-						,fieldLabel: 'Logo'
+						,fieldLabel: locale['app.window[18]']
 						,emptyText: 'http://url.com/image.png'
 						,name: 'logo'
 						,vtype: me.record.get('type') === 'custom' ? 'url' : ''
@@ -139,7 +139,7 @@ Ext.define('Rambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Options'
+						,title: locale['app.window[3]']
 						,margin: '10 0 0 0'
 						,items: [
 							{
@@ -148,7 +148,7 @@ Ext.define('Rambox.view.add.Add',{
 								,items: [
 									{
 										 xtype: 'checkbox'
-										,boxLabel: 'Align to Right'
+										,boxLabel: locale['app.window[4]']
 										,checked: me.edit ? (me.record.get('align') === 'right' ? true : false) : false
 										,name: 'align'
 										,uncheckedValue: 'left'
@@ -156,7 +156,7 @@ Ext.define('Rambox.view.add.Add',{
 									}
 									,{
 										 xtype: 'checkbox'
-										,boxLabel: 'Mute all sounds'
+										,boxLabel: locale['app.window[6]']
 										,name: 'muted'
 										,checked: me.edit ? me.record.get('muted') : false
 										,uncheckedValue: false
@@ -172,7 +172,7 @@ Ext.define('Rambox.view.add.Add',{
 									}
 									,{
 										 xtype: 'checkbox'
-										,boxLabel: 'Show notifications'
+										,boxLabel: locale['app.window[5]']
 										,name: 'notifications'
 										,checked: me.edit ? me.record.get('notifications') : true
 										,uncheckedValue: false
@@ -188,7 +188,7 @@ Ext.define('Rambox.view.add.Add',{
 									}
 									,{
 										 xtype: 'checkbox'
-										,boxLabel: 'Trust invalid authority certificates'
+										,boxLabel: locale['app.window[19]']
 										,name: 'trust'
 										,hidden: me.record.get('type') !== 'custom'
 										,checked: me.edit ? me.record.get('trust') : true
@@ -230,14 +230,14 @@ Ext.define('Rambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Advanced'
+						,title: locale['app.window[7]']
 						,margin: '10 0 0 0'
 						,collapsible: true
 						,collapsed: true
 						,items: [
 							{
 								 xtype: 'textarea'
-								,fieldLabel: 'Custom Code (<a href="https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code" target="_blank">read more</a>)'
+								,fieldLabel: locale['app.window[8]']+' (<a href="https://github.com/saenzramiro/rambox/wiki/Inject-JavaScript-Code" target="_blank">'+locale['app.window[9]']+'</a>)'
 								,allowBlank: true
 								,name: 'js_unread'
 								,value: me.edit ? me.record.get('js_unread') : ''
@@ -263,7 +263,7 @@ Ext.define('Rambox.view.add.Add',{
 
 		me.buttons = [
 			{
-				 text: 'Cancel'
+				 text: locale['button[1]']
 				,ui: 'decline'
 				,handler: 'doCancel'
 			}

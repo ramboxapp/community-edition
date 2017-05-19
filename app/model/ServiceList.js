@@ -13,6 +13,7 @@ Ext.define('Rambox.model.ServiceList', {
 	},{
 		 name: 'description'
 		,type: 'string'
+		,defaultValue: locale['services[27]']
 	},{
 		 name: 'url'
 		,type: 'string'

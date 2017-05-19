@@ -227,17 +227,17 @@ Ext.define('Rambox.Application', {
 							'->'
 							,{
 								 xtype: 'label'
-								,html: '<b>New version is available!</b> ('+json.version+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
+								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
 							}
 							,{
 								 xtype: 'button'
-								,text: 'Download'
+								,text: locale['app.update[1]']
 								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/saenzramiro/rambox/releases/latest'
 								,hidden: process.platform === 'win32'
 							}
 							,{
 								 xtype: 'button'
-								,text: 'Changelog'
+								,text: locale['app.update[2]']
 								,ui: 'decline'
 								,tooltip: 'Click here to see more information about the new version.'
 								,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+json.version
@@ -255,8 +255,8 @@ Ext.define('Rambox.Application', {
 					return;
 				} else if ( !silence ) {
 					Ext.Msg.show({
-						 title: 'You are up to date!'
-						,message: 'You have the latest version of Rambox.'
+						 title: locale['app.update[3]']
+						,message: locale['app.update[4]']
 						,icon: Ext.Msg.INFO
 						,buttons: Ext.Msg.OK
 					});

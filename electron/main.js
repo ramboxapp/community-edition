@@ -1,8 +1,6 @@
 'use strict';
 
 const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session} = require('electron');
-// Menu
-const appMenu = require('./menu');
 // Tray
 const tray = require('./tray');
 // AutoLaunch
@@ -32,6 +30,7 @@ const config = new Config({
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''
+		,locale: 'en'
 
 		,x: undefined
 		,y: undefined
@@ -40,6 +39,9 @@ const config = new Config({
 		,maximized: false
 	}
 });
+
+// Menu
+const appMenu = require('./menu')(config);
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
@@ -305,6 +307,17 @@ ipcMain.on('setServiceNotifications', function(event, partition, op) {
 		if (permission === 'notifications') return callback(op);
 		callback(true)
 	});
+});
+
+// Reload app
+ipcMain.on('reloadApp', function(event) {
+	mainWindow.reload();
+});
+
+// Relaunch app
+ipcMain.on('relaunchApp', function(event) {
+	app.relaunch();
+	app.exit(0);
 });
 
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {

@@ -26,7 +26,7 @@ Ext.define('Rambox.ux.Auth0', {
 			,popupOptions: {
 				nodeIntegration: 'no'
 			}
-			//,language: 'en'
+			,language: localStorage.getItem('locale-auth0') === null ? 'en' : localStorage.getItem('locale-auth0')
 		});
 
 		me.auth0 = new Auth0({ clientID: auth0Cfg.clientID, domain : auth0Cfg.domain });
@@ -46,7 +46,7 @@ Ext.define('Rambox.ux.Auth0', {
 				}
 
 				// Display a spinner while waiting
-				Ext.Msg.wait('Please wait until we get your configuration.', 'Connecting...');
+				Ext.Msg.wait(locale['app.window[29]'], locale['app.window[28]']);
 
 				// Google Analytics Event
 				ga_storage._trackEvent('Users', 'loggedIn');
