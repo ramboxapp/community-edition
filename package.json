@@ -68,6 +68,11 @@
 		},
 		"linux": {
 			"category": "Office",
+			"desktop": {
+				"Terminal": "false",
+				"Type": "Application",
+				"Categories": "GTK;GNOME;Utility;Office;Email;Chat;InstantMessaging;"
+			},
 			"target": [
 				"AppImage",
 				"deb",
@@ -84,13 +89,15 @@
 	},
 	"devDependencies": {
 		"asar": "^0.12.1",
-		"electron": "^1.6.1",
-		"electron-builder": "^14.5.3",
+		"electron": "1.7.1",
+		"electron-builder": "^17.8.0",
 		"electron-builder-squirrel-windows": "15.0.0",
 		"electron-squirrel-startup": "^1.0.0",
 		"chai": "3.5.0",
 		"mocha": "3.2.0",
-		"spectron": "3.4.0"
+		"spectron": "3.4.0",
+		"csvjson": "4.3.3",
+		"crowdin": "1.0.0"
 	},
 	"dependencies": {
 		"auto-launch-patched": "5.0.2",
