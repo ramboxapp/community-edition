@@ -34,7 +34,7 @@ Ext.define('Rambox.Application', {
 		Rambox.ux.Auth0.init();
 
 		// Check for updates
-		Rambox.app.checkUpdate(true);
+		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 && process.platform !== 'win32' ) Rambox.app.checkUpdate(true);
 
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({
@@ -82,9 +82,14 @@ Ext.define('Rambox.Application', {
 						var tabPanel = Ext.cq1('app-main');
 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 						var i = activeIndex + 1;
-						if ( i >= tabPanel.items.items.length - 1 ) i = 0;
-						while ( tabPanel.items.items[i].id === 'tbfill' ) i++;
-						tabPanel.setActiveTab( i );
+
+						// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
+						if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
+
+						// skip spacer
+						while (tabPanel.items.items[i].id === 'tbfill') i++;
+
+						tabPanel.setActiveTab(i);
 					}
 				}
 				,{
@@ -97,7 +102,7 @@ Ext.define('Rambox.Application', {
 						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 						var i = activeIndex - 1;
 						if ( i < 0 ) i = tabPanel.items.items.length - 1;
-						while ( tabPanel.items.items[i].id === 'tbfill' ) i--;
+						while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
 						tabPanel.setActiveTab( i );
 					}
 				}
@@ -183,10 +188,6 @@ Ext.define('Rambox.Application', {
 			}
 		});
 
-		if ( process.platform !== 'win32' ) {
-			this.checkUpdate(true);
-		}
-
 		// Define default value
 		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
 
@@ -226,17 +227,17 @@ Ext.define('Rambox.Application', {
 							'->'
 							,{
 								 xtype: 'label'
-								,html: '<b>New version is available!</b> ('+json.version+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
+								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
 							}
 							,{
 								 xtype: 'button'
-								,text: 'Download'
-								,href: 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch
+								,text: locale['app.update[1]']
+								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/saenzramiro/rambox/releases/latest'
 								,hidden: process.platform === 'win32'
 							}
 							,{
 								 xtype: 'button'
-								,text: 'Changelog'
+								,text: locale['app.update[2]']
 								,ui: 'decline'
 								,tooltip: 'Click here to see more information about the new version.'
 								,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+json.version
@@ -254,8 +255,8 @@ Ext.define('Rambox.Application', {
 					return;
 				} else if ( !silence ) {
 					Ext.Msg.show({
-						 title: 'You are up to date!'
-						,message: 'You have the latest version of Rambox.'
+						 title: locale['app.update[3]']
+						,message: locale['app.update[4]']
 						,icon: Ext.Msg.INFO
 						,buttons: Ext.Msg.OK
 					});

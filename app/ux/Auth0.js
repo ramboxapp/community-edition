@@ -13,7 +13,8 @@ Ext.define('Rambox.ux.Auth0', {
 			 autoclose: true
 			,autofocus: true
 			,auth: {
-				redirect: false
+				 redirect: false
+				,params: {scope: 'openid offline_access'}
 			}
 			,theme: {
 				 logo: 'resources/Icon.png'
@@ -25,7 +26,7 @@ Ext.define('Rambox.ux.Auth0', {
 			,popupOptions: {
 				nodeIntegration: 'no'
 			}
-			//,language: 'en'
+			,language: localStorage.getItem('locale-auth0') === null ? 'en' : localStorage.getItem('locale-auth0')
 		});
 
 		me.auth0 = new Auth0({ clientID: auth0Cfg.clientID, domain : auth0Cfg.domain });
@@ -45,7 +46,7 @@ Ext.define('Rambox.ux.Auth0', {
 				}
 
 				// Display a spinner while waiting
-				Ext.Msg.wait('Please wait until we get your configuration.', 'Connecting...');
+				Ext.Msg.wait(locale['app.window[29]'], locale['app.window[28]']);
 
 				// Google Analytics Event
 				ga_storage._trackEvent('Users', 'loggedIn');
@@ -54,6 +55,7 @@ Ext.define('Rambox.ux.Auth0', {
 				// Save the profile and JWT.
 				localStorage.setItem('profile', JSON.stringify(profile));
 				localStorage.setItem('id_token', authResult.idToken);
+				localStorage.setItem('refresh_token', authResult.refreshToken);
 
 				if ( !Ext.isEmpty(profile.user_metadata) && !Ext.isEmpty(profile.user_metadata.services) ) {
 					Ext.each(profile.user_metadata.services, function(s) {
@@ -81,9 +83,10 @@ Ext.define('Rambox.ux.Auth0', {
 		var lastupdate = (new Date()).toJSON();
 		var services = [];
 		Ext.getStore('Services').each(function(service) {
-			delete service.data.id;
-			delete service.data.zoomLevel;
-			services.push(service.data);
+			var s = Ext.clone(service);
+			delete s.data.id;
+			delete s.data.zoomLevel;
+			services.push(s.data);
 		});
 
 		Ext.Ajax.request({
@@ -95,6 +98,7 @@ Ext.define('Rambox.ux.Auth0', {
 				Ext.Msg.hide();
 				// Save the last update in localStorage
 				var profile = Ext.decode(localStorage.getItem('profile'));
+				if ( !profile.user_metadata ) profile.user_metadata = {};
 				profile.user_metadata.services_lastupdate = lastupdate;
 				localStorage.setItem('profile', Ext.encode(profile));
 				Ext.cq1('app-main').getViewModel().set('last_sync', new Date(lastupdate).toUTCString());
@@ -108,6 +112,8 @@ Ext.define('Rambox.ux.Auth0', {
 				});
 			}
 			,failure: function(response) {
+				if ( response.status === 401 ) return me.renewToken(me.backupConfiguration);
+
 				Ext.Msg.hide();
 				Ext.toast({
 					 html: '<i class="fa fa-times fa-3x fa-pull-left" aria-hidden="true"></i> Error occurred when trying to backup your configuration.'
@@ -124,10 +130,14 @@ Ext.define('Rambox.ux.Auth0', {
 	,restoreConfiguration: function() {
 		var me = this;
 
-		Ext.cq1('app-main').getController().removeAllServices(false, function() {
-			me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
-				if (err) return alert('There was an error getting the profile: ' + err.message);
+		me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
+			if ( err ) {
+				if ( err.error === 401 ) return me.renewToken(me.restoreConfiguration);
+				return alert('There was an error getting the profile: ' + err.message);
+			}
 
+			// First we remove all current services
+			Ext.cq1('app-main').getController().removeAllServices(false, function() {
 				Ext.each(profile.user_metadata.services, function(s) {
 					var service = Ext.create('Rambox.model.Service', s);
 					service.save();
@@ -143,7 +153,21 @@ Ext.define('Rambox.ux.Auth0', {
 		var me = this;
 
 		me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
-			if (err) return alert('There was an error getting the profile: ' + err.message);
+			if ( err ) {
+				if ( err.error === 401 ) return me.renewToken(me.checkConfiguration);
+				return alert('There was an error getting the profile: ' + err.message);
+			}
+
+			if ( !profile.user_metadata ) {
+				Ext.toast({
+					 html: 'You don\'t have any backup yet.'
+					,title: 'Synchronize Configuration'
+					,width: 300
+					,align: 't'
+					,closable: false
+				});
+				return;
+			}
 
 			if ( Math.floor(new Date(profile.user_metadata.services_lastupdate) / 1000) > Math.floor(new Date(Ext.decode(localStorage.getItem('profile')).user_metadata.services_lastupdate) / 1000) ) {
 				Ext.toast({
@@ -165,6 +189,30 @@ Ext.define('Rambox.ux.Auth0', {
 		});
 	}
 
+	,renewToken: function(callback) {
+		var me = this;
+
+		Ext.Ajax.request({
+			 url: 'https://rambox.auth0.com/delegation'
+			,method: 'POST'
+			,jsonData: {
+				 grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+				,client_id: auth0Cfg.clientID
+				,refresh_token: localStorage.getItem('refresh_token')
+				,api_type: 'app'
+			}
+			,success: function(response) {
+				var json = Ext.decode(response.responseText);
+				localStorage.setItem('id_token', json.id_token);
+
+				if ( Ext.isFunction(callback) ) callback.bind(me)();
+			}
+			,failure: function(response) {
+				console.error(response);
+			}
+		});
+	}
+
 	,login: function() {
 		var me = this;
 
@@ -176,5 +224,6 @@ Ext.define('Rambox.ux.Auth0', {
 
 		localStorage.removeItem('profile');
 		localStorage.removeItem('id_token');
+		localStorage.removeItem('refresh_token');
 	}
 });

@@ -49,7 +49,7 @@ Ext.define('Rambox.util.Notifier', {
 			});
 
 			notification.onclick = function() {
-				require('electron').remote.getCurrentWindow().show();
+				ipc.send('toggleWin', true);
 				Ext.cq1('app-main').setActiveTab(view);
 			};
 		}

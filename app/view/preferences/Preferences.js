@@ -14,22 +14,23 @@ Ext.define('Rambox.view.preferences.Preferences',{
 		type: 'preferences-preferences'
 	}
 
-	,title: 'Preferences'
-	,width: 400
+	,title: locale['preferences[0]']
+	,width: 420
 	,modal: true
 	,closable: true
 	,minimizable: false
 	,maximizable: false
 	,draggable: true
+	,resizable: false
 	,buttons: [
 		{
-			 text: 'Cancel'
+			 text: locale['button[1]']
 			,ui: 'decline'
 			,handler: 'cancel'
 		}
 		,'->'
 		,{
-			 text: 'Save'
+			 text: locale['button[4]']
 			,handler: 'save'
 		}
 	]
@@ -43,52 +44,119 @@ Ext.define('Rambox.view.preferences.Preferences',{
 				,bodyPadding: 20
 				,items: [
 					{
+						xtype: 'container'
+						,layout: 'hbox'
+						,items: [
+							{
+								 xtype: 'combo'
+								,name: 'locale'
+								,fieldLabel: 'Language'
+								,labelAlign: 'left'
+								,flex: 1
+								,labelWidth: 80
+								,value: config.locale
+								,displayField: 'label'
+								,valueField: 'value'
+								,editable: false
+								,store: Ext.create('Ext.data.Store', {
+									 fields: ['value', 'label']
+									,data: [
+										 { 'value': 'ar', 'auth0': 'en', 'label': 'Arabic' }
+										,{ 'value': 'cs', 'auth0': 'cs', 'label': 'Czech' }
+										,{ 'value': 'nl', 'auth0': 'nl', 'label': 'Dutch' }
+										,{ 'value': 'en', 'auth0': 'en', 'label': 'English' }
+										,{ 'value': 'fr', 'auth0': 'fr', 'label': 'French' }
+										,{ 'value': 'de', 'auth0': 'de', 'label': 'German' }
+										,{ 'value': 'el', 'auth0': 'en', 'label': 'Greek' }
+										,{ 'value': 'id', 'auth0': 'en', 'label': 'Indonesian' }
+										,{ 'value': 'it', 'auth0': 'it', 'label': 'Italian' }
+										,{ 'value': 'ko', 'auth0': 'en', 'label': 'Korean' }
+										,{ 'value': 'fa', 'auth0': 'fa', 'label': 'Persian' }
+										,{ 'value': 'pl', 'auth0': 'pl', 'label': 'Polish' }
+										,{ 'value': 'pt-PT', 'auth0': 'pt-br', 'label': 'Portuguese' }
+										,{ 'value': 'pt-BR', 'auth0': 'pt-br', 'label': 'Portuguese (Brazilian)' }
+										,{ 'value': 'ru', 'auth0': 'ru', 'label': 'Russian' }
+										,{ 'value': 'es-ES', 'auth0': 'es', 'label': 'Spanish' }
+										,{ 'value': 'tr', 'auth0': 'tr', 'label': 'Turkish' }
+									]
+								})
+							}
+							,{
+								 xtype: 'button'
+								,text: 'Help us Translate'
+								,style: 'border-top-left-radius:0;border-bottom-left-radius:0;'
+								,href: 'https://crowdin.com/project/rambox/invite'
+							}
+						]
+					}
+					,{
+						 xtype: 'label'
+						,text: 'English is the only language that has full translation. We are working with all the others, help us!'
+						,style: 'display:block;font-size:10px;line-height:15px;'
+						,margin: '0 0 10 0'
+					}
+					,{
 						 xtype: 'checkbox'
 						,name: 'auto_launch'
-						,boxLabel: 'Start automatically on system startup'
+						,boxLabel: locale['preferences[5]']
 						,value: config.auto_launch
 					}
 					,{
 						 xtype: 'checkbox'
 						,name: 'start_minimized'
-						,boxLabel: 'Start minimized'
+						,boxLabel: locale['preferences[4]']
 						,value: config.start_minimized
 					}
 					,{
 						 xtype: 'checkbox'
 						,name: 'hide_menu_bar'
-						,boxLabel: 'Auto-hide Menu bar (<code>Alt</code> key to display)'
+						,boxLabel: locale['preferences[1]']+' (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar
 						,hidden: process.platform !== 'win32'
 					}
 					,{
-						 xtype: 'checkbox'
-						,name: 'skip_taskbar'
-						,boxLabel: 'Show in Taskbar'
-						,value: config.skip_taskbar
-						,reference: 'skipTaskbar'
-						,hidden: process.platform === 'darwin'
-					},
-					{
-						xtype: 'combo',
-						name: 'window_close_behavior',
-						fieldLabel: 'When closing the main window',
-						labelAlign: 'top',
-						value: config.window_close_behavior,
-						displayField: 'label',
-						valueField: 'value',
-						editable: false,
-						store: Ext.create('Ext.data.Store', {
-							fields: ['value', 'label'],
-							data : [
-								{ 'value': 'keep_in_tray', 'label': 'Keep in tray' },
-								{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and taskbar' },
-								{ 'value': 'quit', 'label': 'Quit' }
+						 xtype: 'combo'
+						,name: 'window_display_behavior'
+						,fieldLabel: 'Display behaviour'
+						,labelAlign: 'left'
+						,width: 380
+						,labelWidth: 105
+						,value: config.window_display_behavior
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: [
+								 { 'value': 'show_taskbar', 'label': 'Show in Taskbar' }
+								,{ 'value': 'show_trayIcon', 'label': 'Show Tray Icon' }
+								,{ 'value': 'taskbar_tray', 'label': 'Show in Taskbar and Tray Icon' }
 							]
-						}),
-						hidden: process.platform === 'darwin'
-					},
-					{
+						})
+						,hidden: process.platform === 'darwin'
+					}
+					,{
+						 xtype: 'combo'
+						,name: 'window_close_behavior'
+						,fieldLabel: 'When closing the main window'
+						,labelAlign: 'left'
+						,width: 380
+						,labelWidth: 180
+						,value: config.window_close_behavior
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: [
+								 { 'value': 'keep_in_tray', 'label': 'Keep in tray' }
+								,{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and taskbar' }
+								,{ 'value': 'quit', 'label': 'Quit' }
+							]
+						})
+						,hidden: process.platform === 'darwin'
+					}
+					,{
 						 xtype: 'checkbox'
 						,name: 'always_on_top'
 						,boxLabel: 'Always on top'

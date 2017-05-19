@@ -39,6 +39,9 @@ Ext.define('Rambox.store.Services', {
 						break;
 				}
 
+				// If the service is disabled, we dont add it to tab bar
+				if ( !service.get('enabled') ) return;
+
 				var cfg = {
 					 xtype: 'webview'
 					,id: 'tab_'+service.get('id')

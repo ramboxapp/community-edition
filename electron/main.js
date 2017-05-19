@@ -1,12 +1,10 @@
 'use strict';
 
 const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session} = require('electron');
-// Menu
-const appMenu = require('./menu');
 // Tray
 const tray = require('./tray');
 // AutoLaunch
-var AutoLaunch = require('auto-launch');
+var AutoLaunch = require('auto-launch-patched');
 // Configuration
 const Config = require('electron-config');
 // Development
@@ -22,7 +20,7 @@ const config = new Config({
 	 defaults: {
 		 always_on_top: false
 		,hide_menu_bar: false
-		,skip_taskbar: true
+		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,window_close_behavior: 'keep_in_tray'
 		,start_minimized: false
@@ -32,6 +30,7 @@ const config = new Config({
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''
+		,locale: 'en'
 
 		,x: undefined
 		,y: undefined
@@ -41,10 +40,13 @@ const config = new Config({
 	}
 });
 
+// Menu
+const appMenu = require('./menu')(config);
+
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
-	 name: process.platform === 'darwin' ? 'Rambox.app' : 'Rambox'
-	,isHiddenOnLaunch: config.get('start_minimized')
+	 name: 'Rambox'
+	,isHidden: config.get('start_minimized')
 });
 config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
 
@@ -132,7 +134,7 @@ function createWindow () {
 		,height: config.get('height')
 		,alwaysOnTop: config.get('always_on_top')
 		,autoHideMenuBar: config.get('hide_menu_bar')
-		,skipTaskbar: !config.get('skip_taskbar')
+		,skipTaskbar: config.get('window_display_behavior') === 'show_trayIcon'
 		,show: !config.get('start_minimized')
 		,webPreferences: {
 			 webSecurity: false
@@ -156,7 +158,7 @@ function createWindow () {
 
 	tray.create(mainWindow, config);
 
-	if ( fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'Update.exe')) ) updater.initialize(mainWindow);
+	if ( fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'Update.exe')) && process.argv.indexOf('--without-update') === -1 ) updater.initialize(mainWindow);
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
@@ -184,10 +186,7 @@ function createWindow () {
 		// Navigate the window forward when the user hits their mouse forward button
 		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
 	});
-	mainWindow.on('focus', (e) => {
-		// Make focus on current service when user use Alt + Tab to activate Rambox
-		mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").fireEvent("tabchange", Ext.cq1("app-main"), Ext.cq1("app-main").getActiveTab());');
-	});
+
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {
 		if ( !isQuitting ) {
@@ -218,6 +217,7 @@ function createWindow () {
 	mainWindow.on('closed', function(e) {
 		mainWindow = null;
 	});
+	mainWindow.once('focus', () => mainWindow.flashFrame(false));
 }
 
 let mainMasterPasswordWindow;
@@ -245,9 +245,11 @@ function updateBadge(title) {
 		}
 
 		mainWindow.webContents.send('setBadge', messageCount);
-	} else { // macOS
+	} else { // macOS & Linux
 		app.setBadgeCount(messageCount);
 	}
+
+	if ( messageCount > 0 && !mainWindow.isFocused() ) mainWindow.flashFrame(true);
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
@@ -265,14 +267,29 @@ ipcMain.on('setConfig', function(event, values) {
 	// hide_menu_bar
 	mainWindow.setAutoHideMenuBar(values.hide_menu_bar);
 	if ( !values.hide_menu_bar ) mainWindow.setMenuBarVisibility(true);
-	// skip_taskbar
-	mainWindow.setSkipTaskbar(!values.skip_taskbar);
 	// always_on_top
 	mainWindow.setAlwaysOnTop(values.always_on_top);
 	// auto_launch
 	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
+
+	switch ( values.window_display_behavior ) {
+		case 'show_taskbar':
+			mainWindow.setSkipTaskbar(false);
+			tray.destroy();
+			break;
+		case 'show_trayIcon':
+			mainWindow.setSkipTaskbar(true);
+			tray.create(mainWindow, config);
+			break;
+		case 'taskbar_tray':
+			mainWindow.setSkipTaskbar(false);
+			tray.create(mainWindow, config);
+			break;
+		default:
+			break;
+	}
 });
 
 ipcMain.on('validateMasterPassword', function(event, pass) {
@@ -290,6 +307,17 @@ ipcMain.on('setServiceNotifications', function(event, partition, op) {
 		if (permission === 'notifications') return callback(op);
 		callback(true)
 	});
+});
+
+// Reload app
+ipcMain.on('reloadApp', function(event) {
+	mainWindow.reload();
+});
+
+// Relaunch app
+ipcMain.on('relaunchApp', function(event) {
+	app.relaunch();
+	app.exit(0);
 });
 
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
@@ -364,6 +392,26 @@ ipcMain.on('image:popup', function(event, url, partition) {
 	tmpWindow.maximize();
 
 	tmpWindow.loadURL(url);
+});
+
+ipcMain.on('toggleWin', function(event, allwaysShow) {
+	if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && mainWindow.isVisible() ) { // Maximized
+		!allwaysShow ? mainWindow.close() : mainWindow.show();
+	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Minimized
+		mainWindow.restore();
+	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Windowed mode
+		!allwaysShow ? mainWindow.close() : mainWindow.show();
+	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Closed to taskbar
+		mainWindow.restore();
+	} else if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed maximized to tray
+		mainWindow.show();
+	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed windowed to tray
+		mainWindow.show();
+	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed minimized to tray
+		mainWindow.restore();
+	} else {
+		mainWindow.show();
+	}
 });
 
 // Proxy
