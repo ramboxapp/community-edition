@@ -34,7 +34,7 @@ Ext.define('Rambox.store.ServicesList', {
 			logo: 'wiki.png'			,
 			name: 'WikiMedia'			,
 			url: 'http://___/wiki',
-			type: 'mitglieder'
+			type: 'mitglieder',
 		},
 		{
 			 id: 'slack'
@@ -91,6 +91,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: '___'
 			,type: 'custom'
 			,allow_popups: true
+		},
+		{
+			id: 'info'
+			,logo: 'custom.png'
+			,name: 'Infos'
+			,description: 'Infoseite zu unseren Plattformen'
+			,url: '___'
+			,type: 'mitglied'
 		},
 		{
 			 id: 'roundcube'

@@ -39,8 +39,8 @@ Ext.define('Rambox.Application', {
 			const defaults =[
 					{
 						"position": 1,
-						"type": "custom",
-						"logo": "",
+						"type": "info",
+						"logo": "custom.png",
 						"name": "Info",
 						"url": "https://tools.diehumanisten.de",
 						"align": "left",
@@ -52,13 +52,14 @@ Ext.define('Rambox.Application', {
 						"enabled": true,
 						"js_unread": "",
 						"zoomLevel": 0,
-						"id": 11
+						"id": 11,
+						"removable": false
 					},
 					{
 						"position": 2,
 						"type": "slack",
 						"logo": "slack.png",
-						"name": "Chat (Slack)",
+						"name": "Slack",
 						"url": "https://pgs-diehumanisten.slack.com/",
 						"align": "left",
 						"notifications": true,
@@ -69,7 +70,8 @@ Ext.define('Rambox.Application', {
 						"enabled": true,
 						"js_unread": "",
 						"zoomLevel": 0,
-						"id": 1
+						"id": 1,
+						"removable": false
 					},
 					{
 						"position": 3,
@@ -86,7 +88,8 @@ Ext.define('Rambox.Application', {
 						"enabled": true,
 						"js_unread": "",
 						"zoomLevel": 0,
-						"id": 10
+						"id": 10,
+						"removable": false
 					},
 					{
 						"position": 4,
@@ -103,7 +106,8 @@ Ext.define('Rambox.Application', {
 						"enabled": true,
 						"js_unread": "",
 						"zoomLevel": 0,
-						"id": 16
+						"id": 16,
+						"removable": false
 					},
 
 					{
@@ -121,7 +125,8 @@ Ext.define('Rambox.Application', {
 						"enabled": true,
 						"js_unread": "",
 						"zoomLevel": 0,
-						"id": 18
+						"id": 18,
+						"removable": false
 					}, {
 						"position": 6,
 						"type": "facebook",

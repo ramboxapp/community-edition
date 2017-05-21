@@ -26,6 +26,9 @@ Ext.define('Rambox.view.add.Add',{
 
 	,initComponent: function() {
 		var me = this;
+		const removable = !me.record.get('removable');
+
+		console.log("NOT REMOVABLE: ", removable);
 
 		me.title = (!me.edit ? 'Add ' : 'Edit ') + me.record.get('name');
 		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'resources/icons/'+me.record.get('logo');
@@ -40,6 +43,7 @@ Ext.define('Rambox.view.add.Add',{
 						,name: 'serviceName'
 						,allowBlank: true
 						,listeners: { specialkey: 'onEnter' }
+						,disabled: removable
 					}
 					,{
 						 xtype: 'container'
@@ -58,6 +62,7 @@ Ext.define('Rambox.view.add.Add',{
 								,vtype: me.record.get('url') === '___' ? 'url' : ''
 								,width: 275
 								,listeners: { specialkey: 'onEnter' }
+								,disabled: removable
 							}
 							,{
 								 xtype: 'cycle'
@@ -79,7 +84,8 @@ Ext.define('Rambox.view.add.Add',{
 											,disabled: me.edit ? !me.service.get('custom_domain') : !me.record.get('custom_domain')
 										}
 									]
-								}
+								,disabled: removable
+							}
 								// Fixes bug EXTJS-20094 for version Ext JS 5
 								,arrowHandler: function(cycleBtn, e) {
 									if ( !cycleBtn.arrowVisible ) cycleBtn.hideMenu();
@@ -107,7 +113,9 @@ Ext.define('Rambox.view.add.Add',{
 							,{
 								 xtype: 'hiddenfield'
 								,name: 'cycleValue'
-								,value: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? 1 : (!Ext.String.endsWith(me.record.get('url'), me.service.get('url').split('___')[1]) ? 2 : 1)) : 1
+								,disabled: removable
+
+							,value: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? 1 : (!Ext.String.endsWith(me.record.get('url'), me.service.get('url').split('___')[1]) ? 2 : 1)) : 1
 							}
 						]
 					}
@@ -122,23 +130,25 @@ Ext.define('Rambox.view.add.Add',{
 						,hidden: me.record.get('type') !== 'custom'
 						,margin: '5 0 0 0'
 						,listeners: { specialkey: 'onEnter' }
-					}
+						,disabled: removable
+	}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Options'
+						,title: 'Einstellungen'
 						,margin: '10 0 0 0'
 						,items: [
 							{
 								 xtype: 'checkbox'
-								,boxLabel: 'Align to Right'
+								,boxLabel: 'Rechts anordnen'
 								,checked: me.edit ? (me.record.get('align') === 'right' ? true : false) : false
 								,name: 'align'
 								,uncheckedValue: 'left'
 								,inputValue: 'right'
+								,disabled: removable
 							}
 							,{
 								 xtype: 'checkbox'
-								,boxLabel: 'Show notifications'
+								,boxLabel: 'Benachrichtigungen anzeigen'
 								,name: 'notifications'
 								,checked: me.edit ? me.record.get('notifications') : true
 								,uncheckedValue: false
@@ -146,7 +156,7 @@ Ext.define('Rambox.view.add.Add',{
 							}
 							,{
 								 xtype: 'checkbox'
-								,boxLabel: 'Mute all sounds'
+								,boxLabel: 'Stummschalten'
 								,name: 'muted'
 								,checked: me.edit ? me.record.get('muted') : false
 								,uncheckedValue: false
@@ -165,12 +175,12 @@ Ext.define('Rambox.view.add.Add',{
 					},
 					{
 						xtype: 'fieldset',
-						title: 'Unread counter',
+						title: 'Zähler für ungelesene Nachrichten',
 						margin: '10 0 0 0',
 						items: [
 							{
 								xtype: 'checkbox',
-								boxLabel: 'Display tab unread counter',
+								boxLabel: 'Zähler im Tab anzeigen',
 								name: 'displayTabUnreadCounter',
 								checked: me.edit ? me.record.get('displayTabUnreadCounter') : true,
 								uncheckedValue: false,
@@ -178,7 +188,7 @@ Ext.define('Rambox.view.add.Add',{
 							},
 							{
 								xtype: 'checkbox',
-								boxLabel: 'Include in global unread counter',
+								boxLabel: 'Zum allgemeinen Zähler dazurechnen',
 								name: 'includeInGlobalUnreadCounter',
 								checked: me.edit ? me.record.get('includeInGlobalUnreadCounter') : true,
 								uncheckedValue: false,
@@ -201,7 +211,9 @@ Ext.define('Rambox.view.add.Add',{
 								,value: me.edit ? me.record.get('js_unread') : ''
 								,anchor: '100%'
 								,height: 120
+								,disabled: function(view, rowIndex, colIndex, item, record) {return !record.get('editable');	}
 							}
+
 						]
 					}
 					,{

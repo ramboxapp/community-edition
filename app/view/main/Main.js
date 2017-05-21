@@ -37,7 +37,7 @@ Ext.define('Rambox.view.main.Main', {
 			,items: [
 				{
 					 xtype: 'panel'
-					,title: 'Add a new Service'
+					,title: 'Unsere Plattformen'
 					,margin: '0 5 0 0'
 					,flex: 1
 					,header: { height: 50 }
@@ -131,7 +131,7 @@ Ext.define('Rambox.view.main.Main', {
 				}
 				,{
 					 xtype: 'grid'
-					,title: 'Enabled Services'
+					,title: 'Konfigurierte Plattformen'
 					,store: 'Services'
 					,hideHeaders: true
 					,margin: '0 0 0 5'
@@ -153,9 +153,9 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'button'
 							,glyph: 'xf1f8@FontAwesome'
 							,baseCls: ''
-							,tooltip: 'Zurücksetzen'
+							,tooltip: 'Alles zurücksetzen'
 							,handler: 'removeAllServices'
-							,title: 'Zurücksetzen'
+							,title: 'Alles zurücksetzen'
 						}
 					]
 					,columns: [
@@ -208,6 +208,7 @@ Ext.define('Rambox.view.main.Main', {
 								}
 								,{
 									 glyph: 0xf1f8
+									,isDisabled: function(view, rowIndex, colIndex, item, record) { return !record.get('removable')}
 									,tooltip: 'Remove'
 									,handler: 'removeService'
 									,getClass: function(){ return 'x-hidden-display'; }
@@ -247,7 +248,7 @@ Ext.define('Rambox.view.main.Main', {
 				,items: [
 					{
 						 glyph: 'xf1f7@FontAwesome'
-						,text: 'Don\'t Disturb: '+(JSON.parse(localStorage.getItem('dontDisturb')) ? 'ON' : 'OFF')
+						,text: 'Nicht stören: '+(JSON.parse(localStorage.getItem('dontDisturb')) ? 'An' : 'Aus')
 						,tooltip: 'Disable notifications and sounds in all services. Perfect to be concentrated and focused.<br/><b>Shortcut key: F1</b>'
 						,enableToggle: true
 						,handler: 'dontDisturb'
@@ -257,7 +258,7 @@ Ext.define('Rambox.view.main.Main', {
 					}
 					,{
 						 glyph: 'xf023@FontAwesome'
-						,text: 'Lock Rambox'
+						,text: 'Passwortsperre'
 						,tooltip: 'Lock this app if you will be away for a period of time.<br/><b>Shortcut key: F2</b>'
 						,handler: 'lockRambox'
 						,id: 'lockRamboxBtn'

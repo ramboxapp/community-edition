@@ -87,7 +87,7 @@ Ext.define('Rambox.view.main.MainController', {
 	,removeService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
 		var me = this;
 
-		Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove <b>'+rec.get('name')+'</b>?', function(btnId) {
+		Ext.Msg.confirm('Bitte bestätige...', 'Bist du sicher, dass du <b>' + rec.get('name') + '</b> löschen möchtest?', function(btnId) {
 			if ( btnId === 'yes' ) me.removeServiceFn(rec.get('id'));
 		});
 	}
@@ -99,7 +99,7 @@ Ext.define('Rambox.view.main.MainController', {
 		document.title = 'HumanistenBox';
 
 		if ( btn ) {
-			Ext.Msg.confirm('Please confirm...', 'Are you sure you want to remove all services?', function(btnId) {
+			Ext.Msg.confirm('Bitte bestätige...', 'Bist du sicher, dass du das Programm auf den Ausganszustand zurücksetzen möchtest?', function(btnId) {
 				if ( btnId === 'yes' ) {
 					Ext.cq1('app-main').suspendEvent('remove');
 					Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
@@ -208,13 +208,13 @@ Ext.define('Rambox.view.main.MainController', {
 
 		localStorage.setItem('dontDisturb', btn.pressed);
 
-		btn.setText('Don\'t Disturb: ' + ( btn.pressed ? 'ON' : 'OFF' ));
+		btn.setText('Nicht stören: ' + ( btn.pressed ? 'An' : 'Aus' ));
 
 		// If this method is called from Lock method, prevent showing toast
 		if ( !e ) return;
 		Ext.toast({
-			 html: btn.pressed ? 'ENABLED' : 'DISABLED'
-			,title: 'Don\'t Disturb'
+			 html: btn.pressed ? 'An' : 'Aus'
+			,title: 'Nicht stören'
 			,width: 200
 			,align: 't'
 			,closable: false
@@ -224,7 +224,7 @@ Ext.define('Rambox.view.main.MainController', {
 	,lockRambox: function(btn) {
 		var me = this;
 
-		var msgbox = Ext.Msg.prompt('Lock Rambox', 'Enter a temporal password to unlock it later', function(btnId, text) {
+		var msgbox = Ext.Msg.prompt('Passwortsperre', 'Enter a temporal password to unlock it later', function(btnId, text) {
 			if ( btnId === 'ok' ) {
 				var msgbox2 = Ext.Msg.prompt('Lock Rambox', 'Repeat the temporal password', function(btnId, text2) {
 					if ( btnId === 'ok' ) {
