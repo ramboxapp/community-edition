@@ -7,6 +7,7 @@ Ext.define('Rambox.Application', {
 		 'Rambox.ux.Auth0'
 		,'Rambox.util.MD5'
 		,'Ext.window.Toast'
+		,'Ext.util.Cookies'
 	]
 
 	,stores: [
@@ -32,6 +33,10 @@ Ext.define('Rambox.Application', {
 
 		// Initialize Auth0
 		Rambox.ux.Auth0.init();
+
+		// Set cookies to help Tooltip.io messages segmentation
+		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
+		if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
 
 		// Check for updates
 		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 && process.platform !== 'win32' ) Rambox.app.checkUpdate(true);

@@ -51,6 +51,9 @@ Ext.define('Rambox.ux.Auth0', {
 				// Google Analytics Event
 				ga_storage._trackEvent('Users', 'loggedIn');
 
+				// Set cookies to help Tooltip.io messages segmentation
+				Ext.util.Cookies.set('auth0', true);
+
 				// User is logged in
 				// Save the profile and JWT.
 				localStorage.setItem('profile', JSON.stringify(profile));
@@ -225,5 +228,8 @@ Ext.define('Rambox.ux.Auth0', {
 		localStorage.removeItem('profile');
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('refresh_token');
+
+		// Set cookies to help Tooltip.io messages segmentation
+		Ext.util.Cookies.set('auth0', false);
 	}
 });
