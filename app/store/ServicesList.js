@@ -116,8 +116,9 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.google.com/mail/'
 			,type: 'email'
 			,allow_popups: true
-			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){var b=document.getElementsByClassName("aim")[0];t=0,b.textContent.indexOf("(")!=-1&&(t=parseInt(b.textContent.replace(/[^0-9]/g,""))),document.getElementsByTagName("title")[0].innerHTML="("+t+") Gmail"},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("aim")[0];updateBadge(-1!=a.textContent.indexOf("(")&&(t=parseInt(a.textContent.replace(/[^0-9]/g,""))))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Settings inside Gmail. <a href="https://support.google.com/mail/answer/1075549?ref_topic=3394466" target="_blank">Read more...</a>'
+			,dont_update_unread_from_title: true
 		},
 		{
 			 id: 'inbox'
