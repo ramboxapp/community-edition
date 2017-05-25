@@ -136,6 +136,7 @@ function createWindow () {
 		,autoHideMenuBar: config.get('hide_menu_bar')
 		,skipTaskbar: config.get('window_display_behavior') === 'show_trayIcon'
 		,show: !config.get('start_minimized')
+		,acceptFirstMouse: true
 		,webPreferences: {
 			 webSecurity: false
 			,nodeIntegration: true
