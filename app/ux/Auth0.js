@@ -4,6 +4,7 @@ Ext.define('Rambox.ux.Auth0', {
 	// private
 	,lock: null
 	,auth0: null
+	,backupCurrent: false
 
 	,init: function() {
 		var me = this;
@@ -60,7 +61,7 @@ Ext.define('Rambox.ux.Auth0', {
 				localStorage.setItem('id_token', authResult.idToken);
 				localStorage.setItem('refresh_token', authResult.refreshToken);
 
-				if ( !Ext.isEmpty(profile.user_metadata) && !Ext.isEmpty(profile.user_metadata.services) ) {
+				if ( !Ext.isEmpty(profile.user_metadata) && !Ext.isEmpty(profile.user_metadata.services) && !me.backupCurrent ) {
 					Ext.each(profile.user_metadata.services, function(s) {
 						var service = Ext.create('Rambox.model.Service', s);
 						service.save();
@@ -77,7 +78,7 @@ Ext.define('Rambox.ux.Auth0', {
 		});
 	}
 
-	,backupConfiguration: function() {
+	,backupConfiguration: function(callback) {
 		var me = this;
 
 		Ext.Msg.wait('Saving backup...', 'Please wait...');
@@ -113,6 +114,8 @@ Ext.define('Rambox.ux.Auth0', {
 					,align: 't'
 					,closable: false
 				});
+
+				if ( Ext.isFunction(callback) ) callback.bind(me)();
 			}
 			,failure: function(response) {
 				if ( response.status === 401 ) return me.renewToken(me.backupConfiguration);
@@ -125,6 +128,9 @@ Ext.define('Rambox.ux.Auth0', {
 					,align: 't'
 					,closable: false
 				});
+
+				if ( Ext.isFunction(callback) ) callback.bind(me)();
+
 				console.error(response);
 			}
 		});
