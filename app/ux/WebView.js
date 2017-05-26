@@ -69,14 +69,14 @@ Ext.define('Rambox.ux.WebView',{
 									,flex: 1
 									,items: [
 										{
-											 text: 'Back'
+											 text: 'Zurück'
 											,glyph: 'xf053@FontAwesome'
 											,flex: 1
 											,scope: me
 											,handler: me.goBack
 										}
 										,{
-											 text: 'Forward'
+											 text: 'Vorwärts'
 											,glyph: 'xf054@FontAwesome'
 											,iconAlign: 'right'
 											,flex: 1
@@ -164,6 +164,7 @@ Ext.define('Rambox.ux.WebView',{
 				,autoShow: true
 				,autoEl: {
 					 tag: 'webview'
+					,type: me.record.get('type')
 					,src: me.record.get('url')
 					,style: 'width:100%;height:100%;'
 					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
@@ -190,9 +191,6 @@ Ext.define('Rambox.ux.WebView',{
 
 		var webview = me.down('component').el.dom;
 
-		// Google Analytics Event
-		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
-
 		// Notifications in Webview
 		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
 
@@ -214,13 +212,44 @@ Ext.define('Rambox.ux.WebView',{
 
 		// Open links in default browser
 		webview.addEventListener('new-window', function(e) {
-			switch ( me.type ) {
-				case 'skype':
-					// hack to fix multiple browser tabs on Skype link click, re #11
-					if ( e.url.match('https:\/\/web.skype.com\/..\/undefined') ) {
+			switch (me.type) {
+				case 'discourse':
+					console.log("from DISK");
+					if (e.url.indexOf('auth/facebook?display=popup') > 0) {
+						console.log("facebookauth");
+						me.add({
+							xtype: 'window'
+							, title: 'Anmelden mit Facebook'
+							, width: '80%'
+							, height: '80%'
+							, maximizable: true
+							, modal: true
+							, items: {
+								xtype: 'component'
+								, hideMode: 'offsets'
+								, autoRender: true
+								, autoShow: true
+								, autoEl: {
+									tag: 'webview'
+									,
+									src: e.url
+									,
+									style: 'width:100%;height:100%;'
+									//,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+									,
+									useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+								}
+							}
+						}).show();
 						e.preventDefault();
 						return;
-					} else if ( e.url.indexOf('imgpsh_fullsize') >= 0 ) {
+					}
+				case 'skype':
+					// hack to fix multiple browser tabs on Skype link click, re #11
+					if (e.url.match('https:\/\/web.skype.com\/..\/undefined')) {
+						e.preventDefault();
+						return;
+					} else if (e.url.indexOf('imgpsh_fullsize') >= 0) {
 						ipc.send('image:download', e.url, e.target.partition);
 						e.preventDefault();
 						return;
@@ -228,28 +257,32 @@ Ext.define('Rambox.ux.WebView',{
 					break;
 				case 'hangouts':
 					e.preventDefault();
-					if ( e.url.indexOf('plus.google.com/u/0/photos/albums') >= 0 ) {
+					if (e.url.indexOf('plus.google.com/u/0/photos/albums') >= 0) {
 						ipc.send('image:popup', e.url, e.target.partition);
 						return;
-					} else if ( e.url.indexOf('https://hangouts.google.com/hangouts/_/CONVERSATION/') >= 0 ) {
+					} else if (e.url.indexOf('https://hangouts.google.com/hangouts/_/CONVERSATION/') >= 0) {
 						me.add({
-							 xtype: 'window'
-							,title: 'Video Call'
-							,width: '80%'
-							,height: '80%'
-							,maximizable: true
-							,modal: true
-							,items: {
-								 xtype: 'component'
-								,hideMode: 'offsets'
-								,autoRender: true
-								,autoShow: true
-								,autoEl: {
-									 tag: 'webview'
-									,src: e.url
-									,style: 'width:100%;height:100%;'
-									,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+							xtype: 'window'
+							, title: 'Video Call'
+							, width: '80%'
+							, height: '80%'
+							, maximizable: true
+							, modal: true
+							, items: {
+								xtype: 'component'
+								, hideMode: 'offsets'
+								, autoRender: true
+								, autoShow: true
+								, autoEl: {
+									tag: 'webview'
+									,
+									src: e.url
+									,
+									style: 'width:100%;height:100%;'
+									,
+									partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+									,
+									useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
 						}).show();
@@ -257,41 +290,130 @@ Ext.define('Rambox.ux.WebView',{
 					}
 					break;
 				case 'slack':
-					if ( e.url.indexOf('slack.com/call/') >= 0 ) {
+					if (e.url.indexOf('slack.com/call/') >= 0) {
 						me.add({
-							 xtype: 'window'
-							,title: e.options.title
-							,width: e.options.width
-							,height: e.options.height
-							,maximizable: true
-							,modal: true
-							,items: {
-								 xtype: 'component'
-								,hideMode: 'offsets'
-								,autoRender: true
-								,autoShow: true
-								,autoEl: {
-									 tag: 'webview'
-									,src: e.url
-									,style: 'width:100%;height:100%;'
-									,partition: e.options.webPreferences.partition
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+							xtype: 'window'
+							, title: e.options.title
+							, width: e.options.width
+							, height: e.options.height
+							, maximizable: true
+							, modal: true
+							, items: {
+								xtype: 'component'
+								, hideMode: 'offsets'
+								, autoRender: true
+								, autoShow: true
+								, autoEl: {
+									tag: 'webview'
+									,
+									src: e.url
+									,
+									style: 'width:100%;height:100%;'
+									//,partition: e.options.webPreferences.partition
+									,
+									useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
 						}).show();
 						e.preventDefault();
 						return;
+					} else if (e.url.indexOf('slack-redir.net/') >= 0) {
+						var uri = e.url.split('url=')[1];
+						uri = decodeURIComponent(uri);
+						e.url = uri;
 					}
 					break;
+				case 'wordpress':
+					console.log("WP");
+					return;
 				default:
 					break;
 			}
+			// if (e.url.match('https?:\/\/files.slack.com\/')) {
+			// 	me.add({
+			// 		xtype: 'window'
+			// 		, title: e.options.title
+			// 		, width: e.options.width
+			// 		, height: e.options.height
+			// 		, maximizable: true
+			// 		, modal: true
+			// 		, items: {
+			// 			xtype: 'component'
+			// 			, hideMode: 'offsets'
+			// 			, autoRender: true
+			// 			, autoShow: true
+			// 			, autoEl: {
+			// 				tag: 'webview'
+			// 				,
+			// 				src: e.url
+			// 				,
+			// 				style: 'width:100%;height:100%;'
+			// 				,partition: e.options.webPreferences.partition
+			// 				,
+			// 				useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+			// 			}
+			// 		}
+			// 	}).show();
+			// 	e.preventDefault();
+			// 	return;
+			// };
 
 			const protocol = require('url').parse(e.url).protocol;
-			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
-				e.preventDefault();
-				require('electron').shell.openExternal(e.url);
+			if (protocol === 'http:' || protocol === 'https:') {
+				//console.log("EXTERN", e);
+
+				var selectType = undefined;
+				if (e.url.match('https?:\/\/www.facebook.com\/'))
+					selectType = "facebook";
+				else if (e.url.match('https?:\/\/pgs-diehumanisten.slack.com\/'))
+					selectType = "slack";
+				else if (e.url.match('https?:\/\/disk.diehumanisten.de\/'))
+					selectType = "discourse";
+				else if (e.url.match('https?:\/\/wiki.diehumanisten.de\/'))
+					selectType = "wiki";
+				else if (e.url.match('https?:\/\/trello.com\/'))
+					selectType = "trello";
+
+				//console.log(me.record.get('type'), selectType);
+
+				if (me.record.get('type') !== selectType) {
+
+					const tabPanel = Ext.cq1('app-main');
+					var tabs = tabPanel.items.items;
+					console.log("URL:", e.url);
+					console.log("Searching:", selectType);
+					var tab = tabs.filter(function (tab) {
+						if (tab.id === "ramboxTab") return false;
+						if (tab.record && tab.record.data) {
+							const type = tab.record.data['type'];
+							//console.log("record:", type);
+							return (type === selectType);
+						}
+						return false;
+					});
+
+					// Tab exists
+					if (tab.length > 0) {
+						tab = tab[0];
+
+						const web = tab.down("component").el.dom;
+						web.loadURL(e.url);
+
+						// Select Tab
+						var index = tabPanel.items.indexOf(tab);
+						console.log("index", index);
+						tabPanel.setActiveTab(tab);
+
+						// Stop from opening
+						e.preventDefault();
+						return;
+					}
+				}
 			}
+			// Else
+			console.log("nichts greift");
+			e.preventDefault();
+			require('electron').shell.openExternal(e.url);
 		});
 
 		webview.addEventListener('will-navigate', function(e, url) {

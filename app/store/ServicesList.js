@@ -34,7 +34,7 @@ Ext.define('Rambox.store.ServicesList', {
 			logo: 'wiki.png'			,
 			name: 'WikiMedia'			,
 			url: 'http://___/wiki',
-			type: 'mitglieder',
+			type: 'mitglieder'
 		},
 		{
 			 id: 'slack'
@@ -90,6 +90,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Add a custom service if is not listed above.'
 			,url: '___'
 			,type: 'custom'
+			,allow_popups: true
+		},
+		{
+			id: 'wordpress'
+			,logo: 'wordpress.png'
+			,name: 'WordPress'
+			,description: 'Add a custom service if is not listed above.'
+			,url: '___/wp-admin'
+			,type: 'mitarbeiter'
 			,allow_popups: true
 		},
 		{

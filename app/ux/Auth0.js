@@ -47,8 +47,6 @@ Ext.define('Rambox.ux.Auth0', {
 				// Display a spinner while waiting
 				Ext.Msg.wait('Please wait until we get your configuration.', 'Connecting...');
 
-				// Google Analytics Event
-				ga_storage._trackEvent('Users', 'loggedIn');
 
 				// User is logged in
 				// Save the profile and JWT.

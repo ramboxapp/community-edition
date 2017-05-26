@@ -123,7 +123,7 @@ let isQuitting = false;
 function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
-		 title: 'HumanistenBox'
+		 title: 'TESTNAME'
 		,icon: __dirname + '/../resources/Icon.ico'
 		,backgroundColor: '#FFF'
 		,x: config.get('x')
@@ -161,6 +161,7 @@ function createWindow () {
 	// Open links in default browser
 	//TODO: link services
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
+		console.log("Link clicked");
 		if ( disposition !== 'foreground-tab' ) return;
 		const protocol = require('url').parse(url).protocol;
 		if (protocol === 'mailto:') {
@@ -371,6 +372,8 @@ ipcMain.on('image:popup', function(event, url, partition) {
 
 	tmpWindow.loadURL(url);
 });
+
+
 
 // Proxy
 if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
