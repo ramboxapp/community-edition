@@ -7,6 +7,7 @@ Ext.define('Rambox.Application', {
 		 'Rambox.ux.Auth0'
 		,'Rambox.util.MD5'
 		,'Ext.window.Toast'
+		,'Ext.util.Cookies'
 	]
 
 	,stores: [
@@ -30,8 +31,15 @@ Ext.define('Rambox.Application', {
 		ga_storage._trackPageview('/index.html', 'main');
 		ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
+		// Load language for Ext JS library
+		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
+
 		// Initialize Auth0
 		Rambox.ux.Auth0.init();
+
+		// Set cookies to help Tooltip.io messages segmentation
+		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
+		if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
 
 		// Check for updates
 		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 && process.platform !== 'win32' ) Rambox.app.checkUpdate(true);
@@ -194,6 +202,76 @@ Ext.define('Rambox.Application', {
 		if ( localStorage.getItem('locked') ) {
 			console.info('Lock Rambox:', 'Enabled');
 			Ext.cq1('app-main').getController().showLockWindow();
+		}
+
+		// Synchronization problem in version 0.5.3 steps to fix it
+		if ( localStorage.getItem('id_token') && localStorage.getItem('refresh_token') === null ) {
+			var win = Ext.create('Ext.window.Window', {
+				 title: 'Backup your services'
+				,autoShow: true
+				,modal: true
+				,closable: false
+				,resizable: false
+				,bodyPadding: '0 15 15 15'
+				,width: 500
+				,layout: 'card'
+				,items: [
+					{
+						 xtype: 'container'
+						,html: '<h1>Synchronization problem fixed!</h1>In previous version, we had a bug that backing up your services throw an error. Now is fixed, but you will need to follow two simple steps to make it work.<br><br>If you decide not to do it now, you can cancel but it will ask you again next time you open Rambox until you do it.'
+					}
+					,{
+						 xtype: 'container'
+						,html: '<h1>Login again</h1>Just click the "Sign in" button at the bottom-right of this window to sign in again with the same account you used before.'
+					}
+					,{
+						 xtype: 'container'
+						,html: '<h1>Backup</h1>To finish, click the "Sync!" button to backup your current services and that\'s all!'
+					}
+				]
+				,buttons: [
+					{
+						 text: locale['button[1]']
+						,ui: 'decline'
+						,handler: function() {
+							win.close();
+						}
+					}
+					,'->'
+					,{
+						 text: 'Start'
+						,handler: function(btn) {
+							btn.hide();
+							btn.nextSibling('#signin').show();
+							win.getLayout().setActiveItem(1);
+						}
+					}
+					,{
+						 text: 'Sign in'
+						,itemId: 'signin'
+ 						,hidden: true
+						,handler: function(btn) {
+							Rambox.ux.Auth0.backupCurrent = true;
+							Rambox.ux.Auth0.login();
+							Ext.defer(Rambox.ux.Auth0.logout, 1000);
+							btn.hide();
+							btn.nextSibling('#sync').show();
+							win.getLayout().setActiveItem(2);
+						}
+					}
+					,{
+						 text: 'Sync!'
+						,itemId: 'sync'
+						,hidden: true
+						,handler: function() {
+							Rambox.ux.Auth0.backupConfiguration(function() {
+								win.close();
+								Rambox.ux.Auth0.backupCurrent = false;
+							});
+						}
+					}
+				]
+			});
 		}
 
 		// Remove spinner

@@ -347,6 +347,7 @@ Ext.define('Rambox.ux.WebView',{
 			// Mute Webview
 			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
 
+			var js_inject = '';
 			// Injected code to detect new messages
 			if ( me.record ) {
 				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
@@ -355,7 +356,7 @@ Ext.define('Rambox.ux.WebView',{
 					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - JS Injected to Detect New Messages');
 					console.info(me.type);
 					console.log(js_unread);
-					webview.executeJavaScript(js_unread);
+					js_inject += js_unread;
 				}
 			}
 
@@ -363,13 +364,13 @@ Ext.define('Rambox.ux.WebView',{
 			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
 				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
 				console.log(js_preventBlink);
-				webview.executeJavaScript(js_preventBlink);
+				js_inject += js_preventBlink;
 			}
 
 			console.groupEnd();
 
 			// Scroll always to top (bug)
-			webview.executeJavaScript('document.body.scrollTop=0;');
+			js_inject += 'document.body.scrollTop=0;';
 
 			// Handles Certificate Errors
 			webview.getWebContents().on('certificate-error', function(event, url, error, certificate, callback) {
@@ -387,6 +388,8 @@ Ext.define('Rambox.ux.WebView',{
 				});
 				me.down('statusbar').down('button').show();
 			});
+
+			webview.executeJavaScript(js_inject);
 		});
 
 		webview.addEventListener('ipc-message', function(event) {

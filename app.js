@@ -1,4 +1,7 @@
 var auth0, lock; // Auth0 vars
+// Enable Cookies
+var ElectronCookies = require('@exponent/electron-cookies');
+ElectronCookies.enable({ origin: 'http://rambox.pro' });
 
 // Sencha App
 Ext.setGlyphFontFamily('FontAwesome');

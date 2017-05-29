@@ -136,6 +136,7 @@ function createWindow () {
 		,autoHideMenuBar: config.get('hide_menu_bar')
 		,skipTaskbar: config.get('window_display_behavior') === 'show_trayIcon'
 		,show: !config.get('start_minimized')
+		,acceptFirstMouse: true
 		,webPreferences: {
 			 webSecurity: false
 			,nodeIntegration: true
@@ -162,11 +163,23 @@ function createWindow () {
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
-		if ( disposition !== 'foreground-tab' ) return;
 		const protocol = require('url').parse(url).protocol;
-		if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
-			e.preventDefault();
-			shell.openExternal(url);
+		switch ( disposition ) {
+			case 'new-window':
+				e.preventDefault();
+				const win = new BrowserWindow(options);
+				win.once('ready-to-show', () => win.show());
+				win.loadURL(url);
+				e.newGuest = win;
+				break;
+			case 'foreground-tab':
+				if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
+					e.preventDefault();
+					shell.openExternal(url);
+				}
+				break;
+			default:
+				break;
 		}
 	});
 
