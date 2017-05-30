@@ -11,7 +11,7 @@
 
 <h5 align="center">Available for Windows, Mac and Linux.</h5>
 
-<h5 align="center"><a href="https://diehumanisten.de" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE"></a></h5>
+<h5 align="center"><a href="https://github.com/phischdev/pdhBox/releases" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE"></a></h5>
 
 ----------
 
