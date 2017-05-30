@@ -137,6 +137,7 @@
 
 ## Features
 
+- [x] Multi-language.
 - [x] Sync your configuration between multiple computers.
 - [x] Master Password.
 - [x] Lock Rambox if you will be away for a period of time.
@@ -146,7 +147,7 @@
 - [x] Minimize to tray.
 - [x] Mute audio to specific service.
 - [x] Separate tabs floating to the right.
-- [x] Go Offline on specific service.
+- [x] Disable a service instead of remove it.
 - [x] Start automatically on system startup.
 - [x] Custom Code Injection.
 - [x] Keyboard Shortcuts.
