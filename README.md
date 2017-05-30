@@ -110,7 +110,6 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/spark.png" alt="Cisco Spark" title="Cisco Spark">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/fleep.png" alt="Fleep" title="Fleep">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/socialcast.png" alt="Socialcast" title="Socialcast">
-<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/actor.png" alt="Actor" title="Actor">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/riot.png" alt="Riot" title="Riot">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/pushbullet.png" alt="Pushbullet" title="Pushbullet">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/movim.png" alt="Movim" title="Movim">
