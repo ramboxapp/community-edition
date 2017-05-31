@@ -17,7 +17,7 @@
 
 ## Screenshot
 
-![Rambox](https://raw.githubusercontent.com/phischdev/pdhBox/master/resources/screenshots/mac.png)
+![Rambox](https://raw.githubusercontent.com/phischdev/pdhBox/master/resources/screenshots/linux.png)
 
 
 [GNU GPL v3](https://github.com/saenzramiro/rambox/LICENSE)
