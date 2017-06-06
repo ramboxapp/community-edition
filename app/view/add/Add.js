@@ -211,7 +211,7 @@ Ext.define('Rambox.view.add.Add',{
 								,value: me.edit ? me.record.get('js_unread') : ''
 								,anchor: '100%'
 								,height: 120
-								,disabled: function(view, rowIndex, colIndex, item, record) {return !record.get('editable');	}
+								,disabled: removable
 							}
 
 						]

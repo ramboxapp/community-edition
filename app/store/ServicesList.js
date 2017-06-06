@@ -112,10 +112,11 @@ Ext.define('Rambox.store.ServicesList', {
 		{
 			 id: 'roundcube'
 			,logo: 'roundcube.png'
-			,name: 'Roundcube'
+			,name: 'Webmail'
 			,description: 'Free and open source webmail software for the masses, written in PHP.'
 			,url: '___'
 			,type: 'mitarbeiter'
+			,js_unread: 'Element.prototype.remove=function(){this.parentElement.removeChild(this)},NodeList.prototype.remove=HTMLCollection.prototype.remove=function(){for(var e=this.length-1;e>=0;e--)this[e]&&this[e].parentElement&&this[e].parentElement.removeChild(this[e])},document.getElementsByClassName("owa-banner").remove(),document.getElementsByTagName("footer").remove(),document.getElementsByTagName("aside").remove(),document.getElementsByTagName("h1").remove();'
 		},
 		{
 			 id: 'hootsuite'

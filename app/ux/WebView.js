@@ -365,7 +365,7 @@ Ext.define('Rambox.ux.WebView',{
 				//console.log("EXTERN", e);
 
 				var selectType = undefined;
-				if (e.url.match('https?:\/\/www.facebook.com\/'))
+				if (e.url.match('https?:\/\/(www)?(m)?.facebook.com\/'))
 					selectType = "facebook";
 				else if (e.url.match('https?:\/\/pgs-diehumanisten.slack.com\/'))
 					selectType = "slack";

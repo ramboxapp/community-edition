@@ -4,12 +4,15 @@
     "start": "electron electron/main.js",
     "start:debug": "electron electron/main.js --enable-logging",
     "test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
+
     "sencha:clean": "rm -rf ./build/production",
     "sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
     "sencha:compile:build": "sencha app build && cp app/package.json build/production/Rambox/ && cp -R build/production/Rambox/* ../rambox-build",
+
     "clean": "rm -rf ./dist",
     "clean:osx": "rm -rf ./dist/Rambox-darwin-*",
     "clean:win": "rm -rf ./dist/Rambox-win32-*",
+
     "pack": "npm run pack:osx && npm run pack:win && npm run pack:linux",
     "pack:osx": "electron-packager \"./build/production/Rambox/\" \"HumanistenBox\" --out=dist --platform=darwin --arch=x64 --version=1.3.4 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Die Humanisten\" --version-string.ProductName=\"pdhBox\" --asar --prune --overwrite",
     "pack:win": "npm run pack:win32 && npm run pack:win64",
@@ -18,6 +21,7 @@
     "pack:linux": "npm run pack:linux32 && npm run pack:linux64",
     "pack:linux32": "electron-packager \"./build/production/Rambox/\" \"HumanistenBox\" --out=dist --platform=linux --arch=ia32 --version=1.3.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Die Humanisten\" --version-string.ProductName=\"pdhBox\" --asar --prune --overwrite",
     "pack:linux64": "electron-packager \"./build/production/Rambox/\" \"HumanistenBox\" --out=dist --platform=linux --arch=x64 --version=1.3.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Die Humanisten\" --version-string.ProductName=\"pdhBox\" --asar --prune --overwrite",
+
     "build": "npm run build:linux && npm run build:osx && npm run build:win && npm run build:linux ",
     "build:osx": "build --macos",
     "build:linux": "npm run build:linux32 && npm run build:linux64",
@@ -25,10 +29,23 @@
     "build:linux64": "build --linux --x64",
     "build:win32": "build --win --ia32",
     "build:win64": "build --win --x64",
-    "setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
+
+	"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
     "setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
-    "all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
-    "all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux"
+
+	"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
+    "all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
+
+  	"zip:osx": "zip -qr HumanistenBox-darwin-x64.zip HumanistenBox-darwin-x64/",
+	"zip:win32": "zip -qr HumanistenBox-win32-ia32.zip HumanistenBox-win32-ia32/",
+	"zip:win64": "zip -qr HumanistenBox-win32-x64.zip HumanistenBox-win32-x64/",
+	"zip:win": "npm run zip:win32 && npm run zip:win64",
+	"zip:linux32": "zip -qr HumanistenBox-linux-ia32.zip HumanistenBox-linux-ia32/",
+	"zip:linux64": "zip -qr HumanistenBox-linux-x64.zip HumanistenBox-linux-x64/",
+	"zip:linux": "npm run zip:linux32 && npm run zip:linux64",
+	"zip": "cd dist && npm run zip:osx && npm run zip:win && npm run zip:linux",
+
+	"fixi": "npm run sencha:clean && npm run sencha:compile && npm run clean && npm run pack && npm run zip"
   },
   "build": {
     "productName": "HumanistenBox",
