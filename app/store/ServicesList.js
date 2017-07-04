@@ -618,14 +618,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
-			 id: 'mmmelon'
-			,logo: 'mmmelon.png'
-			,name: 'mmmelon'
-			,description: 'The ultimate tool for daily management of projects and teams. Cloud-based, web and mobile.'
-			,url: '___'
-			,type: 'messaging'
-		},
-		{
 			 id: 'drift'
 			,logo: 'drift.png'
 			,name: 'Drift'
