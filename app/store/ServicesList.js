@@ -77,8 +77,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,manual_notifications: true
+			,dont_update_unread_from_title: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
-			//,js_unread: 'function checkUnread(){updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'hipchat'
@@ -129,7 +129,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 			,manual_notifications: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
-			,note: 'Please be sure to sign out to Hangouts inside Inbox because cause problems. <a href="https://github.com/saenzramiro/rambox/wiki/Inbox" target="_blank">Read more...</a>'
+			,note: 'Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href="https://github.com/saenzramiro/rambox/wiki/Inbox" target="_blank">Read more...</a>'
 		},
 		{
 			 id: 'chatwork'
@@ -618,14 +618,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
-			 id: 'mmmelon'
-			,logo: 'mmmelon.png'
-			,name: 'mmmelon'
-			,description: 'The ultimate tool for daily management of projects and teams. Cloud-based, web and mobile.'
-			,url: '___'
-			,type: 'messaging'
-		},
-		{
 			 id: 'drift'
 			,logo: 'drift.png'
 			,name: 'Drift'
@@ -737,7 +729,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Manage your professional identity. Build and engage with your professional network. Access knowledge, insights and opportunities.'
 			,url: 'https://www.linkedin.com/messaging'
 			,type: 'messaging'
-			,css: 'nav, .ad-banner-container, .right-rail { display: none !important; } .neptune-grid { width: 100% !important; padding:0!important; } .authentication-outlet { margin: 0 !important; }.neptune-grid.two-column .core-rail{width:100%!important;}.msg-messaging-container{height:calc(100%)!important;}.msg-conversations-container{flex:1!important;}.msg-thread{flex:3!important;max-width:none!important;min-width:none!important;}#messaging{height:calc(100vh)!important;}#msg-overlay{display:none!important;}body{overflow-y:hidden!important;}'
 		},
 		{
 			 id: 'zyptonite'
@@ -781,7 +772,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Chat with the people of your Facebook Page.'
 			,url: 'https://facebook.com/___/messages/'
 			,type: 'messaging'
-			,css: '#pagelet_bluebar{display:none;}#pages_manager_top_bar_container{display:none;}#pagelet_sidebar{display:none;}#pagelet_dock{display:none;}#pages_manager_top_bar_container + div{margin:0;width:100%;}#pages_manager_top_bar_container + div > div > div{padding:0;}#pages_manager_top_bar_container + div > div > div div div:last-child{top:0!important;}'
+			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 		},
 		{
 			 id: 'vk'
@@ -791,7 +782,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://vk.com/im'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/\D+/g,"")))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
-			,css: '#page_header_cont{display:none;}#side_bar{display:none;}#page_body{width:100%!important;margin-top:0;}.im-page_classic.im-page{width:700px!important;}.im-right-menu.ui_rmenu{margin-left:715px!important;}.im-page{padding-top:0!important;}.im-page_classic.im-page .im-page--header{border-top:0!important;width:700px!important;max-width:700px!important;top:0!important;margin-top:0!important;}.im-page_classic.im-page .im-page--dialogs-footer{width:700px!important;max-width:700px!important;}.im-page .im-page--dialogs{padding-top:6px!important;}.im-page_classic .im-page--chat-header{top:0!important;width:700px!important;}.im-page_classic.im-page .im-page--chat-input{width:700px!important;border-bottom:0!important;}.im-chat-input.im-chat-input_classic .im-chat-input--textarea{width:588px!important;}.im-right-menu.ui_rmenu{top:0!important;}'
 		},
 		{
 			 id: 'mastodon'

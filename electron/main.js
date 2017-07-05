@@ -103,7 +103,9 @@ function handleSquirrelEvent() {
 
 		// Remove desktop and start menu shortcuts
 		spawnUpdate(['--removeShortcut', exeName]);
-
+		// Remove user app data
+		require('rimraf').sync(require('electron').app.getPath('userData'));
+		
 		setTimeout(app.quit, 1000);
 		return true;
 

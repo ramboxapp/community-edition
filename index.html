@@ -23,8 +23,7 @@
 					console.info('Internet Connection', true);
 				} else {
 					console.info('Internet Connection', false);
-					alert('No Internet Connection. Please, check your internet connection and open Rambox again.');
-					require('electron').remote.app.quit();
+					alert('Please, check your internet connection and restart Rambox. If you use a Proxy, please go to Preferences to configure it.', 'No Internet Connection');
 				}
 			}
 		}
