@@ -160,6 +160,15 @@ Sessions will persist using the [partition:persist](http://electron.atom.io/docs
 
 Sync feature use Auth0 for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
+## Donations
+
+| Type     |                                         URL/Wallet                                         |
+|----------|:------------------------------------------------------------------------------------------:|
+| PayPal   | [HERE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA) |
+| Bitcoin  | 172XYhP9hpxMzCKbPZr35KiiL9JR5QS4Ba                                                         |
+| Ethereum | 0xbf78C6EC51D788363719c9c2424D7f2D99E02d37                                                 |
+| Litecoin | LhX6QkQ8krttpRWM8REKchACmrtzx8rNxA                                                         |
+
 ## Translations
 
 Help us translate Rambox on https://crowdin.com/project/rambox/invite.
