@@ -165,9 +165,9 @@ Sync feature use Auth0 for Single Sign On & Token Based Authentication and to st
 | Type     |                                         URL/Wallet                                         |
 |----------|:------------------------------------------------------------------------------------------:|
 | PayPal   | [HERE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA) |
-| Bitcoin  | 172XYhP9hpxMzCKbPZr35KiiL9JR5QS4Ba                                                         |
-| Ethereum | 0xbf78C6EC51D788363719c9c2424D7f2D99E02d37                                                 |
-| Litecoin | LhX6QkQ8krttpRWM8REKchACmrtzx8rNxA                                                         |
+| Bitcoin  | 1Jpa6aSqLjeAiwEzDEBiYcR7dcy5YGYdmB                                                         |
+| Ethereum | 0xFa20A0CEc2888fcB1aA8d15D85Af2B7E472b874F                                                 |
+| Litecoin | Lc5L7mkH5L5U3TR7i8mAQpCu6jUm6J1F4C                                                         |
 
 ## Translations
 
