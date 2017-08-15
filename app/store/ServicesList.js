@@ -826,7 +826,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
 			,url: 'https://allo.google.com/web'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread() { var e = document.getElementsByClassName("unreadCount"); var t = 0; for( i = 0; i < e.length; i++ ) t += parseInt(e[i].innerHTML.trim()); updateBadge(t); } function updateBadge(e) { e >= 1 ? document.title = "(" + e + ") " + originalTitle : document.title = originalTitle } var originalTitle = document.title; setInterval(checkUnread, 3000);'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unreadCount"),n=0;for(i=0;i<e.length;i++){var a=parseInt(e[i].innerHTML.trim());n+=isNaN(a)?0:a}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
 		}
 	]
