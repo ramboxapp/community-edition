@@ -818,6 +818,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Intercom makes it easy to communicate with your customers personally, at scale. Designed to feel like the messaging apps you use every day, Intercom lets you talk to consumers almost anywhere: inside your app, on your website, across social media and via email.'
 			,url: 'https://app.intercom.io'
 			,type: 'messaging'
+		},
+		{
+			 id: 'allo'
+			,logo: 'allo.png'
+			,name: 'Allo'
+			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
+			,url: 'https://allo.google.com/web'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread() { var e = document.getElementsByClassName("unreadCount"); var t = 0; for( i = 0; i < e.length; i++ ) t += parseInt(e[i].innerHTML.trim()); updateBadge(t); } function updateBadge(e) { e >= 1 ? document.title = "(" + e + ") " + originalTitle : document.title = originalTitle } var originalTitle = document.title; setInterval(checkUnread, 3000);'
+			,dont_update_unread_from_title: true
 		}
 	]
 });
