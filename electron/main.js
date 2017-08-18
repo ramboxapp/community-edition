@@ -22,6 +22,7 @@ const config = new Config({
 		,hide_menu_bar: false
 		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
+		,flash_frame: true
 		,window_close_behavior: 'keep_in_tray'
 		,start_minimized: false
 		,systemtray_indicator: true
@@ -264,7 +265,9 @@ function updateBadge(title) {
 		app.setBadgeCount(messageCount);
 	}
 
-	if ( messageCount > 0 && !mainWindow.isFocused() ) mainWindow.flashFrame(true);
+	if ( messageCount > 0 && !mainWindow.isFocused() && config.get('flash_frame') ) {
+		mainWindow.flashFrame(true);
+	}
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
