@@ -770,7 +770,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'messengerpages.png'
 			,name: 'Messenger for Pages'
 			,description: 'Chat with the people of your Facebook Page.'
-			,url: 'https://facebook.com/___/messages/'
+			,url: 'https://facebook.com/___/inbox/'
 			,type: 'messaging'
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 		},
