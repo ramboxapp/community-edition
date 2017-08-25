@@ -638,7 +638,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'openmailbox.png'
 			,name: 'Openmailbox'
 			,description: 'Free mail hosting. Respect your rights and your privacy.'
-			,url: 'https://www.openmailbox.org/webmail/'
+			,url: 'https://app.openmailbox.org/webmail/'
 			,type: 'email'
 		},
 		{
