@@ -176,6 +176,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,value: config.disable_gpu
 					}
 					,{
+						 xtype: 'checkbox'
+						,name: 'enable_hidpi_support'
+						,boxLabel: locale['preferences[8]']
+						,value: config.enable_hidpi_support
+					}
+					,{
 						 xtype: 'fieldset'
 						,title: 'Master Password - Ask for password on startup'
 						,collapsed: !config.master_password

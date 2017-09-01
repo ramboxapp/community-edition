@@ -347,7 +347,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'mysms.png'
 			,name: 'mysms'
 			,description: locale['services[34]']
-			,url: 'https://app.mysms.com/#login'
+			,url: 'https://app.mysms.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}"https://app.mysms.com/#login"===document.baseURI&&(document.getElementsByClassName("innerPanel")[0].rows[0].style.display="none",document.getElementsByClassName("innerPanel")[0].rows[1].cells[0].firstElementChild.style.display="none",document.getElementsByClassName("msisdnLoginPanel")[0].style.display="inline");var originalTitle=document.title;setInterval(checkUnread,3000);'
 			,note: 'You have to use this service by signing in with your mobile number.'
@@ -770,7 +770,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'messengerpages.png'
 			,name: 'Messenger for Pages'
 			,description: 'Chat with the people of your Facebook Page.'
-			,url: 'https://facebook.com/___/messages/'
+			,url: 'https://facebook.com/___/inbox/'
 			,type: 'messaging'
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 		},
