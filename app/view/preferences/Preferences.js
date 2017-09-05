@@ -171,6 +171,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'checkbox'
+						,name: 'flash_frame'
+						,boxLabel: locale['preferences[9]']
+						,value: config.flash_frame
+					}
+					,{
+						 xtype: 'checkbox'
 						,name: 'disable_gpu'
 						,boxLabel: 'Disable Hardware Acceleration (needs to relaunch)'
 						,value: config.disable_gpu
