@@ -11,7 +11,11 @@ Ext.define('Rambox.view.main.MainController', {
 		ga_storage._trackPageview('/index.html', 'main');
 
 		if ( newTab.id === 'ramboxTab' ) {
-			document.title = 'Rambox';
+			if ( Rambox.app.getTotalNotifications() > 0 ) {
+				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
+			} else {
+				document.title = 'Rambox';
+			}
 			return;
 		}
 
@@ -23,7 +27,11 @@ Ext.define('Rambox.view.main.MainController', {
 		if ( webview ) webview.focus();
 
 		// Update the main window so it includes the active tab title.
-		document.title = 'Rambox - ' + newTab.title;
+		if ( Rambox.app.getTotalNotifications() > 0 ) {
+			document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
+		} else {
+			document.title = 'Rambox - ' + newTab.record.get('name');
+		}
 	}
 
 	,updatePositions: function(tabPanel, tab) {
