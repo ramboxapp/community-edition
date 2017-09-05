@@ -103,6 +103,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'checkbox'
+						,name: 'flash_frame'
+						,boxLabel: locale['preferences[flash_frame]']
+						,value: config.flash_frame
+					}
+					,{
+						 xtype: 'checkbox'
 						,name: 'start_minimized'
 						,boxLabel: locale['preferences[4]']
 						,value: config.start_minimized
