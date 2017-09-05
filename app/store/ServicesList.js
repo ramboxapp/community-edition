@@ -217,6 +217,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.yahoo.com/'
 			,type: 'email'
 			,note: 'To enable desktop notifications, you have to go to Options inside Yahoo! Mail.'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
 		},
 		{
 			 id: 'protonmail'

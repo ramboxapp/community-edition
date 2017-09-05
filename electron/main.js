@@ -27,6 +27,7 @@ const config = new Config({
 		,start_minimized: false
 		,systemtray_indicator: true
 		,master_password: false
+		,dont_disturb: false
 		,disable_gpu: process.platform === 'linux'
 		,proxy: false
 		,proxyHost: ''
@@ -44,9 +45,13 @@ const config = new Config({
 
 // Fix issues with HiDPI scaling on Windows platform
 if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
-  app.commandLine.appendSwitch('high-dpi-support', 'true')
-  app.commandLine.appendSwitch('force-device-scale-factor', '1')
+	app.commandLine.appendSwitch('high-dpi-support', 'true')
+	app.commandLine.appendSwitch('force-device-scale-factor', '1')
 }
+
+// Because we build it using Squirrel, it will assign UserModelId automatically, so we match it here to display notifications correctly.
+// https://github.com/electron-userland/electron-builder/issues/362
+app.setAppUserModelId('com.squirrel.Rambox.Rambox');
 
 // Menu
 const appMenu = require('./menu')(config);
@@ -113,7 +118,7 @@ function handleSquirrelEvent() {
 		spawnUpdate(['--removeShortcut', exeName]);
 		// Remove user app data
 		require('rimraf').sync(require('electron').app.getPath('userData'));
-		
+
 		setTimeout(app.quit, 1000);
 		return true;
 
@@ -272,9 +277,7 @@ function updateBadge(title) {
 		app.setBadgeCount(messageCount);
 	}
 
-	if ( messageCount > 0 && !mainWindow.isFocused() && config.get('flash_frame') ) {
-		mainWindow.flashFrame(true);
-	}
+	if ( messageCount > 0 && !mainWindow.isFocused() && !config.get('dont_disturb') && config.get('flash_frame') ) mainWindow.flashFrame(true);
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
@@ -334,6 +337,10 @@ ipcMain.on('setServiceNotifications', function(event, partition, op) {
 	});
 });
 
+ipcMain.on('setDontDisturb', function(event, arg) {
+	config.set('dont_disturb', arg);
+})
+
 // Reload app
 ipcMain.on('reloadApp', function(event) {
 	mainWindow.reload();
@@ -350,6 +357,9 @@ const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
 	if (mainWindow) {
 		if (mainWindow.isMinimized()) mainWindow.restore();
 		mainWindow.focus();
+		mainWindow.show();
+		mainWindow.setSkipTaskbar(false);
+		if (app.dock && app.dock.show) app.dock.show();
 	}
 });
 

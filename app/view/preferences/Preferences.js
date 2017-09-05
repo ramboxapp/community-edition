@@ -103,12 +103,6 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'checkbox'
-						,name: 'flash_frame'
-						,boxLabel: locale['preferences[flash_frame]']
-						,value: config.flash_frame
-					}
-					,{
-						 xtype: 'checkbox'
 						,name: 'start_minimized'
 						,boxLabel: locale['preferences[4]']
 						,value: config.start_minimized
@@ -174,6 +168,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: 'Show System Tray indicator on unread messages'
 						,value: config.systemtray_indicator
 						,hidden: process.platform === 'darwin'
+					}
+					,{
+						 xtype: 'checkbox'
+						,name: 'flash_frame'
+						,boxLabel: process.platform === 'darwin' ? locale['preferences[10]'] : locale['preferences[9]']
+						,value: config.flash_frame
 					}
 					,{
 						 xtype: 'checkbox'

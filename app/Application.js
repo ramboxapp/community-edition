@@ -198,6 +198,7 @@ Ext.define('Rambox.Application', {
 
 		// Define default value
 		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
+		ipc.send('setDontDisturb', localStorage.getItem('dontDisturb')); // We store it in config
 
 		if ( localStorage.getItem('locked') ) {
 			console.info('Lock Rambox:', 'Enabled');
@@ -281,9 +282,17 @@ Ext.define('Rambox.Application', {
 	,updateTotalNotifications: function( newValue, oldValue ) {
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
-			document.title = 'Rambox (' + Rambox.util.Format.formatNumber(newValue) + ')';
+			if ( Ext.cq1('app-main').getActiveTab().record ) {
+				document.title = 'Rambox (' + Rambox.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+			} else {
+				document.title = 'Rambox (' + Rambox.util.Format.formatNumber(newValue) + ')';
+			}
 		} else {
-			document.title = 'Rambox';
+			if ( Ext.cq1('app-main') && Ext.cq1('app-main').getActiveTab().record ) {
+				document.title = 'Rambox - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+			} else {
+				document.title = 'Rambox';
+			}
 		}
 	}
 

@@ -40,7 +40,7 @@ exports.create = function(win, config) {
 };
 
 exports.destroy = function() {
-	appIcon.destroy();
+	if (appIcon) appIcon.destroy();
 	appIcon = null;
 };
 
