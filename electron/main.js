@@ -26,6 +26,7 @@ const config = new Config({
 		,start_minimized: false
 		,systemtray_indicator: true
 		,master_password: false
+		,dont_disturb: false
 		,disable_gpu: process.platform === 'linux'
 		,proxy: false
 		,proxyHost: ''
@@ -275,7 +276,7 @@ function updateBadge(title) {
 		app.setBadgeCount(messageCount);
 	}
 
-	if ( messageCount > 0 && !mainWindow.isFocused() ) mainWindow.flashFrame(true);
+	if ( messageCount > 0 && !mainWindow.isFocused() && !config.get('dont_disturb') ) mainWindow.flashFrame(true);
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
@@ -334,6 +335,10 @@ ipcMain.on('setServiceNotifications', function(event, partition, op) {
 		callback(true)
 	});
 });
+
+ipcMain.on('setDontDisturb', function(event, arg) {
+	config.set('dont_disturb', arg);
+})
 
 // Reload app
 ipcMain.on('reloadApp', function(event) {

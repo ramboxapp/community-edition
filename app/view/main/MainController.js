@@ -237,6 +237,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 		localStorage.setItem('dontDisturb', btn.pressed);
 
+		ipc.send('setDontDisturb', btn.pressed);
+
 		btn.setText(locale['app.main[16]']+': ' + ( btn.pressed ? locale['app.window[20]'] : locale['app.window[21]'] ));
 
 		// If this method is called from Lock method, prevent showing toast
