@@ -172,7 +172,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'checkbox'
 						,name: 'flash_frame'
-						,boxLabel: locale['preferences[9]']
+						,boxLabel: process.platform === 'darwin' ? locale['preferences[10]'] : locale['preferences[9]']
 						,value: config.flash_frame
 					}
 					,{
