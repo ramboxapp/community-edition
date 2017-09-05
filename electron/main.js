@@ -32,6 +32,7 @@ const config = new Config({
 		,proxyHost: ''
 		,proxyPort: ''
 		,locale: 'en'
+		,enable_hidpi_support: false
 
 		,x: undefined
 		,y: undefined
@@ -40,6 +41,12 @@ const config = new Config({
 		,maximized: false
 	}
 });
+
+// Fix issues with HiDPI scaling on Windows platform
+if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
+  app.commandLine.appendSwitch('high-dpi-support', 'true')
+  app.commandLine.appendSwitch('force-device-scale-factor', '1')
+}
 
 // Menu
 const appMenu = require('./menu')(config);

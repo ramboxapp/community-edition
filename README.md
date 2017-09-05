@@ -48,6 +48,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/gmail.png" alt="Gmail" title="Gmail">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/inbox.png" alt="Inbox" title="Inbox">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hipchat.png" alt="HipChat" title="HipChat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/allo.png" alt="Allo" title="Allo">
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/chatwork.png" alt="ChatWork" title="ChatWork">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/groupme.png" alt="GroupMe" title="GroupMe">

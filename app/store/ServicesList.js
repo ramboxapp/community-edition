@@ -38,7 +38,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[1]']
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var a=0,b=0;$(".unread_msgs").each(function(){a+=isNaN(parseInt($(this).html())) ? 0 : parseInt($(this).html())}),$(".unread_highlights").each(function(){b+=isNaN(parseInt($(this).html())) ? 0 : parseInt($(this).html())}),updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var e=$(".p-channel_sidebar__channel--unread").length,a=0;$(".p-channel_sidebar__badge").each(function(){a+=isNaN(parseInt($(this).html()))?0:parseInt($(this).html())}),updateBadge(e,a)}function updateBadge(e,a){var n=a>0?"("+a+") ":e>0?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'noysi'
@@ -347,7 +347,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'mysms.png'
 			,name: 'mysms'
 			,description: locale['services[34]']
-			,url: 'https://app.mysms.com/#login'
+			,url: 'https://app.mysms.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}"https://app.mysms.com/#login"===document.baseURI&&(document.getElementsByClassName("innerPanel")[0].rows[0].style.display="none",document.getElementsByClassName("innerPanel")[0].rows[1].cells[0].firstElementChild.style.display="none",document.getElementsByClassName("msisdnLoginPanel")[0].style.display="inline");var originalTitle=document.title;setInterval(checkUnread,3000);'
 			,note: 'You have to use this service by signing in with your mobile number.'
@@ -638,7 +638,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'openmailbox.png'
 			,name: 'Openmailbox'
 			,description: 'Free mail hosting. Respect your rights and your privacy.'
-			,url: 'https://www.openmailbox.org/webmail/'
+			,url: 'https://app.openmailbox.org/webmail/'
 			,type: 'email'
 		},
 		{
@@ -770,7 +770,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'messengerpages.png'
 			,name: 'Messenger for Pages'
 			,description: 'Chat with the people of your Facebook Page.'
-			,url: 'https://facebook.com/___/messages/'
+			,url: 'https://facebook.com/___/inbox/'
 			,type: 'messaging'
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 		},
@@ -818,6 +818,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Intercom makes it easy to communicate with your customers personally, at scale. Designed to feel like the messaging apps you use every day, Intercom lets you talk to consumers almost anywhere: inside your app, on your website, across social media and via email.'
 			,url: 'https://app.intercom.io'
 			,type: 'messaging'
+		},
+		{
+			 id: 'allo'
+			,logo: 'allo.png'
+			,name: 'Allo'
+			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
+			,url: 'https://allo.google.com/web'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unreadCount"),n=0;for(i=0;i<e.length;i++){var a=parseInt(e[i].innerHTML.trim());n+=isNaN(a)?0:a}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,dont_update_unread_from_title: true
 		}
 	]
 });
