@@ -236,6 +236,8 @@ Ext.define('Rambox.view.main.MainController', {
 			// Get Tab
 			var tab = Ext.getCmp('tab_'+serviceId);
 
+			if ( !tab ) return; // Skip disabled services
+
 			// Mute sounds
 			tab.setAudioMuted(btn.pressed ? true : tab.record.get('muted'), true);
 
