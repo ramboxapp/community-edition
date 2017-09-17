@@ -8,7 +8,8 @@ Ext.define('Rambox.ux.WebView',{
 	,requires: [
 		 'Rambox.util.Format'
 		,'Rambox.util.Notifier'
-		,'Rambox.util.UnreadCounter'
+        ,'Rambox.util.UnreadCounter'
+        ,'Rambox.util.IconLoader'
 	]
 
 	// private
@@ -250,11 +251,13 @@ Ext.define('Rambox.ux.WebView',{
 			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
 
 			// Apply saved zoom level
-			webview.setZoomLevel(me.record.get('zoomLevel'));
+            webview.setZoomLevel(me.record.get('zoomLevel'));
+            
+            Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
 
 		// Open links in default browser
-		webview.addEventListener('new-window', function(e) {
+        webview.addEventListener('new-window', function(e) {
 			switch ( me.type ) {
 				case 'skype':
 					// hack to fix multiple browser tabs on Skype link click, re #11
@@ -338,12 +341,12 @@ Ext.define('Rambox.ux.WebView',{
 				require('electron').shell.openExternal(e.url);
 			}
 		});
-
+            
 		webview.addEventListener('will-navigate', function(e, url) {
 			e.preventDefault();
 		});
 
-		webview.addEventListener("dom-ready", function(e) {
+        webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
 			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
 
