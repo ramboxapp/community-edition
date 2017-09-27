@@ -829,6 +829,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unreadCount"),n=0;for(i=0;i<e.length;i++){var a=parseInt(e[i].innerHTML.trim());n+=isNaN(a)?0:a}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
+		},
+		{
+			 id: 'Kune'
+			,logo: 'kune.png'
+			,name: 'Kune'
+			,description: 'Kune is a web tool, based on Apache Wave, for creating environments of constant inter-communication, collective intelligence, knowledge and shared work.'
+			,url: 'https://kune.cc'
+			,type: 'messaging'
 		}
 	]
 });
