@@ -384,6 +384,13 @@ Ext.define('Rambox.view.main.MainController', {
 					]
 				}
 			]
+			,listeners: {
+				render: function(win) {
+					win.getEl().on('click', function() {
+						win.down('textfield').focus(100);
+					});
+				}
+			}
 		}).show();
 		winLock.down('textfield').focus(1000);
 	}
