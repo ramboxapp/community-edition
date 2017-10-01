@@ -162,6 +162,15 @@ function createWindow () {
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
 
+	// Check if the window its outside of the view (ex: multi monitor setup)
+	const { positionOnScreen } = require('./utils/positionOnScreen');
+	const inBounds = positionOnScreen([config.get('x'), config.get('y')]);
+	if ( inBounds ) {
+		mainWindow.setPosition(config.get('x'), config.get('y'));
+	} else {
+		mainWindow.center();
+	}
+
 	process.setMaxListeners(10000);
 
 	// Open the DevTools.
