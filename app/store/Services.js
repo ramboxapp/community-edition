@@ -26,19 +26,6 @@ Ext.define('Rambox.store.Services', {
 			var servicesLeft = [];
 			var servicesRight = [];
 			store.each(function(service) {
-				// Fix some services with bad IDs
-				// TODO: Remove in next release
-				switch ( service.get('type') ) {
-					case 'office365':
-						service.set('type', 'outlook365');
-						break;
-					case ' irccloud':
-						service.set('type', 'irccloud');
-						break;
-					default:
-						break;
-				}
-
 				// If the service is disabled, we dont add it to tab bar
 				if ( !service.get('enabled') ) return;
 
@@ -64,6 +51,19 @@ Ext.define('Rambox.store.Services', {
 
 			if ( !Ext.isEmpty(servicesLeft) ) Ext.cq1('app-main').insert(1, servicesLeft);
 			if ( !Ext.isEmpty(servicesRight) ) Ext.cq1('app-main').add(servicesRight);
+
+			// Set default active service
+			const config = ipc.sendSync('getConfig');
+			switch ( config.default_service ) {
+				case 'last':
+					Ext.cq1('app-main').setActiveTab(localStorage.getItem('last_active_service'));
+					break;
+				case 'ramboxTab':
+					break;
+				default:
+					if ( Ext.getCmp('tab_'+config.default_service) ) Ext.cq1('app-main').setActiveTab('tab_'+config.default_service);
+					break;
+			}
 
 			store.suspendEvent('load');
 			Ext.cq1('app-main').resumeEvent('add');

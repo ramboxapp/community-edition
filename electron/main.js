@@ -34,6 +34,7 @@ const config = new Config({
 		,proxyPort: ''
 		,locale: 'en'
 		,enable_hidpi_support: false
+		,default_service: 'ramboxTab'
 
 		,x: undefined
 		,y: undefined

@@ -38,6 +38,16 @@ Ext.define('Rambox.view.preferences.Preferences',{
 	,initComponent: function() {
 		var config = ipc.sendSync('getConfig');
 
+		var defaultServiceOptions = [];
+		defaultServiceOptions.push({ value: 'ramboxTab', label: 'Rambox Tab' });
+		defaultServiceOptions.push({ value: 'last', label: 'Last Active Service' });
+		Ext.getStore('Services').each(function(rec) {
+			defaultServiceOptions.push({
+				 value: rec.get('id')
+				,label: rec.get('name')
+			});
+		});
+
 		this.items = [
 			{
 				 xtype: 'form'
@@ -113,6 +123,22 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: locale['preferences[1]']+' (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar
 						,hidden: process.platform !== 'win32'
+					}
+					,{
+						 xtype: 'combo'
+						,name: 'default_service'
+						,fieldLabel: 'Default service to display when Rambox starts'
+						,labelAlign: 'top'
+						//,width: 380
+						//,labelWidth: 105
+						,value: config.default_service
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: defaultServiceOptions
+						})
 					}
 					,{
 						 xtype: 'combo'

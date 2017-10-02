@@ -10,6 +10,8 @@ Ext.define('Rambox.view.main.MainController', {
 		// Set Google Analytics event
 		ga_storage._trackPageview('/index.html', 'main');
 
+		localStorage.setItem('last_active_service', newTab.id);
+
 		if ( newTab.id === 'ramboxTab' ) {
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
@@ -128,6 +130,9 @@ Ext.define('Rambox.view.main.MainController', {
 			const webview = tab.getWebView();
 			clearData(webview, tab);
 		}
+
+		const config = ipc.sendSync('getConfig');
+		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'ramboxTab' }));
 
 		function clearData(webview, tab) {
 			webview.getWebContents().clearHistory();
