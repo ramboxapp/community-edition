@@ -252,7 +252,8 @@ Ext.define('Rambox.ux.WebView',{
 
 			// Apply saved zoom level
 			webview.setZoomLevel(me.record.get('zoomLevel'));
-			
+
+			// Set special icon for some service (like Slack)
 			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
 
@@ -341,7 +342,7 @@ Ext.define('Rambox.ux.WebView',{
 				require('electron').shell.openExternal(e.url);
 			}
 		});
-			
+
 		webview.addEventListener('will-navigate', function(e, url) {
 			e.preventDefault();
 		});
