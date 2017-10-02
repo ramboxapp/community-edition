@@ -833,7 +833,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,dont_update_unread_from_title: true
 		},
 		{
-			id: 'googlevoice'
+			 id: 'Kune'
+			,logo: 'kune.png'
+			,name: 'Kune'
+			,description: 'Kune is a web tool, based on Apache Wave, for creating environments of constant inter-communication, collective intelligence, knowledge and shared work.'
+			,url: 'https://kune.cc'
+			,type: 'messaging'
+    },
+		{
+			 id: 'googlevoice'
 			,logo: 'googlevoice.png'
 			,name: 'Google Voice'
 			,description: 'A free phone number for life.  Stay in touch from any screen.  Use your free number to text, call, and check voicemail  all from one app. Plus, Google Voice works on all of your devices so you can connect and communicate how you want.'
