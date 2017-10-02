@@ -658,4 +658,12 @@ Ext.define('Rambox.ux.WebView',{
 			me.record.set('zoomLevel', me.zoomLevel);
 		}
 	}
+
+	,getWebView: function() {
+		if ( this.record.get('enabled') ) {
+			return this.down('component').el.dom;
+		} else {
+			return false;
+		}
+	}
 });
