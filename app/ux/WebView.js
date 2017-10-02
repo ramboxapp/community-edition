@@ -9,6 +9,7 @@ Ext.define('Rambox.ux.WebView',{
 		 'Rambox.util.Format'
 		,'Rambox.util.Notifier'
 		,'Rambox.util.UnreadCounter'
+		,'Rambox.util.IconLoader'
 	]
 
 	// private
@@ -251,6 +252,8 @@ Ext.define('Rambox.ux.WebView',{
 
 			// Apply saved zoom level
 			webview.setZoomLevel(me.record.get('zoomLevel'));
+			
+			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
 
 		// Open links in default browser
@@ -338,7 +341,7 @@ Ext.define('Rambox.ux.WebView',{
 				require('electron').shell.openExternal(e.url);
 			}
 		});
-
+			
 		webview.addEventListener('will-navigate', function(e, url) {
 			e.preventDefault();
 		});
@@ -656,6 +659,14 @@ Ext.define('Rambox.ux.WebView',{
 		if ( me.record.get('enabled') ) {
 			webview.setZoomLevel(0);
 			me.record.set('zoomLevel', me.zoomLevel);
+		}
+	}
+
+	,getWebView: function() {
+		if ( this.record.get('enabled') ) {
+			return this.down('component').el.dom;
+		} else {
+			return false;
 		}
 	}
 });

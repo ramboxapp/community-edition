@@ -35,7 +35,7 @@ Ext.define('Rambox.Application', {
 		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
 
 		// Initialize Auth0
-		Rambox.ux.Auth0.init();
+		if ( auth0Cfg.clientID !== '' && auth0Cfg.domain !== '' ) Rambox.ux.Auth0.init();
 
 		// Set cookies to help Tooltip.io messages segmentation
 		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
