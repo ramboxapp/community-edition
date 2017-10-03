@@ -577,7 +577,7 @@ Ext.define('Rambox.ux.WebView',{
 	,setStatusBar: function(keep) {
 		var me = this;
 
-		me.down('statusbar').destroy();
+		me.removeDocked(me.down('statusbar'), true);
 
 		if ( keep ) {
 			me.addDocked(me.statusBarConstructor(false));
