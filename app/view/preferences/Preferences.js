@@ -122,7 +122,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,name: 'hide_menu_bar'
 						,boxLabel: locale['preferences[1]']+' (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar
-						,hidden: process.platform !== 'win32'
+						,hidden: process.platform === 'darwin'
 					}
 					,{
 						 xtype: 'combo'
