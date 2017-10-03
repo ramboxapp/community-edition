@@ -39,7 +39,7 @@ Ext.define('Rambox.view.main.Main', {
 					 xtype: 'panel'
 					,title: locale['app.main[0]']
 					,margin: '0 5 0 0'
-					,flex: 1
+					,flex: 2
 					,header: { height: 50 }
 					,tools: [
 						{
