@@ -176,7 +176,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 							 fields: ['value', 'label']
 							,data: [
 								 { 'value': 'keep_in_tray', 'label': 'Keep in tray' }
-								,{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and taskbar' }
+								,{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and/or taskbar' }
 								,{ 'value': 'quit', 'label': 'Quit' }
 							]
 						})

@@ -39,6 +39,12 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 		// Proxy
 		if ( values.proxy && (Ext.isEmpty(values.proxyHost) || Ext.isEmpty(values.proxyPort)) ) return;
 
+		// Display behaviour
+		if ( values.window_display_behavior === 'show_taskbar' && values.window_close_behavior === 'keep_in_tray' ) {
+			Ext.Msg.alert('Action required', 'You need to change the window closing behaviour because "Keep in tray" is not possible.');
+			return;
+		}
+
 		// Locale
 		if ( values.locale !== ipc.sendSync('getConfig').locale ) {
 			localStorage.setItem('locale', values.locale);
