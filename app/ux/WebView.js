@@ -332,6 +332,52 @@ Ext.define('Rambox.ux.WebView',{
 						return;
 					}
 					break;
+				case 'icloud':
+					if ( e.url.indexOf('index.html#compose') >= 0 ) {
+						me.add({
+							 xtype: 'window'
+							,title: 'iCloud - Compose'
+							,width: 700
+							,height: 500
+							,maximizable: true
+							,resizable: true
+							,draggable: true
+							,collapsible: true
+							,items: {
+								 xtype: 'component'
+								,itemId: 'webview'
+								,hideMode: 'offsets'
+								,autoRender: true
+								,autoShow: true
+								,autoEl: {
+									 tag: 'webview'
+									,src: e.url
+									,style: 'width:100%;height:100%;'
+									,partition: me.getWebView().partition
+									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,preload: './resources/js/rambox-modal-api.js'
+								}
+							}
+							,listeners: {
+								show: function(win) {
+									const webview = win.down('#webview').el.dom;
+									webview.addEventListener('ipc-message', function(event) {
+										var channel = event.channel;
+										switch (channel) {
+											case 'close':
+												win.close();
+												break;
+											default:
+												break;
+										}
+									});
+								}
+							}
+						}).show();
+						e.preventDefault();
+						return;
+					}
+					break;
 				default:
 					break;
 			}
