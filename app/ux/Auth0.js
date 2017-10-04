@@ -9,7 +9,7 @@ Ext.define('Rambox.ux.Auth0', {
 	,init: function() {
 		var me = this;
 
-		var Auth0Lock = require('auth0-lock').default;
+		var Auth0Lock = require('auth0-lock')['default'];
 		var Auth0 = require('auth0-js');
 
 		// Auth0 Config
