@@ -174,7 +174,7 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					//,webpreferences: 'nodeIntegration=no'
+					,webpreferences: 'allowRunningInsecureContent=yes' //,nativeWindowOpen=yes
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 					,preload: './resources/js/rambox-service-api.js'
@@ -252,7 +252,8 @@ Ext.define('Rambox.ux.WebView',{
 
 			// Apply saved zoom level
 			webview.setZoomLevel(me.record.get('zoomLevel'));
-			
+
+			// Set special icon for some service (like Slack)
 			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
 
@@ -275,7 +276,7 @@ Ext.define('Rambox.ux.WebView',{
 					if ( e.url.indexOf('plus.google.com/u/0/photos/albums') >= 0 ) {
 						ipc.send('image:popup', e.url, e.target.partition);
 						return;
-					} else if ( e.url.indexOf('https://hangouts.google.com/hangouts/_/CONVERSATION/') >= 0 ) {
+					} else if ( e.url.indexOf('/el/CONVERSATION/') >= 0 ) {
 						me.add({
 							 xtype: 'window'
 							,title: 'Video Call'
@@ -294,7 +295,7 @@ Ext.define('Rambox.ux.WebView',{
 									 tag: 'webview'
 									,src: e.url
 									,style: 'width:100%;height:100%;'
-									,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+									,partition: me.getWebView().partition
 									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
@@ -322,7 +323,7 @@ Ext.define('Rambox.ux.WebView',{
 									 tag: 'webview'
 									,src: e.url
 									,style: 'width:100%;height:100%;'
-									,partition: e.options.webPreferences.partition
+									,partition: me.getWebView().partition
 									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
@@ -330,6 +331,59 @@ Ext.define('Rambox.ux.WebView',{
 						e.preventDefault();
 						return;
 					}
+					break;
+				case 'icloud':
+					if ( e.url.indexOf('index.html#compose') >= 0 ) {
+						me.add({
+							 xtype: 'window'
+							,title: 'iCloud - Compose'
+							,width: 700
+							,height: 500
+							,maximizable: true
+							,resizable: true
+							,draggable: true
+							,collapsible: true
+							,items: {
+								 xtype: 'component'
+								,itemId: 'webview'
+								,hideMode: 'offsets'
+								,autoRender: true
+								,autoShow: true
+								,autoEl: {
+									 tag: 'webview'
+									,src: e.url
+									,style: 'width:100%;height:100%;'
+									,partition: me.getWebView().partition
+									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,preload: './resources/js/rambox-modal-api.js'
+								}
+							}
+							,listeners: {
+								show: function(win) {
+									const webview = win.down('#webview').el.dom;
+									webview.addEventListener('ipc-message', function(event) {
+										var channel = event.channel;
+										switch (channel) {
+											case 'close':
+												win.close();
+												break;
+											default:
+												break;
+										}
+									});
+								}
+							}
+						}).show();
+						e.preventDefault();
+						return;
+					}
+					break;
+				case 'flowdock':
+					if ( e.disposition === 'new-window' ) {
+						e.preventDefault();
+						require('electron').shell.openExternal(e.url);
+					}
+					return;
 					break;
 				default:
 					break;
@@ -341,7 +395,7 @@ Ext.define('Rambox.ux.WebView',{
 				require('electron').shell.openExternal(e.url);
 			}
 		});
-			
+
 		webview.addEventListener('will-navigate', function(e, url) {
 			e.preventDefault();
 		});
@@ -576,7 +630,7 @@ Ext.define('Rambox.ux.WebView',{
 	,setStatusBar: function(keep) {
 		var me = this;
 
-		me.down('statusbar').destroy();
+		me.removeDocked(me.down('statusbar'), true);
 
 		if ( keep ) {
 			me.addDocked(me.statusBarConstructor(false));

@@ -9,6 +9,9 @@ Ext.define('Rambox.ux.Auth0', {
 	,init: function() {
 		var me = this;
 
+		var Auth0Lock = require('auth0-lock')['default'];
+		var Auth0 = require('auth0-js');
+
 		// Auth0 Config
 		me.lock = new Auth0Lock(auth0Cfg.clientID, auth0Cfg.domain, {
 			 autoclose: true
@@ -30,7 +33,7 @@ Ext.define('Rambox.ux.Auth0', {
 			,language: localStorage.getItem('locale-auth0') === null ? 'en' : localStorage.getItem('locale-auth0')
 		});
 
-		me.auth0 = new Auth0({ clientID: auth0Cfg.clientID, domain : auth0Cfg.domain });
+		me.auth0 = new Auth0.WebAuth({ clientID: auth0Cfg.clientID, domain : auth0Cfg.domain });
 
 		me.defineEvents();
 	}
@@ -40,10 +43,15 @@ Ext.define('Rambox.ux.Auth0', {
 
 		me.lock.on("authenticated", function(authResult) {
 			me.lock.getProfile(authResult.idToken, function(err, profile) {
-				if (err) {
-					// Handle error
+				if ( err ) {
+					if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
 					Ext.Msg.hide();
-					return;
+					return Ext.Msg.show({
+						 title: 'Error'
+						,message: 'There was an error getting the profile: ' + err.error_description
+						,icon: Ext.Msg.ERROR
+						,buttons: Ext.Msg.OK
+					});
 				}
 
 				// Display a spinner while waiting
@@ -141,8 +149,13 @@ Ext.define('Rambox.ux.Auth0', {
 
 		me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
 			if ( err ) {
-				if ( err.error === 401 ) return me.renewToken(me.restoreConfiguration);
-				return alert('There was an error getting the profile: ' + err.message);
+				if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
+				return Ext.Msg.show({
+					 title: 'Error'
+					,message: 'There was an error getting the profile: ' + err.error_description
+					,icon: Ext.Msg.ERROR
+					,buttons: Ext.Msg.OK
+				});
 			}
 
 			// First we remove all current services
@@ -163,8 +176,13 @@ Ext.define('Rambox.ux.Auth0', {
 
 		me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
 			if ( err ) {
-				if ( err.error === 401 ) return me.renewToken(me.checkConfiguration);
-				return alert('There was an error getting the profile: ' + err.message);
+				if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
+				return Ext.Msg.show({
+					 title: 'Error'
+					,message: 'There was an error getting the profile: ' + err.error_description
+					,icon: Ext.Msg.ERROR
+					,buttons: Ext.Msg.OK
+				});
 			}
 
 			if ( !profile.user_metadata ) {

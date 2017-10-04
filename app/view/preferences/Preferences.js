@@ -122,7 +122,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,name: 'hide_menu_bar'
 						,boxLabel: locale['preferences[1]']+' (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar
-						,hidden: process.platform !== 'win32'
+						,hidden: process.platform === 'darwin'
 					}
 					,{
 						 xtype: 'combo'
@@ -176,7 +176,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 							 fields: ['value', 'label']
 							,data: [
 								 { 'value': 'keep_in_tray', 'label': 'Keep in tray' }
-								,{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and taskbar' }
+								,{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and/or taskbar' }
 								,{ 'value': 'quit', 'label': 'Quit' }
 							]
 						})

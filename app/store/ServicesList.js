@@ -28,7 +28,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[0]']
 			,url: 'https://web.whatsapp.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("infinite-list-item"),b=0;for(i=0;i<a.length;i++)if(!(a[i].getElementsByClassName("icon-muted").length>0||0===a[i].getElementsByClassName("unread-count").length)){var c=parseInt(a[i].getElementsByClassName("unread-count")[0].innerHTML.trim());b+=isNaN(c)?0:c}updateBadge(b)}function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } }setInterval(checkUnread,1e3);'
+			,js_unread: 'function checkUnread(){var i=0;document.querySelectorAll(".unread").forEach(function(e){0===e.querySelectorAll("[data-icon=muted]").length&&i++});updateBadge(i)}function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } }setInterval(checkUnread,1e3);'
 			,dont_update_unread_from_title: true
 		},
 		{
@@ -839,7 +839,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Kune is a web tool, based on Apache Wave, for creating environments of constant inter-communication, collective intelligence, knowledge and shared work.'
 			,url: 'https://kune.cc'
 			,type: 'messaging'
-    },
+		},
 		{
 			 id: 'googlevoice'
 			,logo: 'googlevoice.png'
@@ -848,6 +848,32 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
 			,js_unread: 'function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread(){var e=document.querySelector(".msgCount"),n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[\(\) ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){var r=document.querySelector(\'gv-nav-button[tooltip="\'+e+\'"] div[aria-label="Unread count"]\');r&&(n+=parseIntOrZero(r.innerHTML))}),updateBadge(n)}function updateBadge(e){var n=e>0?"("+e+") ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'sandstorm'
+			,logo: 'sandstorm.png'
+			,name: 'Sandstorm'
+			,description: 'Sandstorm is a self-hostable web productivity suite.'
+			,url: 'https://oasis.sandstorm.io/'
+			,type: 'messaging'
+			,custom_domain: true
+			,allow_popups: true
+		},
+		{
+			 id: 'gadugadu'
+			,logo: 'gadugadu.png'
+			,name: 'Gadu-Gadu'
+			,description: 'The most popular Polish messenger.'
+			,url: 'https://www.gg.pl/'
+			,type: 'messaging'
+		},
+		{
+			 id: 'mailru'
+			,logo: 'mailru.png'
+			,name: 'Mail.Ru'
+			,description: 'Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.'
+			,url: 'http://webagent.mail.ru/webim/agent/popup.html'
+			,type: 'email'
 		}
 	]
 });

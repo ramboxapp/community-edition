@@ -92,7 +92,7 @@
 		"chai": "3.5.0",
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "1.7.5",
+		"electron": "^1.7.8",
 		"electron-builder": "^17.10.0",
 		"electron-builder-squirrel-windows": "15.0.0",
 		"electron-squirrel-startup": "^1.0.0",
@@ -101,6 +101,8 @@
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
+		"auth0-js": "^8.10.1",
+		"auth0-lock": "^10.22.0",
 		"auto-launch-patched": "5.0.2",
 		"electron-config": "0.2.1",
 		"electron-is-dev": "^0.1.2",

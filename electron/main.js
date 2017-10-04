@@ -162,6 +162,7 @@ function createWindow () {
 	});
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
+	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) mainWindow.minimize();
 
 	// Check if the window its outside of the view (ex: multi monitor setup)
 	const { positionOnScreen } = require('./utils/positionOnScreen');
