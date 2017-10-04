@@ -276,7 +276,7 @@ Ext.define('Rambox.ux.WebView',{
 					if ( e.url.indexOf('plus.google.com/u/0/photos/albums') >= 0 ) {
 						ipc.send('image:popup', e.url, e.target.partition);
 						return;
-					} else if ( e.url.indexOf('https://hangouts.google.com/hangouts/_/CONVERSATION/') >= 0 ) {
+					} else if ( e.url.indexOf('/el/CONVERSATION/') >= 0 ) {
 						me.add({
 							 xtype: 'window'
 							,title: 'Video Call'
@@ -295,7 +295,7 @@ Ext.define('Rambox.ux.WebView',{
 									 tag: 'webview'
 									,src: e.url
 									,style: 'width:100%;height:100%;'
-									,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
+									,partition: me.getWebView().partition
 									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
@@ -323,7 +323,7 @@ Ext.define('Rambox.ux.WebView',{
 									 tag: 'webview'
 									,src: e.url
 									,style: 'width:100%;height:100%;'
-									,partition: e.options.webPreferences.partition
+									,partition: me.getWebView().partition
 									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
