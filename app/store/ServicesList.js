@@ -839,7 +839,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Kune is a web tool, based on Apache Wave, for creating environments of constant inter-communication, collective intelligence, knowledge and shared work.'
 			,url: 'https://kune.cc'
 			,type: 'messaging'
-    },
+		},
 		{
 			 id: 'googlevoice'
 			,logo: 'googlevoice.png'
@@ -848,6 +848,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
 			,js_unread: 'function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread(){var e=document.querySelector(".msgCount"),n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[\(\) ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){var r=document.querySelector(\'gv-nav-button[tooltip="\'+e+\'"] div[aria-label="Unread count"]\');r&&(n+=parseIntOrZero(r.innerHTML))}),updateBadge(n)}function updateBadge(e){var n=e>0?"("+e+") ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'sandstorm'
+			,logo: 'sandstorm.png'
+			,name: 'Sandstorm'
+			,description: 'Sandstorm is a self-hostable web productivity suite.'
+			,url: 'https://oasis.sandstorm.io/'
+			,type: 'messaging'
+			,custom_domain: true
+			,allow_popups: true
 		}
 	]
 });
