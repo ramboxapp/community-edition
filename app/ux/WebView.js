@@ -174,7 +174,7 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					//,webpreferences: 'nodeIntegration=no'
+					,webpreferences: 'allowRunningInsecureContent=yes' //,nativeWindowOpen=yes
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 					,preload: './resources/js/rambox-service-api.js'
