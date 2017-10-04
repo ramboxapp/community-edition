@@ -5,7 +5,7 @@ node_js:
 
 branches:
   only:
-    - /\d+\.\d+\.\d+/
+    - master
 
 os:
   - linux
