@@ -378,6 +378,13 @@ Ext.define('Rambox.ux.WebView',{
 						return;
 					}
 					break;
+				case 'flowdock':
+					if ( e.disposition === 'new-window' ) {
+						e.preventDefault();
+						require('electron').shell.openExternal(e.url);
+					}
+					return;
+					break;
 				default:
 					break;
 			}
