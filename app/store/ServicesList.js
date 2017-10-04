@@ -866,6 +866,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'The most popular Polish messenger.'
 			,url: 'https://www.gg.pl/'
 			,type: 'messaging'
+		},
+		{
+			 id: 'mailru'
+			,logo: 'mailru.png'
+			,name: 'Mail.Ru'
+			,description: 'Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.'
+			,url: 'http://webagent.mail.ru/webim/agent/popup.html'
+			,type: 'email'
 		}
 	]
 });
