@@ -858,6 +858,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,custom_domain: true
 			,allow_popups: true
+		},
+		{
+			 id: 'gadugadu'
+			,logo: 'gadugadu.png'
+			,name: 'Gadu-Gadu'
+			,description: 'The most popular Polish messenger.'
+			,url: 'https://www.gg.pl/'
+			,type: 'messaging'
 		}
 	]
 });
