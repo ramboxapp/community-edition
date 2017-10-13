@@ -191,7 +191,7 @@ Ext.define('Rambox.view.add.Add',{
 										,boxLabel: locale['app.window[19]']
 										,name: 'trust'
 										,hidden: me.record.get('type') !== 'custom'
-										,checked: me.edit ? me.record.get('trust') : true
+										,checked: me.edit ? me.record.get('trust') : false
 										,uncheckedValue: false
 										,inputValue: true
 									}
