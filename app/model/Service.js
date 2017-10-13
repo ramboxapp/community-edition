@@ -56,7 +56,7 @@ Ext.define('Rambox.model.Service', {
 	},{
 		 name: 'trust'
 		,type: 'boolean'
-		,defaultValue: true
+		,defaultValue: false
 	},{
 		 name: 'enabled'
 		,type: 'boolean'
