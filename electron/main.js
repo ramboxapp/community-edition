@@ -273,6 +273,7 @@ function createMasterPasswordWindow() {
 }
 
 function updateBadge(title) {
+	title = title.split(" - ")[0]; //Discard service name if present, could also contain digits
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
 
 	tray.setBadge(messageCount, config.get('systemtray_indicator'));
