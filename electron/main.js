@@ -138,11 +138,16 @@ function handleSquirrelEvent() {
 let mainWindow;
 let isQuitting = false;
 
+let iconPath = __dirname + '/../resources/Icon.ico';
+if (process.platform === 'linux') {
+    iconPath = __dirname + '/../resources/Icon.png';
+}
+
 function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox'
-		,icon: __dirname + '/../resources/Icon.ico'
+		,icon: iconPath
 		,backgroundColor: '#FFF'
 		,x: config.get('x')
 		,y: config.get('y')
