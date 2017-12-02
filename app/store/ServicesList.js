@@ -874,6 +874,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.'
 			,url: 'http://webagent.mail.ru/webim/agent/popup.html'
 			,type: 'email'
-		}
+		},
+        {
+            id: 'fhcampus02'
+            ,logo: 'fhcampus02.png'
+            ,name: 'FH Campus 02'
+            ,description: 'Mail server of the FH Campus 02'
+            ,url: 'https://outlook.office.com/owa/'
+            ,type: 'email'
+            ,manual_notifications: true
+            ,js_unread: 'function checkUnread(){var e=document.getElementById(document.getElementById("MailFolderPane.FavoritesFolders").children[0].children[0].id+".ucount").innerHTML;updateBadge(""===e?0:parseInt(e))}function updateBadge(e){document.title=e>=1?"("+e+")":"(0)"}var originalTitle=document.title;setInterval(checkUnread,3e3),document.body.scrollTop=0;'
+        },
 	]
 });
