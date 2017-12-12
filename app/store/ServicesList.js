@@ -821,6 +821,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Intercom makes it easy to communicate with your customers personally, at scale. Designed to feel like the messaging apps you use every day, Intercom lets you talk to consumers almost anywhere: inside your app, on your website, across social media and via email.'
 			,url: 'https://app.intercom.io'
 			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("unread")[0];updateBadge(t=a===undefined?0:parseInt(a.textContent.replace(/[^0-9]/g,"")))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
+			,dont_update_unread_from_title: true
 		},
 		{
 			 id: 'allo'
