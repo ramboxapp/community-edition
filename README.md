@@ -189,12 +189,13 @@ Sync feature use Auth0 for Single Sign On & Token Based Authentication and to st
 
 ## Donations
 
-| Type     |                                         URL/Wallet                                         |
-|----------|:------------------------------------------------------------------------------------------:|
-| PayPal   | [HERE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA) |
-| Bitcoin  | 1Jpa6aSqLjeAiwEzDEBiYcR7dcy5YGYdmB                                                         |
-| Ethereum | 0xFa20A0CEc2888fcB1aA8d15D85Af2B7E472b874F                                                 |
-| Litecoin | Lc5L7mkH5L5U3TR7i8mAQpCu6jUm6J1F4C                                                         |
+| Type          |                                         URL/Wallet                                         |
+|---------------|:------------------------------------------------------------------------------------------:|
+| PayPal        | [HERE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA) |
+| Bitcoin       | 1BjR8dARsnuqz41FZM9R8pPtYTeHn9mLSs                                                         |
+| Bitcoin Cash  | 1BjR8dARsnuqz41FZM9R8pPtYTeHn9mLSs                                                         |
+| Ethereum      | 0xf3d15f9649c6da63fc3971d8c82804dd677fd151                                                 |
+| Litecoin      | Lf3CjUMhCVEvUjqMrNfRCkTbzRrd7KSdZn                                                         |
 
 ## Translations
 
