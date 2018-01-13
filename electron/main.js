@@ -465,8 +465,11 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 // Proxy
 if ( config.get('proxy') ) {
 	app.commandLine.appendSwitch('proxy-server', 'http://'+config.get('proxyHost')+':'+config.get('proxyPort'));
-
+	console.info('test2')
 	app.on('login', (event, webContents, request, authInfo, callback) => {
+		if(!authInfo.isProxy)
+			return;
+			
 		event.preventDefault()
 		callback(config.get('proxyLogin'), config.get('proxyPassword'))
 	})
