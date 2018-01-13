@@ -276,19 +276,23 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								,name: 'proxyPort'
 								,value: config.proxyPort
 								,margin: '0 0 0 10'
-							},{
+							}
+							,{
 								xtype: 'textfield'
 							   ,fieldLabel: 'Login'
 							   ,name: 'proxyLogin'
 							   ,value: config.proxyLogin
 							   ,margin: '0 0 0 10'
-						   },{
-							xtype: 'textfield'
-						   ,fieldLabel: 'Password'
-						   ,name: 'proxyPassword'
-						   ,value: config.proxyPassword
-						   ,margin: '0 0 0 10'
-					   }
+							   ,emptyText: 'optional'
+							}
+							,{
+								xtype: 'textfield'
+								,fieldLabel: 'Password'
+								,name: 'proxyPassword'
+								,value: config.proxyPassword
+								,margin: '0 0 0 10'
+								,emptyText: 'optional'
+							}
 						]
 					}
 				]
