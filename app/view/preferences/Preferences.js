@@ -260,12 +260,11 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,checkboxName: 'proxy'
 						,margin: '10 0 0 0'
 						,padding: 10
-						,layout: 'hbox'
-						,defaults: { labelAlign: 'top' }
+						,layout: 'vbox'
+						,defaults: { labelAlign: 'left' }
 						,items: [
 							{
 								 xtype: 'textfield'
-								,vtype: 'url'
 								,fieldLabel: 'Host'
 								,name: 'proxyHost'
 								,value: config.proxyHost
@@ -275,10 +274,21 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								 xtype: 'numberfield'
 								,fieldLabel: 'Port'
 								,name: 'proxyPort'
-								,width: 100
 								,value: config.proxyPort
 								,margin: '0 0 0 10'
-							}
+							},{
+								xtype: 'textfield'
+							   ,fieldLabel: 'Login'
+							   ,name: 'proxyLogin'
+							   ,value: config.proxyLogin
+							   ,margin: '0 0 0 10'
+						   },{
+							xtype: 'textfield'
+						   ,fieldLabel: 'Password'
+						   ,name: 'proxyPassword'
+						   ,value: config.proxyPassword
+						   ,margin: '0 0 0 10'
+					   }
 						]
 					}
 				]

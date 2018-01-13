@@ -32,6 +32,8 @@ const config = new Config({
 		,proxy: false
 		,proxyHost: ''
 		,proxyPort: ''
+		,proxyLogin: ''
+		,proxyPassword: ''
 		,locale: 'en'
 		,enable_hidpi_support: false
 		,default_service: 'ramboxTab'
@@ -461,7 +463,14 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 });
 
 // Proxy
-if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
+if ( config.get('proxy') ) {
+	app.commandLine.appendSwitch('proxy-server', 'http://'+config.get('proxyHost')+':'+config.get('proxyPort'));
+
+	app.on('login', (event, webContents, request, authInfo, callback) => {
+		event.preventDefault()
+		callback(config.get('proxyLogin'), config.get('proxyPassword'))
+	})
+}
 
 // Disable GPU Acceleration for Linux
 // to prevent White Page bug
