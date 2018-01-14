@@ -265,6 +265,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,items: [
 							{
 								 xtype: 'textfield'
+								,vtype: 'url'
 								,fieldLabel: 'Host'
 								,name: 'proxyHost'
 								,value: config.proxyHost
