@@ -144,7 +144,7 @@ function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox'
-		,icon: __dirname + '/../resources/Icon.ico'
+		,icon: __dirname + '/../resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico')
 		,backgroundColor: '#FFF'
 		,x: config.get('x')
 		,y: config.get('y')
