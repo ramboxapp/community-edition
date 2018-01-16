@@ -71,23 +71,45 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								,store: Ext.create('Ext.data.Store', {
 									 fields: ['value', 'label']
 									,data: [
-										 { 'value': 'ar', 'auth0': 'en', 'label': 'Arabic' }
+										 { 'value': 'af', 'auth0': 'af', 'label': 'Afrikaans' }
+										,{ 'value': 'ar', 'auth0': 'en', 'label': 'Arabic' }
+										,{ 'value': 'bs2', 'auth0': 'en', 'label': 'Barndutsch, Switzerland' }
+										,{ 'value': 'bn', 'auth0': 'en', 'label': 'Bengali' }
+										,{ 'value': 'bg', 'auth0': 'en', 'label': 'Bulgarian' }
+										,{ 'value': 'ca', 'auth0': 'ca', 'label': 'Catalan' }
+										,{ 'value': 'zh-CN', 'auth0': 'zh', 'label': 'Chinese Simplified' }
+										,{ 'value': 'zh-TW', 'auth0': 'zh-tw', 'label': 'Chinese Traditional' }
+										,{ 'value': 'hr', 'auth0': 'en', 'label': 'Croatian' }
 										,{ 'value': 'cs', 'auth0': 'cs', 'label': 'Czech' }
+										,{ 'value': 'da', 'auth0': 'da', 'label': 'Danish' }
 										,{ 'value': 'nl', 'auth0': 'nl', 'label': 'Dutch' }
 										,{ 'value': 'en', 'auth0': 'en', 'label': 'English' }
+										,{ 'value': 'fi', 'auth0': 'fi', 'label': 'Finnish' }
 										,{ 'value': 'fr', 'auth0': 'fr', 'label': 'French' }
 										,{ 'value': 'de', 'auth0': 'de', 'label': 'German' }
+										,{ 'value': 'de-CH', 'auth0': 'de', 'label': 'German, Switzerland' }
 										,{ 'value': 'el', 'auth0': 'en', 'label': 'Greek' }
+										,{ 'value': 'he', 'auth0': 'en', 'label': 'Hebrew' }
+										,{ 'value': 'hi', 'auth0': 'en', 'label': 'Hindi' }
+										,{ 'value': 'hu', 'auth0': 'hu', 'label': 'Hungarian' }
 										,{ 'value': 'id', 'auth0': 'en', 'label': 'Indonesian' }
 										,{ 'value': 'it', 'auth0': 'it', 'label': 'Italian' }
-										,{ 'value': 'ko', 'auth0': 'en', 'label': 'Korean' }
+										,{ 'value': 'ja', 'auth0': 'ja', 'label': 'Japanese' }
+										,{ 'value': 'ko', 'auth0': 'ko', 'label': 'Korean' }
+										,{ 'value': 'no', 'auth0': 'no', 'label': 'Norwegian' }
 										,{ 'value': 'fa', 'auth0': 'fa', 'label': 'Persian' }
 										,{ 'value': 'pl', 'auth0': 'pl', 'label': 'Polish' }
 										,{ 'value': 'pt-PT', 'auth0': 'pt-br', 'label': 'Portuguese' }
 										,{ 'value': 'pt-BR', 'auth0': 'pt-br', 'label': 'Portuguese (Brazilian)' }
+										,{ 'value': 'ro', 'auth0': 'ro', 'label': 'Romanian' }
 										,{ 'value': 'ru', 'auth0': 'ru', 'label': 'Russian' }
+										,{ 'value': 'sr', 'auth0': 'en', 'label': 'Serbian (Cyrillic)' }
+										,{ 'value': 'sk', 'auth0': 'sk', 'label': 'Slovak' }
 										,{ 'value': 'es-ES', 'auth0': 'es', 'label': 'Spanish' }
+										,{ 'value': 'sv-SE', 'auth0': 'sv', 'label': 'Swedish' }
 										,{ 'value': 'tr', 'auth0': 'tr', 'label': 'Turkish' }
+										,{ 'value': 'uk', 'auth0': 'en', 'label': 'Ukrainian' }
+										,{ 'value': 'vi', 'auth0': 'en', 'label': 'Vietnamese' }
 									]
 								})
 							}
