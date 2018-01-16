@@ -269,30 +269,27 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								,fieldLabel: 'Host'
 								,name: 'proxyHost'
 								,value: config.proxyHost
-								,flex: 1
+								//,flex: 1
 							}
 							,{
 								 xtype: 'numberfield'
 								,fieldLabel: 'Port'
 								,name: 'proxyPort'
 								,value: config.proxyPort
-								,margin: '0 0 0 10'
 							}
 							,{
-								xtype: 'textfield'
-							   ,fieldLabel: 'Login'
-							   ,name: 'proxyLogin'
-							   ,value: config.proxyLogin
-							   ,margin: '0 0 0 10'
-							   ,emptyText: 'optional'
+								 xtype: 'textfield'
+								,fieldLabel: 'Login'
+								,name: 'proxyLogin'
+								,value: config.proxyLogin
+								,emptyText: 'Optional'
 							}
 							,{
-								xtype: 'textfield'
+								 xtype: 'textfield'
 								,fieldLabel: 'Password'
 								,name: 'proxyPassword'
 								,value: config.proxyPassword
-								,margin: '0 0 0 10'
-								,emptyText: 'optional'
+								,emptyText: 'Optional'
 							}
 						]
 					}
