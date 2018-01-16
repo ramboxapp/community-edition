@@ -363,6 +363,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.icq.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("nwa-msg-counter")[0].style.display==="block"?document.getElementsByClassName("nwa-msg-counter")[0].innerHTML.trim():0))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,titleBlink: true
 		},
 		{
 			 id: 'tweetdeck'
