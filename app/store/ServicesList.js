@@ -876,6 +876,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.'
 			,url: 'http://webagent.mail.ru/webim/agent/popup.html'
 			,type: 'email'
-		}
+		},
+		{
+			 id: 'zulip'
+			,logo: 'zulip.png'
+			,name: 'zulip'
+			,description: "The world's most productive group chat"
+			,url: 'https://___.zulipchat.com/'
+			,type: 'messaging'
+		},
 	]
 });
