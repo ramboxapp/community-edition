@@ -881,10 +881,11 @@ Ext.define('Rambox.store.ServicesList', {
 		{
 			 id: 'zulip'
 			,logo: 'zulip.png'
-			,name: 'zulip'
+			,name: 'Zulip'
 			,description: "The world's most productive group chat"
 			,url: 'https://___.zulipchat.com/'
 			,type: 'messaging'
+			,custom_domain: true
 		},
 	]
 });
