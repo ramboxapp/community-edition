@@ -23,7 +23,7 @@ Ext.define('Rambox.util.IconLoader', {
 						false,
 						function (backgroundImage) {
 							if (backgroundImage) {
-								service.setTitle('<img src="'+service.icon+'" width="" style="background-color: white;border-radius: 50%;position: absolute;margin-left: -12px;margin-top: 17px;width: 12px;">'+service.title);
+								service.setTitle('<img src="'+service.icon+'" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">'+service.title);
 								service.fireEvent('iconchange', service, backgroundImage, service.icon);
 							}
 						}
