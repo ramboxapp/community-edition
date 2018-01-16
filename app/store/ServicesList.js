@@ -363,6 +363,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.icq.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("nwa-msg-counter")[0].style.display==="block"?document.getElementsByClassName("nwa-msg-counter")[0].innerHTML.trim():0))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,titleBlink: true
 		},
 		{
 			 id: 'tweetdeck'
@@ -832,7 +833,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
 			,url: 'https://allo.google.com/web'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unreadCount"),n=0;for(i=0;i<e.length;i++){var a=parseInt(e[i].innerHTML.trim());n+=isNaN(a)?0:a}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var e=document.querySelectorAll(".hasUnread.conversation_item"),n=0;for(i=0;i<e.length;i++){var r="none"===e[i].querySelector("#muted").style.display?parseInt(e[i].querySelector(".unreadCount").innerHTML.trim()):0;n+=isNaN(r)?0:r}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
 		},
 		{
@@ -881,10 +882,11 @@ Ext.define('Rambox.store.ServicesList', {
 		{
 			 id: 'zulip'
 			,logo: 'zulip.png'
-			,name: 'zulip'
+			,name: 'Zulip'
 			,description: "The world's most productive group chat"
 			,url: 'https://___.zulipchat.com/'
 			,type: 'messaging'
+			,custom_domain: true
 		},
 	]
 });

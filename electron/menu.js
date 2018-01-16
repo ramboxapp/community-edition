@@ -221,6 +221,7 @@ module.exports = function(config) {
 				},
 				{
 					label: locale['menu.help[5]'],
+					visible: process.argv.indexOf('--without-update') === -1,
 					click(item, win) {
 						const webContents = win.webContents;
 						const send = webContents.send.bind(win.webContents);
@@ -291,6 +292,7 @@ module.exports = function(config) {
 		});
 		helpSubmenu.push({
 			label: `&`+locale['menu.help[5]'],
+			visible: process.argv.indexOf('--without-update') === -1,
 			click(item, win) {
 				const webContents = win.webContents;
 				const send = webContents.send.bind(win.webContents);

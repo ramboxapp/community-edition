@@ -119,7 +119,7 @@ Ext.define('Rambox.view.main.MainController', {
 				// Clear all trash data
 				const webview = tab.getWebView();
 
-				webview.addEventListener("did-finish-load", function() {
+				webview.addEventListener("did-start-loading", function() {
 					clearData(webview, tab);
 				});
 			}, 1000);
