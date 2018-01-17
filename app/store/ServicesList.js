@@ -498,14 +498,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("scene-space-tab-button--flash").length))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
-			 id: 'aim'
-			,logo: 'aim.png'
-			,name: 'Aim'
-			,description: 'Aim offers free Text Messaging, Group Conversations, Media Sharing, Social Notifications, and more.'
-			,url: 'http://aim.com/'
-			,type: 'messaging'
-		},
-		{
 			 id: 'kiwi'
 			,logo: 'kiwi.png'
 			,name: 'Kiwi IRC'
