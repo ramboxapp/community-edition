@@ -276,7 +276,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Proxy (needs to relaunch) - <a href="http://proxylist.hidemyass.com/" target="_blank">Free IP:PORT Proxy List</a>'
+						,title: 'Proxy (needs to relaunch) - <a href="https://github.com/saenzramiro/rambox/wiki/FREE-PROXY-SERVERS" target="_blank">Free Proxy Servers</a>'
 						,collapsed: !config.proxy
 						,checkboxToggle: true
 						,checkboxName: 'proxy'
