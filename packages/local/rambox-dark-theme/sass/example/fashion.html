@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+   Copyright (c) 2012-2013. Sencha Inc.
+-->
+<html>
+<head>
+    <title>Ext JS Theme Harness</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!--
+    Load all required links and scripts
+    -->
+    <script type="text/javascript" src="/~cmd/extensions/sencha-fashion/fashion/fashion.js"></script>
+    <script type="text/javascript" src="/~cmd/extensions/sencha-fashion/sass-compiler.js"></script>
+    <script type="text/javascript" src="bootstrap.js"></script>
+
+    <style>
+        .widget-container {
+            margin: 10px;
+            width: 400px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .x-slicer-target,
+        .x-slicer-target * {
+            opacity: 1;
+        }
+
+        /* ensure body does not overlap the rounded corners of framed panel/window when slicing */
+        .x-panel-body,
+        .x-window-body {
+            background: transparent;
+        }
+    </style>
+</head>
+    <body></body>
+</html>

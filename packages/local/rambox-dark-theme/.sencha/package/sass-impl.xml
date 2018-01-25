@@ -1,0 +1,313 @@
+<project name="x-sass-impl">
+
+    <target name="-init-sass-compiler" depends="-init-compiler">
+        <x-normalize-path path="${build.out.resources.dir}"
+                          property="image.search.path"/>
+        <condition property="is.theme.package" value="true">
+            <equals arg1="${package.type}" arg2="theme"/>
+        </condition>
+    </target>
+
+    <target name="-compile-sass-rtl-theme" depends="-init-sass-compiler" if="is.theme.package">
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+            include
+                -all
+            and
+            sass
+                -etc=true
+                -vars=true
+                -rules=true
+                -class-name-vars=true
+                -variable=$image-search-path:'${image.search.path}' !default
+                -variable=$theme-name: '${package.name}' !default
+                -output=${build.all.rtl.scss}
+                -forward=${package.sass.dynamic}
+            and
+            sass
+                -ruby=true
+                -output=${build.all.ruby}
+            ]]>
+        </x-compile>
+    </target>
+
+    <target name="-compile-sass-ltr-theme" depends="-init-sass-compiler" if="is.theme.package">
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+            exclude
+                -all
+            and
+            include
+                -not
+                -namespace=Ext.rtl
+            and
+            sass
+                -etc=true
+                -vars=true
+                -rules=true
+                -class-name-vars=true
+                -variable=$image-search-path:'${image.search.path}' !default
+                -variable=$theme-name: '${theme.name}' !default
+                -output=${build.all.scss}
+                -forward=${package.sass.dynamic}
+            and
+            sass
+                -ruby=true
+                -output=${build.all.ruby}
+            ]]>
+        </x-compile>
+    </target>
+
+    <target name="-compile-sass-rtl" depends="-init-sass-compiler" unless="is.theme.package">
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+            exclude
+                -all
+            and
+            include
+                -tag=package-${package.name}
+            and
+            save
+                pkg
+            and
+            sass
+                -class-name-vars=true
+                -variable=$image-search-path:'${image.search.path}' !default
+                -variable=$theme-name: '${theme.name}' !default
+                -output=${build.all.rtl.scss}
+                -forward=${package.sass.dynamic}
+            and
+            include
+                -all
+            and
+            save
+                all
+            and
+            sass
+                -etc=true
+                -vars=true
+                +append
+                -output=${build.all.rtl.scss}
+                -forward=${package.sass.dynamic}
+            and
+            restore
+                pkg
+            and
+            sass
+                -rules=true
+                +append
+                -output=${build.all.rtl.scss}
+            and
+            sass
+                -ruby=true
+                -output=${build.all.ruby}
+            ]]>
+        </x-compile>
+    </target>
+
+    <target name="-compile-sass-ltr" depends="-init-sass-compiler" unless="is.theme.package">
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+            exclude
+                -all
+            and
+            include
+                -tag=package-${package.name}
+            and
+            save
+                pkg
+            and
+            sass
+                -class-name-vars=true
+                -variable=$image-search-path:'${image.search.path}' !default
+                -variable=$theme-name: '${theme.name}' !default
+                -output=${build.all.scss}
+                -forward=${package.sass.dynamic}
+            and
+            exclude
+                -all
+            and
+            include
+                -not
+                -namespace=Ext.rtl
+            and
+            save
+                all-rtl
+            and
+            sass
+                -etc=true
+                -vars=true
+                +append
+                -output=${build.all.scss}
+                -forward=${package.sass.dynamic}
+            and
+            restore
+                pkg
+            and
+            sass
+                -rules=true
+                +append
+                -output=${build.all.scss}
+            and
+            sass
+                -ruby=true
+                -output=${build.all.ruby}
+            ]]>
+        </x-compile>
+    </target>
+
+    <target name="-compile-sass"
+            depends="-compile-sass-rtl-theme,-compile-sass-ltr-theme,-compile-sass-rtl,-compile-sass-ltr">
+        <echo file="${package.example.compass.config}">
+            require '${build.all.ruby}'
+            cache_path = '${compass.cache.dir}'
+        </echo>
+    </target>
+
+    <macrodef name="x-compress-css-files">
+        <attribute name="dir"/>
+        <attribute name="prefix"/>
+        <attribute name="outprefix"/>
+        <sequential>
+            <x-split-css file="@{dir}/@{prefix}.css"
+                         outdir="${build.resources.dir}"
+                         limit="${build.css.selector.limit}"/>
+
+            <for param="cssfile">
+                <fileset dir="@{dir}" includes="@{prefix}*.css"/>
+                <sequential>
+                    <local name="css.output.name"/>
+                    <local name="pattern"/>
+                    <property name="pattern" value="(.*?)(@{prefix})(_\d{1,2})*\.css"/>
+                    <propertyregex property="css.output.name"
+                                   input="@{cssfile}"
+                                   regexp="${pattern}"
+                                   select="\1@{outprefix}\3.css"
+                                   override="true"/>
+                    <x-echo>Compressing @{cssfile} to ${css.output.name}</x-echo>
+                    <x-compress-css srcfile="@{cssfile}"
+                                    outfile="${css.output.name}"/>
+                </sequential>
+            </for>
+
+            <replaceregexp file="@{dir}/@{outprefix}.css"
+                           match="@import '@{prefix}(_\d\d).css';"
+                           replace="@import '@{outprefix}\1.css';"
+                           flags="g"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="x-fashion-build-css">
+        <attribute name="dir"/>
+        <attribute name="outdir"/>
+        <attribute name="suffix"/>
+        <attribute name="compress"/>
+        <sequential>
+            <for param="cssfile">
+                <fileset dir="@{dir}" includes="*.scss"/>
+                <sequential>
+                    <local name="css.output.name"/>
+
+                    <x-script-def name="x-calc-path">
+                        <attribute name="file"/>
+                        <attribute name="dir"/>
+                        <attribute name="outdir"/>
+                        <attribute name="suffix"/>
+                        <![CDATA[
+
+                        importPackage(java.io);
+
+                        var file = attributes.get('file') + '',
+                            dir = attributes.get('dir') + '',
+                            outdir = attributes.get('outdir') + '',
+                            name = new File(file).getName() + '',
+                            suffix = attributes.get('suffix') + '',
+                            outName;
+
+                        name = name.replace(/-debug\.scss/g, suffix + '.css');
+                        outName = new File(outdir, name).getAbsolutePath();
+                        project.setProperty('css.output.name', outName);
+
+                        ]]>
+                    </x-script-def>
+
+                    <x-calc-path file="@{cssfile}"
+                                 dir="@{dir}"
+                                 outdir="@{outdir}"
+                                 suffix="@{suffix}"/>
+
+                    <x-echo>Building @{cssfile} to ${css.output.name}</x-echo>
+
+                    <x-sass-build input="@{cssfile}"
+                                  output="${css.output.name}"
+                                  refId="package.web.server"
+                                  split="${build.css.selector.limit}"
+                                  compress="@{compress}"/>
+
+                </sequential>
+            </for>
+        </sequential>
+    </macrodef>
+
+    <target name="-compass-compile" depends="-load-sass-page,-compile-sass">
+        <if>
+            <x-is-true value="${package.sass.fashion}"/>
+            <then>
+                <if>
+                    <x-is-false value="${package.sass.rhino}"/>
+                    <then>
+                        <x-fashion-build-css
+                                dir="${package.sass.build.dir}"
+                                outdir="${build.resources.dir}"
+                                suffix="-debug"
+                                compress="false"/>
+                        <x-fashion-build-css
+                                dir="${package.sass.build.dir}"
+                                outdir="${build.resources.dir}"
+                                suffix=""
+                                compress="true"/>
+                    </then>
+                    <else>
+                        <x-fashion-compile
+                                file="${compass.sass.dir}"
+                                toFile="${compass.css.dir}"/>
+                    </else>
+                </if>
+
+            </then>
+            <else>
+                <x-compass-compile
+                        rubyPath="${build.ruby.path}"
+                        trace="${compass.compile.trace}"
+                        boring="${compass.compile.boring}"
+                        force="${compass.compile.force}"
+                        dir="${compass.working.dir}"
+                        sassdir="${compass.sass.dir}"
+                        cssdir="${compass.css.dir}"
+                        config="${package.example.compass.config}"/>
+            </else>
+        </if>
+    </target>
+
+    <target name="-compile-css" depends="-compass-compile">
+        <if>
+            <not><x-is-true value="${package.sass.fashion}"/></not>
+            <then>
+                <x-compress-css-files
+                        dir="${build.resources.dir}"
+                        prefix="${build.all.css.debug.prefix}"
+                        outprefix="${build.all.css.prefix}"/>
+
+                <x-compress-css-files
+                        dir="${build.resources.dir}"
+                        prefix="${build.all.rtl.css.debug.prefix}"
+                        outprefix="${build.all.rtl.css.prefix}"/>
+            </then>
+        </if>
+    </target>
+
+    <target name="-before-sass"/>
+    <target name="-sass" depends="-compile-css"/>
+    <target name="-after-sass"/>
+
+</project>

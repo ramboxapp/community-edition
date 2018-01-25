@@ -1,0 +1,274 @@
+@import url(../resources/fonts/font-awesome/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700,600);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,700italic,700,500italic,500,400italic);
+@import 'loadscreen';
+
+$base-color: #162938;
+$font-family: 'Roboto', sans-serif;
+$include-ie: false;
+$include-ff: false;
+$include-safari: false;
+$include-opera: false;
+
+// Spinner
+body {
+	margin: 0;
+	background-color: $base-color;
+}
+@-webkit-keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@-moz-keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@-ms-keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@-moz-keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@-o-keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+@keyframes uil-ring-anim {
+	0% {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+.uil-ring-css {
+	background: url('../resources/Icon.png') no-repeat center center;
+	background-size: 160px 160px;
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	margin-left: -100px;
+	margin-top: -100px;
+}
+.uil-ring-css > div {
+	position: absolute;
+	display: block;
+	width: 160px;
+	height: 160px;
+	top: 20px;
+	left: 20px;
+	border-radius: 80px;
+	box-shadow: 0 6px 0 0 #07a6cb;
+	-ms-animation: uil-ring-anim 1s linear infinite;
+	-moz-animation: uil-ring-anim 1s linear infinite;
+	-webkit-animation: uil-ring-anim 1s linear infinite;
+	-o-animation: uil-ring-anim 1s linear infinite;
+	animation: uil-ring-anim 1s linear infinite;
+}
+
+// Badge Plugin for Tabs
+.x-badge {
+	position: relative;
+	overflow: visible;
+}
+
+.x-badge[data-badge-text]:after {
+	content: attr(data-badge-text);
+	position: absolute;
+	font-size: 10px;
+	top: 0px;
+	right: 2px;
+	width: auto;
+	font-weight: bold;
+	color: white;
+	text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	padding: 0 4px;
+	background-image: none;
+	background-color: #C00;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff1a1a), color-stop(3%, #e60000), color-stop(100%, #b30000));
+	background-image: -webkit-linear-gradient(top, #ff1a1a,#e60000 3%,#b30000);
+	background-image: linear-gradient(top, #ff1a1a,#e60000 3%,#b30000);
+	-webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 0.1em 0.1em;
+	box-shadow: rgba(0, 0, 0, 0.3) 0 0.1em 0.1em;
+}
+
+.x-badge.green-badge[data-badge-text]:after {
+	background-color: #0C0;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1AFF1A), color-stop(3%, #00E600), color-stop(100%, #00B300));
+	background-image: -webkit-linear-gradient(top, #1AFF1A,#00E600 3%,#00B300);
+	background-image: linear-gradient(top, #1AFF1A,#00E600 3%,#00B300);
+}
+
+.x-badge.blue-badge[data-badge-text]:after {
+	background-color: #00C;
+	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #1A1AFF), color-stop(3%, #0000E6), color-stop(100%, #0000B3));
+	background-image: -webkit-linear-gradient(top, #1A1AFF,#0000E6 3%,#0000B3);
+	background-image: linear-gradient(top, #1A1AFF,#0000E6 3%,#0000B3);
+}
+
+/* Additional classes needed for tab panels */
+.allow-overflow .x-box-layout-ct, .allow-overflow .x-box-inner, .allow-overflow .x-box-item {
+	overflow: visible;
+}
+
+.x-tab-closable.x-badge[data-badge-text]:after {
+	right: 16px;
+}
+
+// Allow Glyphs in Action Columns
+.x-action-col-glyph {font-size:16px; line-height:16px; color:#CFCFCF; width:16px; margin: 0 5px;}
+.x-action-col-glyph:hover{color:$base-color}
+.x-grid-item-over .x-hidden-display, .x-grid-item-selected .x-hidden-display{display:inline-block !important}
+.x-grid-cell-inner {
+	height: 44px;
+	line-height: 32px !important;
+	&.x-grid-cell-inner-action-col {
+		line-height: 44px !important;
+	}
+}
+.x-tab-icon-el-default { background-size: 24px; }
+.x-title-icon { background-size: 16px; }
+
+// Fix for scroller tab bar
+//.x-box-scroller-body-horizontal { width: auto !important; margin-right: 18px; padding-right: 18px; }
+//.x-box-scroller-tab-bar { z-index: 9999; }
+
+.service {
+	width: 230px;
+	display: inline-block;
+	padding: 10px;
+	cursor: pointer;
+	img {
+		float: left;
+	}
+	span {
+		margin-left: 10px;
+		line-height: 48px;
+	}
+	&:hover {
+		background-color: lighten($base-color, 55%);
+	}
+}
+
+// Auth0
+.auth0-lock.auth0-lock .auth0-lock-header-logo {
+	height: 50px !important;
+}
+
+.x-statusbar {
+	padding: 0px !important;
+	background-color: $base-color !important;
+	&.x-docked-bottom {
+		border-top: 1px solid #CCC !important;
+		border-top-width: 1px !important;
+	}
+	.x-toolbar-text-default {
+		color: #FFF !important;
+	}
+}
