@@ -1,4 +1,4 @@
-# rambox-default-theme/sass/etc
+# rambox-dark-theme/sass/etc
 
-This folder contains miscellaneous SASS files. Unlike `"rambox-default-theme/sass/etc"`, these files
+This folder contains miscellaneous SASS files. Unlike `"rambox-dark-theme/sass/etc"`, these files
 need to be used explicitly.

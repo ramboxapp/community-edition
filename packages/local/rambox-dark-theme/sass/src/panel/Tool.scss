@@ -2,3 +2,12 @@
 	cursor: pointer;
 	color: #2E658E;
 }
+.x-panel-default {
+	.x-toolbar-docked-bottom {
+		background-color: $body-color;	
+	}
+}
+
+.x-autocontainer-innerCt {
+	background-color: rgba($body-light-color, .12);
+}

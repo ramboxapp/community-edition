@@ -1,0 +1,29 @@
+/**
+ * @var {color}
+ * The background color of group headers
+ */
+$grid-grouped-header-background-color: rgba($base-color, .3);
+
+/**
+ * @var {number/list}
+ * The border-width of group headers
+ */
+$grid-grouped-header-border-width: 0 0 2px 0 !default;
+
+/**
+ * @var {string}
+ * The border-style of group headers
+ */
+$grid-grouped-header-border-style: solid !default;
+
+/**
+ * @var {color}
+ * The border-color of group headers
+ */
+$grid-grouped-header-border-color: adjust-color($base-color, $hue: 0.844deg, $saturation: 7.644%, $lightness: -8.627%) !default;
+
+/**
+ * @var {color}
+ * The text color of group header titles
+ */
+$grid-grouped-title-color: adjust-color($base-light-text, $hue: 0.952deg, $saturation: -6.718%, $lightness: -41.961%) !default;

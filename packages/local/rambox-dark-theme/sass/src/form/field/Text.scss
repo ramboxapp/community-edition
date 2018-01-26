@@ -1,0 +1,11 @@
+.x-form-trigger-wrap {
+	border-radius: $border-radius-md;
+	border-width: 2px;
+	border-color: $base-gray;
+	background-color: transparent;
+	.x-form-text, .x-form-trigger-default {
+		border-radius: $border-radius-md;
+		background-color: transparent;
+		color: $base-light-text;
+	}
+}

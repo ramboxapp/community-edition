@@ -11,3 +11,22 @@
 .x-btn-inner-decline-small:hover{
 	text-decoration: underline;
 }
+
+.x-btn-default-toolbar-small {
+	border-radius: $border-radius-lg;
+	border-width: 2px;
+	border-color: $base-gray;
+	background-color: transparent;
+	.x-btn-inner-default-toolbar-small{
+		color: $base-light-text;
+	}
+}
+
+.x-btn {
+	&.x-btn-pressed, &.x-btn-focus, &.x-btn-over, &.x-btn-menu-active {
+		&.x-btn-default-toolbar-small {
+			border-color: $body-light-color;
+			background-color: $base-dark-color;
+		}
+	}
+}

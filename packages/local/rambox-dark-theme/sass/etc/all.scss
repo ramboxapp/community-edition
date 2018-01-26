@@ -4,7 +4,21 @@
 @import 'loadscreen';
 
 $base-color: #162938;
+$base-light-color: #4B6375;
+$base-dark-color: #30414F;
+$base-white: #FEFEFE;
+$base-gray: #FBFCFC;
+$body-color: #3E4552;
+$body-light-color: #929DB1;
+
 $font-family: 'Roboto', sans-serif;
+$base-light-text: $base-white;
+$base-dark-text: $base-gray;
+
+$border-radius-sm: 5px;
+$border-radius-md: 15px;
+$border-radius-lg: 30px;
+
 $include-ie: false;
 $include-ff: false;
 $include-safari: false;

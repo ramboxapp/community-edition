@@ -1,0 +1,78 @@
+/**
+ * @var {color}
+ * The color of the text in the grid cells
+ */
+$grid-row-cell-color: $base-light-text;
+
+/**
+ * @var {color}
+ * The background-color of the grid cells
+ */
+$grid-row-cell-background-color: $base-color;
+
+
+
+/**
+ * @var {color}
+ * The border-color of row/column borders. Can be specified as a single color, or as a list
+ * of colors containing the row border color followed by the column border color.
+ */
+$grid-row-cell-border-color: $base-light-color;
+
+/**
+ * @var {color}
+ * The background-color of "special" cells.  Special cells are created by {@link
+ * Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel Checkbox Selection
+ * Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+$grid-cell-special-background-color: $grid-row-cell-background-color;
+
+/**
+ * @var {color}
+ * The background-color of "special" cells when the row is hovered. Special cells are
+ * created by {@link Ext.grid.RowNumberer RowNumberer}, {@link Ext.selection.CheckboxModel
+ * Checkbox Selection Model} and {@link Ext.grid.plugin.RowExpander RowExpander}.
+ */
+// $grid-cell-special-over-background-color: $grid-row-cell-over-background-color;
+
+/**
+ * @var {color}
+ * The text color of the hovered row
+ */
+$grid-row-cell-over-color: $base-dark-text;
+
+/**
+ * @var {color}
+ * The background-color of the hovered row
+ */
+$grid-row-cell-over-background-color: $base-dark-color;
+
+/**
+ * @var {color}
+ * The text color of the selected row
+ */
+$grid-row-cell-selected-color: $base-light-text;
+
+/**
+ * @var {color}
+ * The background-color of the selected row
+ */
+$grid-row-cell-selected-background-color: $base-light-color;
+
+// /**
+//  * @var {color}
+//  * The border-color of the grid body
+//  */
+// $grid-body-border-color: $panel-body-border-color !default;
+
+// /**
+//  * @var {color}
+//  * The background-color of the grid body
+//  */
+// $grid-body-background-color: $panel-body-background-color !default;
+
+// /**
+//  * @var {color}
+//  * The background color of the grid body when the grid contains no data.
+//  */
+// $grid-empty-background-color: $panel-body-background-color !default;

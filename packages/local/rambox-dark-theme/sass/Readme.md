@@ -2,6 +2,6 @@
 
 This folder contains SASS files of various kinds, organized in sub-folders:
 
-    rambox-default-theme/sass/etc
-    rambox-default-theme/sass/src
-    rambox-default-theme/sass/var
+    rambox-dark-theme/sass/etc
+    rambox-dark-theme/sass/src
+    rambox-dark-theme/sass/var

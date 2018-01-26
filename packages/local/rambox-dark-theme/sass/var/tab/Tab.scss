@@ -1,5 +1,5 @@
-$tab-base-color: #30414F;
-$tab-base-color-active: #4B6375;
+$tab-base-color: $base-dark-color;
+$tab-base-color-active: $base-light-color;
 $tab-icon-width: 24px;
 $tab-icon-height: 24px;
 $tab-padding: 13px;
@@ -13,6 +13,6 @@ $tab-inner-border-width-focus: 0px;
 $tab-inner-border-width-focus-active: 0px;
 $tab-inner-border-width-focus-over: 0px;
 $tab-border-radius: 4px 4px 0 0;
-$tab-color: #FFF;
-$tab-color-active: #FFF;
+$tab-color: $base-dark-text;
+$tab-color-active: $base-light-text;
 $tab-font-size: 18px;

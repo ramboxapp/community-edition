@@ -1,0 +1,596 @@
+Sencha Cmd 6.5.2.15 - Crash report
+================================================
+An error occurred while executing the following command: app build
+
+Diagnostic information:
+=======================
+                         app.archivePath : archive                                           
+                      app.bootstrap.base : /Users/v-nicholas.shindler/Code/rambox            
+                       app.bootstrap.css : bootstrap.css                                     
+                  app.bootstrap.manifest : bootstrap.json                                    
+               app.bootstrap.microloader : bootstrap.js                                      
+                        app.cache.deltas : deltas                                            
+                           app.classpath : /Users/v-nicholas.shindler/Code/rambox/app        
+                         app.cmd.version : 6.1.2.15                                          
+                          app.compressor : null                                              
+                          app.config.dir : /Users/v-nicholas.shindler/Code/rambox/.sencha/app
+                   app.cordova.config.id : com.domain.Rambox                                 
+                 app.cordova.config.name : Rambox                                            
+                 app.cordova.config.path : /Users/v-nicholas.shindler/Code/rambox/cordova    
+               app.cordova.config.target :                                                   
+              app.cordova.config.verbose : false                                             
+                   app.cordova.js.0.path : cordova.js                                        
+               app.cordova.js.0.priority : 1000                                              
+                 app.cordova.js.0.remote : true                                              
+                   app.cordova.js.length : 1                                                 
+                 app.cordova.microloader : /Users/v-nicholas.shindler/Code/rambox/.sencha/app/Microloader.js
+                 app.cordova.output.base : /Users/v-nicholas.shindler/Code/rambox/cordova/www
+         app.cordova.output.cache.enable : false                                             
+        app.cordova.output.deltas.enable : false                                             
+     app.development.output.cache.enable : false                                             
+    app.development.output.deltas.enable : false                                             
+                                 app.dir : /Users/v-nicholas.shindler/Code/rambox            
+                           app.framework : ext                                               
+                   app.framework.version : 5.1.1.451                                         
+                                  app.id : 0f59c907-ae2e-485e-8a8d-cc2f7f60c1ed              
+                       app.indexHtmlPath : index.html                                        
+                                app.name : Rambox                                            
+              app.output.appCache.enable : true                                              
+                         app.output.base : /Users/v-nicholas.shindler/Code/rambox/build/${build.environment}/Rambox
+                 app.output.cache.enable : false                                             
+                app.output.deltas.enable : false                                             
+           app.output.microloader.enable : true                                              
+                           app.overrides : /Users/v-nicholas.shindler/Code/rambox/overrides  
+                           app.page.name : index.html                                        
+                  app.phonegap.config.id : com.domain.Rambox                                 
+                app.phonegap.config.name : Rambox                                            
+                app.phonegap.config.path : /Users/v-nicholas.shindler/Code/rambox/phonegap   
+              app.phonegap.config.remote : false                                             
+             app.phonegap.config.verbose : false                                             
+                  app.phonegap.js.0.path : phonegap.js                                       
+              app.phonegap.js.0.priority : 1000                                              
+                app.phonegap.js.0.remote : true                                              
+                  app.phonegap.js.length : 1                                                 
+                app.phonegap.microloader : /Users/v-nicholas.shindler/Code/rambox/.sencha/app/Microloader.js
+                app.phonegap.output.base : /Users/v-nicholas.shindler/Code/rambox/phonegap/www
+        app.phonegap.output.cache.enable : false                                             
+       app.phonegap.output.deltas.enable : false                                             
+          app.production.compressor.type : yui                                               
+                      app.resource.paths : /Users/v-nicholas.shindler/Code/rambox/resources  
+                        app.sass.etcpath : /Users/v-nicholas.shindler/Code/rambox/sass/etc/all.scss
+                      app.sass.namespace : Rambox                                            
+                        app.sass.srcpath : /Users/v-nicholas.shindler/Code/rambox/sass/src   
+                        app.sass.varpath : /Users/v-nicholas.shindler/Code/rambox/sass/var   
+        app.slicer.js.0.isWidgetManifest : true                                              
+                    app.slicer.js.0.path : /Users/v-nicholas.shindler/Code/rambox/sass/example/custom.js
+                    app.slicer.js.length : 1                                                 
+          app.slicer.output.cache.enable : false                                             
+         app.slicer.output.deltas.enable : false                                             
+         app.testing.output.cache.enable : false                                             
+        app.testing.output.deltas.enable : false                                             
+                               app.theme : rambox-dark-theme                                 
+                    buildenvironment.dir : /Users/v-nicholas.shindler/Code/rambox            
+               buildenvironment.load.dir : /Users/v-nicholas.shindler/Code/rambox            
+                          cmd.config.dir : /Users/v-nicholas.shindler/bin/Sencha/Cmd/6.5.2.15
+                                 cmd.dir : /Users/v-nicholas.shindler/bin/Sencha/Cmd/6.5.2.15
+                    cmd.framework.minver : 5.0.0                                             
+                   cmd.framework.version : 5.4.99.9999                                       
+              cmd.merge.tool.args.araxis : -wait -merge -3 -a1 {base} {user} {generated} {out}
+              cmd.merge.tool.args.kdiff3 : {base} {user} {generated} -o {out}                
+             cmd.merge.tool.args.p4merge : {base} {user} {generated} {out}                   
+           cmd.merge.tool.args.smartsync : {user} {generated} {base}                         
+          cmd.merge.tool.args.sourcegear : --merge --result={out} {user} {base} {generated}  
+            cmd.merge.tool.args.tortoise : -base:{base} -theirs:{generated} -mine:{user} -merged:{out}
+                              cmd.minver : 3.0.0.0                                           
+                            cmd.platform : osx                                               
+                     cmd.unicode.escapes : /Users/v-nicholas.shindler/bin/Sencha/Cmd/6.5.2.15/unicode-escapes.json
+                             cmd.version : 6.5.2.15                                          
+                            cmd.web.port : 1841                                              
+                     config.skipDownload : true                                              
+                      config.skipInherit : false                                             
+                                 ext.dir : /Users/v-nicholas.shindler/Code/rambox/ext        
+                        ext.license.name : gpl                                               
+                     framework.classpath : /Users/v-nicholas.shindler/Code/rambox/ext/src    
+                    framework.cmd.minver : 5.1.3.61                                          
+                   framework.cmd.version : 5.1.3.61                                          
+                 framework.compatVersion : 4.0                                               
+                    framework.config.dir : /Users/v-nicholas.shindler/bin/Sencha/Cmd/6.5.2.15/plugins/ext/5.1
+                       framework.creator : Sencha                                            
+           framework.detailedDescription : Sencha Ext JS JavaScript Framework                
+                           framework.dir : /Users/v-nicholas.shindler/Code/rambox/ext        
+                        framework.format : 1                                                 
+                          framework.isV5 : true                                              
+                         framework.local : true                                              
+                          framework.name : ext                                               
+                        framework.output : ${package.dir}/build                              
+                  framework.packages.dir : /Users/v-nicholas.shindler/Code/rambox/ext/packages
+                       framework.summary : Ext JS                                            
+                          framework.type : framework                                         
+                       framework.version : 5.1.1.451                                         
+                       inspector.address : http://localhost:1839/                            
+                          repo.local.dir : /Users/v-nicholas.shindler/bin/Sencha/Cmd/repo    
+                       shared.sencha.dir : false                                             
+        system.java.net.useSystemProxies : true                                              
+                              theme.name : rambox-dark-theme                                 
+                     workspace.build.dir : /Users/v-nicholas.shindler/Code/rambox/build      
+                   workspace.cmd.version : 6.0.2.14                                          
+                    workspace.config.dir : /Users/v-nicholas.shindler/Code/rambox/.sencha/workspace
+                           workspace.dir : /Users/v-nicholas.shindler/Code/rambox            
+                  workspace.packages.dir : /Users/v-nicholas.shindler/Code/rambox/packages/local,/Users/v-nicholas.shindler/Code/rambox/packages
+              workspace.packages.extract : /Users/v-nicholas.shindler/Code/rambox/packages/remote
+                     workspace.theme.dir : /Users/v-nicholas.shindler/Code/rambox/packages/local,/Users/v-nicholas.shindler/Code/rambox/packages/${args.themeName}
+
+Exception information:
+=======================
+/Users/v-nicholas.shindler/bin/Sencha/Cmd/6.5.2.15/plugin.xml:333: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/build-impl.xml:285: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/sass-impl.xml:189: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/sass-impl.xml:235: com.sencha.exceptions.ExProcess: compass process exited with non-zero code : 1
+     at com.sencha.ant.AntScript.execute(AntScript.java:121)
+     at com.sencha.command.plugin.PluginManager.execute(PluginManager.java:104)
+     at com.sencha.command.plugin.PluginManager.executeReverseFirst(PluginManager.java:145)
+     at com.sencha.command.environment.BuildEnvironment.execute(BuildEnvironment.java:308)
+     at com.sencha.command.environment.AppOrPackageEnvironment.execute(AppOrPackageEnvironment.java:729)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.doExecute(BasePluginCommands.java:125)
+     at com.sencha.command.app.AppCommands$BuildCommand.execute(AppCommands.java:470)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.sencha.util.MethodInvoker$Arguments.invoke(MethodInvoker.java:175)
+     at com.sencha.cli.Command.dispatch(Command.java:43)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.dispatch(BasePluginCommands.java:289)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.command.Sencha.dispatch(Sencha.java:80)
+     at com.sencha.command.Sencha.main(Sencha.java:147)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.exe4j.runtime.LauncherEngine.launch(LauncherEngine.java:65)
+     at com.install4j.runtime.launcher.UnixLauncher.main(UnixLauncher.java:57)
+   Caused by: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/build-impl.xml:285: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/sass-impl.xml:189: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/sass-impl.xml:235: com.sencha.exceptions.ExProcess: compass process exited with non-zero code : 1
+     at org.apache.tools.ant.ProjectHelper.addLocationToBuildException(ProjectHelper.java:551)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:444)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:217)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+     at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at com.sencha.ant.AntScript.execute(AntScript.java:117)
+     at com.sencha.command.plugin.PluginManager.execute(PluginManager.java:104)
+     at com.sencha.command.plugin.PluginManager.executeReverseFirst(PluginManager.java:145)
+     at com.sencha.command.environment.BuildEnvironment.execute(BuildEnvironment.java:308)
+     at com.sencha.command.environment.AppOrPackageEnvironment.execute(AppOrPackageEnvironment.java:729)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.doExecute(BasePluginCommands.java:125)
+     at com.sencha.command.app.AppCommands$BuildCommand.execute(AppCommands.java:470)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.sencha.util.MethodInvoker$Arguments.invoke(MethodInvoker.java:175)
+     at com.sencha.cli.Command.dispatch(Command.java:43)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.dispatch(BasePluginCommands.java:289)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.command.Sencha.dispatch(Sencha.java:80)
+     at com.sencha.command.Sencha.main(Sencha.java:147)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.exe4j.runtime.LauncherEngine.launch(LauncherEngine.java:65)
+     at com.install4j.runtime.launcher.UnixLauncher.main(UnixLauncher.java:57)
+   Caused by: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/sass-impl.xml:189: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/sass-impl.xml:235: com.sencha.exceptions.ExProcess: compass process exited with non-zero code : 1
+     at org.apache.tools.ant.ProjectHelper.addLocationToBuildException(ProjectHelper.java:551)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:444)
+     at org.apache.tools.ant.taskdefs.CallTarget.execute(CallTarget.java:105)
+     at com.sencha.ant.CallTask.execute(CallTask.java:137)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:38)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:442)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:217)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+     at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at com.sencha.ant.AntScript.execute(AntScript.java:117)
+     at com.sencha.command.plugin.PluginManager.execute(PluginManager.java:104)
+     at com.sencha.command.plugin.PluginManager.executeReverseFirst(PluginManager.java:145)
+     at com.sencha.command.environment.BuildEnvironment.execute(BuildEnvironment.java:308)
+     at com.sencha.command.environment.AppOrPackageEnvironment.execute(AppOrPackageEnvironment.java:729)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.doExecute(BasePluginCommands.java:125)
+     at com.sencha.command.app.AppCommands$BuildCommand.execute(AppCommands.java:470)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.sencha.util.MethodInvoker$Arguments.invoke(MethodInvoker.java:175)
+     at com.sencha.cli.Command.dispatch(Command.java:43)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.dispatch(BasePluginCommands.java:289)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.command.Sencha.dispatch(Sencha.java:80)
+     at com.sencha.command.Sencha.main(Sencha.java:147)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.exe4j.runtime.LauncherEngine.launch(LauncherEngine.java:65)
+     at com.install4j.runtime.launcher.UnixLauncher.main(UnixLauncher.java:57)
+   Caused by: The following error occurred while executing this line:
+/Users/v-nicholas.shindler/Code/rambox/.sencha/app/sass-impl.xml:235: com.sencha.exceptions.ExProcess: compass process exited with non-zero code : 1
+     at org.apache.tools.ant.ProjectHelper.addLocationToBuildException(ProjectHelper.java:551)
+     at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:401)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:38)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:442)
+     at org.apache.tools.ant.taskdefs.CallTarget.execute(CallTarget.java:105)
+     at com.sencha.ant.CallTask.execute(CallTask.java:137)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:38)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:442)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:217)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+     at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at com.sencha.ant.AntScript.execute(AntScript.java:117)
+     at com.sencha.command.plugin.PluginManager.execute(PluginManager.java:104)
+     at com.sencha.command.plugin.PluginManager.executeReverseFirst(PluginManager.java:145)
+     at com.sencha.command.environment.BuildEnvironment.execute(BuildEnvironment.java:308)
+     at com.sencha.command.environment.AppOrPackageEnvironment.execute(AppOrPackageEnvironment.java:729)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.doExecute(BasePluginCommands.java:125)
+     at com.sencha.command.app.AppCommands$BuildCommand.execute(AppCommands.java:470)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.sencha.util.MethodInvoker$Arguments.invoke(MethodInvoker.java:175)
+     at com.sencha.cli.Command.dispatch(Command.java:43)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.dispatch(BasePluginCommands.java:289)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.command.Sencha.dispatch(Sencha.java:80)
+     at com.sencha.command.Sencha.main(Sencha.java:147)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.exe4j.runtime.LauncherEngine.launch(LauncherEngine.java:65)
+     at com.install4j.runtime.launcher.UnixLauncher.main(UnixLauncher.java:57)
+   Caused by: com.sencha.exceptions.ExProcess: compass process exited with non-zero code : 1
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:116)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:217)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:197)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:38)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:442)
+     at org.apache.tools.ant.taskdefs.CallTarget.execute(CallTarget.java:105)
+     at com.sencha.ant.CallTask.execute(CallTask.java:137)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:38)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:442)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:217)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+     at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at com.sencha.ant.AntScript.execute(AntScript.java:117)
+     at com.sencha.command.plugin.PluginManager.execute(PluginManager.java:104)
+     at com.sencha.command.plugin.PluginManager.executeReverseFirst(PluginManager.java:145)
+     at com.sencha.command.environment.BuildEnvironment.execute(BuildEnvironment.java:308)
+     at com.sencha.command.environment.AppOrPackageEnvironment.execute(AppOrPackageEnvironment.java:729)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.doExecute(BasePluginCommands.java:125)
+     at com.sencha.command.app.AppCommands$BuildCommand.execute(AppCommands.java:470)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.sencha.util.MethodInvoker$Arguments.invoke(MethodInvoker.java:175)
+     at com.sencha.cli.Command.dispatch(Command.java:43)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.dispatch(BasePluginCommands.java:289)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.command.Sencha.dispatch(Sencha.java:80)
+     at com.sencha.command.Sencha.main(Sencha.java:147)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.exe4j.runtime.LauncherEngine.launch(LauncherEngine.java:65)
+     at com.install4j.runtime.launcher.UnixLauncher.main(UnixLauncher.java:57)
+   Caused by: compass process exited with non-zero code : 1
+     at com.sencha.command.compass.BaseRubyCommands.runRubyCommand(BaseRubyCommands.java:134)
+     at com.sencha.command.compass.CompassCommands$BaseCompassCommand.execute(CompassCommands.java:123)
+     at com.sencha.command.compass.ant.BaseCompassTask.doExecute(BaseCompassTask.java:99)
+     at com.sencha.ant.BaseAntTask.execute(BaseAntTask.java:34)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:217)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:197)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.MacroInstance.execute(MacroInstance.java:398)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:38)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:442)
+     at org.apache.tools.ant.taskdefs.CallTarget.execute(CallTarget.java:105)
+     at com.sencha.ant.CallTask.execute(CallTask.java:137)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.helper.SingleCheckExecutor.executeTargets(SingleCheckExecutor.java:38)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at org.apache.tools.ant.taskdefs.Ant.execute(Ant.java:442)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.taskdefs.Sequential.execute(Sequential.java:68)
+     at net.sf.antcontrib.logic.IfTask.execute(IfTask.java:217)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.TaskAdapter.execute(TaskAdapter.java:154)
+     at org.apache.tools.ant.UnknownElement.execute(UnknownElement.java:291)
+     at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at org.apache.tools.ant.dispatch.DispatchUtils.execute(DispatchUtils.java:106)
+     at org.apache.tools.ant.Task.perform(Task.java:348)
+     at org.apache.tools.ant.Target.execute(Target.java:392)
+     at org.apache.tools.ant.Target.performTasks(Target.java:413)
+     at org.apache.tools.ant.Project.executeSortedTargets(Project.java:1399)
+     at org.apache.tools.ant.Project.executeTarget(Project.java:1368)
+     at org.apache.tools.ant.helper.DefaultExecutor.executeTargets(DefaultExecutor.java:41)
+     at org.apache.tools.ant.Project.executeTargets(Project.java:1251)
+     at com.sencha.ant.AntScript.execute(AntScript.java:117)
+     at com.sencha.command.plugin.PluginManager.execute(PluginManager.java:104)
+     at com.sencha.command.plugin.PluginManager.executeReverseFirst(PluginManager.java:145)
+     at com.sencha.command.environment.BuildEnvironment.execute(BuildEnvironment.java:308)
+     at com.sencha.command.environment.AppOrPackageEnvironment.execute(AppOrPackageEnvironment.java:729)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.doExecute(BasePluginCommands.java:125)
+     at com.sencha.command.app.AppCommands$BuildCommand.execute(AppCommands.java:470)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.sencha.util.MethodInvoker$Arguments.invoke(MethodInvoker.java:175)
+     at com.sencha.cli.Command.dispatch(Command.java:43)
+     at com.sencha.command.BasePluginCommands$BasePluginCommand.dispatch(BasePluginCommands.java:289)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.cli.Commands.dispatch(Commands.java:64)
+     at com.sencha.command.Sencha.dispatch(Sencha.java:80)
+     at com.sencha.command.Sencha.main(Sencha.java:147)
+     at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+     at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+     at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+     at java.lang.reflect.Method.invoke(Method.java:497)
+     at com.exe4j.runtime.LauncherEngine.launch(LauncherEngine.java:65)
+     at com.install4j.runtime.launcher.UnixLauncher.main(UnixLauncher.java:57)
+

@@ -341,7 +341,7 @@ Ext.define('Rambox.view.main.Main', {
 				,'->'
 				,{
 					 xtype: 'label'
-					,html: '<span class="fa fa-code" style="color:black;"></span> '+locale['app.main[26]']+' <span class="fa fa-heart" style="color:red;"></span> '+locale['app.main[27]'].replace('Argentina', '<img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" />')
+					,html: '<span class="fa fa-code" style="color:black;"></span> '+locale['app.main[26]']+' <span class="fa fa-heart" style="color:red;"></span> '+locale['app.main[27]'].replace('Argentina', '<img src="resources/earth.png" alt="Earth" data-qtip="Earth" />')
 				}
 				,'->'
 				,{

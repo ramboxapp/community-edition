@@ -8,7 +8,7 @@
 
 @include extjs-toolbar-ui(
 	$ui: 'newversion',
-	$background-color: #31B96E
+	$background-color: $body-color
 );
 
 .x-toolbar-newversion {
