@@ -54,6 +54,14 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 			});
 		}
 
+		// Theme
+		if ( values.rambox_theme !== ipc.sendSync('getConfig').rambox_theme ) {
+			localStorage.setItem('rambox_theme', values.rambox_theme);
+			Ext.Msg.confirm('Action required', 'To change the theme of Rambox, you need to reload the app. Do you want to do it now?', function(btnId) {
+				if ( btnId === 'yes' ) ipc.send('relaunchApp');
+			});
+		}
+
 		ipc.send('setConfig', values);
 		me.getView().close();
 	}

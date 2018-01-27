@@ -166,7 +166,6 @@ function createWindow () {
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
 	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) mainWindow.minimize();
-	if ( config.get('rambox_theme') !== 'default') changeTheme(config.get('rambox_theme');
 
 	// Check if the window its outside of the view (ex: multi monitor setup)
 	const { positionOnScreen } = require('./utils/positionOnScreen');
@@ -296,9 +295,6 @@ function updateBadge(title) {
 	if ( messageCount > 0 && !mainWindow.isFocused() && !config.get('dont_disturb') && config.get('flash_frame') ) mainWindow.flashFrame(true);
 }
 
-function changeTheme(theme) {
-	Ext.util.CSS.swapStyleSheet("rambox-default-theme", `build/${theme}/development/Rambox/resources/Rambox-all.css`);
-}
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
 	var img = nativeImage.createFromDataURL(value);

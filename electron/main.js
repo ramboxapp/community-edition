@@ -36,6 +36,7 @@ const config = new Config({
 		,proxyPassword: ''
 		,locale: 'en'
 		,enable_hidpi_support: false
+		,rambox_theme: 'default'
 		,default_service: 'ramboxTab'
 
 		,x: undefined
