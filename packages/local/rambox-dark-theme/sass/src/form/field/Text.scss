@@ -1,18 +1,16 @@
 .x-form-trigger-wrap {
-	// border-radius: $border-radius-md;
-	// border-width: 2px;
-	// border-color: $base-gray;
-	// background-color: transparent;
+	padding: 1px 2px 2px 0px;
 	border-width: 1px;
-    border-radius: 0;
-    border-style: solid;
-    border-color: $base-color;
-    background-color: $base-dark-color;
+  border-radius: 0;
+  border-style: solid;
+  border-color: $base-color;
+  background-color: $base-dark-color;
 	color: $base-light-text;
 	.x-form-text, .x-form-trigger-default {
 		border-radius: $border-radius-md;
 		background-color: transparent;
 		color: $base-light-text;
+		height: auto;
 		.x-form-spinner-default {
 			border-radius: $border-radius-md;
 			background-color: $body-color;

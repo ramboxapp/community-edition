@@ -6,6 +6,7 @@
 		"test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
 		"sencha:clean": "rm -rf ./build/production",
 		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
+		"sencha:watch": "sencha app watch && cp app/package.json build/production/Rambox/ -w && npm --prefix -w ./build/production/Rambox/ install ./build/production/Rambox/",
 		"sencha:compile:build": "sencha app build && cp app/package.json build/production/Rambox/ && cp -R build/production/Rambox/* ../rambox-build",
 		"clean": "rm -rf ./dist",
 		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",

@@ -235,6 +235,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 		var cg = field.up().down('checkboxgroup');
 		if ( !Ext.isEmpty(newValue) && newValue.length > 0 ) {
+			field.getTrigger('search').hide();
 			field.getTrigger('clear').show();
 
 			Ext.getStore('ServicesList').getFilters().replaceAll({
@@ -246,6 +247,7 @@ Ext.define('Rambox.view.main.MainController', {
 			});
 		} else {
 			field.getTrigger('clear').hide();
+			field.getTrigger('search').show();
 			Ext.getStore('ServicesList').getFilters().removeAll();
 			me.doTypeFilter(cg);
 		}
@@ -259,6 +261,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 		field.reset();
 		field.getTrigger('clear').hide();
+		field.getTrigger('search').show();
 		field.updateLayout();
 
 		Ext.getStore('ServicesList').getFilters().removeAll();

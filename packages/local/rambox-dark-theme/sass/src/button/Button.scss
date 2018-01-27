@@ -11,6 +11,20 @@
 .x-btn-inner-decline-small:hover{
 	text-decoration: underline;
 }
+.x-btn-decline-small {
+	border-color: $body-light-color;
+	.x-btn-inner-decline-small {
+		color: $base-dark-text;
+	}
+	&.x-btn-over {
+			border-color: $base-gray;
+			background-color: rgba($base-gray, 0.1);
+			.x-btn-inner-decline-small {
+				color: $base-light-text;
+				text-decoration: none;
+			}
+	}
+}
 
 .x-btn-default-toolbar-small {
 	border-radius: $border-radius-lg;

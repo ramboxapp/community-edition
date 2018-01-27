@@ -1,7 +1,4 @@
 .x-window-default {
-	// .x-window-header-default {
-
-	// }
 	.x-window-body-default {
 		background: $body-color;
 		color: $base-light-text;
@@ -14,9 +11,11 @@
 			.fieldset-body-default {
 				padding: 0 .1rem .25rem
 			}
+			.x-box-layout-ct {
+				.x-btn-default-small {
+					padding: 4.5px;
+				}
+			}
 		}
 	}
-	// .x-window-footer-default {
-
-	// }
 }
