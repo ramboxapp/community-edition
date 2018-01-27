@@ -23,7 +23,7 @@ Ext.define('Rambox.ux.mixin.Badge', {
 	renderBadgeText: function() {
 		var badgeText = this.getBadgeText();
 
-		if (badgeText) {
+		if (badgeText && typeof badgeText === 'string') {
 			this.updateBadgeText(badgeText);
 		}
 	},
@@ -34,7 +34,7 @@ Ext.define('Rambox.ux.mixin.Badge', {
 
 		if (me.rendered) {
 			el.set({
-				'data-badge-text': badgeText !== '0' ? badgeText : ''
+				'data-badge-text': Number(badgeText) > 0 ? badgeText : ''
 			});
 
 			el.toggleCls(Ext.baseCSSPrefix + 'badge', !! badgeText);

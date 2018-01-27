@@ -1,11 +1,25 @@
 .x-form-trigger-wrap {
-	border-radius: $border-radius-md;
-	border-width: 2px;
-	border-color: $base-gray;
-	background-color: transparent;
+	// border-radius: $border-radius-md;
+	// border-width: 2px;
+	// border-color: $base-gray;
+	// background-color: transparent;
+	border-width: 1px;
+    border-radius: 0;
+    border-style: solid;
+    border-color: $base-color;
+    background-color: $base-dark-color;
+	color: $base-light-text;
 	.x-form-text, .x-form-trigger-default {
 		border-radius: $border-radius-md;
 		background-color: transparent;
 		color: $base-light-text;
+		.x-form-spinner-default {
+			border-radius: $border-radius-md;
+			background-color: $body-color;
+			color: $base-light-text;
+		}
 	}
+}
+.x-form-item-label-default {
+	color: $base-light-text;
 }

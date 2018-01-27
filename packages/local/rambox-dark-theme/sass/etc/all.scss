@@ -193,16 +193,17 @@ body {
 .x-badge[data-badge-text]:after {
 	content: attr(data-badge-text);
 	position: absolute;
-	font-size: 10px;
-	top: 0px;
-	right: 2px;
+	font-size: 11px;
+	top: -5px;
+	right: -5px;
+	z-index: 100;
 	width: auto;
 	font-weight: bold;
 	color: white;
 	text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	padding: 0 4px;
+	-webkit-border-radius: $border-radius-md;
+	border-radius: $border-radius-md;
+	padding: 0 6px;
 	background-image: none;
 	background-color: #C00;
 	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff1a1a), color-stop(3%, #e60000), color-stop(100%, #b30000));
@@ -250,8 +251,14 @@ body {
 .x-title-icon { background-size: 16px; }
 
 // Fix for scroller tab bar
-//.x-box-scroller-body-horizontal { width: auto !important; margin-right: 18px; padding-right: 18px; }
+// .x-box-scroller-body-horizontal { width: auto !important; margin-right: 18px; padding-right: 18px; }
 //.x-box-scroller-tab-bar { z-index: 9999; }
+.x-box-inner.x-box-scroller-body-horizontal {
+	overflow: visible;
+	.x-tab-default-top {
+		overflow: visible;
+	}
+}
 
 .service {
 	width: 230px;

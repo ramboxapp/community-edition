@@ -1,13 +1,17 @@
 .x-btn-icon-el-default-small.x-btn-glyph {
 	cursor: pointer;
-	color: #2E658E;
+	color: $base-gray;
+}
+.x-btn-icon-el-default-toolbar-small.x-btn-glyph {
+	cursor: pointer;
+	color: $base-gray;
+	opacity: 1;
 }
 .x-panel-default {
 	.x-toolbar-docked-bottom {
 		background-color: $body-color;	
 	}
 }
-
 .x-autocontainer-innerCt {
 	background-color: rgba($body-light-color, .12);
 }

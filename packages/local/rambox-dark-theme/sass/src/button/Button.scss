@@ -23,9 +23,15 @@
 }
 
 .x-btn {
-	&.x-btn-pressed, &.x-btn-focus, &.x-btn-over, &.x-btn-menu-active {
+	&.x-btn-focus, &.x-btn-over, &.x-btn-menu-active {
 		&.x-btn-default-toolbar-small {
 			border-color: $body-light-color;
+			background-color: $base-dark-color;
+		}
+	}
+	&.x-btn-pressed {
+		&.x-btn-default-toolbar-small {
+			border-color: $base-white;
 			background-color: $base-dark-color;
 		}
 	}
