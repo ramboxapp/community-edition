@@ -28,7 +28,7 @@
      * The name of the theme for this application.
      */
 
-    "theme": "rambox-dark-theme",
+    "theme": "rambox-default-theme",
 
     /**
      * The list of required packages (with optional versions; default is "latest").

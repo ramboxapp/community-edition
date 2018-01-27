@@ -48,6 +48,11 @@ Ext.define('Rambox.view.preferences.Preferences',{
 			});
 		});
 
+		var themeOptions = [];
+		themeOptions.push({value: 'default', label: "Default"});
+		themeOptions.push({value: 'light', label: "Light"});
+		themeOptions.push({value: 'dark', label: "Dark"});
+
 		this.items = [
 			{
 				 xtype: 'form'
@@ -145,6 +150,22 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: locale['preferences[1]']+' (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar
 						,hidden: process.platform === 'darwin'
+					}
+					,{
+						 xtype: 'combo'
+						,name: 'rambox_theme'
+						,fieldLabel: 'Theme to use for Rambox'
+						,labelAlign: 'top'
+						//,width: 380
+						//,labelWidth: 105
+						,value: config.rambox_theme
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: themeOptions
+						})
 					}
 					,{
 						 xtype: 'combo'

@@ -64,6 +64,14 @@ Ext.define('Rambox.store.Services', {
 					if ( Ext.getCmp('tab_'+config.default_service) ) Ext.cq1('app-main').setActiveTab('tab_'+config.default_service);
 					break;
 			}
+			switch (config.rambox_theme){
+				case 'dark':
+					Ext.util.CSS.swapStyleSheet("rambox-default-theme", "build/dark/development/Rambox/resources/Rambox-all.css");
+					break;
+				default:
+					Ext.util.CSS.swapStyleSheet("rambox-dark-theme", "build/development/Rambox/resources/Rambox-all.css");
+					break;
+			}
 
 			store.suspendEvent('load');
 			Ext.cq1('app-main').resumeEvent('add');
