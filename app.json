@@ -26,6 +26,8 @@
 
     /**
      * The name of the theme for this application.
+     * NOTE: to build for alternate theme: 
+     * change theme name ->  run compile:build -> move into build/NAME sub-folder -> rename theme in this file to default & recompile
      */
 
     "theme": "rambox-default-theme",

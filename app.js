@@ -1,7 +1,6 @@
 var auth0, lock; // Auth0 vars
 
 // load theme
-console.log(localStorage.rambox_theme, Ext.isDebugEnabled);
 if (localStorage.rambox_theme !== "default") Ext.util.CSS.swapStyleSheet("rambox-default-theme", `build/${localStorage.rambox_theme}/production/Rambox/resources/Rambox-all.css`);
 
 // Enable Cookies
