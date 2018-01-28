@@ -1,7 +1,7 @@
 var auth0, lock; // Auth0 vars
 
 // load theme
-if (localStorage.rambox_theme !== "default") Ext.util.CSS.swapStyleSheet("rambox-default-theme", `build/${localStorage.rambox_theme}/production/Rambox/resources/Rambox-all.css`);
+if (localStorage.rambox_theme !== "default") Ext.util.CSS.swapStyleSheet("rambox-default-theme", `resources/Rambox-${localStorage.rambox_theme}.css`);
 
 // Enable Cookies
 var ElectronCookies = require('@exponent/electron-cookies');
