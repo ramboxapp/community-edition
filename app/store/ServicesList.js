@@ -21,8 +21,8 @@ Ext.define('Rambox.store.ServicesList', {
 	,autoSync: true
 	,pageSize: 100000
 	,data: [
-		{
-			 id: 'whatsapp'
+	   {
+			id: 'whatsapp'
 			,logo: 'whatsapp.png'
 			,name: 'WhatsApp'
 			,description: locale['services[0]']
@@ -30,8 +30,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var i=0;document.querySelectorAll(".unread").forEach(function(e){0===e.querySelectorAll("[data-icon=muted]").length&&i++});updateBadge(i)}function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } }setInterval(checkUnread,1e3);'
 			,dont_update_unread_from_title: true
-		},
-		{
+   		},
+	    {
 			 id: 'slack'
 			,logo: 'slack.png'
 			,name: 'Slack'
@@ -880,5 +880,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,custom_domain: true
 		},
+		{
+			id: 'servicenow'
+		   ,logo: 'servicenow.png'
+		   ,name: 'Servicenow'
+		   ,description: "ServiceNow is a service management platform that allows users to submit requests for technical support for hardware, software, applications, and more."
+		   ,url: 'https://___.service-now.com/'
+		   ,type: 'messaging'
+		   ,dont_update_unread_from_title: true
+	   },
 	]
 });
