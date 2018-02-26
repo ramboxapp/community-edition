@@ -880,5 +880,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,custom_domain: true
 		},
+		{
+			 id: 'stride'
+			,logo: 'stride.png'
+			,name: 'Stride'
+			,description: 'Stride is the complete team communication solution with group messaging, video meetings, and built-in collaboration tools.'
+			,url: 'https://app.stride.com/___'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var t=0,e=!1;document.querySelectorAll(".conversations-nav .nav-item .activity-indicator").forEach(function(n){n.classList.contains("has-count")?t+=parseInt(n.innerHTML):e=!0}),updateBadge(t,e)}function updateBadge(t,e){var n=t>0?"("+t+") ":e?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+		}
 	]
 });
