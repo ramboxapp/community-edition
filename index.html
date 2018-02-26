@@ -15,7 +15,9 @@
 		xhr.open('HEAD', file + "?rand=" + randomNum, true);
 		xhr.send();
 
-		xhr.addEventListener("readystatechange", processRequest, false);
+		xhr.addEventListener("readystatechange", function() {
+			setTimeout(processRequest, 5000);
+		}, false);
 
 		function processRequest(e) {
 			if (xhr.readyState == 4) {
