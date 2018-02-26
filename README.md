@@ -158,6 +158,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mailru.png" alt="Mail.Ru" title="Mail.Ru">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/kune.png" alt="Kune" title="Kune">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zulip.png" alt="Zulip" title="Zulip">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/stride.png" alt="Stride" title="Stride">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
