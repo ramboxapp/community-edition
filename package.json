@@ -97,7 +97,7 @@
 		"chai": "3.5.0",
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "^1.8.2",
+		"electron": "^1.8.3",
 		"electron-builder": "^17.10.0",
 		"electron-builder-squirrel-windows": "15.0.0",
 		"electron-squirrel-startup": "^1.0.0",
