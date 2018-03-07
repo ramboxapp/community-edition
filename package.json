@@ -74,6 +74,7 @@
 				"Categories": "GTK;GNOME;Utility;Office;Email;Chat;InstantMessaging;"
 			},
 			"target": [
+				"snap",
 				"AppImage",
 				"deb",
 				"rpm",
@@ -81,6 +82,10 @@
 				"tar.gz"
 			]
 		},
+		"snap": {
+ 			"confinement": "strict",
+ 			"grade": "stable"
+      		},
 		"directories": {
 			"buildResources": "resources/installer/",
 			"output": "dist/",
