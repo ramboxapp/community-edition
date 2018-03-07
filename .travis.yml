@@ -53,6 +53,7 @@ deploy:
   file_glob: true
   file:
     - "dist/*.zip"
+    - "dist/*.snap"
     - "dist/*.deb"
     - "dist/*.tar.gz"
     - "dist/*.AppImage"
