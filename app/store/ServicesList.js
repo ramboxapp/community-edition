@@ -28,7 +28,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[0]']
 			,url: 'https://web.whatsapp.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var i=0;document.querySelectorAll(".unread").forEach(function(e){0===e.querySelectorAll("[data-icon=muted]").length&&i++});updateBadge(i)}function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } }setInterval(checkUnread,1e3);'
+			,js_unread: 'function checkUnread(){const elements = document.querySelectorAll(\'.CxUIE, .unread\');let count = 0;for (let i = 0; i < elements.length; i++) {if (elements[i].querySelectorAll(\'*[data-icon="muted"]\').length === 0) {count++;}}updateBadge(count);}function updateBadge(count){if(count && count>=1){rambox.setUnreadCount(count);}else{rambox.clearUnreadCount();}}setInterval(checkUnread, 1e3);'
 			,dont_update_unread_from_title: true
 		},
 		{
@@ -880,5 +880,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,custom_domain: true
 		},
+		{
+			 id: 'stride'
+			,logo: 'stride.png'
+			,name: 'Stride'
+			,description: 'Stride is the complete team communication solution with group messaging, video meetings, and built-in collaboration tools.'
+			,url: 'https://app.stride.com/___'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var t=0,e=!1;document.querySelectorAll(".conversations-nav .nav-item .activity-indicator").forEach(function(n){n.classList.contains("has-count")?t+=parseInt(n.innerHTML):e=!0}),updateBadge(t,e)}function updateBadge(t,e){var n=t>0?"("+t+") ":e?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+		}
 	]
 });

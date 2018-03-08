@@ -158,6 +158,7 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/mailru.png" alt="Mail.Ru" title="Mail.Ru">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/kune.png" alt="Kune" title="Kune">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zulip.png" alt="Zulip" title="Zulip">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/stride.png" alt="Stride" title="Stride">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -189,13 +190,10 @@ Sync feature use Auth0 for Single Sign On & Token Based Authentication and to st
 
 ## Donations
 
-| Type          |                                         URL/Wallet                                         |
-|---------------|:------------------------------------------------------------------------------------------:|
-| PayPal        | [HERE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA) |
-| Bitcoin       | 1BjR8dARsnuqz41FZM9R8pPtYTeHn9mLSs                                                         |
-| Bitcoin Cash  | 1BjR8dARsnuqz41FZM9R8pPtYTeHn9mLSs                                                         |
-| Ethereum      | 0xf3d15f9649c6da63fc3971d8c82804dd677fd151                                                 |
-| Litecoin      | Lf3CjUMhCVEvUjqMrNfRCkTbzRrd7KSdZn                                                         |
+| Type               |                                         URL/Wallet                                         |
+|--------------------|:------------------------------------------------------------------------------------------:|
+| PayPal             | [HERE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA) |
+| Cryptocurrencies   | [HERE](https://www.vaulty.io/v/b6480279-af28-4855-868c-17e5cb0ae7fa)                       |
 
 ## Translations
 
