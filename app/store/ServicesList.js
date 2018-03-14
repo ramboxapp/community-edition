@@ -113,7 +113,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'gmail.png'
 			,name: 'Gmail'
 			,description: locale['services[9]']
-			,url: 'https://mail.google.com/mail/'
+			,url: 'https://mail.google.com/mail/?labs=0'
 			,type: 'email'
 			,allow_popups: true
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("aim")[0];updateBadge(-1!=a.textContent.indexOf("(")&&(t=parseInt(a.textContent.replace(/[^0-9]/g,""))))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
