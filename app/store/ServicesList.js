@@ -888,6 +888,18 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://app.stride.com/___'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t=0,e=!1;document.querySelectorAll(".conversations-nav .nav-item .activity-indicator").forEach(function(n){n.classList.contains("has-count")?t+=parseInt(n.innerHTML):e=!0}),updateBadge(t,e)}function updateBadge(t,e){var n=t>0?"("+t+") ":e?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+		},
+		{
+			 id: 'hangoutschat'
+			,logo: 'hangoutschat.png'
+			,name: 'Hangouts Chat'
+			,description: 'A messaging platform built for teams.'
+			,url: 'https://chat.google.com/'
+			,type: 'messaging'
+			,titleBlink: true
+			,manual_notifications: true
+			,dont_update_unread_from_title: true
+			,js_unread: 'function checkUnread(){updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
 		}
 	]
 });
