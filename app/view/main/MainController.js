@@ -42,14 +42,20 @@ Ext.define('Rambox.view.main.MainController', {
 		console.log('Updating Tabs positions...');
 
 		var store = Ext.getStore('Services');
+		var align = 'left';
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
 			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
 				var rec = store.getById(t.record.get('id'));
-				if ( rec.get('align') === 'right' ) i--;
+				if ( align === 'right' ) i--;
+				rec.set('align', align);
 				rec.set('position', i);
 				rec.save();
 			}
+			else if ( t.id === 'tbfill' ) {
+				align = 'right';
+			}
+
 		});
 
 		store.load();
