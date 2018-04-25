@@ -163,6 +163,15 @@ module.exports = function(config) {
 					type: 'separator'
 				},
 				{
+					label: '&Toggle Status Bar',
+					click() {
+						sendAction('toggleStatusBar');
+					}
+				},
+				{
+					type: 'separator'
+				},
+				{
 					role: 'zoomin'
 				},
 				{
