@@ -772,6 +772,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 		},
 		{
+			 id: 'messengerbusiness'
+			,logo: 'messengerpages.png'
+			,name: 'Messenger for Business'
+			,description: 'Messenger can help facilitate communication with your customers.'
+			,url: 'https://business.facebook.com/___/inbox/'
+			,type: 'messaging'
+			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
+		},
+		{
 			 id: 'vk'
 			,logo: 'vk.png'
 			,name: 'VK Messenger'

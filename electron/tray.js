@@ -67,9 +67,9 @@ exports.setBadge = function(messageCount, showUnreadTray) {
 
 	let icon;
 	if (process.platform === 'linux') {
-		icon = messageCount && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
+		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
 	} else {
-		icon = messageCount && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
+		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
 	}
 
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
