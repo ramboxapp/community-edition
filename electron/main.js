@@ -277,7 +277,8 @@ function createMasterPasswordWindow() {
 function updateBadge(title) {
 	title = title.split(" - ")[0]; //Discard service name if present, could also contain digits
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
-
+	messageCount = isNaN(messageCount) ? 0 : messageCount;
+	
 	tray.setBadge(messageCount, config.get('systemtray_indicator'));
 
 	if (process.platform === 'win32') { // Windows
@@ -469,7 +470,7 @@ if ( config.get('proxy') ) {
 	app.on('login', (event, webContents, request, authInfo, callback) => {
 		if(!authInfo.isProxy)
 			return;
-			
+
 		event.preventDefault()
 		callback(config.get('proxyLogin'), config.get('proxyPassword'))
 	})
