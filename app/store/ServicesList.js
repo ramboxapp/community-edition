@@ -776,7 +776,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'vk.png'
 			,name: 'VK Messenger'
 			,description: 'Simple and Easy App for Messaging on VK.'
-			,url: 'https://vk.com/im'
+			,url: 'https://m.vk.com/im'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/\D+/g,"")))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
