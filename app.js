@@ -15,6 +15,9 @@ Ext.application({
 
 // auto update logic
 const ipc = require('electron').ipcRenderer;
+
+require('electron-context-menu')();
+
 ipc.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
 });
