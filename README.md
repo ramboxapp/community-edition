@@ -184,7 +184,7 @@
 
 No personal information will be saved
 
-Sessions will persist using the [partition:persist](http://electron.atom.io/docs/api/web-view-tag/#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
+Sessions will persist using the [partition:persist](https://electronjs.org/docs/api/webview-tag#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
 
 Sync feature use Auth0 for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
