@@ -1,5 +1,6 @@
 sudo: required
 language: node_js
+dist: trusty
 node_js:
   - "8"
 

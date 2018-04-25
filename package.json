@@ -74,6 +74,7 @@
 				"Categories": "GTK;GNOME;Utility;Office;Email;Chat;InstantMessaging;"
 			},
 			"target": [
+				"snap",
 				"AppImage",
 				"deb",
 				"rpm",
