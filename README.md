@@ -214,7 +214,7 @@ sencha app watch
 npm start
 ```
 
-See [Contributing.md](https://github.com/saenzramiro/rambox/CONTRIBUTING.md) for more detailed information about getting set up.
+See [Contributing.md](https://github.com/saenzramiro/rambox/blob/master/CONTRIBUTING.md) for more detailed information about getting set up.
 
 -------------------
 
