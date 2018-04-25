@@ -31,6 +31,7 @@ before_install:
       sudo apt-get install -qq libxml2-dev;
       sudo apt-get install -qq libappindicator1;
       sudo apt-get install -qq rpm;
+      sudo snap install snapcraft --classic;
     fi
 install:
   - git config --global core.autocrlf input
