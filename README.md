@@ -196,8 +196,6 @@ Help us translate Rambox on https://crowdin.com/project/rambox/invite.
 
 ## [Install on Linux - Steps](https://github.com/saenzramiro/rambox/wiki/Install-on-Linux)
 
-## [To Do](https://github.com/saenzramiro/rambox/blob/master/TODO.md)
-
 ## Contributing
 
 Want to report a bug, request a feature, contribute to or translate Rambox? We need all the help we can get! Fork and work!
