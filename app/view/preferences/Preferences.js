@@ -234,6 +234,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,name: 'enable_hidpi_support'
 						,boxLabel: locale['preferences[8]']
 						,value: config.enable_hidpi_support
+						,hidden: process.platform !== 'win32'
 					}
 					,{
 						 xtype: 'fieldset'
