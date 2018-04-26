@@ -9,9 +9,10 @@ branches:
   - master
 skip_non_tags: true
 init:
-- cmd: git config --global core.autocrlf input
+  - cmd: git config --global core.autocrlf input
 install:
-- cmd: >-
+  - ps: Install-Product node $env:nodejs_version
+  - cmd: >-
     git reset --hard HEAD
 
     npm run sencha:clean
@@ -26,12 +27,12 @@ install:
 
     npm prune
 cache:
-- '%APPDATA%\npm-cache'
-- '%USERPROFILE%\.electron'
-- node_modules
-- build\production\Rambox\node_modules
+  - '%APPDATA%\npm-cache'
+  - '%USERPROFILE%\.electron'
+  - node_modules
+  - build\production\Rambox\node_modules
 build_script:
-- cmd: >-
+  - cmd: >-
     node --version
 
     npm --version
@@ -39,16 +40,16 @@ build_script:
     node_modules/.bin/build --win --ia32 --x64
 test: off
 artifacts:
-- path: dist\win\*.exe
-- path: dist\win\*.nupkg
-- path: dist\win\RELEASES
-- path: dist\win-ia32\*.exe
-- path: dist\*.zip
+  - path: dist\win\*.exe
+  - path: dist\win\*.nupkg
+  - path: dist\win\RELEASES
+  - path: dist\win-ia32\*.exe
+  - path: dist\*.zip
 deploy:
-- provider: GitHub
-  tag: $(appveyor_build_version)
-  release: $(appveyor_build_version)
-  auth_token:
-    secure: RKFkz2S89dkYXdW+k47Wv42yrUeE1bDDMkM1PNuxrb0ZOcVVXPO88+t5dUllyvOG
-  draft: true
-  prerelease: false
+  - provider: GitHub
+    tag: $(appveyor_build_version)
+    release: $(appveyor_build_version)
+    auth_token:
+      secure: RKFkz2S89dkYXdW+k47Wv42yrUeE1bDDMkM1PNuxrb0ZOcVVXPO88+t5dUllyvOG
+    draft: true
+    prerelease: false
