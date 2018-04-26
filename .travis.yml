@@ -32,8 +32,8 @@ before_install:
       sudo apt-get install -qq libxml2-dev;
       sudo apt-get install -qq libappindicator1;
       sudo apt-get install -qq rpm;
-      sudo apt-get install -qq snappy-tools;
-      sudo apt-get install -qq snapcraft;
+      sudo apt-get install -y -qq snappy-tools;
+      sudo apt-get install -y -qq snapcraft;
     fi
 install:
   - git config --global core.autocrlf input
