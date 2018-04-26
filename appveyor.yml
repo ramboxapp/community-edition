@@ -13,19 +13,19 @@ init:
 install:
   - ps: Install-Product node $env:nodejs_version
   - cmd: >-
-    git reset --hard HEAD
+      git reset --hard HEAD
 
-    npm run sencha:clean
+      npm run sencha:clean
 
-    git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
+      git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-    npm install npm@5.7.1 -g
+      npm install npm@5.7.1 -g
 
-    npm install
+      npm install
 
-    npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
+      npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-    npm prune
+      npm prune
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
