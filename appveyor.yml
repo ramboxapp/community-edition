@@ -1,4 +1,6 @@
 version: 0.5.17
+environment:
+  nodejs_version: "8"
 pull_requests:
   do_not_increment_build_number: true
 branches:
