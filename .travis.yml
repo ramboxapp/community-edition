@@ -32,7 +32,7 @@ before_install:
       sudo apt-get install -qq libxml2-dev;
       sudo apt-get install -qq libappindicator1;
       sudo apt-get install -qq rpm;
-      travis_wait sudo apt-get install -y -qq snappy-tools;
+      sudo apt-get install -y -qq snappy-tools;
       sudo apt-get install -y -qq snapcraft;
     fi
 install:
