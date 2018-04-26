@@ -17,7 +17,7 @@ install:
 
     git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-    npm install npm -g
+    npm install npm@5.7.1 -g
 
     npm install
 
