@@ -14,17 +14,11 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - cmd: >-
       git reset --hard HEAD
-
       npm run sencha:clean
-
       git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-
       npm install npm@5.7.1 -g
-
       npm install
-
       npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-
       npm prune
 cache:
   - '%APPDATA%\npm-cache'
@@ -33,11 +27,9 @@ cache:
   - build\production\Rambox\node_modules
 build_script:
   - cmd: >-
-    node --version
-
-    npm --version
-
-    node_modules/.bin/build --win --ia32 --x64
+      node --version
+      npm --version
+      node_modules/.bin/build --win --ia32 --x64
 test: off
 artifacts:
   - path: dist\win\*.exe
