@@ -385,6 +385,6 @@ Ext.define('Rambox.view.main.Main', {
 		,add: 'updatePositions'
 		,remove: 'updatePositions'
 		,childmove: 'updatePositions'
-		,beforerender: 'initialize'
+		,boxready: 'initialize'
 	}
 });
