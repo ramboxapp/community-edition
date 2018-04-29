@@ -147,10 +147,25 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,hidden: process.platform === 'darwin'
 					}
 					,{
-						 xtype: 'checkbox'
-						,name: 'left_tabbar'
-						,boxLabel: 'Vertical service bar'
-						,value: config.left_tabbar
+						 xtype: 'combo'
+						,name: 'tabbar_location'
+						,fieldLabel: 'Service bar location'
+						,labelAlign: 'left'
+						,width: 380
+						,labelWidth: 105
+						,value: config.tabbar_location
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: [
+								 { 'value': 'top', 'label': 'Top' }
+								,{ 'value': 'left', 'label': 'Left' }
+								,{ 'value': 'bottom', 'label': 'Bottom' }
+								,{ 'value': 'right', 'label': 'Right' }
+							]
+						})
 					}
 					,{
 						 xtype: 'combo'
