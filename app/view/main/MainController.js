@@ -8,10 +8,11 @@ Ext.define('Rambox.view.main.MainController', {
 
 		if ( config.left_tabbar === true ) {
 			tabPanel.setTabPosition('left');
-			tabPanel.setTabRotation(0);
 		} else {
 			tabPanel.setTabPosition('top');
 		}
+
+		tabPanel.setTabRotation(0);
 	}
 
 	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
