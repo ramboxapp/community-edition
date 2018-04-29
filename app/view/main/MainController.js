@@ -7,9 +7,10 @@ Ext.define('Rambox.view.main.MainController', {
 		const config = ipc.sendSync('getConfig');
 
 		if ( config.left_tabbar === true ) {
-			const mainView = Ext.cq1('app-main');
-			mainView.setTabPosition('left');
-			mainView.setTabRotation(0);
+			tabPanel.setTabPosition('left');
+			tabPanel.setTabRotation(0);
+		} else {
+			tabPanel.setTabPosition('top');
 		}
 	}
 

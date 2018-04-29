@@ -318,6 +318,8 @@ ipcMain.on('setConfig', function(event, values) {
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
 
+	mainWindow.webContents.executeJavaScript('(function(a){if(a)a.controller.initialize(a);})(Ext.cq1("app-main"))');
+
 	switch ( values.window_display_behavior ) {
 		case 'show_taskbar':
 			mainWindow.setSkipTaskbar(false);
