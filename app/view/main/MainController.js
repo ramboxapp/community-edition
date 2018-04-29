@@ -3,6 +3,16 @@ Ext.define('Rambox.view.main.MainController', {
 
 	,alias: 'controller.main'
 
+	,initialize: function( tabPanel ) {
+		const config = ipc.sendSync('getConfig');
+
+		if ( config.left_tabbar === true ) {
+			const mainView = Ext.cq1('app-main');
+			mainView.setTabPosition('left');
+			mainView.setTabRotation(0);
+		}
+	}
+
 	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
 	,onTabChange: function( tabPanel, newTab, oldTab ) {
 		var me = this;
