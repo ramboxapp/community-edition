@@ -147,6 +147,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,hidden: process.platform === 'darwin'
 					}
 					,{
+						 xtype: 'checkbox'
+						,name: 'left_tabbar'
+						,boxLabel: 'Vertical service bar'
+						,value: config.left_tabbar
+					}
+					,{
 						 xtype: 'combo'
 						,name: 'default_service'
 						,fieldLabel: 'Default service to display when Rambox starts'

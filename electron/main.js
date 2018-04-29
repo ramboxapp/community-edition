@@ -20,6 +20,7 @@ const config = new Config({
 	 defaults: {
 		 always_on_top: false
 		,hide_menu_bar: false
+		,left_tabbar: false
 		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,flash_frame: true
