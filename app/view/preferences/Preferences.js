@@ -152,7 +152,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,fieldLabel: 'Service bar location'
 						,labelAlign: 'left'
 						,width: 380
-						,labelWidth: 105
+						,labelWidth: 180
 						,value: config.tabbar_location
 						,displayField: 'label'
 						,valueField: 'value'
