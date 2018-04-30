@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.5.16",
+	"version": "0.5.17",
 	"description": "Rambox",
 	"main": "electron/main.js",
 	"private": true,
@@ -30,10 +30,11 @@
 	"license": "GPL-3.0",
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
-		"auth0-js": "^8.10.1",
+		"auth0-js": "^8.12.3",
 		"auth0-lock": "^10.22.0",
 		"auto-launch-patched": "5.0.2",
 		"electron-config": "0.2.1",
+		"electron-context-menu": "0.9.1",
 		"electron-is-dev": "^0.3.0",
 		"mime": "^1.4.0",
 		"rimraf": "2.6.1",

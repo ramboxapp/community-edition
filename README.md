@@ -41,12 +41,7 @@
 - [Translations](#translations)
 - [Install on Linux - Steps](#install-on-linux---steps)
 - [To Do](#to-do)
-- [Getting Involved](#getting-involved)
-- [Getting Started](#getting-started)
-    - [Technologies](#technologies)
-    - [Environment](#environment)
-    - [Quickstart](#quickstart)
-    - [Compile on Ubuntu](#compile-on-ubuntu)
+- [Contributing](#contributing)
 - [Disclosure](#disclosure)
 - [Licence](#licence)
 
@@ -57,7 +52,7 @@
 ![Rambox](https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/screenshots/mac.png)
 
 
-## Services available - 96
+## Services available - 98
 
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -159,6 +154,8 @@
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/kune.png" alt="Kune" title="Kune">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/zulip.png" alt="Zulip" title="Zulip">
 <img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/stride.png" alt="Stride" title="Stride">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/hangoutschat.png" alt="Hangouts Chat" title="Hangouts Chat">
+<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
@@ -184,7 +181,7 @@
 
 No personal information will be saved
 
-Sessions will persist using the [partition:persist](http://electron.atom.io/docs/api/web-view-tag/#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
+Sessions will persist using the [partition:persist](https://electronjs.org/docs/api/webview-tag#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
 
 Sync feature use Auth0 for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
@@ -201,49 +198,23 @@ Help us translate Rambox on https://crowdin.com/project/rambox/invite.
 
 ## [Install on Linux - Steps](https://github.com/saenzramiro/rambox/wiki/Install-on-Linux)
 
-## [To Do](https://github.com/saenzramiro/rambox/blob/master/TODO.md)
-
-## Getting Involved
+## Contributing
 
 Want to report a bug, request a feature, contribute to or translate Rambox? We need all the help we can get! Fork and work!
 
-## Getting Started
+### Quickstart:
 
-If you're comfortable getting up and running from a `git clone`, this method is for you.
+```shell
+git clone https://github.com/saenzramiro/rambox.git
+cd rambox
+cp env-sample.js env.js
+# update env.js with your auth0 details.
+npm install
+sencha app watch
+npm start
+```
 
-#### Technologies:
-
-* Sencha Ext JS 5.1.1.451
-* Electron
-* Node JS
-
-#### Environment:
-
-* Sencha Cmd 6.1.2.15 (make sure to check "Compass extension" during install if you don't have installed yet)
-* Ruby 2.3
-* NPM 3.8.7
-* Node.js 4.0.0
-
-#### Quickstart:
-
-1. `git clone https://github.com/saenzramiro/rambox.git`
-2. `npm install`
-3. Configure `env-sample.js` and rename it to `env.js`.
-4. `npm run sencha:compile`
-5. `npm start`
-
-#### Compile on Ubuntu:
-
-These instructions were tested with Ubuntu 17.04.
-1. Install dependencies: `sudo apt install nodejs-legacy npm git`
-2. Build and install electron: `sudo npm install electron-prebuilt -g`
-3. Install Sencha Cmd (non-free): https://www.sencha.com/products/extjs/cmd-download/
-4. Clone repository: `git clone https://github.com/saenzramiro/rambox.git`
-5. Install npm dependencies: `npm install`
-6. Configure `env-sample.js` and rename it to `env.js`.
-7. Compile: `npm run sencha:compile`
-8. Start program: `npm start`
-
+See [Contributing.md](https://github.com/saenzramiro/rambox/blob/master/CONTRIBUTING.md) for more detailed information about getting set up.
 
 -------------------
 

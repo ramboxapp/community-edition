@@ -19,6 +19,9 @@ Ext.application({
 
 // auto update logic
 const ipc = require('electron').ipcRenderer;
+
+require('electron-context-menu')();
+
 ipc.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
 });
@@ -130,6 +133,14 @@ ipc.on('setBadge', function(event, messageCount) {
 ipc.on('reloadCurrentService', function(e) {
 	var tab = Ext.cq1('app-main').getActiveTab();
 	if ( tab.id !== 'ramboxTab' ) tab.reloadService();
+});
+// Toggle Status Bar
+ipc.on('toggleStatusBar', function() {
+	var tab = Ext.cq1('app-main').getActiveTab();
+
+	if ( tab.id !== 'ramboxTab' ) {
+		tab.down('statusbar').closed ? tab.setStatusBar(tab.record.get('statusbar')) : tab.closeStatusBar();
+	}
 });
 // Focus the current service when Alt + Tab or click in webviews textfields
 window.addEventListener('focus', function() {

@@ -64,6 +64,7 @@
 		"win": {
 			"target": [
 				"squirrel",
+				"nsis",
 				"zip"
 			]
 		},
@@ -75,6 +76,7 @@
 				"Categories": "GTK;GNOME;Utility;Office;Email;Chat;InstantMessaging;"
 			},
 			"target": [
+				"snap",
 				"AppImage",
 				"deb",
 				"rpm",
@@ -83,9 +85,9 @@
 			]
 		},
 		"snap": {
- 			"confinement": "strict",
- 			"grade": "stable"
-      		},
+			"confinement": "strict",
+			"grade": "stable"
+		},
 		"directories": {
 			"buildResources": "resources/installer/",
 			"output": "dist/",
@@ -97,8 +99,8 @@
 		"chai": "3.5.0",
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "^1.8.3",
-		"electron-builder": "^17.10.0",
+		"electron": "^1.8.4",
+		"electron-builder": "^20.10.0",
 		"electron-builder-squirrel-windows": "15.0.0",
 		"electron-squirrel-startup": "^1.0.0",
 		"mocha": "3.2.0",
@@ -106,10 +108,11 @@
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
-		"auth0-js": "^8.10.1",
+		"auth0-js": "^8.12.3",
 		"auth0-lock": "^10.22.0",
 		"auto-launch-patched": "5.0.2",
 		"electron-config": "0.2.1",
+		"electron-context-menu": "0.9.1",
 		"electron-is-dev": "^0.3.0",
 		"mime": "^1.4.0",
 		"rimraf": "2.6.1",
