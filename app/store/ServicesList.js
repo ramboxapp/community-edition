@@ -742,7 +742,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'FastMail'
 			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
 			,url: 'https://www.fastmail.com/mail/'
-			,type: 'mail'
+			,type: 'email'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("v-FolderSource-badge"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+")"+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);setTimeout(function(){O.WindowController.openExternal=function(a){var b=document.createElement("a");b.href=a,b.setAttribute("target","_blank"),b.click()};},3000);'
 			,note: 'To enable desktop notifications, you have to go to Settings inside FastMail.'
 		},
