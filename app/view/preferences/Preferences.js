@@ -235,6 +235,15 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,boxLabel: locale['preferences[8]']
 						,value: config.enable_hidpi_support
 						,hidden: process.platform !== 'win32'
+					},
+					{
+						 xtype: 'textfield'
+						,fieldLabel: 'Override User-Agent for all services (needs to relaunch)'
+						,labelAlign: 'top'
+						,name: 'user_agent'
+						,value: config.user_agent
+						,width: 360
+						,emptyText: 'Leave blank for default user agent'
 					}
 					,{
 						 xtype: 'fieldset'

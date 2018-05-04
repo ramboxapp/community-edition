@@ -41,6 +41,7 @@ Ext.define('Rambox.store.Services', {
 					,displayTabUnreadCounter: service.get('displayTabUnreadCounter')
 					,enabled: service.get('enabled')
 					,record: service
+					,useragent: ipc.sendSync('getConfig').user_agent
 					,tabConfig: {
 						service: service
 					}

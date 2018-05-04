@@ -45,6 +45,13 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 			return;
 		}
 
+		// User Agent
+		if ( values.user_agent !== ipc.sendSync('getConfig').user_agent ) {
+			Ext.Msg.confirm('Action required', 'To change the user agent of Rambox, you need to reload the app. Do you want to do it now?', function(btnId) {
+				if ( btnId === 'yes' ) ipc.send('relaunchApp');
+			});
+		}
+
 		// Locale
 		if ( values.locale !== ipc.sendSync('getConfig').locale ) {
 			localStorage.setItem('locale', values.locale);

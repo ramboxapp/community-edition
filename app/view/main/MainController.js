@@ -95,6 +95,7 @@ Ext.define('Rambox.view.main.MainController', {
 				,displayTabUnreadCounter: rec.get('displayTabUnreadCounter')
 				,enabled: rec.get('enabled')
 				,record: rec
+				,useragent: ipc.sendSync('getConfig').user_agent
 				,hidden: hideTab
 				,tabConfig: {
 					 service: rec
