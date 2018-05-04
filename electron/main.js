@@ -156,8 +156,7 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			 webSecurity: false
-			,nodeIntegration: true
+			nodeIntegration: true
 			,plugins: true
 			,partition: 'persist:rambox'
 		}
