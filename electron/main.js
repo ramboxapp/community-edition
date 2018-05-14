@@ -20,6 +20,7 @@ const config = new Config({
 	 defaults: {
 		 always_on_top: false
 		,hide_menu_bar: false
+		,tabbar_location: 'top'
 		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,flash_frame: true
@@ -316,6 +317,8 @@ ipcMain.on('setConfig', function(event, values) {
 	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
+
+	mainWindow.webContents.executeJavaScript('(function(a){if(a)a.controller.initialize(a)})(Ext.cq1("app-main"))');
 
 	switch ( values.window_display_behavior ) {
 		case 'show_taskbar':

@@ -3,6 +3,22 @@ Ext.define('Rambox.view.main.MainController', {
 
 	,alias: 'controller.main'
 
+	,initialize: function( tabPanel ) {
+		const config = ipc.sendSync('getConfig');
+
+		tabPanel.setTabPosition(config.tabbar_location);
+		tabPanel.setTabRotation(0);
+
+		let reorderer = tabPanel.plugins.find((plugin) => plugin.ptype == "tabreorderer");
+
+		if ( reorderer !== undefined ) {
+			const names = reorderer.container.getLayout().names;
+			reorderer.dd.dim = names.width;
+			reorderer.dd.startAttr = names.beforeX;
+			reorderer.dd.endAttr = names.afterX;
+		}
+	}
+
 	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
 	,onTabChange: function( tabPanel, newTab, oldTab ) {
 		var me = this;
