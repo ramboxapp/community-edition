@@ -159,7 +159,7 @@
 <img width="80" align="left" src="./resources/icons/stride.png" alt="Stride" title="Stride" />
 <img width="80" align="left" src="./resources/icons/hangoutschat.png" alt="Hangouts Chat" title="Hangouts Chat" />
 <img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business" />
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 ## Features
 
