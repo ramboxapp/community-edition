@@ -56,7 +56,7 @@
 
 ## Services available - 98
 
-<div>
+<div style="height: 1000">
 <img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp" />
 <img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger" />
 <img width="80" align="left" src="./resources/icons/skype.png" alt="Skype" title="Skype" />
