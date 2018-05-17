@@ -56,109 +56,109 @@
 
 ## Services available - 98
 
-<img width="80" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp" />
-<img width="80" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger" />
-<img width="80" src="./resources/icons/skype.png" alt="Skype" title="Skype" />
-<img width="80" src="./resources/icons/slack.png" alt="Slack" title="Slack" />
-<img width="80" src="./resources/icons/hangouts.png" alt="Hangouts" title="Hangouts" />
-<img width="80" src="./resources/icons/telegram.png" alt="Telegram" title="Telegram" />
-<img width="80" src="./resources/icons/wechat.png" alt="WeChat" title="WeChat" />
-<img width="80" src="./resources/icons/gmail.png" alt="Gmail" title="Gmail" />
-<img width="80" src="./resources/icons/inbox.png" alt="Inbox" title="Inbox" />
-<img width="80" src="./resources/icons/hipchat.png" alt="HipChat" title="HipChat" />
-<img width="80" src="./resources/icons/allo.png" alt="Allo" title="Allo" />
+<img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp" />
+<img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger" />
+<img width="80" align="left" src="./resources/icons/skype.png" alt="Skype" title="Skype" />
+<img width="80" align="left" src="./resources/icons/slack.png" alt="Slack" title="Slack" />
+<img width="80" align="left" src="./resources/icons/hangouts.png" alt="Hangouts" title="Hangouts" />
+<img width="80" align="left" src="./resources/icons/telegram.png" alt="Telegram" title="Telegram" />
+<img width="80" align="left" src="./resources/icons/wechat.png" alt="WeChat" title="WeChat" />
+<img width="80" align="left" src="./resources/icons/gmail.png" alt="Gmail" title="Gmail" />
+<img width="80" align="left" src="./resources/icons/inbox.png" alt="Inbox" title="Inbox" />
+<img width="80" align="left" src="./resources/icons/hipchat.png" alt="HipChat" title="HipChat" />
+<img width="80" align="left" src="./resources/icons/allo.png" alt="Allo" title="Allo" />
 
-<img width="80" src="./resources/icons/chatwork.png" alt="ChatWork" title="ChatWork"/>
-<img width="80" src="./resources/icons/groupme.png" alt="GroupMe" title="GroupMe"/>
-<img width="80" src="./resources/icons/grape.png" alt="Grape" title="Grape"/>
-<img width="80" src="./resources/icons/gitter.png" alt="Gitter" title="Gitter"/>
-<img width="80" src="./resources/icons/steam.png" alt="Steam" title="Steam"/>
-<img width="80" src="./resources/icons/discord.png" alt="Discord" title="Discord"/>
-<img width="80" src="./resources/icons/noysi.png" alt="Noysi" title="Noysi"/>
-<img width="80" src="./resources/icons/outlook.png" alt="Outlook" title="Outlook"/>
-<img width="80" src="./resources/icons/outlook365.png" alt="Outlook 365" title="Outlook 365"/>
-<img width="80" src="./resources/icons/tutanota.png" alt="TutaNota" title="TutaNota"/>
-<img width="80" src="./resources/icons/hushmail.png" alt="Hushmail" title="Hushmail" />
+<img width="80" align="left" src="./resources/icons/chatwork.png" alt="ChatWork" title="ChatWork"/>
+<img width="80" align="left" src="./resources/icons/groupme.png" alt="GroupMe" title="GroupMe"/>
+<img width="80" align="left" src="./resources/icons/grape.png" alt="Grape" title="Grape"/>
+<img width="80" align="left" src="./resources/icons/gitter.png" alt="Gitter" title="Gitter"/>
+<img width="80" align="left" src="./resources/icons/steam.png" alt="Steam" title="Steam"/>
+<img width="80" align="left" src="./resources/icons/discord.png" alt="Discord" title="Discord"/>
+<img width="80" align="left" src="./resources/icons/noysi.png" alt="Noysi" title="Noysi"/>
+<img width="80" align="left" src="./resources/icons/outlook.png" alt="Outlook" title="Outlook"/>
+<img width="80" align="left" src="./resources/icons/outlook365.png" alt="Outlook 365" title="Outlook 365"/>
+<img width="80" align="left" src="./resources/icons/tutanota.png" alt="TutaNota" title="TutaNota"/>
+<img width="80" align="left" src="./resources/icons/hushmail.png" alt="Hushmail" title="Hushmail" />
 
-<img width="80" src="./resources/icons/bearychat.png" alt="BearyChat" title="BearyChat" />
-<img width="80" src="./resources/icons/aol.png" alt="Aol" title="Aol" />
-<img width="80" src="./resources/icons/sync.png" alt="Sync" title="Sync" />
-<img width="80" src="./resources/icons/wire.png" alt="Wire" title="Wire" />
-<img width="80" src="./resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat" />
-<img width="80" src="./resources/icons/missive.png" alt="Missive" title="Missive" />
-<img width="80" src="./resources/icons/yahoo.png" alt="Yahoo! Mail" title="Yahoo! Mail" />
-<img width="80" src="./resources/icons/ryver.png" alt="Ryver" title="Ryver" />
-<img width="80" src="./resources/icons/yandex.png" alt="Yandex Mail" title="Yandex Mail" />
-<img width="80" src="./resources/icons/dasher.png" alt="Dasher" title="Dasher" />
-<img width="80" src="./resources/icons/dingtalk.png" alt="DingTalk" title="DingTalk" />
+<img width="80" align="left" src="./resources/icons/bearychat.png" alt="BearyChat" title="BearyChat" />
+<img width="80" align="left" src="./resources/icons/aol.png" alt="Aol" title="Aol" />
+<img width="80" align="left" src="./resources/icons/sync.png" alt="Sync" title="Sync" />
+<img width="80" align="left" src="./resources/icons/wire.png" alt="Wire" title="Wire" />
+<img width="80" align="left" src="./resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat" />
+<img width="80" align="left" src="./resources/icons/missive.png" alt="Missive" title="Missive" />
+<img width="80" align="left" src="./resources/icons/yahoo.png" alt="Yahoo! Mail" title="Yahoo! Mail" />
+<img width="80" align="left" src="./resources/icons/ryver.png" alt="Ryver" title="Ryver" />
+<img width="80" align="left" src="./resources/icons/yandex.png" alt="Yandex Mail" title="Yandex Mail" />
+<img width="80" align="left" src="./resources/icons/dasher.png" alt="Dasher" title="Dasher" />
+<img width="80" align="left" src="./resources/icons/dingtalk.png" alt="DingTalk" title="DingTalk" />
 
-<img width="80" src="./resources/icons/flowdock.png" alt="FlowDock" title="FlowDock" />
-<img width="80" src="./resources/icons/mattermost.png" alt="Mattermost" title="Mattermost" />
-<img width="80" src="./resources/icons/voxer.png" alt="Voxer" title="Voxer" />
-<img width="80" src="./resources/icons/glip.png" alt="Glip" title="Glip" />
-<img width="80" src="./resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger" />
-<img width="80" src="./resources/icons/mysms.png" alt="mysms" title="mysms" />
-<img width="80" src="./resources/icons/icq.png" alt="ICQ" title="ICQ" />
-<img width="80" src="./resources/icons/tweetdeck.png" alt="TweetDeck" title="TweetDeck" />
-<img width="80" src="./resources/icons/zinc.png" alt="Zinc" title="Zinc" />
-<img width="80" src="./resources/icons/freenode.png" alt="FreeNode" title="FreeNode" />
-<img width="80" src="./resources/icons/mightytext.png" alt="MightyText" title="MightyText" />
+<img width="80" align="left" src="./resources/icons/flowdock.png" alt="FlowDock" title="FlowDock" />
+<img width="80" align="left" src="./resources/icons/mattermost.png" alt="Mattermost" title="Mattermost" />
+<img width="80" align="left" src="./resources/icons/voxer.png" alt="Voxer" title="Voxer" />
+<img width="80" align="left" src="./resources/icons/glip.png" alt="Glip" title="Glip" />
+<img width="80" align="left" src="./resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger" />
+<img width="80" align="left" src="./resources/icons/mysms.png" alt="mysms" title="mysms" />
+<img width="80" align="left" src="./resources/icons/icq.png" alt="ICQ" title="ICQ" />
+<img width="80" align="left" src="./resources/icons/tweetdeck.png" alt="TweetDeck" title="TweetDeck" />
+<img width="80" align="left" src="./resources/icons/zinc.png" alt="Zinc" title="Zinc" />
+<img width="80" align="left" src="./resources/icons/freenode.png" alt="FreeNode" title="FreeNode" />
+<img width="80" align="left" src="./resources/icons/mightytext.png" alt="MightyText" title="MightyText" />
 
-<img width="80" src="./resources/icons/zohoemail.png" alt="Zoho Email" title="Zoho Email" />
-<img width="80" src="./resources/icons/zohochat.png" alt="Zoho Chat" title="Zoho Chat" />
-<img width="80" src="./resources/icons/roundcube.png" alt="Roundcube" title="Roundcube" />
-<img width="80" src="./resources/icons/horde.png" alt="Horde" title="Horde" />
-<img width="80" src="./resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail" />
-<img width="80" src="./resources/icons/zimbra.png" alt="Zimbra" title="Zimbra" />
-<img width="80" src="./resources/icons/hootsuite.png" alt="Hootsuite" title="Hootsuite" />
-<img width="80" src="./resources/icons/amium.png" alt="Amium" title="Amium" />
-<img width="80" src="./resources/icons/rainloop.png" alt="RainLoop" title="RainLoop" />
-<img width="80" src="./resources/icons/icloud.png" alt="iCloud Mail" title="iCloud Mail" />
-<img width="80" src="./resources/icons/irccloud.png" alt="IRC Cloud" title="IRC Cloud" />
+<img width="80" align="left" src="./resources/icons/zohoemail.png" alt="Zoho Email" title="Zoho Email" />
+<img width="80" align="left" src="./resources/icons/zohochat.png" alt="Zoho Chat" title="Zoho Chat" />
+<img width="80" align="left" src="./resources/icons/roundcube.png" alt="Roundcube" title="Roundcube" />
+<img width="80" align="left" src="./resources/icons/horde.png" alt="Horde" title="Horde" />
+<img width="80" align="left" src="./resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail" />
+<img width="80" align="left" src="./resources/icons/zimbra.png" alt="Zimbra" title="Zimbra" />
+<img width="80" align="left" src="./resources/icons/hootsuite.png" alt="Hootsuite" title="Hootsuite" />
+<img width="80" align="left" src="./resources/icons/amium.png" alt="Amium" title="Amium" />
+<img width="80" align="left" src="./resources/icons/rainloop.png" alt="RainLoop" title="RainLoop" />
+<img width="80" align="left" src="./resources/icons/icloud.png" alt="iCloud Mail" title="iCloud Mail" />
+<img width="80" align="left" src="./resources/icons/irccloud.png" alt="IRC Cloud" title="IRC Cloud" />
 
-<img width="80" src="./resources/icons/kiwi.png" alt="Kiwi IRC" title="Kiwi IRC" />
-<img width="80" src="./resources/icons/smooch.png" alt="Smooch" title="Smooch" />
-<img width="80" src="./resources/icons/crisp.png" alt="Crisp" title="Crisp" />
-<img width="80" src="./resources/icons/flock.png" alt="Flock" title="Flock" />
-<img width="80" src="./resources/icons/openmailbox.png" alt="Openmailbox" title="Openmailbox" />
-<img width="80" src="./resources/icons/typetalk.png" alt="Typetalk" title="Typetalk" />
-<img width="80" src="./resources/icons/drift.png" alt="Drift" title="Drift" />
-<img width="80" src="./resources/icons/spark.png" alt="Cisco Spark" title="Cisco Spark" />
-<img width="80" src="./resources/icons/fleep.png" alt="Fleep" title="Fleep" />
-<img width="80" src="./resources/icons/socialcast.png" alt="Socialcast" title="Socialcast" />
-<img width="80" src="./resources/icons/riot.png" alt="Riot" title="Riot" />
+<img width="80" align="left" src="./resources/icons/kiwi.png" alt="Kiwi IRC" title="Kiwi IRC" />
+<img width="80" align="left" src="./resources/icons/smooch.png" alt="Smooch" title="Smooch" />
+<img width="80" align="left" src="./resources/icons/crisp.png" alt="Crisp" title="Crisp" />
+<img width="80" align="left" src="./resources/icons/flock.png" alt="Flock" title="Flock" />
+<img width="80" align="left" src="./resources/icons/openmailbox.png" alt="Openmailbox" title="Openmailbox" />
+<img width="80" align="left" src="./resources/icons/typetalk.png" alt="Typetalk" title="Typetalk" />
+<img width="80" align="left" src="./resources/icons/drift.png" alt="Drift" title="Drift" />
+<img width="80" align="left" src="./resources/icons/spark.png" alt="Cisco Spark" title="Cisco Spark" />
+<img width="80" align="left" src="./resources/icons/fleep.png" alt="Fleep" title="Fleep" />
+<img width="80" align="left" src="./resources/icons/socialcast.png" alt="Socialcast" title="Socialcast" />
+<img width="80" align="left" src="./resources/icons/riot.png" alt="Riot" title="Riot" />
 
-<img width="80" src="./resources/icons/pushbullet.png" alt="Pushbullet" title="Pushbullet" />
-<img width="80" src="./resources/icons/movim.png" alt="Movim" title="Movim" />
-<img width="80" src="./resources/icons/kaiwa.png" alt="Kaiwa" title="Kaiwa" />
-<img width="80" src="./resources/icons/zyptonite.png" alt="Zyptonite" title="Zyptonite" />
-<img width="80" src="./resources/icons/linkedin.png" alt="LinkedIn" title="LinkedIn" />
-<img width="80" src="./resources/icons/lounge.png" alt="The Lounge" title="The Lounge" />
-<img width="80" src="./resources/icons/kezmo.png" alt="Kezmo" title="Kezmo" />
-<img width="80" src="./resources/icons/teams.png" alt="Teams" title="Teams" />
-<img width="80" src="./resources/icons/xing.png" alt="Xing" title="Xing" />
-<img width="80" src="./resources/icons/workplace.png" alt="Workplace" title="Workplace" />
-<img width="80" src="./resources/icons/fastmail.png" alt="FastMail" title="FastMail" />
+<img width="80" align="left" src="./resources/icons/pushbullet.png" alt="Pushbullet" title="Pushbullet" />
+<img width="80" align="left" src="./resources/icons/movim.png" alt="Movim" title="Movim" />
+<img width="80" align="left" src="./resources/icons/kaiwa.png" alt="Kaiwa" title="Kaiwa" />
+<img width="80" align="left" src="./resources/icons/zyptonite.png" alt="Zyptonite" title="Zyptonite" />
+<img width="80" align="left" src="./resources/icons/linkedin.png" alt="LinkedIn" title="LinkedIn" />
+<img width="80" align="left" src="./resources/icons/lounge.png" alt="The Lounge" title="The Lounge" />
+<img width="80" align="left" src="./resources/icons/kezmo.png" alt="Kezmo" title="Kezmo" />
+<img width="80" align="left" src="./resources/icons/teams.png" alt="Teams" title="Teams" />
+<img width="80" align="left" src="./resources/icons/xing.png" alt="Xing" title="Xing" />
+<img width="80" align="left" src="./resources/icons/workplace.png" alt="Workplace" title="Workplace" />
+<img width="80" align="left" src="./resources/icons/fastmail.png" alt="FastMail" title="FastMail" />
 
-<img width="80" src="./resources/icons/hibox.png" alt="Hibox" title="Hibox" />
-<img width="80" src="./resources/icons/jandi.png" alt="Jandi" title="Jandi" />
-<img width="80" src="./resources/icons/threema.png" alt="Threema" title="Threema" />
-<img width="80" src="./resources/icons/messengerpages.png" alt="Messenger for Pages" title="Messenger for Pages" />
-<img width="80" src="./resources/icons/vk.png" alt="VK Messenger" title="VK Messenger" />
-<img width="80" src="./resources/icons/mastodon.png" alt="Mastodon" title="Mastodon" />
-<img width="80" src="./resources/icons/teamworkchat.png" alt="Teamwork Chat" title="Teamwork Chat" />
-<img width="80" src="./resources/icons/clocktweets.png" alt="ClockTweets" title="ClockTweets" />
-<img width="80" src="./resources/icons/intercom.png" alt="Intercom" title="Intercom" />
-<img width="80" src="./resources/icons/googlevoice.png" alt="Voice" title="Voice" />
-<img width="80" src="./resources/icons/sandstorm.png" alt="Sandstorm" title="Sandstorm" />
+<img width="80" align="left" src="./resources/icons/hibox.png" alt="Hibox" title="Hibox" />
+<img width="80" align="left" src="./resources/icons/jandi.png" alt="Jandi" title="Jandi" />
+<img width="80" align="left" src="./resources/icons/threema.png" alt="Threema" title="Threema" />
+<img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Pages" title="Messenger for Pages" />
+<img width="80" align="left" src="./resources/icons/vk.png" alt="VK Messenger" title="VK Messenger" />
+<img width="80" align="left" src="./resources/icons/mastodon.png" alt="Mastodon" title="Mastodon" />
+<img width="80" align="left" src="./resources/icons/teamworkchat.png" alt="Teamwork Chat" title="Teamwork Chat" />
+<img width="80" align="left" src="./resources/icons/clocktweets.png" alt="ClockTweets" title="ClockTweets" />
+<img width="80" align="left" src="./resources/icons/intercom.png" alt="Intercom" title="Intercom" />
+<img width="80" align="left" src="./resources/icons/googlevoice.png" alt="Voice" title="Voice" />
+<img width="80" align="left" src="./resources/icons/sandstorm.png" alt="Sandstorm" title="Sandstorm" />
 
-<img width="80" src="./resources/icons/gadugadu.png" alt="Gadu-Gadu" title="Gadu-Gadu" />
-<img width="80" src="./resources/icons/mailru.png" alt="Mail.Ru" title="Mail.Ru" />
-<img width="80" src="./resources/icons/kune.png" alt="Kune" title="Kune" />
-<img width="80" src="./resources/icons/zulip.png" alt="Zulip" title="Zulip" />
-<img width="80" src="./resources/icons/stride.png" alt="Stride" title="Stride" />
-<img width="80" src="./resources/icons/hangoutschat.png" alt="Hangouts Chat" title="Hangouts Chat" />
-<img width="80" src="./resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business" />
+<img width="80" align="left" src="./resources/icons/gadugadu.png" alt="Gadu-Gadu" title="Gadu-Gadu" />
+<img width="80" align="left" src="./resources/icons/mailru.png" alt="Mail.Ru" title="Mail.Ru" />
+<img width="80" align="left" src="./resources/icons/kune.png" alt="Kune" title="Kune" />
+<img width="80" align="left" src="./resources/icons/zulip.png" alt="Zulip" title="Zulip" />
+<img width="80" align="left" src="./resources/icons/stride.png" alt="Stride" title="Stride" />
+<img width="80" align="left" src="./resources/icons/hangoutschat.png" alt="Hangouts Chat" title="Hangouts Chat" />
+<img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business" />
 
 ## Features
 
