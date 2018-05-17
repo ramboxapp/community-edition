@@ -160,6 +160,8 @@
 <img width="80" align="left" src="./resources/icons/hangoutschat.png" alt="Hangouts Chat" title="Hangouts Chat" />
 <img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business" />
 
+---
+
 ## Features
 
 - [x] Multi-language.
