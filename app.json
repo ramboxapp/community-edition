@@ -31,7 +31,7 @@
      *  renane the theme in this file to default & recompile
      */
 
-    "theme": "rambox-default-theme",
+    "theme": "rambox-dark-theme",
 
     /**
      * The list of required packages (with optional versions; default is "latest").
