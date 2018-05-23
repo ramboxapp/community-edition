@@ -186,9 +186,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("guild unread").length,b=0,c=document.getElementsByClassName("badge");for(i=0;i<c.length;i++)b+=parseInt(c[i].innerHTML.trim());updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,js_unread: 'function getAlertCount(badges) {var alerts = 0;for(var i = 0; i<badges.length; i++) {var badge = badges[i];if (badge && badge.childNodes && badge.childNodes.length > 0) {var count = parseInt(badge.childNodes[0].nodeValue, 10);alerts += count.isNaN? 1: count;} else {alerts++;}}return alerts;}function checkUnread() {var direct = 0,indirect = document.querySelectorAll(\'.guilds-wrapper .unread\').length,guildDirect = document.querySelectorAll(\'.guilds-wrapper .badge\'),channelDirect = document.querySelectorAll(\'[class^="nameUnreadText-"]+div>div>div\');direct += getAlertCount(guildDirect);direct += getAlertCount(channelDirect);indirect += document.querySelectorAll(\'[class^="nameUnreadText-"]\').length;updateBadge(indirect, direct);}function updateBadge(ind, dir) { var n = dir > 0 ? "(" + dir + ") ": ind > 0? "(•) ": "";document.title = n + originalTitle;}var originalTitle = document.title;setInterval(checkUnread, 3e3);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
-			,dont_update_unread_from_title: true
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 		},
 		{
@@ -742,7 +741,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'FastMail'
 			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
 			,url: 'https://www.fastmail.com/mail/'
-			,type: 'mail'
+			,type: 'email'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("v-FolderSource-badge"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+")"+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);setTimeout(function(){O.WindowController.openExternal=function(a){var b=document.createElement("a");b.href=a,b.setAttribute("target","_blank"),b.click()};},3000);'
 			,note: 'To enable desktop notifications, you have to go to Settings inside FastMail.'
 		},
