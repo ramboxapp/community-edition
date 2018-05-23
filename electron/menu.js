@@ -66,7 +66,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[2]'],
 			click() {
-				shell.openExternal('https://gitter.im/saenzramiro/rambox');
+				shell.openExternal('https://rambox.typeform.com/to/t7jc4C');
 			}
 		},
 		{
@@ -157,6 +157,15 @@ module.exports = function(config) {
 					accelerator: 'CmdOrCtrl+Shift+R',
 					click() {
 						sendAction('reloadCurrentService');
+					}
+				},
+				{
+					type: 'separator'
+				},
+				{
+					label: '&Toggle Status Bar',
+					click() {
+						sendAction('toggleStatusBar');
 					}
 				},
 				{

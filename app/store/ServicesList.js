@@ -28,7 +28,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[0]']
 			,url: 'https://web.whatsapp.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var i=0;document.querySelectorAll(".unread").forEach(function(e){0===e.querySelectorAll("[data-icon=muted]").length&&i++});updateBadge(i)}function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } }setInterval(checkUnread,1e3);'
+			,js_unread: 'function checkUnread(){const elements = document.querySelectorAll(\'.CxUIE, .unread\');let count = 0;for (let i = 0; i < elements.length; i++) {if (elements[i].querySelectorAll(\'*[data-icon="muted"]\').length === 0) {count++;}}updateBadge(count);}function updateBadge(count){if(count && count>=1){rambox.setUnreadCount(count);}else{rambox.clearUnreadCount();}}setInterval(checkUnread, 1e3);'
 			,dont_update_unread_from_title: true
 		},
 		{
@@ -113,7 +113,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'gmail.png'
 			,name: 'Gmail'
 			,description: locale['services[9]']
-			,url: 'https://mail.google.com/mail/'
+			,url: 'https://mail.google.com/mail/?labs=0'
 			,type: 'email'
 			,allow_popups: true
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("aim")[0];updateBadge(-1!=a.textContent.indexOf("(")&&(t=parseInt(a.textContent.replace(/[^0-9]/g,""))))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
@@ -186,9 +186,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("guild unread").length,b=0,c=document.getElementsByClassName("badge");for(i=0;i<c.length;i++)b+=parseInt(c[i].innerHTML.trim());updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,js_unread: 'function getAlertCount(badges) {var alerts = 0;for(var i = 0; i<badges.length; i++) {var badge = badges[i];if (badge && badge.childNodes && badge.childNodes.length > 0) {var count = parseInt(badge.childNodes[0].nodeValue, 10);alerts += count.isNaN? 1: count;} else {alerts++;}}return alerts;}function checkUnread() {var direct = 0,indirect = document.querySelectorAll(\'.guilds-wrapper .unread\').length,guildDirect = document.querySelectorAll(\'.guilds-wrapper .badge\'),channelDirect = document.querySelectorAll(\'[class^="nameUnreadText-"]+div>div>div\');direct += getAlertCount(guildDirect);direct += getAlertCount(channelDirect);indirect += document.querySelectorAll(\'[class^="nameUnreadText-"]\').length;updateBadge(indirect, direct);}function updateBadge(ind, dir) { var n = dir > 0 ? "(" + dir + ") ": ind > 0? "(•) ": "";document.title = n + originalTitle;}var originalTitle = document.title;setInterval(checkUnread, 3e3);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
-			,dont_update_unread_from_title: true
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 		},
 		{
@@ -742,7 +741,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'FastMail'
 			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
 			,url: 'https://www.fastmail.com/mail/'
-			,type: 'mail'
+			,type: 'email'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("v-FolderSource-badge"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+")"+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);setTimeout(function(){O.WindowController.openExternal=function(a){var b=document.createElement("a");b.href=a,b.setAttribute("target","_blank"),b.click()};},3000);'
 			,note: 'To enable desktop notifications, you have to go to Settings inside FastMail.'
 		},
@@ -772,11 +771,20 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 		},
 		{
+			 id: 'messengerbusiness'
+			,logo: 'messengerpages.png'
+			,name: 'Messenger for Business'
+			,description: 'Messenger can help facilitate communication with your customers.'
+			,url: 'https://business.facebook.com/___/inbox/'
+			,type: 'messaging'
+			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
+		},
+		{
 			 id: 'vk'
 			,logo: 'vk.png'
 			,name: 'VK Messenger'
 			,description: 'Simple and Easy App for Messaging on VK.'
-			,url: 'https://vk.com/im'
+			,url: 'https://m.vk.com/im'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/\D+/g,"")))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
@@ -795,7 +803,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'teamworkchat.png'
 			,name: 'Teamwork Chat'
 			,description: 'Say goodbye to email. Take your online collaboration to the next level with Teamwork Chat and keep all team discussions in one place. Chat to your team in a fun and informal way with Teamwork Chat.'
-			,url: 'https://___.teamwork.com/chat'
+			,url: 'https://___/chat'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("sidebar-notification-indicator").length > 0 ? document.getElementsByClassName("sidebar-notification-indicator")[0].innerHTML : 0))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
@@ -825,7 +833,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
 			,url: 'https://allo.google.com/web'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.querySelectorAll(".hasUnread.conversation_item"),n=0;for(i=0;i<e.length;i++){var r="none"===e[i].querySelector("#muted").style.display?parseInt(e[i].querySelector(".unreadCount").innerHTML.trim()):0;n+=isNaN(r)?0:r}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var e=document.querySelectorAll(".hasUnread.conversation_item"),n=0;for(i=0;i<e.length;i++){var m=e[i].querySelector("#muted"),u=e[i].querySelector(".unreadCount"),c=parseInt(u.innerHTML.trim()),r=(m===null||m.style.display==="none")?c:0;n+=isNaN(r)?0:r}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,dont_update_unread_from_title: true
 		},
 		{
@@ -843,7 +851,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'A free phone number for life.  Stay in touch from any screen.  Use your free number to text, call, and check voicemail  all from one app. Plus, Google Voice works on all of your devices so you can connect and communicate how you want.'
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
-			,js_unread: 'function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread(){var e=document.querySelector(".msgCount"),n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[\(\) ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){var r=document.querySelector(\'gv-nav-button[tooltip="\'+e+\'"] div[aria-label="Unread count"]\');r&&(n+=parseIntOrZero(r.innerHTML))}),updateBadge(n)}function updateBadge(e){var n=e>0?"("+e+") ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread(){var e=document.querySelector(".msgCount"),n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[\(\) ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){var r=document.querySelector(\'gv-nav-tab[tooltip="\'+e+\'"] div[aria-label="Unread count"]\');r&&(n+=parseIntOrZero(r.innerHTML))}),updateBadge(n)}function updateBadge(e){var n=e>0?"("+e+") ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
 			 id: 'sandstorm'
@@ -880,5 +888,26 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,custom_domain: true
 		},
+		{
+			 id: 'stride'
+			,logo: 'stride.png'
+			,name: 'Stride'
+			,description: 'Stride is the complete team communication solution with group messaging, video meetings, and built-in collaboration tools.'
+			,url: 'https://app.stride.com/___'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var t=0,e=!1;document.querySelectorAll(".conversations-nav .nav-item .activity-indicator").forEach(function(n){n.classList.contains("has-count")?t+=parseInt(n.innerHTML):e=!0}),updateBadge(t,e)}function updateBadge(t,e){var n=t>0?"("+t+") ":e?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+		},
+		{
+			 id: 'hangoutschat'
+			,logo: 'hangoutschat.png'
+			,name: 'Hangouts Chat'
+			,description: 'A messaging platform built for teams.'
+			,url: 'https://chat.google.com/'
+			,type: 'messaging'
+			,titleBlink: true
+			,manual_notifications: true
+			,dont_update_unread_from_title: true
+			,js_unread: 'function checkUnread(){updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
+		}
 	]
 });

@@ -25,6 +25,15 @@ Ext.define('Rambox.view.main.Main', {
 	,autoRender: true
 	,autoShow: true
 	,deferredRender: false
+	,tabBar: {
+		items: [{
+			 xtype: 'button'
+			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
+			,baseCls: ''
+			,tooltip: locale['app.main[25]']
+			,href: 'https://fundraiseup.com/widget/FUNSGXPIJWQ/donate?key=KPCFEZKZ'
+		}]
+	}
 	,items: [
 		{
 			 icon: 'resources/IconTray@2x.png'
@@ -329,7 +338,7 @@ Ext.define('Rambox.view.main.Main', {
 						,{
 							 text: locale['app.main[25]']
 							,glyph: 'xf21e@FontAwesome'
-							,handler: 'showDonate'
+							,href: 'https://fundraiseup.com/widget/FUNSGXPIJWQ/donate?key=KPCFEZKZ'
 						}
 						,{
 							 text: 'Translation'
@@ -376,5 +385,6 @@ Ext.define('Rambox.view.main.Main', {
 		,add: 'updatePositions'
 		,remove: 'updatePositions'
 		,childmove: 'updatePositions'
+		,boxready: 'initialize'
 	}
 });

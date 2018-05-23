@@ -148,6 +148,27 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'combo'
+						,name: 'tabbar_location'
+						,fieldLabel: 'Service bar location'
+						,labelAlign: 'left'
+						,width: 380
+						,labelWidth: 180
+						,value: config.tabbar_location
+						,displayField: 'label'
+						,valueField: 'value'
+						,editable: false
+						,store: Ext.create('Ext.data.Store', {
+							 fields: ['value', 'label']
+							,data: [
+								 { 'value': 'top', 'label': 'Top' }
+								,{ 'value': 'left', 'label': 'Left' }
+								,{ 'value': 'bottom', 'label': 'Bottom' }
+								,{ 'value': 'right', 'label': 'Right' }
+							]
+						})
+					}
+					,{
+						 xtype: 'combo'
 						,name: 'default_service'
 						,fieldLabel: 'Default service to display when Rambox starts'
 						,labelAlign: 'top'
@@ -234,6 +255,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,name: 'enable_hidpi_support'
 						,boxLabel: locale['preferences[8]']
 						,value: config.enable_hidpi_support
+						,hidden: process.platform !== 'win32'
 					}
 					,{
 						 xtype: 'fieldset'

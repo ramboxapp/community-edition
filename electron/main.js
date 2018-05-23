@@ -20,6 +20,7 @@ const config = new Config({
 	 defaults: {
 		 always_on_top: false
 		,hide_menu_bar: false
+		,tabbar_location: 'top'
 		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,flash_frame: true
@@ -277,7 +278,8 @@ function createMasterPasswordWindow() {
 function updateBadge(title) {
 	title = title.split(" - ")[0]; //Discard service name if present, could also contain digits
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
-
+	messageCount = isNaN(messageCount) ? 0 : messageCount;
+	
 	tray.setBadge(messageCount, config.get('systemtray_indicator'));
 
 	if (process.platform === 'win32') { // Windows
@@ -315,6 +317,8 @@ ipcMain.on('setConfig', function(event, values) {
 	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
+
+	mainWindow.webContents.executeJavaScript('(function(a){if(a)a.controller.initialize(a)})(Ext.cq1("app-main"))');
 
 	switch ( values.window_display_behavior ) {
 		case 'show_taskbar':
@@ -469,7 +473,7 @@ if ( config.get('proxy') ) {
 	app.on('login', (event, webContents, request, authInfo, callback) => {
 		if(!authInfo.isProxy)
 			return;
-			
+
 		event.preventDefault()
 		callback(config.get('proxyLogin'), config.get('proxyPassword'))
 	})

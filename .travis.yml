@@ -1,5 +1,6 @@
 sudo: required
 language: node_js
+dist: trusty
 node_js:
   - "8"
 
@@ -26,10 +27,13 @@ addons:
 before_install:
   # native dependencies
   - if [ $TRAVIS_OS_NAME == "linux" ]; then
+      sudo apt-add-repository -y ppa:snappy-dev/tools;
       sudo apt-get update -qq;
       sudo apt-get install -qq libxml2-dev;
       sudo apt-get install -qq libappindicator1;
       sudo apt-get install -qq rpm;
+      sudo apt-get install -y -qq snappy-tools;
+      sudo apt-get install -y -qq snapcraft;
     fi
 install:
   - git config --global core.autocrlf input
@@ -53,6 +57,7 @@ deploy:
   file_glob: true
   file:
     - "dist/*.zip"
+    - "dist/*.snap"
     - "dist/*.deb"
     - "dist/*.tar.gz"
     - "dist/*.AppImage"
