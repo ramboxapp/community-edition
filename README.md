@@ -34,13 +34,12 @@
 ## Table of Contents
 
 - [Screenshot](#screenshot)
-- [Services available - 89](#services-available---95)
+- [Services available - 98](#services-available---98)
 - [Features](#features)
 - [Privacy](#privacy)
 - [Donations](#donations)
 - [Translations](#translations)
 - [Install on Linux - Steps](#install-on-linux---steps)
-- [To Do](#to-do)
 - [Contributing](#contributing)
 - [Disclosure](#disclosure)
 - [Licence](#licence)

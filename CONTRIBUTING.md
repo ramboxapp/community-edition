@@ -8,9 +8,7 @@ We welcome pull requests! Follow these steps to contribute:
 
 3. Follow the [Contribution Guidelines](#contribution-guidelines) to start working on the issue.
 
-Working on your first Pull Request? You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub]
-
-(https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
+Working on your first Pull Request? You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
 ###### If you've found a bug that is not on the board, [follow these steps](README.md#found-a-bug).
 
