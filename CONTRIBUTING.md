@@ -182,9 +182,9 @@ accepted by rambox proper.
 #### Important: ALWAYS EDIT ON A BRANCH
 
 Take away only one thing from this document: Never, **EVER**
-make edits to the `staging` branch. ALWAYS make a new branch BEFORE you edit
+make edits to the `master` branch. ALWAYS make a new branch BEFORE you edit
 files. This is critical, because if your PR is not accepted, your copy of
-staging will be forever sullied and the only way to fix it is to delete your
+master will be forever sullied and the only way to fix it is to delete your
 fork and re-fork.
 
 ### Common Steps
@@ -192,7 +192,7 @@ fork and re-fork.
 1.  Once the edits have been committed, you will be prompted to create a pull
     request on your fork's GitHub Page.
 
-2.  By default, all pull requests should be against the rambox main repo, `staging`
+2.  By default, all pull requests should be against the rambox main repo, `master`
     branch.
     **Make sure that your Base Fork is set to saenzramiro/rambox when raising a Pull Request.**
 
