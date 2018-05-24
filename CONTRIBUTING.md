@@ -8,9 +8,7 @@ We welcome pull requests! Follow these steps to contribute:
 
 3. Follow the [Contribution Guidelines](#contribution-guidelines) to start working on the issue.
 
-Working on your first Pull Request? You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub]
-
-(https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
+Working on your first Pull Request? You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)
 
 ###### If you've found a bug that is not on the board, [follow these steps](README.md#found-a-bug).
 
@@ -103,9 +101,7 @@ Before you start working, you will need to create a separate branch specific to 
 
 #### Naming Your Branch
 
-Name the branch something like `fix/xxx` or `feature/xxx` where `xxx` is a short description of the changes or feature you are attempting to add. For example 
-
-`fix/email-login` would be a branch where you fix something specific to email login.
+Name the branch something like `fix/xxx` or `feature/xxx` where `xxx` is a short description of the changes or feature you are attempting to add. For example `fix/email-login` would be a branch where you fix something specific to email login.
 
 #### Adding Your Branch
 
@@ -186,9 +182,9 @@ accepted by rambox proper.
 #### Important: ALWAYS EDIT ON A BRANCH
 
 Take away only one thing from this document: Never, **EVER**
-make edits to the `staging` branch. ALWAYS make a new branch BEFORE you edit
+make edits to the `master` branch. ALWAYS make a new branch BEFORE you edit
 files. This is critical, because if your PR is not accepted, your copy of
-staging will be forever sullied and the only way to fix it is to delete your
+master will be forever sullied and the only way to fix it is to delete your
 fork and re-fork.
 
 ### Common Steps
@@ -196,7 +192,7 @@ fork and re-fork.
 1.  Once the edits have been committed, you will be prompted to create a pull
     request on your fork's GitHub Page.
 
-2.  By default, all pull requests should be against the rambox main repo, `staging`
+2.  By default, all pull requests should be against the rambox main repo, `master`
     branch.
     **Make sure that your Base Fork is set to saenzramiro/rambox when raising a Pull Request.**
 
@@ -221,21 +217,13 @@ fork and re-fork.
 
 ### How We Review and Merge Pull Requests
 
-rambox has a team of volunteer Issue Moderators. These Issue Moderators routinely go through open pull requests in a process called [Quality Assurance]
+rambox has a team of volunteer Issue Moderators. These Issue Moderators routinely go through open pull requests in a process called [Quality Assurance](https://en.wikipedia.org/wiki/Quality_assurance) (QA).
 
-(https://en.wikipedia.org/wiki/Quality_assurance) (QA).
+1. If an Issue Moderator QA's a pull request and confirms that the new code does what it is supposed without seeming to introduce any new bugs, they will comment "LGTM" which means "Looks good to me."
 
-1. If an Issue Moderator QA's a pull request and confirms that the new code does what it is supposed without seeming to introduce any new bugs, they will comment 
+2. Another Issue Moderator will QA the same pull request. Once they have also confirmed that the new code does what it is supposed to without seeming to introduce any new bugs, they will merge the pull request.
 
-"LGTM" which means "Looks good to me."
-
-2. Another Issue Moderator will QA the same pull request. Once they have also confirmed that the new code does what it is supposed to without seeming to introduce 
-
-any new bugs, they will merge the pull request.
-
-If you would like to apply to join our Issue Moderator team - which is a Core Team position - message [@BerkeleyTrue](https://gitter.im/berkeleytrue) with links 
-
-to 5 of your pull requests that have been accepted and 5 issues where you have helped someone else through commenting or QA'ing.
+If you would like to apply to join our Issue Moderator team - which is a Core Team position - message [@BerkeleyTrue](https://gitter.im/berkeleytrue) with links to 5 of your pull requests that have been accepted and 5 issues where you have helped someone else through commenting or QA'ing.
 
 ### How We Close Stale Issues
 
