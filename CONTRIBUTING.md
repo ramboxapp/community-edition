@@ -101,9 +101,7 @@ Before you start working, you will need to create a separate branch specific to 
 
 #### Naming Your Branch
 
-Name the branch something like `fix/xxx` or `feature/xxx` where `xxx` is a short description of the changes or feature you are attempting to add. For example 
-
-`fix/email-login` would be a branch where you fix something specific to email login.
+Name the branch something like `fix/xxx` or `feature/xxx` where `xxx` is a short description of the changes or feature you are attempting to add. For example `fix/email-login` would be a branch where you fix something specific to email login.
 
 #### Adding Your Branch
 
@@ -219,21 +217,13 @@ fork and re-fork.
 
 ### How We Review and Merge Pull Requests
 
-rambox has a team of volunteer Issue Moderators. These Issue Moderators routinely go through open pull requests in a process called [Quality Assurance]
+rambox has a team of volunteer Issue Moderators. These Issue Moderators routinely go through open pull requests in a process called [Quality Assurance](https://en.wikipedia.org/wiki/Quality_assurance) (QA).
 
-(https://en.wikipedia.org/wiki/Quality_assurance) (QA).
+1. If an Issue Moderator QA's a pull request and confirms that the new code does what it is supposed without seeming to introduce any new bugs, they will comment "LGTM" which means "Looks good to me."
 
-1. If an Issue Moderator QA's a pull request and confirms that the new code does what it is supposed without seeming to introduce any new bugs, they will comment 
+2. Another Issue Moderator will QA the same pull request. Once they have also confirmed that the new code does what it is supposed to without seeming to introduce any new bugs, they will merge the pull request.
 
-"LGTM" which means "Looks good to me."
-
-2. Another Issue Moderator will QA the same pull request. Once they have also confirmed that the new code does what it is supposed to without seeming to introduce 
-
-any new bugs, they will merge the pull request.
-
-If you would like to apply to join our Issue Moderator team - which is a Core Team position - message [@BerkeleyTrue](https://gitter.im/berkeleytrue) with links 
-
-to 5 of your pull requests that have been accepted and 5 issues where you have helped someone else through commenting or QA'ing.
+If you would like to apply to join our Issue Moderator team - which is a Core Team position - message [@BerkeleyTrue](https://gitter.im/berkeleytrue) with links to 5 of your pull requests that have been accepted and 5 issues where you have helped someone else through commenting or QA'ing.
 
 ### How We Close Stale Issues
 
