@@ -908,6 +908,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,manual_notifications: true
 			,dont_update_unread_from_title: true
 			,js_unread: 'function checkUnread(){updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'tawktochat'
+			,logo: 'https://www.tawk.to/wp-content/uploads/2015/04/tawky_big.png'
+			,name: 'Tawk.to Chat'
+			,description: 'A chat platform built for monitor and chat with visitors on your website.'
+			,url: 'https://dashboard.tawk.to/'
+			,type: 'messaging'
 		}
 	]
 });
