@@ -455,7 +455,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'aol'
 			,logo: 'aol.png'
 			,name: 'Aol'
-			,description: 'Free and simple (old) webmail service.'
+			,description: locale['services[47]']
 			,url: 'https://mail.aol.com/'
 			,type: 'email'
 		},
@@ -463,7 +463,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'glip'
 			,logo: 'glip.png'
 			,name: 'Glip'
-			,description: 'Glip is fully searchable, real-time group chat & video chat, task management, file sharing, calendars and more.'
+			,description: locale['services[48]']
 			,url: 'https://glip.com/'
 			,type: 'messaging'
 			,note: 'To enable desktop notifications, you have to go to Options inside Glip.'
@@ -472,7 +472,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'yandex'
 			,logo: 'yandex.png'
 			,name: 'Yandex Mail'
-			,description: 'Yandex is a free webmail service with unlimited mail storage, protection from viruses and spam, access from web interface, etc.'
+			,description: locale['services[49]']
 			,url: 'https://mail.yandex.com/'
 			,type: 'email'
 			,js_unread: 'function checkUnread(){var t=parseInt($(".mail-MessagesFilters-Item_unread .mail-LabelList-Item_count").html());updateBadge(isNaN(t)?0:t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -481,7 +481,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'irccloud'
 			,logo: 'irccloud.png'
 			,name: 'IRCCloud'
-			,description: 'IRCCloud is a modern IRC client that keeps you connected, with none of the baggage.'
+			,description: locale['services[50]']
 			,url: 'https://www.irccloud.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t=0;[].map.call(document.querySelectorAll(".bufferBadges > .badge"),n=>n.textContent?parseInt(n.textContent,10):0).reduce((x,y)=>x+y,0);updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -491,7 +491,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'ryver'
 			,logo: 'ryver.png'
 			,name: 'Ryver'
-			,description: 'Ryver is a team communication tool that organizes team collaboration, chats, files, and even emails into a single location, for any size team, for FREE.'
+			,description: locale['services[51]']
 			,url: 'https://___.ryver.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("scene-space-tab-button--flash").length))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
@@ -500,7 +500,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'kiwi'
 			,logo: 'kiwi.png'
 			,name: 'Kiwi IRC'
-			,description: 'KiwiIRC makes Web IRC easy. A hand-crafted IRC client that you can enjoy. Designed to be used easily and freely.'
+			,description: locale['services[52]']
 			,url: 'https://kiwiirc.com/client'
 			,type: 'messaging'
 			,js_unread: 'function getUnreadCount(){var a=0;$(".activity").each(function(){a+=parseInt($(this).html())});var b=!1;return $(".panel[style*=\'display:block\'] .msg").each(function(){b?a++:$(this).hasClass("last_seen")&&(b=!0)}),a}function updateTitle(a){count=getUnreadCount(),cleanTitle=a.match(re),null!==cleanTitle&&cleanTitle.length>1?cleanTitle=cleanTitle[1]:cleanTitle=a,a=count>0?"("+getUnreadCount()+") "+cleanTitle:cleanTitle,$("title").text(a)}var re=/\(\d+\)[ ](.*)/;Object.defineProperty(document,"title",{configurable:!0,set:function(a){updateTitle(a)},get:function(){return $("title").text()}}),setInterval(function(){updateTitle(document.title)},3e3);'
@@ -510,7 +510,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'icloud'
 			,logo: 'icloud.png'
 			,name: 'iCloud Mail'
-			,description: 'iCloud makes sure you always have the latest versions of your most important things — documents, photos, notes, contacts, and more — on all your devices. It can even help you locate a missing iPhone, iPad, iPod touch or Mac.'
+			,description: locale['services[53]']
 			,url: 'https://www.icloud.com/#mail'
 			,type: 'email'
 			,js_unread: 'function checkUnread(){updateBadge(document.querySelector(".current-app").querySelector(".sb-badge").style.display==="none"?0:parseInt(document.querySelector(".current-app").querySelector(".text").innerHTML.trim()))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
@@ -520,7 +520,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'rainloop'
 			,logo: 'rainloop.png'
 			,name: 'RainLoop'
-			,description: 'RainLoop Webmail - Simple, modern & fast web-based email client.'
+			,description: locale['services[54]']
 			,url: '___'
 			,type: 'email'
 			,js_unread: 'function checkUnread(){var t=document.querySelectorAll(".e-item .e-link:not(.hidden) .badge.pull-right.count"),e=0;for(i=0;i<t.length;i++)parseInt(t[i].textContent.trim())%1==0&&"block"==window.getComputedStyle(t[i]).display&&(count=parseInt(t[i].textContent.trim()),e+=parseInt(t[i].textContent.trim()));updateBadge(e)}function updateBadge(t){document.title=t>=1?"("+t+") "+originalTitle:originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
@@ -529,7 +529,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'amium'
 			,logo: 'amium.png'
 			,name: 'Amium'
-			,description: 'Amium turns any file into a real-time activity feed and conversation. So you can work better, together.'
+			,description: locale['services[55]']
 			,url: 'https://___.amium.com/'
 			,type: 'messaging'
 		},
@@ -537,7 +537,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'hootsuite'
 			,logo: 'hootsuite.png'
 			,name: 'Hootsuite'
-			,description: 'Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your campaign results.'
+			,description: locale['services[56]']
 			,url: 'https://hootsuite.com/dashboard'
 			,type: 'messaging'
 		},
@@ -545,7 +545,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zimbra'
 			,logo: 'zimbra.png'
 			,name: 'Zimbra'
-			,description: 'Over 500 million people rely on Zimbra and enjoy enterprise-class open source email collaboration at the lowest TCO in the industry. Discover the benefits!'
+			,description: locale['services[57]']
 			,url: '___'
 			,type: 'email'
 			,js_unread: 'function check_unread(){update_badge(appCtxt.getById(ZmFolder.ID_INBOX).numUnread)}function update_badge(a){document.title=a>0?"("+a+") "+original_title:original_title}const original_title=document.title;setInterval(check_unread,3e3);'
@@ -554,7 +554,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'kaiwa'
 			,logo: 'kaiwa.png'
 			,name: 'Kaiwa'
-			,description: 'A modern and Open Source Web client for XMPP.'
+			,description: locale['services[58]']
 			,url: '___'
 			,type: 'messaging'
 			,js_unread: 'function check_unread() { let count=0; for (let node of document.getElementsByClassName("unread")){ if (node.innerHTML){ count += parseInt(node.innerHTML); } } update_badge(count);}function update_badge(a) { document.title = a > 0 ? "(" + a + ") " + original_title : original_title}const original_title = document.title;setInterval(check_unread, 3e3);'
@@ -563,7 +563,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'movim'
 			,logo: 'movim.png'
 			,name: 'Movim'
-			,description: 'Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol.'
+			,description: locale['services[59]']
 			,url: 'https://___.movim.eu/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("color dark"),b=0;for(i=0;i<a.length;i++){var c=a[i].getElementsByClassName("counter");for(ii=0;ii<c.length;ii++)parseInt(c[ii].textContent.trim())%1===0&&(b+=parseInt(c[ii].textContent.trim()))}updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
@@ -573,7 +573,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'pushbullet'
 			,logo: 'pushbullet.png'
 			,name: 'Pushbullet'
-			,description: 'Pushbullet connects your devices, making them feel like one.'
+			,description: locale['services[60]']
 			,url: 'https://www.pushbullet.com/'
 			,type: 'messaging'
 		},
@@ -581,7 +581,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'riot'
 			,logo: 'riot.png'
 			,name: 'Riot'
-			,description: 'Riot is a simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app.'
+			,description: locale['services[61]']
 			,url: 'https://riot.im/app/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("mx_RoomTile_nameContainer"),b=0;for(i=0;i<a.length;i++){var c=a[i].getElementsByClassName("mx_RoomTile_badge");for(ii=0;ii<c.length;ii++)parseInt(c[ii].textContent.trim())%1===0&&(b+=parseInt(c[ii].textContent.trim()))}updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
@@ -591,7 +591,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'socialcast'
 			,logo: 'socialcast.png'
 			,name: 'Socialcast'
-			,description: 'Socialcast is the premier enterprise social networking platform that connects people to the knowledge, ideas and resources they need to work more effectively.'
+			,description: locale['services[62]']
 			,url: 'https://___.socialcast.com/'
 			,type: 'messaging'
 		},
@@ -599,7 +599,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'fleep'
 			,logo: 'fleep.png'
 			,name: 'Fleep'
-			,description: 'Fleep enables communication within and across organizations - be it your team chats, project communication or 1:1 conversations.'
+			,description: locale['services[63]']
 			,url: 'https://fleep.io/chat'
 			,type: 'messaging'
 			,js_unread: 'document.getElementsByClassName("google-login-area")[0].remove();document.getElementsByClassName("microsoft-login-area")[0].remove();'
@@ -608,7 +608,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'spark'
 			,logo: 'spark.png'
 			,name: 'Cisco Spark'
-			,description: 'Cisco Spark is for group chat, video calling, and sharing documents with your team. It’s all backed by Cisco security and reliability.'
+			,description: locale['services[64]']
 			,url: 'https://web.ciscospark.com/'
 			,type: 'messaging'
 		},
@@ -616,7 +616,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'drift'
 			,logo: 'drift.png'
 			,name: 'Drift'
-			,description: 'Drift is a messaging app that makes it easy for businesses to talk to their website visitors and customers in real-time, from anywhere.'
+			,description: locale['services[65]']
 			,url: 'https://app.drift.com/'
 			,type: 'messaging'
 		},
@@ -624,7 +624,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'typetalk'
 			,logo: 'typetalk.png'
 			,name: 'Typetalk'
-			,description: 'Typetalk brings fun and ease to team discussions through instant messaging on desktop and mobile devices.'
+			,description: locale['services[66]']
 			,url: 'https://typetalk.in/signin'
 			,type: 'messaging'
 		},
@@ -632,7 +632,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'openmailbox'
 			,logo: 'openmailbox.png'
 			,name: 'Openmailbox'
-			,description: 'Free mail hosting. Respect your rights and your privacy.'
+			,description: locale['services[67]']
 			,url: 'https://app.openmailbox.org/webmail/'
 			,type: 'email'
 		},
@@ -640,7 +640,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'flock'
 			,logo: 'flock.png'
 			,name: 'Flock'
-			,description: 'Flock is a free enterprise tool for business communication. Packed with tons of productivity features, Flock drives efficiency and boosts speed of execution.'
+			,description: locale['services[68]']
 			,url: 'https://web.flock.co/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("unreadMessages no-unread-mentions has-unread"),b=0;for(i=0;i<a.length;i++)b+=parseInt(a[i].innerHTML.trim());updateBadge(b)}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
@@ -651,7 +651,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'crisp'
 			,logo: 'crisp.png'
 			,name: 'Crisp'
-			,description: 'Connect your customers to your team.'
+			,description: locale['services[69]']
 			,url: 'https://app.crisp.im/inbox'
 			,type: 'messaging'
 		},
@@ -659,7 +659,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'smooch'
 			,logo: 'smooch.png'
 			,name: 'Smooch'
-			,description: 'Unified multi-channel messaging for businesses, bots and software makers.'
+			,description: locale['services[70]']
 			,url: 'https://app.smooch.io/'
 			,type: 'messaging'
 		},
@@ -667,7 +667,7 @@ Ext.define('Rambox.store.ServicesList', {
 			id: 'xing',
 			logo: 'xing.png',
 			name: 'XING',
-			description: 'Career-oriented social networking',
+			description: locale['services[71]'] ,
 			url: 'https://www.xing.com/messages/conversations',
 			type: 'messaging',
 			js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
@@ -677,7 +677,7 @@ Ext.define('Rambox.store.ServicesList', {
 			id: 'threema',
 			logo: 'threema.png',
 			name: 'Threema',
-			description: 'Seriously secure messaging',
+			description: locale['services[72]'] ,
 			url: 'https://web.threema.ch/',
 			type: 'messaging',
 			js_unread: '(function () { let unreadCount = 0; function checkUnread() { let newUnread = 0; try { let webClientService = angular.element(document.documentElement).injector().get(\'WebClientService\'); let conversations = webClientService.conversations.conversations; conversations.forEach(function(conversation) { newUnread += conversation.unreadCount; }); } catch (e) { } if (newUnread !== unreadCount) { unreadCount = newUnread; updateBadge(unreadCount); } } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
@@ -687,7 +687,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'workplace'
 			,logo: 'workplace.png'
 			,name: 'Workplace'
-			,description: 'Connect everyone in your company and turn ideas into action. Through group discussion, a personalised News Feed, and voice and video calling, work together and get more done. Workplace is an ad-free space, separate from your personal Facebook account.'
+			,description: locale['services[73]']
 			,url: 'https://___.facebook.com/'
 			,type: 'messaging'
 		},
@@ -695,7 +695,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'teams'
 			,logo: 'teams.png'
 			,name: 'Teams'
-			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
+			,description: locale['services[74]']
 			,url: 'https://teams.microsoft.com'
 			,type: 'messaging'
 			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.2883.87 Safari/537.36'
@@ -704,7 +704,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'kezmo'
 			,logo: 'kezmo.png'
 			,name: 'Kezmo'
-			,description: 'Kezmo is an enterprise chat and collaboration tool to help teams get things done. It’s an email alternative for secure team communication.'
+			,description: locale['services[75]']
 			,url: 'https://app.kezmo.com/web/'
 			,type: 'messaging'
 		},
@@ -712,7 +712,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'lounge'
 			,logo: 'lounge.png'
 			,name: 'The Lounge'
-			,description: 'Self-hosted web IRC client.'
+			,description: locale['services[76]']
 			,url: '___'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge highlight"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
@@ -721,7 +721,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'linkedin'
 			,logo: 'linkedin.png'
 			,name: 'LinkedIn Messaging'
-			,description: 'Manage your professional identity. Build and engage with your professional network. Access knowledge, insights and opportunities.'
+			,description: locale['services[77]']
 			,url: 'https://www.linkedin.com/messaging'
 			,type: 'messaging'
 		},
@@ -729,7 +729,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zyptonite'
 			,logo: 'zyptonite.png'
 			,name: 'Zyptonite'
-			,description: 'Zyptonite is the ultimate cyber secure communication tool for enterprise customers designed to address the need to securely communicate via voice, video, and chat, and transfer files and information across a global mobile workforce.'
+			,description: locale['services[78]']
 			,url: 'https://app.zyptonite.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("z-messages"),b=0;for(i=0;i<a.length;i++)b+=parseInt(a[i].innerHTML.trim());updateBadge(b)}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
@@ -739,7 +739,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'fastmail'
 			,logo: 'fastmail.png'
 			,name: 'FastMail'
-			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
+			,description: locale['services[79]']
 			,url: 'https://www.fastmail.com/mail/'
 			,type: 'email'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("v-FolderSource-badge"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+")"+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);setTimeout(function(){O.WindowController.openExternal=function(a){var b=document.createElement("a");b.href=a,b.setAttribute("target","_blank"),b.click()};},3000);'
@@ -749,7 +749,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'hibox'
 			,logo: 'hibox.png'
 			,name: 'Hibox'
-			,description: 'Hibox is a secure and private messaging platform for your business.'
+			,description: locale['services[80]']
 			,url: 'https://app.hibox.co/'
 			,type: 'messaging'
  		},
@@ -757,7 +757,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'jandi'
 			,logo: 'jandi.png'
 			,name: 'Jandi'
-			,description: 'Jandi is a group-oriented enterprise messaging platform with an integrated suite of collaboration tools for workplace.'
+			,description: locale['services[81]']
 			,url: 'https://___.jandi.com/'
 			,type: 'messaging'
 		},
@@ -765,7 +765,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'messengerpages'
 			,logo: 'messengerpages.png'
 			,name: 'Messenger for Pages'
-			,description: 'Chat with the people of your Facebook Page.'
+			,description: locale['services[82]']
 			,url: 'https://facebook.com/___/inbox/'
 			,type: 'messaging'
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
@@ -774,7 +774,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'messengerbusiness'
 			,logo: 'messengerpages.png'
 			,name: 'Messenger for Business'
-			,description: 'Messenger can help facilitate communication with your customers.'
+			,description: locale['services[83]']
 			,url: 'https://business.facebook.com/___/inbox/'
 			,type: 'messaging'
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
@@ -783,7 +783,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'vk'
 			,logo: 'vk.png'
 			,name: 'VK Messenger'
-			,description: 'Simple and Easy App for Messaging on VK.'
+			,description: locale['services[84]']
 			,url: 'https://m.vk.com/im'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/\D+/g,"")))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -792,7 +792,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'mastodon'
 			,logo: 'mastodon.png'
 			,name: 'Mastodon'
-			,description: 'Mastodon is a free, open-source social network server. A decentralized solution to commercial platforms, it avoids the risks of a single company monopolizing your communication. Anyone can run Mastodon and participate in the social network seamlessly.'
+			,description: locale['services[85]']
 			,url: 'https://mastodon.social/auth/sign_in'
 			,type: 'messaging'
 			,custom_domain: true
@@ -802,7 +802,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'teamworkchat'
 			,logo: 'teamworkchat.png'
 			,name: 'Teamwork Chat'
-			,description: 'Say goodbye to email. Take your online collaboration to the next level with Teamwork Chat and keep all team discussions in one place. Chat to your team in a fun and informal way with Teamwork Chat.'
+			,description: locale['services[86]']
 			,url: 'https://___/chat'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("sidebar-notification-indicator").length > 0 ? document.getElementsByClassName("sidebar-notification-indicator")[0].innerHTML : 0))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
@@ -812,7 +812,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'clocktweets'
 			,logo: 'clocktweets.png'
 			,name: 'ClockTweets'
-			,description: 'Schedule your Tweets with love. Save time and manage your social media strategy easily.'
+			,description: locale['services[87]']
 			,url: 'https://clocktweets.com/dashboard/'
 			,type: 'messaging'
 		},
@@ -820,7 +820,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'intercom'
 			,logo: 'intercom.png'
 			,name: 'Intercom'
-			,description: 'Intercom makes it easy to communicate with your customers personally, at scale. Designed to feel like the messaging apps you use every day, Intercom lets you talk to consumers almost anywhere: inside your app, on your website, across social media and via email.'
+			,description: locale['services[88]']
 			,url: 'https://app.intercom.io'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("unread")[0];updateBadge(t=a===undefined?0:parseInt(a.textContent.replace(/[^0-9]/g,"")))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
@@ -830,7 +830,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'allo'
 			,logo: 'allo.png'
 			,name: 'Allo'
-			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
+			,description: locale['services[89]']
 			,url: 'https://allo.google.com/web'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var e=document.querySelectorAll(".hasUnread.conversation_item"),n=0;for(i=0;i<e.length;i++){var m=e[i].querySelector("#muted"),u=e[i].querySelector(".unreadCount"),c=parseInt(u.innerHTML.trim()),r=(m===null||m.style.display==="none")?c:0;n+=isNaN(r)?0:r}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
@@ -840,7 +840,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'Kune'
 			,logo: 'kune.png'
 			,name: 'Kune'
-			,description: 'Kune is a web tool, based on Apache Wave, for creating environments of constant inter-communication, collective intelligence, knowledge and shared work.'
+			,description: locale['services[90]']
 			,url: 'https://kune.cc'
 			,type: 'messaging'
 		},
@@ -848,7 +848,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'googlevoice'
 			,logo: 'googlevoice.png'
 			,name: 'Google Voice'
-			,description: 'A free phone number for life.  Stay in touch from any screen.  Use your free number to text, call, and check voicemail  all from one app. Plus, Google Voice works on all of your devices so you can connect and communicate how you want.'
+			,description: locale['services[91]']
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
 			,js_unread: 'function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread(){var e=document.querySelector(".msgCount"),n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[\(\) ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){var r=document.querySelector(\'gv-nav-tab[tooltip="\'+e+\'"] div[aria-label="Unread count"]\');r&&(n+=parseIntOrZero(r.innerHTML))}),updateBadge(n)}function updateBadge(e){var n=e>0?"("+e+") ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
@@ -857,7 +857,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'sandstorm'
 			,logo: 'sandstorm.png'
 			,name: 'Sandstorm'
-			,description: 'Sandstorm is a self-hostable web productivity suite.'
+			,description: locale['services[92]']
 			,url: 'https://oasis.sandstorm.io/'
 			,type: 'messaging'
 			,custom_domain: true
@@ -867,7 +867,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'gadugadu'
 			,logo: 'gadugadu.png'
 			,name: 'Gadu-Gadu'
-			,description: 'The most popular Polish messenger.'
+			,description: locale['services[93]']
 			,url: 'https://www.gg.pl/'
 			,type: 'messaging'
 		},
@@ -875,7 +875,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'mailru'
 			,logo: 'mailru.png'
 			,name: 'Mail.Ru'
-			,description: 'Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.'
+			,description: locale['services[94]']
 			,url: 'http://webagent.mail.ru/webim/agent/popup.html'
 			,type: 'email'
 		},
@@ -883,7 +883,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'zulip'
 			,logo: 'zulip.png'
 			,name: 'Zulip'
-			,description: "The world's most productive group chat"
+			,description: locale['services[95]']
 			,url: 'https://___.zulipchat.com/'
 			,type: 'messaging'
 			,custom_domain: true
@@ -892,7 +892,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'stride'
 			,logo: 'stride.png'
 			,name: 'Stride'
-			,description: 'Stride is the complete team communication solution with group messaging, video meetings, and built-in collaboration tools.'
+			,description: locale['services[96]']
 			,url: 'https://app.stride.com/___'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t=0,e=!1;document.querySelectorAll(".conversations-nav .nav-item .activity-indicator").forEach(function(n){n.classList.contains("has-count")?t+=parseInt(n.innerHTML):e=!0}),updateBadge(t,e)}function updateBadge(t,e){var n=t>0?"("+t+") ":e?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
@@ -901,7 +901,7 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'hangoutschat'
 			,logo: 'hangoutschat.png'
 			,name: 'Hangouts Chat'
-			,description: 'A messaging platform built for teams.'
+			,description: locale['services[97]']
 			,url: 'https://chat.google.com/'
 			,type: 'messaging'
 			,titleBlink: true
