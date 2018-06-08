@@ -10,7 +10,7 @@ Working on your first Pull Request? You can learn how from this *free* series [H
 
 ##### If you've found a bug that is not on the board, [follow these steps](README.md#found-a-bug).
 
---------------------------------------------------------------------------------
+---
 
 ## Contribution Guidelines
 
@@ -73,10 +73,7 @@ If your versions are lower than the prerequisite versions, you should update.
 
 1. Open a Terminal / Command Line / Bash Shell in your projects directory (_i.e.: `/yourprojectdirectory/`_)
 1. Clone your fork of rambox
-
-```shell
-git clone https://github.com/yourUsername/rambox.git
-```
+    - `git clone https://github.com/yourUsername/rambox.git`
 
 **(make sure to replace `yourUsername` with your GitHub username)**
 
@@ -86,12 +83,9 @@ This will download the entire rambox repo to your projects directory.
 
 1. Change directory to the new rambox directory (`cd rambox`)
 1. Add a remote to the official rambox repo:
+    - `git remote add upstream https://github.com/saenzramiro/rambox.git`
 
-```shell
-git remote add upstream https://github.com/saenzramiro/rambox.git
-```
-
-Congratulations, you now have a local copy of the rambox repo!
+Congratulations, you now have a local copy of the rambox repo! :tada:
 
 ### Create a Branch
 
@@ -164,9 +158,7 @@ Always feel free to reach out to the chat room when you are not certain of any t
 #### Adding or Editing Services
 
 The services are stored inside the file `./app/store/ServicesList.js`.  Add your service to the *BOTTOM* of the array.
-
 The logo it's referencing is located in `./resources/icons/`.
-
 To see these changes you'll need to stop your `npm start` and `sencha app watch`, and then rerun those.
 
 ### Creating a Pull Request
@@ -230,8 +222,8 @@ Don't despair! You should receive solid feedback as to why it was rejected and w
 Many Pull Requests, especially first Pull Requests, require correction or updating.
 If you have used the GitHub interface to create your PR, you will need to close your PR, create a new branch, and re-submit.
 
-If you have a local copy of the repo, you can make the requested changes and amend your commit with: `git commit --amend` This will update your existing
-commit.
+If you have a local copy of the repo, you can make the requested changes and amend your commit with: `git commit --amend`
+This will update your existing commit.
 When you push it to your fork you will need to do a force push to overwrite your old commit: `git push --force`
 
 Be sure to post in the PR conversation that you have made the requested changes.
