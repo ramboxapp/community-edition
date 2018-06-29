@@ -908,6 +908,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,manual_notifications: true
 			,dont_update_unread_from_title: true
 			,js_unread: 'function checkUnread(){updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
+		},
+		{
+			 id: 'messages'
+			,logo: 'messages.png'
+			,name: 'Messages'
+			,description: 'Text on your computer with Messages for web.'
+			,url: 'https://messages.android.com/'
+			,type: 'messaging'
 		}
 	]
 });
