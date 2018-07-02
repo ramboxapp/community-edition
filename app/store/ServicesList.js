@@ -910,9 +910,9 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function checkUnread(){updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
 		},
 		{
-			 id: 'messages'
-			,logo: 'messages.png'
-			,name: 'Messages'
+			 id: 'androidmessages'
+			,logo: 'androidmessages.png'
+			,name: 'Android Messages'
 			,description: 'Text on your computer with Messages for web.'
 			,url: 'https://messages.android.com/'
 			,type: 'messaging'
