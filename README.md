@@ -156,7 +156,7 @@
 <img width="80" align="left" src="./resources/icons/stride.png" alt="Stride" title="Stride">
 <img width="80" align="left" src="./resources/icons/hangoutschat.png" alt="Hangouts Chat" title="Hangouts Chat">
 <img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business">
-<img width="80" align="left" src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/icons/messages.png" alt="Messages" title="Messages">
+<img width="80" align="left" src="./resources/icons/androidmessages.png" alt="Android Messages" title="Android Messages">
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

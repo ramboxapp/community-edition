@@ -877,9 +877,9 @@ Ext.define('Hamsket.store.ServicesList', {
 			,js_unread: `let checkUnread=()=>{hamsket.updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)};setInterval(checkUnread,3e3);`
 		},
 		{
-			 id: 'messages'
-			,logo: 'messages.png'
-			,name: 'Messages'
+			 id: 'androidmessages'
+			,logo: 'androidmessages.png'
+			,name: 'Android Messages'
 			,description: 'Text on your computer with Messages for web.'
 			,url: 'https://messages.google.com/web'
 			,type: 'messaging'
