@@ -497,9 +497,10 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		/**
-		 * Register page title update event listener only for services that don't prevent it by setting 'dont_update_unread_from_title' to true.
+		 * Register page title update event listener only for services that don't specify a js_unread
 		 */
-		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('dont_update_unread_from_title') !== true) {
+		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' && 
+                        me.record.get('js_unread') === '') {
 			webview.addEventListener("page-title-updated", function(e) {
 				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
