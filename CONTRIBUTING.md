@@ -2,7 +2,7 @@
 
 We welcome pull requests! Follow these steps to contribute:
 
-1. Find an [issue](https://github.com/saenzramiro/rambox/issues) that needs assistance.
+1. Find an [issue](https://github.com/TheGoddessInari/rambox/issues) that needs assistance.
 
 2. Let us know you are working on it by posting a comment on the issue.
 
@@ -69,7 +69,7 @@ If your versions are lower than the prerequisite versions, you should update.
 
 #### Forking rambox
 
-1. Go to the top level rambox repository: <https://github.com/saenzramiro/rambox>
+1. Go to the top level rambox repository: <https://github.com/TheGoddessInari/rambox>
 2. Click the "Fork" Button in the upper right hand corner of the interface ([More Details Here](https://help.github.com/articles/fork-a-repo/))
 3. After the repository (repo) has been forked, you will be taken to your copy of the rambox repo at <https://github.com/yourUsername/rambox>
 
@@ -92,7 +92,7 @@ This will download the entire rambox repo to your projects directory.
 2. Add a remote to the official rambox repo:
 
 ```shell
-$ git remote add upstream https://github.com/saenzramiro/rambox.git
+$ git remote add upstream https://github.com/TheGoddessInari/rambox.git
 ```
 
 Congratulations, you now have a local copy of the rambox repo!
@@ -198,7 +198,7 @@ fork and re-fork.
 
 2.  By default, all pull requests should be against the rambox main repo, `staging`
     branch.
-    **Make sure that your Base Fork is set to saenzramiro/rambox when raising a Pull Request.**
+    **Make sure that your Base Fork is set to TheGoddessInari/rambox when raising a Pull Request.**
 
 3.  Submit a pull request.
 

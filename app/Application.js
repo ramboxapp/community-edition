@@ -244,7 +244,7 @@ Ext.define('Rambox.Application', {
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[1]']
-								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/saenzramiro/rambox/releases/latest'
+								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/TheGoddessInari/rambox/releases/latest'
 								,hidden: process.platform === 'win32'
 							}
 							,{
@@ -252,7 +252,7 @@ Ext.define('Rambox.Application', {
 								,text: locale['app.update[2]']
 								,ui: 'decline'
 								,tooltip: 'Click here to see more information about the new version.'
-								,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+json.version
+								,href: 'https://github.com/TheGoddessInari/rambox/releases/tag/'+json.version
 							}
 							,'->'
 							,{

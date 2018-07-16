@@ -66,7 +66,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
-			,note: 'Text and Audio calls are supported only. <a href="https://github.com/saenzramiro/rambox/wiki/Skype" target="_blank">Read more...</a>'
+			,note: 'Text and Audio calls are supported only. <a href="https://github.com/TheGoddessInari/rambox/wiki/Skype" target="_blank">Read more...</a>'
 		},
 		{
 			 id: 'hangouts'
@@ -129,7 +129,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 			,manual_notifications: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
-			,note: 'Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href="https://github.com/saenzramiro/rambox/wiki/Inbox" target="_blank">Read more...</a>'
+			,note: 'Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href="https://github.com/TheGoddessInari/rambox/wiki/Inbox" target="_blank">Read more...</a>'
 		},
 		{
 			 id: 'chatwork'

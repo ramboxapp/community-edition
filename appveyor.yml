@@ -1,55 +1,66 @@
-version: 0.5.17
+version: 0.5.18-{build}
 environment:
   matrix:
     - nodejs_version: '8'
+  SENCHA_VER: '6.5.3.6'
 pull_requests:
   do_not_increment_build_number: true
 branches:
   only:
   - master
-skip_non_tags: true
+
 init:
   - cmd: git config --global core.autocrlf input
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps:  >-
+     Install-Product node ${env:nodejs_version}
+
+     Invoke-WebRequest -Uri http://cdn.sencha.com/cmd/${env:SENCHA_VER}/no-jre/SenchaCmd-${env:SENCHA_VER}-windows-no_jre.zip -OutFile ${env:TEMP}\Sencha.zip
+
+     Expand-Archive -Path ${env:TEMP}\Sencha.zip -DestinationPath $env:TEMP\SenchaCmd
+
+     Invoke-Expression "${env:TEMP}\SenchaCmd\SenchaCmd-${env:SENCHA_VER}-windows-no_jre.exe -q -Dall=true"
+
+     $env:PATH = "${env:USERPROFILE}\bin\Sencha\Cmd\${env:SENCHA_VER};${env:PATH}"
+
+     Copy-Item env-sample.js env.js
   - cmd: >-
       git reset --hard HEAD
+
+      npm i npm@latest -g
       
       npm run sencha:clean
       
-      git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-      
-      npm install npm@5.7.1 -g
-      
       npm install
-      
-      npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
       
       npm prune
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
   - node_modules
-  - build\production\Rambox\node_modules
 build_script:
   - cmd: >-
       node --version
       
       npm --version
       
-      node_modules/.bin/build --win --ia32 --x64
+      npm run sencha:compile
+
+      npm run build:win64
 test: off
 artifacts:
-  - path: dist\win\*.exe
-  - path: dist\win\*.nupkg
-  - path: dist\win\RELEASES
-  - path: dist\win-ia32\*.exe
+  - path: dist\squirrel-windows\*.exe
+  - path: dist\squirrel-windows\*.nupkg
+  - path: dist\squirrel-windows\RELEASES
   - path: dist\*.zip
 deploy:
   - provider: GitHub
     tag: $(appveyor_build_version)
     release: $(appveyor_build_version)
+    on:
+      branch: master
+      appveyor_repo_tag: true
     auth_token:
-      secure: RKFkz2S89dkYXdW+k47Wv42yrUeE1bDDMkM1PNuxrb0ZOcVVXPO88+t5dUllyvOG
+      secure: G9kcUc6R6xSYIP/mhFWZkuub5EE4b0ws9l3IQtFBz52yTsONp6GiQlFdtsnZWYjW
     draft: true
     prerelease: false

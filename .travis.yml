@@ -10,12 +10,15 @@ branches:
 
 os:
   - linux
-  - osx
+  #- osx ## OSX build is broken so suspend it for now.
 
 cache:
   directories:
     - node_modules
     - $HOME/.electron
+
+env:
+  - SENCHA_VER=6.5.3.6
 
 addons:
   apt:
@@ -23,41 +26,41 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+      - rpm
 
-before_install:
-  # native dependencies
-  - if [ $TRAVIS_OS_NAME == "linux" ]; then
-      sudo apt-add-repository -y ppa:snappy-dev/tools;
-      sudo apt-get update -qq;
-      sudo apt-get install -qq libxml2-dev;
-      sudo apt-get install -qq libappindicator1;
-      sudo apt-get install -qq rpm;
-      sudo apt-get install -y -qq snappy-tools;
-      sudo apt-get install -y -qq snapcraft;
-    fi
 install:
   - git config --global core.autocrlf input
   - git reset --hard HEAD
   - npm run sencha:clean
-  - git clone https://github.com/saenzramiro/rambox-build.git $TRAVIS_BUILD_DIR/build/production/Rambox/
   - npm install
   - npm uninstall electron-prebuilt
   - npm i electron@$ELECTRON
-  - npm --prefix $TRAVIS_BUILD_DIR/build/production/Rambox/ install $TRAVIS_BUILD_DIR/build/production/Rambox/
+  - if [ $TRAVIS_OS_NAME == "linux" ]; then
+      curl -o sencha.sh.zip http://cdn.sencha.com/cmd/${SENCHA_VER}/no-jre/SenchaCmd-${SENCHA_VER}-linux-amd64.sh.zip;
+    else
+      curl -o sencha.sh.zip http://cdn.sencha.com/cmd/${SENCHA_VER}/no-jre/SenchaCmd-${SENCHA_VER}-osx-no_jre.app.zip;
+    fi
+  - unzip -p sencha.sh.zip > sencha-install.run
+  - chmod +x sencha-install.run
+  - ./sencha-install.run -q -Dall=true
+  - cp env-sample.js env.js
+before_script:
+  - export PATH=~/bin/Sencha/Cmd/${SENCHA_VER}:${PATH}
+
 script:
   - echo $TRAVIS_OS_NAME
   - node --version
   - npm --version
+  - sencha audit
+  - npm run sencha:compile
   - npm run build:$TRAVIS_OS_NAME
 
 deploy:
   provider: releases
   api_key:
-    secure: F7z4j9xzhpVyfovrf33jbVdW9dwgpIgbn85dxe8y/kZbQ9sAVU8LzoBZ3PlfeXmoV5CnSUa5j/fe8BmPKiG31kgAH7cktsCOgyOLggO1Sy+vnx7RQwwE/jzb7PzEqI2BP6TG/eOfylBxGBInWeaoSRfK3IRAvLHvvxY1eL4Wq/KRaanzMvh+JdCaStIKJSnI/rc9noI7vtOtgHot+F162s1G1k5/UcdbsfXWzotMVsonhlGgB/Jz9srnJpMpxYxaknR8UFPVRzOM5UzzMo64hXRUDnCFlYcTHcSAkvgKHI0SIPIS3kOdvgrYGavPLK2CAteQk7Dy1lHnEixmKPxG7eVAFwleUo8ePR82WXFkv5gacCvcrGrRLQ9nC/ygeMVgC5XxcHq3ykkcrstu5yjC1yEYFs23gA1Z4DIctwq1diyO72/FNxghV5ckN5WtJQs1QTT+Ec2NjLrWgFYuaEHYgAGopzTPN8gT9fyIv/lAq1S/l4P/z3EDS42UL+UTM77gyXSYShCKneDnFC34ATlYNDhJFRzLZ6qJG5UlOwrfXxUYeGUpQZlV41jg+VFWmPDAeQTMjGP5fRA3w1hFobBotBVyrtbcovTb4TFVTKJWOC/0wyiwku7YTY/nqMU/hR4IluTyRh9Z4NMn5xT5UW63OZd4DJvE573JxmJmnPc0fbo=
+    secure: bYto8VS+zEFqKRjgBga69DgbjVPtHi4vRM+EGsNURe1b4ILRlwS8lJb5RbM+8w2UEPr8P9l959dC1pKYKjlJqEHwvDdTLFsDESO5uEUOtoEWUOnsNEwvvoNY1tFfPoFr1qhWjPWh4UGZzf/sfgXvSdoEg8cbmgbjkbEgGpKPri6Gigvosu/HT1ZCXVoud32uJ2ydfoWMfERXeQYk8u9x52Qx3XS7OMmUR1BvqifaSMt6K5oPFS1lOAXkxyCu1Sczg119+6MEWixImFcXYmPaAoHqLfPNICnhG3egiddq24f1ZGsGmfHgpliM4MNl74t99kPX6lcoQchTlhz4lVVI0lpHBymZwhIf4JjLSuZt81zW5cvJmu0CT22o/thnRFTY1MkaBDmdweaPtdYiMmAJuhwSQEeP6Mt4lqQNgtsNsBqkT6+n4T2l5RHagc/iC4TC58/4QZErKcVkaZnjy78trrQCKD9E1wLpm5hV84fF0FJLrEIhNYcSAJ6u1OJa2CaJ3u5OXFIuu01E+6CWu64pXgpIjkCRQU/JPSQVxdmwWqx4o4948NddBEx7Z3EsPkKU+5ccQr6dz7qESa8xnuERILclWO/LvdauYLhxtMVD2/fc/aKeP+6QxvNBClZT/eeO7bJDdCx/uWzm3Qo4k5+nyTl9bPUKLDzb5MuMh2x7flc=
   file_glob: true
   file:
-    - "dist/*.zip"
-    - "dist/*.snap"
     - "dist/*.deb"
     - "dist/*.tar.gz"
     - "dist/*.AppImage"
@@ -68,19 +71,14 @@ deploy:
   overwrite: true
   prerelease: true
   on:
-    repo: saenzramiro/rambox
+    repo: TheGoddessInari/rambox
     tags: true
     all_branches: true
 
 notifications:
-  email:
-    recipients:
-      - rambox@protonmail.com
-    on_success: always
-    on_failure: always
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/0f214eb0d0017d3c5561
+      - https://webhooks.gitter.im/e/a6584eccd211f35ecab6
     on_success: always  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
