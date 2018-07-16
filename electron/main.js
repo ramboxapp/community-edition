@@ -6,7 +6,7 @@ const tray = require('./tray');
 // AutoLaunch
 var AutoLaunch = require('auto-launch-patched');
 // Configuration
-const Config = require('electron-config');
+const Config = require('electron-store');
 // Development
 const isDev = require('electron-is-dev');
 // Updater
