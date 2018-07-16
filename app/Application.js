@@ -189,7 +189,7 @@ Ext.define('Rambox.Application', {
 					tabPanel.getActiveTab().zoomOut();
 				}
 			}
-		});
+		}, {passive:true});
 
 		// Define default value
 		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
