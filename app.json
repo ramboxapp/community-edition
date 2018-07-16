@@ -254,6 +254,9 @@
         "base": "${workspace.build.dir}/${build.environment}/${app.name}",
         "appCache": {
             "enable": true
+        },
+        "js": {
+            "version": "ES6"
         }
     },
 
