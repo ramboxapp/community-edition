@@ -232,9 +232,6 @@ Ext.define('Rambox.ux.WebView',{
 
 		require('electron-context-menu')({window: webview});
 
-		// Google Analytics Event
-		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
-
 		// Notifications in Webview
 		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
 
