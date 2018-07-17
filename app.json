@@ -104,9 +104,6 @@
             "path": "${framework.dir}/build/ext-all-rtl.js"
         },
         {
-            "path": "resources/js/GALocalStorage.js"
-        },
-        {
             "path": "resources/js/loadscreen.js"
         },
         {
