@@ -194,7 +194,8 @@ I'll think about it later.
 ## Compiling
 
 To build your own copy, you need a recent version of [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/), and to install it with the Compass extension.
-This **needs** to be added to your PATH.
+You also need a recent copy of [NodeJS](https://nodejs.org/en/download/) with npm.
+These **need** to be added to your PATH.
 
 ```shell
 git clone https://github.com/TheGoddessInari/rambox.git
