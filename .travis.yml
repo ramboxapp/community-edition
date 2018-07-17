@@ -71,9 +71,7 @@ deploy:
   overwrite: true
   prerelease: true
   on:
-    repo: TheGoddessInari/rambox
     tags: true
-    all_branches: true
 
 notifications:
   webhooks:

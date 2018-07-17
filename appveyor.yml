@@ -58,7 +58,6 @@ deploy:
     tag: $(appveyor_build_version)
     release: $(appveyor_build_version)
     on:
-      branch: master
       appveyor_repo_tag: true
     auth_token:
       secure: G9kcUc6R6xSYIP/mhFWZkuub5EE4b0ws9l3IQtFBz52yTsONp6GiQlFdtsnZWYjW
