@@ -38,9 +38,10 @@
 - [Privacy](#privacy)
 - [Donations](#donations)
 - [Translations](#translations)
-- [Install on Linux - Steps](#install-on-linux---steps)
+- [Compiling](#compiling)
 - [To Do](#to-do)
 - [Contributing](#contributing)
+- [Quickstart](#quickstart)
 - [Disclosure](#disclosure)
 - [Licence](#licence)
 
@@ -178,11 +179,11 @@
 
 ## Privacy
 
-No personal information will be saved
+No personal information will be saved or tracked.
 
 Sessions will persist using the [partition:persist](https://electronjs.org/docs/api/webview-tag#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
 
-Sync feature use Auth0 for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
+Sync feature use [Auth0](https://auth0.com/) for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
 ## Donations
 
@@ -190,7 +191,21 @@ Sync feature use Auth0 for Single Sign On & Token Based Authentication and to st
 |--------------------|:------------------------------------------------------------------------------------------:|
 I'll think about it later.
 
-## [Install on Linux - Steps](https://github.com/TheGoddessInari/rambox/wiki/Install-on-Linux)
+## Compiling
+
+To build your own copy, you need a recent version of [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/), and to install it with the Compass extension.
+This **needs** to be added to your PATH.
+
+```shell
+git clone https://github.com/TheGoddessInari/rambox.git
+cd rambox
+cp env-sample.js env.js
+# update env.js with your auth0 details.
+npm install
+npm run setup:win64
+```
+You can substitute win64 for linux32, linux64, win32, or osx as desired. This will create installers appropriate to your platform in dist.
+Win32 builds are **deprecated** by electron-builder and is likely to be removed at some point in the future.
 
 ## Contributing
 

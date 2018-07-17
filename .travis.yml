@@ -31,7 +31,6 @@ addons:
 install:
   - git config --global core.autocrlf input
   - git reset --hard HEAD
-  - npm run sencha:clean
   - npm install
   - npm uninstall electron-prebuilt
   - npm i electron@$ELECTRON
@@ -52,8 +51,7 @@ script:
   - node --version
   - npm --version
   - sencha audit
-  - npm run sencha:compile
-  - npm run build:$TRAVIS_OS_NAME
+  - npm run setup:$TRAVIS_OS_NAME
 
 deploy:
   provider: releases

@@ -28,11 +28,9 @@ install:
       git reset --hard HEAD
 
       npm i npm@latest -g
-      
-      npm run sencha:clean
-      
+
       npm install
-      
+
       npm prune
 cache:
   - '%APPDATA%\npm-cache'
@@ -44,9 +42,7 @@ build_script:
       
       npm --version
       
-      npm run sencha:compile
-
-      npm run build:win64
+      npm run setup:win64
 test: off
 artifacts:
   - path: dist\squirrel-windows\*.exe
