@@ -35,7 +35,7 @@
 		"productName": "Rambox",
 		"appId": "com.thegoddessinari.rambox",
 		"asar": true,
-		"publish": "never",
+		"publish": null,
 		"mac": {
 			"category": "public.app-category.productivity",
 			"target": [
