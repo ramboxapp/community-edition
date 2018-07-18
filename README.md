@@ -11,14 +11,15 @@
 
 <p align="center">
   <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><img src="https://img.shields.io/github/license/TheGoddessInari/rambox.svg" alt="GNU GPL v3"></a>
-  <a href="https://gitter.im/TheGoddessInari/rambox" target="_blank"><img src="https://badges.gitter.im/TheGoddessInari/rambox.svg" alt="Gitter"></a>
+  <a href="https://gitter.im/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/gitter/room/TheGoddessInari/rambox.svg" alt="Gitter"></a>
   <a href="https://github.com/TheGoddessInari/rambox/releases/latest" target="_blank"><img src="https://img.shields.io/github/release/TheGoddessInari/rambox.svg" alt="Release"></a>
 </p>
 <p align="center">
-  <a href="https://travis-ci.org/TheGoddessInari/rambox" target="_blank"><img src="https://travis-ci.org/TheGoddessInari/rambox.svg?branch=master" alt="Travis CI"></a>
-  <a href="https://ci.appveyor.com/project/TheGoddessInari/rambox" target="_blank"><img src="https://ci.appveyor.com/api/projects/status/3kk9ixjgxwrh7yfy?svg=true" alt="AppVeyor CI"></a>
-  <a href="https://david-dm.org/TheGoddessInari/rambox" title="Dependency status"><img src="https://david-dm.org/TheGoddessInari/rambox.svg"/></a>
-  <a href="https://david-dm.org/TheGoddessInari/rambox#info=devDependencies" title="devDependency status"><img src="https://david-dm.org/TheGoddessInari/rambox/dev-status.svg"/></a>
+  <a href="https://travis-ci.org/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/travis/TheGoddessInari/rambox/master.svg?logo=travis" alt="Travis CI"></a>
+  <a href="https://ci.appveyor.com/project/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/appveyor/ci/TheGoddessInari/rambox/master.svg?logo=appveyor" alt="AppVeyor CI"></a>
+  <a href="https://david-dm.org/TheGoddessInari/rambox" title="Dependency status"><img src="https://img.shields.io/david/TheGoddessInari/rambox.svg"/></a>
+  <a href="https://david-dm.org/TheGoddessInari/rambox#info=devDependencies" title="devDependency status"><img src="https://img.shields.io/david/dev/TheGoddessInari/rambox.svg"/></a>
+  
 </p>
 
 <h5 align="center">Available for Windows, Mac and Linux.</h5>
@@ -27,6 +28,7 @@
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 <h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>
+
 
 ----------
 
