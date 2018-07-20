@@ -202,8 +202,11 @@ I'll think about it later.
 
 ## Compiling
 
-To build your own copy, you need a recent version of [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/), and to install it with the Compass extension.
-You also need a recent copy of [NodeJS](https://nodejs.org/en/download/) with npm.
+To build your own copy, you need:
+- A recent version of the [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html). 8.0 may be needed on some platform configurations.
+- A recent version of [Ruby](https://www.ruby-lang.org/en/downloads/).
+- A recent version of [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/), and to install it with the Compass extension.
+- A recent version of [NodeJS](https://nodejs.org/en/download/) with npm.
 These **need** to be added to your PATH.
 
 ```shell
