@@ -183,7 +183,8 @@
 - [x] Separate tabs floating to the right.
 - [x] Disable a service instead of remove it.
 - [x] Start automatically on system startup.
-- [x] Custom Code Injection.
+- [x] Custom Javascript injection.
+- [x] Custom CSS injection.
 - [x] Keyboard Shortcuts.
 - [x] Proxy.
 
