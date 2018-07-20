@@ -224,7 +224,7 @@ Ext.define('Rambox.Application', {
 	,checkUpdate: function(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
-			 url: 'http://rambox.pro/api/latestversion.json'
+			 url: 'https://rambox.pro/api/latestversion.json'
 			,method: 'GET'
 			,success: function(response) {
 				var json = Ext.decode(response.responseText);

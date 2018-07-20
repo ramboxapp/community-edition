@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://rambox.pro"><img src="https://raw.githubusercontent.com/TheGoddessInari/rambox/master/resources/Icon.png" width="256px" alt="Rambox"></a>
+  <a href="https://rambox.pro"><img src="https://raw.githubusercontent.com/TheGoddessInari/rambox/master/resources/Icon.png" width="256px" alt="Rambox"></a>
   <br>
   Rambox
   <br>

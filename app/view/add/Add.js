@@ -65,7 +65,7 @@ Ext.define('Rambox.view.add.Add',{
 								,readOnly: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain')) : me.record.get('url').indexOf('___') === -1 && me.record.get('custom_domain')
 								,allowBlank: false
 								,submitEmptyText: false
-								,emptyText: me.record.get('url') === '___' ? 'http://' : ''
+								,emptyText: me.record.get('url') === '___' ? 'https://' : ''
 								,vtype: me.record.get('url') === '___' ? 'url' : ''
 								,listeners: { specialkey: 'onEnter' }
 								,flex: 1
@@ -97,7 +97,7 @@ Ext.define('Rambox.view.add.Add',{
 								}
 								,changeHandler: function(cycleBtn, activeItem) {
 									Ext.apply(cycleBtn.previousSibling(), {
-										 emptyText: activeItem.custom ? 'http://' : ' '
+										 emptyText: activeItem.custom ? 'https://' : ' '
 										,vtype: activeItem.custom ? 'url' : ''
 									});
 									cycleBtn.previousSibling().applyEmptyText();
@@ -127,7 +127,7 @@ Ext.define('Rambox.view.add.Add',{
 					,{
 						 xtype: 'textfield'
 						,fieldLabel: locale['app.window[18]']
-						,emptyText: 'http://url.com/image.png'
+						,emptyText: 'https://url.com/image.png'
 						,name: 'logo'
 						,vtype: me.record.get('type') === 'custom' ? 'url' : ''
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('logo') : '') : me.record.get('logo')

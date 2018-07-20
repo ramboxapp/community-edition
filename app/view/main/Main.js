@@ -315,7 +315,7 @@ Ext.define('Rambox.view.main.Main', {
 						 text: locale['app.main[22]']
 						,icon: 'resources/auth0.png'
 						,id: 'loginBtn'
-						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (http://auth0.com)</i>'
+						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (https://auth0.com)</i>'
 						,bind: {
 							hidden: '{username}'
 						}

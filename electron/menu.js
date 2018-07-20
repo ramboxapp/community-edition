@@ -22,7 +22,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[0]'],
 			click() {
-				shell.openExternal('http://rambox.pro');
+				shell.openExternal('https://rambox.pro');
 			}
 		},
 		{
