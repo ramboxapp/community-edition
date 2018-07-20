@@ -243,6 +243,7 @@ Ext.define('Rambox.view.add.Add',{
 								,value: me.edit ? me.record.get('js_unread') : ''
 								,anchor: '100%'
 								,height: 120
+								,style: 'font-family: Consolas, "Lucida Console", Monaco, monospace'
 							}
 						]
 					}
