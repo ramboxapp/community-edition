@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://rambox.pro"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="256px" alt="Rambox"></a>
+  <a href="https://rambox.pro"><img src="https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.png" width="256px" alt="Rambox"></a>
   <br>
   Rambox
   <br>
@@ -25,7 +25,7 @@
 
 <h5 align="center">Available for Windows, Mac and Linux.</h5>
 
-<h5 align="center"><a href="http://rambox.pro/#download" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE"></a></h5>
+<h5 align="center"><a href="https://rambox.pro/#download" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE"></a></h5>
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 
