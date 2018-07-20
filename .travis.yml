@@ -61,18 +61,18 @@ script:
   - sencha audit
   - npm run setup:${TRAVIS_OS_NAME}
 
-after_success:
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "Travis"
-  - if [ ${CURRENT_BRANCH} == "testing" ]; then
-      export TRAVIS_TAG="snapshot-testing";
-      git tag -f ${TRAVIS_TAG} -a -m "Automatic snapshot for testing [skip ci]";
-      (git push -q https://${TAGPERM}@github.com/TheGoddessInari/rambox --tags -f) > /dev/null 2>&1;
-    elif [ ${CURRENT_BRANCH} == "master" ]; then
-      export TRAVIS_TAG="snapshot-master";
-      git tag -f ${TRAVIS_TAG} -a -m "Automatic snapshot for master [skip ci]";
-      (git push -q https://${TAGPERM}@github.com/TheGoddessInari/rambox --tags -f) > /dev/null 2>&1;
-    fi
+# after_success:
+  # - git config --global user.email "travis@travis-ci.org"
+  # - git config --global user.name "Travis"
+  # - if [ ${CURRENT_BRANCH} == "testing" ]; then
+  #     export TRAVIS_TAG="snapshot-testing";
+  #     git tag -f ${TRAVIS_TAG} -a -m "Automatic snapshot for testing [skip ci]";
+  #     (git push -q https://${TAGPERM}@github.com/TheGoddessInari/rambox --tags -f) > /dev/null 2>&1;
+  #   elif [ ${CURRENT_BRANCH} == "master" ]; then
+  #     export TRAVIS_TAG="snapshot-master";
+  #     git tag -f ${TRAVIS_TAG} -a -m "Automatic snapshot for master [skip ci]";
+  #     (git push -q https://${TAGPERM}@github.com/TheGoddessInari/rambox --tags -f) > /dev/null 2>&1;
+  #   fi
 
 # deploy:
 #   - provider: releases # Snapshot tags

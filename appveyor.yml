@@ -3,8 +3,7 @@ image:
   - Visual Studio 2017
   - Ubuntu
 environment:
-  matrix:
-    - nodejs_version: '10'
+  nodejs_version: '10'
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
   npm_config_loglevel: 'error'
   SENCHA_VER: '6.6.0.13'
@@ -89,6 +88,7 @@ build_script:
 test: off
 artifacts:
   - path: dist\squirrel-windows\*.exe
+  - path: dist\squirrel-windows-ia32\*.exe
   - path: dist/*.AppImage
   - path: dist/*.rpm
   - path: dist/*.deb
