@@ -25,6 +25,10 @@ Ext.define('Rambox.model.ServiceList', {
 		,type: 'string'
 		,defaultValue: ''
 	},{
+		name: 'custom_css'
+		,type: 'string'
+		,defaultValue: ''
+	},{
 		 name: 'titleBlink'
 		,type: 'boolean'
 		,defaultValue: false

@@ -244,6 +244,16 @@ Ext.define('Rambox.view.add.Add',{
 								,anchor: '100%'
 								,height: 120
 								,style: 'font-family: Consolas, "Lucida Console", Monaco, monospace'
+							},
+							{
+								xtype: 'textarea'
+								,fieldLabel: 'Custom CSS'
+								,allowBlank: true
+								,name: 'custom_css'
+								,value: me.edit ? me.record.get('custom_css') : ''
+								,anchor: '100%'
+								,height: 120
+								,style: 'font-family: Consolas, "Lucida Console", Monaco, monospace'	
 							}
 						]
 					}

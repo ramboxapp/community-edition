@@ -404,6 +404,7 @@ Ext.define('Rambox.ux.WebView',{
 			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
 
 			var js_inject = '';
+			var css_inject = '';
 			// Injected code to detect new messages
 			if ( me.record ) {
 				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
@@ -413,6 +414,15 @@ Ext.define('Rambox.ux.WebView',{
 					console.info(me.type);
 					console.log(js_unread);
 					js_inject += js_unread;
+				}
+
+				var custom_css = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_css');
+				custom_css = custom_css + me.record.get('custom_css');
+				if ( custom_css !== '' ) {
+					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - Injected Custom CSS');
+					console.info(me.type);
+					console.log(custom_css);
+					css_inject += custom_css;
 				}
 			}
 
@@ -446,6 +456,7 @@ Ext.define('Rambox.ux.WebView',{
 			});
 
 			webview.executeJavaScript(js_inject);
+			webview.insertCSS(css_inject);
 		});
 
 		webview.addEventListener('ipc-message', function(event) {
