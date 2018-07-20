@@ -26,6 +26,7 @@ Ext.define('Rambox.view.main.Main', {
 	,autoShow: true
 	,deferredRender: false
 	,tabBar: {
+		/* TODO: Donation
 		items: [{
 			 xtype: 'button'
 			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
@@ -33,6 +34,7 @@ Ext.define('Rambox.view.main.Main', {
 			,tooltip: locale['app.main[25]']
 			,href: 'https://fundraiseup.com/widget/FUNSGXPIJWQ/donate?key=KPCFEZKZ'
 		}]
+		*/
 	}
 	,items: [
 		{
@@ -313,7 +315,7 @@ Ext.define('Rambox.view.main.Main', {
 						 text: locale['app.main[22]']
 						,icon: 'resources/auth0.png'
 						,id: 'loginBtn'
-						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (http://auth0.com)</i>'
+						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (https://auth0.com)</i>'
 						,bind: {
 							hidden: '{username}'
 						}
@@ -330,6 +332,7 @@ Ext.define('Rambox.view.main.Main', {
 				{
 					 xtype: 'segmentedbutton'
 					,allowToggle: false
+					/* TODO: Donation, Translation.
 					,items: [
 						{
 							 text: '<b>Help us</b> with'
@@ -345,13 +348,14 @@ Ext.define('Rambox.view.main.Main', {
 							,glyph: 'xf0ac@FontAwesome'
 							,href: 'https://crowdin.com/project/rambox/invite'
 						}
-					]
+					]*/
 				}
+				/* TODO: Flag
 				,'->'
 				,{
 					 xtype: 'label'
 					,html: '<span class="fa fa-code" style="color:black;"></span> '+locale['app.main[26]']+' <span class="fa fa-heart" style="color:red;"></span> '+locale['app.main[27]'].replace('Argentina', '<img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" />')
-				}
+				}*/
 				,'->'
 				,{
 					xtype: 'segmentedbutton'
@@ -363,15 +367,15 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,{
 							 glyph: 'xf082@FontAwesome'
-							,href: 'https://www.facebook.com/ramboxapp'
+							,href: 'https://www.facebook.com/TheGoddessInari'
 						}
 						,{
 							 glyph: 'xf099@FontAwesome'
-							,href: 'https://www.twitter.com/ramboxapp'
+							,href: 'https://www.twitter.com/TheGoddessInari'
 						}
 						,{
 							 glyph: 'xf09b@FontAwesome'
-							,href: 'https://www.github.com/saenzramiro/rambox'
+							,href: 'https://www.github.com/TheGoddessInari/rambox'
 						}
 					]
 				}

@@ -8,25 +8,21 @@
 
 Help us to maximize the effort we can spend fixing issues and adding new features, by not reporting duplicate issues.
 
-[template]: https://github.com/saenzramiro/rambox/blob/master/.github/ISSUE_TEMPLATE.md
+[template]: https://github.com/TheGoddessInari/rambox/blob/master/.github/ISSUE_TEMPLATE.md
 
 ## Share your Custom Services
 
 If you consider there are other users that can use your Custom Service, we have a repo for this: [Rambox Services Contrib][rambox-services-contrib].
 
-[rambox-services-contrib]: https://github.com/saenzramiro/rambox-services-contrib
+[rambox-services-contrib]: https://github.com/TheGoddessInari/rambox-services-contrib
 
 ## Ask for help
 
 We have a great community in [Gitter][gitter] that can help you with any doubt or problem.
 
-[gitter]: https://gitter.im/saenzramiro/rambox
+[gitter]: https://gitter.im/TheGoddessInari/rambox
 
 ## Contributing to Source Code
 
 Feel free to create pull requests to help us offer a great and complete software. :wink:
 
-## Translations
-Please submit translations via [Transifex][transifex].
-
-[transifex]: https://www.transifex.com/rambox/rambox-app/

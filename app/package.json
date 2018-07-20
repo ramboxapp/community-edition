@@ -1,18 +1,18 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.5.17",
+	"version": "0.5.18",
 	"description": "Rambox",
 	"main": "electron/main.js",
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/saenzramiro/rambox.git"
+		"url": "https://github.com/TheGoddessInari/rambox.git"
 	},
 	"bugs": {
-		"url": "https://github.com/saenzramiro/rambox/issues"
+		"url": "https://github.com/TheGoddessInari/rambox/issues"
 	},
-	"homepage": "http://rambox.pro",
+	"homepage": "https://rambox.pro",
 	"keywords": [
 		"Rambox",
 		"messaging",
@@ -26,7 +26,7 @@
 		"hangouts",
 		"skype"
 	],
-	"author": "Ramiro Saenz <saenzramiro@gmail.com>",
+	"author": "TheGoddessInari <thegoddessinari@gmail.com>",
 	"license": "GPL-3.0",
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",

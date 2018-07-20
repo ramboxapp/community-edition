@@ -7,9 +7,12 @@ node_js:
 branches:
   only:
     - master
+    - testing
+  except:
+    - snapshot-master
+    - snapshot-testing
 
 os:
-  - linux
   - osx
 
 cache:
@@ -17,70 +20,107 @@ cache:
     - node_modules
     - $HOME/.electron
 
+env:
+  global:
+    - SENCHA_VER=6.6.0.13
+    - secure: "sEoA+xvrsfYuxGOlrcdHudu0nYjlV47wwyMMgurSi+Em4izYgXoe5JLYDZ5nniO2iDAmD1IqjwbxhBrbRyue2b0gyyuz4PbPfsR5sSbegZ3xum8nzn7Jg5NydllLQbJmPKSsOGOhiOYdprUvMsbmvTWVOwSAs6fH/PorJlqegODpsa8GeuNTXPsI5pT2j98F+DJaF+wAKdkhpgpX3ggdCCdY4pb7SdLk+2Q51IPZhgEPG1AXv2kfXFXHQIwZp76+5hva0aKZEjXipgkPeOr/tLgsIdrSCHAPigxcZyb8SvJzNMIniHfNmdzWr8q2tJuh2W9zCuYhghJQ4pkGUc3OFR0xaLU9aP17u9P/7AB+Zv/PaO5ta5Ay49/2K38hrfAjgBioUCrICH4jXTZenmg8X6q5ksx6R3wBMLP0qv1wyvGEakzIhqBjTwBnZyGE7aLpyGyi4qP0TcBQ7APVaAa1HYsd8uz4GTm67SCqEELzGJlt14dkep9FLIPBFVMo1kzHK45ltLPSawUsJ4Z5Ds8nAdJi1ZEik2IWh6++XVn65fGe0qOdZ1T0AvOgln7RVv4WtznEBcjK0vwP68++XQditB6oGRnMitnVyudQfoSI6j5q0KPrTDRENRN+yh0ofqO/YhkNu1BxCzLLoHQ4Rb5DdX8kALNWupqbCnw1Ce4KJw0="
+
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+      - rpm
 
-before_install:
-  # native dependencies
-  - if [ $TRAVIS_OS_NAME == "linux" ]; then
-      sudo apt-add-repository -y ppa:snappy-dev/tools;
-      sudo apt-get update -qq;
-      sudo apt-get install -qq libxml2-dev;
-      sudo apt-get install -qq libappindicator1;
-      sudo apt-get install -qq rpm;
-      sudo apt-get install -y -qq snappy-tools;
-      sudo apt-get install -y -qq snapcraft;
-    fi
 install:
   - git config --global core.autocrlf input
   - git reset --hard HEAD
-  - npm run sencha:clean
-  - git clone https://github.com/saenzramiro/rambox-build.git $TRAVIS_BUILD_DIR/build/production/Rambox/
   - npm install
   - npm uninstall electron-prebuilt
-  - npm i electron@$ELECTRON
-  - npm --prefix $TRAVIS_BUILD_DIR/build/production/Rambox/ install $TRAVIS_BUILD_DIR/build/production/Rambox/
+  - npm i electron@${ELECTRON}
+  - if [ $TRAVIS_OS_NAME == "linux" ]; then
+      curl -o SenchaCmd-${SENCHA_VER}-linux-amd64.sh.zip http://cdn.sencha.com/cmd/${SENCHA_VER}/no-jre/SenchaCmd-${SENCHA_VER}-linux-amd64.sh.zip;
+      unzip SenchaCmd-${SENCHA_VER}-linux-amd64.sh.zip;
+      chmod +x SenchaCmd-${SENCHA_VER}-linux-amd64.sh;
+      ./SenchaCmd-${SENCHA_VER}-linux-amd64.sh -q -Dall=true;
+    else
+      curl -o SenchaCmd-${SENCHA_VER}-osx-no_jre.app.zip http://cdn.sencha.com/cmd/${SENCHA_VER}/no-jre/SenchaCmd-${SENCHA_VER}-osx-no_jre.app.zip;
+      unzip SenchaCmd-${SENCHA_VER}-osx-no_jre.app.zip;
+      SenchaCmd-${SENCHA_VER}-osx-no_jre.app/Contents/MacOS/JavaApplicationStub -q -Dall=true;
+    fi
+  - cp env-sample.js env.js
+before_script:
+  - export PATH=~/bin/Sencha/Cmd/${SENCHA_VER}:${PATH}
+  - export CURRENT_BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
+
 script:
-  - echo $TRAVIS_OS_NAME
+  - echo ${TRAVIS_OS_NAME}
   - node --version
   - npm --version
-  - npm run build:$TRAVIS_OS_NAME
+  - sencha audit
+  - npm run setup:${TRAVIS_OS_NAME}
 
-deploy:
-  provider: releases
-  api_key:
-    secure: F7z4j9xzhpVyfovrf33jbVdW9dwgpIgbn85dxe8y/kZbQ9sAVU8LzoBZ3PlfeXmoV5CnSUa5j/fe8BmPKiG31kgAH7cktsCOgyOLggO1Sy+vnx7RQwwE/jzb7PzEqI2BP6TG/eOfylBxGBInWeaoSRfK3IRAvLHvvxY1eL4Wq/KRaanzMvh+JdCaStIKJSnI/rc9noI7vtOtgHot+F162s1G1k5/UcdbsfXWzotMVsonhlGgB/Jz9srnJpMpxYxaknR8UFPVRzOM5UzzMo64hXRUDnCFlYcTHcSAkvgKHI0SIPIS3kOdvgrYGavPLK2CAteQk7Dy1lHnEixmKPxG7eVAFwleUo8ePR82WXFkv5gacCvcrGrRLQ9nC/ygeMVgC5XxcHq3ykkcrstu5yjC1yEYFs23gA1Z4DIctwq1diyO72/FNxghV5ckN5WtJQs1QTT+Ec2NjLrWgFYuaEHYgAGopzTPN8gT9fyIv/lAq1S/l4P/z3EDS42UL+UTM77gyXSYShCKneDnFC34ATlYNDhJFRzLZ6qJG5UlOwrfXxUYeGUpQZlV41jg+VFWmPDAeQTMjGP5fRA3w1hFobBotBVyrtbcovTb4TFVTKJWOC/0wyiwku7YTY/nqMU/hR4IluTyRh9Z4NMn5xT5UW63OZd4DJvE573JxmJmnPc0fbo=
-  file_glob: true
-  file:
-    - "dist/*.zip"
-    - "dist/*.snap"
-    - "dist/*.deb"
-    - "dist/*.tar.gz"
-    - "dist/*.AppImage"
-    - "dist/*.rpm"
-    - "dist/mac/*.zip"
-    - "dist/mac/*.dmg"
-  skip_cleanup: true
-  overwrite: true
-  prerelease: true
-  on:
-    repo: saenzramiro/rambox
-    tags: true
-    all_branches: true
+# after_success:
+  # - git config --global user.email "travis@travis-ci.org"
+  # - git config --global user.name "Travis"
+  # - if [ ${CURRENT_BRANCH} == "testing" ]; then
+  #     export TRAVIS_TAG="snapshot-testing";
+  #     git tag -f ${TRAVIS_TAG} -a -m "Automatic snapshot for testing [skip ci]";
+  #     (git push -q https://${TAGPERM}@github.com/TheGoddessInari/rambox --tags -f) > /dev/null 2>&1;
+  #   elif [ ${CURRENT_BRANCH} == "master" ]; then
+  #     export TRAVIS_TAG="snapshot-master";
+  #     git tag -f ${TRAVIS_TAG} -a -m "Automatic snapshot for master [skip ci]";
+  #     (git push -q https://${TAGPERM}@github.com/TheGoddessInari/rambox --tags -f) > /dev/null 2>&1;
+  #   fi
+
+# deploy:
+#   - provider: releases # Snapshot tags
+#     on:
+#       repo: TheGoddessInari/rambox
+#       all_branches: true
+#       condition: ${TRAVIS_TAG} == snapshot-master || ${TRAVIS_TAG} == snapshot-testing
+#     api_key:
+#       secure: bYto8VS+zEFqKRjgBga69DgbjVPtHi4vRM+EGsNURe1b4ILRlwS8lJb5RbM+8w2UEPr8P9l959dC1pKYKjlJqEHwvDdTLFsDESO5uEUOtoEWUOnsNEwvvoNY1tFfPoFr1qhWjPWh4UGZzf/sfgXvSdoEg8cbmgbjkbEgGpKPri6Gigvosu/HT1ZCXVoud32uJ2ydfoWMfERXeQYk8u9x52Qx3XS7OMmUR1BvqifaSMt6K5oPFS1lOAXkxyCu1Sczg119+6MEWixImFcXYmPaAoHqLfPNICnhG3egiddq24f1ZGsGmfHgpliM4MNl74t99kPX6lcoQchTlhz4lVVI0lpHBymZwhIf4JjLSuZt81zW5cvJmu0CT22o/thnRFTY1MkaBDmdweaPtdYiMmAJuhwSQEeP6Mt4lqQNgtsNsBqkT6+n4T2l5RHagc/iC4TC58/4QZErKcVkaZnjy78trrQCKD9E1wLpm5hV84fF0FJLrEIhNYcSAJ6u1OJa2CaJ3u5OXFIuu01E+6CWu64pXgpIjkCRQU/JPSQVxdmwWqx4o4948NddBEx7Z3EsPkKU+5ccQr6dz7qESa8xnuERILclWO/LvdauYLhxtMVD2/fc/aKeP+6QxvNBClZT/eeO7bJDdCx/uWzm3Qo4k5+nyTl9bPUKLDzb5MuMh2x7flc=
+#     file_glob: true
+#     file:
+#       - "dist/*.deb"
+#       - "dist/*.tar.gz"
+#       - "dist/*.AppImage"
+#       - "dist/*.rpm"
+#       - "dist/*.zip"
+#       - "dist/*.dmg"
+#     skip_cleanup: true
+#     overwrite: true
+#     draft: false
+#     prerelease: true
+#     tag_name: $TRAVIS_TAG
+#   - provider: releases # Regular tags
+#     on:
+#       repo: TheGoddessInari/rambox
+#       all_branches: true
+#       condition: x${TRAVIS_TAG} != "x" && ${TRAVIS_TAG} != snapshot-master && ${TRAVIS_TAG} != snapshot-testing
+#     api_key:
+#       secure: bYto8VS+zEFqKRjgBga69DgbjVPtHi4vRM+EGsNURe1b4ILRlwS8lJb5RbM+8w2UEPr8P9l959dC1pKYKjlJqEHwvDdTLFsDESO5uEUOtoEWUOnsNEwvvoNY1tFfPoFr1qhWjPWh4UGZzf/sfgXvSdoEg8cbmgbjkbEgGpKPri6Gigvosu/HT1ZCXVoud32uJ2ydfoWMfERXeQYk8u9x52Qx3XS7OMmUR1BvqifaSMt6K5oPFS1lOAXkxyCu1Sczg119+6MEWixImFcXYmPaAoHqLfPNICnhG3egiddq24f1ZGsGmfHgpliM4MNl74t99kPX6lcoQchTlhz4lVVI0lpHBymZwhIf4JjLSuZt81zW5cvJmu0CT22o/thnRFTY1MkaBDmdweaPtdYiMmAJuhwSQEeP6Mt4lqQNgtsNsBqkT6+n4T2l5RHagc/iC4TC58/4QZErKcVkaZnjy78trrQCKD9E1wLpm5hV84fF0FJLrEIhNYcSAJ6u1OJa2CaJ3u5OXFIuu01E+6CWu64pXgpIjkCRQU/JPSQVxdmwWqx4o4948NddBEx7Z3EsPkKU+5ccQr6dz7qESa8xnuERILclWO/LvdauYLhxtMVD2/fc/aKeP+6QxvNBClZT/eeO7bJDdCx/uWzm3Qo4k5+nyTl9bPUKLDzb5MuMh2x7flc=
+#     file_glob: true
+#     file:
+#       - "dist/*.deb"
+#       - "dist/*.tar.gz"
+#       - "dist/*.AppImage"
+#       - "dist/*.rpm"
+#       - "dist/*.zip"
+#       - "dist/*.dmg"
+#     skip_cleanup: true
+#     overwrite: false
+#     draft: true
+#     prerelease: false
+#     tag_name: $TRAVIS_TAG
+
 
 notifications:
-  email:
-    recipients:
-      - rambox@protonmail.com
-    on_success: always
-    on_failure: always
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/0f214eb0d0017d3c5561
+      - https://webhooks.gitter.im/e/a6584eccd211f35ecab6
     on_success: always  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always

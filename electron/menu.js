@@ -22,25 +22,25 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[0]'],
 			click() {
-				shell.openExternal('http://rambox.pro');
+				shell.openExternal('https://rambox.pro');
 			}
 		},
 		{
 			label: `&Facebook`,
 			click() {
-				shell.openExternal('https://www.facebook.com/ramboxapp');
+				shell.openExternal('https://www.facebook.com/TheGoddessInari');
 			}
 		},
 		{
 			label: `&Twitter`,
 			click() {
-				shell.openExternal('https://www.twitter.com/ramboxapp');
+				shell.openExternal('https://www.twitter.com/TheGoddessInari');
 			}
 		},
 		{
 			label: `&GitHub`,
 			click() {
-				shell.openExternal('https://www.github.com/saenzramiro/rambox');
+				shell.openExternal('https://www.github.com/TheGoddessInari/rambox');
 			}
 		},
 		{
@@ -60,13 +60,13 @@ module.exports = function(config) {
 	> Electron ${process.versions.electron}
 	> ${process.platform} ${process.arch} ${os.release()}`;
 
-				shell.openExternal(`https://github.com/saenzramiro/rambox/issues/new?body=${encodeURIComponent(body)}`);
+				shell.openExternal(`https://github.com/TheGoddessInari/rambox/issues/new?body=${encodeURIComponent(body)}`);
 			}
 		},
 		{
 			label: `&`+locale['menu.help[2]'],
 			click() {
-				shell.openExternal('https://rambox.typeform.com/to/t7jc4C');
+				shell.openExternal('https://gitter.im/TheGoddessInari/rambox');
 			}
 		},
 		{
@@ -95,12 +95,13 @@ module.exports = function(config) {
 		{
 			type: 'separator'
 		},
-		{
+		/*{
 			label: `&`+locale['menu.help[3]'],
 			click() {
 				shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
 			}
 		}
+		*/
 	];
 
 	let tpl = [

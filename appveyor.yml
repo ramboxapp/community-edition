@@ -1,55 +1,142 @@
-version: 0.5.17
+version: 0.5.18-{build}
+image:
+  - Visual Studio 2017
+  - Ubuntu
 environment:
-  matrix:
-    - nodejs_version: '8'
+  nodejs_version: '10'
+  JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+  npm_config_loglevel: 'error'
+  SENCHA_VER: '6.6.0.13'
+  TAGPERM:
+    secure: FKiBHTmmImO3M5FhK2TMrnpojiT6ITuJ/LvrdLjj2xD0VkcYtXuvQr5nqoxouvph
+stack: node 10, jdk 8
 pull_requests:
   do_not_increment_build_number: true
 branches:
   only:
   - master
-skip_non_tags: true
+  - testing
+  except:
+  - snapshot-master
+  - snapshot-testing
+
 init:
-  - cmd: git config --global core.autocrlf input
+  - ps: git config --global core.autocrlf input
 install:
-  - ps: Install-Product node $env:nodejs_version
-  - cmd: >-
-      git reset --hard HEAD
-      
-      npm run sencha:clean
-      
-      git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-      
-      npm install npm@5.7.1 -g
-      
-      npm install
-      
-      npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-      
-      npm prune
+  - ps: >-
+
+        If ($isWindows) {
+          Install-Product node ${env:nodejs_version}
+          Invoke-WebRequest -Uri http://cdn.sencha.com/cmd/${env:SENCHA_VER}/no-jre/SenchaCmd-${env:SENCHA_VER}-windows-no_jre.zip -OutFile .\Sencha.zip
+        } ElseIf ($isLinux) {
+          Invoke-WebRequest -Uri http://cdn.sencha.com/cmd/${env:SENCHA_VER}/no-jre/SenchaCmd-${env:SENCHA_VER}-linux-amd64.sh.zip -OutFile .\Sencha.zip
+        }
+
+        Expand-Archive -Path .\Sencha.zip -DestinationPath .\SenchaCmd
+
+        If ($isWindows) {
+          Invoke-Expression ".\SenchaCmd\SenchaCmd-${env:SENCHA_VER}-windows-no_jre.exe -q -Dall=true"
+          $env:PATH = "${env:USERPROFILE}\bin\Sencha\Cmd;${env:PATH}"
+        } ElseIf ($isLinux) {
+          Invoke-Expression "chmod +x ./SenchaCmd/SenchaCmd-${env:SENCHA_VER}-linux-amd64.sh"
+          Invoke-Expression "./SenchaCmd/SenchaCmd-${env:SENCHA_VER}-linux-amd64.sh -q -Dall=true"
+          $env:PATH = "${env:HOME}/bin/Sencha/Cmd:${env:PATH}"
+        }
+
+        Copy-Item env-sample.js env.js
+
+        git reset --hard HEAD
+
+        npm i npm@latest -g
+
+        npm install
+
+        npm prune
+
+  - sh: >-
+
+        sudo apt-get update -qq;
+
+        sudo apt-get install -qq -y libxml2-dev libappindicator1 rpm;
+
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
-  - node_modules
-  - build\production\Rambox\node_modules
+  - node_modules -> package-lock.json
+
+before_build:
+  - ps: >-
+        ${env:CURRENT_BRANCH} = If (${env:APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}) {
+          ${env:APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}
+        } Else {
+          ${env:APPVEYOR_REPO_BRANCH}
+        }
+
 build_script:
-  - cmd: >-
-      node --version
-      
-      npm --version
-      
-      node_modules/.bin/build --win --ia32 --x64
+  - ps: >-
+        node --version
+
+        npm --version
+
+        If ($isWindows) {
+          npm run setup:win
+        } ElseIf ($isLinux) {
+          npm run setup:linux
+        }
+
+
+
 test: off
 artifacts:
-  - path: dist\win\*.exe
-  - path: dist\win\*.nupkg
-  - path: dist\win\RELEASES
-  - path: dist\win-ia32\*.exe
-  - path: dist\*.zip
-deploy:
-  - provider: GitHub
-    tag: $(appveyor_build_version)
-    release: $(appveyor_build_version)
-    auth_token:
-      secure: RKFkz2S89dkYXdW+k47Wv42yrUeE1bDDMkM1PNuxrb0ZOcVVXPO88+t5dUllyvOG
-    draft: true
-    prerelease: false
+  - path: dist\squirrel-windows\*.exe
+  - path: dist\squirrel-windows-ia32\*.exe
+  - path: dist/*.AppImage
+  - path: dist/*.rpm
+  - path: dist/*.deb
+  - path: dist/*.tar.gz
+  
+# after_build:
+#   - ps: >- 
+#         git config --global user.email "travis@travis-ci.org"
+
+#         git config --global user.name "Travis"
+
+#         If (${env:CURRENT_BRANCH} -eq "testing") {
+#             ${env:APPVEYOR_REPO_TAG_NAME}="snapshot-testing"
+#             ${env:APPVEYOR_REPO_TAG}="true"
+#             ${env:SNAPSHOT}="true"
+#             git tag -f ${env:APPVEYOR_REPO_TAG_NAME} -a -m "Automatic snapshot for testing [skip ci]"
+#             (git push -q https://${env:TAGPERM}@github.com/TheGoddessInari/rambox --tags -f 2>&1) | Out-Null
+#           } ElseIf (${env:CURRENT_BRANCH} -eq "master") {
+#             ${env:APPVEYOR_REPO_TAG_NAME}="snapshot-master"
+#             ${env:APPVEYOR_REPO_TAG}="true"
+#             ${env:SNAPSHOT}="true"
+#             git tag -f ${env:APPVEYOR_REPO_TAG_NAME} -a -m "Automatic snapshot for master [skip ci]"
+#             (git push -q https://${env:TAGPERM}@github.com/TheGoddessInari/rambox --tags -f 2>&1) | Out-Null
+#           } Else {
+#             ${env:SNAPSHOT}="false"
+#         }
+
+# deploy:
+#   - provider: GitHub
+#     on:
+#       appveyor_repo_tag: true
+#       snapshot: false
+#     auth_token:
+#       secure: G9kcUc6R6xSYIP/mhFWZkuub5EE4b0ws9l3IQtFBz52yTsONp6GiQlFdtsnZWYjW
+#     draft: true
+#     prerelease: false
+#     force_update: false
+#     tag: $(APPVEYOR_REPO_TAG_NAME)
+#     release: $(APPVEYOR_REPO_TAG_NAME)
+#   - provider: GitHub
+#     on:
+#       appveyor_repo_tag: true
+#       snapshot: true
+#     auth_token:
+#       secure: G9kcUc6R6xSYIP/mhFWZkuub5EE4b0ws9l3IQtFBz52yTsONp6GiQlFdtsnZWYjW
+#     draft: false
+#     prerelease: true
+#     force_update: true
+#     tag: $(APPVEYOR_REPO_TAG_NAME)
+#     release: $(APPVEYOR_REPO_TAG_NAME)

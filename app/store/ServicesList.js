@@ -66,7 +66,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
-			,note: 'Text and Audio calls are supported only. <a href="https://github.com/saenzramiro/rambox/wiki/Skype" target="_blank">Read more...</a>'
+			,note: 'Text and Audio calls are supported only. <a href="https://github.com/TheGoddessInari/rambox/wiki/Skype" target="_blank">Read more...</a>'
 		},
 		{
 			 id: 'hangouts'
@@ -125,11 +125,11 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'inbox.png'
 			,name: 'Inbox'
 			,description: locale['services[10]']
-			,url: 'http://inbox.google.com/?cid=imp'
+			,url: 'https://inbox.google.com/?cid=imp'
 			,type: 'email'
 			,manual_notifications: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
-			,note: 'Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href="https://github.com/saenzramiro/rambox/wiki/Inbox" target="_blank">Read more...</a>'
+			,note: 'Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href="https://github.com/TheGoddessInari/rambox/wiki/Inbox" target="_blank">Read more...</a>'
 		},
 		{
 			 id: 'chatwork'
@@ -877,7 +877,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'mailru.png'
 			,name: 'Mail.Ru'
 			,description: 'Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.'
-			,url: 'http://webagent.mail.ru/webim/agent/popup.html'
+			,url: 'https://webagent.mail.ru/webim/agent/popup.html'
 			,type: 'email'
 		},
 		{
