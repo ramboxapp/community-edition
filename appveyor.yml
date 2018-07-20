@@ -60,9 +60,10 @@ install:
         sudo apt-get install -qq -y libxml2-dev libappindicator1 rpm;
 
 cache:
-  - '%APPDATA%\npm-cache' -> package-lock.json
-  - '%USERPROFILE%\.electron' -> package-lock.json
+  - '%APPDATA%\npm-cache'
+  - '%USERPROFILE%\.electron'
   - node_modules -> package-lock.json
+
 before_build:
   - ps: >-
         ${env:CURRENT_BRANCH} = If (${env:APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}) {
