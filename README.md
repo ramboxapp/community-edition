@@ -21,10 +21,17 @@
   <a href="https://david-dm.org/TheGoddessInari/rambox#info=devDependencies" title="devDependency status"><img src="https://img.shields.io/david/dev/TheGoddessInari/rambox.svg"/></a>
   
 </p>
-
-<h5 align="center">Available for Windows, Mac and Linux.</h5>
-
-<h5 align="center"><a href="http://rambox.pro/#download" target="_blank"><img src="https://cdn.rawgit.com/TheGoddessInari/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE"></a></h5>
+<h5 align="center">Latest unstable build artifacts are available in Windows 
+  ( <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/squirrel-windows/Rambox Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017" target="_blank">Win64</a> /
+  <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/squirrel-windows-ia32/Rambox Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017" target="_blank">Win32</a> ), Mac (DMG) and Linux (
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-x86_64.AppImage?job=Image%3A%20Ubuntu" target="_blank">AppImage64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-i386.AppImage?job=Image%3A%20Ubuntu" target="_blank">AppImage32</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.x86_64.rpm?job=Image%3A%20Ubuntu" target="_blank">RPM64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.i686.rpm?job=Image%3A%20Ubuntu" target="_blank">RPM32</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox_0.5.18_amd64.deb?job=Image%3A%20Ubuntu" target="_blank">DEB64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox_0.5.18_i386.deb?job=Image%3A%20Ubuntu" target="_blank">DEB32</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.tar.gz?job=Image%3A%20Ubuntu" target="_blank">Tarball64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-ia32.tar.gz?job=Image%3A%20Ubuntu" target="_blank">Tarball32</a>    ) packaging flavors.</h5>
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 <h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>
