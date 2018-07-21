@@ -246,6 +246,14 @@ Ext.define('Rambox.view.add.Add',{
 								,style: 'font-family: Consolas, "Lucida Console", Monaco, monospace'
 							},
 							{
+								xtype: 'checkbox'
+								,boxLabel: 'Inject CSS via JS'
+								,name: 'custom_css_complex'
+								,value: me.edit ? me.record.get('custom_css_complex') : false
+								,inputValue: true
+								,uncheckedValue: false
+							},
+							{
 								xtype: 'textarea'
 								,fieldLabel: 'Custom CSS'
 								,allowBlank: true

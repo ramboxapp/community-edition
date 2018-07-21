@@ -39,6 +39,7 @@ Ext.define('Rambox.store.Services', {
 					,muted: service.get('muted')
 					,includeInGlobalUnreadCounter: service.get('includeInGlobalUnreadCounter')
 					,displayTabUnreadCounter: service.get('displayTabUnreadCounter')
+					,custom_css_complex: service.get('custom_css_complex')
 					,enabled: service.get('enabled')
 					,record: service
 					,tabConfig: {

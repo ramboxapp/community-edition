@@ -70,6 +70,10 @@ Ext.define('Rambox.model.Service', {
 		,type: 'string'
 		,defaultValue: ''
 	},{
+		name: 'custom_css_complex'
+		,type: 'boolean'
+		,defaultValue: false
+	},{
 		 name: 'zoomLevel'
 		,type: 'number'
 		,defaultValue: 0

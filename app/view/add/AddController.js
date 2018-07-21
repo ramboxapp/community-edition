@@ -41,6 +41,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,trust: formValues.trust
 				,js_unread: formValues.js_unread
 				,custom_css: formValues.custom_css
+				,custom_css_complex: formValues.custom_css_complex
 			});
 
 			var view = Ext.getCmp('tab_'+win.record.get('id'));
@@ -97,6 +98,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,trust: formValues.trust
 				,js_unread: formValues.js_unread
 				,custom_css: formValues.custom_css
+				,custom_css_complex: formValues.custom_css_complex
 			});
 			service.save();
 			Ext.getStore('Services').add(service);

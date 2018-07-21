@@ -399,6 +399,25 @@ Ext.define('Rambox.ux.WebView',{
 			e.preventDefault();
 		});
 
+		function JSapplyCSS()
+		{
+			if ( me.record ) {
+				let custom_css_complex = me.record.get('custom_css_complex');
+				if (custom_css_complex == true) {
+					let custom_css = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_css');
+					custom_css = custom_css + me.record.get('custom_css');
+					if ( custom_css !== '' ) {
+						console.groupCollapsed(me.record.get('type').toUpperCase() + ' - Injected Custom CSS via JS');
+						console.info(me.type);
+						console.log(custom_css);
+						let js_before = '{let mystyle=`';
+						let js_after = '`,mycss=document.createElement("style");mycss.type="text/css",mycss.styleSheet?mycss.styleSheet.cssText=mystyle:mycss.appendChild(document.createTextNode(mystyle));let myDocHead=document.head;myDocHead.boxStyled||(myDocHead.appendChild(mycss),myDocHead.boxStyled=!0);let myframes=document.getElementsByTagName("iframe");for(let myframe of myframes){let mydocument,mydochead=(myframe.contentDocument||myframe.contentWindow.document).head;if(!mydochead.boxStyled){let myclonedcss=mycss.cloneNode(deep=!0);mydochead.appendChild(myclonedcss),mydochead.boxStyled=!0}}}';
+						webview.executeJavaScript(js_before + custom_css + js_after);
+					}
+				}
+			}
+		}
+
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
 			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
@@ -415,14 +434,16 @@ Ext.define('Rambox.ux.WebView',{
 					console.log(js_unread);
 					js_inject += js_unread;
 				}
-
-				var custom_css = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_css');
-				custom_css = custom_css + me.record.get('custom_css');
-				if ( custom_css !== '' ) {
-					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - Injected Custom CSS');
-					console.info(me.type);
-					console.log(custom_css);
-					css_inject += custom_css;
+				let custom_css_complex = me.record.get('custom_css_complex');
+				if (custom_css_complex === false) {
+					let custom_css = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_css');
+					custom_css = custom_css + me.record.get('custom_css');
+					if ( custom_css !== '' ) {
+						console.groupCollapsed(me.record.get('type').toUpperCase() + ' - Injected Custom CSS');
+						console.info(me.type);
+						console.log(custom_css);
+						css_inject += custom_css;
+					}
 				}
 			}
 
@@ -457,6 +478,14 @@ Ext.define('Rambox.ux.WebView',{
 
 			webview.executeJavaScript(js_inject);
 			webview.insertCSS(css_inject);
+		});
+
+		webview.addEventListener('load-commit', function(url, isMainFrame) {
+			JSapplyCSS();
+		});
+
+		webview.addEventListener('did-frame-finish-load', function(event, isMainFrame, frameProcessId, frameRoutingId) {
+			JSapplyCSS();
 		});
 
 		webview.addEventListener('ipc-message', function(event) {
