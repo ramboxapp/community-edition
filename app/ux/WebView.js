@@ -598,7 +598,13 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
+		if ( me.record.get('enabled')) {
+			if (webview.isDevToolsOpened()) {
+				webview.closeDevTools();
+			} else {
+				webview.openDevTools();
+			}
+		}
 	}
 
 	,setURL: function(url) {

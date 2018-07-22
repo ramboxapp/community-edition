@@ -104,11 +104,23 @@ Ext.define('Rambox.view.add.Add',{
 									cycleBtn.previousSibling().reset();
 
 									if ( me.edit && cycleBtn.nextSibling().originalValue !== '2' ) {
-										me.service.get('custom_domain') && !activeItem.custom ? cycleBtn.previousSibling().reset() : cycleBtn.previousSibling().setValue('');
+										if (me.service.get('custom_domain') && !activeItem.custom) {
+											cycleBtn.previousSibling().reset();
+										 } else {
+											cycleBtn.previousSibling().setValue('');
+										 }
 									} else if ( me.edit && cycleBtn.nextSibling().originalValue === '2' ) {
-										me.service.get('custom_domain') && !activeItem.custom ? cycleBtn.previousSibling().setValue( me.service.get('url').indexOf('___') === -1 && me.service.get('custom_domain') ? me.service.get('url') : '') : cycleBtn.previousSibling().reset();
+										if (me.service.get('custom_domain') && !activeItem.custom) {
+											cycleBtn.previousSibling().setValue( me.service.get('url').indexOf('___') === -1 && me.service.get('custom_domain') ? me.service.get('url') : '');
+										 } else {
+											cycleBtn.previousSibling().reset();
+										 }
 									} else if ( !me.edit && cycleBtn.nextSibling().originalValue === '1' ) {
-										activeItem.custom ? cycleBtn.previousSibling().setValue('') : cycleBtn.previousSibling().reset();
+										if (activeItem.custom) {
+											cycleBtn.previousSibling().setValue('');
+										} else {
+											cycleBtn.previousSibling().reset();
+										}
 									}
 
 									cycleBtn.previousSibling().previousSibling().setHidden(activeItem.custom ? true : me.edit ? me.service.get('url').indexOf('___') === -1 ? true : me.service.get('type') === 'custom' || me.service.get('url') === '___' : me.record.get('url').indexOf('___') === -1 ? true : me.record.get('type') === 'custom' || me.record.get('url') === '___');
