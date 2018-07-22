@@ -182,7 +182,7 @@ Ext.define('Rambox.view.add.Add',{
 										 xtype: 'checkbox'
 										,boxLabel: 'Always display Status Bar'
 										,name: 'statusbar'
-										,checked: me.edit ? me.record.get('statusbar') : true
+										,checked: me.edit ? me.record.get('statusbar') : false
 										,uncheckedValue: false
 										,inputValue: true
 									}
