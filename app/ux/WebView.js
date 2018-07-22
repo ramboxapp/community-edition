@@ -477,14 +477,15 @@ Ext.define('Rambox.ux.WebView',{
 
 			/**
 			 * Handles 'rambox.setUnreadCount' messages.
-			 * Sets the badge text if the event contains an integer as first argument.
+			 * Sets the badge text if the event contains an integer
+                         * or a '•' (indicating non-zero but unknown number of unreads) as first argument.
 			 *
 			 * @param event
 			 */
 			function handleSetUnreadCount(event) {
 				if (Array.isArray(event.args) === true && event.args.length > 0) {
 					var count = event.args[0];
-					if (count === parseInt(count, 10)) {
+					if (count === parseInt(count, 10) || "•" === count) {
 						me.setUnreadCount(count);
 					}
 				}
