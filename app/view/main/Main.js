@@ -32,7 +32,7 @@ Ext.define('Rambox.view.main.Main', {
 			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
 			,baseCls: ''
 			,tooltip: locale['app.main[25]']
-			,href: 'https://fundraiseup.com/widget/FUNSGXPIJWQ/donate?key=KPCFEZKZ'
+			,href: 'https://rambox.pro/#donate'
 		}]
 		*/
 	}
@@ -341,7 +341,7 @@ Ext.define('Rambox.view.main.Main', {
 						,{
 							 text: locale['app.main[25]']
 							,glyph: 'xf21e@FontAwesome'
-							,href: 'https://fundraiseup.com/widget/FUNSGXPIJWQ/donate?key=KPCFEZKZ'
+							,href: 'https://rambox.pro/#donate'
 						}
 						,{
 							 text: 'Translation'

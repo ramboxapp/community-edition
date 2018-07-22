@@ -31,7 +31,7 @@ Ext.define('Rambox.ux.WebView',{
 				pathname: match[5],
 				search: match[6],
 				hash: match[7]
-			}
+			};
 		}
 
 		// Allow Custom sites with self certificates
@@ -377,7 +377,6 @@ Ext.define('Rambox.ux.WebView',{
 						require('electron').shell.openExternal(e.url);
 					}
 					return;
-					break;
 				default:
 					break;
 			}
@@ -629,7 +628,13 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
+		if ( me.record.get('enabled')) {
+			if (webview.isDevToolsOpened()) {
+				webview.closeDevTools();
+			} else {
+				webview.openDevTools();
+			}
+		}
 	}
 
 	,setURL: function(url) {

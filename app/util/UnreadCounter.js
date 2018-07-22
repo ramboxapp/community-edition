@@ -70,6 +70,6 @@ Ext.define('Rambox.util.UnreadCounter', {
 			unreadCountByService['delete'](id);
 
 			updateAppUnreadCounter();
-		}
+		};
 	}
 });

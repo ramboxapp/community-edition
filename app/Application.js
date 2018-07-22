@@ -118,7 +118,11 @@ Ext.define('Rambox.Application', {
 						var tabPanel = Ext.cq1('app-main');
 						if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
 
-						key === Ext.event.Event.NUM_PLUS || key === 187 ? tabPanel.getActiveTab().zoomIn() : tabPanel.getActiveTab().zoomOut();
+						if (key === Ext.event.Event.NUM_PLUS || key === 187) {
+							tabPanel.getActiveTab().zoomIn();
+						} else {
+							tabPanel.getActiveTab().zoomOut();
+						}
 					}
 				}
 				,{

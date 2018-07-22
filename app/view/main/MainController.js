@@ -475,7 +475,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.cq1('app-main').getViewModel().set('avatar', '');
 
 			if ( Ext.isFunction(callback) ) callback();
-		}
+		};
 
 		if ( btn ) {
 			Ext.Msg.confirm(locale['app.main[21]'], locale['app.window[38]'], function(btnId) {
