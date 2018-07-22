@@ -116,7 +116,6 @@
 		"spectron": "^3.8.0"
 	},
 	"dependencies": {
-		"@exponent/electron-cookies": "2.0.0",
 		"auth0-js": "^8.12.3",
 		"auth0-lock": "^10.24.3",
 		"auto-launch-patched": "5.0.2",

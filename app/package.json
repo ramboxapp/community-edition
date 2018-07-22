@@ -29,7 +29,6 @@
 	"author": "TheGoddessInari <thegoddessinari@gmail.com>",
 	"license": "GPL-3.0",
 	"dependencies": {
-		"@exponent/electron-cookies": "2.0.0",
 		"auth0-js": "^8.12.3",
 		"auth0-lock": "^10.22.0",
 		"auto-launch-patched": "5.0.2",
