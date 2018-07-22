@@ -131,7 +131,7 @@ Ext.define('Rambox.view.add.AddController', {
 	,onEnter: function(field, e) {
 		var me = this;
 
-		if ( e.getKey() == e.ENTER && field.up('form').isValid() ) me.doSave();
+		if ( e.getKey() === e.ENTER && field.up('form').isValid() ) me.doSave();
 	}
 
 	,onShow: function(win) {

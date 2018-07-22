@@ -9,7 +9,7 @@ Ext.define('Rambox.view.main.MainController', {
 		tabPanel.setTabPosition(config.tabbar_location);
 		tabPanel.setTabRotation(0);
 
-		let reorderer = tabPanel.plugins.find((plugin) => plugin.ptype == "tabreorderer");
+		let reorderer = tabPanel.plugins.find((plugin) => plugin.ptype === "tabreorderer");
 
 		if ( reorderer !== undefined ) {
 			const names = reorderer.container.getLayout().names;
@@ -234,7 +234,7 @@ Ext.define('Rambox.view.main.MainController', {
 	,onSearchEnter: function( field, e ) {
 		var me = this;
 
-		if ( e.getKey() == e.ENTER && Ext.getStore('ServicesList').getCount() === 2 ) { // Two because we always shows Custom Service option
+		if ( e.getKey() === e.ENTER && Ext.getStore('ServicesList').getCount() === 2 ) { // Two because we always shows Custom Service option
 			me.onNewServiceSelect(field.up().down('dataview'), Ext.getStore('ServicesList').getAt(0));
 			me.onClearClick(field);
 		}
@@ -422,7 +422,7 @@ Ext.define('Rambox.view.main.MainController', {
 							,width: 256
 							,listeners: {
 								specialkey: function(field, e){
-									if ( e.getKey() == e.ENTER ) {
+									if ( e.getKey() === e.ENTER ) {
 										validateFn();
 									}
 								}

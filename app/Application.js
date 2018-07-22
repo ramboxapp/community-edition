@@ -182,7 +182,7 @@ Ext.define('Rambox.Application', {
 		// Mouse Wheel zooming
 		document.addEventListener('mousewheel', function(e) {
 			if( e.ctrlKey ) {
-				var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+				var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
 
 				var tabPanel = Ext.cq1('app-main');
 				if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;

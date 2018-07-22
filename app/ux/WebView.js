@@ -396,7 +396,7 @@ Ext.define('Rambox.ux.WebView',{
 		{
 			if ( me.record ) {
 				let custom_css_complex = me.record.get('custom_css_complex');
-				if (custom_css_complex == true) {
+				if (custom_css_complex === true) {
 					let custom_css = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_css');
 					custom_css = custom_css + me.record.get('custom_css');
 					if ( custom_css !== '' ) {
@@ -404,7 +404,7 @@ Ext.define('Rambox.ux.WebView',{
 						console.info(me.type);
 						console.log(custom_css);
 						let js_before = '{let mystyle=`';
-						let js_after = '`,mycss=document.createElement("style");mycss.type="text/css",mycss.styleSheet?mycss.styleSheet.cssText=mystyle:mycss.appendChild(document.createTextNode(mystyle));let myDocHead=document.head;null==myDocHead||myDocHead.ramboxStyled||(myDocHead.appendChild(mycss),myDocHead.ramboxStyled=!0);let myframes=document.getElementsByTagName("iframe");for(let myframe of myframes){let mydocument,mydochead=(myframe.contentDocument||myframe.contentWindow.document).head;if(null!=mydochead&&!mydochead.ramboxStyled){let myclonedcss=mycss.cloneNode(deep=!0);mydochead.appendChild(myclonedcss),mydochead.ramboxStyled=!0}}}';
+						let js_after = '`,mycss=document.createElement("style");mycss.type="text/css",mycss.styleSheet?mycss.styleSheet.cssText=mystyle:mycss.appendChild(document.createTextNode(mystyle));let myDocHead=document.head;null===myDocHead||myDocHead.ramboxStyled||(myDocHead.appendChild(mycss),myDocHead.ramboxStyled=!0);let myframes=document.getElementsByTagName("iframe");for(let myframe of myframes){let mydocument,mydochead=(myframe.contentDocument||myframe.contentWindow.document).head;if(null!==mydochead&&!mydochead.ramboxStyled){let myclonedcss=mycss.cloneNode(deep=!0);mydochead.appendChild(myclonedcss),mydochead.ramboxStyled=!0}}}';
 						webview.executeJavaScript(js_before + custom_css + js_after);
 					}
 				}

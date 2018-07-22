@@ -753,7 +753,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Hibox is a secure and private messaging platform for your business.'
 			,url: 'https://app.hibox.co/'
 			,type: 'messaging'
- 		},
+		},
 		{
 			 id: 'jandi'
 			,logo: 'jandi.png'
