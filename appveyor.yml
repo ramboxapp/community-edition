@@ -51,8 +51,6 @@ install:
 
         npm install
 
-        npm prune
-
   - sh: >-
 
         sudo apt-get update -qq;
@@ -90,10 +88,10 @@ test: off
 artifacts:
   - path: dist\squirrel-windows\*.exe
   - path: dist\squirrel-windows-ia32\*.exe
-  - path: dist/*.AppImage
   - path: dist/*.rpm
   - path: dist/*.deb
   - path: dist/*.tar.gz
+  - path: dist/*.AppImage
   
 # after_build:
 #   - ps: >- 

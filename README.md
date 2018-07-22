@@ -32,7 +32,7 @@
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox_0.5.18_amd64.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB64</a> /
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox_0.5.18_i386.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB32</a> /
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-ia32.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball32</a>    ) packaging flavors.</h5>
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-ia32.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball32</a> ) packaging flavors.</h5>
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 <h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>
@@ -205,7 +205,7 @@ I'll think about it later.
 ## Compiling
 
 To build your own copy, you need:
-- A recent version of the [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html). 8.0 may be needed on some platform configurations.
+- An 8.0 version of the [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 - A recent version of [Ruby](https://www.ruby-lang.org/en/downloads/).
 - A recent version of [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/), and to install it with the Compass extension.
 - A recent version of [NodeJS](https://nodejs.org/en/download/) with npm.
@@ -217,10 +217,18 @@ cd rambox
 cp env-sample.js env.js
 # update env.js with your auth0 details.
 npm install
-npm run setup:win64
+npm run repack:win64
 ```
-You can substitute win64 for linux32, linux64, win32, or osx as desired. This will create installers appropriate to your platform in dist.
-Win32 builds are **deprecated** by electron-builder and is likely to be removed at some point in the future.
+You can substitute win64 for linux32, linux64, win32, or osx as desired. This will create an unpacked directory in '**dist**' for testing.
+
+```shell
+npm run setup
+```
+
+This step instead of **repack** will create an installer appropriate to your platform in '**dist**'.
+You can place unpacked files over where the installers normally place their files for development/testing purposes.
+
+**NOTE:** Win32 builds are **deprecated** by electron-builder and are likely to be removed at some point in the future.
 
 ## [Contributing](./CONTRIBUTING.md)
 
