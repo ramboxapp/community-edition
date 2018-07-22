@@ -31,7 +31,7 @@ Ext.define('Rambox.ux.WebView',{
 				pathname: match[5],
 				search: match[6],
 				hash: match[7]
-			}
+			};
 		}
 
 		// Allow Custom sites with self certificates
@@ -386,7 +386,6 @@ Ext.define('Rambox.ux.WebView',{
 						require('electron').shell.openExternal(e.url);
 					}
 					return;
-					break;
 				default:
 					break;
 			}
