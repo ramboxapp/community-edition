@@ -49,8 +49,6 @@ Ext.define('Rambox.view.add.AddController', {
 			view.setTitle( formValues.tabname ? formValues.serviceName : '' );
 			// Change sound of the Tab
 			view.setAudioMuted(formValues.muted);
-			// Change statusbar of the Tab
-			view.setStatusBar(formValues.statusbar);
 			// Change notifications of the Tab
 			view.setNotifications(formValues.notifications);
 			// Change the icon of the Tab

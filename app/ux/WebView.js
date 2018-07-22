@@ -130,13 +130,7 @@ Ext.define('Rambox.ux.WebView',{
 			}
 		});
 
-		if ( me.record.get('statusbar') ) {
-			Ext.apply(me, {
-				bbar: me.statusBarConstructor(false)
-			});
-		} else {
-			me.items.push(me.statusBarConstructor(true));
-		}
+		me.items.push(me.statusBarConstructor(true));
 
 		me.callParent(config);
 	}
@@ -192,8 +186,8 @@ Ext.define('Rambox.ux.WebView',{
 
 		return {
 			 xtype: 'statusbar'
-			,hidden: !me.record.get('statusbar')
-			,keep: me.record.get('statusbar')
+			,hidden: true
+			,keep: false
 			,y: floating ? '-18px' : 'auto'
 			,height: 19
 			,dock: 'bottom'
@@ -663,7 +657,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		me.down('statusbar').hide();
 		me.down('statusbar').closed = true;
-		me.down('statusbar').keep = me.record.get('statusbar');
+		me.down('statusbar').keep = false;
 	}
 
 	,setStatusBar: function(keep) {
