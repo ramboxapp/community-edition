@@ -392,7 +392,7 @@ Ext.define('Rambox.ux.WebView',{
 			e.preventDefault();
 		});
 
-		function JSapplyCSS()
+		function JSApplyCSS()
 		{
 			if ( me.record ) {
 				let custom_css_complex = me.record.get('custom_css_complex');
@@ -473,12 +473,12 @@ Ext.define('Rambox.ux.WebView',{
 			webview.insertCSS(css_inject);
 		});
 
-		webview.addEventListener('load-commit', function(url, isMainFrame) {
-			JSapplyCSS();
+		webview.addEventListener('load-commit', function() {
+			JSApplyCSS();
 		});
 
-		webview.addEventListener('did-frame-finish-load', function(event, isMainFrame, frameProcessId, frameRoutingId) {
-			JSapplyCSS();
+		webview.addEventListener('did-frame-finish-load', function() {
+			JSApplyCSS();
 		});
 
 		webview.addEventListener('ipc-message', function(event) {
