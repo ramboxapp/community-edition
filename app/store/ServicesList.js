@@ -242,7 +242,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'tutanota.png'
 			,name: 'Tutanota'
 			,description: locale['services[21]']
-			,url: 'https://app.tutanota.de/'
+			,url: 'https://mail.tutanota.com/'
 			,type: 'email'
 		},
 		{
