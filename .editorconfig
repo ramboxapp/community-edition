@@ -10,6 +10,11 @@ insert_final_newline = true
 indent_style = tab
 tab_width = 2
 
-[*{yml,yaml}]
+[*.{yml,yaml}]
 indent_style = space
 indent_size = 2
+
+[*.{md}]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = false
