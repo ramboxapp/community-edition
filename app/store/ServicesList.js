@@ -181,7 +181,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: `let getAlertCount=badges=>{let alerts=0;for(const badge of badges)if(badge&&badge.childNodes&&badge.childNodes.length>0){const count=parseInt(badge.childNodes[0].nodeValue,10);alerts+=count.isNaN?1:count}else alerts++;return alerts},checkUnread=()=>{let direct=0,indirect=document.querySelectorAll(".guilds-wrapper .unread").length;const guildDirect=document.querySelectorAll(".guilds-wrapper .badge"),channelDirect=document.querySelectorAll('[class^="nameUnreadText-"]+div>div>div');direct+=getAlertCount(guildDirect),direct+=getAlertCount(channelDirect),indirect+=document.querySelectorAll('[class^="nameUnreadText-"]').length,rambox.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
+			,js_unread: `let getAlertCount=badges=>{let alerts=0;for(const badge of badges)if(badge&&badge.childNodes&&badge.childNodes.length>0){const count=parseInt(badge.childNodes[0].nodeValue,10);alerts+=count.isNaN?1:count}else alerts++;return alerts},checkUnread=()=>{let direct=0,indirect=document.getElementsByClassName("guild-1EfMGQ unread-qLkInr").length;const guildDirect=document.getElementsByClassName("wrapper-232cHJ badge-1GsMF2");direct+=getAlertCount(guildDirect),indirect+=document.getElementsByClassName("unread-1Dp-OI").length,rambox.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 		},
