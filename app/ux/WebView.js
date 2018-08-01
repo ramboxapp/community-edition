@@ -417,21 +417,18 @@ Ext.define('Rambox.ux.WebView',{
 
 			var js_inject = '';
 			var css_inject = '';
-			let js_injected = false;
 			// Injected code to detect new messages
 			if ( me.record ) {
-				let js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
-				js_unread += me.record.get('js_unread');
+				let js_unread = me.record.get('js_unread');
+				if (!js_unread) {
+					js_unread += Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
+				}
 				if ( js_unread !== '' ) {
 					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - JS Injected to Detect New Messages');
 					console.info(me.type);
 					console.log(js_unread);
 					console.groupEnd();
-					if (!js_injected) {
-						js_injected=true;
-						js_inject += '{';
-					}
-					js_inject += js_unread;
+					js_inject += '{' + js_unread + '}';
 				}
 				let custom_js = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_js');
 				custom_js += me.record.get('custom_js');
@@ -440,11 +437,7 @@ Ext.define('Rambox.ux.WebView',{
 					console.info(me.type);
 					console.log(custom_js);
 					console.groupEnd();
-					if (!js_injected) {
-						js_injected=true;
-						js_inject += '{';
-					}
-					js_inject += custom_js;
+					js_inject += '{' + custom_js + '}';
 				}
 				const custom_css_complex = me.record.get('custom_css_complex');
 				if (custom_css_complex === false) {
@@ -458,7 +451,6 @@ Ext.define('Rambox.ux.WebView',{
 						css_inject += custom_css;
 					}
 				}
-				if (js_injected) js_inject += '}';
 			}
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
