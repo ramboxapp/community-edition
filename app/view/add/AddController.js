@@ -39,6 +39,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
 				,trust: formValues.trust
 				,js_unread: formValues.js_unread
+				,custom_js: formValues.custom_js
 				,custom_css: formValues.custom_css
 				,custom_css_complex: formValues.custom_css_complex
 			});
@@ -93,6 +94,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
 				,trust: formValues.trust
 				,js_unread: formValues.js_unread
+				,custom_js: formValues.custom_js
 				,custom_css: formValues.custom_css
 				,custom_css_complex: formValues.custom_css_complex
 			});

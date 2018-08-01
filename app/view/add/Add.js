@@ -19,6 +19,7 @@ Ext.define('Rambox.view.add.Add',{
 	// defaults
 	,modal: true
 	,width: 500
+	,height: 700
 	,autoShow: true
 	,resizable: false
 	,draggable: false
@@ -241,32 +242,46 @@ Ext.define('Rambox.view.add.Add',{
 						,items: [
 							{
 								 xtype: 'textarea'
-								,fieldLabel: locale['app.window[8]']+' (<a href="https://github.com/TheGoddessInari/rambox/wiki/Inject-JavaScript-Code" target="_blank">'+locale['app.window[9]']+'</a>)'
+								,fieldLabel: 'Custom JS'
 								,allowBlank: true
-								,name: 'js_unread'
-								,value: me.edit ? me.record.get('js_unread') : ''
+								,name: 'custom_js'
+								,value: me.edit ? me.record.get('custom_js') : ''
 								,anchor: '100%'
-								,height: 120
+								,height: 100
+								,labelWidth: 64
 								,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
 							},
 							{
-								xtype: 'checkbox'
-								,boxLabel: 'Inject CSS via JS'
+								 xtype: 'checkbox'
+								,fieldLabel: 'Inject CSS via JS'
 								,name: 'custom_css_complex'
 								,value: me.edit ? me.record.get('custom_css_complex') : false
 								,inputValue: true
 								,uncheckedValue: false
+								,labelWidth: 64
 							},
 							{
-								xtype: 'textarea'
+								 xtype: 'textarea'
 								,fieldLabel: 'Custom CSS'
 								,allowBlank: true
 								,name: 'custom_css'
 								,value: me.edit ? me.record.get('custom_css') : ''
 								,anchor: '100%'
-								,height: 120
+								,height: 100
+								,labelWidth: 64
 								,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
-							}
+							},
+							{
+								 xtype: 'textarea'
+								,fieldLabel: 'Custom badge update JS'
+								,allowBlank: true
+								,name: 'js_unread'
+								,value: me.edit ? me.record.get('js_unread') : ''
+								,anchor: '100%'
+								,height: 100
+								,labelWidth: 64
+								,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
+						}
 						]
 					}
 					,{

@@ -58,11 +58,15 @@ Ext.define('Rambox.model.Service', {
 		,type: 'boolean'
 		,defaultValue: true
 	},{
-		 name: 'js_unread'
+		 name: 'custom_js'
 		,type: 'string'
 		,defaultValue: ''
 	},{
-		name: 'custom_css'
+		 name: 'custom_css'
+		,type: 'string'
+		,defaultValue: ''
+	},{
+		 name: 'js_unread'
 		,type: 'string'
 		,defaultValue: ''
 	},{

@@ -43,7 +43,7 @@
 ## Table of Contents
 
 - [Screenshot](#screenshot)
-- [Services available - 98](#services-available---98)
+- [Services available - 97](#services-available---97)
 - [Features](#features)
 - [Privacy](#privacy)
 - [Donations](#donations)
@@ -104,7 +104,6 @@
 <img width="80" align="left" src="./resources/icons/mattermost.png" alt="Mattermost" title="Mattermost">
 <img width="80" align="left" src="./resources/icons/voxer.png" alt="Voxer" title="Voxer">
 <img width="80" align="left" src="./resources/icons/glip.png" alt="Glip" title="Glip">
-<img width="80" align="left" src="./resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger">
 <img width="80" align="left" src="./resources/icons/mysms.png" alt="mysms" title="mysms">
 <img width="80" align="left" src="./resources/icons/icq.png" alt="ICQ" title="ICQ">
 

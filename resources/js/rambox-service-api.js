@@ -12,12 +12,21 @@ const { ipcRenderer } = require('electron');
 window.rambox = {};
 
 /**
- * Sets the unraed count of the tab.
+ * Sets the unread count of the tab.
  *
  * @param {*} count	The unread count
  */
 window.rambox.setUnreadCount = function(count) {
 	ipcRenderer.sendToHost('rambox.setUnreadCount', count);
+};
+
+/**
+ * Update the badge of the tab.
+ * @param {*} direct
+ * @param {*} indirect
+ */
+window.rambox.updateBadge = function(direct, indirect = 0) {
+	ipcRenderer.sendToHost('rambox.updateBadge', direct, indirect);
 };
 
 /**

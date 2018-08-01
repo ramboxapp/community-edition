@@ -417,37 +417,56 @@ Ext.define('Rambox.ux.WebView',{
 
 			var js_inject = '';
 			var css_inject = '';
+			let js_injected = false;
 			// Injected code to detect new messages
 			if ( me.record ) {
-				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
-				js_unread = js_unread + me.record.get('js_unread');
+				let js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
+				js_unread += me.record.get('js_unread');
 				if ( js_unread !== '' ) {
 					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - JS Injected to Detect New Messages');
 					console.info(me.type);
 					console.log(js_unread);
+					console.groupEnd();
+					if (!js_injected) {
+						js_injected=true;
+						js_inject += '{';
+					}
 					js_inject += js_unread;
 				}
-				let custom_css_complex = me.record.get('custom_css_complex');
+				let custom_js = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_js');
+				custom_js += me.record.get('custom_js');
+				if ( custom_js !== '' ) {
+					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - Injected Custom JS');
+					console.info(me.type);
+					console.log(custom_js);
+					console.groupEnd();
+					if (!js_injected) {
+						js_injected=true;
+						js_inject += '{';
+					}
+					js_inject += custom_js;
+				}
+				const custom_css_complex = me.record.get('custom_css_complex');
 				if (custom_css_complex === false) {
 					let custom_css = Ext.getStore('ServicesList').getById(me.record.get('type')).get('custom_css');
-					custom_css = custom_css + me.record.get('custom_css');
+					custom_css += me.record.get('custom_css');
 					if ( custom_css !== '' ) {
 						console.groupCollapsed(me.record.get('type').toUpperCase() + ' - Injected Custom CSS');
 						console.info(me.type);
 						console.log(custom_css);
+						console.groupEnd();
 						css_inject += custom_css;
 					}
 				}
+				if (js_injected) js_inject += '}';
 			}
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
 			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
 				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
-				console.log(js_preventBlink);
 				js_inject += js_preventBlink;
 			}
 
-			console.groupEnd();
 
 			// Scroll always to top (bug)
 			js_inject += 'document.body.scrollTop=0;';
@@ -490,6 +509,9 @@ Ext.define('Rambox.ux.WebView',{
 				case 'rambox.clearUnreadCount':
 					handleClearUnreadCount(event);
 					break;
+				case 'rambox.updateBadge':
+					handleUpdateBadge(event);
+					break;
 				case 'rambox.showWindowAndActivateTab':
 					showWindowAndActivateTab(event);
 					break;
@@ -514,8 +536,8 @@ Ext.define('Rambox.ux.WebView',{
 			 */
 			function handleSetUnreadCount(event) {
 				if (Array.isArray(event.args) === true && event.args.length > 0) {
-					var count = event.args[0];
-					if (count === parseInt(count, 10) || "•" === count) {
+					const count = event.args[0];
+					if (count === parseInt(count, 10) || count === '•') {
 						me.setUnreadCount(count);
 					}
 				}
@@ -525,13 +547,27 @@ Ext.define('Rambox.ux.WebView',{
 				require('electron').remote.getCurrentWindow().show();
 				Ext.cq1('app-main').setActiveTab(me);
 			}
+
+			function handleUpdateBadge(event) {
+				if (Array.isArray(event.args) === true && event.args.length > 1) {
+					const direct = event.args[0];
+					const indirect = event.args[1];
+					const count = direct > 0 ? direct : (indirect > 0 ? '•' : 0);
+
+					if (count === parseInt(count, 10) || count === '•') {
+						me.setUnreadCount(count);
+					} else {
+						me.handleClearUnreadCount();
+					}
+				}
+			}
 		});
 
 		/**
 		 * Register page title update event listener only for services that don't specify a js_unread
 		 */
-		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' && 
-                        me.record.get('js_unread') === '') {
+		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' &&
+			 me.record.get('js_unread') === '') {
 			webview.addEventListener("page-title-updated", function(e) {
 				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
