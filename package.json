@@ -80,7 +80,7 @@
 		},
 		"win": {
 			"target": [
-				"squirrel"
+				"nsis"
 			]
 		},
 		"linux": {
@@ -110,8 +110,6 @@
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
 		"electron-builder": "^20.26.0",
-		"electron-builder-squirrel-windows": "^20.26.0",
-		"electron-squirrel-startup": "^1.0.0",
 		"mocha": "^5.2.0",
 		"spectron": "^3.8.0"
 	},

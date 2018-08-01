@@ -77,17 +77,16 @@ build_script:
         npm --version
 
         If ($isWindows) {
-          npm run setup:win
+          npm run setup:win64
         } ElseIf ($isLinux) {
-          npm run setup:linux
+          npm run setup:linux64
         }
 
 
 
 test: off
 artifacts:
-  - path: dist\squirrel-windows\*.exe
-  - path: dist\squirrel-windows-ia32\*.exe
+  - path: dist\*.exe
   - path: dist/*.rpm
   - path: dist/*.deb
   - path: dist/*.tar.gz
