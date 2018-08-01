@@ -33,7 +33,7 @@
 		"auth0-lock": "^10.22.0",
 		"auto-launch-patched": "5.0.2",
 		"electron-store": "2.0.0",
-		"electron-context-menu": "0.9.1",
+		"electron-context-menu": "0.10.0",
 		"electron-is-dev": "^0.3.0",
 		"mime": "^1.4.0",
 		"rimraf": "2.6.1",
