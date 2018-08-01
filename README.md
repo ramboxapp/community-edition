@@ -56,7 +56,7 @@
 ![Rambox](./resources/screenshots/mac.png)
 
 
-## Services available - 98
+## Services available - 97
 
 <img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger">
