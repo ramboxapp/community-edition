@@ -75,9 +75,6 @@
 				}
 			]
 		},
-		"squirrelWindows": {
-			"iconUrl": "https://raw.githubusercontent.com/TheGoddessInari/rambox/master/resources/Icon.ico"
-		},
 		"win": {
 			"target": [
 				"nsis"
