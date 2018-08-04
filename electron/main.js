@@ -345,7 +345,7 @@ ipcMain.on('image:download', function(event, url, partition) {
 
 	tmpWindow.webContents.session.once('will-download', (event, downloadItem) => {
 		imageCache[url] = file = {
-			 path: tmp.tmpNameSync() + '.' + mime.extension(downloadItem.getMimeType())
+			 path: tmp.tmpNameSync() + '.' + mime.getExtension(downloadItem.getMimeType())
 			,complete: false
 		};
 
