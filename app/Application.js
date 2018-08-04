@@ -228,7 +228,7 @@ Ext.define('Rambox.Application', {
 	,checkUpdate: function(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
-			 url: 'https://rambox.pro/api/latestversion.json'
+			 url: 'https://api.github.com/repos/TheGoddessInari/rambox/releases/latest'
 			,method: 'GET'
 			,success: function(response) {
 				var json = Ext.decode(response.responseText);
@@ -243,13 +243,12 @@ Ext.define('Rambox.Application', {
 							'->'
 							,{
 								 xtype: 'label'
-								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')' + ( process.platform === 'win32' ? ' is downloading in the background and you will be notified when it is ready to be installed.' : '' )
+								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')'
 							}
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[1]']
-								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/TheGoddessInari/rambox/releases/latest'
-								,hidden: process.platform === 'win32'
+								,href: process.platform === 'https://github.com/TheGoddessInari/rambox/releases/latest'
 							}
 							,{
 								 xtype: 'button'
@@ -267,7 +266,6 @@ Ext.define('Rambox.Application', {
 							}
 						]
 					});
-					if ( process.platform === 'win32' ) ipc.send('autoUpdater:check-for-updates');
 					return;
 				} else if ( !silence ) {
 					Ext.Msg.show({
