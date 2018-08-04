@@ -105,7 +105,7 @@
 		"chai": "4.1.2",
 		"cpy-cli": "2.0.0",
 		"crowdin": "1.0.0",
-		"csvjson": "4.3.3",
+		"csvjson": "5.0.0",
 		"electron-builder": "^20.26.1",
 		"mocha": "^5.2.0",
 		"spectron": "^3.8.0"
