@@ -19,7 +19,7 @@ Ext.define('Rambox.view.add.Add',{
 	// defaults
 	,modal: true
 	,width: 500
-	,height: 700
+	,height: 750
 	,autoShow: true
 	,resizable: false
 	,draggable: false
@@ -190,6 +190,22 @@ Ext.define('Rambox.view.add.Add',{
 										,checked: me.edit ? me.record.get('notifications') : true
 										,uncheckedValue: false
 										,inputValue: true
+									}
+									,{
+									    xtype: 'checkbox'
+									   ,boxLabel: "Use passive listeners"
+									   ,name: 'passive_event_listeners'
+									   ,checked: me.edit ? me.record.get('passive_event_listeners') : true
+									   ,uncheckedValue: false
+									   ,inputValue: true
+									}
+									,{
+									    xtype: 'checkbox'
+									   ,boxLabel: "100ms timer granularity"
+									   ,name: 'slowed_timers'
+									   ,checked: me.edit ? me.record.get('slowed_timers') : true
+									   ,uncheckedValue: false
+									   ,inputValue: true
 									}
 									,{
 										 xtype: 'checkbox'

@@ -107,6 +107,8 @@ Ext.define('Rambox.view.main.MainController', {
 				,includeInGlobalUnreadCounter: rec.get('includeInGlobalUnreadCounter')
 				,displayTabUnreadCounter: rec.get('displayTabUnreadCounter')
 				,custom_css_complex: rec.get('custom_css_complex')
+				,passive_event_listeners: rec.get('passive_event_listeners')
+				,slowed_timers: rec.get('slowed_timers')
 				,enabled: rec.get('enabled')
 				,record: rec
 				,hidden: hideTab

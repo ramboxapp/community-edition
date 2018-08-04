@@ -74,6 +74,14 @@ Ext.define('Rambox.model.Service', {
 		,type: 'boolean'
 		,defaultValue: false
 	},{
+		name: 'passive_event_listeners'
+		,type: 'boolean'
+		,defaultValue: true
+	},{
+		name: 'slowed_timers'
+		,type: 'boolean'
+		,defaultValue: true
+	},{
 		 name: 'zoomLevel'
 		,type: 'number'
 		,defaultValue: 0

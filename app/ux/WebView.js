@@ -459,6 +459,21 @@ Ext.define('Rambox.ux.WebView',{
 				js_inject += js_preventBlink;
 			}
 
+			// Use passive listeners by default
+			if (me.record.get('passive_event_listeners'))
+			{
+				// 3rdparty: This uses npm 'default-passive-events' 1.0.10 inline. Link to license:
+				// https://github.com/zzarcon/default-passive-events/blob/master/LICENSE
+				const passive_event_listeners = `const eventListenerOptionsSupported=()=>{let supported=!1;try{const opts=Object.defineProperty({},"passive",{get(){supported=!0}});window.addEventListener("test",null,opts),window.removeEventListener("test",null,opts)}catch(e){}return supported},defaultOptions={passive:!0,capture:!1},supportedPassiveTypes=["scroll","wheel","touchstart","touchmove","touchenter","touchend","touchleave","mouseout","mouseleave","mouseup","mousedown","mousemove","mouseenter","mousewheel","mouseover"],getDefaultPassiveOption=(passive,eventName)=>void 0!==passive?passive:-1!==supportedPassiveTypes.indexOf(eventName)&&defaultOptions.passive,getWritableOptions=options=>{const passiveDescriptor=Object.getOwnPropertyDescriptor(options,"passive");return passiveDescriptor&&!0!==passiveDescriptor.writable&&void 0===passiveDescriptor.set?Object.assign({},options):options},overwriteAddEvent=superMethod=>{EventTarget.prototype.addEventListener=function(type,listener,options){const usesListenerOptions="object"==typeof options&&null!==options,useCapture=usesListenerOptions?options.capture:options;(options=usesListenerOptions?getWritableOptions(options):{}).passive=getDefaultPassiveOption(options.passive,type),options.capture=void 0===useCapture?defaultOptions.capture:useCapture,superMethod.call(this,type,listener,options)},EventTarget.prototype.addEventListener._original=superMethod},supportsPassive=eventListenerOptionsSupported();if(supportsPassive){const addEvent=EventTarget.prototype.addEventListener;overwriteAddEvent(addEvent)}`;
+				js_inject += '{' + passive_event_listeners + '}';
+			}
+
+			// Use slowed timers by default
+			if (me.record.get('slowed_timers'))
+			{
+				const slowed_timers = `window.setTimeout=window.setTimeout;const __setTimeout=window.setTimeout;window.setTimeout=function(func,time){let a=time;return a<100&&(a=100),__setTimeout(func,a)};`;
+				js_inject += '{' + slowed_timers + '}';
+			}
 
 			// Scroll always to top (bug)
 			js_inject += 'document.body.scrollTop=0;';
