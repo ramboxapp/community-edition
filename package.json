@@ -101,7 +101,7 @@
 		}
 	},
 	"devDependencies": {
-		"asar": "^0.12.4",
+		"asar": "^0.14.3",
 		"chai": "4.1.2",
 		"cpy-cli": "2.0.0",
 		"crowdin": "1.0.0",
