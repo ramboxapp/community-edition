@@ -5,8 +5,9 @@
 		"start:debug": "electron electron/main.js --enable-logging",
 		"test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
 		"sencha:clean": "rimraf ./build/production",
-		"sencha:compile": "sencha app build && cpy app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
+		"sencha:compile": "sencha app build && cpy app/package.json build/production/Rambox/",
 		"sencha:recompile": "npm run sencha:clean && npm run sencha:compile",
+		"postinstall": "electron-builder install-app-deps",
 		"clean": "rimraf ./dist",
 		"clean:win": "rimraf ./dist/win-{ia32-,}unpacked",
 		"clean:linux": "rimraf ./dist/linux-{ia32-,}unpacked",
@@ -108,6 +109,7 @@
 		"csvjson": "5.1.0",
 		"electron-builder": "^20.26.1",
 		"mocha": "^5.2.0",
+		"rimraf": "2.6.2",
 		"spectron": "^3.8.0"
 	},
 	"dependencies": {
@@ -115,11 +117,10 @@
 		"auth0-lock": "^10.24.3",
 		"auto-launch-patched": "5.0.2",
 		"electron": "^2.0.6",
-		"electron-store": "2.0.0",
 		"electron-context-menu": "0.10.0",
 		"electron-is-dev": "^0.3.0",
+		"electron-store": "2.0.0",
 		"mime": "^2.3.1",
-		"rimraf": "2.6.2",
 		"tmp": "0.0.33"
 	}
 }
