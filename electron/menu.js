@@ -20,12 +20,6 @@ module.exports = function(config) {
 	const locale = require('../resources/languages/'+config.get('locale'));
 	const helpSubmenu = [
 		{
-			label: `&`+locale['menu.help[0]'],
-			click() {
-				shell.openExternal('https://rambox.pro');
-			}
-		},
-		{
 			label: `&Facebook`,
 			click() {
 				shell.openExternal('https://www.facebook.com/TheGoddessInari');
