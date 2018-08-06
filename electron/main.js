@@ -87,8 +87,7 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			plugins: true
-			,partition: 'persist:rambox'
+			partition: 'persist:rambox'
 		}
 	});
 

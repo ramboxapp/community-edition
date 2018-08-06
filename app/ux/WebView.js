@@ -165,10 +165,9 @@ Ext.define('Rambox.ux.WebView',{
 					,src: me.record.get('url')
 					,style: 'width:100%;height:100%;visibility:visible;'
 					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).user_id : '')
-					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,webpreferences: '' //,nativeWindowOpen=yes
+					,webpreferences: '' //,nativeWindowOpen=true
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 					,preload: './resources/js/rambox-service-api.js'
