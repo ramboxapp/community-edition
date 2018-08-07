@@ -27,9 +27,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 		if ( newTab.id === 'ramboxTab' ) {
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
-				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
+				document.title = 'Rambox-OS ('+ Rambox.app.getTotalNotifications() +')';
 			} else {
-				document.title = 'Rambox';
+				document.title = 'Rambox-OS';
 			}
 			return;
 		}
@@ -43,9 +43,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 		// Update the main window so it includes the active tab title.
 		if ( Rambox.app.getTotalNotifications() > 0 ) {
-			document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
+			document.title = 'Rambox-OS ('+ Rambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
 		} else {
-			document.title = 'Rambox - ' + newTab.record.get('name');
+			document.title = 'Rambox-OS - ' + newTab.record.get('name');
 		}
 	}
 
@@ -189,7 +189,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		// Clear counter for unread messaging
-		document.title = 'Rambox';
+		document.title = 'Rambox-OS';
 
 		if ( btn ) {
 			Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[14]'], function(btnId) {
@@ -204,7 +204,7 @@ Ext.define('Rambox.view.main.MainController', {
 					});
 					if ( Ext.isFunction(callback) ) callback();
 					Ext.cq1('app-main').resumeEvent('remove');
-					document.title = 'Rambox';
+					document.title = 'Rambox-OS';
 				}
 			});
 		} else {
@@ -217,7 +217,7 @@ Ext.define('Rambox.view.main.MainController', {
 			});
 			if ( Ext.isFunction(callback) ) callback();
 			Ext.cq1('app-main').resumeEvent('remove');
-			document.title = 'Rambox';
+			document.title = 'Rambox-OS';
 		}
 	}
 
