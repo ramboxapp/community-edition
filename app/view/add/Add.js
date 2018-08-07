@@ -198,6 +198,7 @@ Ext.define('Rambox.view.add.Add',{
 									   ,checked: me.edit ? me.record.get('passive_event_listeners') : true
 									   ,uncheckedValue: false
 									   ,inputValue: true
+									   ,hidden: Ext.getStore('ServicesList').getById(me.record.get('type')).get('passive_event_listeners') === false
 									}
 									,{
 									    xtype: 'checkbox'
@@ -206,6 +207,7 @@ Ext.define('Rambox.view.add.Add',{
 									   ,checked: me.edit ? me.record.get('slowed_timers') : true
 									   ,uncheckedValue: false
 									   ,inputValue: true
+									   ,hidden: Ext.getStore('ServicesList').getById(me.record.get('type')).get('slowed_timers') === false
 									}
 									,{
 										 xtype: 'checkbox'
