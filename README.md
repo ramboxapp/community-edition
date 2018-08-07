@@ -53,7 +53,7 @@
 
 ## Screenshot
 
-![Rambox-OS](./resources/screenshots/mac.png)
+![Rambox-OS](./resources/screenshots/win1.png)
 
 
 ## Services available - 97
@@ -164,8 +164,8 @@
 
 ## Features
 
-- [x] Multi-language.
-- [x] Sync your configuration between multiple computers.
+- [] Multi-language.
+- [] Sync your configuration between multiple computers.
 - [x] Master Password.
 - [x] Lock Rambox-OS if you will be away for a period of time.
 - [x] Don't disturb mode.
@@ -180,6 +180,11 @@
 - [x] Custom CSS injection.
 - [x] Keyboard Shortcuts.
 - [x] Proxy.
+- [x] Passive mouse/touch event listeners by default.
+- [x] Lowered timer granularity to save CPU time by default.
+- [x] No user tracking.
+- [x] Fully open source, won't change
+- [x] Highly responsive to issues, PRs, and help.
 
 ## Privacy
 
