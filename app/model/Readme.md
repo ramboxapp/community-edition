@@ -13,7 +13,7 @@ Structure of a service entry:
 |type|Defines the type of the service. Must be one of `email` or `messaging`.|yes|
 |allow_popups|Set to `true` to allow popup windows for the service.|no|
 |note|Additional info to display when adding the service.|no|
-|manual_notifications|Set to `true` to let Rambox trigger notifications. Can be used for services that doesn't support browser notifications.|no|
+|manual_notifications|Set to `true` to let Rambox-OS trigger notifications. Can be used for services that doesn't support browser notifications.|no|
 |js_unread|JavaScript code for setting the unread count (see below).|no|
 
 ### Setting the unread count

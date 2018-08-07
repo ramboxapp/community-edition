@@ -39,7 +39,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 		var config = ipc.sendSync('getConfig');
 
 		var defaultServiceOptions = [];
-		defaultServiceOptions.push({ value: 'ramboxTab', label: 'Rambox Tab' });
+		defaultServiceOptions.push({ value: 'ramboxTab', label: 'Rambox-OS Tab' });
 		defaultServiceOptions.push({ value: 'last', label: 'Last Active Service' });
 		Ext.getStore('Services').each(function(rec) {
 			defaultServiceOptions.push({
@@ -170,7 +170,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'combo'
 						,name: 'default_service'
-						,fieldLabel: 'Default service to display when Rambox starts'
+						,fieldLabel: 'Default service to display when Rambox-OS starts'
 						,labelAlign: 'top'
 						//,width: 380
 						//,labelWidth: 105

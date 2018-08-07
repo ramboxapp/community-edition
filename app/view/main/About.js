@@ -28,6 +28,6 @@ Ext.define('Rambox.view.main.About', {
 		,'<br />'
 		,'<div style="text-align:center;"><a href="https://github.com/TheGoddessInari/rambox" target="_blank">GitHub</a></div>'
 		,'<br />'
-		,'<div style="text-align:center;"><i>'+locale['app.about[4]']+' Ramiro Saenz. Now maintained and developed by TheGoddessInari.</i></div>'
+		,'<div style="text-align:center;"><i>'+locale['app.about[4]']+' TheGoddessInari. Original version by Ramiro Saenz.</i></div>'
 	]
 });

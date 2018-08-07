@@ -1,6 +1,6 @@
 /**
  * Per default scrolling the tab bar moves the tabs 20 pixels.
- * To improve the usability of the tab bar this value is increased for Rambox.
+ * To improve the usability of the tab bar this value is increased for Rambox-OS.
  * Also animations are enabled, so the user understands what's going on.
  */
 Ext.define('Rambox.overrides.layout.container.boxOverflow.Scroller', {

@@ -25,7 +25,7 @@ Ext.define('Rambox.ux.Auth0', {
 				,primaryColor: '#0675A0'
 			}
 			,languageDictionary: {
-				title: 'Rambox Account'
+				title: 'Rambox-OS Account'
 			}
 			,popupOptions: {
 				nodeIntegration: 'no'

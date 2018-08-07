@@ -68,7 +68,7 @@ Ext.define('Rambox.view.add.AddController', {
 			}
 			// Apply the JS Code of the Tab
 			if ( win.down('textarea').isDirty() ) {
-				Ext.Msg.confirm(locale['app.window[8]'].toUpperCase(), 'Rambox needs to reload the service to execute the new JavaScript code. Do you want to do it now?', function( btnId ) {
+				Ext.Msg.confirm(locale['app.window[8]'].toUpperCase(), 'Rambox-OS needs to reload the service to execute the new JavaScript code. Do you want to do it now?', function( btnId ) {
 					if ( btnId === 'yes' ) view.reloadService();
 				});
 			}
