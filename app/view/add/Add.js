@@ -195,19 +195,19 @@ Ext.define('Rambox.view.add.Add',{
 									    xtype: 'checkbox'
 									   ,boxLabel: "Use passive listeners"
 									   ,name: 'passive_event_listeners'
-									   ,checked: me.record.get('passive_event_listeners') && me.service.get('passive_event_listeners')
+									   ,checked: me.edit ? (me.record.get('passive_event_listeners') && me.service.get('passive_event_listeners')) : true
 									   ,uncheckedValue: false
 									   ,inputValue: true
-									   ,disabled: !me.service.get('passive_event_listeners')
+									   ,disabled: me.edit ? !me.service.get('passive_event_listeners') : true
 									}
 									,{
 									    xtype: 'checkbox'
 									   ,boxLabel: "100ms timer granularity"
 									   ,name: 'slowed_timers'
-									   ,checked: me.record.get('slowed_timers') && me.service.get('slowed_timers')
+									   ,checked: me.edit ? (me.record.get('slowed_timers') && me.service.get('slowed_timers')) : true
 									   ,uncheckedValue: false
 									   ,inputValue: true
-									   ,disabled: !me.service.get('slowed_timers')
+									   ,disabled: me.edit ? !me.service.get('slowed_timers') : true
 									}
 									,{
 										 xtype: 'checkbox'
