@@ -26,15 +26,13 @@ Ext.define('Rambox.view.main.Main', {
 	,autoShow: true
 	,deferredRender: false
 	,tabBar: {
-		/* TODO: Donation
 		items: [{
 			 xtype: 'button'
 			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
 			,baseCls: ''
 			,tooltip: locale['app.main[25]']
-			,href: 'https://rambox.pro/#donate'
+			,href: 'https://www.gofundme.com/rambox-os'
 		}]
-		*/
 	}
 	,items: [
 		{
@@ -332,17 +330,18 @@ Ext.define('Rambox.view.main.Main', {
 				{
 					 xtype: 'segmentedbutton'
 					,allowToggle: false
-					/* TODO: Donation, Translation.
 					,items: [
 						{
-							 text: '<b>Help us</b> with'
+							 text: '<b>Help out</b> with'
 							,pressed: true
 						}
 						,{
 							 text: locale['app.main[25]']
 							,glyph: 'xf21e@FontAwesome'
-							,href: 'https://rambox.pro/#donate'
+							,href: 'https://www.gofundme.com/rambox-os'
 						}
+					]
+					 /* TODO: Translation
 						,{
 							 text: 'Translation'
 							,glyph: 'xf0ac@FontAwesome'
@@ -350,12 +349,11 @@ Ext.define('Rambox.view.main.Main', {
 						}
 					]*/
 				}
-				/* TODO: Flag
 				,'->'
 				,{
 					 xtype: 'label'
-					,html: '<span class="fa fa-code" style="color:black;"></span> '+locale['app.main[26]']+' <span class="fa fa-heart" style="color:red;"></span> '+locale['app.main[27]'].replace('Argentina', '<img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" />')
-				}*/
+					,html: '<span class="fa fa-code-fork" style="color:black;"></span> '+locale['app.main[26]']+' <span class="fa fa-meh-o" style="color:red;"></span> '+locale['app.main[27]'].replace('USA', '<img src="resources/flag.png" alt="United States" data-qtip="United States" />')
+				}
 				,'->'
 				,{
 					xtype: 'segmentedbutton'

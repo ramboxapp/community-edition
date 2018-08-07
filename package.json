@@ -48,7 +48,7 @@
 		"dist": "npm run repack"
 	},
 	"build": {
-		"productName": "Rambox",
+		"productName": "Rambox-OS",
 		"appId": "com.thegoddessinari.rambox",
 		"asar": true,
 		"publish": null,
@@ -59,7 +59,7 @@
 			]
 		},
 		"dmg": {
-			"title": "Rambox",
+			"title": "Rambox-OS",
 			"iconSize": 128,
 			"contents": [
 				{

@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/TheGoddessInari/rambox"><img src="./resources/Icon.png" width="256px" alt="Rambox-OS"></a>
   <br>
-  Rambox
+  Rambox-OS
   <br>
   <br>
 </h1>
@@ -22,11 +22,11 @@
   
 </p>
 <h5 align="center">Latest unstable build artifacts are available in Windows 
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017&branch=master" target="_blank">(Win64</a>), Mac (DMG) and Linux 
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-x86_64.AppImage?job=Image%3A%20Ubuntu&branch=master" target="_blank">(AppImage64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.x86_64.rpm?job=Image%3A%20Ubuntu&branch=master" target="_blank">RPM64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox_0.5.18_amd64.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball64</a>) packaging flavors.</h5>
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017&branch=master" target="_blank">(Win64</a>), Mac (DMG) and Linux 
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS-0.5.18-x86_64.AppImage?job=Image%3A%20Ubuntu&branch=master" target="_blank">(AppImage64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS-0.5.18.x86_64.rpm?job=Image%3A%20Ubuntu&branch=master" target="_blank">RPM64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS_0.5.18_amd64.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball64</a>) packaging flavors.</h5>
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 <h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>
@@ -53,7 +53,7 @@
 
 ## Screenshot
 
-![Rambox](./resources/screenshots/mac.png)
+![Rambox-OS](./resources/screenshots/mac.png)
 
 
 ## Services available - 97
@@ -167,7 +167,7 @@
 - [x] Multi-language.
 - [x] Sync your configuration between multiple computers.
 - [x] Master Password.
-- [x] Lock Rambox if you will be away for a period of time.
+- [x] Lock Rambox-OS if you will be away for a period of time.
 - [x] Don't disturb mode.
 - [x] Reorder applications in the tab bar.
 - [x] Notification badge in the tab.
@@ -190,10 +190,15 @@ Sessions will persist using the [partition:persist](https://electronjs.org/docs/
 Sync feature use [Auth0](https://auth0.com/) for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
 
 ## Donations
+Keep in mind, I'm not pushing this. I'll do my best regardless.
 
 | Type               |                                         URL/Wallet                                         |
 |--------------------|:------------------------------------------------------------------------------------------:|
-I'll think about it later.
+| GoFundMe           | https://www.gofundme.com/rambox-os                                                         |
+| Bitcoin            | ```36SxZeQ5dA7Dn6pSmYWcvvmnkEeh8LdgmJ```                                                   |
+| Bitcoin Cash       | ```qqslp2vuamhmsp59u49dq89kwky2yj23nqmjr4mdgj```                                           |
+| Ethereum           | ```0xa085d5F736f2D7D210261879e183e5bf870Eae5f```                                           |
+| Litecoin           | ```MKzytRHYHQTS3qrq2zCggEzSNG3HTbBXZL```                                                   |
 
 ## Compiling
 
@@ -246,7 +251,7 @@ See [Contributing.md](./CONTRIBUTING.md) for more detailed information about get
 Disclosure
 -------------------
 
-Rambox is not affiliated with any of the messaging apps offered.
+Rambox-OS is not affiliated with any of the messaging apps offered.
 
 Licence
 -------------------
