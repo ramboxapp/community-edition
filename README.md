@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://rambox.pro"><img src="./resources/Icon.png" width="256px" alt="Rambox"></a>
+  <a href="https://github.com/TheGoddessInari/rambox"><img src="./resources/Icon.png" width="256px" alt="Rambox-OS"></a>
   <br>
   Rambox
   <br>
@@ -17,7 +17,7 @@
 <p align="center">
   <a href="https://travis-ci.org/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/travis/TheGoddessInari/rambox/master.svg?logo=travis" alt="Travis CI"></a>
   <a href="https://ci.appveyor.com/project/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/appveyor/ci/TheGoddessInari/rambox/master.svg?logo=appveyor" alt="AppVeyor CI"></a>
-  <a href="https://david-dm.org/TheGoddessInari/rambox" title="Dependency status"><img src="https://img.shields.io/david/TheGoddessInari/rambox.svg"/></a>
+  <a href="https://david-dm.org/TheGoddessInari/rambox?path=app" title="Dependency status"><img src="https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app"/></a>
   <a href="https://david-dm.org/TheGoddessInari/rambox#info=devDependencies" title="devDependency status"><img src="https://img.shields.io/david/dev/TheGoddessInari/rambox.svg"/></a>
   
 </p>
