@@ -36,7 +36,6 @@
 		"electron-context-menu": "0.10.0",
 		"electron-is-dev": "^0.3.0",
 		"mime": "^2.3.1",
-		"rimraf": "2.6.2",
 		"tmp": "0.0.33"
 	}
 }

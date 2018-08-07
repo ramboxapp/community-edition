@@ -289,8 +289,10 @@
      * Extra resources to be copied along when build
      */
     "resources": [
-		"electron",
-		"masterpassword.html"
+        "app",
+        "electron",
+        "ext/packages/ext-locale/build",
+        "masterpassword.html"
     ],
 
     /**
