@@ -23,10 +23,10 @@
 </p>
 <h5 align="center">Latest unstable build artifacts are available in Windows 
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017&branch=master" target="_blank">(Win64</a>), Mac (DMG) and Linux 
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS-0.5.18-x86_64.AppImage?job=Image%3A%20Ubuntu&branch=master" target="_blank">(AppImage64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS-0.5.18.x86_64.rpm?job=Image%3A%20Ubuntu&branch=master" target="_blank">RPM64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS_0.5.18_amd64.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball64</a>) packaging flavors.</h5>
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-x86_64.AppImage?job=Image%3A%20Ubuntu&branch=master" target="_blank">(AppImage64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.x86_64.rpm?job=Image%3A%20Ubuntu&branch=master" target="_blank">RPM64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18_amd64.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball64</a>) packaging flavors.</h5>
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 <h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>
