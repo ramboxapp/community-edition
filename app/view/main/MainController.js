@@ -9,7 +9,9 @@ Ext.define('Rambox.view.main.MainController', {
 		tabPanel.setTabPosition(config.tabbar_location);
 		tabPanel.setTabRotation(0);
 
-		let reorderer = tabPanel.plugins.find((plugin) => plugin.ptype === "tabreorderer");
+		let reorderer = tabPanel.plugins.find(function(plugin) {
+			return plugin.ptype === "tabreorderer";
+		});
 
 		if ( reorderer !== undefined ) {
 			const names = reorderer.container.getLayout().names;
@@ -56,7 +58,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 		var store = Ext.getStore('Services');
 		var align = 'left';
-		store.suspendEvent('remove');
+		store.suspendEvent('childmove');
 		Ext.each(tabPanel.items.items, function(t, i) {
 			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
 				var rec = store.getById(t.record.get('id'));
@@ -72,7 +74,7 @@ Ext.define('Rambox.view.main.MainController', {
 		});
 
 		store.load();
-		store.resumeEvent('remove');
+		store.resumeEvent('childmove');
 	}
 
 	,showServiceTab: function( grid, record, tr, rowIndex, e ) {
@@ -125,47 +127,44 @@ Ext.define('Rambox.view.main.MainController', {
 		});
 	}
 
-	,removeServiceFn: function(serviceId, total, actual) {
+	,removeServiceFn: function(serviceId, total, actual, resolve) {
 		var me = this;
 		if ( !serviceId ) return false;
 
 		// Get Record
-		var rec = Ext.getStore('Services').getById(serviceId);
+		const rec = Ext.getStore('Services').getById(serviceId);
 
 		if ( !rec.get('enabled') ) {
 			rec.set('enabled', true);
 			me.onEnableDisableService(null, Ext.getStore('Services').indexOf(rec), true, null, true);
-			Ext.defer(function() {
-				// Get Tab
-				var tab = Ext.getCmp('tab_'+serviceId);
-				// Clear all trash data
-				const webview = tab.getWebView();
+			const tab = Ext.getCmp('tab_'+serviceId);
+			const webview = tab.getWebView();
 
-				webview.addEventListener("did-start-loading", function() {
-					clearData(webview, tab);
-				});
-			}, 1000);
+			webview.addEventListener("did-start-loading", function() {
+				clearData(webview, tab, resolve);
+			});
 		} else {
 			// Get Tab
-			var tab = Ext.getCmp('tab_'+serviceId);
 			// Clear all trash data
+			const tab = Ext.getCmp('tab_'+serviceId);
 			const webview = tab.getWebView();
-			clearData(webview, tab);
+			clearData(webview, tab, resolve);
 		}
 
 		const config = ipc.sendSync('getConfig');
 		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'ramboxTab' }));
 
-		function clearData(webview, tab) {
+		function clearData(webview, tab, resolve) {
 			webview.getWebContents().clearHistory();
 			webview.getWebContents().session.flushStorageData();
-			webview.getWebContents().session.clearCache(function() {
-				webview.getWebContents().session.clearStorageData(function() {
+			webview.getWebContents().session.clearCache(function () {
+				webview.getWebContents().session.clearStorageData(function () {
 					webview.getWebContents().session.cookies.flushStore(function() {
 						// Remove record from localStorage
 						Ext.getStore('Services').remove(rec);
 						// Close tab
 						tab.close();
+						if ( Ext.isFunction(resolve) ) resolve();
 						// Close waiting message
 						if ( total === actual ) Ext.Msg.hide();
 					});
@@ -191,33 +190,44 @@ Ext.define('Rambox.view.main.MainController', {
 		// Clear counter for unread messaging
 		document.title = 'Rambox-OS';
 
+		const store = Ext.getStore('Services');
+
 		if ( btn ) {
 			Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[14]'], function(btnId) {
 				if ( btnId === 'yes' ) {
-					Ext.cq1('app-main').suspendEvent('remove');
-					Ext.getStore('Services').load();
 					Ext.Msg.wait('Please wait until we clear all.', 'Removing...');
-					const count = Ext.getStore('Services').getCount();
-					var i = 1;
-					Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
-						me.removeServiceFn(serviceId, count, i++);
-					});
-					if ( Ext.isFunction(callback) ) callback();
-					Ext.cq1('app-main').resumeEvent('remove');
-					document.title = 'Rambox-OS';
+					_removeAllServices(callback);
 				}
 			});
 		} else {
-			Ext.cq1('app-main').suspendEvent('remove');
-			Ext.getStore('Services').load();
-			const count = Ext.getStore('Services').getCount();
-			var i = 1;
-			Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
-				me.removeServiceFn(serviceId, count, i++);
+			_removeAllServices(callback);
+		}
+		function _removeAllServices (callback) {
+			store.load(function(records, operation, success) {
+				store.suspendEvent('remove');
+				store.suspendEvent('childmove');
+				const count = store.getCount();
+				let i = 1;
+				let promises = [];
+				Ext.Array.each(store.collect('id'), function(serviceId) {
+					promises.push(new Promise(function(resolve) {
+						 me.removeServiceFn(serviceId, count, i++, resolve);
+					}));
+				});
+				Promise.all(promises)
+				.then(function(value) {
+					if ( Ext.isFunction(callback) ) callback();
+				})
+				.catch(function(err) {
+					console.error('Error removing services: ' + err);
+					Ext.Msg.alert('Error!','Error removing services: ' + err);
+				})
+				.then(function() { // Replace when Promise.finally when available.
+					store.resumeEvent('childmove');
+					store.resumeEvent('remove');
+					document.title = 'Rambox-OS';
+				});
 			});
-			if ( Ext.isFunction(callback) ) callback();
-			Ext.cq1('app-main').resumeEvent('remove');
-			document.title = 'Rambox-OS';
 		}
 	}
 
@@ -456,38 +466,6 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		Ext.create('Rambox.view.preferences.Preferences').show();
-	}
-
-	,login: function(btn) {
-		var me = this;
-
-		Rambox.ux.Auth0.login();
-	}
-
-	,logout: function(btn) {
-		var me = this;
-
-		var logoutFn = function(callback) {
-			Ext.Msg.wait(locale['app.window[37]'], locale['app.main[21]']);
-
-			// Logout from Auth0
-			Rambox.ux.Auth0.logout();
-
-			Ext.cq1('app-main').getViewModel().set('username', '');
-			Ext.cq1('app-main').getViewModel().set('avatar', '');
-
-			if ( Ext.isFunction(callback) ) callback();
-		};
-
-		if ( btn ) {
-			Ext.Msg.confirm(locale['app.main[21]'], locale['app.window[38]'], function(btnId) {
-				if ( btnId === 'yes' ) {
-					logoutFn(me.removeAllServices.bind(me));
-				}
-			});
-		} else {
-			logoutFn();
-		}
 	}
 
 });

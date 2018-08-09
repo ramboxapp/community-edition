@@ -265,61 +265,22 @@ Ext.define('Rambox.view.main.Main', {
 						,style: 'border-radius: 50%;border:2px solid #d8d8d8;'
 					}
 					,{
-						 id: 'usernameBtn'
-						,bind: {
-							 text: '{username}'
-							,hidden: '{!username}'
-						}
-						,menu: [
-							{
-								 text: 'Synchronize Configuration'
-								,glyph: 'xf0c2@FontAwesome'
-								,menu: [
-									{
-										 xtype: 'label'
-										,bind: {
-											html: '<b class="menu-title">Last Sync: {last_sync}</b>'
-										}
-									}
-									,{
-										 text: 'Backup'
-										,glyph: 'xf0ee@FontAwesome'
-										,scope: Rambox.ux.Auth0
-										,handler: Rambox.ux.Auth0.backupConfiguration
-									}
-									,{
-										 text: 'Restore'
-										,glyph: 'xf0ed@FontAwesome'
-										,scope: Rambox.ux.Auth0
-										,handler: Rambox.ux.Auth0.restoreConfiguration
-									}
-									,{
-										 text: 'Check for updated backup'
-										,glyph: 'xf021@FontAwesome'
-										,scope: Rambox.ux.Auth0
-										,handler: Rambox.ux.Auth0.checkConfiguration
-									}
-								]
-							}
-							,'-'
-							,{
-								 text: locale['app.main[21]']
-								,glyph: 'xf08b@FontAwesome'
-								,handler: 'logout'
-							}
-						]
+						 text: 'Backup'
+						,glyph: 'xf0c7@FontAwesome'
+						,id: 'backupBtn'
+						,tooltip: 'Backup services to disk'
+						,scope: Rambox.ux.FileBackup
+						,handler: Rambox.ux.FileBackup.backupConfiguration
 					}
 					,{
-						 text: locale['app.main[22]']
-						,icon: 'resources/auth0.png'
-						,id: 'loginBtn'
-						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (https://auth0.com)</i>'
-						,bind: {
-							hidden: '{username}'
-						}
-						,handler: 'login'
-					}
-					,{
+						text: 'Restore'
+					   ,glyph: 'xf115@FontAwesome'
+					   ,id: 'restoreBtn'
+					   ,tooltip: 'Restore services from disk'
+					   ,scope: Rambox.ux.FileBackup
+					   ,handler: Rambox.ux.FileBackup.restoreConfiguration
+				   }
+				   ,{
 						 tooltip: locale['preferences[0]']
 						,glyph: 'xf013@FontAwesome'
 						,handler: 'openPreferences'

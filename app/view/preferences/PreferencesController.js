@@ -48,7 +48,6 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 		// Locale
 		if ( values.locale !== ipc.sendSync('getConfig').locale ) {
 			localStorage.setItem('locale', values.locale);
-			localStorage.setItem('locale-auth0', me.getView().down('form').down('combo[name="locale"]').getSelection().get('auth0'));
 			Ext.Msg.confirm('Action required', 'To change the language of Rambox, you need to reload the app. Do you want to do it now?', function(btnId) {
 				if ( btnId === 'yes' ) ipc.send('relaunchApp');
 			});

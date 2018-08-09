@@ -1,5 +1,3 @@
-var auth0, lock; // Auth0 vars
-
 // Sencha App
 Ext.setGlyphFontFamily('FontAwesome');
 Ext.application({
