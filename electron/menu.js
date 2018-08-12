@@ -211,7 +211,7 @@ module.exports = function(config) {
 				{
 					label: locale['preferences[0]'],
 					click() {
-						sendAction('showPreferences')
+						sendAction('showPreferences');
 					}
 				},
 				{
@@ -226,7 +226,7 @@ module.exports = function(config) {
 				{
 					label: locale['menu.help[6]'],
 					click() {
-						sendAction('showAbout')
+						sendAction('showAbout');
 					}
 				},
 				{
@@ -270,7 +270,7 @@ module.exports = function(config) {
 				{
 					label: locale['preferences[0]'],
 					click() {
-						sendAction('showPreferences')
+						sendAction('showPreferences');
 					}
 				},
 				{
@@ -297,7 +297,7 @@ module.exports = function(config) {
 		helpSubmenu.push({
 			label: `&`+locale['menu.help[6]'],
 			click() {
-				sendAction('showAbout')
+				sendAction('showAbout');
 			}
 		});
 	}
