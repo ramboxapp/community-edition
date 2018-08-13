@@ -38,7 +38,7 @@
 		"setup:linux32": "npm run clean && npm run compile && npm run build:linux32",
 		"setup:linux64": "npm run clean && npm run compile && npm run build:linux64",
 		"repack": "npm run clean && npm run compile && npm run distclean && npm run pack",
-		"repack:osx": "npm run clean && npm run compile && npm run distclean:osx && npm run pack:macos",
+		"repack:osx": "npm run clean && npm run compile && npm run distclean:osx && npm run pack:osx",
 		"repack:win": "npm run clean && npm run compile && npm run distclean:win && npm run pack:win",
 		"repack:win32": "npm run clean && npm run compile && npm run distclean:win && npm run pack:win32",
 		"repack:win64": "npm run clean && npm run compile && npm run distclean:win && npm run pack:win64",
