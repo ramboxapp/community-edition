@@ -49,8 +49,8 @@ const config = new Config({
 
 // Fix issues with HiDPI scaling on Windows platform
 if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
-	app.commandLine.appendSwitch('high-dpi-support', 'true')
-	app.commandLine.appendSwitch('force-device-scale-factor', '1')
+	app.commandLine.appendSwitch('high-dpi-support', 'true');
+	app.commandLine.appendSwitch('force-device-scale-factor', '1');
 }
 
 // This must match the package name in package.json
@@ -205,7 +205,7 @@ function createMasterPasswordWindow() {
 	if ( isDev ) mainMasterPasswordWindow.webContents.openDevTools();
 
 	mainMasterPasswordWindow.loadURL('file://' + __dirname + '/../masterpassword.html');
-	mainMasterPasswordWindow.on('close', function() { mainMasterPasswordWindow = null });
+	mainMasterPasswordWindow.on('close', function() { mainMasterPasswordWindow = null; });
 }
 
 function updateBadge(title) {
@@ -284,13 +284,13 @@ ipcMain.on('validateMasterPassword', function(event, pass) {
 ipcMain.on('setServiceNotifications', function(event, partition, op) {
 	session.fromPartition(partition).setPermissionRequestHandler(function(webContents, permission, callback) {
 		if (permission === 'notifications') return callback(op);
-		callback(true)
+		callback(true);
 	});
 });
 
 ipcMain.on('setDontDisturb', function(event, arg) {
 	config.set('dont_disturb', arg);
-})
+});
 
 // Reload app
 ipcMain.on('reloadApp', function(event) {
@@ -407,9 +407,9 @@ if ( config.get('proxy') ) {
 		if(!authInfo.isProxy)
 			return;
 
-		event.preventDefault()
-		callback(config.get('proxyLogin'), config.get('proxyPassword'))
-	})
+		event.preventDefault();
+		callback(config.get('proxyLogin'), config.get('proxyPassword'));
+	});
 }
 
 // Disable GPU Acceleration for Linux

@@ -4,7 +4,7 @@ Ext.define('Rambox.Application', {
 	,name: 'Rambox'
 
 	,requires: [
-		 'Rambox.ux.Auth0'
+		 'Rambox.ux.FileBackup'
 		,'Rambox.util.MD5'
 		,'Ext.window.Toast'
 		,'Ext.util.Cookies'
@@ -27,14 +27,11 @@ Ext.define('Rambox.Application', {
 
 	,launch: function () {
 		// Load language for Ext JS library
-		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
+		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale') || 'en')});
 
-		// Initialize Auth0
-		if ( auth0Cfg.clientID !== '' && auth0Cfg.domain !== '' ) Rambox.ux.Auth0.init();
 
 		// Set cookies to help Tooltip.io messages segmentation
 		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
-		if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
 
 		// Check for updates
 		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);

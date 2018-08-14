@@ -43,8 +43,6 @@ install:
           $env:PATH = "${env:HOME}/bin/Sencha/Cmd:${env:PATH}"
         }
 
-        Copy-Item env-sample.js env.js
-
         git reset --hard HEAD
 
         npm i npm@latest -g

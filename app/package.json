@@ -29,13 +29,11 @@
 	"author": "TheGoddessInari <thegoddessinari@gmail.com>",
 	"license": "GPL-3.0",
 	"dependencies": {
-		"auth0-js": "^8.12.3",
-		"auth0-lock": "^10.22.0",
 		"auto-launch-patched": "5.0.2",
-		"electron-store": "2.0.0",
-		"electron-context-menu": "0.10.0",
+		"electron-store": "^2.0.0",
+		"electron-context-menu": "^0.10.0",
 		"electron-is-dev": "^0.3.0",
 		"mime": "^2.3.1",
-		"tmp": "0.0.33"
+		"tmp": "^0.0.33"
 	}
 }

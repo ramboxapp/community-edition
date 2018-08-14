@@ -5,7 +5,7 @@
 		"start:debug": "electron electron/main.js --enable-logging",
 		"test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
 		"clean": "rimraf ./build/production",
-		"compile": "sencha app build && cpy app/package.json build/production/Rambox/",
+		"compile": "sencha app build && cpy app/package.json app/package-lock.json build/production/Rambox/",
 		"recompile": "npm run distclean && npm run compile",
 		"distclean": "rimraf ./dist",
 		"distclean:win": "rimraf ./dist/win-{ia32-,}unpacked",
@@ -102,13 +102,14 @@
 	},
 	"devDependencies": {
 		"asar": "^0.14.3",
-		"chai": "4.1.2",
-		"cpy-cli": "2.0.0",
-		"crowdin": "1.0.0",
-		"csvjson": "5.1.0",
-		"electron-builder": "^20.26.1",
+		"chai": "^4.1.2",
+		"cpy-cli": "^2.0.0",
+		"crowdin": "^1.0.0",
+		"csvjson": "^5.1.0",
+		"electron": "^2.0.7",
+		"electron-builder": "^20.27.1",
 		"mocha": "^5.2.0",
-		"rimraf": "2.6.2",
+		"rimraf": "^2.6.2",
 		"spectron": "^3.8.0"
 	}
 }

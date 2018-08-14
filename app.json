@@ -107,9 +107,6 @@
             "path": "resources/js/loadscreen.js"
         },
         {
-            "path": "env.js"
-        },
-        {
             "path": "app.js",
             "bundle": true
         }

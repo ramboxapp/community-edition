@@ -51,7 +51,6 @@ install:
       unzip SenchaCmd-${SENCHA_VER}-osx-no_jre.app.zip;
       SenchaCmd-${SENCHA_VER}-osx-no_jre.app/Contents/MacOS/JavaApplicationStub -q -Dall=true;
     fi
-  - cp env-sample.js env.js
 before_script:
   - export PATH=~/bin/Sencha/Cmd/${SENCHA_VER}:${PATH}
   - export CURRENT_BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-$TRAVIS_BRANCH}
