@@ -64,7 +64,12 @@ const appLauncher = new AutoLaunch({
 	 name: 'Rambox-OS'
 	,isHidden: config.get('start_minimized')
 });
-config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
+if (config.get('auto_launch') && !isDev) {
+	appLauncher.enable();
+}
+else {
+	appLauncher.disable();
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -127,19 +132,21 @@ function createWindow () {
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
 		const protocol = require('url').parse(url).protocol;
 		switch ( disposition ) {
-			case 'new-window':
+			case 'new-window': {
 				e.preventDefault();
 				const win = new BrowserWindow(options);
 				win.once('ready-to-show', () => win.show());
 				win.loadURL(url);
 				e.newGuest = win;
 				break;
-			case 'foreground-tab':
+			}
+			case 'foreground-tab': {
 				if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
 					e.preventDefault();
 					shell.openExternal(url);
 				}
 				break;
+			}
 			default:
 				break;
 		}
@@ -171,8 +178,6 @@ function createWindow () {
 				case 'darwin':
 					app.hide();
 					break;
-				case 'linux':
-				case 'win32':
 				default:
 					switch (config.get('window_close_behavior')) {
 						case 'keep_in_tray':
@@ -247,7 +252,11 @@ ipcMain.on('setConfig', function(event, values) {
 	// always_on_top
 	mainWindow.setAlwaysOnTop(values.always_on_top);
 	// auto_launch
-	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
+	if (values.auto_launch) {
+		appLauncher.enable();
+	} else {
+		appLauncher.disable();
+	}
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
 
@@ -380,13 +389,21 @@ ipcMain.on('image:popup', function(event, url, partition) {
 	tmpWindow.loadURL(url);
 });
 
-ipcMain.on('toggleWin', function(event, allwaysShow) {
+ipcMain.on('toggleWin', function(event, alwaysShow) {
 	if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && mainWindow.isVisible() ) { // Maximized
-		!allwaysShow ? mainWindow.close() : mainWindow.show();
+		if (!alwaysShow) {
+			mainWindow.close();
+		} else {
+			mainWindow.show();
+		} 
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Minimized
 		mainWindow.restore();
 	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Windowed mode
-		!allwaysShow ? mainWindow.close() : mainWindow.show();
+		if (!alwaysShow) {
+			mainWindow.close();
+		 } else {
+			mainWindow.show();
+		 }
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Closed to taskbar
 		mainWindow.restore();
 	} else if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed maximized to tray
@@ -421,7 +438,11 @@ if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
-	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
+	if (config.get('master_password')) {
+		createMasterPasswordWindow();
+	} else {
+		createWindow();
+	}
 });
 
 // Quit when all windows are closed.
@@ -437,7 +458,11 @@ app.on('window-all-closed', function () {
 // dock icon is clicked and there are no other windows open.
 app.on('activate', function () {
 	if (mainWindow === null && mainMasterPasswordWindow === null ) {
-		config.get('master_password') ? createMasterPasswordWindow() : createWindow();
+		if (config.get('master_password')) {
+			createMasterPasswordWindow();
+		} else {
+			createWindow();
+		}
 	}
 
 	if ( mainWindow !== null ) mainWindow.show();
