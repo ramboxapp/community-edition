@@ -67,6 +67,7 @@
 <img width="80" align="left" src="./resources/icons/inbox.png" alt="Inbox" title="Inbox" />
 <img width="80" align="left" src="./resources/icons/hipchat.png" alt="HipChat" title="HipChat" />
 <img width="80" align="left" src="./resources/icons/allo.png" alt="Allo" title="Allo" />
+<img width="80" align="left" src="./resources/icons/bbm.png" alt="BBM" title="BBM" />
 
 <img width="80" align="left" src="./resources/icons/chatwork.png" alt="ChatWork" title="ChatWork"/>
 <img width="80" align="left" src="./resources/icons/groupme.png" alt="GroupMe" title="GroupMe"/>

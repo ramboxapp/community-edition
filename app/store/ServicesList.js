@@ -452,6 +452,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'NotifyByTitle.show = function(){};NotifyByTitle.start = function(){};NotifyByTitle.stop = function(){};function checkUnread(){var t=0;$(".msgnotify").each(function() { t += isNaN(parseInt($(this).html())) ? 0 : parseInt(parseInt($(this).html())) });updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 		},
 		{
+			 id: 'bbm'
+			,logo: 'bbm.png'
+			,name: 'BlackBerry Messenger'
+			,description: locale['services[47]']
+			,url: 'https://web.bbmessaging.com/'
+			,type: 'messaging'
+		},
+		{
 			 id: 'aol'
 			,logo: 'aol.png'
 			,name: 'Aol'
