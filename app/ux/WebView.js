@@ -22,7 +22,7 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 
 		function getLocation(href) {
-			var match = href.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)(\/[^?#]*)(\?[^#]*|)(#.*|)$/);
+			var match = href.match(/^(https?):\/\/([-.\w]*)(\/[^#?]*)(\?[^#]*|)(#.*|)$/);
 			return match && {
 				protocol: match[1],
 				host: match[2],
@@ -252,7 +252,7 @@ Ext.define('Rambox.ux.WebView',{
 			switch ( me.type ) {
 				case 'skype':
 					// hack to fix multiple browser tabs on Skype link click, re #11
-					if ( e.url.match('https:\/\/web.skype.com\/..\/undefined') ) {
+					if ( e.url.match(/https:\/\/web.skype.com\/..\/undefined/) ) {
 						e.preventDefault();
 						return;
 					} else if ( e.url.indexOf('imgpsh_fullsize') >= 0 ) {

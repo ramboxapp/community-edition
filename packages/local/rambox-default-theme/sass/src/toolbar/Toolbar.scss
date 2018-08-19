@@ -2,12 +2,12 @@
  * Aplica estilo a la barra de login
  */
 @include extjs-toolbar-ui(
-	$ui: 'main',
+	$ui: 'default',
 	$background-color: $base-color
 );
 
 @include extjs-toolbar-ui(
-	$ui: 'newversion',
+	$ui: 'default',
 	$background-color: #31B96E
 );
 

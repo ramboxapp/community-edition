@@ -407,7 +407,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[43]']
 			,url: '___'
 			,type: 'email'
-			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("count");let t=0;for(let i in e)t+=parseInt(i.innerHTML.match(/\d+/g));rambox.updateBadge(t)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("count");let t=0;for(let i in e)t+=parseInt(i.innerHTML.match(/[0-9]+/g));rambox.updateBadge(t)};setInterval(checkUnread,3e3);`
 			,note: 'To enable desktop notifications and automatic mail check, you have to go to Options inside Horde.'
 		},
 		{
@@ -769,7 +769,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Simple and Easy App for Messaging on VK.'
 			,url: 'https://m.vk.com/im'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{rambox.updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/\D+/g,"")))};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{rambox.updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/[^0-9]+/g,"")))};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'mastodon'
@@ -831,7 +831,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'A free phone number for life.  Stay in touch from any screen.  Use your free number to text, call, and check voicemail  all from one app. Plus, Google Voice works on all of your devices so you can connect and communicate how you want.'
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
-			,js_unread: `let parseIntOrZero=e=>isNaN(parseInt(e))?0:parseInt(e),checkUnread=()=>{const e=document.querySelector(".msgCount");let n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[\(\) ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){const r=document.querySelector('gv-nav-tab[tooltip="+e+"] div[aria-label="Unread count"]');r&&(n+=parseIntOrZero(r.innerHTML))}),rambox.updateBadge(n)};setInterval(checkUnread,3e3);`
+			,js_unread: `let parseIntOrZero=e=>isNaN(parseInt(e))?0:parseInt(e),checkUnread=()=>{const e=document.querySelector(".msgCount");let n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[() ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){const r=document.querySelector('gv-nav-tab[tooltip="+e+"] div[aria-label="Unread count"]');r&&(n+=parseIntOrZero(r.innerHTML))}),rambox.updateBadge(n)};setInterval(checkUnread,3e3);;`
 		},
 		{
 			 id: 'sandstorm'
