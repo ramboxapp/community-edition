@@ -98,9 +98,9 @@ ipc.on('setBadge', function(event, messageCount) {
 
 	function formatNumber(n) {
 		n = parseInt(n);
-		for (var i = 0; i < ranges.length; i++) {
-			if (n >= ranges[i].divider) {
-				return Math.round(n / ranges[i].divider).toString() + ranges[i].suffix;
+		for (let i of ranges) {
+			if (n >= i.divider) {
+				return Math.round(n / i.divider).toString() + i.suffix;
 			}
 		}
 		return n.toString();
