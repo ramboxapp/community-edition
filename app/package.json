@@ -5,6 +5,7 @@
 	"description": "Rambox",
 	"main": "electron/main.js",
 	"private": true,
+	"engines": { "node": ">=8.5.0"},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/TheGoddessInari/rambox.git"
