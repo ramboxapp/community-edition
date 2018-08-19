@@ -31,8 +31,8 @@
 	"dependencies": {
 		"auto-launch-patched": "5.0.2",
 		"electron-store": "^2.0.0",
-		"electron-context-menu": "^0.10.0",
 		"electron-is-dev": "^0.3.0",
+		"electron-contextmenu-wrapper": "^0.0.1",
 		"mime": "^2.3.1",
 		"tmp": "^0.0.33"
 	}

@@ -3,6 +3,8 @@
  */
 
 const { ipcRenderer } = require('electron');
+const { MenuItem } = require('electron').remote;
+const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
 
 /**
  * Make the Rambox API available via a global "rambox" variable.
@@ -10,6 +12,8 @@ const { ipcRenderer } = require('electron');
  * @type {{}}
  */
 window.rambox = {};
+
+window.rambox.locale = ipcRenderer.sendSync('getConfig').locale;
 
 /**
  * Sets the unread count of the tab.
@@ -35,6 +39,12 @@ window.rambox.updateBadge = function(direct, indirect = 0) {
 window.rambox.clearUnreadCount = function() {
 	ipcRenderer.sendToHost('rambox.clearUnreadCount');
 }
+
+window.rambox.contextMenuBuilder = new ContextMenuBuilder();
+window.rambox.contextMenuListener = new ContextMenuListener(function(event, info) { 
+	window.rambox.contextMenuBuilder.showPopupMenu(info);
+});
+
 
 /**
  * Override to add notification click event to display Rambox window and activate service tab
