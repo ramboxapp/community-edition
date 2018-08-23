@@ -106,7 +106,7 @@
 		"cpy-cli": "^2.0.0",
 		"crowdin": "^1.0.0",
 		"csvjson": "^5.1.0",
-		"electron": "^2.0.7",
+		"electron": "^2.0.8",
 		"electron-builder": "^20.27.1",
 		"mocha": "^5.2.0",
 		"rimraf": "^2.6.2",
