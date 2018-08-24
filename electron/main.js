@@ -325,7 +325,6 @@ const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
 
 if (shouldQuit) {
 	app.quit();
-	return;
 }
 
 // Code for downloading images as temporal files
@@ -470,4 +469,12 @@ app.on('activate', function () {
 
 app.on('before-quit', function () {
 	isQuitting = true;
+});
+
+// Prevent the ability to create webview with nodeIntegration.
+app.on('web-contents-created', (event, contents) => {
+    contents.on('will-attach-webview', (event, webPreferences, params) => {
+		// Always prevent node integration
+		webPreferences.nodeIntegration = false;
+	});
 });
