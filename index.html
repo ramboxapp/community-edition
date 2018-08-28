@@ -4,6 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; frame-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; connect-src https://api.github.com">
 
 	<title>Rambox-OS</title>
 
@@ -11,11 +12,13 @@
 	<script id="microloader" type="text/javascript" src="bootstrap.js"></script>
 
 	<!--- Localization -->
-	<script type='text/javascript'>
-	    (function(d, s){
-			var t = d.createElement(s), e = d.getElementsByTagName(s)[0];
-			t.type = "text/javascript"; e.parentNode.insertBefore(t, e);
-			t.src = "resources/languages/"+require('electron').ipcRenderer.sendSync('getConfig').locale+".js";
+	<script id="localization" type="text/javascript">
+		(function (d, s) {
+			var t = d.createElement(s),
+				e = d.getElementsByTagName(s)[0];
+			t.type = "text/javascript";
+			e.parentNode.insertBefore(t, e);
+			t.src = "resources/languages/" + require('electron').ipcRenderer.sendSync('getConfig').locale + ".js";
 		})(document, "script");
 	</script>
 	<!--- Localization -->
