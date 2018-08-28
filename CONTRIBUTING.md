@@ -37,11 +37,11 @@ Working on your first Pull Request? You can learn how from this *free* series [H
 
 ### Prerequisites
 
-| Prerequisite                                                  | Version     |
-| ------------------------------------------------------------- | ----------- |
-| [Sencha](https://www.sencha.com/products/extjs/cmd-download/) | `=6.1.2.15` |
-| [Ruby](https://www.ruby-lang.org/en/downloads/)               | `=2.3`      |
-| [Node.js](http://nodejs.org)                                  | `~ ^4.0.0`  |
+| Prerequisite                                                  | Version |
+| ------------------------------------------------------------- | ------- |
+| [Sencha](https://www.sencha.com/products/extjs/cmd-download/) | `=6.1.2.15`  |
+| [Ruby](https://www.ruby-lang.org/en/downloads/)               | `=2.3` |
+| [Node.js](https://nodejs.org)                                 | `~ ^4.0.0`  |
 | npm (comes with Node)                                         | `~ ^3.8.7`  |
 
 > _Updating to the latest releases is recommended_.
