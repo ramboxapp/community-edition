@@ -1,9 +1,6 @@
 'use strict';
 const os = require('os');
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const shell = electron.shell;
+const {app, BrowserWindow, Menu, shell}  = require('electron');
 const appName = app.getName();
 
 function sendAction(action) {
@@ -308,5 +305,5 @@ module.exports = function(config) {
 
 	tpl[tpl.length - 1].submenu = helpSubmenu;
 
-	return electron.Menu.buildFromTemplate(tpl);
+	return Menu.buildFromTemplate(tpl);
 };
