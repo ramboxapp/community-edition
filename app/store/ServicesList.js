@@ -910,6 +910,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function checkUnread(){updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
 		},
 		{
+			 id: 'devrant'
+			,logo: 'devrant.png'
+			,name: 'devRant'
+			,description: 'Share and bond over successes and frustrations with code, tech and life as a programmer'
+			,url: 'https://devrant.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".menu-notif.notif-badge")[0];updateBadge(t=a===undefined?0:(a.textContent.length?parseInt(a.textContent.replace(/[^0-9]/g,"")):0))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
+    },
+    {
 			 id: 'reddit'
 			,logo: 'reddit.png'
 			,name: 'Reddit'
