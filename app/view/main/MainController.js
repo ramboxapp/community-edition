@@ -9,7 +9,7 @@ Ext.define('Rambox.view.main.MainController', {
 		tabPanel.setTabPosition(config.tabbar_location);
 		tabPanel.setTabRotation(0);
 
-		let reorderer = tabPanel.plugins.find((plugin) => plugin.ptype == "tabreorderer");
+		var reorderer = tabPanel.plugins.find(function(plugin) { return plugin.ptype == "tabreorderer"});
 
 		if ( reorderer !== undefined ) {
 			const names = reorderer.container.getLayout().names;

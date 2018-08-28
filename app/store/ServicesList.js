@@ -125,7 +125,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'inbox.png'
 			,name: 'Inbox'
 			,description: locale['services[10]']
-			,url: 'http://inbox.google.com/?cid=imp'
+			,url: 'https://inbox.google.com/?cid=imp'
 			,type: 'email'
 			,manual_notifications: true
 			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("ss").length)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
@@ -242,7 +242,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'tutanota.png'
 			,name: 'Tutanota'
 			,description: locale['services[21]']
-			,url: 'https://app.tutanota.de/'
+			,url: 'https://mail.tutanota.com/'
 			,type: 'email'
 		},
 		{
@@ -876,7 +876,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'mailru.png'
 			,name: 'Mail.Ru'
 			,description: 'Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.'
-			,url: 'http://webagent.mail.ru/webim/agent/popup.html'
+			,url: 'https://webagent.mail.ru/webim/agent/popup.html'
 			,type: 'email'
 		},
 		{
@@ -917,6 +917,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://devrant.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".menu-notif.notif-badge")[0];updateBadge(t=a===undefined?0:(a.textContent.length?parseInt(a.textContent.replace(/[^0-9]/g,"")):0))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
+    },
+    {
+			 id: 'reddit'
+			,logo: 'reddit.png'
+			,name: 'Reddit'
+			,description: 'Reddit\'s in-build chat service.'
+			,url: 'https://www.reddit.com/chat'
+			,type: 'messaging'
 		}
 	]
 });
