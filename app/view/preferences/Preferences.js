@@ -337,6 +337,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 							}
 						]
 					}
+					,{
+						 xtype: 'checkbox'
+						,name: 'sendStatistics'
+						,boxLabel: locale['preferences[27]']
+						,value: config.sendStatistics
+					}
 				]
 			}
 		];

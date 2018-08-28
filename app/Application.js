@@ -26,6 +26,21 @@ Ext.define('Rambox.Application', {
 	}
 
 	,launch: function () {
+		// Prevent track if the user have disabled this option (default: false)
+		if ( !ipc.sendSync('sendStatistics') ) {
+			ga_storage = {
+				 _enableSSL: Ext.emptyFn
+				,_disableSSL: Ext.emptyFn
+				,_setAccount: Ext.emptyFn
+				,_setDomain: Ext.emptyFn
+				,_setLocale: Ext.emptyFn
+				,_setCustomVar: Ext.emptyFn
+				,_deleteCustomVar: Ext.emptyFn
+				,_trackPageview: Ext.emptyFn
+				,_trackEvent: Ext.emptyFn
+			}
+		}
+
 		// Set Google Analytics events
 		ga_storage._setAccount('UA-80680424-1');
 		ga_storage._trackPageview('/index.html', 'main');
