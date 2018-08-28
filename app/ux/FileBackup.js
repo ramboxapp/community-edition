@@ -38,16 +38,14 @@ Ext.define('Rambox.ux.FileBackup', {
 			defaultPath: myDefaultPath,
 			properties: ['openFile']
 		}, function(filePaths, bookmarks) {
-			if (filePaths.length === 1) {
+			if (filePaths && filePaths.length === 1) {
 				const filePath = filePaths[0];
-				console.log(filePath);
 				fs.readFile(filePath, function (err, data) {
 					if (err) {
 						console.log(err);
 					}
 					const services = JSON.parse(data);
 					if (services) {
-                        console.dir(services);
 						Ext.cq1('app-main').getController().removeAllServices(true, function() {
 							Ext.each(services, function(s) {
 								const service = Ext.create('Rambox.model.Service', s);
