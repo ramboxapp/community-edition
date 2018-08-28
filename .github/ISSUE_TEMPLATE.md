@@ -23,3 +23,5 @@
 > OS: XXXX
 
 > Arch: x64 or ia32
+
+> Does this happen upstream: yes, no, unknown, or N/A
