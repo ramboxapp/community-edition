@@ -195,6 +195,7 @@ You are always welcome to check the code! ;)
 | ---------------- | :----------------------------------------------------------------------------------------: |
 | PayPal           | [HERE](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA) |
 | Cryptocurrencies | [HERE](https://www.vaulty.io/v/b6480279-af28-4855-868c-17e5cb0ae7fa)                       |
+| Liberapay        | [HERE](https://liberapay.com/rambo)                                                        |
 
 ## Translations
 
