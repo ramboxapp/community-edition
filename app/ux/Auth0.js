@@ -57,9 +57,6 @@ Ext.define('Rambox.ux.Auth0', {
 				// Display a spinner while waiting
 				Ext.Msg.wait(locale['app.window[29]'], locale['app.window[28]']);
 
-				// Google Analytics Event
-				ga_storage._trackEvent('Users', 'loggedIn');
-
 				// Set cookies to help Tooltip.io messages segmentation
 				Ext.util.Cookies.set('auth0', true);
 

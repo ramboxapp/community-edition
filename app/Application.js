@@ -26,11 +26,6 @@ Ext.define('Rambox.Application', {
 	}
 
 	,launch: function () {
-		// Set Google Analytics events
-		ga_storage._setAccount('UA-80680424-1');
-		ga_storage._trackPageview('/index.html', 'main');
-		ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
-
 		// Load language for Ext JS library
 		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
 
