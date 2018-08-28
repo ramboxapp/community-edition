@@ -187,7 +187,7 @@ function createWindow () {
 							mainWindow.minimize();
 							break;
 						case 'quit':
-							app.quit();
+							app.exit();
 							break;
 					}
 					break;
@@ -324,15 +324,15 @@ const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
 });
 
 if (shouldQuit) {
-	app.quit();
+	app.exit();
 }
 
 // Code for downloading images as temporal files
 // Credit: Ghetto Skype (https://github.com/stanfieldr/ghetto-skype)
-const tmp = require('tmp');
-const mime = require('mime');
 var imageCache = {};
 ipcMain.on('image:download', function(event, url, partition) {
+	const tmp = require('tmp');
+	const mime = require('mime');
 	let file = imageCache[url];
 	if (file) {
 		if (file.complete) {
@@ -449,7 +449,7 @@ app.on('window-all-closed', function () {
 	// On OS X it is common for applications and their menu bar
 	// to stay active until the user quits explicitly with Cmd + Q
 	if (process.platform !== 'darwin') {
-		app.quit();
+		app.exit();
 	}
 });
 

@@ -258,8 +258,10 @@ module.exports = function(config) {
 					type: 'separator'
 				},
 				{
-					role: 'quit',
-					label: locale['tray[1]']
+					label: locale['tray[1]'],
+					click() {
+						app.exit();
+					}
 				}
 			]
 		});
@@ -277,8 +279,10 @@ module.exports = function(config) {
 					type: 'separator'
 				},
 				{
-					role: 'quit',
-					label: locale['menu.file[1]']
+					label: locale['menu.file[1]'],
+					click() {
+						app.exit();
+					}
 				}
 			]
 		});
