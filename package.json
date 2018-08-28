@@ -28,7 +28,8 @@
 		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
 		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
-		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux"
+		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
+		"translations:download": "node languages.js download"
 	},
 	"build": {
 		"productName": "Rambox",
