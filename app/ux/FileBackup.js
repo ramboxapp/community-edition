@@ -9,7 +9,7 @@ const myDefaultPath = userPath + path.sep + defaultFileName;
 
 Ext.define('Rambox.ux.FileBackup', {
 	singleton: true,
-	BackupConfiguration: function (callback) {
+	backupConfiguration: function (callback) {
 		var me = this;
 		let services = [];
 		Ext.getStore('Services').each(function(service) {
