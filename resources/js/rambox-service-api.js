@@ -63,11 +63,3 @@ Notification = function(title, options) {
 Notification.prototype = NativeNotification.prototype;
 Notification.permission = NativeNotification.permission;
 Notification.requestPermission = NativeNotification.requestPermission.bind(Notification);
-
-/**
- * Disable eval for security reasons.
- */
-  // eslint-disable-next-line no-eval
-  window.eval = global.eval = function () {
-    throw new Error(`Sorry, this app does not support window.eval().`);
-  };
