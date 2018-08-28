@@ -254,17 +254,6 @@ Ext.define('Rambox.view.main.Main', {
 					}
 					,'->'
 					,{
-						 xtype: 'image'
-						,id: 'avatar'
-						,bind: {
-							 src: '{avatar}'
-							,hidden: '{!avatar}'
-						}
-						,width: 30
-						,height: 30
-						,style: 'border-radius: 50%;border:2px solid #d8d8d8;'
-					}
-					,{
 						 text: 'Backup'
 						,glyph: 'xf0c7@FontAwesome'
 						,id: 'backupBtn'

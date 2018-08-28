@@ -15,11 +15,6 @@ Ext.define('Rambox.Application', {
 		,'Services'
 	]
 
-	,profiles: [
-		 'Offline'
-		,'Online'
-	]
-
 	,config: {
 		 totalServicesLoaded: 0
 		,totalNotifications: 0
@@ -228,7 +223,7 @@ Ext.define('Rambox.Application', {
 			 url: 'https://api.github.com/repos/TheGoddessInari/rambox/releases/latest'
 			,method: 'GET'
 			,success: function(response) {
-				var json = Ext.decode(response.responseText);
+				var json = JSON.parse(response.responseText);
 				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
 				if ( appVersion.isLessThan(json.version) ) {
 					console.info('New version is available', json.version);
