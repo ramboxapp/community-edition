@@ -1,3 +1,3 @@
 # ext-aria/resources
 
-This folder contains static resources (typically an `"images"` folder as well).
+This folder contains static resources (typically an `images` folder as well).
