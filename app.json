@@ -172,6 +172,10 @@
      * settings.
      */
     "production": {
+        "compressor": {
+            "type": "cmd",
+            "polyfills": "none"
+        }
     },
 
     "testing": {
