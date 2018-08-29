@@ -2,7 +2,7 @@
   <h1>
     <br />
     <a href="https://rambox.pro"><img src="./resources/Icon.png" width="256px" alt="Rambox" /></a><br />
-    Rambox
+    Rambox CE
     <br /><br/>
   </h1>
 
