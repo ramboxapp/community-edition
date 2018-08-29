@@ -101,11 +101,11 @@
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
 		"electron": "^1.8.4",
-		"electron-builder": "^20.10.0",
-		"electron-builder-squirrel-windows": "15.0.0",
+		"electron-builder": "^20.28.3",
+		"electron-builder-squirrel-windows": "^20.28.3",
 		"electron-squirrel-startup": "^1.0.0",
-		"mocha": "3.2.0",
-		"spectron": "3.4.0"
+		"mocha": "^5.2.0",
+		"spectron": "^3.8.0"
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
@@ -115,7 +115,7 @@
 		"electron-config": "0.2.1",
 		"electron-context-menu": "0.9.1",
 		"electron-is-dev": "^0.3.0",
-		"mime": "^1.4.0",
+		"mime": "^2.3.1",
 		"rimraf": "2.6.1",
 		"tmp": "0.0.28"
 	}
