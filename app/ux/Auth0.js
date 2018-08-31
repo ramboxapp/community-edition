@@ -4,85 +4,78 @@ Ext.define('Rambox.ux.Auth0', {
 	// private
 	,lock: null
 	,auth0: null
+	,authService: null
 	,backupCurrent: false
 
 	,init: function() {
 		var me = this;
 
-		var Auth0Lock = require('auth0-lock')['default'];
 		var Auth0 = require('auth0-js');
+		var _AuthService = require('./resources/js/AuthService');
 
-		// Auth0 Config
-		me.lock = new Auth0Lock(auth0Cfg.clientID, auth0Cfg.domain, {
-			 autoclose: true
-			,autofocus: true
-			,auth: {
-				 redirect: false
-				,params: {scope: 'openid offline_access'}
-			}
-			,theme: {
-				 logo: 'resources/Icon.png'
-				,primaryColor: '#0675A0'
-			}
-			,languageDictionary: {
-				title: 'Rambox Account'
-			}
-			,popupOptions: {
-				nodeIntegration: 'no'
-			}
-			,language: localStorage.getItem('locale-auth0') === null ? 'en' : localStorage.getItem('locale-auth0')
+		me.authService = new _AuthService.default({
+			clientId: auth0Cfg.clientID,
+			authorizeEndpoint: 'https://'+auth0Cfg.domain+'/authorize',
+			audience: 'https://'+auth0Cfg.domain+'/userinfo',
+			scope: 'openid profile offline_access',
+			redirectUri: 'https://'+auth0Cfg.domain+'/mobile',
+			tokenEndpoint: 'https://'+auth0Cfg.domain+'/oauth/token'
 		});
 
 		me.auth0 = new Auth0.WebAuth({ clientID: auth0Cfg.clientID, domain : auth0Cfg.domain });
 
-		me.defineEvents();
+		//me.defineEvents();
 	}
 
-	,defineEvents: function() {
+	,onLogin: function(token, authWindow) {
 		var me = this;
 
-		me.lock.on("authenticated", function(authResult) {
-			me.lock.getProfile(authResult.idToken, function(err, profile) {
-				if ( err ) {
-					if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
-					Ext.Msg.hide();
-					return Ext.Msg.show({
-						 title: 'Error'
-						,message: 'There was an error getting the profile: ' + err.error_description
-						,icon: Ext.Msg.ERROR
-						,buttons: Ext.Msg.OK
-					});
-				}
+		authWindow.close();
 
-				// Display a spinner while waiting
-				Ext.Msg.wait(locale['app.window[29]'], locale['app.window[28]']);
-
-				// Google Analytics Event
-				ga_storage._trackEvent('Users', 'loggedIn');
-
-				// Set cookies to help Tooltip.io messages segmentation
-				Ext.util.Cookies.set('auth0', true);
-
-				// User is logged in
-				// Save the profile and JWT.
-				localStorage.setItem('profile', JSON.stringify(profile));
-				localStorage.setItem('id_token', authResult.idToken);
-				localStorage.setItem('refresh_token', authResult.refreshToken);
-
-				if ( !Ext.isEmpty(profile.user_metadata) && !Ext.isEmpty(profile.user_metadata.services) && !me.backupCurrent ) {
-					Ext.each(profile.user_metadata.services, function(s) {
-						var service = Ext.create('Rambox.model.Service', s);
-						service.save();
-						Ext.getStore('Services').add(service);
-					});
-
-					require('electron').remote.getCurrentWindow().reload();
-				}
-
+		me.auth0.client.userInfo(token.access_token, function(err, profile) {
+			if ( err ) {
+				if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
 				Ext.Msg.hide();
-				Ext.cq1('app-main').getViewModel().set('username', profile.name);
-				Ext.cq1('app-main').getViewModel().set('avatar', profile.picture);
-			});
+				return Ext.Msg.show({
+					 title: 'Error'
+					,message: 'There was an error getting the profile: ' + err.error_description
+					,icon: Ext.Msg.ERROR
+					,buttons: Ext.Msg.OK
+				});
+			}
+
+			profile.user_metadata = profile['https://rambox.pro/user_metadata'];
+			delete profile['https://rambox.pro/user_metadata'];
+
+			// Display a spinner while waiting
+			Ext.Msg.wait(locale['app.window[29]'], locale['app.window[28]']);
+
+			// Google Analytics Event
+			ga_storage._trackEvent('Users', 'loggedIn');
+
+			// Set cookies to help Tooltip.io messages segmentation
+			Ext.util.Cookies.set('auth0', true);
+
+			// User is logged in
+			// Save the profile and JWT.
+			localStorage.setItem('profile', JSON.stringify(profile));
+			localStorage.setItem('access_token', token.access_token);
+			localStorage.setItem('id_token', token.id_token);
+			localStorage.setItem('refresh_token', token.refresh_token);
+
+			if ( !Ext.isEmpty(profile.user_metadata) && !Ext.isEmpty(profile.user_metadata.services) && !me.backupCurrent ) {
+				Ext.each(profile.user_metadata.services, function(s) {
+					var service = Ext.create('Rambox.model.Service', s);
+					service.save();
+					Ext.getStore('Services').add(service);
+				});
+
+				require('electron').remote.getCurrentWindow().reload();
+			}
+
+			Ext.Msg.hide();
+			Ext.cq1('app-main').getViewModel().set('username', profile.name);
+			Ext.cq1('app-main').getViewModel().set('avatar', profile.picture);
 		});
 	}
 
@@ -147,7 +140,7 @@ Ext.define('Rambox.ux.Auth0', {
 	,restoreConfiguration: function() {
 		var me = this;
 
-		me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
+		me.auth0.client.userInfo(localStorage.getItem('access_token'), function(err, profile) {
 			if ( err ) {
 				if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
 				return Ext.Msg.show({
@@ -158,8 +151,12 @@ Ext.define('Rambox.ux.Auth0', {
 				});
 			}
 
+			profile.user_metadata = profile['https://rambox.pro/user_metadata'];
+			delete profile['https://rambox.pro/user_metadata'];
+
 			// First we remove all current services
 			Ext.cq1('app-main').getController().removeAllServices(false, function() {
+				if ( !profile.user_metadata || !profile.user_metadata.services ) return;
 				Ext.each(profile.user_metadata.services, function(s) {
 					var service = Ext.create('Rambox.model.Service', s);
 					service.save();
@@ -174,7 +171,7 @@ Ext.define('Rambox.ux.Auth0', {
 	,checkConfiguration: function() {
 		var me = this;
 
-		me.lock.getProfile(localStorage.getItem('id_token'), function (err, profile) {
+		me.auth0.client.userInfo(localStorage.getItem('access_token'), function(err, profile) {
 			if ( err ) {
 				if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
 				return Ext.Msg.show({
@@ -184,6 +181,9 @@ Ext.define('Rambox.ux.Auth0', {
 					,buttons: Ext.Msg.OK
 				});
 			}
+
+			profile.user_metadata = profile['https://rambox.pro/user_metadata'];
+			delete profile['https://rambox.pro/user_metadata'];
 
 			if ( !profile.user_metadata ) {
 				Ext.toast({
@@ -243,7 +243,34 @@ Ext.define('Rambox.ux.Auth0', {
 	,login: function() {
 		var me = this;
 
-		me.lock.show();
+		var electron = require('electron').remote;
+		var authWindow = new electron.BrowserWindow({
+			 title: 'Rambox - Login'
+			,width: 400
+			,height: 600
+			,maximizable: false
+			,minimizable: false
+			,resizable: false
+			,center: true
+			,autoHideMenuBar: true
+			,skipTaskbar: true
+			,fullscreenable: false
+			,modal: true
+			,parent: require('electron').remote.getCurrentWindow()
+			,webPreferences: {
+				partition: 'persist:rambox'
+			}
+		});
+
+		authWindow.on('closed', function() {
+			authWindow = null;
+		});
+
+		authWindow.loadURL(me.authService.requestAuthCode());
+
+		authWindow.webContents.on('did-get-redirect-request', function(e, oldUrl, newUrl) {
+			me.authService.requestAccessCode(newUrl, me.onLogin.bind(me), authWindow);
+		});
 	}
 
 	,logout: function() {

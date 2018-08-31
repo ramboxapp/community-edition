@@ -174,7 +174,7 @@ Ext.define('Rambox.ux.WebView',{
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,webpreferences: 'allowRunningInsecureContent=yes' //,nativeWindowOpen=yes
+					,webpreferences: '' //,nativeWindowOpen=yes
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 					,preload: './resources/js/rambox-service-api.js'
@@ -477,14 +477,14 @@ Ext.define('Rambox.ux.WebView',{
 
 			/**
 			 * Handles 'rambox.setUnreadCount' messages.
-			 * Sets the badge text if the event contains an integer as first argument.
+			 * Sets the badge text if the event contains an integer or a '•' (indicating non-zero but unknown number of unreads) as first argument.
 			 *
 			 * @param event
 			 */
 			function handleSetUnreadCount(event) {
 				if (Array.isArray(event.args) === true && event.args.length > 0) {
 					var count = event.args[0];
-					if (count === parseInt(count, 10)) {
+					if (count === parseInt(count, 10) || "•" === count) {
 						me.setUnreadCount(count);
 					}
 				}
@@ -497,9 +497,9 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		/**
-		 * Register page title update event listener only for services that don't prevent it by setting 'dont_update_unread_from_title' to true.
+		 * Register page title update event listener only for services that don't specify a js_unread
 		 */
-		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('dont_update_unread_from_title') !== true) {
+		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' && me.record.get('js_unread') === '') {
 			webview.addEventListener("page-title-updated", function(e) {
 				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';

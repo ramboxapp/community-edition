@@ -15,13 +15,10 @@ Structure of a service entry:
 |note|Additional info to display when adding the service.|no|
 |manual_notifications|Set to `true` to let Rambox trigger notifications. Can be used for services that doesn't support browser notifications.|no|
 |js_unread|JavaScript code for setting the unread count (see below).|no|
-|dont_update_unread_from_title|Set to `true` to prevent updating the unread count from the window title (see below).|no|
 
 ### Setting the unread count
 
-While there is also a way to set the unread count by adding ` (COUNT)` to the window title, this describes the preferred way of doing it:
-
-First set `dont_update_unread_from_title` in the service config to `true`.
+While by default the unread count is determined by looking for ` (COUNT)` to the window title, this describes the preferred way of doing it:
 
 Code provided by `js_unread` will be injected into the service website.
 You can retrieve the unread count in this JavaScript code e.g. by parsing elements.
