@@ -244,9 +244,15 @@ this file in most cases.
     <target name="watch"
             depends="-watch-init,development,init"
             description="Starts Watch to keep your app ready for dev mode">
+        <local name="watch.lock.file"/>
+        <condition property="watch.lock.file" value="${build.id}.watch.lock">
+            <isset property="build.id"/>
+        </condition>
+        <property name="watch.lock.file" value="app.watch.lock"/>
         <x-ant-call>
             <param name="build.id" value="${build.id}"/>
             <param name="build.name" value="${build.name}"/>
+            <param name="watch.lock.file" value="${build.dir}/${watch.lock.file}"/>
             <target name="-before-watch"/>
             <target name="-watch"/>
             <target name="-after-watch"/>
@@ -463,6 +469,33 @@ this file in most cases.
             depends="init,-before-publish,-publish,-after-publish"
             description="Publish app to Sencha Web Application Manager"/>
 
+    <!--
+    ===============================================================
+    Build Dependencies
+    uses the compiler to build metadata files for all detected
+    file-to-file dependencies
+    ===============================================================
+    -->
+    <target name="build-dependencies" depends="init, -detect-app-build-properties">
+        <x-compile refid="${compiler.ref.id}">
+            <![CDATA[
+            restore
+                page
+            and
+            meta
+                -infoType=Dependencies
+                -basePath=${build.dir}
+                -tpl={0}
+                -out=${build.dir}/dependencies.json
+            and
+            meta
+                -infoType=AppManifest
+                -basePath=${build.dir}
+                -tpl={0}
+                -out=${build.dir}/bootsequence.json
+            ]]>
+        </x-compile>
+    </target>
 
     <!--
     ===============================================================

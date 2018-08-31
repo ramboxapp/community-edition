@@ -2,15 +2,22 @@
 
     <macrodef name="x-build-microload-markup">
         <sequential>
-            <x-sencha-command dir="${app.dir}" inheritall="true">
-                <![CDATA[
-                fs
-                    minify
-                        ${build.embedded.microloader.compressor}
-                        -from=${build.microloader.path}
-                        -to=${build.microloader.path}
-                ]]>
-            </x-sencha-command>
+            <if>
+                <not>
+                    <equals arg1="${build.compression}" arg2=""/>
+                </not>
+                <then>
+                    <x-sencha-command dir="${app.dir}" inheritall="true">
+                        <![CDATA[
+                    fs
+                        minify
+                            ${build.embedded.microloader.compressor}
+                            -from=${build.microloader.path}
+                            -to=${build.microloader.path}
+                    ]]>
+                    </x-sencha-command>
+                </then>
+            </if>
             <if>
                 <x-is-true value="${build.enable.embedded.microloader}"/>
                 <then>
@@ -55,6 +62,7 @@
                         # generate json file
                         microload
                             -operation=manifest
+                            -jsonp=Ext.Microloader.setManifest
                             -fashion=${use.fashion}
                             -tpl=${build.microloader.json.tpl.embedded}
                             -out=${build.microloader.path}
@@ -77,6 +85,7 @@
                         # generate json file
                         microload
                             -operation=manifest
+                            -jsonp=Ext.Microloader.setManifest
                             -fashion=${use.fashion}
                             -tpl=${build.microloader.json.tpl.standalone}
                             -out=${build.out.json.path}
@@ -307,11 +316,44 @@
                  value="&lt;html"/>
     </target>
 
+    <target name="-generate-progressive-webapp" depends="-init-compiler">
+        <if>
+            <x-is-false value="${skip.progressive}"/>
+            <then>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    progressive-webapp
+                        -buildDir=${build.out.base.path}
+                    ]]>
+                </x-compile>
+            </then>
+        </if>
+    </target>
+    
+    
+    <target name="-generate-service-worker" depends="-init-compiler">
+        <if>
+            <x-is-false value="${skip.progressive}"/>
+            <then>
+                <x-compile refid="${compiler.ref.id}">
+                    <![CDATA[
+                    progressive-webapp
+                        -buildDir=${build.out.base.path}
+                        +serviceWorker
+                    ]]>
+                </x-compile>
+            </then>
+        </if>
+    </target>
+    
+    
     <target name="-before-page"/>
     <target name="-page"
             depends="-copy-app-resources,
+                     -generate-progressive-webapp,
                      -generate-deltas,
                      -build-output-page,
-                     -generate-cache-manifest"/>
+                     -generate-cache-manifest,
+                     -generate-service-worker"/>
     <target name="-after-page"/>
 </project>

@@ -10,18 +10,121 @@
             splitModePropName="enable.split.mode"
             pageModePropName="app.page.mode"
             hasJsSdkPropName="app.has.js.sdk"
-            hasCssSdkPropName="app.has.css.sdk"/>
+            hasCssSdkPropName="app.has.css.sdk"
+            hasUsesPackagesPropName="app.has.uses" />
     </target>
 
     <!--    
     this is the standard js compile target that builds the output js file(s)
     -->
     <target name="-compile-js" depends="-detect-app-build-properties">
+
+        <property name="app.output.framework.include"
+                  value="package-sencha-core,framework,toolkit,package-core"/>
+
+        <property name="enable.used.deps" value="${app.has.uses}"/>
+        
+        <if>
+            <x-is-true value="${enable.used.deps}"/>
+            <then>
+                <x-compile refid="${compiler.ref.id}">
+                    # determine the base set of framework files
+                    exclude
+                        -all
+                    and
+                    include
+                        -tag=${app.output.framework.include}
+                    and
+                    save
+                        allframework
+                </x-compile>
+
+                <for param="file">
+                    <fileset dir="${workspace.build.dir}/temp" includes="**/deps.json"/>
+                    <sequential>
+                        <x-compile refid="${compiler.ref.id}">
+                            # now load the transitive set based on the json data
+                            exclude
+                                -all
+                            and
+                            include
+                                -json-data=@{file}
+                                -r
+                            and
+                            save
+                                deps
+                            and
+                            
+                            # add any needed deps to the page save set
+                            include
+                                -set=page
+                            and
+                            save
+                                page
+                        </x-compile>
+                    </sequential>
+                </for>
+            </then>
+            <else>
+                <if>
+                    <equals arg1="${app.output.js.filter}" arg2="all"/>
+                    <then>
+                        <x-compile refid="${compiler.ref.id}">
+                            # if filtering requirements is configured for 'all'
+                            # then just include all js content on the classpath to 
+                            # ensure all dependencies are provided for the used packages
+                            include 
+                                -all
+                            and
+                            save
+                                page
+                        </x-compile>
+                    </then>
+                </if>
+            </else>
+        </if>
+        
+        
         <if>
             <x-is-true value="${enable.split.mode}"/>
             <then>
-                <property name="app.output.framework.include"
-                          value="package-sencha-core,framework,toolkit,package-core"/>
+                <local name="build.js.framework.fwset" />
+                <local name="build.js.framework.rtl" />
+                <if>
+                    <or>
+                        <x-is-true value="${app.output.framework.all}" />
+                        <isset property="app.has.uses" />
+                    </or>
+                    <then>
+                        <property name="build.include.all.scss" value="true" />
+                        <property name="build.js.framework.fwset"> </property>
+                        <if>
+                            <x-is-false value="${app.output.framework.rtl}" />
+                            <then>
+                                <property name="build.js.framework.rtl">
+                                    <![CDATA[
+                                        exclude
+                                            -namespace=Ext.rtl
+                                        and
+                                    ]]>
+                                </property>
+                            </then>
+                            <else>
+                                <property name="build.js.framework.rtl"> </property>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <property name="build.js.framework.fwset">
+                            <![CDATA[
+                                intersect
+                                    -set=page,allframework
+                                and
+                            ]]>
+                        </property>
+                        <property name="build.js.framework.rtl"> </property>
+                    </else>
+                </if>
 
                 <x-compile refid="${compiler.ref.id}">
                     <![CDATA[
@@ -40,12 +143,11 @@
                         save
                             allframework
                         and
-                        intersect
-                            -set=page,allframework
-                        and
+                        ${build.js.framework.fwset}
                         save
                             frameworkdeps
                         and
+                        ${build.js.framework.rtl}
                         include
                             -tag=Ext.cmd.derive
                         and
@@ -80,6 +182,7 @@
                 </x-compile>
             </then>
             <else>
+                <local name="framework.include.filter"/>
                 <x-compile refid="${compiler.ref.id}">
                     <![CDATA[
                         # build an all-classes.js file that contains
