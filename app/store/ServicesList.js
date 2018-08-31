@@ -920,6 +920,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://messages.android.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t = document.querySelectorAll(".tpEAA.yrs5ff").length;if(t>=1){rambox.setUnreadCount(t)}else{rambox.clearUnreadCount()}}setInterval(checkUnread,3000);'
+    },
+    {
+       id: 'tawktochat'
+			,logo: 'tawkto.png'
+			,name: 'Tawk.to Chat'
+			,description: 'A chat platform built for monitor and chat with visitors on your website.'
+			,url: 'https://dashboard.tawk.to/'
+			,type: 'messaging'
     }
 	]
 });
