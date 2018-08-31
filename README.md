@@ -123,7 +123,7 @@
 <img width="80" align="left" src="./resources/icons/openmailbox.png" alt="Openmailbox" title="Openmailbox" />
 <img width="80" align="left" src="./resources/icons/typetalk.png" alt="Typetalk" title="Typetalk" />
 <img width="80" align="left" src="./resources/icons/drift.png" alt="Drift" title="Drift" />
-<img width="80" align="left" src="./resources/icons/spark.png" alt="Cisco Spark" title="Cisco Spark" />
+<img width="80" align="left" src="./resources/icons/webexteams.png" alt="Cisco Webex Teams" title="Cisco Webex Teams" />
 <img width="80" align="left" src="./resources/icons/fleep.png" alt="Fleep" title="Fleep" />
 <img width="80" align="left" src="./resources/icons/socialcast.png" alt="Socialcast" title="Socialcast" />
 <img width="80" align="left" src="./resources/icons/riot.png" alt="Riot" title="Riot" />
