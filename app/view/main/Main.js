@@ -31,7 +31,7 @@ Ext.define('Rambox.view.main.Main', {
 			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
 			,baseCls: ''
 			,tooltip: locale['app.main[25]']
-			,href: 'https://fundraiseup.com/widget/FUNSGXPIJWQ/donate?key=KPCFEZKZ'
+			,href: 'https://rambox.pro/#donate'
 		}]
 	}
 	,items: [
@@ -313,7 +313,7 @@ Ext.define('Rambox.view.main.Main', {
 						 text: locale['app.main[22]']
 						,icon: 'resources/auth0.png'
 						,id: 'loginBtn'
-						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (http://auth0.com)</i>'
+						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (https://auth0.com)</i>'
 						,bind: {
 							hidden: '{username}'
 						}
@@ -338,7 +338,7 @@ Ext.define('Rambox.view.main.Main', {
 						,{
 							 text: locale['app.main[25]']
 							,glyph: 'xf21e@FontAwesome'
-							,href: 'https://fundraiseup.com/widget/FUNSGXPIJWQ/donate?key=KPCFEZKZ'
+							,href: 'https://rambox.pro/#donate'
 						}
 						,{
 							 text: 'Translation'
@@ -371,7 +371,7 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,{
 							 glyph: 'xf09b@FontAwesome'
-							,href: 'https://www.github.com/saenzramiro/rambox'
+							,href: 'https://github.com/ramboxapp/community-edition'
 						}
 					]
 				}

@@ -28,7 +28,9 @@
 		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
 		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
-		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux"
+		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
+		"translations:download": "node languages.js download",
+		"translations:generate": "node languages.js generate"
 	},
 	"build": {
 		"productName": "Rambox",
@@ -99,21 +101,23 @@
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
 		"electron": "^1.8.4",
-		"electron-builder": "^20.10.0",
-		"electron-builder-squirrel-windows": "15.0.0",
+		"electron-builder": "^20.28.3",
+		"electron-builder-squirrel-windows": "^20.28.3",
 		"electron-squirrel-startup": "^1.0.0",
-		"mocha": "3.2.0",
-		"spectron": "3.4.0"
+		"mocha": "^5.2.0",
+		"spectron": "^3.8.0"
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
-		"auth0-js": "^8.12.3",
-		"auth0-lock": "^10.22.0",
+		"auth0-js": "^9.7.3",
 		"auto-launch-patched": "5.0.2",
+		"crypto": "^1.0.1",
 		"electron-config": "0.2.1",
 		"electron-context-menu": "0.9.1",
 		"electron-is-dev": "^0.3.0",
-		"mime": "^1.4.0",
+		"mime": "^2.3.1",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.2",
 		"rimraf": "2.6.1",
 		"tmp": "0.0.28"
 	}
