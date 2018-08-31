@@ -371,7 +371,7 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,{
 							 glyph: 'xf09b@FontAwesome'
-							,href: 'https://www.github.com/saenzramiro/rambox'
+							,href: 'https://github.com/ramboxapp/community-edition'
 						}
 					]
 				}
