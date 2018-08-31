@@ -356,7 +356,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[35]']
 			,url: 'https://web.icq.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementsByClassName("nwa-msg-counter")[0].style.display==="block"?document.getElementsByClassName("nwa-msg-counter")[0].innerHTML.trim():0))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){let total=0;for(let counter of document.getElementsByClassName("icq-msg-counter"))total+=parseInt("block"===counter.style.display?counter.innerHTML.trim():0);updateBadge(total)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,titleBlink: true
 		},
 		{
