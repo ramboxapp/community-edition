@@ -22,7 +22,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[0]'],
 			click() {
-				shell.openExternal('http://rambox.pro');
+				shell.openExternal('https://rambox.pro');
 			}
 		},
 		{
@@ -40,7 +40,7 @@ module.exports = function(config) {
 		{
 			label: `&GitHub`,
 			click() {
-				shell.openExternal('https://www.github.com/saenzramiro/rambox');
+				shell.openExternal('https://github.com/ramboxapp/community-edition');
 			}
 		},
 		{
@@ -60,7 +60,7 @@ module.exports = function(config) {
 	> Electron ${process.versions.electron}
 	> ${process.platform} ${process.arch} ${os.release()}`;
 
-				shell.openExternal(`https://github.com/saenzramiro/rambox/issues/new?body=${encodeURIComponent(body)}`);
+				shell.openExternal(`https://github.com/ramboxapp/community-edition/issues/new?body=${encodeURIComponent(body)}`);
 			}
 		},
 		{

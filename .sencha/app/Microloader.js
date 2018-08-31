@@ -51,13 +51,22 @@ Ext.Microloader = Ext.Microloader || (function () {
                             ? manifest
                             : manifest + ".json";
 
-                    Boot.fetch(url, function(result){
-                        manifest = Ext.manifest = JSON.parse(result.content);
-                        Microloader.load(manifest);
-                    });
+                    if (location.href.indexOf('file:/') === 0) {
+                        Boot.load(url + 'p');
+                    }
+                    else {
+                        Boot.fetch(url, function(result){
+                            Microloader.setManifest(JSON.parse(result.content));
+                        });
+                    }
                 } else {
                     Microloader.load(manifest);
                 }
+            },
+
+            setManifest: function(cfg) {
+                manifest = Ext.manifest = cfg;
+                Microloader.load(manifest);
             },
 
             /**

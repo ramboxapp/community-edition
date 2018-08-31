@@ -1,4 +1,11 @@
 {
+    "frameworks": {
+        "ext": {
+            "path":"ext",
+            "version":"5.1.1.451"
+        }
+    },
+
     /**
      * This is the folder for build outputs in the workspace.
      */

@@ -18,7 +18,7 @@ var deleteFolderRecursive = function(path) {
 };
 
 var crowdin = new Crowdin({
-	apiKey: '',
+	apiKey: '1e7c2453268af5e31f6ac8cf6044d48b',
 	endpointUrl: 'https://api.crowdin.net/api/project/rambox'
 });
 

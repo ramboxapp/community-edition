@@ -149,7 +149,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'combo'
 						,name: 'tabbar_location'
-						,fieldLabel: 'Service bar location'
+						,fieldLabel: locale['preferences[11]']
 						,labelAlign: 'left'
 						,width: 380
 						,labelWidth: 180
@@ -170,7 +170,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'combo'
 						,name: 'default_service'
-						,fieldLabel: 'Default service to display when Rambox starts'
+						,fieldLabel: locale['preferences[12]']
 						,labelAlign: 'top'
 						//,width: 380
 						//,labelWidth: 105
@@ -186,7 +186,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'combo'
 						,name: 'window_display_behavior'
-						,fieldLabel: 'Display behaviour'
+						,fieldLabel: locale['preferences[13]']
 						,labelAlign: 'left'
 						,width: 380
 						,labelWidth: 105
@@ -197,9 +197,9 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,store: Ext.create('Ext.data.Store', {
 							 fields: ['value', 'label']
 							,data: [
-								 { 'value': 'show_taskbar', 'label': 'Show in Taskbar' }
-								,{ 'value': 'show_trayIcon', 'label': 'Show Tray Icon' }
-								,{ 'value': 'taskbar_tray', 'label': 'Show in Taskbar and Tray Icon' }
+								 { 'value': 'show_taskbar', 'label': locale['preferences[14]'] }
+								,{ 'value': 'show_trayIcon', 'label': locale['preferences[15]'] }
+								,{ 'value': 'taskbar_tray', 'label': locale['preferences[16]'] }
 							]
 						})
 						,hidden: process.platform === 'darwin'
@@ -207,7 +207,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'combo'
 						,name: 'window_close_behavior'
-						,fieldLabel: 'When closing the main window'
+						,fieldLabel: locale['preferences[17]']
 						,labelAlign: 'left'
 						,width: 380
 						,labelWidth: 180
@@ -218,9 +218,9 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,store: Ext.create('Ext.data.Store', {
 							 fields: ['value', 'label']
 							,data: [
-								 { 'value': 'keep_in_tray', 'label': 'Keep in tray' }
-								,{ 'value': 'keep_in_tray_and_taskbar', 'label': 'Keep in tray and/or taskbar' }
-								,{ 'value': 'quit', 'label': 'Quit' }
+								 { 'value': 'keep_in_tray', 'label': locale['preferences[18]'] }
+								,{ 'value': 'keep_in_tray_and_taskbar', 'label': locale['preferences[19]'] }
+								,{ 'value': 'quit', 'label': locale['preferences[20]'] }
 							]
 						})
 						,hidden: process.platform === 'darwin'
@@ -228,13 +228,13 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'checkbox'
 						,name: 'always_on_top'
-						,boxLabel: 'Always on top'
+						,boxLabel: locale['preferences[21]']
 						,value: config.always_on_top
 					}
 					,{
 						 xtype: 'checkbox'
 						,name: 'systemtray_indicator'
-						,boxLabel: 'Show System Tray indicator on unread messages'
+						,boxLabel: locale['preferences[22]']
 						,value: config.systemtray_indicator
 						,hidden: process.platform === 'darwin'
 					}
@@ -247,7 +247,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'checkbox'
 						,name: 'disable_gpu'
-						,boxLabel: 'Disable Hardware Acceleration (needs to relaunch)'
+						,boxLabel: locale['preferences[23]']
 						,value: config.disable_gpu
 					}
 					,{
@@ -259,7 +259,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Master Password - Ask for password on startup'
+						,title: locale['preferences[24]']
 						,collapsed: !config.master_password
 						,checkboxToggle: true
 						,checkboxName: 'master_password'
@@ -271,7 +271,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 							{
 								 xtype: 'textfield'
 								,inputType: 'password'
-								,fieldLabel: 'Password'
+								,fieldLabel: locale['preferences[25]']
 								,name: 'master_password1'
 								,itemId: 'pass'
 								,flex: 1
@@ -287,7 +287,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 							,{
 								 xtype: 'textfield'
 								,inputType: 'password'
-								,fieldLabel: 'Repeat Password'
+								,fieldLabel: locale['preferences[26]']
 								,name: 'master_password2'
 								,margin: '0 0 0 10'
 								,vtype: 'password'
@@ -336,6 +336,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								,emptyText: 'Optional'
 							}
 						]
+					}
+					,{
+						 xtype: 'checkbox'
+						,name: 'sendStatistics'
+						,boxLabel: locale['preferences[27]']
+						,value: config.sendStatistics
 					}
 				]
 			}

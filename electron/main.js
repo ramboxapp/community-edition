@@ -6,7 +6,7 @@ const tray = require('./tray');
 // AutoLaunch
 var AutoLaunch = require('auto-launch-patched');
 // Configuration
-const Config = require('electron-config');
+const Config = require('electron-store');
 // Development
 const isDev = require('electron-is-dev');
 // Updater
@@ -38,6 +38,7 @@ const config = new Config({
 		,locale: 'en'
 		,enable_hidpi_support: false
 		,default_service: 'ramboxTab'
+		,sendStatistics: false
 
 		,x: undefined
 		,y: undefined
@@ -157,15 +158,19 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			 webSecurity: false
-			,nodeIntegration: true
-			,plugins: true
+			plugins: true
 			,partition: 'persist:rambox'
 		}
 	});
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
-	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) mainWindow.minimize();
+	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) {
+		// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools() 
+		// to be finished before minimizing
+		mainWindow.webContents.once('did-finish-load', function(e) {
+			mainWindow.minimize();
+		});
+	}
 
 	// Check if the window its outside of the view (ex: multi monitor setup)
 	const { positionOnScreen } = require('./utils/positionOnScreen');
@@ -279,7 +284,7 @@ function updateBadge(title) {
 	title = title.split(" - ")[0]; //Discard service name if present, could also contain digits
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
 	messageCount = isNaN(messageCount) ? 0 : messageCount;
-	
+
 	tray.setBadge(messageCount, config.get('systemtray_indicator'));
 
 	if (process.platform === 'win32') { // Windows
@@ -336,6 +341,10 @@ ipcMain.on('setConfig', function(event, values) {
 		default:
 			break;
 	}
+});
+
+ipcMain.on('sendStatistics', function(event) {
+	event.returnValue = config.get('sendStatistics');
 });
 
 ipcMain.on('validateMasterPassword', function(event, pass) {
