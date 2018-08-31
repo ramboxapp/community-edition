@@ -477,8 +477,7 @@ Ext.define('Rambox.ux.WebView',{
 
 			/**
 			 * Handles 'rambox.setUnreadCount' messages.
-			 * Sets the badge text if the event contains an integer
-                         * or a '•' (indicating non-zero but unknown number of unreads) as first argument.
+			 * Sets the badge text if the event contains an integer or a '•' (indicating non-zero but unknown number of unreads) as first argument.
 			 *
 			 * @param event
 			 */
@@ -500,8 +499,7 @@ Ext.define('Rambox.ux.WebView',{
 		/**
 		 * Register page title update event listener only for services that don't specify a js_unread
 		 */
-		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' && 
-                        me.record.get('js_unread') === '') {
+		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' && me.record.get('js_unread') === '') {
 			webview.addEventListener("page-title-updated", function(e) {
 				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
