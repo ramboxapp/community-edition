@@ -25,6 +25,7 @@ Thumbs.db
 bootstrap.js
 bootstrap.css
 bootstrap.json
+bootstrap.jsonp
 
 # Electron
 node_modules
