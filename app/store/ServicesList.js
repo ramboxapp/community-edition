@@ -362,7 +362,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.icq.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){let total=0;for(let counter of document.getElementsByClassName("icq-msg-counter"))total+=parseInt("block"===counter.style.display?counter.innerHTML.trim():0);updateBadge(total)}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
-			,dont_update_unread_from_title: true
 			,titleBlink: true
 		},
 		{
