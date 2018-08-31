@@ -109,13 +109,15 @@
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
-		"auth0-js": "^8.12.3",
-		"auth0-lock": "^10.22.0",
+		"auth0-js": "^9.7.3",
 		"auto-launch-patched": "5.0.2",
+		"crypto": "^1.0.1",
 		"electron-config": "0.2.1",
 		"electron-context-menu": "0.9.1",
 		"electron-is-dev": "^0.3.0",
 		"mime": "^2.3.1",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.2",
 		"rimraf": "2.6.1",
 		"tmp": "0.0.28"
 	}

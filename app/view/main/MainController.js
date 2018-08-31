@@ -486,6 +486,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.cq1('app-main').getViewModel().set('avatar', '');
 
 			if ( Ext.isFunction(callback) ) callback();
+			Ext.Msg.hide();
 		}
 
 		if ( btn ) {
