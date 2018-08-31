@@ -911,6 +911,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Reddit\'s in-build chat service.'
 			,url: 'https://www.reddit.com/chat'
 			,type: 'messaging'
-		}
+		},
+    {
+       id: 'androidmessages'
+			,logo: 'androidmessages.png'
+			,name: 'Android Messages'
+			,description: 'Text on your computer with Messages for web.'
+			,url: 'https://messages.android.com/'
+			,type: 'messaging'
+			,js_unread: 'function checkUnread(){var t = document.querySelectorAll(".tpEAA.yrs5ff").length;if(t>=1){rambox.setUnreadCount(t)}else{rambox.clearUnreadCount()}}setInterval(checkUnread,3000);'
+    }
 	]
 });
