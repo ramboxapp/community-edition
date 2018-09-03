@@ -299,15 +299,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
-			 id: 'yahoomessenger'
-			,logo: 'yahoomessenger.png'
-			,name: 'Yahoo! Messenger'
-			,description: locale['services[28]']
-			,url: 'https://messenger.yahoo.com/'
-			,type: 'messaging'
-			,js_unread: 'function checkUnread(){updateBadge(document.getElementsByClassName("list-item-unread-indicator").length)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
-		},
-		{
 			 id: 'voxer'
 			,logo: 'voxer.png'
 			,name: 'Voxer'
