@@ -233,6 +233,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,note: 'Read <a href="https://protonmail.com/support/knowledge-base/what-is-the-difference-between-protonmail-com-and-protonmail-ch/" target="_blank">HERE</a> to see the differences between protonmail.com and protonmail.ch.'
 		},
 		{
+			 id: 'protonmailonion'
+			,logo: 'protonmail.png'
+			,name: 'ProtonMail Onion'
+			,description: locale['services[20]']
+			,url: 'https://protonirockerxow.onion/inbox'
+			,type: 'email'
+			,note: 'Read <a href="https://protonmail.com/tor" target="_blank">HERE</a> to see the differences between protonmail.com and protonmail hidden service (over TOR).'
+		},
+		{
 			 id: 'tutanota'
 			,logo: 'tutanota.png'
 			,name: 'Tutanota'
