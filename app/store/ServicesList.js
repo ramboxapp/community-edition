@@ -904,8 +904,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://devrant.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".menu-notif.notif-badge")[0];updateBadge(t=a===undefined?0:(a.textContent.length?parseInt(a.textContent.replace(/[^0-9]/g,"")):0))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
-    },
-    {
+		},
+		{
 			 id: 'reddit'
 			,logo: 'reddit.png'
 			,name: 'Reddit'
@@ -913,22 +913,30 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://www.reddit.com/chat'
 			,type: 'messaging'
 		},
-    {
-       id: 'androidmessages'
+		{
+			 id: 'androidmessages'
 			,logo: 'androidmessages.png'
 			,name: 'Android Messages'
 			,description: 'Text on your computer with Messages for web.'
 			,url: 'https://messages.android.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t = document.querySelectorAll(".tpEAA.yrs5ff").length;if(t>=1){rambox.setUnreadCount(t)}else{rambox.clearUnreadCount()}}setInterval(checkUnread,3000);'
-    },
-    {
-       id: 'tawktochat'
+		},
+		{
+			 id: 'tawktochat'
 			,logo: 'tawkto.png'
 			,name: 'Tawk.to Chat'
 			,description: 'A chat platform built for monitor and chat with visitors on your website.'
 			,url: 'https://dashboard.tawk.to/'
 			,type: 'messaging'
-    }
+		},
+		{
+			 id: 'sococo'
+			,logo: 'sococo.png'
+			,name: 'Sococo'
+			,description: 'Sococo is an online workplace that adds the magic of co-location back into the day to day life of distributed Agile teams.'
+			,url: 'https://app.sococo.com/a/login'
+			,type: 'messaging'
+		}
 	]
 });
