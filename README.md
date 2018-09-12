@@ -105,7 +105,7 @@
 <img width="80" align="left" src="./resources/icons/mightytext.png" alt="MightyText" title="MightyText" />
 
 <img width="80" align="left" src="./resources/icons/zohoemail.png" alt="Zoho Email" title="Zoho Email" />
-<img width="80" align="left" src="./resources/icons/zohochat.png" alt="Zoho Chat" title="Zoho Chat" />
+<img width="80" align="left" src="./resources/icons/zohocliq.png" alt="Zoho Cliq" title="Zoho Cliq" />
 <img width="80" align="left" src="./resources/icons/roundcube.png" alt="Roundcube" title="Roundcube" />
 <img width="80" align="left" src="./resources/icons/horde.png" alt="Horde" title="Horde" />
 <img width="80" align="left" src="./resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail" />
