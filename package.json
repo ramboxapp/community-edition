@@ -3,6 +3,7 @@
 	"scripts": {
 		"start": "electron electron/main.js",
 		"start:debug": "electron electron/main.js --enable-logging",
+		"dev": "electron electron/main.js",
 		"test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
 		"sencha:clean": "rm -rf ./build/production",
 		"sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
