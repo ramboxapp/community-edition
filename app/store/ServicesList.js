@@ -209,6 +209,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 			,manual_notifications: true
 			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
+			,note: 'Please insert the cloud region you want to use. Can be "com", "de", etc.'
 		},
 		{
 			 id: 'yahoo'
