@@ -1,55 +1,52 @@
-sudo: required
-language: node_js
-dist: trusty
-node_js:
-  - "8"
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode9.4
+      language: node_js
+      node_js: "10"
+      env:
+        - ELECTRON_CACHE=$HOME/.cache/electron
+        - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
+    - os: linux
+      services: docker
+      language: generic
 branches:
   only:
     - master
-
-os:
-  - linux
-  - osx
-
 cache:
   directories:
-    - node_modules
-    - $HOME/.electron
-
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-
+  - node_modules
+  - $HOME/.cache/electron
+  - $HOME/.cache/electron-builder
 before_install:
-  # native dependencies
-  - if [ $TRAVIS_OS_NAME == "linux" ]; then
-      sudo apt-add-repository -y ppa:snappy-dev/tools;
-      sudo apt-get update -qq;
-      sudo apt-get install -qq libxml2-dev;
-      sudo apt-get install -qq libappindicator1;
-      sudo apt-get install -qq rpm;
-      sudo apt-get install -y -qq snappy-tools;
-      sudo apt-get install -y -qq snapcraft;
+  - |
+    if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      mkdir -p /tmp/git-lfs && curl -L https://github.com/github/git-lfs/releases/download/v2.3.1/git-lfs-$([ "$TRAVIS_OS_NAME" == "linux" ] && echo "linux" || echo "darwin")-amd64-2.3.1.tar.gz | tar -xz -C /tmp/git-lfs --strip-components 1
+      export PATH="/tmp/git-lfs:$PATH"
     fi
 install:
   - git config --global core.autocrlf input
-  - git reset --hard HEAD
-  - npm run sencha:clean
   - git clone https://github.com/saenzramiro/rambox-build.git $TRAVIS_BUILD_DIR/build/production/Rambox/
   - npm install
-  - npm uninstall electron-prebuilt
-  - npm i electron@$ELECTRON
   - npm --prefix $TRAVIS_BUILD_DIR/build/production/Rambox/ install $TRAVIS_BUILD_DIR/build/production/Rambox/
+before_script:
+  - git lfs pull
 script:
-  - echo $TRAVIS_OS_NAME
-  - node --version
-  - npm --version
-  - npm run build:$TRAVIS_OS_NAME
-
+  - |
+    if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      docker run --rm \
+        --env-file <(env | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|TRAVIS|APPVEYOR_|CSC_|_TOKEN|_KEY|AWS_|STRIP|BUILD_') \
+        -v ${PWD}:/project \
+        -v ~/.cache/electron:/root/.cache/electron \
+        -v ~/.cache/electron-builder:/root/.cache/electron-builder \
+        electronuserland/builder:wine \
+        /bin/bash -c "npm run build:linux"
+    else
+      npm run build:osx
+    fi
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
 deploy:
   provider: releases
   api_key:
@@ -71,16 +68,9 @@ deploy:
     repo: saenzramiro/rambox
     tags: true
     all_branches: true
-
 notifications:
   email:
     recipients:
       - rambox@protonmail.com
     on_success: always
     on_failure: always
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/0f214eb0d0017d3c5561
-    on_success: always  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: never     # options: [always|never|change] default: always
