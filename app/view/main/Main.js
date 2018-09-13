@@ -251,6 +251,11 @@ Ext.define('Rambox.view.main.Main', {
 						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+': F2</b>'
 						,handler: 'lockRambox'
 						,id: 'lockRamboxBtn'
+					},'-'
+					,{
+						 html: '<span style="color:#FFF;cursor:pointer;"><span class="fa fa-star" style="color:#F8D64E;font-size:16px;padding:0 5px;"></span> Try Rambox Pro</span>'
+						,href: 'https://rambox.pro/api/download'
+						,baseCls: ''
 					}
 					,'->'
 					,{
