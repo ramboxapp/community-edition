@@ -1,8 +1,8 @@
 {
 	"private": true,
 	"scripts": {
-		"start": "electron electron/main.js",
-		"start:debug": "electron electron/main.js --enable-logging",
+		"start": "npm run compile && electron-builder install-app-deps && electron build/production/Rambox",
+		"start:debug": "npm run compile && electron build/production/Rambox --enable-logging",
 		"test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
 		"clean": "rimraf ./build/production",
 		"compile": "sencha app build && cpy app/package.json app/package-lock.json build/production/Rambox/",
