@@ -77,7 +77,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,manual_notifications: true
-			,js_unread: `let checkUnread=()=>{rambox.updateBadge(document.getElementById("hangout-landing-chat").lastChild.contentWindow.document.body.getElementsByClassName("ee").length)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{let myframe=document.getElementById("hangout-landing-chat").lastChild,mydocument=myframe.contentDocument||myframe.contentWindow.document;rambox.updateBadge(mydocument.body.getElementsByClassName("ee").length)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'hipchat'
