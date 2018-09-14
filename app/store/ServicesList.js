@@ -125,7 +125,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://inbox.google.com/?cid=imp'
 			,type: 'email'
 			,manual_notifications: true
-			,js_unread: `let checkUnread=()=>{rambox.updateBadge(document.getElementsByClassName("ss").length)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{if(getComputedStyle(document.getElementsByClassName("sM")[0])["font-weight"] == "bold"){rambox.updateBadge(document.getElementsByClassName("ss").length)}};setInterval(checkUnread,3e3);`
 			,note: 'Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href="https://github.com/TheGoddessInari/rambox/wiki/Inbox" target="_blank">Read more...</a>'
 		},
 		{
