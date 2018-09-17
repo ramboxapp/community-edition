@@ -64,5 +64,5 @@ deploy:
   prerelease: true
   on:
     repo: saenzramiro/rambox
-    tags: true
+    tags: false
     all_branches: true
