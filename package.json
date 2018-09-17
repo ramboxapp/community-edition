@@ -86,10 +86,6 @@
 				"tar.gz"
 			]
 		},
-		"snap": {
-			"confinement": "strict",
-			"grade": "stable"
-		},
 		"directories": {
 			"buildResources": "resources/installer/",
 			"output": "dist/",
