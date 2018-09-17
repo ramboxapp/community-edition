@@ -90,7 +90,15 @@
 			"buildResources": "resources/installer/",
 			"output": "dist/",
 			"app": "build/production/Rambox/"
-		}
+		},
+		"publish": [
+			{
+				"provider": "github",
+				"owner": "ramboxapp",
+				"repo": "community-edition",
+				"vPrefixedTagName": false
+			}
+		]
 	},
 	"devDependencies": {
 		"asar": "^0.12.4",
