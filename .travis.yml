@@ -9,7 +9,6 @@ matrix:
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
     - os: linux
-      sudo: required
       services: docker
       language: generic
 branches:
@@ -42,7 +41,7 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder \
-        /bin/bash -c "yarn install && yarn --link-duplicates --pure-lockfile && yarn build:linux32"
+        /bin/bash -c "npm i && npm i electron-builder@20.10.0 && npm run build:linux"
     else
       npm run build:osx
     fi
