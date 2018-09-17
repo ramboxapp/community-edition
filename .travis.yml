@@ -42,7 +42,7 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder \
-        /bin/bash -c "apt-get install --no-install-recommends -y snapcraft@latest && npm i && npm run build:linux"
+        /bin/bash -c "yarn i && yarn --link-duplicates --pure-lockfile && yarn build:linux32"
     else
       npm run build:osx
     fi
