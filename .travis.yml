@@ -42,7 +42,7 @@ script:
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder \
-        /bin/bash -c "yarn i && yarn --link-duplicates --pure-lockfile && yarn build:linux32"
+        /bin/bash -c "yarn install && yarn --link-duplicates --pure-lockfile && yarn build:linux32"
     else
       npm run build:osx
     fi
