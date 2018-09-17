@@ -45,8 +45,6 @@ script:
     else
       npm run build:osx
     fi
-before_cache:
-  - rm -rf $HOME/.cache/electron-builder
 deploy:
   provider: releases
   api_key:
