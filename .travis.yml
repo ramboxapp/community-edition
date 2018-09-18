@@ -33,7 +33,7 @@ before_script:
 script:
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      docker run --rm -ti \
+      docker run --rm \
         -e GH_TOKEN=$GH_TOKEN \
         -v ${PWD}:/project \
         -v ~/.cache/electron:/root/.cache/electron \
