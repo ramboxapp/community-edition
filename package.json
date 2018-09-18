@@ -39,6 +39,7 @@
 		"asar": true,
 		"mac": {
 			"category": "public.app-category.productivity",
+			"artifactName": "Rambox-${version}-mac.${ext}",
 			"target": [
 				"default"
 			]
@@ -60,12 +61,9 @@
 				}
 			]
 		},
-		"squirrelWindows": {
-			"iconUrl": "https://raw.githubusercontent.com/saenzramiro/rambox/master/resources/Icon.ico"
-		},
 		"win": {
+			"artifactName": "Rambox-${version}-win-${arch}.${ext}",
 			"target": [
-				"squirrel",
 				"nsis",
 				"zip"
 			]
@@ -77,6 +75,7 @@
 				"Type": "Application",
 				"Categories": "GTK;GNOME;Utility;Office;Email;Chat;InstantMessaging;"
 			},
+			"artifactName": "Rambox-${version}-linux-${arch}.${ext}",
 			"target": [
 				"snap",
 				"AppImage",
