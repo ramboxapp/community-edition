@@ -63,6 +63,7 @@
 		},
 		"win": {
 			"artifactName": "Rambox-${version}-win-${arch}.${ext}",
+			"publisherName": "Ramiro Pablo Saenz",
 			"target": [
 				"nsis",
 				"zip"
