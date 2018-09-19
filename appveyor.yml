@@ -37,7 +37,7 @@ build_script:
 
       npm --version
 
-      node_modules/.bin/build --win --ia32 --x64
+      npm run build:win
 test: off
 artifacts:
   - path: dist\win\*.exe

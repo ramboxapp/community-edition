@@ -24,6 +24,7 @@
 		"build:linux": "npm run build:linux32 && npm run build:linux64",
 		"build:linux32": "build --linux --ia32 --publish=onTagOrDraft",
 		"build:linux64": "build --linux --x64 --publish=onTagOrDraft",
+		"build:win": "npm run build:win32 && npm run build:win64",
 		"build:win32": "build --win --ia32",
 		"build:win64": "build --win --x64",
 		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
