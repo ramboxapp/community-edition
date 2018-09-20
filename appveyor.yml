@@ -10,6 +10,8 @@ branches:
 skip_non_tags: true
 init:
   - cmd: git config --global core.autocrlf input
+  - cmd: node --version
+  - cmd: npm --version
 install:
   - ps: Install-Product node $env:nodejs_version
   - cmd: >-
@@ -19,25 +21,17 @@ install:
 
       git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-      npm install npm@5.7.1 -g
-
       npm install
 
       npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-
-      npm prune
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
   - node_modules
   - build\production\Rambox\node_modules
 build_script:
-  - cmd: >-
-      node --version
-
-      npm --version
-
-      npm run build:win
+  - cmd: npm i electron-builder@20.27.1
+  - cmd: npm run build:win
 test: off
 artifacts:
   - path: dist\win\*.exe
