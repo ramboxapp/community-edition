@@ -65,6 +65,7 @@
 		"win": {
 			"artifactName": "Rambox-${version}-win-${arch}.${ext}",
 			"publisherName": "Ramiro Pablo Saenz",
+			"timeStampServer": "http://timestamp.comodoca.com/authenticode",
 			"target": [
 				"nsis",
 				"zip"
