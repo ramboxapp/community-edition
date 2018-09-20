@@ -30,7 +30,6 @@ cache:
   - node_modules
   - build\production\Rambox\node_modules
 build_script:
-  - cmd: npm i electron-builder@20.27.1
   - cmd: npm run build:win
 test: off
 artifacts:
