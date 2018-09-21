@@ -37,6 +37,11 @@ Notification = function(title, options) {
 	notification.addEventListener('click', function() {
 		ipcRenderer.sendToHost('rambox.showWindowAndActivateTab');
 	});
+	
+	//It seems that gmail is checking if such event handler func are available. Just remplacing them by a void function that is always returning true is making the rights rights!
+	notification.addEventListener = function(a, b) {return true};
+	notification.attachEvent = function(a, b) {return true};
+	notification.addListener = function(a, b) {return true};
 
 	return notification;
 }
