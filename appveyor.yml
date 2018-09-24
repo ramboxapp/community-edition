@@ -32,9 +32,3 @@ cache:
 build_script:
   - cmd: npm run build:win
 test: off
-artifacts:
-  - path: dist\win\*.exe
-  - path: dist\win\*.nupkg
-  - path: dist\win\RELEASES
-  - path: dist\win-ia32\*.exe
-  - path: dist\*.zip
