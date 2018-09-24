@@ -1,7 +1,6 @@
-const {app, autoUpdater, ipcMain} = require('electron');
+const {app, ipcMain} = require('electron');
+const { autoUpdater } = require("electron-updater");
 const version = app.getVersion();
-const platform = process.platform === 'darwin' ? 'osx' : process.platform;
-const url = `https://getrambox.herokuapp.com/update/${platform}/${version}`;
 
 const initialize = (window) => {
 	const webContents = window.webContents;
@@ -10,10 +9,6 @@ const initialize = (window) => {
 	autoUpdater.on('update-downloaded', (event, ...args) => send('autoUpdater:update-downloaded', ...args));
 	ipcMain.on('autoUpdater:quit-and-install', (event) => autoUpdater.quitAndInstall());
 	ipcMain.on('autoUpdater:check-for-updates', (event) => autoUpdater.checkForUpdates());
-	webContents.on('did-finish-load', () => {
-		autoUpdater.setFeedURL(url);
-		//autoUpdater.checkForUpdates();
-	});
 };
 
 module.exports = {initialize};
