@@ -1,4 +1,3 @@
-version: 0.5.18
 environment:
   matrix:
     - nodejs_version: '8'
