@@ -98,7 +98,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[3]'],
 			click() {
-				shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
+				shell.openExternal('https://rambox.pro/#donate');
 			}
 		}
 	];
