@@ -63,3 +63,5 @@ Notification = function(title, options) {
 Notification.prototype = NativeNotification.prototype;
 Notification.permission = NativeNotification.permission;
 Notification.requestPermission = NativeNotification.requestPermission.bind(Notification);
+
+window.close = function() { location.href = location.origin };
