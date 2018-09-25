@@ -287,12 +287,8 @@ function updateBadge(title) {
 
 	tray.setBadge(messageCount, config.get('systemtray_indicator'));
 
-	if (process.platform === 'win32') { // Windows
-		if (messageCount === 0) {
-			mainWindow.setOverlayIcon(null, "");
-			return;
-		}
-
+	if (process.platform === 'win32') {
+		if (messageCount === 0) return mainWindow.setOverlayIcon(null, '');
 		mainWindow.webContents.send('setBadge', messageCount);
 	} else { // macOS & Linux
 		app.setBadgeCount(messageCount);
@@ -302,8 +298,7 @@ function updateBadge(title) {
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
-	var img = nativeImage.createFromDataURL(value);
-	mainWindow.setOverlayIcon(img, messageCount.toString());
+	mainWindow.setOverlayIcon(nativeImage.createFromDataURL(value), messageCount.toString());
 });
 
 ipcMain.on('getConfig', function(event, arg) {

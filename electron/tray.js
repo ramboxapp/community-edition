@@ -66,6 +66,7 @@ exports.setBadge = function(messageCount, showUnreadTray) {
 	if (process.platform === 'darwin' || !appIcon) return;
 
 	let icon;
+	messageCount = parseInt(messageCount);
 	if (process.platform === 'linux') {
 		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
 	} else {
@@ -73,5 +74,5 @@ exports.setBadge = function(messageCount, showUnreadTray) {
 	}
 
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
-	appIcon.setImage(iconPath);
+	appIcon.setImage(electron.nativeImage.createFromPath(iconPath));
 };
