@@ -4,7 +4,6 @@
 	"version": "0.6.0",
 	"description": "Rambox",
 	"main": "electron/main.js",
-	"private": true,
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/saenzramiro/rambox.git"
