@@ -1,5 +1,33 @@
 {
+	"name": "Rambox",
+	"productName": "Rambox",
+	"version": "0.6.0",
+	"description": "Rambox",
+	"main": "electron/main.js",
 	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/saenzramiro/rambox.git"
+	},
+	"bugs": {
+		"url": "https://github.com/saenzramiro/rambox/issues"
+	},
+	"homepage": "https://rambox.pro",
+	"keywords": [
+		"Rambox",
+		"messaging",
+		"app",
+		"slack",
+		"whatsapp",
+		"facebook",
+		"messenger",
+		"telegram",
+		"google",
+		"hangouts",
+		"skype"
+	],
+	"author": "Rambox",
+	"license": "GPL-3.0",
 	"scripts": {
 		"start": "electron electron/main.js",
 		"start:debug": "electron electron/main.js --enable-logging",
