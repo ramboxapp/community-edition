@@ -15,13 +15,14 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - cmd: >-
       git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
+
       npm install --only=prod
+
       cp -R node_modules %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
   - node_modules
-  - build\production\Rambox\node_modules
 build_script:
   - cmd: npm run build:win
 test: off
