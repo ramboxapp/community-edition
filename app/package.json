@@ -26,7 +26,7 @@
 		"hangouts",
 		"skype"
 	],
-	"author": "Ramiro Saenz <saenzramiro@gmail.com>",
+	"author": "Rambox",
 	"license": "GPL-3.0",
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
@@ -36,6 +36,7 @@
 		"electron-context-menu": "0.9.1",
 		"electron-is-dev": "^0.3.0",
 		"electron-store": "^2.0.0",
+		"electron-updater": "^3.1.2",
 		"mime": "^2.3.1",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.2",

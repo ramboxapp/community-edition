@@ -1,6 +1,6 @@
 const {app, ipcMain} = require('electron');
 const { autoUpdater } = require("electron-updater");
-const version = app.getVersion();
+const path = require('path');
 
 const initialize = (window) => {
 	const webContents = window.webContents;
