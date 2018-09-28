@@ -24,5 +24,6 @@ cache:
   - '%USERPROFILE%\.electron'
   - node_modules
 build_script:
+  - cmd: cd %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
   - cmd: npm run build:win
 test: off
