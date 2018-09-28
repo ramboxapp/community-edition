@@ -22,7 +22,6 @@ install:
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
-  - '%APPVEYOR_BUILD_FOLDER%\build\production\Rambox\node_modules'
 build_script:
   - cmd: cd %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
   - cmd: npm run build:win
