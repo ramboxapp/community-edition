@@ -16,9 +16,9 @@ install:
   - cmd: >-
       git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-      npm install --only=prod
+      cd %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-      cp -R node_modules %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
+      npm install --only=prod
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
