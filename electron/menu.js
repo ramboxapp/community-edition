@@ -22,7 +22,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[0]'],
 			click() {
-				shell.openExternal('http://rambox.pro');
+				shell.openExternal('https://rambox.pro');
 			}
 		},
 		{
@@ -40,7 +40,7 @@ module.exports = function(config) {
 		{
 			label: `&GitHub`,
 			click() {
-				shell.openExternal('https://www.github.com/saenzramiro/rambox');
+				shell.openExternal('https://github.com/ramboxapp/community-edition');
 			}
 		},
 		{
@@ -60,13 +60,13 @@ module.exports = function(config) {
 	> Electron ${process.versions.electron}
 	> ${process.platform} ${process.arch} ${os.release()}`;
 
-				shell.openExternal(`https://github.com/saenzramiro/rambox/issues/new?body=${encodeURIComponent(body)}`);
+				shell.openExternal(`https://github.com/ramboxapp/community-edition/issues/new?body=${encodeURIComponent(body)}`);
 			}
 		},
 		{
 			label: `&`+locale['menu.help[2]'],
 			click() {
-				shell.openExternal('https://gitter.im/saenzramiro/rambox');
+				shell.openExternal('https://rambox.typeform.com/to/t7jc4C');
 			}
 		},
 		{
@@ -98,7 +98,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[3]'],
 			click() {
-				shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
+				shell.openExternal('https://rambox.pro/#donate');
 			}
 		}
 	];
@@ -157,6 +157,15 @@ module.exports = function(config) {
 					accelerator: 'CmdOrCtrl+Shift+R',
 					click() {
 						sendAction('reloadCurrentService');
+					}
+				},
+				{
+					type: 'separator'
+				},
+				{
+					label: '&Toggle Status Bar',
+					click() {
+						sendAction('toggleStatusBar');
 					}
 				},
 				{

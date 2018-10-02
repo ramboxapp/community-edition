@@ -66,12 +66,13 @@ exports.setBadge = function(messageCount, showUnreadTray) {
 	if (process.platform === 'darwin' || !appIcon) return;
 
 	let icon;
+	messageCount = parseInt(messageCount);
 	if (process.platform === 'linux') {
-		icon = messageCount && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
+		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
 	} else {
-		icon = messageCount && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
+		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
 	}
 
 	const iconPath = path.join(__dirname, `../resources/${icon}`);
-	appIcon.setImage(iconPath);
+	appIcon.setImage(electron.nativeImage.createFromPath(iconPath));
 };

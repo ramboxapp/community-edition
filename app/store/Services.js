@@ -29,6 +29,12 @@ Ext.define('Rambox.store.Services', {
 				// If the service is disabled, we dont add it to tab bar
 				if ( !service.get('enabled') ) return;
 
+				// Rebranded app
+				if ( service.get('type') === 'spark' ) {
+					service.set('type', 'webexteams');
+					service.set('logo', 'webexteams.png');
+				}
+
 				var cfg = {
 					 xtype: 'webview'
 					,id: 'tab_'+service.get('id')

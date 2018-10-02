@@ -26,6 +26,21 @@ Ext.define('Rambox.Application', {
 	}
 
 	,launch: function () {
+		// Prevent track if the user have disabled this option (default: false)
+		if ( !ipc.sendSync('sendStatistics') ) {
+			ga_storage = {
+				 _enableSSL: Ext.emptyFn
+				,_disableSSL: Ext.emptyFn
+				,_setAccount: Ext.emptyFn
+				,_setDomain: Ext.emptyFn
+				,_setLocale: Ext.emptyFn
+				,_setCustomVar: Ext.emptyFn
+				,_deleteCustomVar: Ext.emptyFn
+				,_trackPageview: Ext.emptyFn
+				,_trackEvent: Ext.emptyFn
+			}
+		}
+
 		// Set Google Analytics events
 		ga_storage._setAccount('UA-80680424-1');
 		ga_storage._trackPageview('/index.html', 'main');
@@ -229,7 +244,7 @@ Ext.define('Rambox.Application', {
 	,checkUpdate: function(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
-			 url: 'http://rambox.pro/api/latestversion.json'
+			 url: 'https://rambox.pro/api/latestversion.json'
 			,method: 'GET'
 			,success: function(response) {
 				var json = Ext.decode(response.responseText);
@@ -244,12 +259,12 @@ Ext.define('Rambox.Application', {
 							'->'
 							,{
 								 xtype: 'label'
-								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
+								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')' + ( process.platform === 'win32' ? ' is downloading in the background and you will be notified when it is ready to be installed.' : '' )
 							}
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[1]']
-								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/saenzramiro/rambox/releases/latest'
+								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/ramboxapp/community-edition/releases/latest'
 								,hidden: process.platform === 'win32'
 							}
 							,{
@@ -257,7 +272,7 @@ Ext.define('Rambox.Application', {
 								,text: locale['app.update[2]']
 								,ui: 'decline'
 								,tooltip: 'Click here to see more information about the new version.'
-								,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+json.version
+								,href: 'https://github.com/ramboxapp/community-edition/releases/tag/'+json.version
 							}
 							,'->'
 							,{

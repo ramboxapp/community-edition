@@ -6,7 +6,7 @@ const tray = require('./tray');
 // AutoLaunch
 var AutoLaunch = require('auto-launch-patched');
 // Configuration
-const Config = require('electron-config');
+const Config = require('electron-store');
 // Development
 const isDev = require('electron-is-dev');
 // Updater
@@ -20,6 +20,7 @@ const config = new Config({
 	 defaults: {
 		 always_on_top: false
 		,hide_menu_bar: false
+		,tabbar_location: 'top'
 		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,flash_frame: true
@@ -37,6 +38,7 @@ const config = new Config({
 		,locale: 'en'
 		,enable_hidpi_support: false
 		,default_service: 'ramboxTab'
+		,sendStatistics: false
 
 		,x: undefined
 		,y: undefined
@@ -156,15 +158,19 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			 webSecurity: false
-			,nodeIntegration: true
-			,plugins: true
+			plugins: true
 			,partition: 'persist:rambox'
 		}
 	});
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
-	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) mainWindow.minimize();
+	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) {
+		// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools() 
+		// to be finished before minimizing
+		mainWindow.webContents.once('did-finish-load', function(e) {
+			mainWindow.minimize();
+		});
+	}
 
 	// Check if the window its outside of the view (ex: multi monitor setup)
 	const { positionOnScreen } = require('./utils/positionOnScreen');
@@ -277,15 +283,12 @@ function createMasterPasswordWindow() {
 function updateBadge(title) {
 	title = title.split(" - ")[0]; //Discard service name if present, could also contain digits
 	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
+	messageCount = isNaN(messageCount) ? 0 : messageCount;
 
 	tray.setBadge(messageCount, config.get('systemtray_indicator'));
 
-	if (process.platform === 'win32') { // Windows
-		if (messageCount === 0) {
-			mainWindow.setOverlayIcon(null, "");
-			return;
-		}
-
+	if (process.platform === 'win32') {
+		if (messageCount === 0) return mainWindow.setOverlayIcon(null, '');
 		mainWindow.webContents.send('setBadge', messageCount);
 	} else { // macOS & Linux
 		app.setBadgeCount(messageCount);
@@ -295,8 +298,7 @@ function updateBadge(title) {
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
-	var img = nativeImage.createFromDataURL(value);
-	mainWindow.setOverlayIcon(img, messageCount.toString());
+	mainWindow.setOverlayIcon(nativeImage.createFromDataURL(value), messageCount.toString());
 });
 
 ipcMain.on('getConfig', function(event, arg) {
@@ -316,6 +318,8 @@ ipcMain.on('setConfig', function(event, values) {
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
 
+	mainWindow.webContents.executeJavaScript('(function(a){if(a)a.controller.initialize(a)})(Ext.cq1("app-main"))');
+
 	switch ( values.window_display_behavior ) {
 		case 'show_taskbar':
 			mainWindow.setSkipTaskbar(false);
@@ -332,6 +336,10 @@ ipcMain.on('setConfig', function(event, values) {
 		default:
 			break;
 	}
+});
+
+ipcMain.on('sendStatistics', function(event) {
+	event.returnValue = config.get('sendStatistics');
 });
 
 ipcMain.on('validateMasterPassword', function(event, pass) {
@@ -469,7 +477,7 @@ if ( config.get('proxy') ) {
 	app.on('login', (event, webContents, request, authInfo, callback) => {
 		if(!authInfo.isProxy)
 			return;
-			
+
 		event.preventDefault()
 		callback(config.get('proxyLogin'), config.get('proxyPassword'))
 	})

@@ -15,6 +15,9 @@ Ext.application({
 
 // auto update logic
 const ipc = require('electron').ipcRenderer;
+
+require('electron-context-menu')();
+
 ipc.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';
 });
@@ -60,7 +63,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, r
 				 xtype: 'button'
 				,text: 'Changelog'
 				,ui: 'decline'
-				,href: 'https://github.com/saenzramiro/rambox/releases/tag/'+releaseName
+				,href: 'https://github.com/ramboxapp/community-edition/releases/tag/'+releaseName
 			}
 			,'->'
 			,{
@@ -126,6 +129,14 @@ ipc.on('setBadge', function(event, messageCount) {
 ipc.on('reloadCurrentService', function(e) {
 	var tab = Ext.cq1('app-main').getActiveTab();
 	if ( tab.id !== 'ramboxTab' ) tab.reloadService();
+});
+// Toggle Status Bar
+ipc.on('toggleStatusBar', function() {
+	var tab = Ext.cq1('app-main').getActiveTab();
+
+	if ( tab.id !== 'ramboxTab' ) {
+		tab.down('statusbar').closed ? tab.setStatusBar(tab.record.get('statusbar')) : tab.closeStatusBar();
+	}
 });
 // Focus the current service when Alt + Tab or click in webviews textfields
 window.addEventListener('focus', function() {

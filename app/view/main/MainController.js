@@ -3,6 +3,22 @@ Ext.define('Rambox.view.main.MainController', {
 
 	,alias: 'controller.main'
 
+	,initialize: function( tabPanel ) {
+		const config = ipc.sendSync('getConfig');
+
+		tabPanel.setTabPosition(config.tabbar_location);
+		tabPanel.setTabRotation(0);
+
+		var reorderer = tabPanel.plugins.find(function(plugin) { return plugin.ptype == "tabreorderer"});
+
+		if ( reorderer !== undefined ) {
+			const names = reorderer.container.getLayout().names;
+			reorderer.dd.dim = names.width;
+			reorderer.dd.startAttr = names.beforeX;
+			reorderer.dd.endAttr = names.afterX;
+		}
+	}
+
 	// Make focus on webview every time the user change tabs, to enable the autofocus in websites
 	,onTabChange: function( tabPanel, newTab, oldTab ) {
 		var me = this;
@@ -42,14 +58,20 @@ Ext.define('Rambox.view.main.MainController', {
 		console.log('Updating Tabs positions...');
 
 		var store = Ext.getStore('Services');
+		var align = 'left';
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
 			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
 				var rec = store.getById(t.record.get('id'));
-				if ( rec.get('align') === 'right' ) i--;
+				if ( align === 'right' ) i--;
+				rec.set('align', align);
 				rec.set('position', i);
 				rec.save();
 			}
+			else if ( t.id === 'tbfill' ) {
+				align = 'right';
+			}
+
 		});
 
 		store.load();
@@ -464,6 +486,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.cq1('app-main').getViewModel().set('avatar', '');
 
 			if ( Ext.isFunction(callback) ) callback();
+			Ext.Msg.hide();
 		}
 
 		if ( btn ) {
@@ -478,6 +501,6 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,showDonate: function( btn ) {
-		Tooltip.API.show('zxzKWZfcmgRtHXgth');
+		Signalayer.API.show('tChaoq3PwSG9wswhn');
 	}
 });

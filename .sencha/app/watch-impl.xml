@@ -27,6 +27,24 @@
             fork="true"/>
     </target>
 
+    <target name="-watch-fashion" if="framework.isV6">
+        <x-fashion-watch
+                refName="fashion-watch"
+                inputFile="${app.out.scss}"
+                outputFile="${app.out.css}"
+                split="${build.css.selector.limit}"
+                compress="${build.css.compress}"
+                configFile="${build.out.json.path}"
+                saveFile="${app.dir}/${app.sass.generated.var}"
+                fork="true"/>
+    </target>
+
+    <target name="-stop-fashion-watch">
+        <x-fashion-watch
+                refName="fashion-watch"
+                stop="true"/>
+    </target>
+
     <macrodef name="x-run-compass-watch">
         <attribute name="directory"/>
         <sequential>
@@ -58,18 +76,35 @@
 
     <target name="-before-watch"/>
     <target name="-watch" depends="-init-web-server">
-        <x-ant-call target="${build.trigger.targets}"/>
-        <x-ant-call target="web-start" unless="skip.web.start">
-            <param name="enable.background.server" value="true"/>
-        </x-ant-call>
-        <x-ant-call target="${build.watcher.targets}">
-            <param name="build.id" value="${build.id}"/>
-            <param name="build.name" value="${build.name}"/>
-        </x-ant-call>
-        <x-ant-call target="web-stop" unless="skip.web.start">
-            <param name="enable.background.server" value="true"/>
-        </x-ant-call>
-        <x-ant-call target="-stop-compass-watch"/>
+        <local name="skip.sass.rebuild"/>
+        <condition property="skip.sass.rebuild" value="true">
+            <isset property="framework.isV6"/>
+        </condition>
+        <property name="skip.sass.rebuild" value="false"/>
+        <if>
+            <x-lock-file file="${watch.lock.file}" refId="lock.ref"/>
+            <then>
+                <x-ant-call target="${build.trigger.targets}"/>
+                <x-ant-call target="web-start" unless="skip.web.start">
+                    <param name="enable.background.server" value="true"/>
+                </x-ant-call>
+                <x-ant-call target="${build.watcher.targets}">
+                    <param name="build.id" value="${build.id}"/>
+                    <param name="build.name" value="${build.name}"/>
+                    <param name="skip.sass.rebuild" value="${skip.sass.rebuild}"/>
+                </x-ant-call>
+                <x-ant-call target="web-stop" unless="skip.web.start">
+                    <param name="enable.background.server" value="true"/>
+                </x-ant-call>
+                <x-ant-call target="-stop-compass-watch"/>
+                <x-ant-call target="-stop-fashion-watch"/>
+                <x-unlock-file refId="lock.ref"/>
+            </then>
+            <else>
+                <echo level="error" 
+                      message="App watch is already running for this build profile."/>
+            </else>
+        </if>
     </target>
     <target name="-after-watch" depends="init"/>
 </project>

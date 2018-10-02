@@ -110,7 +110,8 @@
             "path": "resources/js/loadscreen.js"
         },
         {
-            "path": "env.js"
+            "path": "env.js",
+			"remote": true
         },
         {
             "path": "app.js",
@@ -254,7 +255,7 @@
      *
      */
     "output": {
-        "base": "${workspace.build.dir}/${build.environment}/${app.name}",
+        "base": "../rambox-build",
         "appCache": {
             "enable": true
         }
@@ -290,6 +291,9 @@
      */
     "resources": [
 		"electron",
+		"env.js",
+		"package.json",
+		"package-lock.json",
 		"masterpassword.html"
     ],
 

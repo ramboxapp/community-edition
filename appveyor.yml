@@ -1,4 +1,6 @@
-version: 0.5.14
+environment:
+  matrix:
+    - nodejs_version: '8'
 pull_requests:
   do_not_increment_build_number: true
 branches:
@@ -6,46 +8,21 @@ branches:
   - master
 skip_non_tags: true
 init:
-- cmd: git config --global core.autocrlf input
+  - cmd: git config --global core.autocrlf input
+  - cmd: node --version
+  - cmd: npm --version
 install:
-- cmd: >-
-    git reset --hard HEAD
+  - ps: Install-Product node $env:nodejs_version
+  - cmd: >-
+      git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-    npm run sencha:clean
+      cd %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
-    git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-
-    npm install npm -g
-
-    npm install
-
-    npm --prefix %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\ install %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
-
-    npm prune
+      npm install
 cache:
-- '%APPDATA%\npm-cache'
-- '%USERPROFILE%\.electron'
-- node_modules
-- build\production\Rambox\node_modules
+  - '%APPDATA%\npm-cache'
+  - '%USERPROFILE%\.electron'
 build_script:
-- cmd: >-
-    node --version
-
-    npm --version
-
-    node_modules/.bin/build --win --ia32 --x64
+  - cmd: cd %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
+  - cmd: npm run build:win
 test: off
-artifacts:
-- path: dist\win\*.exe
-- path: dist\win\*.nupkg
-- path: dist\win\RELEASES
-- path: dist\win-ia32\*.exe
-- path: dist\*.zip
-deploy:
-- provider: GitHub
-  tag: $(appveyor_build_version)
-  release: $(appveyor_build_version)
-  auth_token:
-    secure: RKFkz2S89dkYXdW+k47Wv42yrUeE1bDDMkM1PNuxrb0ZOcVVXPO88+t5dUllyvOG
-  draft: true
-  prerelease: false
