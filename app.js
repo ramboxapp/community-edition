@@ -43,7 +43,7 @@ ipc.on('autoUpdater:update-available', function() {
 		,buttons: Ext.Msg.OK
 	});
 });
-ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, releaseDate, updateURL) {
+ipc.on('autoUpdater:update-downloaded', function(version, files, path, sha512, releaseName, releaseNotes, releaseDate, stagingPercentage) {
 	Ext.cq1('app-main').addDocked({
 		 xtype: 'toolbar'
 		,dock: 'top'
