@@ -6,10 +6,10 @@
 	"main": "electron/main.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/saenzramiro/rambox.git"
+		"url": "https://github.com/ramboxapp/community-edition.git"
 	},
 	"bugs": {
-		"url": "https://github.com/saenzramiro/rambox/issues"
+		"url": "https://github.com/ramboxapp/community-edition/issues"
 	},
 	"homepage": "https://rambox.pro",
 	"keywords": [
