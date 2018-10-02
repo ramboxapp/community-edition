@@ -68,75 +68,6 @@ const appLauncher = new AutoLaunch({
 });
 config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
 
-// this should be placed at top of main.js to handle setup events quickly
-if (handleSquirrelEvent()) {
-	// squirrel event handled and app will exit in 1000ms, so don't do anything else
-	return;
-}
-
-function handleSquirrelEvent() {
-	if (process.argv.length === 1) {
-		return false;
-	}
-
-	const ChildProcess = require('child_process');
-
-	const appFolder = path.resolve(process.execPath, '..');
-	const rootAtomFolder = path.resolve(appFolder, '..');
-	const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
-	const exeName = path.basename(process.execPath);
-
-	const spawn = function(command, args) {
-		let spawnedProcess, error;
-
-		try {
-			spawnedProcess = ChildProcess.spawn(command, args, {detached: true});
-		} catch (error) {}
-
-		return spawnedProcess;
-	};
-
-	const spawnUpdate = function(args) {
-		return spawn(updateDotExe, args);
-	};
-
-	const squirrelEvent = process.argv[1];
-	switch (squirrelEvent) {
-		case '--squirrel-install':
-		case '--squirrel-updated':
-		// Optionally do things such as:
-		// - Add your .exe to the PATH
-		// - Write to the registry for things like file associations and
-		//   explorer context menus
-
-		// Install desktop and start menu shortcuts
-		spawnUpdate(['--createShortcut', exeName]);
-
-		setTimeout(app.quit, 1000);
-		return true;
-
-		case '--squirrel-uninstall':
-		// Undo anything you did in the --squirrel-install and
-		// --squirrel-updated handlers
-
-		// Remove desktop and start menu shortcuts
-		spawnUpdate(['--removeShortcut', exeName]);
-		// Remove user app data
-		require('rimraf').sync(require('electron').app.getPath('userData'));
-
-		setTimeout(app.quit, 1000);
-		return true;
-
-		case '--squirrel-obsolete':
-		// This is called on the outgoing version of your app before
-		// we update to the new version - it's the opposite of
-		// --squirrel-updated
-
-		app.quit();
-		return true;
-	}
-};
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -165,7 +96,7 @@ function createWindow () {
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
 	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) {
-		// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools() 
+		// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools()
 		// to be finished before minimizing
 		mainWindow.webContents.once('did-finish-load', function(e) {
 			mainWindow.minimize();
