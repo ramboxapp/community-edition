@@ -37,3 +37,4 @@ npm-debug.log
 env.js
 rambox_cfg.json
 languages.js
+electron/dev-app-update.yml

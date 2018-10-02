@@ -193,7 +193,7 @@ function createWindow () {
 
 	tray.create(mainWindow, config);
 
-	if ( fs.existsSync(path.resolve(path.dirname(process.execPath), '..', 'Update.exe')) && process.argv.indexOf('--without-update') === -1 ) updater.initialize(mainWindow);
+	if ( process.argv.indexOf('--without-update') === -1 ) updater.initialize(mainWindow);
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
