@@ -63,7 +63,7 @@
 	},
 	"build": {
 		"productName": "Rambox",
-		"appId": "com.saenzramiro.rambox",
+		"appId": "com.grupovrs.ramboxce",
 		"asar": true,
 		"mac": {
 			"category": "public.app-category.productivity",

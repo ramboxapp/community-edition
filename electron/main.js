@@ -56,7 +56,7 @@ if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
 
 // Because we build it using Squirrel, it will assign UserModelId automatically, so we match it here to display notifications correctly.
 // https://github.com/electron-userland/electron-builder/issues/362
-app.setAppUserModelId('com.squirrel.Rambox.Rambox');
+app.setAppUserModelId('com.grupovrs.ramboxce');
 
 // Menu
 const appMenu = require('./menu')(config);
