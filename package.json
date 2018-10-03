@@ -25,7 +25,7 @@
 		"hangouts",
 		"skype"
 	],
-	"author": "Rambox",
+	"author": "Rambox <support@rambox.pro>",
 	"license": "GPL-3.0",
 	"scripts": {
 		"start": "electron electron/main.js",
@@ -48,7 +48,7 @@
 		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"build": "npm run build:linux && npm run build:osx && npm run build:win",
 		"build:osx": "build --macos",
-		"build:linux": "npm run build:linux32 && npm run build:linux64",
+		"build:linux": "build --linux --publish=onTagOrDraft",
 		"build:linux32": "build --linux --ia32 --publish=onTagOrDraft",
 		"build:linux64": "build --linux --x64 --publish=onTagOrDraft",
 		"build:win": "build --win --ia32 --x64",
@@ -112,12 +112,47 @@
 			},
 			"artifactName": "Rambox-${version}-linux-${arch}.${ext}",
 			"target": [
-				"snap",
-				"AppImage",
-				"deb",
-				"rpm",
-				"zip",
-				"tar.gz"
+				{
+					"target": "snap",
+					"arch": [
+						"x64"
+					]
+				},
+				{
+					"target": "AppImage",
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				},
+				{
+					"target": "deb",
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				},
+				{
+					"target": "rpm",
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				},
+				{
+					"target": "zip",
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				},
+				{
+					"target": "tar.gz",
+					"arch": [
+						"x64",
+						"ia32"
+					]
+				}
 			]
 		},
 		"directories": {
@@ -140,9 +175,7 @@
 		"csvjson": "4.3.3",
 		"electron": "^2.0.8",
 		"electron-builder": "^20.28.3",
-		"electron-builder-squirrel-windows": "^20.28.3",
 		"electron-packager": "^12.1.0",
-		"electron-squirrel-startup": "^1.0.0",
 		"mocha": "^5.2.0",
 		"spectron": "^3.8.0"
 	},
