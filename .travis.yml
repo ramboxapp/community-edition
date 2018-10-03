@@ -43,5 +43,6 @@ script:
         /bin/bash -c "npm i && npm i electron-builder@20.10.0 && npm run build:linux"
     else
       cd $TRAVIS_BUILD_DIR/build/production/Rambox/
+      npm i
       npm run build:osx
     fi
