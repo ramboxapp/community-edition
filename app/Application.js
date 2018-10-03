@@ -283,7 +283,7 @@ Ext.define('Rambox.Application', {
 							}
 						]
 					});
-					if ( process.platform === 'win32' || process.platform === 'darwin' ) ipc.send('autoUpdater:check-for-updates');
+					ipc.send('autoUpdater:check-for-updates');
 					return;
 				} else if ( !silence ) {
 					Ext.Msg.show({
