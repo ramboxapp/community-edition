@@ -36,11 +36,12 @@ script:
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       docker run --rm -ti \
         --env-file <(env | grep -vE '\r|\n' | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|APPVEYOR_|CSC_|_TOKEN|_KEY|AWS_|STRIP|BUILD_') \
-        -v ${PWD}:/project \
+        -v ${PWD}/build/production/Rambox/:/project \
         -v ~/.cache/electron:/root/.cache/electron \
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder \
         /bin/bash -c "npm i && npm i electron-builder@20.10.0 && npm run build:linux"
     else
+      cd $TRAVIS_BUILD_DIR/build/production/Rambox/
       npm run build:osx
     fi
