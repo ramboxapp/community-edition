@@ -43,7 +43,8 @@ ipc.on('autoUpdater:update-available', function() {
 		,buttons: Ext.Msg.OK
 	});
 });
-ipc.on('autoUpdater:update-downloaded', function(version, files, path, sha512, releaseName, releaseNotes, releaseDate, stagingPercentage) {
+ipc.on('autoUpdater:update-downloaded', function(e, info) {
+	console.log('Update downloaded!', info);
 	Ext.cq1('app-main').addDocked({
 		 xtype: 'toolbar'
 		,dock: 'top'
@@ -52,7 +53,7 @@ ipc.on('autoUpdater:update-downloaded', function(version, files, path, sha512, r
 			'->'
 			,{
 				 xtype: 'label'
-				,html: '<b>New version ready to install ('+releaseName+')!</b> It will be installed the next time Rambox is relaunched.'
+				,html: '<b>New version ready to install ('+info.version+')!</b> It will be installed the next time Rambox is relaunched.'
 			}
 			,{
 				 xtype: 'button'
@@ -63,7 +64,7 @@ ipc.on('autoUpdater:update-downloaded', function(version, files, path, sha512, r
 				 xtype: 'button'
 				,text: 'Changelog'
 				,ui: 'decline'
-				,href: 'https://github.com/ramboxapp/community-edition/releases/tag/'+releaseName
+				,href: 'https://github.com/ramboxapp/community-edition/releases/tag/'+info.version
 			}
 			,'->'
 			,{
