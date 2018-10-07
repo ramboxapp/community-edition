@@ -89,6 +89,7 @@ artifacts:
   - path: dist/*.deb
   - path: dist/*.tar.gz
   - path: dist/*.AppImage
+  - path: dist/*.snap
   
 # after_build:
 #   - ps: >- 
