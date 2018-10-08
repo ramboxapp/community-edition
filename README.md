@@ -161,6 +161,11 @@
 <img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business" />
 <img width="80" align="left" src="./resources/icons/androidmessages.png" alt="Android Messages" title="Android Messages">
 <img width="80" align="left" src="./resources/icons/sococo.png" alt="Sococo" title="Sococo">
+<img width="80" align="left" src="./resources/icons/tawkto.png" alt="Tawk.to" title="Tawk.to">
+<img width="80" align="left" src="./resources/icons/androidmessages.png" alt="Android Messages" title="Android Messages">
+<img width="80" align="left" src="./resources/icons/protonmail.png" alt="ProtonMail Onion" title="ProtonMail Onion">
+<img width="80" align="left" src="./resources/icons/devrant.png" alt="devRant" title="devRant">
+<img width="80" align="left" src="./resources/icons/reddit.png" alt="Reddit" title="Reddit">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Features
@@ -180,6 +185,7 @@
 - [x] Custom Code Injection.
 - [x] Keyboard Shortcuts.
 - [x] Proxy.
+- [x] Switch from horizontal to vertical tab bar.
 
 ## Privacy
 
