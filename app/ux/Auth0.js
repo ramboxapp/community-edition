@@ -95,7 +95,7 @@ Ext.define('Rambox.ux.Auth0', {
 		});
 
 		Ext.Ajax.request({
-			 url: 'https://rambox.auth0.com/api/v2/users/'+Ext.decode(localStorage.getItem('profile')).user_id
+			 url: 'https://rambox.auth0.com/api/v2/users/'+Ext.decode(localStorage.getItem('profile')).sub
 			,method: 'PATCH'
 			,headers: { authorization: "Bearer " + localStorage.getItem('id_token') }
 			,jsonData: { user_metadata: { services: services, services_lastupdate: lastupdate } }
@@ -279,6 +279,7 @@ Ext.define('Rambox.ux.Auth0', {
 		localStorage.removeItem('profile');
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('refresh_token');
+		localStorage.removeItem('access_token');
 
 		// Set cookies to help Tooltip.io messages segmentation
 		Ext.util.Cookies.set('auth0', false);
