@@ -54,7 +54,7 @@
 
 ![Rambox](./resources/screenshots/mac.png)
 
-## Services available - 100
+## Services available - 103
 
 <img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp" />
 <img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger" />
@@ -162,8 +162,7 @@
 <img width="80" align="left" src="./resources/icons/androidmessages.png" alt="Android Messages" title="Android Messages">
 <img width="80" align="left" src="./resources/icons/sococo.png" alt="Sococo" title="Sococo">
 <img width="80" align="left" src="./resources/icons/tawkto.png" alt="Tawk.to" title="Tawk.to">
-<img width="80" align="left" src="./resources/icons/androidmessages.png" alt="Android Messages" title="Android Messages">
-<img width="80" align="left" src="./resources/icons/protonmail.png" alt="ProtonMail Onion" title="ProtonMail Onion">
+<img width="80" align="left" src="./resources/icons/protonmail.png" alt="ProtonMail & ProtonMail Onion" title="ProtonMail & ProtonMail Onion">
 <img width="80" align="left" src="./resources/icons/devrant.png" alt="devRant" title="devRant">
 <img width="80" align="left" src="./resources/icons/reddit.png" alt="Reddit" title="Reddit">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
