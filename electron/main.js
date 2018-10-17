@@ -15,6 +15,8 @@ const updater = require('./updater');
 var fs = require("fs");
 const path = require('path');
 
+if ( isDev ) app.getVersion = function() { return require('../package.json').version; }; // FOR DEV ONLY, BECAUSE IN DEV RETURNS ELECTRON'S VERSION
+
 // Initial Config
 const config = new Config({
 	 defaults: {
