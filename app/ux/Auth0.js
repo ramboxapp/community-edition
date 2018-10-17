@@ -142,10 +142,10 @@ Ext.define('Rambox.ux.Auth0', {
 
 		me.auth0.client.userInfo(localStorage.getItem('access_token'), function(err, profile) {
 			if ( err ) {
-				if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
+				if ( err.code === 401 ) return me.renewToken(me.restoreConfiguration);
 				return Ext.Msg.show({
 					 title: 'Error'
-					,message: 'There was an error getting the profile: ' + err.error_description
+					,message: 'There was an error getting the profile: ' + err.description
 					,icon: Ext.Msg.ERROR
 					,buttons: Ext.Msg.OK
 				});
@@ -173,10 +173,10 @@ Ext.define('Rambox.ux.Auth0', {
 
 		me.auth0.client.userInfo(localStorage.getItem('access_token'), function(err, profile) {
 			if ( err ) {
-				if ( err.error === 401 || err.error === 'Unauthorized' ) return me.renewToken(me.checkConfiguration);
+				if ( err.code === 401 ) return me.renewToken(me.checkConfiguration);
 				return Ext.Msg.show({
 					 title: 'Error'
-					,message: 'There was an error getting the profile: ' + err.error_description
+					,message: 'There was an error getting the profile: ' + err.description
 					,icon: Ext.Msg.ERROR
 					,buttons: Ext.Msg.OK
 				});
@@ -206,7 +206,7 @@ Ext.define('Rambox.ux.Auth0', {
 				});
 			} else {
 				Ext.toast({
-					 html: 'Latest backup is already applied.'
+					 html: '<i class="fa fa-check fa-3x fa-pull-left" aria-hidden="true"></i> Latest backup is already applied.'
 					,title: 'Synchronize Configuration'
 					,width: 300
 					,align: 't'
@@ -220,16 +220,18 @@ Ext.define('Rambox.ux.Auth0', {
 		var me = this;
 
 		Ext.Ajax.request({
-			 url: 'https://rambox.auth0.com/delegation'
+			 url: 'https://rambox.auth0.com/oauth/token'
 			,method: 'POST'
 			,jsonData: {
-				 grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer'
+				 grant_type: 'refresh_token'
 				,client_id: auth0Cfg.clientID
+				,client_secret: auth0Cfg.clientSecret
 				,refresh_token: localStorage.getItem('refresh_token')
 				,api_type: 'app'
 			}
 			,success: function(response) {
 				var json = Ext.decode(response.responseText);
+				localStorage.setItem('access_token', json.access_token);
 				localStorage.setItem('id_token', json.id_token);
 
 				if ( Ext.isFunction(callback) ) callback.bind(me)();

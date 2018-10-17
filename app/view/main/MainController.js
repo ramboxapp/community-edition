@@ -125,7 +125,7 @@ Ext.define('Rambox.view.main.MainController', {
 		});
 	}
 
-	,removeServiceFn: function(serviceId, total, actual) {
+	,removeServiceFn: function(serviceId, total, actual, callback) {
 		var me = this;
 		if ( !serviceId ) return false;
 
@@ -167,7 +167,10 @@ Ext.define('Rambox.view.main.MainController', {
 						// Close tab
 						tab.close();
 						// Close waiting message
-						if ( total === actual ) Ext.Msg.hide();
+						if ( total === actual ) {
+							Ext.Msg.hide();
+							if ( Ext.isFunction(callback) ) callback();
+						}
 					});
 				});
 			});
@@ -200,11 +203,10 @@ Ext.define('Rambox.view.main.MainController', {
 					const count = Ext.getStore('Services').getCount();
 					var i = 1;
 					Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
-						me.removeServiceFn(serviceId, count, i++);
+						me.removeServiceFn(serviceId, count, i++, callback || false);
 					});
-					if ( Ext.isFunction(callback) ) callback();
+					if ( count === 0 && Ext.isFunction(callback) ) callback();
 					Ext.cq1('app-main').resumeEvent('remove');
-					document.title = 'Rambox';
 				}
 			});
 		} else {
@@ -213,11 +215,10 @@ Ext.define('Rambox.view.main.MainController', {
 			const count = Ext.getStore('Services').getCount();
 			var i = 1;
 			Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
-				me.removeServiceFn(serviceId, count, i++);
+				me.removeServiceFn(serviceId, count, i++, callback || false);
 			});
-			if ( Ext.isFunction(callback) ) callback();
+			if ( count === 0 && Ext.isFunction(callback) ) callback();
 			Ext.cq1('app-main').resumeEvent('remove');
-			document.title = 'Rambox';
 		}
 	}
 
@@ -485,8 +486,13 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.cq1('app-main').getViewModel().set('username', '');
 			Ext.cq1('app-main').getViewModel().set('avatar', '');
 
-			if ( Ext.isFunction(callback) ) callback();
-			Ext.Msg.hide();
+			if ( Ext.isFunction(callback) ) {
+				callback(false, function() {
+					Ext.Msg.hide();
+				});
+			} else {
+				Ext.Msg.hide();
+			}
 		}
 
 		if ( btn ) {
