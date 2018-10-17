@@ -258,7 +258,9 @@ Ext.define('Rambox.ux.WebView',{
 			webview.setZoomLevel(me.record.get('zoomLevel'));
 
 			// Set special icon for some service (like Slack)
-			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
+			setTimeout(function() {
+				Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
+			}, 1000);
 		});
 
 		// Open links in default browser
