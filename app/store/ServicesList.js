@@ -330,7 +330,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[32]']
 			,url: '___'
 			,type: 'messaging'
-			,js_unread: 'Object.defineProperty(document,"title",{configurable:!0,set:function(a){document.getElementsByTagName("title")[0].innerHTML=a[0]==="*"?"(•) Mattermost":a},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});'
+			,js_unread: 'function checkUnread(){var a=document.title.match(/\(([^()]+)\)/);a=isNaN(parseInt(a))?"*"===document.title[0]?"\u2022":"0":parseInt(a[1]),updateBadge(a)}function updateBadge(a){1<=a||"\u2022"===a?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'dingtalk'
