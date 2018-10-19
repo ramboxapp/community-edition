@@ -690,7 +690,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
 			,url: 'https://teams.microsoft.com'
 			,type: 'messaging'
-			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.2883.87 Safari/537.36'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.2883.87 Safari/537.36 Edge/12.246'
 		},
 		{
 			 id: 'kezmo'
