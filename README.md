@@ -240,8 +240,6 @@ Want to report a bug, request a feature, contribute to or translate Rambox? We n
 ```shell
 git clone https://github.com/TheGoddessInari/rambox.git
 cd rambox
-cp env-sample.js env.js
-# update env.js with your auth0 details.
 npm install
 sencha app watch
 npm start
