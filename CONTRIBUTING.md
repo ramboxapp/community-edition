@@ -23,7 +23,7 @@ Working on your first Pull Request? You can learn how from this *free* series [H
 - [Prerequisites](#prerequisites)
 - [Forking the Project](#forking-the-project)
 - [Create a Branch](#create-a-branch)
-- [Set Up rambox](#set-up-rambox)
+- [Set Up Rambox-OS](#set-up-rambox-OS)
 
 ### Create
 
@@ -67,7 +67,7 @@ If your versions are lower than the prerequisite versions, you should update.
 1. Install [Git](https://git-scm.com/) or your favorite Git client.
 2. (Optional) [Setup an SSH Key](https://help.github.com/articles/generating-an-ssh-key/) for GitHub.
 
-#### Forking rambox
+#### Forking Rambox-OS
 
 1. Go to the top level rambox repository: <https://github.com/TheGoddessInari/rambox>
 2. Click the "Fork" Button in the upper right hand corner of the interface ([More Details Here](https://help.github.com/articles/fork-a-repo/))
@@ -76,7 +76,7 @@ If your versions are lower than the prerequisite versions, you should update.
 #### Cloning Your Fork
 
 1. Open a Terminal / Command Line / Bash Shell in your projects directory (_i.e.: `/yourprojectdirectory/`_)
-2. Clone your fork of rambox
+2. Clone your fork of Rambox-OS
 
 ```shell
 $ git clone https://github.com/yourUsername/rambox.git
@@ -84,18 +84,18 @@ $ git clone https://github.com/yourUsername/rambox.git
 
 **(make sure to replace `yourUsername` with your GitHub username)**
 
-This will download the entire rambox repo to your projects directory.
+This will download the entire Rambox-OS repo to your projects directory.
 
 #### Setup Your Upstream
 
-1. Change directory to the new rambox directory (`cd rambox`)
-2. Add a remote to the official rambox repo:
+1. Change directory to the new Rambox-OS directory (`cd rambox`)
+2. Add a remote to the official Rambox-OS repo:
 
 ```shell
 $ git remote add upstream https://github.com/TheGoddessInari/rambox.git
 ```
 
-Congratulations, you now have a local copy of the rambox repo!
+Congratulations, you now have a local copy of the Rambox-OS repo!
 
 ### Create a Branch
 
@@ -123,9 +123,9 @@ $ git push origin [name_of_your_new_branch]
 
 **If you need more help with branching, take a look at [this](https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches).**
 
-### Set Up rambox
+### Set Up Rambox-OS
 
-Once you have rambox cloned, before you start the application, you first need to install all of the dependencies:
+Once you have Rambox-OS cloned, before you start the application, you first need to install all of the dependencies:
 
 ```bash
 # Install NPM dependencies
@@ -142,7 +142,7 @@ $ npm start # in a new terminal
 
 This bit is up to you!
 
-#### How to find the code in the rambox codebase to fix/edit
+#### How to find the code in the Rambox-OS codebase to fix/edit
 
 The best way to find out any code you wish to change/add or remove is using
 the GitHub search bar at the top of the repository page. For example, you could
@@ -163,17 +163,17 @@ To see these changes you'll need to stop your `npm start` and `sencha app watch`
 
 #### What is a Pull Request?
 
-A pull request (PR) is a method of submitting proposed changes to the rambox
+A pull request (PR) is a method of submitting proposed changes to the Rambox-OS
 repo (or any repo, for that matter). You will make changes to copies of the
-files which make up rambox in a personal fork, then apply to have them
-accepted by rambox proper.
+files which make up Rambox-OS in a personal fork, then apply to have them
+accepted by Rambox-OS proper.
 
 #### Important: ALWAYS EDIT ON A BRANCH
 
 Take away only one thing from this document: Never, **EVER**
-make edits to the `staging` branch. ALWAYS make a new branch BEFORE you edit
+make edits to the `master` branch. ALWAYS make a new branch BEFORE you edit
 files. This is critical, because if your PR is not accepted, your copy of
-staging will be forever sullied and the only way to fix it is to delete your
+`master` will be forever sullied and the only way to fix it is to delete your
 fork and re-fork.
 
 ### Common Steps
@@ -181,7 +181,7 @@ fork and re-fork.
 1.  Once the edits have been committed, you will be prompted to create a pull
     request on your fork's GitHub Page.
 
-2.  By default, all pull requests should be against the rambox main repo, `staging`
+2.  By default, all pull requests should be against the Rambox-OS main repo, `master`
     branch.
     **Make sure that your Base Fork is set to TheGoddessInari/rambox when raising a Pull Request.**
 
@@ -203,33 +203,6 @@ fork and re-fork.
         close the existing issue, if the PR is merged.
 
 6.  Indicate if you have tested on a local copy of the site or not.
-
-### How We Review and Merge Pull Requests
-
-rambox has a team of volunteer Issue Moderators. These Issue Moderators routinely go through open pull requests in a process called [Quality Assurance]
-
-(https://en.wikipedia.org/wiki/Quality_assurance) (QA).
-
-1. If an Issue Moderator QA's a pull request and confirms that the new code does what it is supposed without seeming to introduce any new bugs, they will comment 
-
-"LGTM" which means "Looks good to me."
-
-2. Another Issue Moderator will QA the same pull request. Once they have also confirmed that the new code does what it is supposed to without seeming to introduce 
-
-any new bugs, they will merge the pull request.
-
-If you would like to apply to join our Issue Moderator team - which is a Core Team position - message [@BerkeleyTrue](https://gitter.im/berkeleytrue) with links 
-
-to 5 of your pull requests that have been accepted and 5 issues where you have helped someone else through commenting or QA'ing.
-
-### How We Close Stale Issues
-
-We will close any issues or pull requests that have been inactive for more than 15 days, except those that match the following criteria:
-- bugs that are confirmed
-- pull requests that are waiting on other pull requests to be merged
-- features that are a part of a GitHub project
-
-### Next Steps
 
 #### If your PR is accepted
 
