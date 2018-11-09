@@ -107,10 +107,10 @@
 		"cpy-cli": "^2.0.0",
 		"crowdin": "^1.0.0",
 		"csvjson": "^5.1.0",
-		"electron": "^2.0.11",
-		"electron-builder": "^20.28.4",
+		"electron": "^3.0.8",
+		"electron-builder": "^20.33.2",
 		"mocha": "^5.2.0",
 		"rimraf": "^2.6.2",
-		"spectron": "^3.8.0"
+		"spectron": "^5.0.0"
 	}
 }
