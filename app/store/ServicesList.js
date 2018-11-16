@@ -424,19 +424,20 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'zohoemail.png'
 			,name: 'Zoho Email'
 			,description: locale['services[45]']
-			,url: 'https://mail.zoho.com/'
+			,url: 'https://mail.zoho.___/'
 			,type: 'email'
 			,js_unread: 'zmail.aInfo[zmail.accId].mailId = "a";'
-			,note: 'To enable desktop notifications, you have to go to Settings inside Zoho Email.'
+			,note: 'To enable desktop notifications, you have to go to Settings inside Zoho Email. Add .com or the other relevant fieldto the URL field depending on your location.'
 		},
 		{
 			 id: 'zohochat'
 			,logo: 'zohochat.png'
 			,name: 'Zoho Chat'
 			,description: locale['services[46]']
-			,url: 'https://chat.zoho.com/'
+			,url: 'https://chat.zoho.___/'
 			,type: 'messaging'
 			,js_unread: `NotifyByTitle.show=function(){},NotifyByTitle.start=function(){},NotifyByTitle.stop=function(){};let checkUnread=()=>{let t=0;$(".msgnotify").each(function(){let i=parseInt($(this).html());t+=isNaN(i)?0:i}),rambox.updateBadge(t)};setInterval(checkUnread,3e3);`
+			,note: 'Add .com the other relevant TLD into the URL field depending on your location.'
 		},
 		{
 			 id: 'aol'
