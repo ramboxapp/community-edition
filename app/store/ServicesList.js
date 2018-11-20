@@ -56,6 +56,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,note: 'To enable desktop notifications, you have to go to Options inside Messenger.'
+			,js_unread: 'function checkUnread(){var e=document.querySelectorAll("._5fx8:not(._569x),._1ht3:not(._569x)").length,t=document.querySelector("._5nxf");t&&(e+=parseInt(t.innerHTML,10)),updateBadge(e)}function updateBadge(e){document.title=e>=1?"("+e+") "+originalTitle:originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'skype'
