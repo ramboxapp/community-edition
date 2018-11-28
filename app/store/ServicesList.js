@@ -86,7 +86,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[6]']
 			,url: 'https://___.hipchat.com/chat'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("hc-badge");let t=0;for(let i in e)t+=parseInt(i.innerHTML.trim());rambox.updateBadge(t)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("hc-badge");let t=0;for(let i of e)t+=parseInt(i.innerHTML.trim());rambox.updateBadge(t)};setInterval(checkUnread,3e3);`
 			,custom_domain: true
 		},
 		{
@@ -338,7 +338,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[34]']
 			,url: 'https://app.mysms.com/'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("unread");let t=0;for(let i in e)t+=parseInt(e[i].firstChild.innerHTML.trim());rambox.updateBadge(t)};"https://app.mysms.com/#login"===document.baseURI&&(document.getElementsByClassName("innerPanel")[0].rows[0].style.display="none",document.getElementsByClassName("innerPanel")[0].rows[1].cells[0].firstElementChild.style.display="none",document.getElementsByClassName("msisdnLoginPanel")[0].style.display="inline"),setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("unread");let t=0;for(let i of e)t+=parseInt(i.firstChild.innerHTML.trim());rambox.updateBadge(t)};"https://app.mysms.com/#login"===document.baseURI&&(document.getElementsByClassName("innerPanel")[0].rows[0].style.display="none",document.getElementsByClassName("innerPanel")[0].rows[1].cells[0].firstElementChild.style.display="none",document.getElementsByClassName("msisdnLoginPanel")[0].style.display="inline"),setInterval(checkUnread,3e3);`
 			,note: 'You have to use this service by signing in with your mobile number.'
 		},
 		{
@@ -407,7 +407,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[43]']
 			,url: '___'
 			,type: 'email'
-			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("count");let t=0;for(let i in e)t+=parseInt(i.innerHTML.match(/[0-9]+/g));rambox.updateBadge(t)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("count");let t=0;for(let i of e)t+=parseInt(i.innerHTML.match(/[0-9]+/g));rambox.updateBadge(t)};setInterval(checkUnread,3e3);`
 			,note: 'To enable desktop notifications and automatic mail check, you have to go to Options inside Horde.'
 		},
 		{
