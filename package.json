@@ -104,7 +104,7 @@
 			"runAfterFinish": true
 		},
 		"linux": {
-			"category": "Office",
+			"category": "Network",
 			"desktop": {
 				"Terminal": "false",
 				"Type": "Application",
