@@ -330,7 +330,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[32]']
 			,url: '___'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var a=document.title.match(/\(([^()]+)\)/);a=isNaN(parseInt(a))?"*"===document.title[0]?"\u2022":"0":parseInt(a[1]),updateBadge(a)}function updateBadge(a){1<=a||"\u2022"===a?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){const selectBadges="#sidebarChannelContainer .unread-title.has-badge > span.badge";const pmUnread=Array.from(document.querySelectorAll(selectBadges)).reduce((total, el)=>total+=parseInt(el.innerText),0);const channelsUnread=document.querySelectorAll("#sidebarChannelContainer .unread-title:not(.has-badge)").length;const teamsUnread=document.querySelectorAll(".team-sidebar .team-container.unread").length;updateBadge(pmUnread+channelsUnread+teamsUnread);}function updateBadge(count){if(count&&count>=1)rambox.setUnreadCount(count);else rambox.clearUnreadCount();}setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'dingtalk'
