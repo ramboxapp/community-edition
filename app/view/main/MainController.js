@@ -313,6 +313,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 		btn.setText(locale['app.main[16]']+': ' + ( btn.pressed ? locale['app.window[20]'] : locale['app.window[21]'] ));
 
+		var btn_icon = document.getElementById('disturbBtn-btnIconEl');
+		btn_icon.innerHTML = btn.pressed ? "" : "";
+
 		// If this method is called from Lock method, prevent showing toast
 		if ( !e ) return;
 		Ext.toast({
