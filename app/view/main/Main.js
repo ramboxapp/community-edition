@@ -236,7 +236,7 @@ Ext.define('Rambox.view.main.Main', {
 				,overflowHandler: 'menu'
 				,items: [
 					{
-						 glyph: 'xf1f7@FontAwesome'
+						 glyph: JSON.parse(localStorage.getItem('dontDisturb')) ? 'xf1f7@FontAwesome' : 'xf0f3@FontAwesome'
 						,text: locale['app.main[16]']+': '+(JSON.parse(localStorage.getItem('dontDisturb')) ? locale['app.window[20]'] : locale['app.window[21]'])
 						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+': F1</b>'
 						,enableToggle: true
