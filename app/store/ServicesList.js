@@ -29,6 +29,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.whatsapp.com/'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){const elements = document.querySelectorAll(\'.CxUIE, .unread\');let count = 0;for (let i = 0; i < elements.length; i++) {if (elements[i].querySelectorAll(\'*[data-icon="muted"]\').length === 0) {count++;}}updateBadge(count);}function updateBadge(count){if(count && count>=1){rambox.setUnreadCount(count);}else{rambox.clearUnreadCount();}}setInterval(checkUnread, 1e3);'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'
 		},
 		{
 			 id: 'slack'
