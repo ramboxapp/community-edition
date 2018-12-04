@@ -39,6 +39,7 @@ const config = new Config({
 		,proxyPassword: ''
 		,locale: 'en'
 		,enable_hidpi_support: false
+		,user_agent: ''
 		,default_service: 'ramboxTab'
 		,sendStatistics: false
 
@@ -96,6 +97,9 @@ function createWindow () {
 		}
 	});
 
+	// Check if user has defined a custom User-Agent
+	if ( config.get('user_agent').length > 0 ) mainWindow.webContents.setUserAgent( config.get('user_agent') );
+
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
 	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) {
 		// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools()
@@ -135,6 +139,7 @@ function createWindow () {
 			case 'new-window':
 				e.preventDefault();
 				const win = new BrowserWindow(options);
+				if ( config.get('user_agent').length > 0 ) win.webContents.setUserAgent( config.get('user_agent') );
 				win.once('ready-to-show', () => win.show());
 				win.loadURL(url);
 				e.newGuest = win;
@@ -346,6 +351,8 @@ ipcMain.on('image:download', function(event, url, partition) {
 		}
 	});
 
+	if ( config.get('user_agent').length > 0 ) tmpWindow.webContents.setUserAgent( config.get('user_agent') );
+
 	tmpWindow.webContents.session.once('will-download', (event, downloadItem) => {
 		imageCache[url] = file = {
 			 path: tmp.tmpNameSync() + '.' + mime.extension(downloadItem.getMimeType())
@@ -378,6 +385,8 @@ ipcMain.on('image:popup', function(event, url, partition) {
 			partition: partition
 		}
 	});
+
+	if ( config.get('user_agent').length > 0 ) tmpWindow.webContents.setUserAgent( config.get('user_agent') );
 
 	tmpWindow.maximize();
 

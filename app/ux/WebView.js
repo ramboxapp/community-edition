@@ -176,7 +176,7 @@ Ext.define('Rambox.ux.WebView',{
 					,autosize: 'on'
 					,webpreferences: '' //,nativeWindowOpen=yes
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
-					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+					,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 					,preload: './resources/js/rambox-service-api.js'
 				}
 			}];
@@ -302,7 +302,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
 						}).show();
@@ -330,7 +330,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 								}
 							}
 						}).show();
@@ -360,7 +360,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
 									,preload: './resources/js/rambox-modal-api.js'
 								}
 							}
