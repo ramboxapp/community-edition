@@ -102,13 +102,13 @@
 		}
 	},
 	"devDependencies": {
-		"asar": "^0.14.3",
-		"chai": "^4.1.2",
+		"asar": "^0.14.5",
+		"chai": "^4.2.0",
 		"cpy-cli": "^2.0.0",
 		"crowdin": "^1.0.0",
 		"csvjson": "^5.1.0",
-		"electron": "^3.0.8",
-		"electron-builder": "^20.33.2",
+		"electron": "^3.0.10",
+		"electron-builder": "^20.38.0",
 		"mocha": "^5.2.0",
 		"rimraf": "^2.6.2",
 		"spectron": "^5.0.0"
