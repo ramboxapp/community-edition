@@ -241,7 +241,6 @@ Want to report a bug, request a feature, contribute to or translate Rambox? We n
 git clone https://github.com/TheGoddessInari/rambox.git
 cd rambox
 npm install
-sencha app watch
 npm start
 ```
 

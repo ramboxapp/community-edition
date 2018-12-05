@@ -10,12 +10,6 @@ Help us to maximize the effort we can spend fixing issues and adding new feature
 
 [template]: https://github.com/TheGoddessInari/rambox/blob/master/.github/ISSUE_TEMPLATE.md
 
-## Share your Custom Services
-
-If you consider there are other users that can use your Custom Service, we have a repo for this: [Rambox Services Contrib][rambox-services-contrib].
-
-[rambox-services-contrib]: https://github.com/TheGoddessInari/rambox-services-contrib
-
 ## Ask for help
 
 We have a great community in [Gitter][gitter] that can help you with any doubt or problem.

@@ -133,8 +133,6 @@ npm install
 ```
 
 ```bash
-# npm run repack
-$ sencha app watch
 $ npm start # in a new terminal
 ```
 
@@ -157,7 +155,7 @@ The services are stored inside the file `./app/store/ServicesList.js`.  Add your
 
 The logo it's referencing is located in `./resources/icons/`.
 
-To see these changes you'll need to stop your `npm start` and `sencha app watch`, and then rerun those.
+To see these changes you'll need to stop your `npm start` , and then rerun.
 
 ### Creating a Pull Request
 
