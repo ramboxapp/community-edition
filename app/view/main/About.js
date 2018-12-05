@@ -9,6 +9,11 @@ Ext.define('Rambox.view.main.About', {
 	,width: 300
 	,height: 450
 	,bodyPadding: 10
+	,initComponent: function() {
+		var me = this;
+		me.callParent(arguments);
+		me.data.buildversion = require('fs').readFileSync( __dirname + '/BUILDVERSION', 'utf8');
+	}
 	,data: {
 		 version: require('electron').remote.app.getVersion()
 		,platform: process.platform
@@ -25,6 +30,7 @@ Ext.define('Rambox.view.main.About', {
 		,'<div><b>Electron:</b> {electron}</div>'
 		,'<div><b>Chromium:</b> {chromium}</div>'
 		,'<div><b>Node:</b> {node}</div>'
+		,'<div><b>BuildVersion:</b> {buildversion}</div>'
 		,'<br />'
 		,'<div style="text-align:center;"><a href="https://github.com/TheGoddessInari/rambox" target="_blank">GitHub</a></div>'
 		,'<br />'

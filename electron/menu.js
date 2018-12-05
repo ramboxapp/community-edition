@@ -40,6 +40,7 @@ module.exports = function(config) {
 		{
 			label: '&'+locale['menu.help[1]'],
 			click() {
+				const buildversion = require('fs').readFileSync( __dirname + '/../BUILDVERSION', 'utf8');
 				const body = `
 	<!-- Please describe here your issue and steps to reproduce it. -->
 
@@ -49,7 +50,8 @@ module.exports = function(config) {
 	-
 	> ${app.getName()} ${app.getVersion()}
 	> Electron ${process.versions.electron}
-	> ${process.platform} ${process.arch} ${os.release()}`;
+	> ${process.platform} ${process.arch} ${os.release()}
+	> ${buildversion}`;
 
 				shell.openExternal(`https://github.com/TheGoddessInari/rambox/issues/new?body=${encodeURIComponent(body)}`);
 			}

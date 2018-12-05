@@ -24,4 +24,6 @@
 
 > Arch: x64 or ia32
 
+> BuildVersion:
+
 > Does this happen upstream: yes, no, unknown, or N/A

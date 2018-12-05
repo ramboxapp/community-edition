@@ -3,14 +3,15 @@
 	"scripts": {
 		"start": "npm run compile && electron-builder install-app-deps && electron build/production/Rambox",
 		"start:debug": "npm run compile && electron build/production/Rambox --enable-logging",
-		"test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
-		"clean": "rimraf ./build/production",
-		"compile": "sencha app build && cpy app/package.json app/package-lock.json build/production/Rambox/",
+		"test": "mocha test/tests/**/*.spec.js",
+		"buildversion": "git show --pretty=\"%h %d %cD\" -s > build/production/Rambox/BUILDVERSION || node -p -e \"require('./build/production/Rambox/package.json').version\" > build/production/Rambox/BUILDVERSION",
+		"clean": "shx rm -rf ./build/production",
+		"compile": "sencha app build && cpy app/package.json app/package-lock.json build/production/Rambox/ && npm run buildversion",
 		"recompile": "npm run distclean && npm run compile",
-		"distclean": "rimraf ./dist",
-		"distclean:win": "rimraf ./dist/win-{ia32-,}unpacked",
-		"distclean:linux": "rimraf ./dist/linux-{ia32-,}unpacked",
-		"distclean:osx": "rimraf ./dist/macos-unpacked",
+		"distclean": "shx rm -rf ./dist",
+		"distclean:win": "shx rm -rf ./dist/win-{ia32-,}unpacked",
+		"distclean:linux": "shx rm -rf ./dist/linux-{ia32-,}unpacked",
+		"distclean:osx": "shx rm -rf ./dist/macos-unpacked",
 		"pack": "electron-builder --dir",
 		"pack:osx": "electron-builder --macos --dir",
 		"pack:win": "electron-builder --win --ia32 --x64 --dir",
@@ -110,7 +111,7 @@
 		"electron": "^3.0.10",
 		"electron-builder": "^20.38.0",
 		"mocha": "^5.2.0",
-		"rimraf": "^2.6.2",
+		"shx": "^0.3.2",
 		"spectron": "^5.0.0"
 	}
 }
