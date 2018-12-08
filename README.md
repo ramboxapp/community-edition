@@ -23,7 +23,7 @@
 </p>
 <h5 align="center">Latest unstable build artifacts are available in Windows 
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017&branch=master" target="_blank">(Win64</a>), Mac (DMG) and Linux 
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18-x86_64.AppImage?job=Image%3A%20Ubuntu&branch=master" target="_blank">(AppImage64</a> /
+    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS 0.5.18.AppImage?job=Image%3A%20Ubuntu&branch=master" target="_blank">(AppImage64</a> /
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.x86_64.rpm?job=Image%3A%20Ubuntu&branch=master" target="_blank">RPM64</a> /
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox_0.5.18_amd64.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB64</a> /
     <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball64</a>) packaging flavors.</h5>
