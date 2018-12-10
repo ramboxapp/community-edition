@@ -29,7 +29,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.whatsapp.com/'
 			,type: 'messaging'
 			,js_unread: `let checkUnread=()=>{const elements=document.querySelectorAll(".CxUIE, .unread");let count=0;for(let i of elements)0===i.querySelectorAll('*[data-icon="muted"]').length&&count++;rambox.updateBadge(count)};setInterval(checkUnread,1e3);`
-			,useragent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
+			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
 			,slowed_timers: false
 		},
 		{
