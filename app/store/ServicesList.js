@@ -939,6 +939,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Sococo is an online workplace that adds the magic of co-location back into the day to day life of distributed Agile teams.'
 			,url: 'https://app.sococo.com/a/login'
 			,type: 'messaging'
+		},
+		{
+			id: 'naver'
+		       ,logo: 'navermail.png'
+		       ,name: 'Naver Mail'
+		       ,description: 'Naver mail is a web e-mail service provided by Naver, a portal site in South Korea.'
+		       ,url: 'https://mail.naver.com'
+		       ,type: 'email'
+		       ,js_unread: 'function checkUnread(){var e=document.getElementById("0_fol");updateBadge(parseInt(e.innerText.replace(/[^0-9]/g,"")))}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		}
 	]
 });
