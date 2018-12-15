@@ -939,6 +939,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Sococo is an online workplace that adds the magic of co-location back into the day to day life of distributed Agile teams.'
 			,url: 'https://app.sococo.com/a/login'
 			,type: 'messaging'
-		}
+		},
+		{
+			id: 'daum'
+		   ,logo: 'daum.png'
+		   ,name: 'Daum'
+		   ,description: 'Daum is South Korea\'s first Web mail service .'
+		   ,url: 'https://mail.daum.net'
+		   ,type: 'email'
+	   }
 	]
 });
