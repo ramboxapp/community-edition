@@ -939,6 +939,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Sococo is an online workplace that adds the magic of co-location back into the day to day life of distributed Agile teams.'
 			,url: 'https://app.sococo.com/a/login'
 			,type: 'messaging'
-		}
+		},
+		{
+			id: 'nate'
+		   ,logo: 'nateMail.png'
+		   ,name: 'Nate'
+		   ,description: 'Nate mail is a web mail system provided by South Korea'
+		   ,url: 'http://home.mail.nate.com'
+		   ,type: 'email'
+	   }
 	]
 });
