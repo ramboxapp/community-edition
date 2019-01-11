@@ -12,7 +12,7 @@ exports.create = function(win, config) {
 
 	const locale = require('../resources/languages/'+config.get('locale'));
 	const icon = process.platform === 'linux' || process.platform === 'darwin' ? 'IconTray.png' : 'Icon.ico';
-	const iconPath = path.join(__dirname, `../resources/${icon}`);
+	const iconPath = path.join(app.getAppPath(), `/resources/${icon}`);
 
 	const contextMenu = electron.Menu.buildFromTemplate([
 		{
@@ -73,6 +73,6 @@ exports.setBadge = function(messageCount, showUnreadTray) {
 		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
 	}
 
-	const iconPath = path.join(__dirname, `../resources/${icon}`);
+	const iconPath = path.join(app.getAppPath(), `/resources/${icon}`);
 	appIcon.setImage(iconPath);
 };
