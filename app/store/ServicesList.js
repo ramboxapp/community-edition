@@ -182,7 +182,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: 'function getAlertCount(e){for(var t=0,a=0;a<e.length;a++){var r=e[a];if(r&&r.childNodes&&0<r.childNodes.length){var d=parseInt(r.childNodes[0].nodeValue,10);t+=d.isNaN?1:d}else t++}return t}function checkUnread(){var e=0;dms=document.querySelectorAll("[class*=dms]")[0].querySelectorAll("[class*=wrapper][class*=badge]"),updateBadge(0,e+=getAlertCount(dms))}function updateBadge(e,t){rambox.setUnreadCount(t)}setInterval(checkUnread,3e3);'
+			,js_unread: 'window.originalopen=window.open,window.open=function(){return arguments.length>0?window.originalopen.apply(this,arguments):{set location(n){window.originalopen(n)}}};function getAlertCount(e){for(var t=0,a=0;a<e.length;a++){var r=e[a];if(r&&r.childNodes&&0<r.childNodes.length){var d=parseInt(r.childNodes[0].nodeValue,10);t+=d.isNaN?1:d}else t++}return t}function checkUnread(){var e=0;dms=document.querySelectorAll("[class*=dms]")[0].querySelectorAll("[class*=wrapper][class*=badge]"),updateBadge(0,e+=getAlertCount(dms))}function updateBadge(e,t){rambox.setUnreadCount(t)}setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord. Will count only unread DMs.'
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 		},
