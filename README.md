@@ -185,6 +185,7 @@
 - [x] No user tracking.
 - [x] Fully open source, won't change
 - [x] Highly responsive to issues, PRs, and help.
+- [x] Offline backup and restore.
 
 ## Privacy
 
@@ -192,7 +193,9 @@ No personal information will be saved or tracked.
 
 Sessions will persist using the [partition:persist](https://electronjs.org/docs/api/webview-tag#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
 
-Sync feature use [Auth0](https://auth0.com/) for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)
+~~Sync feature use [Auth0](https://auth0.com/) for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)~~
+
+Auth0 is disabled pending name change and rewrite of the functionality to best preserve your security and functionality.
 
 ## Donations
 Keep in mind, I'm not pushing this. I'll do my best regardless.
