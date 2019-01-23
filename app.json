@@ -272,7 +272,8 @@
             "index.html",
             "app.js",
             "resources/Rambox-all.css",
-            "resources/Icon.png"
+            "resources/Icon.png",
+            "resources/Icon.ico"
         ],
         /**
          * List of items in the NETWORK section
