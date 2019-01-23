@@ -27,7 +27,7 @@ exports.create = function(win, config) {
 		{
 			label: locale['tray[1]'],
 			click() {
-				app.exit();
+				app.quit();
 			}
 		}
 	]);

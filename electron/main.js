@@ -187,7 +187,7 @@ function createWindow () {
 							mainWindow.minimize();
 							break;
 						case 'quit':
-							app.exit();
+							app.quit();
 							break;
 					}
 					break;
@@ -309,7 +309,7 @@ ipcMain.on('reloadApp', function(event) {
 // Relaunch app
 ipcMain.on('relaunchApp', function(event) {
 	app.relaunch();
-	app.exit(0);
+	app.quit(0);
 });
 
 const haveLock = app.requestSingleInstanceLock();
@@ -325,7 +325,7 @@ app.on('second-instance', (commandLine, workingDirectory) => {
 });
 
 if (!haveLock) {
-	app.exit();
+	app.quit();
 }
 
 // Code for downloading images as temporal files
@@ -450,7 +450,7 @@ app.on('window-all-closed', function () {
 	// On OS X it is common for applications and their menu bar
 	// to stay active until the user quits explicitly with Cmd + Q
 	if (process.platform !== 'darwin') {
-		app.exit();
+		app.quit();
 	}
 });
 

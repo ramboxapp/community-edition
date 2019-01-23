@@ -323,7 +323,7 @@ module.exports = function(config) {
 				{
 					label: locale['tray[1]'],
 					click() {
-						app.exit();
+						app.quit();
 					}
 				}
 			]
@@ -345,7 +345,7 @@ module.exports = function(config) {
 					label: locale['menu.file[1]'],
 					accelerator: 'CmdOrCtrl+Shift+Q',
 					click() {
-						app.exit();
+						app.quit();
 					}
 				}
 			]
