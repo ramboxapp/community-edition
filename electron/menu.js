@@ -14,7 +14,7 @@ function sendAction(action) {
 }
 
 module.exports = function(config) {
-	const locale = require('../resources/languages/'+config.get('locale'));
+	const locale = require(app.getAppPath()+'/resources/languages/'+config.get('locale'));
 	const helpSubmenu = [
 		{
 			label: `&Facebook`,
