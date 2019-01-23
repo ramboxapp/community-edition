@@ -157,13 +157,77 @@ module.exports = function(config) {
 					type: 'separator'
 				},
 				{
-					role: 'zoomin'
+					role: 'zoomin',
+					click() {
+						sendAction('tabZoomIn');
+					}
 				},
 				{
-					role: 'zoomout'
+					role: 'zoomout',
+					click() {
+						sendAction('tabZoomOut');
+					}
 				},
 				{
-					role: 'resetzoom'
+					role: 'resetzoom',
+					click() {
+						sendAction("tabZoomReset");
+					}
+				},
+				{
+					label: `&Commands`,
+					visible: false,
+					submenu: [
+						{
+							label: `Next Tab`,
+							accelerator: 'CmdOrCtrl+Tab',
+							click() {
+								sendAction('tabFocusNext');
+							}
+						},
+						{
+							label: `Next Tab`,
+							accelerator: 'CmdOrCtrl+PageDown',
+							click() {
+								sendAction('tabFocusNext');
+							}
+						},
+						{
+							label: `Previous Tab`,
+							accelerator: 'CmdOrCtrl+Shift+Tab',
+							click() {
+								sendAction('tabFocusPrevious');
+							}
+						},
+						{
+							label: `Previous Tab`,
+							accelerator: 'CmdOrCtrl+PageUp',
+							click() {
+								sendAction('tabFocusPrevious');
+							}
+						},
+						{
+							label: `Do Not Disturb`,
+							accelerator: 'Alt+F1',
+							click() {
+								sendAction('toggleDoNotDisturb');
+							}
+						},
+						{
+							label: `Lock Rambox`,
+							accelerator: 'Alt+F2',
+							click() {
+								sendAction('lockWindow');
+							}
+						},
+						{
+							label: `Go Home`,
+							accelerator: 'CmdOrCtrl+,',
+							click() {
+								sendAction('goHome');
+							}
+						}
+					]
 				}
 			]
 		},
@@ -279,6 +343,7 @@ module.exports = function(config) {
 				},
 				{
 					label: locale['menu.file[1]'],
+					accelerator: 'CmdOrCtrl+Shift+Q',
 					click() {
 						app.exit();
 					}

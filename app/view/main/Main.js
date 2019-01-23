@@ -238,7 +238,7 @@ Ext.define('Rambox.view.main.Main', {
 					{
 						 glyph: 'xf1f7@FontAwesome'
 						,text: locale['app.main[16]']+': '+(JSON.parse(localStorage.getItem('dontDisturb')) ? locale['app.window[20]'] : locale['app.window[21]'])
-						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+': F1</b>'
+						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+': Alt+F1</b>'
 						,enableToggle: true
 						,handler: 'dontDisturb'
 						,reference: 'disturbBtn'
@@ -248,7 +248,7 @@ Ext.define('Rambox.view.main.Main', {
 					,{
 						 glyph: 'xf023@FontAwesome'
 						,text: locale['app.main[19]']
-						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+': F2</b>'
+						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+': Alt+F2</b>'
 						,handler: 'lockRambox'
 						,id: 'lockRamboxBtn'
 					}

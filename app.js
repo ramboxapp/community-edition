@@ -128,6 +128,65 @@ ipc.on('reloadCurrentService', function(e) {
 	if ( tab.id !== 'ramboxTab' ) tab.reloadService();
 });
 
+ipc.on('tabFocusNext', function() {
+	var tabPanel = Ext.cq1('app-main');
+	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+	var i = activeIndex + 1;
+
+	// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
+	if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
+
+	// skip spacer
+	while (tabPanel.items.items[i].id === 'tbfill') i++;
+
+	tabPanel.setActiveTab(i);
+});
+
+ipc.on('tabFocusPrevious', function() {
+	var tabPanel = Ext.cq1('app-main');
+	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+	var i = activeIndex - 1;
+	if ( i < 0 ) i = tabPanel.items.items.length - 1;
+	while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
+	tabPanel.setActiveTab( i );
+});
+
+ipc.on('tabZoomIn', function(key) {
+	var tabPanel = Ext.cq1('app-main');
+	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+		tabPanel.getActiveTab().zoomIn();
+});
+
+ipc.on('tabZoomOut', function() {
+	var tabPanel = Ext.cq1('app-main');
+	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+		tabPanel.getActiveTab().zoomOut();
+});
+
+ipc.on('tabZoomReset', function() {
+	var tabPanel = Ext.cq1('app-main');
+	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+		tabPanel.getActiveTab().resetZoom();
+});
+
+ipc.on('toggleDoNotDisturb', function(key) {
+	var btn = Ext.getCmp('disturbBtn');
+	btn.toggle();
+	Ext.cq1('app-main').getController().dontDisturb(btn, true);
+});
+
+ipc.on('lockWindow', function(key) {
+	var btn = Ext.getCmp('lockRamboxBtn');
+	Ext.cq1('app-main').getController().lockRambox(btn);
+});
+
+ipc.on('goHome', function() {
+	Ext.cq1('app-main').setActiveTab(0);
+});
+
 // Focus the current service when Alt + Tab or click in webviews textfields
 window.addEventListener('focus', function() {
 	if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().down('component').el.dom.focus();
