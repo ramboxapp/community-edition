@@ -375,7 +375,7 @@ ipcMain.on('image:popup', function(event, url, partition) {
 		 width: mainWindow.getBounds().width
 		,height: mainWindow.getBounds().height
 		,parent: mainWindow
-		,icon: __dirname + '/../resources/Icon.ico'
+		,icon: app.getAppPath() + '/resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico')
 		,backgroundColor: '#FFF'
 		,autoHideMenuBar: true
 		,skipTaskbar: true
