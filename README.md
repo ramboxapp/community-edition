@@ -164,8 +164,8 @@
 
 ## Features
 
-- [] Multi-language.
-- [] Sync your configuration between multiple computers.
+- [ ] Multi-language.
+- [ ] Sync your configuration between multiple computers.
 - [x] Master Password.
 - [x] Lock Rambox-OS if you will be away for a period of time.
 - [x] Don't disturb mode.
