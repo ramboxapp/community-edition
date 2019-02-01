@@ -463,7 +463,7 @@ Ext.define('Rambox.ux.WebView',{
 				let slowed_timers = Ext.getStore('ServicesList').getById(me.record.get('type')).get('slowed_timers');
 				if (slowed_timers && me.record.get('slowed_timers'))
 				{
-					const slowed_timers_code = `window.setTimeout=window.setTimeout;const __setTimeout=window.setTimeout;window.setTimeout=function(func,time){let a=time;return a<100&&(a=100),__setTimeout(func,a)};`;
+					const slowed_timers_code = `window.setTimeout=window.setTimeout;const __setTimeout=window.setTimeout;window.setTimeout=function(func,time, ...func_args){let a=time;return a<100&&(a=100),__setTimeout(func,a, ...func_args)};`;
 					js_inject += '{' + slowed_timers_code + '}';
 				}
 			}
