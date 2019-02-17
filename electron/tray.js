@@ -10,7 +10,7 @@ var appIcon = null;
 exports.create = function(win, config) {
 	if (process.platform === 'darwin' || appIcon || config.get('window_display_behavior') === 'show_taskbar' ) return;
 
-	const locale = require(app.getAppPath()+'/resources/languages/'+config.get('locale'));
+	const locale = require(path.join(app.getAppPath(), '/resources/languages/'+config.get('locale')));
 	const icon = process.platform === 'linux' || process.platform === 'darwin' ? 'IconTray.png' : 'Icon.ico';
 	const iconPath = path.join(app.getAppPath(), `/resources/${icon}`);
 

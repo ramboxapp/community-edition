@@ -1,6 +1,7 @@
 'use strict';
 const os = require('os');
 const {app, BrowserWindow, Menu, shell}  = require('electron');
+const path = require('path');
 const appName = app.getName();
 
 function sendAction(action) {
@@ -14,7 +15,7 @@ function sendAction(action) {
 }
 
 module.exports = function(config) {
-	const locale = require(app.getAppPath()+'/resources/languages/'+config.get('locale'));
+	const locale = require(path.join(app.getAppPath(), '/resources/languages/'+config.get('locale')));
 	const helpSubmenu = [
 		{
 			label: `&Facebook`,
