@@ -207,6 +207,20 @@ module.exports = function(config) {
 							}
 						},
 						{
+							label: `Next Tab`,
+							accelerator: 'Alt+Right',
+							click() {
+								sendAction('tabFocusNext');
+							}
+						},
+						{
+							label: `Previous Tab`,
+							accelerator: 'Alt+Left',
+							click() {
+								sendAction('tabFocusPrevious');
+							}
+						},
+						{
 							label: `Do Not Disturb`,
 							accelerator: 'Alt+F1',
 							click() {
