@@ -123,7 +123,13 @@ Ext.define('Rambox.view.add.AddController', {
 				var tbfill = Ext.cq1('app-main').getTabBar().down('tbfill');
 				Ext.cq1('app-main').insert(Ext.cq1('app-main').getTabBar().items.indexOf(tbfill), tabData).show();
 			} else {
-				Ext.cq1('app-main').add(tabData).show();
+				var c = 0
+				Ext.each(Ext.cq1('app-main').items.items, function(t, i) {
+					if ( t.isExternal ) {
+						c++
+					}
+				});
+				Ext.cq1('app-main').insert(Ext.cq1('app-main').items.length - c,tabData).show();
 			}
 		}
 
