@@ -171,7 +171,7 @@ Ext.define('Rambox.ux.WebView',{
 					 tag: 'webview'
 					,src: me.record.get('url')
 					,style: 'width:100%;height:100%;visibility:visible;'
-					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).sub : '')
+					,partition: me.isExternal ? me.originalPartition : 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).sub : '')
 					,plugins: 'true'
 					,allowtransparency: 'on'
 					,autosize: 'on'
@@ -414,10 +414,12 @@ Ext.define('Rambox.ux.WebView',{
 				var cfg = {
 					xtype: 'webview'
 					,closable: true // usefull, allow us to close the tab, with the DEL key
-				   	,record: map
+					,record: map
+					,originalPartition: me.getWebView().partition   
 					,isExternal: true // used for the condition
 					,closeText: locale['app.window[40]']
 			   };
+
 				Ext.cq1('app-main').add(cfg);
 			   	// get the last tab and activate it
 				var last = Ext.cq1('app-main').items.length -1;
