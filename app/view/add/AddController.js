@@ -39,6 +39,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
 				,trust: formValues.trust
+				,allow_external_tab: formValues.allowExternalTab
 				,js_unread: formValues.js_unread
 			});
 
@@ -94,6 +95,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
 				,trust: formValues.trust
+				,allow_external_tab: formValues.allowExternalTab
 				,js_unread: formValues.js_unread
 			});
 			service.save();
