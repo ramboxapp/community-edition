@@ -61,7 +61,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var align = 'left';
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
-			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
+			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') && !t.isExternal ) {
 				var rec = store.getById(t.record.get('id'));
 				if ( align === 'right' ) i--;
 				rec.set('align', align);
