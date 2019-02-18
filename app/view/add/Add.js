@@ -195,6 +195,14 @@ Ext.define('Rambox.view.add.Add',{
 										,uncheckedValue: false
 										,inputValue: true
 									}
+									,{
+										xtype: 'checkbox'
+									   ,boxLabel: locale['app.window[39]']
+									   ,name: 'allowExternalTab'
+									   ,checked: me.edit ? me.record.get('allow_external_tab') : true
+									   ,uncheckedValue: false
+									   ,inputValue: true
+								   }
 								]
 							}
 						]
