@@ -80,7 +80,7 @@ function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
 		 title: 'Rambox-OS'
-		,icon: path.join(app.getAppPath(), '/resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico'))
+		,icon: nativeImage.createFromPath(path.join(app.getAppPath(), '/resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico')))
 		,backgroundColor: '#FFF'
 		,x: config.get('x')
 		,y: config.get('y')
@@ -375,7 +375,7 @@ ipcMain.on('image:popup', function(event, url, partition) {
 		 width: mainWindow.getBounds().width
 		,height: mainWindow.getBounds().height
 		,parent: mainWindow
-		,icon: path.join(app.getAppPath(), '/resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico'))
+		,icon: nativeImage.createFromPath(path.join(app.getAppPath(), '/resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico')))
 		,backgroundColor: '#FFF'
 		,autoHideMenuBar: true
 		,skipTaskbar: true

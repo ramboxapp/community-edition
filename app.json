@@ -273,7 +273,10 @@
             "app.js",
             "resources/Rambox-all.css",
             "resources/Icon.png",
-            "resources/Icon.ico"
+            "resources/Icon.ico",
+            "resources/IconTray.png",
+            "resources/IconTrayUnread.png",
+            "resources/IconTrayUnread.ico"
         ],
         /**
          * List of items in the NETWORK section

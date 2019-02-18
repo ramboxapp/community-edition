@@ -1,20 +1,18 @@
 const path = require('path');
-const electron = require('electron');
-const app = electron.app;
+const {app, electron, nativeImage, Menu, MenuItem, Tray} = require('electron');
 // Module to create tray icon
-const Tray = electron.Tray;
 
-const MenuItem = electron.MenuItem;
 var appIcon = null;
 
 exports.create = function(win, config) {
 	if (process.platform === 'darwin' || appIcon || config.get('window_display_behavior') === 'show_taskbar' ) return;
 
 	const locale = require(path.join(app.getAppPath(), '/resources/languages/'+config.get('locale')));
-	const icon = process.platform === 'linux' || process.platform === 'darwin' ? 'IconTray.png' : 'Icon.ico';
-	const iconPath = path.join(app.getAppPath(), `/resources/${icon}`);
+	const iconName = process.platform === 'linux' || process.platform === 'darwin' ? 'IconTray.png' : 'Icon.ico';
+	const iconPath = path.join(app.getAppPath(), `/resources/${iconName}`);
+	const icon = nativeImage.createFromPath(iconPath);
 
-	const contextMenu = electron.Menu.buildFromTemplate([
+	const contextMenu = Menu.buildFromTemplate([
 		{
 			label: locale['tray[0]'],
 			click() {
@@ -32,7 +30,7 @@ exports.create = function(win, config) {
 		}
 	]);
 
-	appIcon = new Tray(iconPath);
+	appIcon = new Tray(icon);
 	appIcon.setToolTip('Rambox-OS');
 	appIcon.setContextMenu(contextMenu);
 
@@ -66,13 +64,14 @@ exports.destroy = function() {
 exports.setBadge = function(messageCount, showUnreadTray) {
 	if (process.platform === 'darwin' || !appIcon) return;
 
-	let icon;
+	let iconName;
 	if (process.platform === 'linux') {
-		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
+		iconName = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.png' : 'IconTray.png';
 	} else {
-		icon = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
+		iconName = messageCount > 0 && showUnreadTray ? 'IconTrayUnread.ico' : 'Icon.ico';
 	}
 
-	const iconPath = path.join(app.getAppPath(), `/resources/${icon}`);
-	appIcon.setImage(iconPath);
+	const iconPath = path.join(app.getAppPath(), `/resources/${iconName}`);
+	const icon = nativeImage.createFromPath(iconPath);
+	appIcon.setImage(icon);
 };
