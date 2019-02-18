@@ -48,5 +48,13 @@ Ext.define('Rambox.model.ServiceList', {
 		 name: 'custom_domain'
 		,type: 'boolean'
 		,defaultValue: false
+	},{
+		name: 'external_tab_match'
+	   ,type: 'string'
+	   ,defaultValue: ''
+	},{
+		name: 'external_tab_not_match'
+   		,type: 'string'
+   		,defaultValue: ''
 	}]
 });
