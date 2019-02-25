@@ -270,8 +270,8 @@ Ext.define('Rambox.ux.Auth0', {
 
 		authWindow.loadURL(me.authService.requestAuthCode());
 
-		authWindow.webContents.on('did-get-redirect-request', function(e, oldUrl, newUrl) {
-			me.authService.requestAccessCode(newUrl, me.onLogin.bind(me), authWindow);
+		authWindow.webContents.on('did-navigate', function(e, url) {
+			me.authService.requestAccessCode(url, me.onLogin.bind(me), authWindow);
 		});
 	}
 
