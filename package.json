@@ -103,14 +103,14 @@
 		}
 	},
 	"devDependencies": {
-		"asar": "^0.14.5",
+		"asar": "^1.0.0",
 		"chai": "^4.2.0",
 		"cpy-cli": "^2.0.0",
 		"crowdin": "^1.0.0",
 		"csvjson": "^5.1.0",
-		"electron": "^4.0.1",
+		"electron": "^4.0.6",
 		"electron-builder": "^20.38.5",
-		"mocha": "^5.2.0",
+		"mocha": "^6.0.2",
 		"shx": "^0.3.2",
 		"spectron": "^5.0.0"
 	}
