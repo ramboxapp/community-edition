@@ -16,7 +16,7 @@
 </p>
 <p align="center">
   <a href="https://ci.appveyor.com/project/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/appveyor/ci/TheGoddessInari/rambox/master.svg?logo=appveyor" alt="AppVeyor CI"></a>
-  <a href="https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2" target="_blank"><img src="https://dev.azure.com/TheGoddessInari/rambox/_apis/build/status/rambox-master?branchName=master"></a>
+  <a href="https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2" target="_blank"><img src="https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops"></a>
   <a href="https://david-dm.org/TheGoddessInari/rambox?path=app" title="Dependency status"><img src="https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app"/></a>
   <a href="https://david-dm.org/TheGoddessInari/rambox?type=dev" title="devDependency status"><img src="https://img.shields.io/david/dev/TheGoddessInari/rambox.svg"/></a>
   
