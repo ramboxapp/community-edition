@@ -1,12 +1,11 @@
 version: 0.5.18-{build}
 image:
   - Visual Studio 2017
-  - Ubuntu
 environment:
   nodejs_version: '10'
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
   npm_config_loglevel: 'error'
-  SENCHA_VER: '6.6.0.13'
+  SENCHA_VER: '6.7.0.37'
   TAGPERM:
     secure: FKiBHTmmImO3M5FhK2TMrnpojiT6ITuJ/LvrdLjj2xD0VkcYtXuvQr5nqoxouvph
 stack: node 10, jdk 8
@@ -25,35 +24,21 @@ init:
 install:
   - ps: >-
 
-        If ($isWindows) {
-          Install-Product node ${env:nodejs_version}
-          Invoke-WebRequest -Uri http://cdn.sencha.com/cmd/${env:SENCHA_VER}/no-jre/SenchaCmd-${env:SENCHA_VER}-windows-no_jre.zip -OutFile .\Sencha.zip
-        } ElseIf ($isLinux) {
-          Invoke-WebRequest -Uri http://cdn.sencha.com/cmd/${env:SENCHA_VER}/no-jre/SenchaCmd-${env:SENCHA_VER}-linux-amd64.sh.zip -OutFile .\Sencha.zip
-        }
+        Install-Product node ${env:nodejs_version}
+
+        Invoke-WebRequest -Uri http://cdn.sencha.com/cmd/${env:SENCHA_VER}/no-jre/SenchaCmd-${env:SENCHA_VER}-windows-no_jre.zip -OutFile .\Sencha.zip
 
         Expand-Archive -Path .\Sencha.zip -DestinationPath .\SenchaCmd
 
-        If ($isWindows) {
-          Invoke-Expression ".\SenchaCmd\SenchaCmd-${env:SENCHA_VER}-windows-no_jre.exe -q -Dall=true"
-          $env:PATH = "${env:USERPROFILE}\bin\Sencha\Cmd;${env:PATH}"
-        } ElseIf ($isLinux) {
-          Invoke-Expression "chmod +x ./SenchaCmd/SenchaCmd-${env:SENCHA_VER}-linux-amd64.sh"
-          Invoke-Expression "./SenchaCmd/SenchaCmd-${env:SENCHA_VER}-linux-amd64.sh -q -Dall=true"
-          $env:PATH = "${env:HOME}/bin/Sencha/Cmd:${env:PATH}"
-        }
+        Invoke-Expression ".\SenchaCmd\SenchaCmd-${env:SENCHA_VER}-windows-no_jre.exe -q -Dall=true"
+
+        $env:PATH = "${env:USERPROFILE}\bin\Sencha\Cmd;${env:PATH}"
 
         git reset --hard HEAD
 
         npm i npm@latest -g
 
         npm install
-
-  - sh: >-
-
-        sudo apt-get update -qq;
-
-        sudo apt-get install -qq -y libxml2-dev libappindicator1 rpm;
 
 cache:
   - '%APPDATA%\npm-cache'
@@ -74,22 +59,14 @@ build_script:
 
         npm --version
 
-        If ($isWindows) {
-          npm run setup:win64
-        } ElseIf ($isLinux) {
-          npm run setup:linux64
-        }
+        npm run setup:win64
 
 
 
 test: off
 artifacts:
   - path: dist\*.exe
-  - path: dist/*.rpm
-  - path: dist/*.deb
-  - path: dist/*.tar.gz
-  - path: dist/*.AppImage
-  - path: dist/*.snap
+
   
 # after_build:
 #   - ps: >- 
