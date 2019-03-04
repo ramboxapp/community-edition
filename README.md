@@ -15,18 +15,20 @@
   <a href="https://github.com/TheGoddessInari/rambox/releases/latest" target="_blank"><img src="https://img.shields.io/github/release/TheGoddessInari/rambox.svg" alt="Release"></a>
 </p>
 <p align="center">
-  <a href="https://travis-ci.org/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/travis/TheGoddessInari/rambox/master.svg?logo=travis" alt="Travis CI"></a>
   <a href="https://ci.appveyor.com/project/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/appveyor/ci/TheGoddessInari/rambox/master.svg?logo=appveyor" alt="AppVeyor CI"></a>
+  <a href="https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2" target="_blank"><img src="https://dev.azure.com/TheGoddessInari/rambox/_apis/build/status/rambox-master?branchName=master"></a>
   <a href="https://david-dm.org/TheGoddessInari/rambox?path=app" title="Dependency status"><img src="https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app"/></a>
   <a href="https://david-dm.org/TheGoddessInari/rambox?type=dev" title="devDependency status"><img src="https://img.shields.io/david/dev/TheGoddessInari/rambox.svg"/></a>
   
 </p>
-<h5 align="center">Latest unstable build artifacts are available in Windows 
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017&branch=master" target="_blank">(Win64</a>), Mac (DMG) and Linux 
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS 0.5.18.AppImage?job=Image%3A%20Ubuntu&branch=master" target="_blank">(AppImage64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.x86_64.rpm?job=Image%3A%20Ubuntu&branch=master" target="_blank">RPM64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox_0.5.18_amd64.deb?job=Image%3A%20Ubuntu&branch=master" target="_blank">DEB64</a> /
-    <a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-0.5.18.tar.gz?job=Image%3A%20Ubuntu&branch=master" target="_blank">Tarball64</a>) packaging flavors.</h5>
+<h5 align="center">Nightly build artifacts are available in Windows
+    (<a href="https://ci.appveyor.com/api/projects/TheGoddessInari/rambox/artifacts/dist/Rambox-OS Setup 0.5.18.exe?job=Image%3A%20Visual%20Studio%202017&branch=master" target="_blank">Win64</a>), Mac
+    (<a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18.dmg" target="_blank">DMG</a> /
+     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18-mac.zip" target="_blank">App</a>) and Linux
+    (<a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.0.5.18.AppImage" target="_blank">AppImage64</a> /
+     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.x86_64.rpm" target="_blank">RPM64</a> /
+     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox_0.5.18_amd64.deb" target="_blank">DEB64</a> /
+     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.tar.gz" target="_blank">Tarball64</a>) packaging flavors.</h5>
 
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 <h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>

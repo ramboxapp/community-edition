@@ -90,7 +90,6 @@
 			},
 			"target": [
 				"tar.gz",
-				"snap",
 				"deb",
 				"rpm",
 				"AppImage"
