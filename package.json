@@ -6,7 +6,7 @@
 		"test": "mocha test/tests/**/*.spec.js",
 		"buildversion": "git show --pretty=\"%h %d %cD\" -s > build/production/Rambox/BUILDVERSION || node -p -e \"require('./build/production/Rambox/package.json').version\" > build/production/Rambox/BUILDVERSION",
 		"clean": "shx rm -rf ./build/production",
-		"compile": "sencha app build && cpy app/package.json app/package-lock.json build/production/Rambox/ && npm run buildversion",
+		"compile": "sencha app build && shx cp app/package.json app/package-lock.json build/production/Rambox/ && npm run buildversion",
 		"recompile": "npm run distclean && npm run compile",
 		"distclean": "shx rm -rf ./dist",
 		"distclean:win": "shx rm -rf ./dist/win-{ia32-,}unpacked",
@@ -104,7 +104,6 @@
 	"devDependencies": {
 		"asar": "^1.0.0",
 		"chai": "^4.2.0",
-		"cpy-cli": "^2.0.0",
 		"crowdin": "^1.0.0",
 		"csvjson": "^5.1.0",
 		"electron": "^4.0.6",
