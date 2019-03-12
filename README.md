@@ -2,7 +2,7 @@
   <br>
   <a href="https://github.com/TheGoddessInari/rambox"><img src="./resources/Icon.png" width="256px" alt="Rambox-OS"></a>
   <br>
-  Rambox-OS
+  Rambox-OS, soon to be renamed to Hamsket.
   <br>
   <br>
 </h1>
@@ -212,10 +212,12 @@ Keep in mind, I'm not pushing this. I'll do my best regardless.
 ## Compiling
 
 To build your own copy, you need:
+
 - An 8.0 version of the [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
-- A recent version of [Ruby](https://www.ruby-lang.org/en/downloads/).
-- A recent version of [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/), and to install it with the Compass extension.
-- A recent version of [NodeJS](https://nodejs.org/en/download/) with npm.
+- [Ruby](https://www.ruby-lang.org/en/downloads/) 2.3 or newer.
+- [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/) 6.7.0 or newer, and to install it with the Compass extension.
+- [NodeJS](https://nodejs.org/en/download/) 8.5.0 (10.0+ preferred) or newer with npm.
+
 These **need** to be added to your PATH.
 
 ```shell
@@ -233,7 +235,7 @@ npm run setup
 This step instead of **repack** will create an installer appropriate to your platform in '**dist**'.
 You can place unpacked files over where the installers normally place their files for development/testing purposes.
 
-**NOTE:** Win32 builds are **deprecated** by electron-builder and are likely to be removed at some point in the future.
+**NOTE:** 32-bit builds are **deprecated** by electron-builder and are likely to be removed at some point in the future.
 
 ## [Contributing](./CONTRIBUTING.md)
 

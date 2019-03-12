@@ -558,7 +558,7 @@ Ext.Boot = Ext.Boot || (function (emptyFn) {
                     Boot.isIE10m = true;
                 }
                 else {
-                    Boot.isIE10 = (new Function('/*@cc_on return @_jscript_version @*/')()) === 10;
+                    Boot.isIE10 = navigator.appVersion.indexOf('MSIE 10') !== -1;
                     Boot.isIE10m = Boot.isIE10 || Boot.isIE9 || Boot.isIE8;
                 }
                 

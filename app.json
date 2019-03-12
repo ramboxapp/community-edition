@@ -42,6 +42,13 @@
     "requires": [
 		"ext-locale"
     ],
+    "language":
+    {
+        "js":{
+            "input": "ES8",
+            "output": "ES8"
+        }
+    },
 
     /**
      * Sass configuration properties.
@@ -173,7 +180,8 @@
      */
     "production": {
         "compressor": {
-            "type": "cmd",
+            "type": "closure",
+            "compression": "simple",
             "polyfills": "none"
         }
     },
@@ -255,9 +263,6 @@
         "base": "${workspace.build.dir}/${build.environment}/${app.name}",
         "appCache": {
             "enable": true
-        },
-        "js": {
-            "version": "ES6"
         }
     },
 
