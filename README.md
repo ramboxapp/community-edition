@@ -33,7 +33,6 @@
 <h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
 <h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>
 
-
 ----------
 
 ## Table of Contents
@@ -57,6 +56,7 @@
 
 ![Rambox-OS](./resources/screenshots/win1.png)
 
+----------
 
 ## Services available - 97
 
@@ -164,6 +164,8 @@
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+----------
+
 ## Features
 
 - [ ] Multi-language.
@@ -189,6 +191,8 @@
 - [x] Highly responsive to issues, PRs, and help.
 - [x] Offline backup and restore.
 
+----------
+
 ## Privacy
 
 No personal information will be saved or tracked.
@@ -199,7 +203,10 @@ Sessions will persist using the [partition:persist](https://electronjs.org/docs/
 
 Auth0 is disabled pending name change and rewrite of the functionality to best preserve your security and functionality.
 
+----------
+
 ## Donations
+
 Keep in mind, I'm not pushing this. I'll do my best regardless.
 
 | Type               |                                         URL/Wallet                                         |
@@ -209,6 +216,8 @@ Keep in mind, I'm not pushing this. I'll do my best regardless.
 | Bitcoin Cash       | ```qqslp2vuamhmsp59u49dq89kwky2yj23nqmjr4mdgj```                                           |
 | Ethereum           | ```0xa085d5F736f2D7D210261879e183e5bf870Eae5f```                                           |
 | Litecoin           | ```MKzytRHYHQTS3qrq2zCggEzSNG3HTbBXZL```                                                   |
+
+----------
 
 ## Compiling
 
@@ -227,6 +236,7 @@ cd rambox
 npm install
 npm run repack:win64
 ```
+
 You can substitute win64 for linux32, linux64, win32, or osx as desired. This will create an unpacked directory in '**dist**' for testing.
 
 ```shell
@@ -238,11 +248,15 @@ You can place unpacked files over where the installers normally place their file
 
 **NOTE:** 32-bit builds are **deprecated** by electron-builder and are likely to be removed at some point in the future.
 
+----------
+
 ## [Contributing](./CONTRIBUTING.md)
 
 Want to report a bug, request a feature, contribute to or translate Rambox? We need all the help we can get! Fork and work!
 
-### Quickstart:
+----------
+
+### Quickstart
 
 ```shell
 git clone https://github.com/TheGoddessInari/rambox.git
@@ -253,14 +267,16 @@ npm start
 
 See [Contributing.md](./CONTRIBUTING.md) for more detailed information about getting set up.
 
--------------------
+----------
 
-Disclosure
--------------------
+### Disclosure
 
 Rambox-OS is not affiliated with any of the messaging apps offered.
 
-Licence
--------------------
+----------
 
-[GNU GPL v3](https://github.com/TheGoddessInari/rambox/LICENSE)
+### License
+
+[GNU GPL v3](./LICENSE)
+
+----------
