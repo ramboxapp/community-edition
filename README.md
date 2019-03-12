@@ -16,6 +16,7 @@
 </p>
 <p align="center">
   <a href="https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2" target="_blank"><img src="https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops"></a>
+  <a href="https://dev.azure.com/TheGoddessInari/rambox/_release?definitionId=1" target="_blank"><img src="https://img.shields.io/azure-devops/release/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/1/1.svg?logo=azure-devops"></a>
   <a href="https://david-dm.org/TheGoddessInari/rambox?path=app" title="Dependency status"><img src="https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app"/></a>
   <a href="https://david-dm.org/TheGoddessInari/rambox?type=dev" title="devDependency status"><img src="https://img.shields.io/david/dev/TheGoddessInari/rambox.svg"/></a>
   
