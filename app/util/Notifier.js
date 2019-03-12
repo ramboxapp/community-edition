@@ -44,14 +44,13 @@ Ext.define('Rambox.util.Notifier', {
 
 			var notification = new Notification(view.record.get('name'), {
 				body: text,
-				icon: view.tab.icon,
+				icon: view.icon,
 				silent: view.record.get('muted')
 			});
 
-			notification.onclick = function() {
-				ipc.send('toggleWin', true);
-				Ext.cq1('app-main').setActiveTab(view);
+			notification.onclick = function(e) {
+				view.showWindowAndActivateTab(e);
 			};
-		}
+		};
 	}
 });
