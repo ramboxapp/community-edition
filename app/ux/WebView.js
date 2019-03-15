@@ -514,7 +514,7 @@ Ext.define('Rambox.ux.WebView',{
 			});
 		}
 
-		webview.addEventListener('did-get-redirect-request', function( e ) {
+		webview.addEventListener('did-navigate', function( e ) {
 			if ( e.isMainFrame && me.record.get('type') === 'tweetdeck' ) Ext.defer(function() { webview.loadURL(e.newURL); }, 1000); // Applied a defer because sometimes is not redirecting. TweetDeck 2FA is an example.
 		});
 
