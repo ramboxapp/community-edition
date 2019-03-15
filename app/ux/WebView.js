@@ -454,6 +454,29 @@ Ext.define('Rambox.ux.WebView',{
 
 			webview.executeJavaScript(js_inject);
 		});
+		webview.getWebContents().on('before-input-event', (event, input) => {
+			if (input.type !== 'keyDown') { // event used by default
+				return;
+			}
+			// because keyCode property is not passed
+			const keycode = require('keycode')
+			// Create a fake KeyboardEvent from the data provided
+			var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
+				code: input.code,
+				key: input.key,
+				shiftKey: input.shift,
+				altKey: input.alt,
+				ctrlKey: input.control,
+				metaKey: input.meta,
+				repeat: input.isAutoRepeat,
+				keyCode: keycode(input.key) //get real key code
+			});
+			emulatedKeyboardEvent.getKey = function() {
+				return this.keyCode || this.charCode // fake function, normally used by Ext.js, simply returning keyCode
+			}
+			document.keyMapping.handleTargetEvent(emulatedKeyboardEvent) // we directly trigger  handleTargetEvent. That's a private method normally. We can't fire the event directly with document.dispatch, unfortunately
+
+		});
 
 		webview.addEventListener('ipc-message', function(event) {
 			var channel = event.channel;
