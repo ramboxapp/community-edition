@@ -173,7 +173,7 @@
 		"chai": "3.5.0",
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "^2.0.14",
+		"electron": "^3.1.4",
 		"electron-builder": "^20.28.3",
 		"electron-packager": "^12.1.0",
 		"mocha": "^5.2.0",
