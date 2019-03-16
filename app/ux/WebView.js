@@ -37,9 +37,10 @@ Ext.define('Rambox.ux.WebView',{
 		// Allow Custom sites with self certificates
 		//if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
+		const prefConfig = ipc.sendSync('getConfig');
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
-			,title: me.record.get('tabname') ? me.record.get('name') : ''
+			,title: prefConfig.hide_tabbar_labels ? '' : (me.record.get('tabname') ? me.record.get('name') : '')
 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
 			,src: me.record.get('url')
 			,type: me.record.get('type')

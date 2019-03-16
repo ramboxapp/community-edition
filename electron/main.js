@@ -23,6 +23,7 @@ const config = new Config({
 		 always_on_top: false
 		,hide_menu_bar: false
 		,tabbar_location: 'top'
+		,hide_tabbar_labels: true
 		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,flash_frame: true
@@ -299,7 +300,7 @@ ipcMain.on('setServiceNotifications', function(event, partition, op) {
 
 ipcMain.on('setDontDisturb', function(event, arg) {
 	config.set('dont_disturb', arg);
-})
+});
 
 // Reload app
 ipcMain.on('reloadApp', function(event) {
@@ -312,7 +313,7 @@ ipcMain.on('relaunchApp', function(event) {
 	app.exit(0);
 });
 
-const shouldQuit = app.requestSingleInstanceLock() 
+const shouldQuit = app.requestSingleInstanceLock();
 if (!shouldQuit) {
 	app.quit();
 	return;
@@ -421,7 +422,7 @@ if ( config.get('proxy') ) {
 		if(!authInfo.isProxy)
 			return;
 
-		event.preventDefault()
+		event.preventDefault();
 		callback(config.get('proxyLogin'), config.get('proxyPassword'))
 	})
 }
