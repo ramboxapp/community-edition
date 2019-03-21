@@ -552,7 +552,10 @@ Ext.define('Rambox.ux.WebView',{
 
 			function showWindowAndActivateTab(event) {
 				require('electron').remote.getCurrentWindow().show();
-				Ext.cq1('app-main').setActiveTab(me);
+				const tabPanel = Ext.cq1('app-main');
+				tabPanel.getActiveTab().down('component').el.dom.blur();
+				tabPanel.setActiveTab(me);
+				webview.focus();
 			}
 
 			function handleUpdateBadge(event) {
