@@ -337,6 +337,7 @@ module.exports = function(config) {
 				},
 				{
 					label: locale['tray[1]'],
+					accelerator: 'CmdOrCtrl+Q',
 					click() {
 						app.quit();
 					}
