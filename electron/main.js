@@ -47,6 +47,8 @@ const config = new Config({
 	}
 });
 
+app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required');
+
 // Fix issues with HiDPI scaling on Windows platform
 if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
 	app.commandLine.appendSwitch('high-dpi-support', 'true');
