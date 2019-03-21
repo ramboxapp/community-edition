@@ -133,6 +133,8 @@ ipc.on('tabFocusNext', function() {
 	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 	var i = activeIndex + 1;
 
+	tabPanel.getActiveTab().down('component').el.dom.blur();
+
 	// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
 	if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
 
@@ -140,15 +142,18 @@ ipc.on('tabFocusNext', function() {
 	while (tabPanel.items.items[i].id === 'tbfill') i++;
 
 	tabPanel.setActiveTab(i);
+	tabPanel.getActiveTab().down('component').el.dom.focus();
 });
 
 ipc.on('tabFocusPrevious', function() {
 	var tabPanel = Ext.cq1('app-main');
 	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 	var i = activeIndex - 1;
+	tabPanel.getActiveTab().down('component').el.dom.blur();
 	if ( i < 0 ) i = tabPanel.items.items.length - 1;
 	while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
 	tabPanel.setActiveTab( i );
+	tabPanel.getActiveTab().down('component').el.dom.focus();
 });
 
 ipc.on('tabZoomIn', function(key) {
@@ -184,7 +189,10 @@ ipc.on('lockWindow', function(key) {
 });
 
 ipc.on('goHome', function() {
-	Ext.cq1('app-main').setActiveTab(0);
+	const tabPanel = Ext.cq1('app-main');
+	tabPanel.getActiveTab().down('component').el.dom.blur();
+	tabPanel.setActiveTab(0);
+	tabPanel.getActiveTab().down('component').el.dom.focus();
 });
 
 // Focus the current service when Alt + Tab or click in webviews textfields
