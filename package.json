@@ -189,7 +189,7 @@
 		"electron-log": "^2.2.17",
 		"electron-store": "^2.0.0",
 		"electron-updater": "^3.1.2",
-		"keycode": "^2.2.0",
+		"keycodes": "^1.0.0",
 		"mime": "^2.3.1",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.2",
