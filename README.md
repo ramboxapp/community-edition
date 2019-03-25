@@ -207,7 +207,7 @@ You are always welcome to check the code! ;)
 
 Help us translate Rambox on <https://crowdin.com/project/rambox/invite>.
 
-## [Install on Linux - Steps](https://github.com/saenzramiro/rambox/wiki/Install-on-Linux)
+## [Install on Linux - Steps](https://github.com/ramboxapp/community-edition/wiki/Install-on-Linux)
 
 ## [Contributing](./CONTRIBUTING.md)
 
@@ -237,4 +237,4 @@ Rambox is not affiliated with any of the messaging apps offered.
 
 ## Licence
 
-[GNU GPL v3](https://github.com/saenzramiro/rambox/LICENSE)
+[GNU GPL v3](https://github.com/ramboxapp/community-edition/blob/master/LICENSE)
