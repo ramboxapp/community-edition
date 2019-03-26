@@ -94,7 +94,8 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			partition: 'persist:rambox'
+			partition: 'persist:rambox',
+			nodeIntegration: true
 		}
 	});
 
