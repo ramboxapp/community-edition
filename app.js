@@ -133,7 +133,7 @@ ipc.on('tabFocusNext', function() {
 	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 	var i = activeIndex + 1;
 
-	tabPanel.getActiveTab().down('component').el.dom.blur();
+	tabPanel.getActiveTab().blur();
 
 	// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
 	if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
@@ -142,39 +142,36 @@ ipc.on('tabFocusNext', function() {
 	while (tabPanel.items.items[i].id === 'tbfill') i++;
 
 	tabPanel.setActiveTab(i);
-	tabPanel.getActiveTab().down('component').el.dom.focus();
+	tabPanel.getActiveTab().focus();
 });
 
 ipc.on('tabFocusPrevious', function() {
 	var tabPanel = Ext.cq1('app-main');
 	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
 	var i = activeIndex - 1;
-	tabPanel.getActiveTab().down('component').el.dom.blur();
+	tabPanel.getActiveTab().blur();
 	if ( i < 0 ) i = tabPanel.items.items.length - 1;
 	while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
 	tabPanel.setActiveTab( i );
-	tabPanel.getActiveTab().down('component').el.dom.focus();
+	tabPanel.getActiveTab().focus();
 });
 
-ipc.on('tabZoomIn', function(key) {
+ipc.on('tabZoomIn', function() {
 	var tabPanel = Ext.cq1('app-main');
 	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-		tabPanel.getActiveTab().zoomIn();
+	tabPanel.getActiveTab().zoomIn();
 });
 
 ipc.on('tabZoomOut', function() {
 	var tabPanel = Ext.cq1('app-main');
 	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-		tabPanel.getActiveTab().zoomOut();
+	tabPanel.getActiveTab().zoomOut();
 });
 
-ipc.on('tabZoomReset', function() {
+ipc.on('tabResetZoom', function() {
 	var tabPanel = Ext.cq1('app-main');
 	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-		tabPanel.getActiveTab().resetZoom();
+	tabPanel.getActiveTab().resetZoom();
 });
 
 ipc.on('toggleDoNotDisturb', function(key) {
@@ -190,12 +187,12 @@ ipc.on('lockWindow', function(key) {
 
 ipc.on('goHome', function() {
 	const tabPanel = Ext.cq1('app-main');
-	tabPanel.getActiveTab().down('component').el.dom.blur();
+	tabPanel.getActiveTab().blur();
 	tabPanel.setActiveTab(0);
-	tabPanel.getActiveTab().down('component').el.dom.focus();
+	tabPanel.getActiveTab().focus();
 });
 
 // Focus the current service when Alt + Tab or click in webviews textfields
 window.addEventListener('focus', function() {
-	if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().down('component').el.dom.focus();
+	if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().focus();
 });

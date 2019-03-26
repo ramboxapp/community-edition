@@ -221,7 +221,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		if ( !me.record.get('enabled') ) return;
 
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		// Notifications in Webview
 		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
@@ -241,7 +241,7 @@ Ext.define('Rambox.ux.WebView',{
 			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
 
 			// Apply saved zoom level
-			webview.setZoomLevel(me.record.get('zoomLevel'));
+			me.setZoomLevel(me.record.get('zoomLevel'));
 
 			// Set special icon for some service (like Slack)
 			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
@@ -553,9 +553,9 @@ Ext.define('Rambox.ux.WebView',{
 			function showWindowAndActivateTab(event) {
 				require('electron').remote.getCurrentWindow().show();
 				const tabPanel = Ext.cq1('app-main');
-				tabPanel.getActiveTab().down('component').el.dom.blur();
+				tabPanel.getActiveTab().blur();
 				tabPanel.setActiveTab(me);
-				webview.focus();
+				tabPanel.getActiveTab().focus();
 			}
 
 			function handleUpdateBadge(event) {
@@ -664,7 +664,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,reloadService: function(btn) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) {
 			me.clearUnreadCounter();
@@ -674,7 +674,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,toggleDevTools: function(btn) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled')) {
 			if (webview.isDevToolsOpened()) {
@@ -687,7 +687,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,setURL: function(url) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.src = url;
 
@@ -696,7 +696,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,setAudioMuted: function(muted, calledFromDisturb) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.muted = muted;
 
@@ -728,7 +728,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,setNotifications: function(notification, calledFromDisturb) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.notifications = notification;
 
@@ -757,48 +757,49 @@ Ext.define('Rambox.ux.WebView',{
 
 	,goBack: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) webview.goBack();
 	}
 
 	,goForward: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) webview.goForward();
+	}
+	,setZoomLevel: function(level)
+	{
+		this.getWebContents().setZoomLevel(level);
 	}
 
 	,zoomIn: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
 
-		me.zoomLevel = me.zoomLevel + 0.25;
+		me.zoomLevel = me.zoomLevel + 1;
 		if ( me.record.get('enabled') ) {
-			webview.setZoomLevel(me.zoomLevel);
 			me.record.set('zoomLevel', me.zoomLevel);
+			me.setZoomLevel(me.zoomLevel);
 		}
 	}
 
 	,zoomOut: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
 
-		me.zoomLevel = me.zoomLevel - 0.25;
+		me.zoomLevel = me.zoomLevel - 1;
 		if ( me.record.get('enabled') ) {
-			webview.setZoomLevel(me.zoomLevel);
 			me.record.set('zoomLevel', me.zoomLevel);
+			me.setZoomLevel(me.zoomLevel);
 		}
 	}
 
 	,resetZoom: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
 
 		me.zoomLevel = 0;
 		if ( me.record.get('enabled') ) {
-			webview.setZoomLevel(0);
 			me.record.set('zoomLevel', me.zoomLevel);
+			me.setZoomLevel(me.zoomLevel);
 		}
 	}
 
@@ -808,5 +809,19 @@ Ext.define('Rambox.ux.WebView',{
 		} else {
 			return false;
 		}
+	}
+	,getWebContents: function() {
+		if ( this.record.get('enabled') ) {
+			return this.getWebView().getWebContents();
+		} else {
+			return false;
+		}
+	}
+	,blur: function () {
+		this.getWebView().blur();
+	}
+	,focus: function()
+	{
+		this.getWebView().focus();
 	}
 });

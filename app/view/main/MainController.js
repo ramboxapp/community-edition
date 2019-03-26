@@ -40,7 +40,7 @@ Ext.define('Rambox.view.main.MainController', {
 			return;
 		}
 
-		var webview = newTab.down('component').el.dom;
+		var webview = newTab.getWebView();
 		if ( webview ) webview.focus();
 
 		// Update the main window so it includes the active tab title.

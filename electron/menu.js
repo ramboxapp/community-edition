@@ -172,7 +172,7 @@ module.exports = function(config) {
 				{
 					role: 'resetzoom',
 					click() {
-						sendAction("tabZoomReset");
+						sendAction('tabResetZoom');
 					}
 				},
 				{
