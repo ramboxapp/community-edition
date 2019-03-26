@@ -181,7 +181,7 @@ module.exports = function(config) {
 					submenu: [
 						{
 							label: `Next Tab`,
-							accelerator: 'CmdOrCtrl+Tab',
+							accelerator: 'Ctrl+Tab',
 							click() {
 								sendAction('tabFocusNext');
 							}
@@ -195,7 +195,7 @@ module.exports = function(config) {
 						},
 						{
 							label: `Previous Tab`,
-							accelerator: 'CmdOrCtrl+Shift+Tab',
+							accelerator: 'Ctrl+Shift+Tab',
 							click() {
 								sendAction('tabFocusPrevious');
 							}
@@ -217,6 +217,20 @@ module.exports = function(config) {
 						{
 							label: `Previous Tab`,
 							accelerator: 'Alt+Left',
+							click() {
+								sendAction('tabFocusPrevious');
+							}
+						},
+						{
+							label: `Next Tab`,
+							accelerator: 'CmdOrCtrl+Shift+}',
+							click() {
+								sendAction('tabFocusNext');
+							}
+						},
+						{
+							label: `Previous Tab`,
+							accelerator: 'CmdOrCtrl+Shift+{',
 							click() {
 								sendAction('tabFocusPrevious');
 							}
