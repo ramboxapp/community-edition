@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"start": "npm run compile && electron-builder install-app-deps && electron build/production/Rambox",
-		"start:debug": "npm run compile && electron build/production/Rambox --enable-logging",
+		"debug": "electron --inspect build/production/Rambox",
 		"test": "mocha test/tests/**/*.spec.js",
 		"buildversion": "git show --pretty=\"%h %d %cD\" -s > build/production/Rambox/BUILDVERSION || node -p -e \"require('./build/production/Rambox/package.json').version\" > build/production/Rambox/BUILDVERSION",
 		"clean": "shx rm -rf ./build/production",

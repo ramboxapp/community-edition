@@ -1,0 +1,20 @@
+{
+    "eslint.enable": true,
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "ext": true,
+        "**/.sencha": true,
+        "**/*.jsonp": true,
+        "**/sencha-error-*.log": true
+    },
+    "es6-css-minify.css": {
+        "level": 2
+    },
+    "es6-css-minify.js": {
+        "output": {
+          "ecma": 6
+        }
+    },
+    "es6-css-minify.minifyOnSave": "exists",
+}
