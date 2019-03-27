@@ -24,7 +24,6 @@ Ext.define('Rambox.Application', {
 		 totalServicesLoaded: 0
 		,totalNotifications: 0
 	}
-
 	,launch: function () {
 		// Prevent track if the user have disabled this option (default: false)
 		if ( !ipc.sendSync('sendStatistics') ) {
@@ -60,7 +59,7 @@ Ext.define('Rambox.Application', {
 		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
 
 		// Add shortcuts to switch services using CTRL + Number
-		var map = new Ext.util.KeyMap({
+		document.keyMapping = new Ext.util.KeyMap({
 			 target: document
 			,binding: [
 				{
