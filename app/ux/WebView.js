@@ -1,6 +1,7 @@
 /**
  * Default config for all webviews created
  */
+const keycode = require('keycodes')
 Ext.define('Rambox.ux.WebView',{
 	 extend: 'Ext.panel.Panel'
 	,xtype: 'webview'
@@ -459,7 +460,6 @@ Ext.define('Rambox.ux.WebView',{
 				return;
 			}
 			// because keyCode property is not passed
-			const keycode = require('keycodes')
 			// Create a fake KeyboardEvent from the data provided
 			var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
 				code: input.code,
