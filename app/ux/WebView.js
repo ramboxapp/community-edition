@@ -1,7 +1,7 @@
 /**
  * Default config for all webviews created
  */
-const keycode = require('keycodes')
+
 Ext.define('Rambox.ux.WebView',{
 	 extend: 'Ext.panel.Panel'
 	,xtype: 'webview'
@@ -455,6 +455,8 @@ Ext.define('Rambox.ux.WebView',{
 
 			webview.executeJavaScript(js_inject);
 		});
+		
+		const keycode = require('keycodes');
 		webview.getWebContents().on('before-input-event', (event, input) => {
 			if (input.type !== 'keyDown') { // event used by default
 				return;
