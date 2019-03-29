@@ -458,9 +458,8 @@ Ext.define('Rambox.ux.WebView',{
 		
 		const keycode = require('keycodes');
 		webview.getWebContents().on('before-input-event', (event, input) => {
-			if (input.type !== 'keyDown') { // event used by default
-				return;
-			}
+			if (input.type !== 'keyDown' || input.key === 'z' || input.key === 'a' ) return; // event used by default
+			
 			// because keyCode property is not passed
 			// Create a fake KeyboardEvent from the data provided
 			var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
