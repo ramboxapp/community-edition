@@ -454,7 +454,9 @@ app.on('activate', function () {
 		config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	}
 
-	if ( mainWindow !== null ) mainWindow.show();
+	if (mainWindow) {
+		mainWindow.show();
+	}
 });
 
 app.on('before-quit', function () {
