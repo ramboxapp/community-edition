@@ -106,7 +106,7 @@
 		"chai": "^4.2.0",
 		"crowdin": "^1.0.0",
 		"csvjson": "^5.1.0",
-		"electron": "^4.1.1",
+		"electron": "^4.1.3",
 		"electron-builder": "^20.39.0",
 		"mocha": "^6.0.2",
 		"shx": "^0.3.2",
