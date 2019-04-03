@@ -168,6 +168,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						})
 					}
 					,{
+						xtype: 'checkbox'
+						,name: 'hide_tabbar_labels'
+						,boxLabel: locale['preferences[28]']
+						,value: config.hide_tabbar_labels
+					}
+					,{
 						 xtype: 'combo'
 						,name: 'default_service'
 						,fieldLabel: locale['preferences[12]']
