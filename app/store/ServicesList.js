@@ -512,7 +512,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'RainLoop Webmail - Simple, modern & fast web-based email client.'
 			,url: '___'
 			,type: 'email'
-			,js_unread: `let checkUnread=()=>{const t=document.querySelectorAll(".e-item .e-link:not(.hidden) .badge.pull-right.count");let e=0;for(let i of t){let iTrim=parseInt(i.textContent.trim());iTrim%1==0&&"block"===window.getComputedStyle(t[i]).display&&(e+=parseInt(iTrim))}rambox.updateBadge(e)};setInterval(checkUnread,1e3);`
+			,js_unread: `let checkUnread=()=>{const t=document.querySelectorAll(".e-item .e-link:not(.hidden) .badge.pull-right.count");let e=0;for(let i of t){let iTrim=parseInt(i.textContent.trim());iTrim%1==0&&"block"===window.getComputedStyle(i).display&&(e+=parseInt(iTrim))}rambox.updateBadge(e)};setInterval(checkUnread,1e3);`
 		},
 		{
 			 id: 'amium'
@@ -727,7 +727,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Secure, reliable email hosting for businesses, families and professionals. Premium email with no ads, excellent spam protection and rapid personal support.'
 			,url: 'https://www.fastmail.com/mail/'
 			,type: 'email'
-			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("v-FolderSource-badge");let t=0;for(let i of e){const iTrim=parseInt(e[i].innerHTML.trim());t+=isNaN(iTrim)?0:iTrim}rambox.updateBadge(t)};setInterval(checkUnread,3e3),setTimeout(function(){O.WindowController.openExternal=function(a){var b=document.createElement("a");b.href=a,b.setAttribute("target","_blank"),b.click()}},3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("v-FolderSource-badge");let t=0;for(const i of e){const iTrim=parseInt(i.innerHTML.trim());t+=isNaN(iTrim)?0:iTrim}rambox.updateBadge(t)};setInterval(checkUnread,3e3),setTimeout(function(){O.WindowController.openExternal=function(a){let b=document.createElement("a");b.href=a,b.setAttribute("target","_blank"),b.click()}},3e3);`
 			,note: 'To enable desktop notifications, you have to go to Settings inside FastMail.'
 		},
 		{
@@ -816,7 +816,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
 			,url: 'https://allo.google.com/web'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const e=document.querySelectorAll(".hasUnread.conversation_item");let n=0;for(let i of e){const m=e[i].querySelector("#muted"),u=e[i].querySelector(".unreadCount"),c=parseInt(u.innerHTML.trim()),r=null===m||"none"===m.style.display?c:0;n+=isNaN(r)?0:r}rambox.updateBadge(n)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.querySelectorAll(".hasUnread.conversation_item");let n=0;for(const i of e){const m=i.querySelector("#muted"),u=i.querySelector(".unreadCount"),c=parseInt(u.innerHTML.trim()),r=null===m||"none"===m.style.display?c:0;n+=isNaN(r)?0:r}rambox.updateBadge(n)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'Kune'
