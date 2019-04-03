@@ -934,6 +934,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Sococo is an online workplace that adds the magic of co-location back into the day to day life of distributed Agile teams.'
 			,url: 'https://app.sococo.com/a/login'
 			,type: 'messaging'
+		},
+		{
+			 id: 'googlecalendar'
+			,logo: 'googlecalendar.png'
+			,name: 'Google Calendar'
+			,description: 'Google Calendar is a time-management and scheduling calendar service developed by Google.'
+			,url: 'https://calendar.google.com/calendar/'
+			,type: 'messaging'
 		}
 	]
 });
