@@ -13,7 +13,7 @@ const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmen
 window.rambox = {};
 
 /**
- * Sets the unraed count of the tab.
+ * Sets the unread count of the tab.
  *
  * @param {*} count	The unread count
  */
