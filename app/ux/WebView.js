@@ -517,7 +517,11 @@ Ext.define('Rambox.ux.WebView',{
 
 			function showWindowAndActivateTab(event) {
 				require('electron').remote.getCurrentWindow().show();
-				Ext.cq1('app-main').setActiveTab(me);
+				var tabPanel = Ext.cq1('app-main');
+				// Temp fix missing cursor after upgrade to electron 3.x +
+				tabPanel.getActiveTab().getWebView().blur();
+				tabPanel.setActiveTab(me);
+				tabPanel.getActiveTab().getWebView().focus();
 			}
 		});
 
