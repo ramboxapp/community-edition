@@ -306,14 +306,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
-			 id: 'dasher'
-			,logo: 'dasher.png'
-			,name: 'Dasher'
-			,description: locale['services[30]']
-			,url: 'https://dasher.im/'
-			,type: 'messaging'
-		},
-		{
 			 id: 'flowdock'
 			,logo: 'flowdock.png'
 			,name: 'Flowdock'
