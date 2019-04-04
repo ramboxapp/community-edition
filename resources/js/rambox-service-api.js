@@ -3,6 +3,7 @@
  */
 
 const { ipcRenderer } = require('electron');
+const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
 
 /**
  * Make the Rambox API available via a global "rambox" variable.
@@ -50,4 +51,7 @@ Notification.prototype = NativeNotification.prototype;
 Notification.permission = NativeNotification.permission;
 Notification.requestPermission = NativeNotification.requestPermission.bind(Notification);
 
-window.close = function() { location.href = location.origin };
+window.rambox.contextMenuBuilder = new ContextMenuBuilder();
+window.rambox.contextMenuListener = new ContextMenuListener(function(event, info) {
+	window.rambox.contextMenuBuilder.showPopupMenu(info);
+});

@@ -232,10 +232,6 @@ Ext.define('Rambox.ux.WebView',{
 
 		var webview = me.down('component').el.dom;
 
-		setTimeout(function() {
-			require('electron-context-menu')({window: webview});
-		}, 100);
-
 		// Google Analytics Event
 		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
 
@@ -456,11 +452,11 @@ Ext.define('Rambox.ux.WebView',{
 
 			webview.executeJavaScript(js_inject);
 		});
-		
+
 		const keycode = require('keycodes');
 		webview.getWebContents().on('before-input-event', (event, input) => {
 			if (input.type !== 'keyDown' || input.key === 'z' || input.key === 'a' ) return; // event used by default
-			
+
 			// because keyCode property is not passed
 			// Create a fake KeyboardEvent from the data provided
 			var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
