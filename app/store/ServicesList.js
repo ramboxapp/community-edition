@@ -813,15 +813,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("unread")[0];updateBadge(t=a===undefined?0:parseInt(a.textContent.replace(/[^0-9]/g,"")))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
 		},
 		{
-			 id: 'allo'
-			,logo: 'allo.png'
-			,name: 'Allo'
-			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
-			,url: 'https://allo.google.com/web'
-			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.querySelectorAll(".hasUnread.conversation_item"),n=0;for(i=0;i<e.length;i++){var m=e[i].querySelector("#muted"),u=e[i].querySelector(".unreadCount"),c=parseInt(u.innerHTML.trim()),r=(m===null||m.style.display==="none")?c:0;n+=isNaN(r)?0:r}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
-		},
-		{
 			 id: 'Kune'
 			,logo: 'kune.png'
 			,name: 'Kune'
