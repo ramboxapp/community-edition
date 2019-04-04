@@ -66,11 +66,13 @@ app.setAppUserModelId('com.grupovrs.ramboxce');
 const appMenu = require('./menu')(config);
 
 // Configure AutoLaunch
-const appLauncher = new AutoLaunch({
-	 name: 'Rambox'
-	,isHidden: config.get('start_minimized')
-});
-config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
+if ( !isDev ) {
+	const appLauncher = new AutoLaunch({
+		 name: 'Rambox'
+		,isHidden: config.get('start_minimized')
+	});
+	config.get('auto_launch') ? appLauncher.enable() : appLauncher.disable();
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -320,13 +322,13 @@ if (!shouldQuit) {
 }
 app.on('second-instance', (event, commandLine, workingDirectory) => {
 	// Someone tried to run a second instance, we should focus our window.
- if (mainWindow) {
-	 if (mainWindow.isMinimized()) mainWindow.restore();
-	 mainWindow.focus();
-	 mainWindow.show();
-	 mainWindow.setSkipTaskbar(false);
-	 if (app.dock && app.dock.show) app.dock.show();
- }
+	if (mainWindow) {
+		if (mainWindow.isMinimized()) mainWindow.restore();
+		mainWindow.focus();
+		mainWindow.show();
+		mainWindow.setSkipTaskbar(false);
+		if (app.dock && app.dock.show) app.dock.show();
+	}
 });
 
 
