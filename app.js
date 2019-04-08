@@ -16,7 +16,11 @@ Ext.application({
 // auto update logic
 const ipc = require('electron').ipcRenderer;
 
-require('electron-context-menu')();
+const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
+const contextMenuBuilder = new ContextMenuBuilder();
+const contextMenuListener = new ContextMenuListener(function(event, info) {
+	contextMenuBuilder.showPopupMenu(info);
+});
 
 ipc.on('showAbout', function(event, message) {
 	!Ext.cq1('about') ? Ext.create('Rambox.view.main.About') : '';

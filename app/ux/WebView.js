@@ -1,6 +1,7 @@
 /**
  * Default config for all webviews created
  */
+
 Ext.define('Rambox.ux.WebView',{
 	 extend: 'Ext.panel.Panel'
 	,xtype: 'webview'
@@ -37,9 +38,10 @@ Ext.define('Rambox.ux.WebView',{
 		// Allow Custom sites with self certificates
 		//if ( me.record.get('trust') ) ipc.send('allowCertificate', me.src);
 
+		const prefConfig = ipc.sendSync('getConfig');
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
-			,title: me.record.get('tabname') ? me.record.get('name') : ''
+			,title: prefConfig.hide_tabbar_labels ? '' : (me.record.get('tabname') ? me.record.get('name') : '')
 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
 			,src: me.record.get('url')
 			,type: me.record.get('type')
@@ -230,10 +232,6 @@ Ext.define('Rambox.ux.WebView',{
 		if ( !me.record.get('enabled') ) return;
 
 		var webview = me.down('component').el.dom;
-
-		setTimeout(function() {
-			require('electron-context-menu')({window: webview});
-		}, 100);
 
 		// Google Analytics Event
 		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
@@ -486,6 +484,29 @@ Ext.define('Rambox.ux.WebView',{
 			webview.executeJavaScript(js_inject);
 		});
 
+		const keycode = require('keycodes');
+		webview.getWebContents().on('before-input-event', (event, input) => {
+			if (input.type !== 'keyDown' || input.key === 'z' || input.key === 'a' ) return; // event used by default
+
+			// because keyCode property is not passed
+			// Create a fake KeyboardEvent from the data provided
+			var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
+				code: input.code,
+				key: input.key,
+				shiftKey: input.shift,
+				altKey: input.alt,
+				ctrlKey: input.control,
+				metaKey: input.meta,
+				repeat: input.isAutoRepeat,
+				keyCode: keycode(input.key) //get real key code
+			});
+			emulatedKeyboardEvent.getKey = function() {
+				return this.keyCode || this.charCode // fake function, normally used by Ext.js, simply returning keyCode
+			}
+			document.keyMapping.handleTargetEvent(emulatedKeyboardEvent) // we directly trigger  handleTargetEvent. That's a private method normally. We can't fire the event directly with document.dispatch, unfortunately
+
+		});
+
 		webview.addEventListener('ipc-message', function(event) {
 			var channel = event.channel;
 			switch (channel) {
@@ -527,7 +548,11 @@ Ext.define('Rambox.ux.WebView',{
 
 			function showWindowAndActivateTab(event) {
 				require('electron').remote.getCurrentWindow().show();
-				Ext.cq1('app-main').setActiveTab(me);
+				var tabPanel = Ext.cq1('app-main');
+				// Temp fix missing cursor after upgrade to electron 3.x +
+				tabPanel.getActiveTab().getWebView().blur();
+				tabPanel.setActiveTab(me);
+				tabPanel.getActiveTab().getWebView().focus();
 			}
 		});
 

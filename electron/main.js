@@ -23,6 +23,7 @@ const config = new Config({
 		 always_on_top: false
 		,hide_menu_bar: false
 		,tabbar_location: 'top'
+		,hide_tabbar_labels: false
 		,window_display_behavior: 'taskbar_tray'
 		,auto_launch: !isDev
 		,flash_frame: true
@@ -65,11 +66,13 @@ app.setAppUserModelId('com.grupovrs.ramboxce');
 const appMenu = require('./menu')(config);
 
 // Configure AutoLaunch
-const appLauncher = new AutoLaunch({
-	 name: 'Rambox'
-	,isHidden: config.get('start_minimized')
-});
-config.get('auto_launch') && !isDev ? appLauncher.enable() : appLauncher.disable();
+if ( !isDev ) {
+	const appLauncher = new AutoLaunch({
+		 name: 'Rambox'
+		,isHidden: config.get('start_minimized')
+	});
+	config.get('auto_launch') ? appLauncher.enable() : appLauncher.disable();
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -299,7 +302,7 @@ ipcMain.on('setServiceNotifications', function(event, partition, op) {
 
 ipcMain.on('setDontDisturb', function(event, arg) {
 	config.set('dont_disturb', arg);
-})
+});
 
 // Reload app
 ipcMain.on('reloadApp', function(event) {
@@ -312,20 +315,20 @@ ipcMain.on('relaunchApp', function(event) {
 	app.exit(0);
 });
 
-const shouldQuit = app.requestSingleInstanceLock() 
+const shouldQuit = app.requestSingleInstanceLock();
 if (!shouldQuit) {
 	app.quit();
 	return;
 }
 app.on('second-instance', (event, commandLine, workingDirectory) => {
 	// Someone tried to run a second instance, we should focus our window.
- if (mainWindow) {
-	 if (mainWindow.isMinimized()) mainWindow.restore();
-	 mainWindow.focus();
-	 mainWindow.show();
-	 mainWindow.setSkipTaskbar(false);
-	 if (app.dock && app.dock.show) app.dock.show();
- }
+	if (mainWindow) {
+		if (mainWindow.isMinimized()) mainWindow.restore();
+		mainWindow.focus();
+		mainWindow.show();
+		mainWindow.setSkipTaskbar(false);
+		if (app.dock && app.dock.show) app.dock.show();
+	}
 });
 
 
@@ -421,7 +424,7 @@ if ( config.get('proxy') ) {
 		if(!authInfo.isProxy)
 			return;
 
-		event.preventDefault()
+		event.preventDefault();
 		callback(config.get('proxyLogin'), config.get('proxyPassword'))
 	})
 }
@@ -454,7 +457,9 @@ app.on('activate', function () {
 		config.get('master_password') ? createMasterPasswordWindow() : createWindow();
 	}
 
-	if ( mainWindow !== null ) mainWindow.show();
+	if (mainWindow) {
+		mainWindow.show();
+	}
 });
 
 app.on('before-quit', function () {

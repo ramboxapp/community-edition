@@ -66,7 +66,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[4]']
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
 			,note: 'Text and Audio calls are supported only. <a href="https://github.com/saenzramiro/rambox/wiki/Skype" target="_blank">Read more...</a>'
 		},
 		{
@@ -115,7 +114,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.google.com/mail/'
 			,type: 'email'
 			,allow_popups: true
-			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("aim")[0];updateBadge(-1!=e.innerHTML.indexOf("(")&&(t=parseInt(e.textContent.replace(\/[^0-9]\/g,""))))}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var e=document.querySelector(".aim .aio").querySelector("span").querySelector("a").getAttribute("aria-label").replace(/\D/g,"");updateBadge(e?parseInt(e):0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Settings inside Gmail. <a href="https://support.google.com/mail/answer/1075549?ref_topic=3394466" target="_blank">Read more...</a>'
 		},
 		{
@@ -184,9 +183,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,external_tab_match: 'https?:\/\/discordapp\.com'
-			,js_unread: 'function checkUnread(){var e=document.querySelectorAll("[class*=scroller] [class*=container]"),r=Array.from(e.values()).reduce((e,r)=>e+(r&&r.querySelector("[class*=avatar]")&&r.querySelector("[class*=wrapper][class*=badge]")?parseInt(r.querySelector("[class*=wrapper][class*=badge]").innerHTML):0),0);rambox.setUnreadCount(r)}setInterval(checkUnread,3e3);'
+			,js_unread: 'window.originalopen=window.open,window.open=function(){return arguments.length>0?window.originalopen.apply(this,arguments):{set location(n){window.originalopen(n)}}};function checkUnread(){var e=document.querySelectorAll("[class*=scroller] [class*=container]"),r=Array.from(e.values()).reduce((e,r)=>e+(r&&r.querySelector("[class*=avatar]")&&r.querySelector("[class*=wrapper][class*=badge]")?parseInt(r.querySelector("[class*=wrapper][class*=badge]").innerHTML):0),0);rambox.setUnreadCount(r)}setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord. Will count only unread DMs.'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 		},
 		{
 			 id: 'outlook'
@@ -217,7 +215,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.yahoo.com/'
 			,type: 'email'
 			,note: 'To enable desktop notifications, you have to go to Options inside Yahoo! Mail.'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'
 		},
 		{
 			 id: 'protonmail'
@@ -308,14 +305,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Voxer'
 			,description: locale['services[29]']
 			,url: 'https://web.voxer.com/'
-			,type: 'messaging'
-		},
-		{
-			 id: 'dasher'
-			,logo: 'dasher.png'
-			,name: 'Dasher'
-			,description: locale['services[30]']
-			,url: 'https://dasher.im/'
 			,type: 'messaging'
 		},
 		{
@@ -649,7 +638,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'crisp.png'
 			,name: 'Crisp'
 			,description: 'Connect your customers to your team.'
-			,url: 'https://app.crisp.im/inbox'
+			,url: 'https://app.crisp.chat/'
 			,type: 'messaging'
 		},
 		{
@@ -693,8 +682,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
 			,url: 'https://teams.microsoft.com'
 			,type: 'messaging'
-			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.2883.87 Safari/537.36'
-			,js_unread: 'navigator.__defineGetter__("userAgent", function(){ return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.2883.87 Safari/537.36 Edge/12.246"; });'
 		},
 		{
 			 id: 'kezmo'
@@ -820,15 +807,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("unread")[0];updateBadge(t=a===undefined?0:parseInt(a.textContent.replace(/[^0-9]/g,"")))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3000);'
 		},
 		{
-			 id: 'allo'
-			,logo: 'allo.png'
-			,name: 'Allo'
-			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
-			,url: 'https://allo.google.com/web'
-			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=document.querySelectorAll(".hasUnread.conversation_item"),n=0;for(i=0;i<e.length;i++){var m=e[i].querySelector("#muted"),u=e[i].querySelector(".unreadCount"),c=parseInt(u.innerHTML.trim()),r=(m===null||m.style.display==="none")?c:0;n+=isNaN(r)?0:r}updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
-		},
-		{
 			 id: 'Kune'
 			,logo: 'kune.png'
 			,name: 'Kune'
@@ -940,6 +918,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Sococo'
 			,description: 'Sococo is an online workplace that adds the magic of co-location back into the day to day life of distributed Agile teams.'
 			,url: 'https://app.sococo.com/a/login'
+			,type: 'messaging'
+		},
+		{
+			 id: 'googlecalendar'
+			,logo: 'googlecalendar.png'
+			,name: 'Google Calendar'
+			,description: 'Google Calendar is a time-management and scheduling calendar service developed by Google.'
+			,url: 'https://calendar.google.com/calendar/'
 			,type: 'messaging'
 		}
 	]

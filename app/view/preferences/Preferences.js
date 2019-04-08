@@ -16,12 +16,15 @@ Ext.define('Rambox.view.preferences.Preferences',{
 
 	,title: locale['preferences[0]']
 	,width: 420
+	,height: 500
 	,modal: true
 	,closable: true
 	,minimizable: false
 	,maximizable: false
 	,draggable: true
 	,resizable: false
+	,scrollable: 'vertical'
+	,bodyStyle: 'margin-right:15px;'
 	,buttons: [
 		{
 			 text: locale['button[1]']
@@ -166,6 +169,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								,{ 'value': 'right', 'label': 'Right' }
 							]
 						})
+					}
+					,{
+						xtype: 'checkbox'
+						,name: 'hide_tabbar_labels'
+						,boxLabel: locale['preferences[28]']
+						,value: config.hide_tabbar_labels
 					}
 					,{
 						 xtype: 'combo'
