@@ -898,7 +898,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'androidmessages.png'
 			,name: 'Android Messages'
 			,description: 'Text on your computer with Messages for web.'
-			,url: 'https://messages.android.com/'
+			,url: 'https://messages.google.com/web'
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){var t = document.querySelectorAll(".tpEAA.yrs5ff").length;if(t>=1){rambox.setUnreadCount(t)}else{rambox.clearUnreadCount()}}setInterval(checkUnread,3000);'
 		},
