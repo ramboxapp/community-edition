@@ -10,6 +10,7 @@ Ext.define('Rambox.store.Services', {
 
 	,autoLoad: true
 	,autoSync: true
+	,pageSize: 0
 
 	,groupField: 'align'
 	,sorters: [
