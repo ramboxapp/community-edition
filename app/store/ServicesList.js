@@ -38,7 +38,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[1]']
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var e=$(".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)").length,n=0;$(".p-channel_sidebar__badge").each(function(){n+=isNaN(parseInt($(this).html()))?0:parseInt($(this).html())}),count=0<n?n:0<e?"•":0,updateBadge(count)}function updateBadge(e){1<=e||"•"===e?rambox.setUnreadCount(e):rambox.clearUnreadCount();}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)").length;n=0;var b=document.getElementsByClassName("p-channel_sidebar__badge");for(badge of b)n+=isNaN(parseInt(badge.innerHTML))?0:parseInt(badge.innerHTML);count=0<n?n:0<a?"\u2022":0,updateBadge(count)}function updateBadge(a){1<=a||"\u2022"===a?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'noysi'
