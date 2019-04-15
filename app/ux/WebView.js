@@ -178,7 +178,7 @@ Ext.define('Rambox.ux.WebView',{
 					,autosize: 'on'
 					,webpreferences: '' //,nativeWindowOpen=yes
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
-					,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+					,useragent: me.getUserAgent()
 					,preload: './resources/js/rambox-service-api.js'
 				}
 			}];
@@ -187,6 +187,10 @@ Ext.define('Rambox.ux.WebView',{
 		}
 
 		return cfg;
+	}
+	,getUserAgent: function() {
+		var ua = ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(this.record.get('type')).get('userAgent')
+		return ua.length === 0 ? window.clientInformation.userAgent.replace(/Electron\/([0-9]\.?)+\s/,'') : ua;
 	}
 
 	,statusBarConstructor: function(floating) {
@@ -300,7 +304,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: me.getUserAgent()
 								}
 							}
 						}).show();
@@ -328,7 +332,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: me.getUserAgent()
 								}
 							}
 						}).show();
@@ -358,7 +362,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: me.getUserAgent()
 									,preload: './resources/js/rambox-modal-api.js'
 								}
 							}
