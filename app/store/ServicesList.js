@@ -881,7 +881,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,logo: 'messages.png'
 			,name: 'Messages'
 			,description: 'Text on your computer with Messages for web.'
-			,url: 'https://messages.android.com/'
+			,url: 'https://messages.google.com/web'
 			,type: 'messaging'
 		}
 	]
