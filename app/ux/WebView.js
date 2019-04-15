@@ -190,10 +190,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 	,getUserAgent: function() {
 		var ua = ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(this.record.get('type')).get('userAgent')
-		if(ua.length === 0) {
-			ua = window.clientInformation.userAgent.replace(/Electron\/([0-9]\.?)+\s/,'');
-		}
-		return ua;
+		return ua.length === 0 ? window.clientInformation.userAgent.replace(/Electron\/([0-9]\.?)+\s/,'') : ua;
 	}
 
 	,statusBarConstructor: function(floating) {
@@ -234,7 +231,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,onAfterRender: function() {
 		var me = this;
-		
+
 		if ( !me.record.get('enabled') ) return;
 
 		var webview = me.down('component').el.dom;
