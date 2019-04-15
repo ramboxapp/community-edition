@@ -319,6 +319,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 		btn.pressed ? btn.setGlyph('xf1f7@FontAwesome') : btn.setGlyph('xf0f3@FontAwesome');
 
+		Ext.getCmp('mainTabBar').getEl().toggleCls('dontdisturb');
+
 		// If this method is called from Lock method, prevent showing toast
 		if ( !e ) return;
 		Ext.toast({

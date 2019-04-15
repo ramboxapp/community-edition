@@ -26,7 +26,9 @@ Ext.define('Rambox.view.main.Main', {
 	,autoShow: true
 	,deferredRender: false
 	,tabBar: {
-		items: [{
+		 id: 'mainTabBar'
+		,cls: JSON.parse(localStorage.getItem('dontDisturb')) ? 'dontdisturb' : ''
+		,items: [{
 			 xtype: 'button'
 			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
 			,baseCls: ''
