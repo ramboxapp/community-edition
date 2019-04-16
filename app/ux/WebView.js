@@ -190,7 +190,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 	,getUserAgent: function() {
 		var ua = ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(this.record.get('type')).get('userAgent')
-		return ua.length === 0 ? window.clientInformation.userAgent.replace(/Electron\/([0-9]\.?)+\s/,'') : ua;
+		return ua.length === 0 ? window.clientInformation.userAgent.replace(/Rambox\/([0-9]\.?)+\s/,'').replace(/Electron\/([0-9]\.?)+\s/,'') : ua;
 	}
 
 	,statusBarConstructor: function(floating) {
@@ -495,7 +495,7 @@ Ext.define('Rambox.ux.WebView',{
 					return this.keyCode || this.charCode // fake function, normally used by Ext.js, simply returning keyCode
 				}
 				document.keyMapping.handleTargetEvent(emulatedKeyboardEvent) // we directly trigger  handleTargetEvent. That's a private method normally. We can't fire the event directly with document.dispatch, unfortunately
-			} 
+			}
 			/**
 			 * Handles 'rambox.clearUnreadCount' messages.
 			 * Clears the unread count.
