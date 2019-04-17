@@ -841,7 +841,7 @@ Ext.define('Rambox.ux.WebView',{
 				arch = me.is32bit() ? 'WOW64' : 'Win64; x64';
 				break;
 			case 'freebsd':
-				arch = me.is32bit ? 'i386' : 'amd64';
+				arch = me.is32bit() ? 'i386' : 'amd64';
 				break;
 			case 'sunos':
 				arch = me.is32bit() ? 'i86pc' : 'x86_64';
