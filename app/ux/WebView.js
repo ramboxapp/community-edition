@@ -169,7 +169,7 @@ Ext.define('Rambox.ux.WebView',{
 					,autosize: 'on'
 					,webpreferences: '' //,nativeWindowOpen=true
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
-					,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+					,userAgent: me.getUserAgent()
 					,preload: './resources/js/rambox-service-api.js'
 				}
 			}];
@@ -286,7 +286,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: me.getUserAgent()
 								}
 							}
 						}).show();
@@ -314,7 +314,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: me.getUserAgent()
 								}
 							}
 						}).show();
@@ -344,7 +344,7 @@ Ext.define('Rambox.ux.WebView',{
 									,src: e.url
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
-									,useragent: Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent')
+									,useragent: me.getUserAgent()
 									,preload: './resources/js/rambox-modal-api.js'
 								}
 							}
@@ -817,7 +817,123 @@ Ext.define('Rambox.ux.WebView',{
 			return false;
 		}
 	}
-	,blur: function () {
+	,getUserAgent: function() {
+		const me = this;
+		// TODO: Keep just in case we need our own User Agent builder.
+		// const default_ua = `Mozilla/5.0` +
+		// ` (${me.getOSPlatform()})` +
+		// ` AppleWebKit/537.36 (KHTML, like Gecko)` +
+		// ` Chrome/${me.getChromeVersion()} Safari/537.36`;
+		const default_ua = window.navigator.userAgent
+							.replace(`Electron/${me.getElectronVersion()} `,'')
+							.replace(`Rambox/${me.getAppVersion()} `, '');
+		const service_ua = Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent');
+		const ua = service_ua ? service_ua : default_ua;
+		return ua;
+	}
+	,getOSArch: function() {
+		const me = this;
+		let platform = require('os').platform();
+		let arch = require('os').arch();
+
+		switch (platform) {
+			case 'win32':
+				arch = me.is32bit() ? 'WOW64' : 'Win64; x64';
+				break;
+			case 'freebsd':
+				arch = me.is32bit ? 'i386' : 'amd64';
+				break;
+			case 'sunos':
+				arch = me.is32bit() ? 'i86pc' : 'x86_64';
+				break;
+			case 'linux':
+			default:
+				arch = me.is32bit() ? 'i686' : 'x86_64';
+				break;
+		}
+		return arch;
+	}
+	,getOSArchType: function() {
+		let arch = require('os').arch();
+
+		switch(arch) {
+			case 'x64':
+			case 'ia32':
+			case 'x32':
+				arch='Intel';
+				break;
+			case 'arm64':
+			case 'arm':
+				arch='ARM';
+				break;
+			case 'mips':
+			case 'mipsel':
+				arch='MIPS';
+				break;
+			case 'ppc64':
+			case 'ppc':
+				arch='PPC';
+				break;
+			case 's390x':
+			case 's390':
+				arch='S390';
+				break;
+			default:
+				arch='Unknown';
+				break;
+		}
+		return arch;
+	}
+	,getOSPlatform: function() {
+		const me = this;
+		let platform = require('os').platform();
+		switch (platform) {
+			case 'win32':
+				platform = `Windows NT ${me.getOSRelease()}; ${me.getOSArch()}`;
+				break;
+			case 'linux':
+				platform = `X11; Linux ${me.getOSArch()}`;
+				break;
+			case 'darwin':
+				platform = `${me.getOSArchType()} Mac OS X ${me.getOSRelease()}`;
+				break;
+			case 'freebsd':
+				platform = `X11; FreeBSD ${me.getOSArch()}`;
+				break;
+			case 'sunos':
+				platform = `X11; SunOS i86pc`;
+				break;
+			default:
+				platform = `X11; ${platform} ${me.getOSArch()}`;
+		}
+		return platform;
+	}
+	,isWindows: function() {
+		return require('os').platform() === 'win32';
+	}
+	,is32bit: function() {
+		const arch = require('os').arch();
+		if (arch === 'ia32' || arch === 'x32')
+			return true;
+		else
+			return false;
+	}
+	,getOSRelease: function() {
+		const me = this;
+		return me.isWindows() ?
+		require('os').release().match(/([0-9]+\.[0-9]+)/)[0]
+			: require('os').release();
+	}
+	,getChromeVersion: function() {
+		return require('process').versions['chrome'];
+	}
+	,getElectronVersion: function() {
+		return require('process').versions['electron'];
+	}
+	,getAppVersion: function() {
+		return require('electron').remote.app.getVersion();
+	}
+	,blur: function() {
 		this.getWebView().blur();
 	}
 	,focus: function()

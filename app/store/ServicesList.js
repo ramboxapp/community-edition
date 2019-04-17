@@ -29,7 +29,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.whatsapp.com/'
 			,type: 'messaging'
 			,js_unread: `let checkUnread=()=>{const elements=document.querySelectorAll(".CxUIE, .unread");let count=0;for(let i of elements)0===i.querySelectorAll('*[data-icon="muted"]').length&&count++;rambox.updateBadge(count)};setInterval(checkUnread,1e3);let unregister_queue=[];navigator.serviceWorker.getRegistrations().then(registrations=>{for(const registration of registrations)unregister_queue.push(registration.unregister());return unregister_queue}).then(queue=>{}).catch(err=>{});`
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3445.2 Safari/537.36'
 		},
 		{
 			 id: 'slack'
@@ -57,7 +56,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,note: 'To enable desktop notifications, you have to go to Options inside Messenger.'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3445.2 Safari/537.36'
 		},
 		{
 			 id: 'skype'
@@ -66,7 +64,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[4]']
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3445.2 Safari/537.36'
 			,note: 'Text and Audio calls are supported only. <a href="https://github.com/TheGoddessInari/rambox/wiki/Skype" target="_blank">Read more...</a>'
 		},
 		{
@@ -185,7 +182,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,titleBlink: true
 			,js_unread: `let getAlertCount=badges=>{let alerts=0;for(const badge of badges)if(badge&&badge.childNodes&&badge.childNodes.length>0){const count=parseInt(badge.childNodes[0].nodeValue,10);alerts+=count.isNaN?1:count}else alerts++;return alerts},checkUnread=()=>{let direct=0,indirect=document.getElementsByClassName("container-2td-dC unread-2OHH1w").length;const guildDirect=document.getElementsByClassName("wrapper-232cHJ badge-3dItlm"),directMessages=document.getElementsByClassName("wrapper-232cHJ badge-2_fwUZ");direct+=getAlertCount(guildDirect),direct+=getAlertCount(directMessages),indirect+=document.getElementsByClassName("unread-1Dp-OI").length,rambox.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3445.2 Safari/537.36'
 		},
 		{
 			 id: 'outlook'
@@ -215,7 +211,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.yahoo.com/'
 			,type: 'email'
 			,note: 'To enable desktop notifications, you have to go to Options inside Yahoo! Mail.'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3445.2 Safari/537.36'
 		},
 		{
 			 id: 'protonmail'
@@ -684,7 +679,6 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
 			,url: 'https://teams.microsoft.com'
 			,type: 'messaging'
-			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3445.2 Safari/537.36'
 		},
 		{
 			 id: 'kezmo'
