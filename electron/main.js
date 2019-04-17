@@ -66,8 +66,9 @@ app.setAppUserModelId('com.grupovrs.ramboxce');
 const appMenu = require('./menu')(config);
 
 // Configure AutoLaunch
+let appLauncher;
 if ( !isDev ) {
-	const appLauncher = new AutoLaunch({
+	appLauncher = new AutoLaunch({
 		 name: 'Rambox'
 		,isHidden: config.get('start_minimized')
 	});
