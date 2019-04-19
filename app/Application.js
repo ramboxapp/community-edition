@@ -82,6 +82,19 @@ Ext.define('Rambox.Application', {
 					}
 				}
 				,{
+					key: "f"
+				   ,ctrl: true
+				   ,alt: false
+				   ,shift: false
+				   ,handler: function(key) {
+					   console.log('ok')
+					   var currentTab = Ext.cq1('app-main').getActiveTab()
+					   if(currentTab.getWebView)
+					   		currentTab.down('component').el.dom.send('findInPage');
+						
+				   }
+			   }
+				,{
 					 key: "\t"
 					,ctrl: true
 					,alt: false
