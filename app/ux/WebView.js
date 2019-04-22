@@ -190,7 +190,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 	,getUserAgent: function() {
 		var ua = ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(this.record.get('type')).get('userAgent')
-		return ua.length === 0 ? window.clientInformation.userAgent.replace(/Rambox\/([0-9]\.?)+\s/,'').replace(/Electron\/([0-9]\.?)+\s/,'') : ua;
+		return ua.length === 0 ? window.clientInformation.userAgent.replace(/Rambox\/([0-9]\.?)+\s/ig,'').replace(/Electron\/([0-9]\.?)+\s/ig,'') : ua;
 	}
 
 	,statusBarConstructor: function(floating) {
