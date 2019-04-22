@@ -2,8 +2,9 @@
  * This file is loaded in the service web views to provide a Rambox API.
  */
 
-const { ipcRenderer } = require('electron');
+const { ipcRenderer, remote } = require('electron');
 const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
+const { FindInPage } = require('electron-find')
 
 /**
  * Make the Rambox API available via a global "rambox" variable.
@@ -71,3 +72,11 @@ document.addEventListener("keydown", (event) => {
 	};
 	ipcRenderer.sendToHost('keydown', msg)
 });
+let search;
+document.addEventListener('DOMContentLoaded', function(e) {
+	search = new FindInPage(remote.getCurrentWebContents())
+}, false)
+
+ipcRenderer.on('findInPage', () => {
+	search.openFindWindow()
+})
