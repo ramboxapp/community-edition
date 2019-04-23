@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="UTF-8">
@@ -8,27 +9,31 @@
 	<title>Rambox</title>
 
 	<script type='text/javascript'>
-		var xhr = new XMLHttpRequest();
-		var file = "http://rambox.pro/api/latestversion.json";
-		var randomNum = Math.round(Math.random() * 10000);
-
-		xhr.open('HEAD', file + "?rand=" + randomNum, true);
-		xhr.send();
-
-		xhr.addEventListener("readystatechange", function() {
-			setTimeout(processRequest, 5000);
-		}, false);
-
-		function processRequest(e) {
-			if (xhr.readyState == 4) {
-				if (xhr.status >= 200 && xhr.status < 304) {
-					console.info('Internet Connection', true);
-				} else {
-					console.info('Internet Connection', false);
-					alert('Please, check your internet connection and restart Rambox. If you use a Proxy, please go to Preferences to configure it.', 'No Internet Connection');
-				}
-			}
+		var ipcRenderer = require('electron').ipcRenderer;
+		if (navigator.onLine) {
+			console.info('Internet Connection', true);
+		} else {
+			console.info('Internet Connection', false);
+			if (!ipcRenderer.sendSync('getConfig').hideNoConnectionDialog)
+				handleAlert();
 		}
+
+		function handleAlert() {
+			const dialog = require('electron').remote.dialog
+			dialog.showMessageBox({
+					buttons: ['OK'],
+					type: 'warning',
+					checkboxLabel: 'Do not show this message again',
+					message: 'Please, check your internet connection and restart Rambox. If you use a Proxy, please go to Preferences to configure it.',
+					title: 'No Internet Connection'
+				},
+				function (__response, checkboxChecked) {
+					if (checkboxChecked) {
+						ipcRenderer.sendSync('sConfig', {hideNoConnectionDialog: true})
+					}
+				})
+		}
+
 	</script>
 
 	<!-- The line below must be kept intact for Sencha Cmd to build your application -->
@@ -36,31 +41,56 @@
 
 	<!--- Localization -->
 	<script type='text/javascript'>
-	    (function(d, s){
-			var t = d.createElement(s), e = d.getElementsByTagName(s)[0];
-			t.type = "text/javascript"; e.parentNode.insertBefore(t, e);
-			t.src = "resources/languages/"+require('electron').ipcRenderer.sendSync('getConfig').locale+".js";
+		(function (d, s) {
+			var t = d.createElement(s),
+				e = d.getElementsByTagName(s)[0];
+			t.type = "text/javascript";
+			e.parentNode.insertBefore(t, e);
+			t.src = "resources/languages/" + require('electron').ipcRenderer.sendSync('getConfig').locale + ".js";
 		})(document, "script");
+
 	</script>
 	<!--- Localization -->
 
 	<!--- Signalayer player -->
 	<script type='text/javascript'>
-	window.Signalayer||function(t,e){var o={
-		url:"https://cdn.signalayer.com/static/player.js",
-		key:"sEF8shc4KSuqtHMx0ztmTFdcrQO0cAVpszZ9Y8hLfQ2",
-		async:true
-	};window.Signalayer={cs:[],_apiKey:o.key};for(
-	var r=["identify","goal","updateUserData","start","stop","refresh","show","hide","on"],
-	i={},n=0;n>r.length;n++){var a=r[n];i[a]=function(t){return function(){var
-	e=Array.prototype.slice.call(arguments);
-	window.Signalayer.cs.push({method:t,args:e})}}(a)}window.Signalayer.API=i;var
-	n=t.createElement(e),s=t.getElementsByTagName(e)[0];
-	n.type="text/javascript",
-	n.async=o.async,s.parentNode.insertBefore(n,s),n.src=o.url}(document,"script");
+		window.Signalayer || function (t, e) {
+			var o = {
+				url: "https://cdn.signalayer.com/static/player.js",
+				key: "sEF8shc4KSuqtHMx0ztmTFdcrQO0cAVpszZ9Y8hLfQ2",
+				async: true
+			};
+			window.Signalayer = {
+				cs: [],
+				_apiKey: o.key
+			};
+			for (
+				var r = ["identify", "goal", "updateUserData", "start", "stop", "refresh", "show", "hide", "on"],
+					i = {}, n = 0; n > r.length; n++) {
+				var a = r[n];
+				i[a] = function (t) {
+					return function () {
+						var
+							e = Array.prototype.slice.call(arguments);
+						window.Signalayer.cs.push({
+							method: t,
+							args: e
+						})
+					}
+				}(a)
+			}
+			window.Signalayer.API = i;
+			var
+				n = t.createElement(e),
+				s = t.getElementsByTagName(e)[0];
+			n.type = "text/javascript",
+				n.async = o.async, s.parentNode.insertBefore(n, s), n.src = o.url
+		}(document, "script");
+
 	</script>
 	<!--- Signalayer player -->
 </head>
+
 <body>
 	<div id="spinner" class="component" data-path-start="M280,466c0,0.13-0.001,0.26-0.003,0.39c-0.002,0.134-0.004,0.266-0.007,0.396
 C279.572,482.992,266.307,496,250,496h-2.125H51.625H50c-16.316,0-29.592-13.029-29.99-29.249c-0.003-0.13-0.006-0.261-0.007-0.393
@@ -68,8 +98,12 @@ C20.001,466.239,20,466.119,20,466l0,0c0-0.141,0.001-0.281,0.003-0.422C20.228,449
 c16.438,0,29.787,13.222,29.997,29.608C279.999,465.738,280,465.869,280,466L280,466z" data-path-listen="M181,466c0,0.13-0.001,0.26-0.003,0.39c-0.002,0.134-0.004,0.266-0.007,0.396
 C180.572,482.992,167.307,496,151,496h-2.125h2.75H150c-16.316,0-29.592-13.029-29.99-29.249c-0.003-0.13-0.006-0.261-0.007-0.393
 C120.001,466.239,120,466.119,120,466l0,0c0-0.141,0.001-0.281,0.003-0.422C120.228,449.206,133.573,436,150,436h1.625h-2.75H151
-c16.438,0,29.787,13.222,29.997,29.608C180.999,465.738,181,465.869,181,466L181,466z" data-path-player="M290,40c0,0.13-0.001,380.26-0.003,380.39c-0.002,0.134,0.006,24.479,0.003,24.609 c0,3.095-2.562,5.001-5,5.001h-27.125H41.625H15c-1.875,0-5-1.25-5-5.001c-0.003-0.13,0.004-24.509,0.003-24.641 C10.001,420.239,10,40.119,10,40l0,0c0-0.141-0.002-24.859,0-25c0,0,0-5,5-5h26.625h216.25H285c2.438,0,5,1.906,5,5 C290.002,15.13,290,39.869,290,40L290,40z">
-		<div class="button button--start uil-ring-css" style="transform:scale(1);"><div></div></div>
+c16.438,0,29.787,13.222,29.997,29.608C180.999,465.738,181,465.869,181,466L181,466z"
+		data-path-player="M290,40c0,0.13-0.001,380.26-0.003,380.39c-0.002,0.134,0.006,24.479,0.003,24.609 c0,3.095-2.562,5.001-5,5.001h-27.125H41.625H15c-1.875,0-5-1.25-5-5.001c-0.003-0.13,0.004-24.509,0.003-24.641 C10.001,420.239,10,40.119,10,40l0,0c0-0.141-0.002-24.859,0-25c0,0,0-5,5-5h26.625h216.25H285c2.438,0,5,1.906,5,5 C290.002,15.13,290,39.869,290,40L290,40z">
+		<div class="button button--start uil-ring-css" style="transform:scale(1);">
+			<div></div>
+		</div>
 	</div>
 </body>
+
 </html>
