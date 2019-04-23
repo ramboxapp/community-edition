@@ -352,6 +352,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								,name: 'proxyPassword'
 								,value: config.proxyPassword
 								,emptyText: 'Optional'
+								,inputType: 'password'
 							}
 						]
 					}
