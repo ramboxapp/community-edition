@@ -104,7 +104,7 @@
 			"runAfterFinish": true
 		},
 		"snap": {
-			"plugs": ["desktop", "desktop-legacy", "home", "x11", "unity7", "browser-support", "network", "gsettings", "pulseaudio", "opengl", "camera"]
+			"plugs": ["default", "camera"]
 		},
 		"linux": {
 			"category": "Network",
