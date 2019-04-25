@@ -180,7 +180,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: `let getAlertCount=badges=>{let alerts=0;for(const badge of badges)if(badge&&badge.childNodes&&badge.childNodes.length>0){const count=parseInt(badge.childNodes[0].nodeValue,10);alerts+=count.isNaN?1:count}else alerts++;return alerts},checkUnread=()=>{let direct=0,indirect=document.getElementsByClassName("pill-31IEus").length;const guildDirect=document.getElementsByClassName("numberBadge-2s8kKX"),channelDirect=document.getElementsByClassName("mentionsBadge-7f5lud");direct+=getAlertCount(guildDirect),direct+=getAlertCount(channelDirect),indirect+=document.getElementsByClassName("pill-1m5BUr").length,rambox.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
+			,js_unread: `let getMentionCount=badges=>{let alerts=0;for(const badge of badges){const count=parseInt(badge.innerText,10);alerts+=count.isNaN?1:count}return alerts},getServerUnread=badges=>{let alerts=0;for(const badge of badges)alerts+="0.7"===badge.style.opacity?1:0;return alerts},checkUnread=()=>{const mentions=document.querySelectorAll(".lowerBadge-29hYVK > .numberBadge-2s8kKX");unread=document.getElementsByClassName("item-2hkk8m");const direct=getMentionCount(mentions);let indirect=getServerUnread(unread);indirect+=document.getElementsByClassName("unread-3zKkbm").length,rambox.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
 		},
 		{
