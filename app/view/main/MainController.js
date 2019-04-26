@@ -373,6 +373,15 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		function setLock(text) {
+			var currentTab = Ext.cq1('app-main').getActiveTab();
+			if (currentTab.getWebView) { //related to https://github.com/ramboxapp/community-edition/issues/2065. Focusing in an sub frame is a workaround
+				currentTab.down('component').el.dom.executeJavaScript(`
+				var iframeFix = document.createElement('iframe');
+				document.body.appendChild(iframeFix);
+				iframeFix.focus();
+				document.body.removeChild(iframeFix);
+				`);
+			}
 			console.info('Lock Rambox:', 'Enabled');
 
 			// Save encrypted password in localStorage to show locked when app is reopen
