@@ -126,6 +126,45 @@ Ext.define('Rambox.ux.WebView',{
 					]
 				}
 			}
+			,tbar: {
+				 itemId: 'searchBar'
+				,hidden: true
+				,items: ['->', {
+					 xtype: 'textfield'
+					,emptyText: 'Search...'
+					,listeners: {
+						 scope: me
+						,change: me.doSearchText
+						,specialkey: function(field, e) {
+							if ( e.getKey() === e.ENTER ) return me.doSearchText(field, field.getValue(), null, null, true)
+							if ( e.getKey() === e.ESC ) return me.showSearchBox(false)
+						}
+					}
+				}, {
+					 xtype: 'displayfield'
+				}, {
+					 xtype: 'segmentedbutton'
+					,allowMultiple: false
+					,allowToggle: false
+					,items: [{
+						 glyph: 'xf053@FontAwesome'
+						,handler: function() {
+							var field = this.up('toolbar').down('textfield');
+							me.doSearchText(field, field.getValue(), null, null, false)
+						}
+					}, {
+						 glyph: 'xf054@FontAwesome'
+						,handler: function() {
+							var field = this.up('toolbar').down('textfield');
+							me.doSearchText(field, field.getValue(), null, null, true)
+						}
+					}]
+				}, {
+					 xtype: 'button'
+					,glyph: 'xf00d@FontAwesome'
+					,handler: function() { me.showSearchBox(false) }
+				}]
+			}
 			,listeners: {
 				 afterrender: me.onAfterRender
 				,beforedestroy: me.onBeforeDestroy
@@ -165,6 +204,7 @@ Ext.define('Rambox.ux.WebView',{
 		} else {
 			cfg = [{
 				 xtype: 'component'
+				,cls: 'webview'
 				,hideMode: 'offsets'
 				,autoRender: true
 				,autoShow: true
@@ -234,7 +274,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		if ( !me.record.get('enabled') ) return;
 
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		// Google Analytics Event
 		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
@@ -263,6 +303,11 @@ Ext.define('Rambox.ux.WebView',{
 			setTimeout(function() {
 				Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
 			}, 1000);
+		});
+
+		// On search text
+		webview.addEventListener('found-in-page', function(e) {
+			me.onSearchText(e.result)
 		});
 
 		// Open links in default browser
@@ -457,8 +502,6 @@ Ext.define('Rambox.ux.WebView',{
 			webview.executeJavaScript(js_inject);
 		});
 
-
-
 		webview.addEventListener('ipc-message', function(event) {
 			var channel = event.channel;
 			switch (channel) {
@@ -621,7 +664,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,reloadService: function(btn) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) {
 			me.clearUnreadCounter();
@@ -629,16 +672,56 @@ Ext.define('Rambox.ux.WebView',{
 		}
 	}
 
+	,showSearchBox: function(v) {
+		var me = this;
+		if ( !me.record.get('enabled') ) return;
+		var webview = me.getWebView();
+
+		webview.stopFindInPage('keepSelection');
+		if ( v ) {
+			me.down('#searchBar').show();
+			setTimeout(() => { me.down('#searchBar textfield').focus() }, 100)
+		} else {
+			me.down('#searchBar').hide();
+			me.down('#searchBar textfield').setValue('');
+		}
+
+		me.down('#searchBar displayfield').setValue('');
+	}
+
+	,doSearchText: function(field, newValue, oldValue, eOpts, forward = true) {
+		var me = this;
+		var webview = me.getWebView();
+
+		if ( newValue === '' ) {
+			webview.stopFindInPage('clearSelection');
+			me.down('#searchBar displayfield').setValue('');
+			return;
+		}
+
+		webview.findInPage(newValue, {
+			forward: forward,
+			findNext: false,
+			matchCase: false
+		})
+	}
+
+	,onSearchText: function( result ) {
+		var me = this;
+
+		me.down('#searchBar displayfield').setValue(result.activeMatchOrdinal+ '/' + result.matches);
+	}
+
 	,toggleDevTools: function(btn) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) webview.isDevToolsOpened() ? webview.closeDevTools() : webview.openDevTools();
 	}
 
 	,setURL: function(url) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.src = url;
 
@@ -647,7 +730,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,setAudioMuted: function(muted, calledFromDisturb) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.muted = muted;
 
@@ -679,7 +762,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,setNotifications: function(notification, calledFromDisturb) {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.notifications = notification;
 
@@ -708,21 +791,21 @@ Ext.define('Rambox.ux.WebView',{
 
 	,goBack: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) webview.goBack();
 	}
 
 	,goForward: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) webview.goForward();
 	}
 
 	,zoomIn: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.zoomLevel = me.zoomLevel + 0.25;
 		if ( me.record.get('enabled') ) {
@@ -733,7 +816,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,zoomOut: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.zoomLevel = me.zoomLevel - 0.25;
 		if ( me.record.get('enabled') ) {
@@ -744,7 +827,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,resetZoom: function() {
 		var me = this;
-		var webview = me.down('component').el.dom;
+		var webview = me.getWebView();
 
 		me.zoomLevel = 0;
 		if ( me.record.get('enabled') ) {
@@ -755,7 +838,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	,getWebView: function() {
 		if ( this.record.get('enabled') ) {
-			return this.down('component').el.dom;
+			return this.down('component[cls=webview]').el.dom;
 		} else {
 			return false;
 		}
