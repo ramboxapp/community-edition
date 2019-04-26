@@ -304,6 +304,7 @@ ipcMain.on('validateMasterPassword', function(event, pass) {
 
 // Handle Service Notifications
 ipcMain.on('setServiceNotifications', function(event, partition, op) {
+	if ( partition === null ) return;
 	session.fromPartition(partition).setPermissionRequestHandler(function(webContents, permission, callback) {
 		if (permission === 'notifications') return callback(op);
 		callback(true)
