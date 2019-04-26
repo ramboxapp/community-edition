@@ -40,6 +40,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function checkUnread(){var a=document.querySelectorAll(".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)").length;n=0;var b=document.getElementsByClassName("p-channel_sidebar__badge");for(badge of b)n+=isNaN(parseInt(badge.innerHTML))?0:parseInt(badge.innerHTML);count=0<n?n:0<a?"\u2022":0,updateBadge(count)}function updateBadge(a){1<=a||"\u2022"===a?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
+			 id: 'duo'
+			,logo: 'duo.png'
+			,name: 'Duo'
+			,description: 'Google Duo is the new, simple video calling app that brings you face-to-face with all the people that matter most.'
+			,url: 'https://duo.google.com/?web'
+			,type: 'messaging'
+		},
+		{
 			 id: 'noysi'
 			,logo: 'noysi.png'
 			,name: 'Noysi'
