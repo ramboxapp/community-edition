@@ -190,8 +190,6 @@ function createWindow () {
 				default:
 					switch (config.get('window_close_behavior')) {
 						case 'keep_in_tray':
-							mainWindow.hide();
-							break;
 						case 'keep_in_tray_and_taskbar':
 							mainWindow.minimize();
 							break;
@@ -202,6 +200,15 @@ function createWindow () {
 					break;
 			}
 		}
+	});
+	mainWindow.on('minimize', function(e) {
+		if ( config.get('window_close_behavior') === 'keep_in_tray' ) mainWindow.setSkipTaskbar(true);
+	});
+	mainWindow.on('restore', function(e) {
+		if ( config.get('window_display_behavior') === 'show_taskbar' ) mainWindow.setSkipTaskbar(false);
+	});
+	mainWindow.on('show', function(e) {
+		if ( config.get('window_display_behavior') !== 'show_trayIcon' ) mainWindow.setSkipTaskbar(false);
 	});
 	mainWindow.on('closed', function(e) {
 		mainWindow = null;
@@ -256,7 +263,7 @@ ipcMain.on('setConfig', function(event, values) {
 	// always_on_top
 	mainWindow.setAlwaysOnTop(values.always_on_top);
 	// auto_launch
-	values.auto_launch ? appLauncher.enable() : appLauncher.disable();
+	if ( !isDev ) values.auto_launch ? appLauncher.enable() : appLauncher.disable();
 	// systemtray_indicator
 	updateBadge(mainWindow.getTitle());
 
@@ -399,6 +406,7 @@ ipcMain.on('image:popup', function(event, url, partition) {
 });
 
 ipcMain.on('toggleWin', function(event, allwaysShow) {
+	if ( config.get('window_display_behavior') !== 'show_trayIcon' ) mainWindow.setSkipTaskbar(false);
 	if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && mainWindow.isVisible() ) { // Maximized
 		!allwaysShow ? mainWindow.close() : mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Minimized
