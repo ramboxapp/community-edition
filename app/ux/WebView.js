@@ -525,8 +525,8 @@ Ext.define('Rambox.ux.WebView',{
 				require('electron').remote.getCurrentWindow().show();
 				var tabPanel = Ext.cq1('app-main');
 				// Temp fix missing cursor after upgrade to electron 3.x +
-				tabPanel.getActiveTab().getWebView().blur();
 				tabPanel.setActiveTab(me);
+				tabPanel.getActiveTab().getWebView().blur();
 				tabPanel.getActiveTab().getWebView().focus();
 			}
 		});
