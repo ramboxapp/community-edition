@@ -272,3 +272,10 @@ body {
 		color: #FFF !important;
 	}
 }
+
+.x-tab-bar-default.dontdisturb {
+	background-color: #c3c3c3 !important;
+	.x-tab {
+		background-color: #c3c3c3;
+	}
+}
