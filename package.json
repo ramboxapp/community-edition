@@ -103,6 +103,9 @@
 			"perMachine": false,
 			"runAfterFinish": true
 		},
+		"snap": {
+			"plugs": ["default", "camera"]
+		},
 		"linux": {
 			"category": "Network",
 			"desktop": {
