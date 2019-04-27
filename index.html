@@ -10,17 +10,30 @@
 
 	<script type='text/javascript'>
 		var ipcRenderer = require('electron').ipcRenderer;
-		if (navigator.onLine) {
-			console.info('Internet Connection', true);
-		} else {
-			console.info('Internet Connection', false);
-			if (!ipcRenderer.sendSync('getConfig').hideNoConnectionDialog)
-				handleAlert();
-		}
-
+		const isOnline = require('is-online');
+		isOnline().then(res => {
+			if(res) {
+				console.info('Internet Connection', true);
+			} else {
+				console.info('Internet Connection', false);
+				if (!ipcRenderer.sendSync('getConfig').hideNoConnectionDialog)
+					handleAlert();
+			}
+		})
 		function handleAlert() {
-			const dialog = require('electron').remote.dialog
-			dialog.showMessageBox({
+			const {
+				dialog,
+				BrowserWindow
+			} = require('electron').remote
+			var window = new BrowserWindow({
+				center: true,
+				frame: false,
+				alwaysOnTop: true,
+				resizable: false,
+				width: 0,
+				height: 0
+			})
+			dialog.showMessageBox(window, {
 					buttons: ['OK'],
 					type: 'warning',
 					checkboxLabel: 'Do not show this message again',
@@ -28,8 +41,11 @@
 					title: 'No Internet Connection'
 				},
 				function (__response, checkboxChecked) {
+					window.close()
 					if (checkboxChecked) {
-						ipcRenderer.sendSync('sConfig', {hideNoConnectionDialog: true})
+						ipcRenderer.sendSync('sConfig', {
+							hideNoConnectionDialog: true
+						})
 					}
 				})
 		}
