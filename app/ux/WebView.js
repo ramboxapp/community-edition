@@ -551,7 +551,9 @@ Ext.define('Rambox.ux.WebView',{
 			}
 
 			function showWindowAndActivateTab(event) {
-				require('electron').remote.getCurrentWindow().show();
+				const currentWindow = require('electron').remote.getCurrentWindow();
+				currentWindow.show();
+				currentWindow.focus();
 				const tabPanel = Ext.cq1('app-main');
 				tabPanel.getActiveTab().blur();
 				tabPanel.setActiveTab(me);
