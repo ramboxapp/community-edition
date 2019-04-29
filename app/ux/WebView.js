@@ -838,8 +838,9 @@ Ext.define('Rambox.ux.WebView',{
 	}
 	,getOSArch: function() {
 		const me = this;
-		let platform = require('os').platform();
-		let arch = require('os').arch();
+		const {remote} = require('electron');
+		const platform = remote.require('os').platform();
+		let arch = remote.require('os').arch();
 
 		switch (platform) {
 			case 'win32':
@@ -859,7 +860,7 @@ Ext.define('Rambox.ux.WebView',{
 		return arch;
 	}
 	,getOSArchType: function() {
-		let arch = require('os').arch();
+		let arch = require('electron').remote.require('os').arch();
 
 		switch(arch) {
 			case 'x64':
@@ -891,7 +892,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 	,getOSPlatform: function() {
 		const me = this;
-		let platform = require('os').platform();
+		let platform = require('electron').remote.require('os').platform();
 		switch (platform) {
 			case 'win32':
 				platform = `Windows NT ${me.getOSRelease()}; ${me.getOSArch()}`;
@@ -914,10 +915,10 @@ Ext.define('Rambox.ux.WebView',{
 		return platform;
 	}
 	,isWindows: function() {
-		return require('os').platform() === 'win32';
+		return require('electron').remote.require('os').platform() === 'win32';
 	}
 	,is32bit: function() {
-		const arch = require('os').arch();
+		const arch = require('electron').remote.require('os').arch();
 		if (arch === 'ia32' || arch === 'x32')
 			return true;
 		else
@@ -925,12 +926,13 @@ Ext.define('Rambox.ux.WebView',{
 	}
 	,getOSRelease: function() {
 		const me = this;
+		const remote = require('electron');
 		return me.isWindows() ?
-		require('os').release().match(/([0-9]+\.[0-9]+)/)[0]
-			: require('os').release();
+		remote.require('os').release().match(/([0-9]+\.[0-9]+)/)[0]
+			: remote.require('os').release();
 	}
 	,getChromeVersion: function() {
-		return require('process').versions['chrome'];
+		return require('electron').remote.require('process').versions['chrome'];
 	}
 	,getElectronVersion: function() {
 		return require('process').versions['electron'];
