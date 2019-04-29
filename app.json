@@ -147,7 +147,8 @@
     "css": [
         {
             "path": "bootstrap.css",
-            "bootstrap": true
+            "bootstrap": true,
+            "bundle": true
         }
     ],
 
@@ -329,7 +330,11 @@
             }
         ]
     },
-
+    "fashion": {
+        "inliner": {
+            "enable": true
+        }
+    },
     /**
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
