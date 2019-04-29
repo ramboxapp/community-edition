@@ -1,4 +1,4 @@
-const {app, ipcMain} = require('electron');
+const { app, ipcMain } = require('electron');
 const { autoUpdater } = require("electron-updater");
 const path = require('path');
 
@@ -12,7 +12,11 @@ const initialize = (window) => {
 	const send = webContents.send.bind(window.webContents);
 	autoUpdater.on('checking-for-update', (event) => send('autoUpdater:checking-for-update'));
 	autoUpdater.on('update-downloaded', (...args) => send('autoUpdater:update-downloaded', ...args));
-	ipcMain.on('autoUpdater:quit-and-install', (event) => autoUpdater.quitAndInstall());
+	ipcMain.on('autoUpdater:quit-and-install', (event) => {
+		app.removeAllListeners('window-all-closed');
+		BrowserWindow.getAllWindows().forEach((browserWindow) => browserWindow.removeAllListeners('close'));
+		autoUpdater.quitAndInstall()
+	});
 	ipcMain.on('autoUpdater:check-for-updates', (event) => autoUpdater.checkForUpdates());
 };
 
