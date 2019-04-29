@@ -294,10 +294,12 @@ ipcMain.on('validateMasterPassword', function(event, pass) {
 
 // Handle Service Notifications
 ipcMain.on('setServiceNotifications', function(event, partition, op) {
-	session.fromPartition(partition).setPermissionRequestHandler(function(webContents, permission, callback) {
-		if (permission === 'notifications') return callback(op);
-		callback(true);
-	});
+	if (partition) {
+		session.fromPartition(partition).setPermissionRequestHandler(function(webContents, permission, callback) {
+			if (permission === 'notifications') return callback(op);
+			callback(true);
+		});
+	}
 });
 
 ipcMain.on('setDontDisturb', function(event, arg) {
