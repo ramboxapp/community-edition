@@ -95,7 +95,8 @@ function createWindow () {
 		,acceptFirstMouse: true
 		,webPreferences: {
 			partition: 'persist:rambox',
-			nodeIntegration: true
+			nodeIntegration: true,
+			webviewTag: true
 		}
 	});
 
