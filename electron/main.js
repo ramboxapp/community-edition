@@ -257,6 +257,7 @@ ipcMain.on('getConfig', function(event, arg) {
 });
 ipcMain.on('sConfig', function(event, values) {
 	config.set(values);
+	event.returnValue = true;
 });
 ipcMain.on('setConfig', function(event, values) {
 	config.set(values);
