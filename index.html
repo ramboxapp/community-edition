@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta charset="UTF-8">
@@ -8,27 +9,29 @@
 	<title>Rambox</title>
 
 	<script type='text/javascript'>
-		var xhr = new XMLHttpRequest();
-		var file = "http://rambox.pro/api/latestversion.json";
-		var randomNum = Math.round(Math.random() * 10000);
-
-		xhr.open('HEAD', file + "?rand=" + randomNum, true);
-		xhr.send();
-
-		xhr.addEventListener("readystatechange", function() {
-			setTimeout(processRequest, 5000);
-		}, false);
-
-		function processRequest(e) {
-			if (xhr.readyState == 4) {
-				if (xhr.status >= 200 && xhr.status < 304) {
-					console.info('Internet Connection', true);
-				} else {
-					console.info('Internet Connection', false);
-					alert('Please, check your internet connection and restart Rambox. If you use a Proxy, please go to Preferences to configure it.', 'No Internet Connection');
+		var ipcRenderer = require('electron').ipcRenderer;
+		const isOnline = require('is-online');
+		(async () => {
+			await isOnline().then(res => {
+				console.info('Internet Connection', res);
+				if ( !res && !ipcRenderer.sendSync('getConfig').hideNoConnectionDialog ) {
+					const { remote } = require('electron');
+					remote.dialog.showMessageBox(remote.getCurrentWindow(), {
+						buttons: ['OK'],
+						type: 'warning',
+						checkboxLabel: 'Do not show this message again',
+						message: 'Please, check your internet connection and restart Rambox. If you use a Proxy, please go to Preferences to configure it.',
+						title: 'No Internet Connection'
+					},
+					function (__response, checkboxChecked) {
+						if ( !checkboxChecked ) return;
+						ipcRenderer.sendSync('sConfig', {
+							hideNoConnectionDialog: true
+						})
+					})
 				}
-			}
-		}
+			})
+		})();
 	</script>
 
 	<!-- The line below must be kept intact for Sencha Cmd to build your application -->
@@ -36,7 +39,7 @@
 
 	<!--- Localization -->
 	<script type='text/javascript'>
-	    (function(d, s){
+		(function(d, s){
 			var t = d.createElement(s), e = d.getElementsByTagName(s)[0];
 			t.type = "text/javascript"; e.parentNode.insertBefore(t, e);
 			t.src = "resources/languages/"+require('electron').ipcRenderer.sendSync('getConfig').locale+".js";
@@ -46,21 +49,22 @@
 
 	<!--- Signalayer player -->
 	<script type='text/javascript'>
-	window.Signalayer||function(t,e){var o={
-		url:"https://cdn.signalayer.com/static/player.js",
-		key:"sEF8shc4KSuqtHMx0ztmTFdcrQO0cAVpszZ9Y8hLfQ2",
-		async:true
-	};window.Signalayer={cs:[],_apiKey:o.key};for(
-	var r=["identify","goal","updateUserData","start","stop","refresh","show","hide","on"],
-	i={},n=0;n>r.length;n++){var a=r[n];i[a]=function(t){return function(){var
-	e=Array.prototype.slice.call(arguments);
-	window.Signalayer.cs.push({method:t,args:e})}}(a)}window.Signalayer.API=i;var
-	n=t.createElement(e),s=t.getElementsByTagName(e)[0];
-	n.type="text/javascript",
-	n.async=o.async,s.parentNode.insertBefore(n,s),n.src=o.url}(document,"script");
+		window.Signalayer||function(t,e){var o={
+			url:"https://cdn.signalayer.com/static/player.js",
+			key:"sEF8shc4KSuqtHMx0ztmTFdcrQO0cAVpszZ9Y8hLfQ2",
+			async:true
+		};window.Signalayer={cs:[],_apiKey:o.key};for(
+		var r=["identify","goal","updateUserData","start","stop","refresh","show","hide","on"],
+		i={},n=0;n>r.length;n++){var a=r[n];i[a]=function(t){return function(){var
+		e=Array.prototype.slice.call(arguments);
+		window.Signalayer.cs.push({method:t,args:e})}}(a)}window.Signalayer.API=i;var
+		n=t.createElement(e),s=t.getElementsByTagName(e)[0];
+		n.type="text/javascript",
+		n.async=o.async,s.parentNode.insertBefore(n,s),n.src=o.url}(document,"script");
 	</script>
 	<!--- Signalayer player -->
 </head>
+
 <body>
 	<div id="spinner" class="component" data-path-start="M280,466c0,0.13-0.001,0.26-0.003,0.39c-0.002,0.134-0.004,0.266-0.007,0.396
 C279.572,482.992,266.307,496,250,496h-2.125H51.625H50c-16.316,0-29.592-13.029-29.99-29.249c-0.003-0.13-0.006-0.261-0.007-0.393
@@ -72,4 +76,5 @@ c16.438,0,29.787,13.222,29.997,29.608C180.999,465.738,181,465.869,181,466L181,46
 		<div class="button button--start uil-ring-css" style="transform:scale(1);"><div></div></div>
 	</div>
 </body>
+
 </html>

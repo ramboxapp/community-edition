@@ -255,7 +255,9 @@ ipcMain.on('setBadge', function(event, messageCount, value) {
 ipcMain.on('getConfig', function(event, arg) {
 	event.returnValue = config.store;
 });
-
+ipcMain.on('sConfig', function(event, values) {
+	config.set(values);
+});
 ipcMain.on('setConfig', function(event, values) {
 	config.set(values);
 
