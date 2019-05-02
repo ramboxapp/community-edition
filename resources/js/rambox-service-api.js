@@ -3,6 +3,8 @@
  */
 
 const { ipcRenderer } = require('electron');
+const { process } = require('electron').remote
+const { webFrame } = require('electron')
 const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
 
 /**
@@ -55,6 +57,7 @@ window.rambox.contextMenuBuilder = new ContextMenuBuilder();
 window.rambox.contextMenuListener = new ContextMenuListener(function(event, info) {
 	window.rambox.contextMenuBuilder.showPopupMenu(info);
 });
+process.title = `Subframe ${webFrame.routingId}: ${window.location.hostname}`
 
 document.addEventListener("keydown", (event) => {
 	if (event.type !== 'keydown' || event.key === 'z' || event.key === 'a' ) return; // event used by default
