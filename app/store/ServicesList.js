@@ -72,7 +72,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[4]']
 			,url: 'https://web.skype.com/'
 			,type: 'messaging'
-			,note: 'Text and Audio calls are supported only. <a href="https://github.com/saenzramiro/rambox/wiki/Skype" target="_blank">Read more...</a>'
+			,note: 'Text and Audio calls are supported only. Be sure to disable Links Previews to make them work. <a href="https://github.com/ramboxapp/community-edition/wiki/Skype" target="_blank">Read more...</a>'
 		},
 		{
 			 id: 'hangouts'

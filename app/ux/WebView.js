@@ -315,9 +315,8 @@ Ext.define('Rambox.ux.WebView',{
 			switch ( me.type ) {
 				case 'skype':
 					// hack to fix multiple browser tabs on Skype link click, re #11
-					if ( e.url.match('https:\/\/web.skype.com\/..\/undefined') ) {
-						e.preventDefault();
-						return;
+					if ( require('url').parse(me.down('statusbar #url').html).protocol !== null ) {
+						e.url = me.down('statusbar #url').html;
 					} else if ( e.url.indexOf('imgpsh_fullsize') >= 0 ) {
 						ipc.send('image:download', e.url, e.target.partition);
 						e.preventDefault();
