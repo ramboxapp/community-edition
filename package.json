@@ -102,7 +102,7 @@
 		}
 	},
 	"devDependencies": {
-		"asar": "^1.0.0",
+		"asar": "^2.0.1",
 		"chai": "^4.2.0",
 		"crowdin": "^1.0.0",
 		"csvjson": "^5.1.0",
