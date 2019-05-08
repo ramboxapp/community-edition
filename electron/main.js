@@ -192,6 +192,9 @@ function createWindow () {
 				default:
 					switch (config.get('window_close_behavior')) {
 						case 'keep_in_tray':
+							mainWindow.minimize();
+							mainWindow.setSkipTaskbar(true);
+							break;
 						case 'keep_in_tray_and_taskbar':
 							mainWindow.minimize();
 							break;
@@ -204,7 +207,7 @@ function createWindow () {
 		}
 	});
 	mainWindow.on('minimize', function(e) {
-		if ( config.get('window_close_behavior') === 'keep_in_tray' ) mainWindow.setSkipTaskbar(true);
+		if ( config.get('window_display_behavior') === 'show_trayIcon' ) mainWindow.setSkipTaskbar(true);
 	});
 	mainWindow.on('restore', function(e) {
 		if ( config.get('window_display_behavior') === 'show_taskbar' ) mainWindow.setSkipTaskbar(false);
@@ -421,6 +424,7 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 		!allwaysShow ? mainWindow.close() : mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Closed to taskbar
 		mainWindow.restore();
+		mainWindow.show();
 	} else if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed maximized to tray
 		mainWindow.show();
 	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed windowed to tray
