@@ -76,10 +76,10 @@ ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, r
 // Set Badge in taskbar for Windows
 ipc.on('setBadge', function(event, messageCount) {
 	messageCount = messageCount.toString();
-	var canvas = document.createElement("canvas");
+	const canvas = document.createElement("canvas");
 	canvas.height = 140;
 	canvas.width = 140;
-	var ctx = canvas.getContext("2d");
+	const ctx = canvas.getContext("2d");
 	ctx.fillStyle = "red";
 	ctx.beginPath();
 	ctx.ellipse(70, 70, 70, 70, 0, 0, 2 * Math.PI);
@@ -87,7 +87,7 @@ ipc.on('setBadge', function(event, messageCount) {
 	ctx.textAlign = "center";
 	ctx.fillStyle = "white";
 
-	var ranges = [
+	const ranges = [
 		{ divider: 1e18 , suffix: 'P' },
 		{ divider: 1e15 , suffix: 'E' },
 		{ divider: 1e12 , suffix: 'T' },
@@ -98,7 +98,7 @@ ipc.on('setBadge', function(event, messageCount) {
 
 	function formatNumber(n) {
 		n = parseInt(n);
-		for (let i of ranges) {
+		for (const i of ranges) {
 			if (n >= i.divider) {
 				return Math.round(n / i.divider).toString() + i.suffix;
 			}
@@ -124,14 +124,14 @@ ipc.on('setBadge', function(event, messageCount) {
 });
 // Reload Current Service
 ipc.on('reloadCurrentService', function(e) {
-	var tab = Ext.cq1('app-main').getActiveTab();
+	const tab = Ext.cq1('app-main').getActiveTab();
 	if ( tab.id !== 'ramboxTab' ) tab.reloadService();
 });
 
 ipc.on('tabFocusNext', function() {
-	var tabPanel = Ext.cq1('app-main');
-	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-	var i = activeIndex + 1;
+	const tabPanel = Ext.cq1('app-main');
+	const activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+	let i = activeIndex + 1;
 
 	tabPanel.getActiveTab().blur();
 
@@ -146,9 +146,9 @@ ipc.on('tabFocusNext', function() {
 });
 
 ipc.on('tabFocusPrevious', function() {
-	var tabPanel = Ext.cq1('app-main');
-	var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-	var i = activeIndex - 1;
+	const tabPanel = Ext.cq1('app-main');
+	const activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+	let i = activeIndex - 1;
 	tabPanel.getActiveTab().blur();
 	if ( i < 0 ) i = tabPanel.items.items.length - 1;
 	while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
@@ -157,31 +157,31 @@ ipc.on('tabFocusPrevious', function() {
 });
 
 ipc.on('tabZoomIn', function() {
-	var tabPanel = Ext.cq1('app-main');
+	const tabPanel = Ext.cq1('app-main');
 	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
 	tabPanel.getActiveTab().zoomIn();
 });
 
 ipc.on('tabZoomOut', function() {
-	var tabPanel = Ext.cq1('app-main');
+	const tabPanel = Ext.cq1('app-main');
 	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
 	tabPanel.getActiveTab().zoomOut();
 });
 
 ipc.on('tabResetZoom', function() {
-	var tabPanel = Ext.cq1('app-main');
+	const tabPanel = Ext.cq1('app-main');
 	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
 	tabPanel.getActiveTab().resetZoom();
 });
 
 ipc.on('toggleDoNotDisturb', function(key) {
-	var btn = Ext.getCmp('disturbBtn');
+	const btn = Ext.getCmp('disturbBtn');
 	btn.toggle();
 	Ext.cq1('app-main').getController().dontDisturb(btn, true);
 });
 
 ipc.on('lockWindow', function(key) {
-	var btn = Ext.getCmp('lockRamboxBtn');
+	const btn = Ext.getCmp('lockRamboxBtn');
 	Ext.cq1('app-main').getController().lockRambox(btn);
 });
 

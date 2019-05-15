@@ -21,21 +21,21 @@
 	 */
 
 		// from http://stackoverflow.com/a/25273333
-	var bezier = function(x1, y1, x2, y2, epsilon) {
-			var curveX = function(t){
-				var v = 1 - t;
+	const bezier = function(x1, y1, x2, y2, epsilon) {
+			const curveX = function(t){
+				const v = 1 - t;
 				return 3 * v * v * t * x1 + 3 * v * t * t * x2 + t * t * t;
 			};
-			var curveY = function(t){
-				var v = 1 - t;
+			const curveY = function(t){
+				const v = 1 - t;
 				return 3 * v * v * t * y1 + 3 * v * t * t * y2 + t * t * t;
 			};
-			var derivativeCurveX = function(t){
-				var v = 1 - t;
+			const derivativeCurveX = function(t){
+				const v = 1 - t;
 				return 3 * (2 * (t - 1) * t + v * v) * x1 + 3 * (- t * t * t + 2 * v * t) * x2;
 			};
-			return function(t){
-				var x = t, t0, t1, t2, x2, d2, i;
+			return function(x){
+				let t0, t1, t2, x2, d2, i;
 				// First try a few iterations of Newton's method -- normally very fast.
 				for (t2 = x, i = 0; i < 8; i++){
 					x2 = curveX(t2) - x;
@@ -66,7 +66,7 @@
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		},
 		throttle = function(fn, delay) {
-			var allowSample = true;
+			let allowSample = true;
 
 			return function(e) {
 				if (allowSample) {
@@ -78,7 +78,7 @@
 		},
 		// from https://davidwalsh.name/vendor-prefix
 		prefix = (function () {
-			var styles = window.getComputedStyle(document.documentElement, ''),
+			const styles = window.getComputedStyle(document.documentElement, ''),
 				pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || (styles.OLink === '' && ['', 'o']))[1],
 				dom = ('WebKit|Moz|MS|O').match(new RegExp('(' + pre + ')', 'i'))[1];
 
@@ -90,11 +90,11 @@
 			};
 		})();
 
-	var support = {transitions : Modernizr.csstransitions},
+	const support = {transitions : Modernizr.csstransitions},
 		transEndEventNames = { 'WebkitTransition': 'webkitTransitionEnd', 'MozTransition': 'transitionend', 'OTransition': 'oTransitionEnd', 'msTransition': 'MSTransitionEnd', 'transition': 'transitionend' },
 		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
 		onEndTransition = function( el, callback, propTest ) {
-			var onEndCallbackFn = function( ev ) {
+			const onEndCallbackFn = function( ev ) {
 				if( support.transitions ) {
 					if( ev.target != this || propTest && ev.propertyName !== propTest && ev.propertyName !== prefix.css + propTest ) return;
 					this.removeEventListener( transEndEventName, onEndCallbackFn );
@@ -113,9 +113,9 @@
 		// the initial button
 		shzCtrl = shzEl.querySelector('div.button--start'),
 		// total number of notes/symbols moving towards the listen button
-		totalNotes = 50,
+		totalNotes = 50;
 		// the notes elements
-		notes,
+		let notes,
 		// the note´s speed factor relative to the distance from the note element to the button.
 		// if notesSpeedFactor = 1, then the speed equals the distance (in ms)
 		notesSpeedFactor = 4.5,
@@ -143,11 +143,12 @@
 	 * creates [totalNotes] note elements (the musical symbols that will animate/move towards the listen button)
 	 */
 	function createNotes() {
-		var notesEl = document.createElement('div'), notesElContent = '';
+		const notesEl = document.createElement('div');
+		let notesElContent = '';
 		notesEl.className = 'notes';
-		for(var i = 0; i < totalNotes; ++i) {
+		for(let i = 0; i < totalNotes; ++i) {
 			// we have 6 different types of symbols (icon--note1, icon--note2 ... icon--note6)
-			var j = (i + 1) - 6 * Math.floor(i/6);
+			const j = (i + 1) - 6 * Math.floor(i/6);
 			notesElContent += '<div class="note icon icon--note' + j + '"></div>';
 		}
 		notesEl.innerHTML = notesElContent;
@@ -202,8 +203,8 @@
 	 */
 	function positionNote(note) {
 		// we want to position the notes randomly (translation and rotation) outside of the viewport
-		var x = getRandomNumber(-2*(shzCtrlOffset.left + shzCtrlSize.width/2), 2*(winsize.width - (shzCtrlOffset.left + shzCtrlSize.width/2))), y,
-			rotation = getRandomNumber(-30, 30);
+		const x = getRandomNumber(-2*(shzCtrlOffset.left + shzCtrlSize.width/2), 2*(winsize.width - (shzCtrlOffset.left + shzCtrlSize.width/2)));
+		let y, rotation = getRandomNumber(-30, 30);
 
 		if( x > -1*(shzCtrlOffset.top + shzCtrlSize.height/2) && x < shzCtrlOffset.top + shzCtrlSize.height/2 ) {
 			y = getRandomNumber(0,1) > 0 ? getRandomNumber(-2*(shzCtrlOffset.top + shzCtrlSize.height/2), -1*(shzCtrlOffset.top + shzCtrlSize.height/2)) : getRandomNumber(winsize.height - (shzCtrlOffset.top + shzCtrlSize.height/2), winsize.height + winsize.height - (shzCtrlOffset.top + shzCtrlSize.height/2));
@@ -232,7 +233,7 @@
 			if(!isListening) return;
 			// the transition speed of each note will be proportional to the its distance to the button
 			// speed = notesSpeedFactor * distance
-			var noteSpeed = notesSpeedFactor * Math.sqrt(Math.pow(note.getAttribute('data-tx'),2) + Math.pow(note.getAttribute('data-ty'),2));
+			const noteSpeed = notesSpeedFactor * Math.sqrt(Math.pow(note.getAttribute('data-tx'),2) + Math.pow(note.getAttribute('data-ty'),2));
 
 			// apply the transition
 			note.style.WebkitTransition = '-webkit-transform ' + noteSpeed + 'ms ease, opacity 0.8s';
@@ -243,7 +244,7 @@
 			note.style.opacity = 1;
 
 			// after the animation is finished,
-			var onEndTransitionCallback = function() {
+			const onEndTransitionCallback = function() {
 				// reset transitions and styles
 				note.style.WebkitTransition = note.style.transition = 'none';
 				note.style.opacity = 0;

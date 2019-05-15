@@ -11,7 +11,7 @@ Ext.define('Rambox.ux.FileBackup', {
 		me.myDefaultPath = me.userPath + me.path.sep + me.defaultFileName;
 	},
 	backupConfiguration(callback) {
-		var me = this;
+		const me = this;
 		let services = [];
 		Ext.getStore('Services').each(function(service) {
 			const s = Ext.clone(service);
@@ -34,7 +34,7 @@ Ext.define('Rambox.ux.FileBackup', {
 		if (Ext.isFunction(callback)) callback.bind(me)();
 	},
 	restoreConfiguration() {
-		var me = this;
+		const me = this;
 		me.remote.dialog.showOpenDialog({
 			defaultPath: me.myDefaultPath,
 			properties: ['openFile']

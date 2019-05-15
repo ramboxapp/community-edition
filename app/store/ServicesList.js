@@ -627,7 +627,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Flock is a free enterprise tool for business communication. Packed with tons of productivity features, Flock drives efficiency and boosts speed of execution.'
 			,url: 'https://web.flock.co/'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{var a=document.getElementsByClassName("unreadMessages no-unread-mentions has-unread");let b=0;for(let i of a)b+=parseInt(i.innerHTML.trim());rambox.updateBadge(b)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const a=document.getElementsByClassName("unreadMessages no-unread-mentions has-unread");let b=0;for(const i of a)b+=parseInt(i.innerHTML.trim());rambox.updateBadge(b)};setInterval(checkUnread,3e3);`
 
 		},
 		{

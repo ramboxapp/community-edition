@@ -3,15 +3,15 @@ Ext.define('Rambox.view.preferences.PreferencesController', {
 	,alias: 'controller.preferences-preferences'
 
 	,cancel( btn ) {
-		var me = this;
+		const me = this;
 
 		me.getView().close();
 	}
 
 	,save( btn ) {
-		var me = this;
+		const me = this;
 
-		var values = me.getView().down('form').getForm().getFieldValues();
+		const values = me.getView().down('form').getForm().getFieldValues();
 
 		// master password activated and only one of the fields "password" or "password confirmation" filled
 		if (values.master_password === true &&

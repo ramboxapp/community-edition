@@ -2,9 +2,9 @@
  * This is an example test.
  */
 
-var chai = require('chai');
-var expect = chai.expect;
-var RamboxTestHelper = require('../../helpers/RamboxTestHelper');
+const chai = require('chai');
+const expect = chai.expect;
+const RamboxTestHelper = require('../../helpers/RamboxTestHelper');
 
 describe('Rambox window', function() {
 
@@ -13,7 +13,7 @@ describe('Rambox window', function() {
 	 *
 	 * @type {module.exports}
 	 */
-	var ramboxTestHelper = new RamboxTestHelper();
+	const ramboxTestHelper = new RamboxTestHelper();
 
 	it('should have "Rambox-OS" in the title', function () {
 		return ramboxTestHelper.app.client.browserWindow.getTitle().then(function(title) {

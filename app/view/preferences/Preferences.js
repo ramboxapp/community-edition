@@ -36,9 +36,9 @@ Ext.define('Rambox.view.preferences.Preferences',{
 	]
 
 	,initComponent() {
-		var config = ipc.sendSync('getConfig');
+		const config = ipc.sendSync('getConfig');
 
-		var defaultServiceOptions = [];
+		let defaultServiceOptions = [];
 		defaultServiceOptions.push({ value: 'ramboxTab', label: 'Rambox-OS Tab' });
 		defaultServiceOptions.push({ value: 'last', label: 'Last Active Service' });
 		Ext.getStore('Services').each(function(rec) {

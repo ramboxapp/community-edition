@@ -18,7 +18,7 @@ Ext.define('Rambox.util.Notifier', {
 		 * @return {*}
 		 */
 		function getNotificationText(view, count) {
-			var text;
+			let text;
 			switch (Ext.getStore('ServicesList').getById(view.type).get('type')) {
 				case 'messaging':
 					text = 'You have ' + Ext.util.Format.plural(count, 'new message', 'new messages') + '.';
@@ -40,9 +40,9 @@ Ext.define('Rambox.util.Notifier', {
 		 * @param {number} count	The unread count
 		 */
 		this.dispatchNotification = function(view, count) {
-			var text = getNotificationText(view, count);
+			const text = getNotificationText(view, count);
 
-			var notification = new Notification(view.record.get('name'), {
+			const notification = new Notification(view.record.get('name'), {
 				body: text,
 				icon: view.icon,
 				silent: view.record.get('muted')

@@ -2,7 +2,7 @@ const path = require('path');
 const {app, electron, nativeImage, Menu, MenuItem, Tray} = require('electron');
 // Module to create tray icon
 
-var appIcon = null;
+let appIcon = null;
 
 exports.create = function(win, config) {
 	if (process.platform === 'darwin' || appIcon || config.get('window_display_behavior') === 'show_taskbar' ) return;

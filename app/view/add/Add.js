@@ -26,7 +26,7 @@ Ext.define('Rambox.view.add.Add',{
 	,bodyPadding: 20
 
 	,initComponent() {
-		var me = this;
+		const me = this;
 
 		me.title = (!me.edit ? locale['app.window[0]'] : locale['app.window[1]']) + ' ' + me.record.get('name');
 		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'resources/icons/'+me.record.get('logo');

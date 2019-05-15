@@ -1,17 +1,17 @@
 Ext.apply(Ext.form.field.VTypes, {
 	daterange(val, field) {
-		var date = field.parseDate(val);
+		const date = field.parseDate(val);
 
 		if (!date) {
 			return false;
 		}
 		if (field.startDateField && (!this.dateRangeMax || (date.getTime() !== this.dateRangeMax.getTime()))) {
-			var start = field.up('form').down('#' + field.startDateField);
+			const start = field.up('form').down('#' + field.startDateField);
 			start.setMaxValue(date);
 			start.validate();
 			this.dateRangeMax = date;
 		} else if (field.endDateField && (!this.dateRangeMin || (date.getTime() !== this.dateRangeMin.getTime()))) {
-			var end = field.up('form').down('#' + field.endDateField);
+			const end = field.up('form').down('#' + field.endDateField);
 			end.setMinValue(date);
 			end.validate();
 			this.dateRangeMin = date;
@@ -27,7 +27,7 @@ Ext.apply(Ext.form.field.VTypes, {
 
 	password(val, field) {
 		if (field.initialPassField) {
-			var pwd = field.up('form').down('#' + field.initialPassField);
+			const pwd = field.up('form').down('#' + field.initialPassField);
 			return (val === pwd.getValue());
 		}
 		return true;

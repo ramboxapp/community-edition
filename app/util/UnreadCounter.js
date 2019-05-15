@@ -15,14 +15,14 @@ Ext.define('Rambox.util.UnreadCounter', {
 		 *
 		 * @type {Map}
 		 */
-		var unreadCountByService = new Map();
+		let unreadCountByService = new Map();
 
 		/**
 		 * Holds the global unread count for internal usage.
 		 *
 		 * @type {number}
 		 */
-		var totalUnreadCount = 0;
+		let totalUnreadCount = 0;
 
 		/**
 		 * Sets the application's unread count to tracked unread count.

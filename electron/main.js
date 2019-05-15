@@ -4,7 +4,7 @@ const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, 
 // Tray
 const tray = require('./tray');
 // AutoLaunch
-var AutoLaunch = require('auto-launch-patched');
+const AutoLaunch = require('auto-launch-patched');
 // Configuration
 const Config = require('electron-store');
 // Development
@@ -12,7 +12,7 @@ const isDev = require('electron-is-dev');
 // Updater
 const updater = require('./updater');
 // File System
-var fs = require("fs");
+const fs = require("fs");
 const path = require('path');
 
 // Initial Config
@@ -219,7 +219,7 @@ function createMasterPasswordWindow() {
 
 function updateBadge(title) {
 	title = title.split(" - ")[0]; //Discard service name if present, could also contain digits
-	var messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
+	let messageCount = title.match(/\d+/g) ? parseInt(title.match(/\d+/g).join("")) : 0;
 	messageCount = isNaN(messageCount) ? 0 : messageCount;
 	
 	tray.setBadge(messageCount, config.get('systemtray_indicator'));
@@ -239,7 +239,7 @@ function updateBadge(title) {
 }
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
-	var img = nativeImage.createFromDataURL(value);
+	const img = nativeImage.createFromDataURL(value);
 	mainWindow.setOverlayIcon(img, messageCount.toString());
 });
 
@@ -336,7 +336,7 @@ if (!haveLock) {
 
 // Code for downloading images as temporal files
 // Credit: Ghetto Skype (https://github.com/stanfieldr/ghetto-skype)
-var imageCache = {};
+let imageCache = {};
 ipcMain.on('image:download', function(event, url, partition) {
 	const tmp = require('tmp');
 	const mime = require('mime');

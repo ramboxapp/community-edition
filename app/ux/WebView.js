@@ -19,10 +19,10 @@ Ext.define('Rambox.ux.WebView',{
 	// CONFIG
 	,hideMode: 'offsets'
 	,initComponent(config) {
-		var me = this;
+		const me = this;
 
 		function getLocation(href) {
-			var match = href.match(/^(https?):\/\/([-.\w]*)(\/[^#?]*)(\?[^#]*|)(#.*|)$/);
+			const match = href.match(/^(https?):\/\/([-.\w]*)(\/[^#?]*)(\?[^#]*|)(#.*|)$/);
 			return match && {
 				protocol: match[1],
 				host: match[2],
@@ -136,15 +136,15 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,onBeforeDestroy() {
-		var me = this;
+		const me = this;
 
 		me.setUnreadCount(0);
 	}
 
 	,webViewConstructor( enabled ) {
-		var me = this;
+		const me = this;
 
-		var cfg;
+		let cfg;
 		enabled = enabled || me.record.get('enabled');
 
 		if ( !enabled ) {
@@ -181,7 +181,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,statusBarConstructor(floating) {
-		var me = this;
+		const me = this;
 
 		return {
 			 xtype: 'statusbar'
@@ -217,11 +217,11 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,onAfterRender() {
-		var me = this;
+		const me = this;
 
 		if ( !me.record.get('enabled') ) return;
 
-		var webview = me.getWebView();
+		const webview = me.getWebView();
 
 		// Notifications in Webview
 		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
@@ -352,7 +352,7 @@ Ext.define('Rambox.ux.WebView',{
 								show(win) {
 									const webview = win.down('#webview').el.dom;
 									webview.addEventListener('ipc-message', function(event) {
-										var channel = event.channel;
+										const channel = event.channel;
 										switch (channel) {
 											case 'close':
 												win.close();
@@ -413,8 +413,8 @@ Ext.define('Rambox.ux.WebView',{
 			// Mute Webview
 			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
 
-			var js_inject = '';
-			var css_inject = '';
+			let js_inject = '';
+			let css_inject = '';
 			// Injected code to detect new messages
 			if ( me.record ) {
 				let js_unread = me.record.get('js_unread');
@@ -473,7 +473,7 @@ Ext.define('Rambox.ux.WebView',{
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
 			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
-				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
+				const js_preventBlink = `const originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:()=>document.getElementsByTagName("title")[0].innerHTML});`;
 				js_inject += js_preventBlink;
 			}
 
@@ -511,7 +511,7 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		webview.addEventListener('ipc-message', function(event) {
-			var channel = event.channel;
+			const channel = event.channel;
 			switch (channel) {
 				case 'rambox.setUnreadCount':
 					handleSetUnreadCount(event);
@@ -584,7 +584,7 @@ Ext.define('Rambox.ux.WebView',{
 		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' &&
 			 me.record.get('js_unread') === '') {
 			webview.addEventListener("page-title-updated", function(e) {
-				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
+				let count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
 				count = count === '•' ? count : Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
 				count = count === null ? '0' : count;
@@ -603,7 +603,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,setUnreadCount(newUnreadCount) {
-		var me = this;
+		const me = this;
 
 		if ( !isNaN(newUnreadCount) && (function(x) { return (x | 0) === x; })(parseFloat(newUnreadCount)) && me.record.get('includeInGlobalUnreadCounter') === true) {
 			Rambox.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
@@ -630,7 +630,7 @@ Ext.define('Rambox.ux.WebView',{
 	 * @param {int} count
 	 */
 	,doManualNotification(count) {
-		var me = this;
+		const me = this;
 
 		if (Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') &&
 			me.currentUnreadCount < count &&
@@ -648,7 +648,7 @@ Ext.define('Rambox.ux.WebView',{
 	 * @param {string} badgeText
 	 */
 	,setTabBadgeText(badgeText) {
-		var me = this;
+		const me = this;
 		if (me.record.get('displayTabUnreadCounter') === true) {
 			me.tab.setBadgeText(badgeText);
 		} else {
@@ -662,14 +662,14 @@ Ext.define('Rambox.ux.WebView',{
 	 * • clears the global unread counter
 	 */
 	,clearUnreadCounter() {
-		var me = this;
+		const me = this;
 		me.tab.setBadgeText('');
 		Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
 	}
 
 	,reloadService(btn) {
-		var me = this;
-		var webview = me.getWebView();
+		const me = this;
+		const webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) {
 			me.clearUnreadCounter();
@@ -678,8 +678,8 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,toggleDevTools(btn) {
-		var me = this;
-		var webview = me.getWebView();
+		const me = this;
+		const webview = me.getWebView();
 
 		if ( me.record.get('enabled')) {
 			if (webview.isDevToolsOpened()) {
@@ -691,8 +691,8 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,setURL(url) {
-		var me = this;
-		var webview = me.getWebView();
+		const me = this;
+		const webview = me.getWebView();
 
 		me.src = url;
 
@@ -700,8 +700,8 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,setAudioMuted(muted, calledFromDisturb) {
-		var me = this;
-		var webview = me.getWebView();
+		const me = this;
+		const webview = me.getWebView();
 
 		me.muted = muted;
 
@@ -711,7 +711,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,closeStatusBar() {
-		var me = this;
+		const me = this;
 
 		me.down('statusbar').hide();
 		me.down('statusbar').closed = true;
@@ -719,7 +719,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,setStatusBar(keep) {
-		var me = this;
+		const me = this;
 
 		me.removeDocked(me.down('statusbar'), true);
 
@@ -732,8 +732,8 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,setNotifications(notification, calledFromDisturb) {
-		var me = this;
-		var webview = me.getWebView();
+		const me = this;
+		const webview = me.getWebView();
 
 		me.notifications = notification;
 
@@ -743,7 +743,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,setEnabled(enabled) {
-		var me = this;
+		const me = this;
 
 		me.clearUnreadCounter();
 
@@ -761,15 +761,15 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,goBack() {
-		var me = this;
-		var webview = me.getWebView();
+		const me = this;
+		const webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) webview.goBack();
 	}
 
 	,goForward() {
-		var me = this;
-		var webview = me.getWebView();
+		const me = this;
+		const webview = me.getWebView();
 
 		if ( me.record.get('enabled') ) webview.goForward();
 	}
@@ -779,7 +779,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,zoomIn() {
-		var me = this;
+		const me = this;
 
 		me.zoomLevel = me.zoomLevel + 1;
 		if ( me.record.get('enabled') ) {
@@ -789,7 +789,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,zoomOut() {
-		var me = this;
+		const me = this;
 
 		me.zoomLevel = me.zoomLevel - 1;
 		if ( me.record.get('enabled') ) {
@@ -799,7 +799,7 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,resetZoom() {
-		var me = this;
+		const me = this;
 
 		me.zoomLevel = 0;
 		if ( me.record.get('enabled') ) {

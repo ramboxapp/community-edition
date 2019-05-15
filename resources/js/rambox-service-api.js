@@ -49,16 +49,16 @@ window.rambox.contextMenuListener = new ContextMenuListener(function(event, info
 /**
  * Override to add notification click event to display Rambox window and activate service tab
  */
-var NativeNotification = Notification;
+const NativeNotification = Notification;
 Notification = function(title, options) {
-	var notification = new NativeNotification(title, options);
+	const notification = new NativeNotification(title, options);
 
 	notification.addEventListener('click', function() {
 		ipcRenderer.sendToHost('rambox.showWindowAndActivateTab');
 	});
 
 	return notification;
-}
+};
 
 Notification.prototype = NativeNotification.prototype;
 Notification.permission = NativeNotification.permission;

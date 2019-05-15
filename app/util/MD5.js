@@ -7,8 +7,8 @@ Ext.define('Rambox.util.MD5', {
 		chrsz = chrsz || 8;
 
 		function safe_add(x, y){
-			var lsw = (x & 0xFFFF) + (y & 0xFFFF);
-			var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+			const lsw = (x & 0xFFFF) + (y & 0xFFFF);
+			const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
 			return (msw << 16) | (lsw & 0xFFFF);
 		}
 		function bit_rol(num, cnt){
@@ -33,15 +33,15 @@ Ext.define('Rambox.util.MD5', {
 		function core_md5(x, len){
 			x[len >> 5] |= 0x80 << ((len) % 32);
 			x[(((len + 64) >>> 9) << 4) + 14] = len;
-			var a =  1732584193;
-			var b = -271733879;
-			var c = -1732584194;
-			var d =  271733878;
-			for(var i = 0; i < x.length; i += 16){
-				var olda = a;
-				var oldb = b;
-				var oldc = c;
-				var oldd = d;
+			let a =  1732584193;
+			let b = -271733879;
+			let c = -1732584194;
+			let d =  271733878;
+			for(let i = 0; i < x.length; i += 16){
+				const olda = a;
+				const oldb = b;
+				const oldc = c;
+				const oldd = d;
 				a = md5_ff(a, b, c, d, x[i+ 0], 7 , -680876936);
 				d = md5_ff(d, a, b, c, x[i+ 1], 12, -389564586);
 				c = md5_ff(c, d, a, b, x[i+ 2], 17,  606105819);
@@ -114,26 +114,26 @@ Ext.define('Rambox.util.MD5', {
 			return [a, b, c, d];
 		}
 		function str2binl(str){
-			var bin = [];
-			var mask = (1 << chrsz) - 1;
-			for(var i = 0; i < str.length * chrsz; i += chrsz) {
+			let bin = [];
+			const mask = (1 << chrsz) - 1;
+			for(let i = 0; i < str.length * chrsz; i += chrsz) {
 				bin[i>>5] |= (str.charCodeAt(i / chrsz) & mask) << (i%32);
 			}
 			return bin;
 		}
 		function binl2str(bin){
-			var str = "";
-			var mask = (1 << chrsz) - 1;
-			for(var i = 0; i < bin.length * 32; i += chrsz) {
+			let str = "";
+			const mask = (1 << chrsz) - 1;
+			for(let i = 0; i < bin.length * 32; i += chrsz) {
 				str += String.fromCharCode((bin[i>>5] >>> (i % 32)) & mask);
 			}
 			return str;
 		}
 
 		function binl2hex(binarray){
-			var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
-			var str = "";
-			for(var i = 0; i < binarray.length * 4; i++) {
+			const hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+			let str = "";
+			for(let i = 0; i < binarray.length * 4; i++) {
 				str += hex_tab.charAt((binarray[i>>2] >> ((i%4)*8+4)) & 0xF) + hex_tab.charAt((binarray[i>>2] >> ((i%4)*8  )) & 0xF);
 			}
 			return str;

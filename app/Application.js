@@ -34,9 +34,9 @@ Ext.define('Rambox.Application', {
 		// Mouse Wheel zooming
 		document.addEventListener('mousewheel', function(e) {
 			if( e.ctrlKey ) {
-				var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+				const  delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
 
-				var tabPanel = Ext.cq1('app-main');
+				const tabPanel = Ext.cq1('app-main');
 				if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
 
 				if ( delta === 1 ) { // Zoom In
@@ -83,8 +83,8 @@ Ext.define('Rambox.Application', {
 			 url: 'https://api.github.com/repos/TheGoddessInari/rambox/releases/latest'
 			,method: 'GET'
 			,success(response) {
-				var json = JSON.parse(response.responseText);
-				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
+				const json = JSON.parse(response.responseText);
+				const appVersion = new Ext.Version(require('electron').remote.app.getVersion());
 				if ( appVersion.isLessThan(json.version) ) {
 					console.info('New version is available', json.version);
 					Ext.cq1('app-main').addDocked({

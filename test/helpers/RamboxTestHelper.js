@@ -1,13 +1,13 @@
 
-var Application = require('spectron').Application;
-var electron = require('electron-prebuilt');
+const Application = require('spectron').Application;
+const electron = require('electron');
 
 /**
  * The RamboxTestHelper contains common stuff for tests.
  */
 module.exports = function() {
 
-	var self = this;
+	const self = this;
 
 	/**
 	 * Makes the Rambox Application available.
