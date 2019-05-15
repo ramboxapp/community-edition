@@ -1,12 +1,12 @@
 {
 	"private": true,
 	"scripts": {
-		"start": "npm run compile && electron-builder install-app-deps && electron build/production/Rambox",
+		"start": "npm run compile && electron build/production/Rambox",
 		"debug": "electron --inspect build/production/Rambox",
 		"test": "mocha test/tests/**/*.spec.js",
 		"buildversion": "git show --pretty=\"%h %d %cD\" -s > build/production/Rambox/BUILDVERSION || node -p -e \"require('./build/production/Rambox/package.json').version\" > build/production/Rambox/BUILDVERSION",
 		"clean": "shx rm -rf ./build/production",
-		"compile": "sencha app build && shx cp app/package.json app/package-lock.json build/production/Rambox/ && npm run buildversion",
+		"compile": "sencha app build && shx cp app/package.json app/package-lock.json build/production/Rambox/ && npm run buildversion && electron-builder install-app-deps",
 		"recompile": "npm run distclean && npm run compile",
 		"distclean": "shx rm -rf ./dist",
 		"distclean:win": "shx rm -rf ./dist/win-{ia32-,}unpacked",
