@@ -317,7 +317,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[32]']
 			,url: '___'
 			,type: 'messaging'
-			,custom_js: `Object.defineProperty(document,"title",{configurable:!0,set:function(a){document.getElementsByTagName("title")[0].innerHTML="*"===a[0]?"(•) Mattermost":a},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});`
+			,custom_js: `Object.defineProperty(document,"title",{configurable:!0,set(a){document.getElementsByTagName("title")[0].innerHTML="*"===a[0]?"(•) Mattermost":a},get:()=>document.getElementsByTagName("title")[0].innerHTML});`
 		},
 		{
 			 id: 'dingtalk'
