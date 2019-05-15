@@ -71,14 +71,14 @@ Ext.define('Rambox.ux.WebView',{
 									,items: [
 										{
 											 text: 'Back'
-											,glyph: 'xf053@FontAwesome'
+											,glyph: 'XF053@FontAwesome'
 											,flex: 1
 											,scope: me
 											,handler: me.goBack
 										}
 										,{
 											 text: 'Forward'
-											,glyph: 'xf054@FontAwesome'
+											,glyph: 'XF054@FontAwesome'
 											,iconAlign: 'right'
 											,flex: 1
 											,scope: me
@@ -91,33 +91,33 @@ Ext.define('Rambox.ux.WebView',{
 						,'-'
 						,{
 							 text: 'Zoom In'
-							,glyph: 'xf00e@FontAwesome'
+							,glyph: 'XF00E@FontAwesome'
 							,scope: me
 							,handler: me.zoomIn
 						}
 						,{
 							 text: 'Zoom Out'
-							,glyph: 'xf010@FontAwesome'
+							,glyph: 'XF010@FontAwesome'
 							,scope: me
 							,handler: me.zoomOut
 						}
 						,{
 							 text: 'Reset Zoom'
-							,glyph: 'xf002@FontAwesome'
+							,glyph: 'XF002@FontAwesome'
 							,scope: me
 							,handler: me.resetZoom
 						}
 						,'-'
 						,{
 							 text: locale['app.webview[0]']
-							,glyph: 'xf021@FontAwesome'
+							,glyph: 'XF021@FontAwesome'
 							,scope: me
 							,handler: me.reloadService
 						}
 						,'-'
 						,{
 							 text: locale['app.webview[3]']
-							,glyph: 'xf121@FontAwesome'
+							,glyph: 'XF121@FontAwesome'
 							,scope: me
 							,handler: me.toggleDevTools
 						}
@@ -200,7 +200,7 @@ Ext.define('Rambox.ux.WebView',{
 				}
 				,{
 					 xtype: 'button'
-					,glyph: 'xf00d@FontAwesome'
+					,glyph: 'XF00D@FontAwesome'
 					,scale: 'small'
 					,ui: 'decline'
 					,padding: 0

@@ -142,7 +142,7 @@ Ext.define('Rambox.view.main.Main', {
 					,tools: [
 						{
 							 xtype: 'button'
-							,glyph: 'xf1f8@FontAwesome'
+							,glyph: 'XF1F8@FontAwesome'
 							,baseCls: ''
 							,tooltip: locale['app.main[10]']
 							,handler: 'removeAllServices'
@@ -170,14 +170,14 @@ Ext.define('Rambox.view.main.Main', {
 							,align: 'right'
 							,items: [
 								{
-									 glyph: 0xf1f7
+									 glyph: 0xF1F7
 									,tooltip: locale['app.main[11]']
 									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
 										if ( record.get('notifications') ) return 'x-hidden';
 									}
 								}
 								,{
-									 glyph: 0xf026
+									 glyph: 0xF026
 									,tooltip: locale['app.main[12]']
 									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
 										if ( !record.get('muted') ) return 'x-hidden';
@@ -191,13 +191,13 @@ Ext.define('Rambox.view.main.Main', {
 							,align: 'center'
 							,items: [
 								{
-									 glyph: 0xf013
+									 glyph: 0xF013
 									,tooltip: locale['app.main[13]']
 									,handler: 'configureService'
 									,getClass: function(){ return 'x-hidden-display'; }
 								}
 								,{
-									 glyph: 0xf1f8
+									 glyph: 0xF1F8
 									,tooltip: locale['app.main[14]']
 									,handler: 'removeService'
 									,getClass: function(){ return 'x-hidden-display'; }
@@ -236,7 +236,7 @@ Ext.define('Rambox.view.main.Main', {
 				,overflowHandler: 'menu'
 				,items: [
 					{
-						 glyph: 'xf1f7@FontAwesome'
+						 glyph: 'XF1F7@FontAwesome'
 						,text: locale['app.main[16]']+': '+(JSON.parse(localStorage.getItem('dontDisturb')) ? locale['app.window[20]'] : locale['app.window[21]'])
 						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+': Alt+F1</b>'
 						,enableToggle: true
@@ -246,7 +246,7 @@ Ext.define('Rambox.view.main.Main', {
 						,pressed: JSON.parse(localStorage.getItem('dontDisturb'))
 					}
 					,{
-						 glyph: 'xf023@FontAwesome'
+						 glyph: 'XF023@FontAwesome'
 						,text: locale['app.main[19]']
 						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+': Alt+F2</b>'
 						,handler: 'lockRambox'
@@ -255,7 +255,7 @@ Ext.define('Rambox.view.main.Main', {
 					,'->'
 					,{
 						 text: 'Backup'
-						,glyph: 'xf0c7@FontAwesome'
+						,glyph: 'XF0C7@FontAwesome'
 						,id: 'backupBtn'
 						,tooltip: 'Backup services to disk'
 						,scope: Rambox.ux.FileBackup
@@ -263,7 +263,7 @@ Ext.define('Rambox.view.main.Main', {
 					}
 					,{
 						text: 'Restore'
-					   ,glyph: 'xf115@FontAwesome'
+					   ,glyph: 'XF115@FontAwesome'
 					   ,id: 'restoreBtn'
 					   ,tooltip: 'Restore services from disk'
 					   ,scope: Rambox.ux.FileBackup
@@ -271,7 +271,7 @@ Ext.define('Rambox.view.main.Main', {
 				   }
 				   ,{
 						 tooltip: locale['preferences[0]']
-						,glyph: 'xf013@FontAwesome'
+						,glyph: 'XF013@FontAwesome'
 						,handler: 'openPreferences'
 					}
 				]
@@ -287,14 +287,14 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,{
 							 text: locale['app.main[25]']
-							,glyph: 'xf21e@FontAwesome'
+							,glyph: 'XF21E@FontAwesome'
 							,href: 'https://www.gofundme.com/rambox-os'
 						}
 					]
 					 /* TODO: Translation
 						,{
 							 text: 'Translation'
-							,glyph: 'xf0ac@FontAwesome'
+							,glyph: 'XF0AC@FontAwesome'
 							,href: 'https://crowdin.com/project/rambox/invite'
 						}
 					]*/
@@ -314,15 +314,15 @@ Ext.define('Rambox.view.main.Main', {
 							,pressed: true
 						}
 						,{
-							 glyph: 'xf082@FontAwesome'
+							 glyph: 'XF082@FontAwesome'
 							,href: 'https://www.facebook.com/TheGoddessInari'
 						}
 						,{
-							 glyph: 'xf099@FontAwesome'
+							 glyph: 'XF099@FontAwesome'
 							,href: 'https://www.twitter.com/TheGoddessInari'
 						}
 						,{
-							 glyph: 'xf09b@FontAwesome'
+							 glyph: 'XF09B@FontAwesome'
 							,href: 'https://www.github.com/TheGoddessInari/rambox'
 						}
 					]

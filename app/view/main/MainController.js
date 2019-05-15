@@ -443,7 +443,7 @@ Ext.define('Rambox.view.main.MainController', {
 						,{
 							 xtype: 'button'
 							,text: locale['app.window[27]']
-							,glyph: 'xf13e@FontAwesome'
+							,glyph: 'XF13E@FontAwesome'
 							,width: 256
 							,scale: 'large'
 							,handler: validateFn

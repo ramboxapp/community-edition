@@ -64,7 +64,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, r
 			}
 			,'->'
 			,{
-				 glyph: 'xf00d@FontAwesome'
+				 glyph: 'XF00D@FontAwesome'
 				,baseCls: ''
 				,style: 'cursor:pointer;'
 				,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
