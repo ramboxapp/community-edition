@@ -215,14 +215,15 @@ Ext.define('Rambox.view.main.MainController', {
 					}));
 				});
 				Promise.all(promises)
-				.then(function(value) {
+				.then(function(resolve) {
 					if ( Ext.isFunction(callback) ) callback();
+					return resolve;
 				})
 				.catch(function(err) {
 					console.error('Error removing services: ' + err);
 					Ext.Msg.alert('Error!','Error removing services: ' + err);
 				})
-				.then(function() { // Replace when Promise.finally when available.
+				.finally(function() {
 					store.resumeEvent('childmove');
 					store.resumeEvent('remove');
 					document.title = 'Rambox-OS';

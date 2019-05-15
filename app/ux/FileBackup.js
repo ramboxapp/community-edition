@@ -1,14 +1,16 @@
 Ext.define('Rambox.ux.FileBackup', {
 	singleton: true,
-	initComponent: () => {
-		this.remote = require('electron').remote;
-		this.path = this.remote.require('path');
-		this.fs = this.remote.require('fs');
-		this.userPath = this.remote.app.getPath('userData');
-		this.defaultFileName = 'rambox-backup.json';
-		this.myDefaultPath = this.userPath + this.path.sep + this.defaultFileName;
+	constructor() {
+		const me = this;
+		me.callParent(arguments);
+		me.remote = require('electron').remote;
+		me.path = me.remote.require('path');
+		me.fs = me.remote.require('fs');
+		me.userPath = me.remote.app.getPath('userData');
+		me.defaultFileName = 'rambox-backup.json';
+		me.myDefaultPath = me.userPath + me.path.sep + me.defaultFileName;
 	},
-	backupConfiguration: function (callback) {
+	backupConfiguration(callback) {
 		var me = this;
 		let services = [];
 		Ext.getStore('Services').each(function(service) {
@@ -31,7 +33,7 @@ Ext.define('Rambox.ux.FileBackup', {
 		});
 		if (Ext.isFunction(callback)) callback.bind(me)();
 	},
-	restoreConfiguration: function () {
+	restoreConfiguration() {
 		var me = this;
 		me.remote.dialog.showOpenDialog({
 			defaultPath: me.myDefaultPath,
