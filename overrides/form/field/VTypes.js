@@ -1,5 +1,5 @@
 Ext.apply(Ext.form.field.VTypes, {
-	daterange: function(val, field) {
+	daterange(val, field) {
 		var date = field.parseDate(val);
 
 		if (!date) {
@@ -25,7 +25,7 @@ Ext.apply(Ext.form.field.VTypes, {
 
 	daterangeText: 'Start date must be less than end date',
 
-	password: function(val, field) {
+	password(val, field) {
 		if (field.initialPassField) {
 			var pwd = field.up('form').down('#' + field.initialPassField);
 			return (val == pwd.getValue());

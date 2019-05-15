@@ -6,7 +6,7 @@ Ext.define('Rambox.util.Notifier', {
 
 	singleton: true,
 
-	constructor: function(config) {
+	constructor(config) {
 
 		config = config || {};
 

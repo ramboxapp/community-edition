@@ -6,13 +6,13 @@ Ext.define('Rambox.view.add.AddController', {
 		'Rambox.util.UnreadCounter'
 	],
 
-	doCancel: function( btn ) {
+	doCancel( btn ) {
 		var me = this;
 
 		me.getView().close();
 	}
 
-	,doSave: function( btn ) {
+	,doSave( btn ) {
 		var me = this;
 
 		var win = me.getView();
@@ -134,13 +134,13 @@ Ext.define('Rambox.view.add.AddController', {
 		win.close();
 	}
 
-	,onEnter: function(field, e) {
+	,onEnter(field, e) {
 		var me = this;
 
 		if ( e.getKey() === e.ENTER && field.up('form').isValid() ) me.doSave();
 	}
 
-	,onShow: function(win) {
+	,onShow(win) {
 		var me = this;
 
 		// Make focus to the name field

@@ -172,14 +172,14 @@ Ext.define('Rambox.view.main.Main', {
 								{
 									 glyph: 0xF1F7
 									,tooltip: locale['app.main[11]']
-									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+									,getClass( value, metaData, record, rowIndex, colIndex, store, view ){
 										if ( record.get('notifications') ) return 'x-hidden';
 									}
 								}
 								,{
 									 glyph: 0xF026
 									,tooltip: locale['app.main[12]']
-									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+									,getClass( value, metaData, record, rowIndex, colIndex, store, view ){
 										if ( !record.get('muted') ) return 'x-hidden';
 									}
 								}
@@ -194,13 +194,13 @@ Ext.define('Rambox.view.main.Main', {
 									 glyph: 0xF013
 									,tooltip: locale['app.main[13]']
 									,handler: 'configureService'
-									,getClass: function(){ return 'x-hidden-display'; }
+									,getClass(){ return 'x-hidden-display'; }
 								}
 								,{
 									 glyph: 0xF1F8
 									,tooltip: locale['app.main[14]']
 									,handler: 'removeService'
-									,getClass: function(){ return 'x-hidden-display'; }
+									,getClass(){ return 'x-hidden-display'; }
 								}
 							]
 						}
@@ -208,7 +208,7 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'checkcolumn'
 							,width: 40
 							,dataIndex: 'enabled'
-							,renderer: function(value, metaData) {
+							,renderer(value, metaData) {
 								metaData.tdAttr = 'data-qtip="Service '+(value ? 'Enabled' : 'Disabled')+'"';
 								return this.defaultRenderer(value, metaData);
 							}

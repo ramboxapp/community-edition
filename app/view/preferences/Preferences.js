@@ -35,7 +35,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 		}
 	]
 
-	,initComponent: function() {
+	,initComponent() {
 		var config = ipc.sendSync('getConfig');
 
 		var defaultServiceOptions = [];
@@ -276,10 +276,10 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								,itemId: 'pass'
 								,flex: 1
 								,listeners: {
-									validitychange: function(field) {
+									validitychange(field) {
 										field.next().validate();
 									},
-									blur: function(field) {
+									blur(field) {
 										field.next().validate();
 									}
 								}

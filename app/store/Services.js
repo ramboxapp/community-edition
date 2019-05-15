@@ -20,7 +20,7 @@ Ext.define('Rambox.store.Services', {
 	]
 
 	,listeners: {
-		load: function( store, records, successful ) {
+		load( store, records, successful ) {
 			Ext.cq1('app-main').suspendEvent('add');
 
 			var servicesLeft = [];

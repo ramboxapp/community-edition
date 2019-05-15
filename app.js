@@ -54,7 +54,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, r
 			,{
 				 xtype: 'button'
 				,text: 'Relaunch Now'
-				,handler: function(btn) { ipc.send('autoUpdater:quit-and-install'); }
+				,handler(btn) { ipc.send('autoUpdater:quit-and-install'); }
 			}
 			,{
 				 xtype: 'button'
@@ -67,7 +67,7 @@ ipc.on('autoUpdater:update-downloaded', function(e, releaseNotes, releaseName, r
 				 glyph: 'XF00D@FontAwesome'
 				,baseCls: ''
 				,style: 'cursor:pointer;'
-				,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+				,handler(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
 			}
 		]
 	});

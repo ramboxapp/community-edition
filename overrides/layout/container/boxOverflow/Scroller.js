@@ -18,7 +18,7 @@ Ext.define('Rambox.overrides.layout.container.boxOverflow.Scroller', {
 	 * @private
 	 * Scrolls to the left by the configured amount
 	 */
-	scrollLeft: function() {
+	scrollLeft() {
 		this.scrollBy(-this.scrollIncrement);
 	},
 
@@ -28,7 +28,7 @@ Ext.define('Rambox.overrides.layout.container.boxOverflow.Scroller', {
 	 * @private
 	 * Scrolls to the right by the configured amount
 	 */
-	scrollRight: function() {
+	scrollRight() {
 		this.scrollBy(this.scrollIncrement);
 	}
 });

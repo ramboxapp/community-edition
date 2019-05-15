@@ -2,7 +2,7 @@ Ext.define('Rambox.overrides.grid.column.Action', {
     override: 'Ext.grid.column.Action',
 
     // overridden to implement
-    defaultRenderer: function(v, cellValues, record, rowIdx, colIdx, store, view) {
+    defaultRenderer(v, cellValues, record, rowIdx, colIdx, store, view) {
         var me = this,
             prefix = Ext.baseCSSPrefix,
             scope = me.origScope || me,

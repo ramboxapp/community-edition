@@ -20,7 +20,7 @@ Ext.define('Rambox.Application', {
 		,totalNotifications: 0
 	}
 
-	,launch: function () {
+	,launch() {
 		// Load language for Ext JS library
 		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale') || 'en')});
 
@@ -60,7 +60,7 @@ Ext.define('Rambox.Application', {
 		Ext.get('spinner').destroy();
 	}
 
-	,updateTotalNotifications: function( newValue, oldValue ) {
+	,updateTotalNotifications( newValue, oldValue ) {
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
 			if ( Ext.cq1('app-main').getActiveTab().record ) {
@@ -77,12 +77,12 @@ Ext.define('Rambox.Application', {
 		}
 	}
 
-	,checkUpdate: function(silence) {
+	,checkUpdate(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
 			 url: 'https://api.github.com/repos/TheGoddessInari/rambox/releases/latest'
 			,method: 'GET'
-			,success: function(response) {
+			,success(response) {
 				var json = JSON.parse(response.responseText);
 				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
 				if ( appVersion.isLessThan(json.version) ) {
@@ -114,7 +114,7 @@ Ext.define('Rambox.Application', {
 								 glyph: 'XF00D@FontAwesome'
 								,baseCls: ''
 								,style: 'cursor:pointer;'
-								,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+								,handler(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
 							}
 						]
 					});

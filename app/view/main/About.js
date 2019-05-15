@@ -9,7 +9,7 @@ Ext.define('Rambox.view.main.About', {
 	,width: 300
 	,height: 450
 	,bodyPadding: 10
-	,initComponent: function() {
+	,initComponent() {
 		var me = this;
 		me.callParent(arguments);
 		me.data.buildversion = require('fs').readFileSync( __dirname + '/BUILDVERSION', 'utf8');

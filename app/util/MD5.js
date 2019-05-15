@@ -1,7 +1,7 @@
 Ext.define('Rambox.util.MD5', {
 	 singleton: true
 
-	,encypt: function(s, raw, hexcase, chrsz) {
+	,encypt(s, raw, hexcase, chrsz) {
 		raw = raw || false;
 		hexcase = hexcase || false;
 		chrsz = chrsz || 8;

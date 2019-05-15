@@ -5,7 +5,7 @@ Ext.define('Rambox.util.UnreadCounter', {
 
 	singleton: true,
 
-	constructor: function(config) {
+	constructor(config) {
 
 		config = config || {};
 

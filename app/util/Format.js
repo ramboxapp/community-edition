@@ -4,11 +4,11 @@
 Ext.define('Rambox.util.Format', {
 	 singleton: true
 
-	,formatNumber: function(n) {
+	,formatNumber(n) {
 		return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 	}
 
-	,stripNumber: function(n) {
+	,stripNumber(n) {
 		return (typeof n == "number") ? n : n.match(/\d+/g) ? parseInt(n.match(/\d+/g).join("")) : 0;
 	}
 });
