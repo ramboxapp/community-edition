@@ -136,16 +136,14 @@ Ext.define('Rambox.view.main.MainController', {
 		if ( !rec.get('enabled') ) {
 			rec.set('enabled', true);
 			me.onEnableDisableService(null, Ext.getStore('Services').indexOf(rec), true, null, true);
-			Ext.defer(function() {
-				// Get Tab
-				var tab = Ext.getCmp('tab_'+serviceId);
-				// Clear all trash data
-				const webview = tab.getWebView();
 
-				webview.addEventListener("did-start-loading", function() {
-					clearData(webview, tab);
-				});
-			}, 1000);
+			// Get Tab
+			var tab = Ext.getCmp('tab_'+serviceId);
+			// Clear all trash data
+			const webview = tab.getWebView();
+			webview.addEventListener("did-start-loading", function() {
+				clearData(webview, tab);
+			});
 		} else {
 			// Get Tab
 			var tab = Ext.getCmp('tab_'+serviceId);
