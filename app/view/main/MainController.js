@@ -373,9 +373,11 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		function setLock(text) {
-			var currentTab = Ext.cq1('app-main').getActiveTab();
-			if (currentTab.getWebView) { //related to https://github.com/ramboxapp/community-edition/issues/2065. Focusing in an sub frame is a workaround
-				currentTab.down('component').el.dom.executeJavaScript(`
+			var ramboxTab = Ext.cq1('#ramboxTab');
+
+			// Related to issue #2065. Focusing in an sub frame is a workaround
+			if (ramboxTab.getWebView) {
+				ramboxTab.down('component').el.dom.executeJavaScript(`
 				var iframeFix = document.createElement('iframe');
 				document.body.appendChild(iframeFix);
 				iframeFix.focus();
