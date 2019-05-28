@@ -192,12 +192,12 @@ Ext.define('Rambox.view.main.MainController', {
 	,removeAllServices: function(btn, callback) {
 		var me = this;
 
-		// Clear counter for unread messaging
-		document.title = 'Rambox';
-
 		if ( btn ) {
 			Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[14]'], function(btnId) {
 				if ( btnId === 'yes' ) {
+					// Clear counter for unread messaging
+					document.title = 'Rambox';
+
 					Ext.cq1('app-main').suspendEvent('remove');
 					Ext.getStore('Services').load();
 					Ext.Msg.wait('Please wait until we clear all.', 'Removing...');

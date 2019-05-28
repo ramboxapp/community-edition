@@ -21,7 +21,7 @@ Ext.define('Rambox.store.Services', {
 	]
 
 	,listeners: {
-		load: function( store, records, successful ) {
+		 load: function( store, records, successful ) {
 			Ext.cq1('app-main').suspendEvent('add');
 
 			var servicesLeft = [];
@@ -75,6 +75,10 @@ Ext.define('Rambox.store.Services', {
 
 			store.suspendEvent('load');
 			Ext.cq1('app-main').resumeEvent('add');
+		}
+		,datachanged: function(store, eOpts) {
+			var isEmpty = store.getCount() > 0 ? false : true;
+			Ext.cq1('app-main').getViewModel().set('emptyServices', isEmpty);
 		}
 	}
 });

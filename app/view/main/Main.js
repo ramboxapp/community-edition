@@ -148,6 +148,9 @@ Ext.define('Rambox.view.main.Main', {
 							,baseCls: ''
 							,tooltip: locale['app.main[10]']
 							,handler: 'removeAllServices'
+							,bind: {
+								disabled: '{emptyServices}'
+							}
 						}
 					]
 					,columns: [
