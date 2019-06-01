@@ -199,7 +199,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.live.com/'
 			,type: 'email'
 			,manual_notifications: true
-			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var e=document.querySelector("i[data-icon-name=\"Inbox\"]+span+span>span"),n=e?e.innerText.split("\n")[0]:0;updateBadge(parseInt(n))}function updateBadge(e){e&&1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'outlook365'
