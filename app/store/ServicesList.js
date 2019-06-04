@@ -907,7 +907,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Text on your computer with Messages for web.'
 			,url: 'https://messages.google.com/web'
 			,type: 'messaging'
-			,js_unread: 'function checkUnread(){var t = document.querySelectorAll(".tpEAA.yrs5ff").length;if(t>=1){rambox.setUnreadCount(t)}else{rambox.clearUnreadCount()}}setInterval(checkUnread,3000);'
+			,js_unread: 'function checkUnread(){var a=0;document.querySelectorAll(".text-content.unread").forEach(function(b){b.querySelector(".notifications-off")||a++}),updateBadge(a)}function updateBadge(a){1<=a?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'tawktochat'
