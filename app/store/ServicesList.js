@@ -120,7 +120,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.google.com/mail/'
 			,type: 'email'
 			,allow_popups: true
-			,js_unread: 'function checkUnread(){var e=document.querySelector(".aim .aio").querySelector("span").querySelector("a").getAttribute("aria-label").replace(/\D/g,"");updateBadge(e?parseInt(e):0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var e=document.querySelector(".aim .aio").querySelector("span").querySelector("a").getAttribute("aria-label").replace(/[^0-9]/g, "");updateBadge(e?parseInt(e):0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Settings inside Gmail. <a href="https://support.google.com/mail/answer/1075549?ref_topic=3394466" target="_blank">Read more...</a>'
 		},
 		{
@@ -199,7 +199,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://mail.live.com/'
 			,type: 'email'
 			,manual_notifications: true
-			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var e=null!==$(".ms-FocusZone [role=tree]:last i[data-icon-name=Inbox]").siblings()[1].querySelector("span span")?$(".ms-FocusZone [role=tree]:last i[data-icon-name=Inbox]").siblings()[1].querySelector("span span").innerText:0;updateBadge(""===e?0:parseInt(e))}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'outlook365'
