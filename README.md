@@ -26,7 +26,7 @@
 
   <h5>Available for Windows, Mac and Linux.</h5>
 
-  <h5><a href="https://rambox.pro/#download" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
+  <h5><a href="https://rambox.pro/#ce" target="_blank"><img src="https://cdn.rawgit.com/saenzramiro/rambox/gh-pages/images/img-download.svg" width="250" alt="DOWNLOAD HERE" /></a></h5>
 
   <h6>Logo designed by <a href="https://www.linkedin.com/in/andriyyurchenko/" target="_blank">Andriy Yurchenko</a></h6>
 </div>
