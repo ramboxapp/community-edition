@@ -80,6 +80,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 										,{ 'value': 'bn', 'auth0': 'en', 'label': 'Bengali' }
 										,{ 'value': 'bg', 'auth0': 'en', 'label': 'Bulgarian' }
 										,{ 'value': 'ca', 'auth0': 'ca', 'label': 'Catalan' }
+										,{ 'value': 'ceb', 'auth0': 'en', 'label': 'Cebuano' }
 										,{ 'value': 'zh-CN', 'auth0': 'zh', 'label': 'Chinese Simplified' }
 										,{ 'value': 'zh-TW', 'auth0': 'zh-tw', 'label': 'Chinese Traditional' }
 										,{ 'value': 'hr', 'auth0': 'en', 'label': 'Croatian' }
@@ -88,10 +89,11 @@ Ext.define('Rambox.view.preferences.Preferences',{
 										,{ 'value': 'nl', 'auth0': 'nl', 'label': 'Dutch' }
 										,{ 'value': 'en', 'auth0': 'en', 'label': 'English' }
 										,{ 'value': 'fi', 'auth0': 'fi', 'label': 'Finnish' }
+										,{ 'value': 'fil', 'auth0': 'en', 'label': 'Filipino' }
 										,{ 'value': 'fr', 'auth0': 'fr', 'label': 'French' }
 										,{ 'value': 'de', 'auth0': 'de', 'label': 'German' }
 										,{ 'value': 'de-CH', 'auth0': 'de', 'label': 'German, Switzerland' }
-										,{ 'value': 'el', 'auth0': 'en', 'label': 'Greek' }
+										,{ 'value': 'el', 'auth0': 'el', 'label': 'Greek' }
 										,{ 'value': 'he', 'auth0': 'en', 'label': 'Hebrew' }
 										,{ 'value': 'hi', 'auth0': 'en', 'label': 'Hindi' }
 										,{ 'value': 'hu', 'auth0': 'hu', 'label': 'Hungarian' }
@@ -110,8 +112,11 @@ Ext.define('Rambox.view.preferences.Preferences',{
 										,{ 'value': 'sk', 'auth0': 'sk', 'label': 'Slovak' }
 										,{ 'value': 'es-ES', 'auth0': 'es', 'label': 'Spanish' }
 										,{ 'value': 'sv-SE', 'auth0': 'sv', 'label': 'Swedish' }
+										,{ 'value': 'tl', 'auth0': 'en', 'label': 'Tagalog' }
+										,{ 'value': 'th', 'auth0': 'en', 'label': 'Thai' }
 										,{ 'value': 'tr', 'auth0': 'tr', 'label': 'Turkish' }
 										,{ 'value': 'uk', 'auth0': 'en', 'label': 'Ukrainian' }
+										,{ 'value': 'ur-PK', 'auth0': 'en', 'label': 'Urdu (Pakistan)' }
 										,{ 'value': 'vi', 'auth0': 'en', 'label': 'Vietnamese' }
 									]
 								})
