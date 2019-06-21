@@ -110,6 +110,6 @@
 		"electron-builder": "^20.43.0",
 		"mocha": "^6.1.4",
 		"shx": "^0.3.2",
-		"spectron": "^5.0.0"
+		"spectron": "^6.0.0"
 	}
 }
