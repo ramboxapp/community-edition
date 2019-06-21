@@ -1,54 +1,50 @@
-<h1 align="center">
-  <br>
-  <a href="https://github.com/TheGoddessInari/rambox"><img src="./resources/Icon.png" width="256px" alt="Rambox-OS"></a>
-  <br>
-  Rambox-OS, soon to be renamed to Hamsket.
-  <br>
-  <br>
-</h1>
-
-<h4 align="center">Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one.</h4>
+# Rambox-OS, soon to be renamed to Hamsket. <!-- omit in toc -->
 
 <p align="center">
-  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"><img src="https://img.shields.io/github/license/TheGoddessInari/rambox.svg" alt="GNU GPL v3"></a>
-  <a href="https://gitter.im/TheGoddessInari/rambox" target="_blank"><img src="https://img.shields.io/gitter/room/TheGoddessInari/rambox.svg" alt="Gitter"></a>
-  <a href="https://github.com/TheGoddessInari/rambox/releases/latest" target="_blank"><img src="https://img.shields.io/github/release/TheGoddessInari/rambox.svg" alt="Release"></a>
+<a href="https://github.com/TheGoddessInari/rambox"><img src="./resources/Icon.png" width="256px" alt="Rambox-OS"></a>
 </p>
-<p align="center">
-  <a href="https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2" target="_blank"><img src="https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops"></a>
-  <a href="https://dev.azure.com/TheGoddessInari/rambox/_release?definitionId=1" target="_blank"><img src="https://img.shields.io/azure-devops/release/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/1/1.svg?logo=azure-devops"></a>
-  <a href="https://david-dm.org/TheGoddessInari/rambox?path=app" title="Dependency status"><img src="https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app"/></a>
-  <a href="https://david-dm.org/TheGoddessInari/rambox?type=dev" title="devDependency status"><img src="https://img.shields.io/david/dev/TheGoddessInari/rambox.svg"/></a>
-  
-</p>
-<h5 align="center">Nightly build artifacts are available in Windows
-    (<a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.Setup.0.5.18.exe" target="_blank">Win64</a>), Mac
-    (<a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18.dmg" target="_blank">DMG</a> /
-     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18-mac.zip" target="_blank">App</a>) and Linux
-    (<a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.0.5.18.AppImage" target="_blank">AppImage64</a> /
-     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.x86_64.rpm" target="_blank">RPM64</a> /
-     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox_0.5.18_amd64.deb" target="_blank">DEB64</a> /
-     <a href="https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.tar.gz" target="_blank">Tarball64</a>) packaging flavors.</h5>
 
-<h6 align="center">Logo designed by <a href="http://andyur.com/" target="_blank">Andriy Yurchenko</a></h6>
-<h6 align="center">Original rambox by <a href="https://github.com/saenzramiro" target="_blank">Ramiro Saenz</a></h6>
+#### Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one. <!-- omit in toc -->
+
+[![GNU GPL v3][license]](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Gitter][gitter]](https://gitter.im/TheGoddessInari/rambox)
+[![Release][release]](https://github.com/TheGoddessInari/rambox/releases/latest)
+
+[![DevOps Build][devops-build]](https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2)
+[![DevOps Deployment][devops-deploy]](https://dev.azure.com/TheGoddessInari/rambox/_release?definitionId=1)
+[![Dependencies][dependencies]](https://david-dm.org/TheGoddessInari/rambox?path=app)
+[![DevDependencies][dev-dependencies]](https://david-dm.org/TheGoddessInari/rambox?type=dev)
+
+[license]: https://img.shields.io/github/license/TheGoddessInari/rambox.svg
+[gitter]: https://img.shields.io/gitter/room/TheGoddessInari/rambox.svg
+[release]: https://img.shields.io/github/release/TheGoddessInari/rambox.svg
+
+[devops-build]: https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops
+[devops-deploy]: https://img.shields.io/azure-devops/release/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/1/1.svg?logo=azure-devops
+[dependencies]: https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app
+[dev-dependencies]: https://img.shields.io/david/dev/TheGoddessInari/rambox.svg
+
+##### Nightly build artifacts are available in Windows ([Win64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.Setup.0.5.18.exe)), Mac ([DMG](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18.dmg) / [App](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18-mac.zip)), and Linux ([AppImage64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.0.5.18.AppImage) / [RPM64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.x86_64.rpm) / [DEB64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox_0.5.18_amd64.deb) / [Tarball64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.tar.gz)) packaging flavors. <!-- omit in toc -->
+
+###### Logo designed by [Andriy Yurchenko](http://andyur.com/). <!-- omit in toc -->
+
+###### Original rambox by [Ramiro Saenz](https://github.com/saenzramiro). <!-- omit in toc -->
 
 ----------
 
 ## Table of Contents
 
-- [Screenshot](#screenshot)
-- [Services available - 97](#services-available---97)
-- [Features](#features)
-- [Privacy](#privacy)
-- [Donations](#donations)
-- [Translations](#translations)
-- [Compiling](#compiling)
-- [To Do](#to-do)
-- [Contributing](#contributing)
-- [Quickstart](#quickstart)
-- [Disclosure](#disclosure)
-- [Licence](#licence)
+- [Table of Contents](#Table-of-Contents)
+- [Screenshot](#Screenshot)
+- [Services available - 95](#Services-available---95)
+- [Features](#Features)
+- [Privacy](#Privacy)
+- [Donations](#Donations)
+- [Compiling](#Compiling)
+- [Contributing](#Contributing)
+- [Quickstart](#Quickstart)
+- [Disclosure](#Disclosure)
+- [License](#License)
 
 ----------
 
@@ -58,7 +54,7 @@
 
 ----------
 
-## Services available - 97
+## Services available - 95
 
 <img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -209,13 +205,13 @@ Auth0 is disabled pending name change and rewrite of the functionality to best p
 
 Keep in mind, I'm not pushing this. I'll do my best regardless.
 
-| Type               |                                         URL/Wallet                                         |
-|--------------------|:------------------------------------------------------------------------------------------:|
-| GoFundMe           | https://www.gofundme.com/rambox-os                                                         |
-| Bitcoin            | ```36SxZeQ5dA7Dn6pSmYWcvvmnkEeh8LdgmJ```                                                   |
-| Bitcoin Cash       | ```qqslp2vuamhmsp59u49dq89kwky2yj23nqmjr4mdgj```                                           |
-| Ethereum           | ```0xa085d5F736f2D7D210261879e183e5bf870Eae5f```                                           |
-| Litecoin           | ```MKzytRHYHQTS3qrq2zCggEzSNG3HTbBXZL```                                                   |
+| Type         |                    URL/Wallet                    |
+| ------------ | :----------------------------------------------: |
+| GoFundMe     |       <https://www.gofundme.com/rambox-os>       |
+| Bitcoin      |     ```36SxZeQ5dA7Dn6pSmYWcvvmnkEeh8LdgmJ```     |
+| Bitcoin Cash | ```qqslp2vuamhmsp59u49dq89kwky2yj23nqmjr4mdgj``` |
+| Ethereum     | ```0xa085d5F736f2D7D210261879e183e5bf870Eae5f``` |
+| Litecoin     |     ```MKzytRHYHQTS3qrq2zCggEzSNG3HTbBXZL```     |
 
 ----------
 
@@ -256,7 +252,7 @@ Want to report a bug, request a feature, contribute to or translate Rambox? We n
 
 ----------
 
-### Quickstart
+## Quickstart
 
 ```shell
 git clone https://github.com/TheGoddessInari/rambox.git
@@ -269,13 +265,13 @@ See [Contributing.md](./CONTRIBUTING.md) for more detailed information about get
 
 ----------
 
-### Disclosure
+## Disclosure
 
 Rambox-OS is not affiliated with any of the messaging apps offered.
 
 ----------
 
-### License
+## License
 
 [GNU GPL v3](./LICENSE)
 
