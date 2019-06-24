@@ -932,6 +932,16 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Google Calendar is a time-management and scheduling calendar service developed by Google.'
 			,url: 'https://calendar.google.com/calendar/'
 			,type: 'messaging'
+		},
+		{
+			id: 'awsworkmail'
+			,logo: 'awsworkmail.png'
+			,name: 'AWS WorkMail'
+			,description: 'Amazon WorkMail is a secure, managed business email and calendar service.'
+			,url: '___'
+			,type: 'email'
+			,js_unread: 'function checkUnread(){var t=document.getElementsByClassName("giraffe-hierarchy-node-counter"),e=0;for(i=0;i<t.length;i++)parseInt(t[i].textContent.trim())%1===0&&(e+=parseInt(t[i].textContent.trim()));updateBadge(e);}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+
 		}
 	]
 });
