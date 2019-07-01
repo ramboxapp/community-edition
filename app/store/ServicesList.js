@@ -117,7 +117,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,logo: 'gmail.png'
 			,name: 'Gmail'
 			,description: locale['services[9]']
-			,url: 'https://mail.google.com/mail/'
+			,url: 'https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin'
 			,type: 'email'
 			,allow_popups: true
 			,js_unread: 'function checkUnread(){var e=document.querySelector(".aim .aio").querySelector("span").querySelector("a").getAttribute("aria-label").replace(/[^0-9]/g, "");updateBadge(e?parseInt(e):0)}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
