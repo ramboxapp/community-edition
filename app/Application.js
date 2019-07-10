@@ -85,8 +85,9 @@ Ext.define('Rambox.Application', {
 			,success(response) {
 				const json = JSON.parse(response.responseText);
 				const appVersion = new Ext.Version(require('electron').remote.app.getVersion());
-				if ( appVersion.isLessThan(json.version) ) {
-					console.info('New version is available', json.version);
+				const updateVersion = new Ext.Version(json.tag_name);
+				if ( appVersion.isLessThan(updateVersion) ) {
+					console.info('New version is available', updateVersion);
 					Ext.cq1('app-main').addDocked({
 						 xtype: 'toolbar'
 						,dock: 'top'
@@ -95,7 +96,7 @@ Ext.define('Rambox.Application', {
 							'->'
 							,{
 								 xtype: 'label'
-								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')'
+								,html: '<b>'+locale['app.update[0]']+'</b> ('+updateVersion+')'
 							}
 							,{
 								 xtype: 'button'
@@ -107,7 +108,7 @@ Ext.define('Rambox.Application', {
 								,text: locale['app.update[2]']
 								,ui: 'decline'
 								,tooltip: 'Click here to see more information about the new version.'
-								,href: 'https://github.com/TheGoddessInari/rambox/releases/tag/'+json.version
+								,href: 'https://github.com/TheGoddessInari/rambox/releases/tag/'+updateVersion
 							}
 							,'->'
 							,{
