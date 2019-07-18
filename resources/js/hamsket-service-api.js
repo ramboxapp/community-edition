@@ -1,5 +1,5 @@
 /**
- * This file is loaded in the service web views to provide a Rambox API.
+ * This file is loaded in the service web views to provide a Hamsket API.
  */
 
 const { ipcRenderer } = require('electron');
@@ -7,21 +7,21 @@ const { MenuItem } = require('electron').remote;
 const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
 
 /**
- * Make the Rambox API available via a global "rambox" variable.
+ * Make the Hamsket API available via a global "hamsket" variable.
  *
  * @type {{}}
  */
-window.rambox = {};
+window.hamsket = {};
 
-window.rambox.locale = ipcRenderer.sendSync('getConfig').locale;
+window.hamsket.locale = ipcRenderer.sendSync('getConfig').locale;
 
 /**
  * Sets the unread count of the tab.
  *
  * @param {*} count	The unread count
  */
-window.rambox.setUnreadCount = function(count) {
-	ipcRenderer.sendToHost('rambox.setUnreadCount', count);
+window.hamsket.setUnreadCount = function(count) {
+	ipcRenderer.sendToHost('hamsket.setUnreadCount', count);
 };
 
 /**
@@ -29,32 +29,32 @@ window.rambox.setUnreadCount = function(count) {
  * @param {*} direct
  * @param {*} indirect
  */
-window.rambox.updateBadge = function(direct, indirect = 0) {
-	ipcRenderer.sendToHost('rambox.updateBadge', direct, indirect);
+window.hamsket.updateBadge = function(direct, indirect = 0) {
+	ipcRenderer.sendToHost('hamsket.updateBadge', direct, indirect);
 };
 
 /**
  * Clears the unread count.
  */
-window.rambox.clearUnreadCount = function() {
-	ipcRenderer.sendToHost('rambox.clearUnreadCount');
+window.hamsket.clearUnreadCount = function() {
+	ipcRenderer.sendToHost('hamsket.clearUnreadCount');
 }
 
-window.rambox.contextMenuBuilder = new ContextMenuBuilder();
-window.rambox.contextMenuListener = new ContextMenuListener(function(event, info) { 
-	window.rambox.contextMenuBuilder.showPopupMenu(info);
+window.hamsket.contextMenuBuilder = new ContextMenuBuilder();
+window.hamsket.contextMenuListener = new ContextMenuListener(function(event, info) { 
+	window.hamsket.contextMenuBuilder.showPopupMenu(info);
 });
 
 
 /**
- * Override to add notification click event to display Rambox window and activate service tab
+ * Override to add notification click event to display Hamsket window and activate service tab
  */
 const NativeNotification = Notification;
 Notification = function(title, options) {
 	const notification = new NativeNotification(title, options);
 
 	notification.addEventListener('click', function() {
-		ipcRenderer.sendToHost('rambox.showWindowAndActivateTab');
+		ipcRenderer.sendToHost('hamsket.showWindowAndActivateTab');
 	});
 
 	return notification;

@@ -1,4 +1,4 @@
-Ext.define('Rambox.view.main.MainController', {
+Ext.define('Hamsket.view.main.MainController', {
 	 extend: 'Ext.app.ViewController'
 
 	,alias: 'controller.main'
@@ -27,11 +27,11 @@ Ext.define('Rambox.view.main.MainController', {
 
 		localStorage.setItem('last_active_service', newTab.id);
 
-		if ( newTab.id === 'ramboxTab' ) {
-			if ( Rambox.app.getTotalNotifications() > 0 ) {
-				document.title = 'Rambox-OS ('+ Rambox.app.getTotalNotifications() +')';
+		if ( newTab.id === 'hamsketTab' ) {
+			if ( Hamsket.app.getTotalNotifications() > 0 ) {
+				document.title = 'Hamsket ('+ Hamsket.app.getTotalNotifications() +')';
 			} else {
-				document.title = 'Rambox-OS';
+				document.title = 'Hamsket';
 			}
 			return;
 		}
@@ -44,15 +44,15 @@ Ext.define('Rambox.view.main.MainController', {
 		if ( webview ) webview.focus();
 
 		// Update the main window so it includes the active tab title.
-		if ( Rambox.app.getTotalNotifications() > 0 ) {
-			document.title = 'Rambox-OS ('+ Rambox.app.getTotalNotifications() +') - ' + newTab.record.get('name');
+		if ( Hamsket.app.getTotalNotifications() > 0 ) {
+			document.title = 'Hamsket ('+ Hamsket.app.getTotalNotifications() +') - ' + newTab.record.get('name');
 		} else {
-			document.title = 'Rambox-OS - ' + newTab.record.get('name');
+			document.title = 'Hamsket - ' + newTab.record.get('name');
 		}
 	}
 
 	,updatePositions(tabPanel, tab) {
-		if ( tab.id === 'ramboxTab' || tab.id === 'tbfill' ) return true;
+		if ( tab.id === 'hamsketTab' || tab.id === 'tbfill' ) return true;
 
 		console.log('Updating Tabs positions...');
 
@@ -60,7 +60,7 @@ Ext.define('Rambox.view.main.MainController', {
 		let align = 'left';
 		store.suspendEvent('childmove');
 		Ext.each(tabPanel.items.items, function(t, i) {
-			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
+			if ( t.id !== 'hamsketTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
 				const rec = store.getById(t.record.get('id'));
 				if ( align === 'right' ) i--;
 				rec.set('align', align);
@@ -122,7 +122,7 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,onNewServiceSelect( view, record, item, index, e ) {
-		Ext.create('Rambox.view.add.Add', {
+		Ext.create('Hamsket.view.add.Add', {
 			record: record
 		});
 	}
@@ -152,7 +152,7 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		const config = ipc.sendSync('getConfig');
-		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'ramboxTab' }));
+		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'hamsketTab' }));
 
 		function clearData(webview, tab, resolve) {
 			webview.getWebContents().clearHistory();
@@ -188,7 +188,7 @@ Ext.define('Rambox.view.main.MainController', {
 		const me = this;
 
 		// Clear counter for unread messaging
-		document.title = 'Rambox-OS';
+		document.title = 'Hamsket';
 
 		const store = Ext.getStore('Services');
 
@@ -226,14 +226,14 @@ Ext.define('Rambox.view.main.MainController', {
 				.finally(function() {
 					store.resumeEvent('childmove');
 					store.resumeEvent('remove');
-					document.title = 'Rambox-OS';
+					document.title = 'Hamsket';
 				});
 			});
 		}
 	}
 
 	,configureService( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
-		Ext.create('Rambox.view.add.Add', {
+		Ext.create('Hamsket.view.add.Add', {
 			 record: rec
 			,service: Ext.getStore('ServicesList').getById(rec.get('type'))
 			,edit: true
@@ -331,7 +331,7 @@ Ext.define('Rambox.view.main.MainController', {
 		});
 	}
 
-	,lockRambox(btn) {
+	,lockHamsket(btn) {
 		const me = this;
 
 		if ( ipc.sendSync('getConfig').master_password ) {
@@ -357,12 +357,12 @@ Ext.define('Rambox.view.main.MainController', {
 									,message: locale['app.window[25]']
 									,icon: Ext.Msg.WARNING
 									,buttons: Ext.Msg.OK
-									,fn: me.lockRambox
+									,fn: me.lockHamsket
 								});
 								return false;
 							}
 
-							setLock(Rambox.util.MD5.encypt(text));
+							setLock(Hamsket.util.MD5.encypt(text));
 						}
 					});
 					msgbox2.textField.inputEl.dom.type = 'password';
@@ -372,7 +372,7 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		function setLock(text) {
-			console.info('Lock Rambox:', 'Enabled');
+			console.info('Lock Hamsket:', 'Enabled');
 
 			// Save encrypted password in localStorage to show locked when app is reopen
 			localStorage.setItem('locked', text);
@@ -388,8 +388,8 @@ Ext.define('Rambox.view.main.MainController', {
 		const me = this;
 
 		const validateFn = function() {
-			if ( localStorage.getItem('locked') === Rambox.util.MD5.encypt(winLock.down('textfield').getValue()) ) {
-				console.info('Lock Rambox:', 'Disabled');
+			if ( localStorage.getItem('locked') === Hamsket.util.MD5.encypt(winLock.down('textfield').getValue()) ) {
+				console.info('Lock Hamsket:', 'Disabled');
 				localStorage.removeItem('locked');
 				winLock.close();
 				me.lookupReference('disturbBtn').setPressed(false);
@@ -466,7 +466,7 @@ Ext.define('Rambox.view.main.MainController', {
 	,openPreferences( btn ) {
 		const me = this;
 
-		Ext.create('Rambox.view.preferences.Preferences').show();
+		Ext.create('Hamsket.view.preferences.Preferences').show();
 	}
 
 });

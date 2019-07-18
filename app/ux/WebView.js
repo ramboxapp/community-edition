@@ -1,15 +1,15 @@
 /**
  * Default config for all webviews created
  */
-Ext.define('Rambox.ux.WebView',{
+Ext.define('Hamsket.ux.WebView',{
 	 extend: 'Ext.panel.Panel'
 	,xtype: 'webview'
 
 	,requires: [
-		 'Rambox.util.Format'
-		,'Rambox.util.Notifier'
-		,'Rambox.util.UnreadCounter'
-		,'Rambox.util.IconLoader'
+		 'Hamsket.util.Format'
+		,'Hamsket.util.Notifier'
+		,'Hamsket.util.UnreadCounter'
+		,'Hamsket.util.IconLoader'
 	]
 
 	// private
@@ -170,7 +170,7 @@ Ext.define('Rambox.ux.WebView',{
 					,webpreferences: 'sandbox: true' //,nativeWindowOpen=true
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,userAgent: me.getUserAgent()
-					,preload: './resources/js/rambox-service-api.js'
+					,preload: './resources/js/hamsket-service-api.js'
 				}
 			}];
 
@@ -238,13 +238,13 @@ Ext.define('Rambox.ux.WebView',{
 		});
 
 		webview.addEventListener("did-finish-load", function(e) {
-			Rambox.app.setTotalServicesLoaded( Rambox.app.getTotalServicesLoaded() + 1 );
+			Hamsket.app.setTotalServicesLoaded( Hamsket.app.getTotalServicesLoaded() + 1 );
 
 			// Apply saved zoom level
 			me.setZoomLevel(me.record.get('zoomLevel'));
 
 			// Set special icon for some service (like Slack)
-			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
+			Hamsket.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
 
 		// Open links in default browser
@@ -345,7 +345,7 @@ Ext.define('Rambox.ux.WebView',{
 									,style: 'width:100%;height:100%;'
 									,partition: me.getWebView().partition
 									,useragent: me.getUserAgent()
-									,preload: './resources/js/rambox-modal-api.js'
+									,preload: './resources/js/hamsket-modal-api.js'
 								}
 							}
 							,listeners: {
@@ -402,7 +402,7 @@ Ext.define('Rambox.ux.WebView',{
 						console.log(custom_css);
 						console.groupEnd();
 						let js_before = '{let mystyle=`';
-						let js_after = '`,mycss=document.createElement("style");mycss.type="text/css",mycss.styleSheet?mycss.styleSheet.cssText=mystyle:mycss.appendChild(document.createTextNode(mystyle));let myDocHead=document.head;null===myDocHead||myDocHead.ramboxStyled||(myDocHead.appendChild(mycss),myDocHead.ramboxStyled=!0);let myframes=document.getElementsByTagName("iframe");for(let myframe of myframes){let mydocument,mydochead=(myframe.contentDocument||myframe.contentWindow.document).head;if(null!==mydochead&&!mydochead.ramboxStyled){let myclonedcss=mycss.cloneNode(deep=!0);mydochead.appendChild(myclonedcss),mydochead.ramboxStyled=!0}}}';
+						let js_after = '`,mycss=document.createElement("style");mycss.type="text/css",mycss.styleSheet?mycss.styleSheet.cssText=mystyle:mycss.appendChild(document.createTextNode(mystyle));let myDocHead=document.head;null===myDocHead||myDocHead.hamsketStyled||(myDocHead.appendChild(mycss),myDocHead.hamsketStyled=!0);let myframes=document.getElementsByTagName("iframe");for(let myframe of myframes){let mydocument,mydochead=(myframe.contentDocument||myframe.contentWindow.document).head;if(null!==mydochead&&!mydochead.hamsketStyled){let myclonedcss=mycss.cloneNode(deep=!0);mydochead.appendChild(myclonedcss),mydochead.hamsketStyled=!0}}}';
 						webview.executeJavaScript(js_before + custom_css + js_after);
 					}
 				}
@@ -513,22 +513,22 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener('ipc-message', function(event) {
 			const channel = event.channel;
 			switch (channel) {
-				case 'rambox.setUnreadCount':
+				case 'hamsket.setUnreadCount':
 					handleSetUnreadCount(event);
 					break;
-				case 'rambox.clearUnreadCount':
+				case 'hamsket.clearUnreadCount':
 					handleClearUnreadCount(event);
 					break;
-				case 'rambox.updateBadge':
+				case 'hamsket.updateBadge':
 					handleUpdateBadge(event);
 					break;
-				case 'rambox.showWindowAndActivateTab':
+				case 'hamsket.showWindowAndActivateTab':
 					showWindowAndActivateTab(event);
 					break;
 			}
 
 			/**
-			 * Handles 'rambox.clearUnreadCount' messages.
+			 * Handles 'hamsket.clearUnreadCount' messages.
 			 * Clears the unread count.
 			 */
 			function handleClearUnreadCount() {
@@ -538,7 +538,7 @@ Ext.define('Rambox.ux.WebView',{
 			}
 
 			/**
-			 * Handles 'rambox.setUnreadCount' messages.
+			 * Handles 'hamsket.setUnreadCount' messages.
 			 * Sets the badge text if the event contains an integer
                          * or a '•' (indicating non-zero but unknown number of unreads) as first argument.
 			 *
@@ -606,12 +606,12 @@ Ext.define('Rambox.ux.WebView',{
 		const me = this;
 
 		if ( !isNaN(newUnreadCount) && (function(x) { return (x | 0) === x; })(parseFloat(newUnreadCount)) && me.record.get('includeInGlobalUnreadCounter') === true) {
-			Rambox.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
+			Hamsket.util.UnreadCounter.setUnreadCountForService(me.record.get('id'), newUnreadCount);
 		} else {
-			Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
+			Hamsket.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
 		}
 
-		me.setTabBadgeText(Rambox.util.Format.formatNumber(newUnreadCount));
+		me.setTabBadgeText(Hamsket.util.Format.formatNumber(newUnreadCount));
 
 		me.doManualNotification(parseInt(newUnreadCount));
 	}
@@ -622,7 +622,7 @@ Ext.define('Rambox.ux.WebView',{
 
 	/**
 	 * Dispatch manual notification if
-	 * • service doesn't have notifications, so Rambox does them
+	 * • service doesn't have notifications, so Hamsket does them
 	 * • count increased
 	 * • not in dnd mode
 	 * • notifications enabled
@@ -636,7 +636,7 @@ Ext.define('Rambox.ux.WebView',{
 			me.currentUnreadCount < count &&
 			me.record.get('notifications') &&
 			!JSON.parse(localStorage.getItem('dontDisturb'))) {
-				Rambox.util.Notifier.dispatchNotification(me, count);
+				Hamsket.util.Notifier.dispatchNotification(me, count);
 		}
 
 		me.currentUnreadCount = count;
@@ -664,7 +664,7 @@ Ext.define('Rambox.ux.WebView',{
 	,clearUnreadCounter() {
 		const me = this;
 		me.tab.setBadgeText('');
-		Rambox.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
+		Hamsket.util.UnreadCounter.clearUnreadCountForService(me.record.get('id'));
 	}
 
 	,reloadService(btn) {
@@ -831,7 +831,7 @@ Ext.define('Rambox.ux.WebView',{
 		// ` Chrome/${me.getChromeVersion()} Safari/537.36`;
 		const default_ua = window.navigator.userAgent
 							.replace(`Electron/${me.getElectronVersion()} `,'')
-							.replace(`Rambox/${me.getAppVersion()} `, '');
+							.replace(`Hamsket/${me.getAppVersion()} `, '');
 		const service_ua = Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent');
 		const ua = service_ua ? service_ua : default_ua;
 		return ua;

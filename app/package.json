@@ -1,8 +1,8 @@
 {
-	"name": "Rambox",
-	"productName": "Rambox",
-	"version": "0.5.18",
-	"description": "Rambox",
+	"name": "hamsket",
+	"productName": "Hamsket",
+	"version": "0.6.0",
+	"description": "Hamsket",
 	"main": "electron/main.js",
 	"private": true,
 	"engines": {
@@ -10,14 +10,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TheGoddessInari/rambox.git"
+		"url": "https://github.com/TheGoddessInari/hamsket.git"
 	},
 	"bugs": {
-		"url": "https://github.com/TheGoddessInari/rambox/issues"
+		"url": "https://github.com/TheGoddessInari/hamsket/issues"
 	},
-	"homepage": "https://github.com/TheGoddessInari/rambox",
+	"homepage": "https://github.com/TheGoddessInari/hamsket",
 	"keywords": [
-		"Rambox",
+		"Hamsket",
 		"messaging",
 		"app",
 		"slack",

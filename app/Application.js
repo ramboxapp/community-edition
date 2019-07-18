@@ -1,11 +1,11 @@
-Ext.define('Rambox.Application', {
+Ext.define('Hamsket.Application', {
 	 extend: 'Ext.app.Application'
 
-	,name: 'Rambox'
+	,name: 'Hamsket'
 
 	,requires: [
-		 'Rambox.ux.FileBackup'
-		,'Rambox.util.MD5'
+		 'Hamsket.ux.FileBackup'
+		,'Hamsket.util.MD5'
 		,'Ext.window.Toast'
 		,'Ext.util.Cookies'
 	]
@@ -29,7 +29,7 @@ Ext.define('Rambox.Application', {
 		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
 
 		// Check for updates
-		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
+		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Hamsket.app.checkUpdate(true);
 
 		// Mouse Wheel zooming
 		document.addEventListener('mousewheel', function(e) {
@@ -52,7 +52,7 @@ Ext.define('Rambox.Application', {
 		ipc.send('setDontDisturb', localStorage.getItem('dontDisturb')); // We store it in config
 
 		if ( localStorage.getItem('locked') ) {
-			console.info('Lock Rambox:', 'Enabled');
+			console.info('Lock Hamsket:', 'Enabled');
 			Ext.cq1('app-main').getController().showLockWindow();
 		}
 
@@ -64,15 +64,15 @@ Ext.define('Rambox.Application', {
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
 			if ( Ext.cq1('app-main').getActiveTab().record ) {
-				document.title = 'Rambox-OS (' + Rambox.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+				document.title = 'Hamsket (' + Hamsket.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
 			} else {
-				document.title = 'Rambox-OS (' + Rambox.util.Format.formatNumber(newValue) + ')';
+				document.title = 'Hamsket (' + Hamsket.util.Format.formatNumber(newValue) + ')';
 			}
 		} else {
 			if ( Ext.cq1('app-main') && Ext.cq1('app-main').getActiveTab().record ) {
-				document.title = 'Rambox-OS - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+				document.title = 'Hamsket - '+Ext.cq1('app-main').getActiveTab().record.get('name');
 			} else {
-				document.title = 'Rambox-OS';
+				document.title = 'Hamsket';
 			}
 		}
 	}
@@ -80,7 +80,7 @@ Ext.define('Rambox.Application', {
 	,checkUpdate(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
-			 url: 'https://api.github.com/repos/TheGoddessInari/rambox/releases/latest'
+			 url: 'https://api.github.com/repos/TheGoddessInari/hamsket/releases/latest'
 			,method: 'GET'
 			,success(response) {
 				const json = JSON.parse(response.responseText);
@@ -101,14 +101,14 @@ Ext.define('Rambox.Application', {
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[1]']
-								,href: process.platform === 'https://github.com/TheGoddessInari/rambox/releases/latest'
+								,href: process.platform === 'https://github.com/TheGoddessInari/hamsket/releases/latest'
 							}
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[2]']
 								,ui: 'decline'
 								,tooltip: 'Click here to see more information about the new version.'
-								,href: 'https://github.com/TheGoddessInari/rambox/releases/tag/'+updateVersion
+								,href: 'https://github.com/TheGoddessInari/hamsket/releases/tag/'+updateVersion
 							}
 							,'->'
 							,{

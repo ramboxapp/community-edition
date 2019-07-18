@@ -32,7 +32,7 @@ module.exports = function(config) {
 		{
 			label: `&GitHub`,
 			click() {
-				shell.openExternal('https://www.github.com/TheGoddessInari/rambox');
+				shell.openExternal('https://www.github.com/TheGoddessInari/hamsket');
 			}
 		},
 		{
@@ -54,13 +54,13 @@ module.exports = function(config) {
 	> ${process.platform} ${process.arch} ${os.release()}
 	> ${buildversion}`;
 
-				shell.openExternal(`https://github.com/TheGoddessInari/rambox/issues/new?body=${encodeURIComponent(body)}`);
+				shell.openExternal(`https://github.com/TheGoddessInari/hamsket/issues/new?body=${encodeURIComponent(body)}`);
 			}
 		},
 		{
 			label: `&`+locale['menu.help[2]'],
 			click() {
-				shell.openExternal('https://gitter.im/TheGoddessInari/rambox');
+				shell.openExternal('https://gitter.im/TheGoddessInari/hamsket');
 			}
 		},
 		{
@@ -243,7 +243,7 @@ module.exports = function(config) {
 							}
 						},
 						{
-							label: `Lock Rambox`,
+							label: `Lock Hamsket`,
 							accelerator: 'Alt+F2',
 							click() {
 								sendAction('lockWindow');

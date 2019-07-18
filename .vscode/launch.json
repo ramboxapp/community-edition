@@ -5,19 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Rambox-OS: Main",
+            "name": "Hamsket: Main",
             "type": "node",
             "request": "launch",
             "protocol": "inspector",
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
             "args": [
                 "--remote-debugging-port=9223",
-                "build/production/Rambox"
+                "build/production/Hamsket"
             ],
             "outFiles": [ "${workspaceFolder}/build/production/**/*.js" ]
         },
         {
-            "name": "Rambox-OS: Renderer",
+            "name": "Hamsket: Renderer",
             "type": "chrome",
             "request": "attach",
             "port": 9223,
@@ -27,10 +27,10 @@
     ],
     "compounds": [
         {
-            "name": "Rambox-OS: All",
+            "name": "Hamsket: All",
             "configurations": [
-                "Rambox-OS: Main",
-                "Rambox-OS: Renderer"
+                "Hamsket: Main",
+                "Hamsket: Renderer"
             ]
         }
     ]

@@ -13,7 +13,7 @@ Structure of a service entry:
 |type|Defines the type of the service. Must be one of `email` or `messaging`.|yes|
 |allow_popups|Set to `true` to allow popup windows for the service.|no|
 |note|Additional info to display when adding the service.|no|
-|manual_notifications|Set to `true` to let Rambox-OS trigger notifications. Can be used for services that doesn't support browser notifications.|no|
+|manual_notifications|Set to `true` to let Hamsket trigger notifications. Can be used for services that doesn't support browser notifications.|no|
 |js_unread|JavaScript code for setting the unread count (see below).|no|
 
 ### Setting the unread count
@@ -22,4 +22,4 @@ While by default the unread count is determined by looking for ` (COUNT)` to the
 
 Code provided by `js_unread` will be injected into the service website.
 You can retrieve the unread count in this JavaScript code e.g. by parsing elements.
-Set the unread count by calling `rambox.setUnreadCount(COUNT)` or clear it by calling `rambox.clearUnreadCount()`. 
+Set the unread count by calling `hamsket.setUnreadCount(COUNT)` or clear it by calling `hamsket.clearUnreadCount()`. 

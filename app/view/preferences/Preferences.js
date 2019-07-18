@@ -1,10 +1,10 @@
-Ext.define('Rambox.view.preferences.Preferences',{
+Ext.define('Hamsket.view.preferences.Preferences',{
 	 extend: 'Ext.window.Window'
 	,xtype: 'preferences'
 
 	,requires: [
-		 'Rambox.view.preferences.PreferencesController'
-		,'Rambox.view.preferences.PreferencesModel'
+		 'Hamsket.view.preferences.PreferencesController'
+		,'Hamsket.view.preferences.PreferencesModel'
 		,'Ext.form.field.ComboBox'
 		,'Ext.form.field.Checkbox'
 	]
@@ -39,7 +39,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 		const config = ipc.sendSync('getConfig');
 
 		let defaultServiceOptions = [];
-		defaultServiceOptions.push({ value: 'ramboxTab', label: 'Rambox-OS Tab' });
+		defaultServiceOptions.push({ value: 'hamsketTab', label: 'Hamsket Tab' });
 		defaultServiceOptions.push({ value: 'last', label: 'Last Active Service' });
 		Ext.getStore('Services').each(function(rec) {
 			defaultServiceOptions.push({
@@ -117,7 +117,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 								 xtype: 'button'
 								,text: 'Help us Translate'
 								,style: 'border-top-left-radius:0;border-bottom-left-radius:0;'
-								,href: 'https://crowdin.com/project/rambox/invite'
+								,href: 'https://crowdin.com/project/hamsket/invite'
 							}
 						]
 					}
@@ -170,7 +170,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					,{
 						 xtype: 'combo'
 						,name: 'default_service'
-						,fieldLabel: 'Default service to display when Rambox-OS starts'
+						,fieldLabel: 'Default service to display when Hamsket starts'
 						,labelAlign: 'top'
 						//,width: 380
 						//,labelWidth: 105
@@ -298,7 +298,7 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'fieldset'
-						,title: 'Proxy (needs to relaunch) - <a href="https://github.com/TheGoddessInari/rambox/wiki/FREE-PROXY-SERVERS" target="_blank">Free Proxy Servers</a>'
+						,title: 'Proxy (needs to relaunch) - <a href="https://github.com/TheGoddessInari/hamsket/wiki/FREE-PROXY-SERVERS" target="_blank">Free Proxy Servers</a>'
 						,collapsed: !config.proxy
 						,checkboxToggle: true
 						,checkboxName: 'proxy'

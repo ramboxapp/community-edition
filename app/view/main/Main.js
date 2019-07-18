@@ -1,11 +1,11 @@
-Ext.define('Rambox.view.main.Main', {
+Ext.define('Hamsket.view.main.Main', {
 	 extend: 'Ext.tab.Panel'
 	,requires: [
-		 'Rambox.view.main.MainController'
-		,'Rambox.view.main.MainModel'
-		,'Rambox.ux.WebView'
-		,'Rambox.ux.mixin.Badge'
-		,'Rambox.view.add.Add'
+		 'Hamsket.view.main.MainController'
+		,'Hamsket.view.main.MainModel'
+		,'Hamsket.ux.WebView'
+		,'Hamsket.ux.mixin.Badge'
+		,'Hamsket.view.add.Add'
 		,'Ext.ux.TabReorderer'
 	]
 
@@ -31,13 +31,13 @@ Ext.define('Rambox.view.main.Main', {
 			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
 			,baseCls: ''
 			,tooltip: locale['app.main[25]']
-			,href: 'https://www.gofundme.com/rambox-os'
+			,href: 'https://www.gofundme.com/Hamsket'
 		}]
 	}
 	,items: [
 		{
 			 icon: 'resources/IconTray@2x.png'
-			,id: 'ramboxTab'
+			,id: 'hamsketTab'
 			,closable: false
 			,reorderable: false
 			,autoScroll: true
@@ -249,8 +249,8 @@ Ext.define('Rambox.view.main.Main', {
 						 glyph: 'XF023@FontAwesome'
 						,text: locale['app.main[19]']
 						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+': Alt+F2</b>'
-						,handler: 'lockRambox'
-						,id: 'lockRamboxBtn'
+						,handler: 'lockHamsket'
+						,id: 'lockHamsketBtn'
 					}
 					,'->'
 					,{
@@ -258,16 +258,16 @@ Ext.define('Rambox.view.main.Main', {
 						,glyph: 'XF0C7@FontAwesome'
 						,id: 'backupBtn'
 						,tooltip: 'Backup services to disk'
-						,scope: Rambox.ux.FileBackup
-						,handler: Rambox.ux.FileBackup.backupConfiguration
+						,scope: Hamsket.ux.FileBackup
+						,handler: Hamsket.ux.FileBackup.backupConfiguration
 					}
 					,{
 						text: 'Restore'
 					   ,glyph: 'XF115@FontAwesome'
 					   ,id: 'restoreBtn'
 					   ,tooltip: 'Restore services from disk'
-					   ,scope: Rambox.ux.FileBackup
-					   ,handler: Rambox.ux.FileBackup.restoreConfiguration
+					   ,scope: Hamsket.ux.FileBackup
+					   ,handler: Hamsket.ux.FileBackup.restoreConfiguration
 				   }
 				   ,{
 						 tooltip: locale['preferences[0]']
@@ -288,14 +288,14 @@ Ext.define('Rambox.view.main.Main', {
 						,{
 							 text: locale['app.main[25]']
 							,glyph: 'XF21E@FontAwesome'
-							,href: 'https://www.gofundme.com/rambox-os'
+							,href: 'https://www.gofundme.com/Hamsket'
 						}
 					]
 					 /* TODO: Translation
 						,{
 							 text: 'Translation'
 							,glyph: 'XF0AC@FontAwesome'
-							,href: 'https://crowdin.com/project/rambox/invite'
+							,href: 'https://crowdin.com/project/hamsket/invite'
 						}
 					]*/
 				}
@@ -323,7 +323,7 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						,{
 							 glyph: 'XF09B@FontAwesome'
-							,href: 'https://www.github.com/TheGoddessInari/rambox'
+							,href: 'https://www.github.com/TheGoddessInari/hamsket'
 						}
 					]
 				}

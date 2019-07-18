@@ -1,34 +1,34 @@
-# Rambox-OS, soon to be renamed to Hamsket. <!-- omit in toc -->
+# Hamsket, soon to be renamed to Hamsket. <!-- omit in toc -->
 
 <p align="center">
-<a href="https://github.com/TheGoddessInari/rambox"><img src="./resources/Icon.png" width="256px" alt="Rambox-OS"></a>
+<a href="https://github.com/TheGoddessInari/hamsket"><img src="./resources/Icon.png" width="256px" alt="Hamsket"></a>
 </p>
 
 #### Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one. <!-- omit in toc -->
 
 [![GNU GPL v3][license]](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Gitter][gitter]](https://gitter.im/TheGoddessInari/rambox)
-[![Release][release]](https://github.com/TheGoddessInari/rambox/releases/latest)
+[![Gitter][gitter]](https://gitter.im/TheGoddessInari/hamsket)
+[![Release][release]](https://github.com/TheGoddessInari/hamsket/releases/latest)
 
-[![DevOps Build][devops-build]](https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2)
-[![DevOps Deployment][devops-deploy]](https://dev.azure.com/TheGoddessInari/rambox/_release?definitionId=1)
-[![Dependencies][dependencies]](https://david-dm.org/TheGoddessInari/rambox?path=app)
-[![DevDependencies][dev-dependencies]](https://david-dm.org/TheGoddessInari/rambox?type=dev)
+[![DevOps Build][devops-build]](https://dev.azure.com/TheGoddessInari/hamsket/_build?definitionId=2)
+[![DevOps Deployment][devops-deploy]](https://dev.azure.com/TheGoddessInari/hamsket/_release?definitionId=1)
+[![Dependencies][dependencies]](https://david-dm.org/TheGoddessInari/hamsket?path=app)
+[![DevDependencies][dev-dependencies]](https://david-dm.org/TheGoddessInari/hamsket?type=dev)
 
-[license]: https://img.shields.io/github/license/TheGoddessInari/rambox.svg
-[gitter]: https://img.shields.io/gitter/room/TheGoddessInari/rambox.svg
-[release]: https://img.shields.io/github/release/TheGoddessInari/rambox.svg
+[license]: https://img.shields.io/github/license/TheGoddessInari/hamsket.svg
+[gitter]: https://img.shields.io/gitter/room/TheGoddessInari/hamsket.svg
+[release]: https://img.shields.io/github/release/TheGoddessInari/hamsket.svg
 
 [devops-build]: https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops
 [devops-deploy]: https://img.shields.io/azure-devops/release/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/1/1.svg?logo=azure-devops
-[dependencies]: https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app
-[dev-dependencies]: https://img.shields.io/david/dev/TheGoddessInari/rambox.svg
+[dependencies]: https://img.shields.io/david/TheGoddessInari/hamsket.svg?path=app
+[dev-dependencies]: https://img.shields.io/david/dev/TheGoddessInari/hamsket.svg
 
-##### Nightly build artifacts are available in Windows ([Win64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.Setup.0.5.18.exe)), Mac ([DMG](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18.dmg) / [App](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18-mac.zip)), and Linux ([AppImage64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.0.5.18.AppImage) / [RPM64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.x86_64.rpm) / [DEB64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox_0.5.18_amd64.deb) / [Tarball64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.tar.gz)) packaging flavors. <!-- omit in toc -->
+##### Nightly build artifacts are available in Windows ([Win64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket.Setup.0.5.18.exe)), Mac ([DMG](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.5.18.dmg) / [App](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.5.18-mac.zip)), and Linux ([AppImage64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket.0.5.18.AppImage) / [RPM64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.5.18.x86_64.rpm) / [DEB64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket_0.5.18_amd64.deb) / [Tarball64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.5.18.tar.gz)) packaging flavors. <!-- omit in toc -->
 
 ###### Logo designed by [Andriy Yurchenko](http://andyur.com/). <!-- omit in toc -->
 
-###### Original rambox by [Ramiro Saenz](https://github.com/saenzramiro). <!-- omit in toc -->
+###### Original Rambox by [Ramiro Saenz](https://github.com/saenzramiro). <!-- omit in toc -->
 
 ----------
 
@@ -50,7 +50,7 @@
 
 ## Screenshot
 
-![Rambox-OS](./resources/screenshots/win1.png)
+![Hamsket](./resources/screenshots/win1.png)
 
 ----------
 
@@ -167,7 +167,7 @@
 - [ ] Multi-language.
 - [ ] Sync your configuration between multiple computers.
 - [x] Master Password.
-- [x] Lock Rambox-OS if you will be away for a period of time.
+- [x] Lock Hamsket if you will be away for a period of time.
 - [x] Don't disturb mode.
 - [x] Reorder applications in the tab bar.
 - [x] Notification badge in the tab.
@@ -193,7 +193,7 @@
 
 No personal information will be saved or tracked.
 
-Sessions will persist using the [partition:persist](https://electronjs.org/docs/api/webview-tag#partition) attribute for Webviews. So every time you open Rambox, your sessions will keep alive until you remove the service.
+Sessions will persist using the [partition:persist](https://electronjs.org/docs/api/webview-tag#partition) attribute for Webviews. So every time you open Hamsket, your sessions will keep alive until you remove the service.
 
 ~~Sync feature use [Auth0](https://auth0.com/) for Single Sign On & Token Based Authentication and to store the services that user is using (and the configuration for each service). You are always welcome to check the code! ;)~~
 
@@ -207,7 +207,7 @@ Keep in mind, I'm not pushing this. I'll do my best regardless.
 
 | Type         |                    URL/Wallet                    |
 | ------------ | :----------------------------------------------: |
-| GoFundMe     |       <https://www.gofundme.com/rambox-os>       |
+| GoFundMe     |       <https://www.gofundme.com/Hamsket>       |
 | Bitcoin      |     ```36SxZeQ5dA7Dn6pSmYWcvvmnkEeh8LdgmJ```     |
 | Bitcoin Cash | ```qqslp2vuamhmsp59u49dq89kwky2yj23nqmjr4mdgj``` |
 | Ethereum     | ```0xa085d5F736f2D7D210261879e183e5bf870Eae5f``` |
@@ -227,8 +227,8 @@ To build your own copy, you need:
 These **need** to be added to your PATH.
 
 ```shell
-git clone https://github.com/TheGoddessInari/rambox.git
-cd rambox
+git clone https://github.com/TheGoddessInari/hamsket.git
+cd hamsket
 npm install
 npm run repack:win64
 ```
@@ -248,15 +248,15 @@ You can place unpacked files over where the installers normally place their file
 
 ## [Contributing](./CONTRIBUTING.md)
 
-Want to report a bug, request a feature, contribute to or translate Rambox? We need all the help we can get! Fork and work!
+Want to report a bug, request a feature, contribute to or translate Hamsket? We need all the help we can get! Fork and work!
 
 ----------
 
 ## Quickstart
 
 ```shell
-git clone https://github.com/TheGoddessInari/rambox.git
-cd rambox
+git clone https://github.com/TheGoddessInari/hamsket.git
+cd hamsket
 npm install
 npm start
 ```
@@ -267,7 +267,7 @@ See [Contributing.md](./CONTRIBUTING.md) for more detailed information about get
 
 ## Disclosure
 
-Rambox-OS is not affiliated with any of the messaging apps offered.
+Hamsket is not affiliated with any of the messaging apps offered.
 
 ----------
 

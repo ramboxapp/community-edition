@@ -1,4 +1,4 @@
-Ext.define('Rambox.ux.FileBackup', {
+Ext.define('Hamsket.ux.FileBackup', {
 	singleton: true,
 	constructor() {
 		const me = this;
@@ -7,7 +7,7 @@ Ext.define('Rambox.ux.FileBackup', {
 		me.path = me.remote.require('path');
 		me.fs = me.remote.require('fs');
 		me.userPath = me.remote.app.getPath('userData');
-		me.defaultFileName = 'rambox-backup.json';
+		me.defaultFileName = 'hamsket-backup.json';
 		me.myDefaultPath = me.userPath + me.path.sep + me.defaultFileName;
 	},
 	backupConfiguration(callback) {
@@ -49,7 +49,7 @@ Ext.define('Rambox.ux.FileBackup', {
 					if (services) {
 						Ext.cq1('app-main').getController().removeAllServices(true, function() {
 							Ext.each(services, function(s) {
-								const service = Ext.create('Rambox.model.Service', s);
+								const service = Ext.create('Hamsket.model.Service', s);
 								service.save();
 								Ext.getStore('Services').add(service);
 							});

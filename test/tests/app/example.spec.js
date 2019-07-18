@@ -4,20 +4,20 @@
 
 const chai = require('chai');
 const expect = chai.expect;
-const RamboxTestHelper = require('../../helpers/RamboxTestHelper');
+const HamsketTestHelper = require('../../helpers/HamsketTestHelper');
 
-describe('Rambox window', function() {
+describe('Hamsket window', function() {
 
 	/**
-	 * The Rambox test helper does common stuff.
+	 * The Hamsket test helper does common stuff.
 	 *
 	 * @type {module.exports}
 	 */
-	const ramboxTestHelper = new RamboxTestHelper();
+	const hamsketTestHelper = new HamsketTestHelper();
 
-	it('should have "Rambox-OS" in the title', function () {
-		return ramboxTestHelper.app.client.browserWindow.getTitle().then(function(title) {
-			expect(title).to.contain('Rambox-OS');
+	it('should have "Hamsket" in the title', function () {
+		return hamsketTestHelper.app.client.browserWindow.getTitle().then(function(title) {
+			expect(title).to.contain('Hamsket');
 			return Promise.resolve();
 		});
 	})

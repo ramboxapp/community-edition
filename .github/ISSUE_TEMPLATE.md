@@ -18,7 +18,7 @@
 
 <!-- Complete your environment -->
 
-> Rambox-OS: v0.X.X
+> Hamsket: v0.X.X
 
 > OS: XXXX
 

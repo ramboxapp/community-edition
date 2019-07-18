@@ -1,9 +1,9 @@
-Ext.define('Rambox.view.add.AddController', {
+Ext.define('Hamsket.view.add.AddController', {
 	extend: 'Ext.app.ViewController',
 	alias: 'controller.add-add',
 
 	requires: [
-		'Rambox.util.UnreadCounter'
+		'Hamsket.util.UnreadCounter'
 	],
 
 	doCancel( btn ) {
@@ -68,7 +68,7 @@ Ext.define('Rambox.view.add.AddController', {
 			}
 			// Apply the JS Code of the Tab
 			if ( win.down('textarea').isDirty() ) {
-				Ext.Msg.confirm(locale['app.window[8]'].toUpperCase(), 'Rambox-OS needs to reload the service to execute the new JavaScript code. Do you want to do it now?', function( btnId ) {
+				Ext.Msg.confirm(locale['app.window[8]'].toUpperCase(), 'Hamsket needs to reload the service to execute the new JavaScript code. Do you want to do it now?', function( btnId ) {
 					if ( btnId === 'yes' ) view.reloadService();
 				});
 			}
@@ -83,7 +83,7 @@ Ext.define('Rambox.view.add.AddController', {
 				formValues.url = formValues.cycleValue === '1' ? win.record.get('url').replace('___', formValues.url) : formValues.url;
 			}
 
-			const service = Ext.create('Rambox.model.Service', {
+			const service = Ext.create('Hamsket.model.Service', {
 				 type: win.record.get('id')
 				,logo: formValues.logo
 				,name: formValues.serviceName

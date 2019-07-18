@@ -2,7 +2,7 @@
 
 We welcome pull requests! Follow these steps to contribute:
 
-1. Find an [issue](https://github.com/TheGoddessInari/rambox/issues) that needs assistance.
+1. Find an [issue](https://github.com/TheGoddessInari/hamsket/issues) that needs assistance.
 
 2. Let us know you are working on it by posting a comment on the issue.
 
@@ -23,7 +23,7 @@ Working on your first Pull Request? You can learn how from this *free* series [H
 - [Prerequisites](#prerequisites)
 - [Forking the Project](#forking-the-project)
 - [Create a Branch](#create-a-branch)
-- [Set Up Rambox-OS](#set-up-rambox-OS)
+- [Set Up Hamsket](#set-up-Hamsket)
 
 ### Create
 
@@ -67,35 +67,35 @@ If your versions are lower than the prerequisite versions, you should update.
 1. Install [Git](https://git-scm.com/) or your favorite Git client.
 2. (Optional) [Setup an SSH Key](https://help.github.com/articles/generating-an-ssh-key/) for GitHub.
 
-#### Forking Rambox-OS
+#### Forking Hamsket
 
-1. Go to the top level rambox repository: <https://github.com/TheGoddessInari/rambox>
+1. Go to the top level hamsket repository: <https://github.com/TheGoddessInari/hamsket>
 2. Click the "Fork" Button in the upper right hand corner of the interface ([More Details Here](https://help.github.com/articles/fork-a-repo/))
-3. After the repository (repo) has been forked, you will be taken to your copy of the rambox repo at <https://github.com/yourUsername/rambox>
+3. After the repository (repo) has been forked, you will be taken to your copy of the hamsket repo at <https://github.com/yourUsername/hamsket>
 
 #### Cloning Your Fork
 
 1. Open a Terminal / Command Line / Bash Shell in your projects directory (_i.e.: `/yourprojectdirectory/`_)
-2. Clone your fork of Rambox-OS
+2. Clone your fork of Hamsket
 
 ```shell
-$ git clone https://github.com/yourUsername/rambox.git
+$ git clone https://github.com/yourUsername/hamsket.git
 ```
 
 **(make sure to replace `yourUsername` with your GitHub username)**
 
-This will download the entire Rambox-OS repo to your projects directory.
+This will download the entire Hamsket repo to your projects directory.
 
 #### Setup Your Upstream
 
-1. Change directory to the new Rambox-OS directory (`cd rambox`)
-2. Add a remote to the official Rambox-OS repo:
+1. Change directory to the new Hamsket directory (`cd hamsket`)
+2. Add a remote to the official Hamsket repo:
 
 ```shell
-$ git remote add upstream https://github.com/TheGoddessInari/rambox.git
+$ git remote add upstream https://github.com/TheGoddessInari/hamsket.git
 ```
 
-Congratulations, you now have a local copy of the Rambox-OS repo!
+Congratulations, you now have a local copy of the Hamsket repo!
 
 ### Create a Branch
 
@@ -123,9 +123,9 @@ $ git push origin [name_of_your_new_branch]
 
 **If you need more help with branching, take a look at [this](https://github.com/Kunena/Kunena-Forum/wiki/Create-a-new-branch-with-git-and-manage-branches).**
 
-### Set Up Rambox-OS
+### Set Up Hamsket
 
-Once you have Rambox-OS cloned, before you start the application, you first need to install all of the dependencies:
+Once you have Hamsket cloned, before you start the application, you first need to install all of the dependencies:
 
 ```bash
 # Install NPM dependencies
@@ -140,7 +140,7 @@ $ npm start # in a new terminal
 
 This bit is up to you!
 
-#### How to find the code in the Rambox-OS codebase to fix/edit
+#### How to find the code in the Hamsket codebase to fix/edit
 
 The best way to find out any code you wish to change/add or remove is using
 the GitHub search bar at the top of the repository page. For example, you could
@@ -161,10 +161,10 @@ To see these changes you'll need to stop your `npm start` , and then rerun.
 
 #### What is a Pull Request?
 
-A pull request (PR) is a method of submitting proposed changes to the Rambox-OS
+A pull request (PR) is a method of submitting proposed changes to the Hamsket
 repo (or any repo, for that matter). You will make changes to copies of the
-files which make up Rambox-OS in a personal fork, then apply to have them
-accepted by Rambox-OS proper.
+files which make up Hamsket in a personal fork, then apply to have them
+accepted by Hamsket proper.
 
 #### Important: ALWAYS EDIT ON A BRANCH
 
@@ -179,9 +179,9 @@ fork and re-fork.
 1.  Once the edits have been committed, you will be prompted to create a pull
     request on your fork's GitHub Page.
 
-2.  By default, all pull requests should be against the Rambox-OS main repo, `master`
+2.  By default, all pull requests should be against the Hamsket main repo, `master`
     branch.
-    **Make sure that your Base Fork is set to TheGoddessInari/rambox when raising a Pull Request.**
+    **Make sure that your Base Fork is set to TheGoddessInari/hamsket when raising a Pull Request.**
 
 3.  Submit a pull request.
 

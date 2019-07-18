@@ -1,7 +1,7 @@
 /**
  * Singleton class to handle the global unread counter.
  */
-Ext.define('Rambox.util.UnreadCounter', {
+Ext.define('Hamsket.util.UnreadCounter', {
 
 	singleton: true,
 
@@ -28,7 +28,7 @@ Ext.define('Rambox.util.UnreadCounter', {
 		 * Sets the application's unread count to tracked unread count.
 		 */
 		function updateAppUnreadCounter() {
-			Rambox.app.setTotalNotifications(totalUnreadCount);
+			Hamsket.app.setTotalNotifications(totalUnreadCount);
 		}
 
 		/**

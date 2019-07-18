@@ -37,7 +37,7 @@ const config = new Config({
 		,proxyPassword: ''
 		,locale: 'en'
 		,enable_hidpi_support: false
-		,default_service: 'ramboxTab'
+		,default_service: 'hamsketTab'
 
 		,x: undefined
 		,y: undefined
@@ -56,14 +56,14 @@ if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
 }
 
 // This must match the package name in package.json
-app.setAppUserModelId('com.thegoddessinari.rambox');
+app.setAppUserModelId('com.thegoddessinari.hamsket');
 
 // Menu
 const appMenu = require('./menu')(config);
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
-	 name: 'Rambox-OS'
+	 name: 'Hamsket'
 	,isHidden: config.get('start_minimized')
 });
 if (config.get('auto_launch') && !isDev) {
@@ -81,7 +81,7 @@ let isQuitting = false;
 function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
-		 title: 'Rambox-OS'
+		 title: 'Hamsket'
 		,icon: nativeImage.createFromPath(path.join(app.getAppPath(), '/resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico')))
 		,backgroundColor: '#FFF'
 		,x: config.get('x')
@@ -94,7 +94,7 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			partition: 'persist:rambox',
+			partition: 'persist:hamsket',
 			nodeIntegration: true,
 			webviewTag: true
 		}
@@ -442,7 +442,7 @@ if ( config.get('proxy') ) {
 // Disable GPU Acceleration for Linux
 // to prevent White Page bug
 // https://github.com/electron/electron/issues/6139
-// https://github.com/saenzramiro/rambox/issues/181
+// https://github.com/saenzramiro/hamsket/issues/181
 if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 
 // This method will be called when Electron has finished
