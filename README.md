@@ -7,28 +7,28 @@
 #### Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one. <!-- omit in toc -->
 
 [![GNU GPL v3][license]](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Gitter][gitter]](https://gitter.im/TheGoddessInari/rambox)
-[![Release][release]](https://github.com/TheGoddessInari/rambox/releases/latest)
+[![Gitter][gitter]](https://gitter.im/TheGoddessInari/hamsket)
+[![Release][release]](https://github.com/TheGoddessInari/hamsket/releases/latest)
 
-[![DevOps Build][devops-build]](https://dev.azure.com/TheGoddessInari/rambox/_build?definitionId=2)
-[![DevOps Deployment][devops-deploy]](https://dev.azure.com/TheGoddessInari/rambox/_release?definitionId=1)
-[![Dependencies][dependencies]](https://david-dm.org/TheGoddessInari/rambox?path=app)
-[![DevDependencies][dev-dependencies]](https://david-dm.org/TheGoddessInari/rambox?type=dev)
+[![DevOps Build][devops-build]](https://dev.azure.com/TheGoddessInari/hamsket/_build?definitionId=2)
+[![DevOps Deployment][devops-deploy]](https://dev.azure.com/TheGoddessInari/hamsket/_release?definitionId=1)
+[![Dependencies][dependencies]](https://david-dm.org/TheGoddessInari/hamsket?path=app)
+[![DevDependencies][dev-dependencies]](https://david-dm.org/TheGoddessInari/hamsket?type=dev)
 
-[license]: https://img.shields.io/github/license/TheGoddessInari/rambox.svg
-[gitter]: https://img.shields.io/gitter/room/TheGoddessInari/rambox.svg
-[release]: https://img.shields.io/github/release/TheGoddessInari/rambox.svg
+[license]: https://img.shields.io/github/license/TheGoddessInari/hamsket.svg
+[gitter]: https://img.shields.io/gitter/room/TheGoddessInari/hamsket.svg
+[release]: https://img.shields.io/github/release/TheGoddessInari/hamsket.svg
 
 [devops-build]: https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops
 [devops-deploy]: https://img.shields.io/azure-devops/release/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/1/1.svg?logo=azure-devops
-[dependencies]: https://img.shields.io/david/TheGoddessInari/rambox.svg?path=app
-[dev-dependencies]: https://img.shields.io/david/dev/TheGoddessInari/rambox.svg
+[dependencies]: https://img.shields.io/david/TheGoddessInari/hamsket.svg?path=app
+[dev-dependencies]: https://img.shields.io/david/dev/TheGoddessInari/hamsket.svg
 
-##### Nightly build artifacts are available in Windows ([Win64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.Setup.0.5.18.exe)), Mac ([DMG](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18.dmg) / [App](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS-0.5.18-mac.zip)), and Linux ([AppImage64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-OS.0.5.18.AppImage) / [RPM64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.x86_64.rpm) / [DEB64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox_0.5.18_amd64.deb) / [Tarball64](https://github.com/TheGoddessInari/rambox/releases/download/nightly/Rambox-0.5.18.tar.gz)) packaging flavors. <!-- omit in toc -->
+##### Nightly build artifacts are available in Windows ([Win64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox-OS.Setup.0.5.18.exe)), Mac ([DMG](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox-OS-0.5.18.dmg) / [App](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox-OS-0.5.18-mac.zip)), and Linux ([AppImage64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox-OS.0.5.18.AppImage) / [RPM64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox-0.5.18.x86_64.rpm) / [DEB64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox_0.5.18_amd64.deb) / [Tarball64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Rambox-0.5.18.tar.gz)) packaging flavors. <!-- omit in toc -->
 
 ###### Logo designed by [Andriy Yurchenko](http://andyur.com/). <!-- omit in toc -->
 
-###### Original rambox by [Ramiro Saenz](https://github.com/saenzramiro). <!-- omit in toc -->
+###### Original Rambox by [Ramiro Saenz](https://github.com/saenzramiro). <!-- omit in toc -->
 
 ----------
 

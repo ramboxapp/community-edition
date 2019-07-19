@@ -2,7 +2,7 @@
 
 We welcome pull requests! Follow these steps to contribute:
 
-1. Find an [issue](https://github.com/TheGoddessInari/rambox/issues) that needs assistance.
+1. Find an [issue](https://github.com/TheGoddessInari/hamsket/issues) that needs assistance.
 
 2. Let us know you are working on it by posting a comment on the issue.
 

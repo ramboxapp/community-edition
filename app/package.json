@@ -10,12 +10,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TheGoddessInari/rambox.git"
+		"url": "https://github.com/TheGoddessInari/hamsket.git"
 	},
 	"bugs": {
-		"url": "https://github.com/TheGoddessInari/rambox/issues"
+		"url": "https://github.com/TheGoddessInari/hamsket/issues"
 	},
-	"homepage": "https://github.com/TheGoddessInari/rambox",
+	"homepage": "https://github.com/TheGoddessInari/hamsket",
 	"keywords": [
 		"Rambox",
 		"messaging",

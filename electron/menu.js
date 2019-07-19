@@ -54,7 +54,7 @@ module.exports = function(config) {
 	> ${process.platform} ${process.arch} ${os.release()}
 	> ${buildversion}`;
 
-				shell.openExternal(`https://github.com/TheGoddessInari/rambox/issues/new?body=${encodeURIComponent(body)}`);
+				shell.openExternal(`https://github.com/TheGoddessInari/hamsket/issues/new?body=${encodeURIComponent(body)}`);
 			}
 		},
 		{

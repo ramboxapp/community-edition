@@ -80,7 +80,7 @@ Ext.define('Rambox.Application', {
 	,checkUpdate(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
-			 url: 'https://api.github.com/repos/TheGoddessInari/rambox/releases/latest'
+			 url: 'https://api.github.com/repos/TheGoddessInari/hamsket/releases/latest'
 			,method: 'GET'
 			,success(response) {
 				const json = JSON.parse(response.responseText);
@@ -101,14 +101,14 @@ Ext.define('Rambox.Application', {
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[1]']
-								,href: process.platform === 'https://github.com/TheGoddessInari/rambox/releases/latest'
+								,href: 'https://github.com/TheGoddessInari/hamsket/releases/latest'
 							}
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[2]']
 								,ui: 'decline'
 								,tooltip: 'Click here to see more information about the new version.'
-								,href: 'https://github.com/TheGoddessInari/rambox/releases/tag/'+updateVersion
+								,href: 'https://github.com/TheGoddessInari/hamsket/releases/tag/'+updateVersion
 							}
 							,'->'
 							,{

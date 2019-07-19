@@ -8,7 +8,7 @@
 
 Help us to maximize the effort we can spend fixing issues and adding new features, by not reporting duplicate issues.
 
-[template]: https://github.com/TheGoddessInari/rambox/blob/master/.github/ISSUE_TEMPLATE.md
+[template]: https://github.com/TheGoddessInari/hamsket/blob/master/.github/ISSUE_TEMPLATE.md
 
 ## Ask for help
 
