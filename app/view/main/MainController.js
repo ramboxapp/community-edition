@@ -158,13 +158,17 @@ Ext.define('Rambox.view.main.MainController', {
 		function clearData(webview, tab) {
 			webview.getWebContents().clearHistory();
 			webview.getWebContents().session.flushStorageData();
-			webview.getWebContents().session.clearCache(function() {
-				webview.getWebContents().session.clearStorageData(function() {
-					webview.getWebContents().session.cookies.flushStore(function() {
+
+			webview.getWebContents().session.cookies.flushStore(function() {
+				webview.getWebContents().session.clearCache(function() {
+					webview.getWebContents().session.clearStorageData(function() {
 						// Remove record from localStorage
 						Ext.getStore('Services').remove(rec);
 						// Close tab
 						tab.close();
+
+						ipc.send('removePartitionsFolder', webview.partition.replace('persist:', ''));
+
 						// Close waiting message
 						if ( total === actual ) {
 							Ext.Msg.hide();

@@ -13,6 +13,7 @@ const isDev = require('electron-is-dev');
 const updater = require('./updater');
 // File System
 var fs = require("fs");
+const fse = require('fs-extra');
 const path = require('path');
 
 if ( isDev ) app.getVersion = function() { return require('../package.json').version; }; // FOR DEV ONLY, BECAUSE IN DEV RETURNS ELECTRON'S VERSION
@@ -319,6 +320,13 @@ ipcMain.on('setServiceNotifications', function(event, partition, op) {
 
 ipcMain.on('setDontDisturb', function(event, arg) {
 	config.set('dont_disturb', arg);
+});
+
+// Remove deleted service's folder from Partitions folder.
+ipcMain.on('removePartitionsFolder', function(event, folder) {
+	var fullpath = path.join(app.getPath('userData'), 'Partitions', folder);
+
+	fse.remove(fullpath);
 });
 
 // Reload app
