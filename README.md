@@ -1,4 +1,4 @@
-# Hamsket, soon to be renamed to Hamsket. <!-- omit in toc -->
+# Hamsket <!-- omit in toc -->
 
 <p align="center">
 <a href="https://github.com/TheGoddessInari/hamsket"><img src="./resources/Icon.png" width="256px" alt="Hamsket"></a>
