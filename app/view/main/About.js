@@ -1,4 +1,4 @@
-Ext.define('Rambox.view.main.About', {
+Ext.define('Hamsket.view.main.About', {
 	 extend: 'Ext.window.Window'
 	,xtype: 'about'
 	,title: locale['app.about[0]']
@@ -32,8 +32,10 @@ Ext.define('Rambox.view.main.About', {
 		,'<div><b>Node:</b> {node}</div>'
 		,'<div><b>BuildVersion:</b> {buildversion}</div>'
 		,'<br />'
-		,'<div style="text-align:center;"><a href="https://github.com/TheGoddessInari/rambox" target="_blank">GitHub</a></div>'
+		,'<div style="text-align:center;"><a href="https://github.com/TheGoddessInari/hamsket" target="_blank">GitHub</a></div>'
 		,'<br />'
-		,'<div style="text-align:center;"><i>'+locale['app.about[4]']+' TheGoddessInari. Original version by Ramiro Saenz.</i></div>'
+		,'<div style="text-align:center;"><i>'+locale['app.about[4]']+' TheGoddessInari.'
+		,'<br />'
+		, 'Original version by Ramiro Saenz.</i></div>'
 	]
 });

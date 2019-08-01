@@ -1,7 +1,7 @@
 /**
  * Created by vsxed on 7/11/2016.
  */
-Ext.define('Rambox.util.Format', {
+Ext.define('Hamsket.util.Format', {
 	 singleton: true
 
 	,formatNumber(n) {

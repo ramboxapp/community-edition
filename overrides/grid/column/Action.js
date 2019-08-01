@@ -1,4 +1,4 @@
-Ext.define('Rambox.overrides.grid.column.Action', {
+Ext.define('Hamsket.overrides.grid.column.Action', {
     override: 'Ext.grid.column.Action',
 
     // overridden to implement

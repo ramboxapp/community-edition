@@ -3,21 +3,21 @@ const Application = require('spectron').Application;
 const electron = require('electron');
 
 /**
- * The RamboxTestHelper contains common stuff for tests.
+ * The HamsketTestHelper contains common stuff for tests.
  */
 module.exports = function() {
 
 	const self = this;
 
 	/**
-	 * Makes the Rambox Application available.
+	 * Makes the Hamsket Application available.
 	 *
 	 * @type {Application}
 	 */
 	self.app = null;
 
 	/**
-	 * Starts Rambox from '/electron/main.js/'.
+	 * Starts Hamsket from '/electron/main.js/'.
 	 */
 	beforeEach(function() {
 		self.app = new Application({
@@ -28,7 +28,7 @@ module.exports = function() {
 	});
 
 	/**
-	 * Stops Rambox.
+	 * Stops Hamsket.
 	 */
 	afterEach(function() {
 		if (self.app && self.app.isRunning()) {

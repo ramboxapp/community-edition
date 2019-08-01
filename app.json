@@ -2,7 +2,7 @@
     /**
      * The application's namespace.
      */
-    "name": "Rambox",
+    "name": "Hamsket",
 
     /**
      * The relative path to the appliaction's markup file (html, jsp, asp, etc.)
@@ -28,7 +28,7 @@
      * The name of the theme for this application.
      */
 
-    "theme": "rambox-default-theme",
+    "theme": "hamsket-default-theme",
 
     /**
      * The list of required packages (with optional versions; default is "latest").
@@ -56,13 +56,13 @@
     "sass": {
         /**
          * The root namespace to use when mapping *.scss files to classes in the
-         * sass/src and sass/var directories. For example, "Rambox.view.Foo" would
-         * map to "sass/src/view/Foo.scss". If we changed this to "Rambox.view" then
+         * sass/src and sass/var directories. For example, "Hamsket.view.Foo" would
+         * map to "sass/src/view/Foo.scss". If we changed this to "Hamsket.view" then
          * it would map to "sass/src/Foo.scss". To style classes outside the app's
          * root namespace, change this to "". Doing so would change the mapping of
-         * "Rambox.view.Foo" to "sass/src/Rambox/view/Foo.scss".
+         * "Hamsket.view.Foo" to "sass/src/Hamsket/view/Foo.scss".
          */
-        "namespace": "Rambox"
+        "namespace": "Hamsket"
     },
 
     /**
@@ -277,7 +277,7 @@
         "cache": [
             "index.html",
             "app.js",
-            "resources/Rambox-all.css",
+            "resources/Hamsket-all.css",
             "resources/Icon.png",
             "resources/Icon.ico",
             "resources/IconTray.png",

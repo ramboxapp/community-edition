@@ -31,7 +31,7 @@ exports.create = function(win, config) {
 	]);
 
 	appIcon = new Tray(icon);
-	appIcon.setToolTip('Rambox-OS');
+	appIcon.setToolTip('Hamsket');
 	appIcon.setContextMenu(contextMenu);
 
 	switch (process.platform) {

@@ -1,8 +1,8 @@
 {
-	"name": "Rambox",
-	"productName": "Rambox",
-	"version": "0.5.18",
-	"description": "Rambox",
+	"name": "hamsket",
+	"productName": "Hamsket",
+	"version": "0.6.0",
+	"description": "Hamsket",
 	"main": "electron/main.js",
 	"private": true,
 	"engines": {
@@ -17,7 +17,7 @@
 	},
 	"homepage": "https://github.com/TheGoddessInari/hamsket",
 	"keywords": [
-		"Rambox",
+		"Hamsket",
 		"messaging",
 		"app",
 		"slack",

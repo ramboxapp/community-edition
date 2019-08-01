@@ -1,12 +1,12 @@
 {
 	"private": true,
 	"scripts": {
-		"start": "npm run compile && electron build/production/Rambox",
-		"debug": "electron --inspect build/production/Rambox",
+		"start": "npm run compile && electron build/production/Hamsket",
+		"debug": "electron --inspect build/production/Hamsket",
 		"test": "mocha test/tests/**/*.spec.js",
-		"buildversion": "git show --pretty=\"%h %d %cD\" -s > build/production/Rambox/BUILDVERSION || node -p -e \"require('./build/production/Rambox/package.json').version\" > build/production/Rambox/BUILDVERSION",
+		"buildversion": "git show --pretty=\"%h %d %cD\" -s > build/production/Hamsket/BUILDVERSION || node -p -e \"require('./build/production/Hamsket/package.json').version\" > build/production/Hamsket/BUILDVERSION",
 		"clean": "shx rm -rf ./build/production",
-		"compile": "sencha app build && shx cp app/package.json app/package-lock.json build/production/Rambox/ && npm run buildversion && electron-builder install-app-deps",
+		"compile": "sencha app build && shx cp app/package.json app/package-lock.json build/production/Hamsket/ && npm run buildversion && electron-builder install-app-deps",
 		"recompile": "npm run distclean && npm run compile",
 		"distclean": "shx rm -rf ./dist",
 		"distclean:win": "shx rm -rf ./dist/win-{ia32-,}unpacked",
@@ -49,8 +49,8 @@
 		"dist": "npm run repack"
 	},
 	"build": {
-		"productName": "Rambox-OS",
-		"appId": "com.thegoddessinari.rambox",
+		"productName": "Hamsket",
+		"appId": "com.thegoddessinari.hamsket",
 		"asar": true,
 		"publish": null,
 		"mac": {
@@ -60,7 +60,7 @@
 			]
 		},
 		"dmg": {
-			"title": "Rambox-OS",
+			"title": "Hamsket",
 			"iconSize": 128,
 			"contents": [
 				{
@@ -98,7 +98,7 @@
 		"directories": {
 			"buildResources": "resources/installer/",
 			"output": "dist/",
-			"app": "build/production/Rambox/"
+			"app": "build/production/Hamsket/"
 		}
 	},
 	"devDependencies": {

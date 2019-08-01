@@ -1,9 +1,9 @@
-Ext.define('Rambox.view.add.Add',{
+Ext.define('Hamsket.view.add.Add',{
 	 extend: 'Ext.window.Window'
 
 	,requires: [
-		 'Rambox.view.add.AddController'
-		,'Rambox.view.add.AddModel'
+		 'Hamsket.view.add.AddController'
+		,'Hamsket.view.add.AddModel'
 	]
 
 	,controller: 'add-add'

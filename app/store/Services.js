@@ -1,4 +1,4 @@
-Ext.define('Rambox.store.Services', {
+Ext.define('Hamsket.store.Services', {
 	 extend: 'Ext.data.Store'
 	,alias: 'store.services'
 
@@ -6,7 +6,7 @@ Ext.define('Rambox.store.Services', {
 		'Ext.data.proxy.LocalStorage'
 	]
 
-	,model: 'Rambox.model.Service'
+	,model: 'Hamsket.model.Service'
 
 	,autoLoad: true
 	,autoSync: true
@@ -65,7 +65,7 @@ Ext.define('Rambox.store.Services', {
 				case 'last':
 					Ext.cq1('app-main').setActiveTab(localStorage.getItem('last_active_service'));
 					break;
-				case 'ramboxTab':
+				case 'hamsketTab':
 					break;
 				default:
 					if ( Ext.getCmp('tab_'+config.default_service) ) Ext.cq1('app-main').setActiveTab('tab_'+config.default_service);

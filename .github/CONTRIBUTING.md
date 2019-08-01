@@ -14,7 +14,7 @@ Help us to maximize the effort we can spend fixing issues and adding new feature
 
 We have a great community in [Gitter][gitter] that can help you with any doubt or problem.
 
-[gitter]: https://gitter.im/TheGoddessInari/rambox
+[gitter]: https://gitter.im/TheGoddessInari/hamsket
 
 ## Contributing to Source Code
 

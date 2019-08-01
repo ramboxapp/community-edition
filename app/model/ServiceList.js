@@ -1,4 +1,4 @@
-Ext.define('Rambox.model.ServiceList', {
+Ext.define('Hamsket.model.ServiceList', {
 	 extend: 'Ext.data.Model'
 
 	,fields: [{
