@@ -18,16 +18,33 @@ Ext.define('Hamsket.util.IconLoader', {
 		this.loadServiceIconUrl = function (service, webview) {
 			switch (service.type) {
 				case 'slack':
-					webview.executeJavaScript(
-						"(()=>{let a=document.querySelector('.team_icon');if(!a){const d=document.querySelector('#team_menu');d&&(d.click(),a=document.querySelector('.team_icon'))}if(!a)return!1;const{style:{backgroundImage:b}}=a,c=document.createEvent('MouseEvents');return c.initEvent('mousedown',!0,!0),document.querySelector('.client_channels_list_container').dispatchEvent(c),b.slice(5,-2)})();",
-						false,
-						function (backgroundImage) {
+					setTimeout( () =>
+						webview.executeJavaScript(
+						`(() => {
+							let icon = document.querySelector('.c-team_icon');
+							if (!icon) {
+								const doc = document.querySelector('#team-menu-trigger');
+								if (doc) {
+									doc.click();
+									icon = document.querySelector('.c-team_icon');
+									doc.click();
+								}
+							}
+							if (!icon) return false;
+							const {
+								style: {
+									backgroundImage: bg
+								}
+							} = icon;
+							return bg.slice(5, -2);
+						})();`).then(function (backgroundImage) {
 							if (backgroundImage) {
-								service.setTitle('<img src="'+service.icon+'" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">'+service.title);
+								service.setTitle('<img src="'+backgroundImage+'" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">'+service.title);
 								service.fireEvent('iconchange', service, backgroundImage, service.icon);
 							}
+							return true;
 						}
-					);
+					).finally({}), 1000);
 					break;
 				default:
 					break;
