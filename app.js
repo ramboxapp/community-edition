@@ -156,6 +156,13 @@ ipc.on('tabFocusPrevious', function() {
 	tabPanel.getActiveTab().focus();
 });
 
+ipc.on('focusTab', function(event, number) {
+	const tabPanel = Ext.cq1('app-main');
+	tabPanel.getActiveTab().blur();
+	tabPanel.setActiveTab(number);
+	tabPanel.getActiveTab().focus();
+});
+
 ipc.on('tabZoomIn', function() {
 	const tabPanel = Ext.cq1('app-main');
 	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
@@ -183,13 +190,6 @@ ipc.on('toggleDoNotDisturb', function(key) {
 ipc.on('lockWindow', function(key) {
 	const btn = Ext.getCmp('lockHamsketBtn');
 	Ext.cq1('app-main').getController().lockHamsket(btn);
-});
-
-ipc.on('goHome', function() {
-	const tabPanel = Ext.cq1('app-main');
-	tabPanel.getActiveTab().blur();
-	tabPanel.setActiveTab(0);
-	tabPanel.getActiveTab().focus();
 });
 
 // Focus the current service when Alt + Tab or click in webviews textfields

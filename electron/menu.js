@@ -4,14 +4,14 @@ const {app, BrowserWindow, Menu, shell}  = require('electron');
 const path = require('path');
 const appName = app.getName();
 
-function sendAction(action) {
+function sendAction(action, ...args) {
 	const win = BrowserWindow.getAllWindows()[0];
 
 	if (process.platform === 'darwin') {
 		win.restore();
 	}
 
-	win.webContents.send(action);
+	win.webContents.send(action, ...args);
 }
 
 module.exports = function(config) {
@@ -236,6 +236,69 @@ module.exports = function(config) {
 							}
 						},
 						{
+							label: `Goto Tab 1`,
+							accelerator: 'CmdOrCtrl+1',
+							click() {
+								sendAction('focusTab', 1);
+							}
+						},
+						{
+							label: `Goto Tab 2`,
+							accelerator: 'CmdOrCtrl+2',
+							click() {
+								sendAction('focusTab', 2);
+							}
+						},
+						{
+							label: `Goto Tab 3`,
+							accelerator: 'CmdOrCtrl+3',
+							click() {
+								sendAction('focusTab', 3);
+							}
+						},
+						{
+							label: `Goto Tab 4`,
+							accelerator: 'CmdOrCtrl+4',
+							click() {
+								sendAction('focusTab', 4);
+							}
+						},
+						{
+							label: `Goto Tab 5`,
+							accelerator: 'CmdOrCtrl+5',
+							click() {
+								sendAction('focusTab', 5);
+							}
+						},
+						{
+							label: `Goto Tab 6`,
+							accelerator: 'CmdOrCtrl+6',
+							click() {
+								sendAction('focusTab', 6);
+							}
+						},
+						{
+							label: `Goto Tab 7`,
+							accelerator: 'CmdOrCtrl+7',
+							click() {
+								sendAction('focusTab', 7);
+							}
+						},
+						{
+							label: `Goto Tab 8`,
+							accelerator: 'CmdOrCtrl+8',
+							click() {
+								sendAction('focusTab', 8);
+							}
+						},
+						{
+							label: `Goto Tab 9`,
+							accelerator: 'CmdOrCtrl+9',
+							click() {
+								sendAction('focusTab', 9);
+							}
+						},
+						{
 							label: `Do Not Disturb`,
 							accelerator: 'Alt+F1',
 							click() {
@@ -253,7 +316,7 @@ module.exports = function(config) {
 							label: `Go Home`,
 							accelerator: 'CmdOrCtrl+,',
 							click() {
-								sendAction('goHome');
+								sendAction('focusTab', 0);
 							}
 						}
 					]
