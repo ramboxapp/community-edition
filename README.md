@@ -54,7 +54,7 @@
 
 ![Rambox](./resources/screenshots/mac.png)
 
-## Services available - 103
+## Services available - 104
 
 <img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp" />
 <img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger" />
@@ -165,6 +165,7 @@
 <img width="80" align="left" src="./resources/icons/protonmail.png" alt="ProtonMail & ProtonMail Onion" title="ProtonMail & ProtonMail Onion">
 <img width="80" align="left" src="./resources/icons/devrant.png" alt="devRant" title="devRant">
 <img width="80" align="left" src="./resources/icons/reddit.png" alt="Reddit" title="Reddit">
+<img width="80" align="left" src="./resources/icons/xeno.png" alt="Xeno" title="Xeno">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Features
