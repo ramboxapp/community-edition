@@ -941,7 +941,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: '___'
 			,type: 'email'
 			,js_unread: 'function checkUnread(){var t=document.getElementsByClassName("giraffe-hierarchy-node-counter"),e=0;for(i=0;i<t.length;i++)parseInt(t[i].textContent.trim())%1===0&&(e+=parseInt(t[i].textContent.trim()));updateBadge(e);}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
-
-		}
+		},
+    {
+      id: 'xeno'
+      ,logo: 'xeno.png'
+      ,name: 'Xeno'
+      ,description: 'Xeno is an online tool designed to help attract, convert, and keep customers through the power of live response.'
+      ,url: 'https://xeno.app/'
+      ,type: 'email'
+    }
 	]
 });
