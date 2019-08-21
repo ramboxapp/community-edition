@@ -209,7 +209,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://outlook.office.___/owa/'
 			,type: 'email'
 			,manual_notifications: true
-			,js_unread: 'function checkUnread(){var a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();updateBadge(""===a?0:parseInt(a))}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function checkUnread(){var fav=$(".ms-FocusZone [role=tree]:first i[data-icon-name=Inbox]").siblings()[1];var folders=$(".ms-FocusZone [role=tree]:nth(1)")[0].children[1].querySelector("span span");var e=undefined!==fav?fav.innerText:null!==folders?folders.innerText:0;updateBadge(""===e?0:parseInt(e))}function updateBadge(e){1<=e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 			,note: 'Please insert the cloud region you want to use. Can be "com", "de", etc.'
 		},
 		{
