@@ -191,7 +191,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,url: 'https://mail.live.com/'
 			,type: 'email'
 			,manual_notifications: true
-			,js_unread: `let checkUnread=()=>{const a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();hamsket.updateBadge(""===a?0:parseInt(a))};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const fav=$(".ms-FocusZone [role=tree]:first i[data-icon-name=Inbox]").siblings()[1],folders=$(".ms-FocusZone [role=tree]:nth(1)")[0].children[1].querySelector("span span"),innerText=fav?fav.innerText:folders?folders.innerText:0,i=parseInt(innerText,10)||0;hamsket.updateBadge(i)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'outlook365'
@@ -201,7 +201,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,url: 'https://outlook.office.com/owa/'
 			,type: 'email'
 			,manual_notifications: true
-			,js_unread: `let checkUnread=()=>{const a=$(".subfolders [role=treeitem]:first .treeNodeRowElement").siblings().last().text();hamsket.updateBadge(""===a?0:parseInt(a))};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const fav=$(".ms-FocusZone [role=tree]:first i[data-icon-name=Inbox]").siblings()[1],folders=$(".ms-FocusZone [role=tree]:nth(1)")[0].children[1].querySelector("span span"),innerText=fav?fav.innerText:folders?folders.innerText:0,i=parseInt(innerText,10)||0;hamsket.updateBadge(i)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'yahoo'
