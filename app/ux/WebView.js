@@ -838,7 +838,7 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getOSArch() {
 		const me = this;
-		const {remote} = require('electron');
+		const remote = require('electron').remote;
 		const platform = remote.require('os').platform();
 		let arch = remote.require('os').arch();
 
@@ -926,7 +926,7 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getOSRelease() {
 		const me = this;
-		const remote = require('electron');
+		const remote = require('electron').remote;
 		return me.isWindows() ?
 		remote.require('os').release().match(/([0-9]+\.[0-9]+)/)[0]
 			: remote.require('os').release();
