@@ -827,14 +827,14 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getUserAgent() {
 		const me = this;
-		// TODO: Keep just in case we need our own User Agent builder.
-		// const default_ua = `Mozilla/5.0` +
-		// ` (${me.getOSPlatform()})` +
-		// ` AppleWebKit/537.36 (KHTML, like Gecko)` +
-		// ` Chrome/${me.getChromeVersion()} Safari/537.36`;
-		const default_ua = window.navigator.userAgent
-							.replace(`Electron/${me.getElectronVersion()} `,'')
-							.replace(`Hamsket/${me.getAppVersion()} `, '');
+		const default_ua = `Mozilla/5.0` +
+		` (${me.getOSPlatform()})` +
+		` AppleWebKit/537.36 (KHTML, like Gecko)` +
+		` Chrome/${me.getChromeVersion()} Safari/537.36`;
+		// NOTE: Keep just in case we need to go back to the basics.
+		// const default_ua = window.navigator.userAgent
+		// 					.replace(`Electron/${me.getElectronVersion()} `,'')
+		// 					.replace(`Hamsket/${me.getAppVersion()} `, '');
 		const service_ua = Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent');
 		const ua = service_ua ? service_ua : default_ua;
 		return ua;
