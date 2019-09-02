@@ -827,22 +827,41 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getUserAgent() {
 		const me = this;
+		const user_platform = me.record.get('os_override');
+		const service_platform = Ext.getStore('ServicesList').getById(me.record.get('type')).get('os_override');
+		const platform = user_platform ? user_platform :
+								service_platform ? service_platform :
+									'';
+		const user_version = me.record.get('chrome_version');
+		const service_version = Ext.getStore('ServicesList').getById(me.record.get('type')).get('chrome_version');
+		const chrome_version = user_version ? user_version :
+									service_version ? service_version :
+										'';
 		const default_ua = `Mozilla/5.0` +
-		` (${me.getOSPlatform()})` +
+		` (${me.getOSPlatform(platform)})` +
 		` AppleWebKit/537.36 (KHTML, like Gecko)` +
-		` Chrome/${me.getChromeVersion()} Safari/537.36`;
+		` Chrome/${me.getChromeVersion(chrome_version)} Safari/537.36`;
 		// NOTE: Keep just in case we need to go back to the basics.
 		// const default_ua = window.navigator.userAgent
 		// 					.replace(`Electron/${me.getElectronVersion()} `,'')
 		// 					.replace(`Hamsket/${me.getAppVersion()} `, '');
 		const service_ua = Ext.getStore('ServicesList').getById(me.record.get('type')).get('userAgent');
-		const ua = service_ua ? service_ua : default_ua;
+		const user_ua = me.record.get('userAgent');
+		const ua = (platform || chrome_version) ? default_ua :
+						user_ua ? user_ua :
+							service_ua ? service_ua :
+								default_ua;
 		return ua;
 	}
-	,getOSArch() {
+	,updateUserAgent() {
+		const me = this;
+		const webcontents = me.getWebContents();
+		webcontents.setUserAgent(me.getUserAgent());
+	}
+	,getOSArch(platform) {
 		const me = this;
 		const remote = require('electron').remote;
-		const platform = remote.require('os').platform();
+		platform = platform ? platform : remote.require('os').platform();
 		let arch = remote.require('os').arch();
 
 		switch (platform) {
@@ -893,27 +912,27 @@ Ext.define('Hamsket.ux.WebView',{
 		}
 		return arch;
 	}
-	,getOSPlatform() {
+	,getOSPlatform(platform) {
 		const me = this;
-		let platform = require('electron').remote.require('os').platform();
+		platform = platform ? platform : require('electron').remote.require('os').platform();
 		switch (platform) {
 			case 'win32':
-				platform = `Windows NT ${me.getOSRelease()}; ${me.getOSArch()}`;
+				platform = `Windows NT ${me.getOSRelease(platform)}; ${me.getOSArch(platform)}`;
 				break;
 			case 'linux':
-				platform = `X11; Linux ${me.getOSArch()}`;
+				platform = `X11; Linux ${me.getOSArch(platform)}`;
 				break;
 			case 'darwin':
-				platform = `${me.getOSArchType()} Mac OS X ${me.getOSRelease()}`;
+				platform = `${me.getOSArchType()} Mac OS X ${me.getOSRelease(platform)}`;
 				break;
 			case 'freebsd':
-				platform = `X11; FreeBSD ${me.getOSArch()}`;
+				platform = `X11; FreeBSD ${me.getOSArch(platform)}`;
 				break;
 			case 'sunos':
 				platform = `X11; SunOS i86pc`;
 				break;
 			default:
-				platform = `X11; ${platform} ${me.getOSArch()}`;
+				platform = `X11; ${platform} ${me.getOSArch(platform)}`;
 		}
 		return platform;
 	}
@@ -927,15 +946,23 @@ Ext.define('Hamsket.ux.WebView',{
 		else
 			return false;
 	}
-	,getOSRelease() {
+	,getOSRelease(platform) {
 		const me = this;
 		const remote = require('electron').remote;
-		return me.isWindows() ?
-		remote.require('os').release().match(/([0-9]+\.[0-9]+)/)[0]
-			: remote.require('os').release();
+		if (me.isWindows(platform)) {
+			if (platform)
+			{
+				return "Windows NT 10.0";
+			} else {
+				return remote.require('os').release().match(/([0-9]+\.[0-9]+)/)[0];
+			}
+		}
+		else {
+			return remote.require('os').release();
+		}
 	}
-	,getChromeVersion() {
-		return require('electron').remote.require('process').versions['chrome'];
+	,getChromeVersion(version) {
+		return version || require('electron').remote.require('process').versions['chrome'];
 	}
 	,getElectronVersion() {
 		return require('process').versions['electron'];

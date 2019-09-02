@@ -42,6 +42,9 @@ Ext.define('Hamsket.store.Services', {
 					,custom_css_complex: service.get('custom_css_complex')
 					,passive_event_listeners: service.get('passive_event_listeners')
 					,slowed_timers: service.get('slowed_timers')
+					,userAgent: service.get('userAgent')
+					,os_override: service.get('os_override')
+					,chrome_version: service.get('chrome_version')
 					,enabled: service.get('enabled')
 					,record: service
 					,tabConfig: {

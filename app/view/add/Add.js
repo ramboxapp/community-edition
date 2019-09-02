@@ -19,11 +19,11 @@ Ext.define('Hamsket.view.add.Add',{
 	// defaults
 	,modal: true
 	,width: 500
-	,height: 750
+	,height: 800
 	,autoShow: true
 	,resizable: false
 	,draggable: false
-	,bodyPadding: 20
+	,bodyPadding: 10
 
 	,initComponent() {
 		const me = this;
@@ -252,54 +252,146 @@ Ext.define('Hamsket.view.add.Add',{
 						]
 					}
 					,{
-						 xtype: 'fieldset'
+						 xtype: 'tabpanel'
 						,title: locale['app.window[7]']
-						,margin: '10 0 0 0'
 						,collapsible: true
 						,collapsed: true
+						,closable: false
+						,layout: 'hbox'
+						,margin: '10 0 0 0'
 						,items: [
 							{
-								 xtype: 'textarea'
-								,fieldLabel: 'Custom JS'
-								,allowBlank: true
-								,name: 'custom_js'
-								,value: me.edit ? me.record.get('custom_js') : ''
+								xtype: 'fieldset'
+								,title: 'Code Injection'
 								,anchor: '100%'
-								,height: 100
-								,labelWidth: 64
-								,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
-							},
-							{
-								 xtype: 'checkbox'
-								,fieldLabel: 'Inject CSS via JS'
-								,name: 'custom_css_complex'
-								,value: me.edit ? me.record.get('custom_css_complex') : false
-								,inputValue: true
-								,uncheckedValue: false
-								,labelWidth: 64
-							},
-							{
-								 xtype: 'textarea'
-								,fieldLabel: 'Custom CSS'
-								,allowBlank: true
-								,name: 'custom_css'
-								,value: me.edit ? me.record.get('custom_css') : ''
-								,anchor: '100%'
-								,height: 100
-								,labelWidth: 64
-								,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
-							},
-							{
-								 xtype: 'textarea'
-								,fieldLabel: 'Custom badge update JS'
-								,allowBlank: true
-								,name: 'js_unread'
-								,value: me.edit ? me.record.get('js_unread') : ''
-								,anchor: '100%'
-								,height: 100
-								,labelWidth: 64
-								,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
-						}
+								,items: [
+								{
+									xtype: 'textarea'
+									,fieldLabel: 'Custom JS'
+									,allowBlank: true
+									,name: 'custom_js'
+									,value: me.edit ? me.record.get('custom_js') : ''
+									,anchor: '100%'
+									,height: 100
+									,labelWidth: 64
+									,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
+								},
+								{
+									xtype: 'checkbox'
+									,fieldLabel: 'Inject CSS via JS'
+									,name: 'custom_css_complex'
+									,value: me.edit ? me.record.get('custom_css_complex') : false
+									,inputValue: true
+									,uncheckedValue: false
+									,labelWidth: 64
+								},
+								{
+									xtype: 'textarea'
+									,fieldLabel: 'Custom CSS'
+									,allowBlank: true
+									,name: 'custom_css'
+									,value: me.edit ? me.record.get('custom_css') : ''
+									,anchor: '100%'
+									,height: 100
+									,labelWidth: 64
+									,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
+								},
+								{
+									xtype: 'textarea'
+									,fieldLabel: 'Custom badge update JS'
+									,allowBlank: true
+									,name: 'js_unread'
+									,value: me.edit ? me.record.get('js_unread') : ''
+									,anchor: '100%'
+									,height: 100
+									,labelWidth: 64
+									,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
+								}
+							]
+						},
+						{
+						xtype: 'fieldset'
+						,title: 'User Agent'
+						,anchor: '100%'
+						,margin: '10 0 0 0'
+						,items: [
+									{
+										xtype: 'combobox'
+										,fieldLabel: 'Override OS'
+										,name: 'os_override'
+										,anchor: '100%'
+										,value: me.edit ? 
+														me.record.get('os_override') ? me.record.get('os_override') :
+															me.service.get('os_override') ? me.service.get('os_override') :
+																''
+														: me.record.get('os_override') ? me.record.get('os_override') :
+															''
+										,editable: false
+										,forceSelection: true
+										,queryMode: 'local'
+										,store: 'OS'
+										,displayField: 'label'
+										,valueField: 'platform'
+										,multiSelect: false
+										,listeners: {
+											select(form, selected, opts) {
+												if (selected.data.platform === '') {
+													const version_override = form.nextSibling('[name=chrome_version]').value;
+													version_override || form.nextSibling('[name=userAgent]').setDisabled(false);
+												} else {
+													form.nextSibling('[name=userAgent]').setDisabled(true);
+												}
+											}
+										}
+									},
+									{
+										xtype: 'textfield'
+										,fieldLabel: 'Override Chrome Version'
+										,name: 'chrome_version'
+										,anchor: '100%'
+										,value: me.edit ?
+														me.record.get('chrome_version') ? me.record.get('chrome_version') :
+															me.service.get('chrome_version') ? me.service.get('chrome_version') :
+																''
+														: me.record.get('chrome_version') ? me.record.get('chrome_version') :
+															''
+										,listeners: {
+											change(form, new_value, old_value, opts) {
+												if (new_value === '') {
+													const os_override = form.previousSibling('[name=os_override]').value;
+													os_override || form.nextSibling('[name=userAgent]').setDisabled(false);
+												} else {
+													form.nextSibling('[name=userAgent]').setDisabled(true);
+												}
+											}
+										}
+									},
+									{
+										xtype: 'textfield'
+										,fieldLabel: 'Default User Agent'
+										,name: 'defaultUserAgent'
+										,anchor: '100%'
+										,labelWidth: 64
+										,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
+										,value: me.edit ? me.service.get('userAgent') ? me.service.get('userAgent') :
+															'' :
+															''
+										,hidden: me.edit ? !me.service.get('userAgent') : true
+										,disabled: true
+									},
+									{
+										xtype: 'textfield'
+										,fieldLabel: 'Custom User Agent'
+										,name: 'userAgent'
+										,anchor: '100%'
+										,allowBlank: true
+										,labelWidth: 64
+										,fieldStyle: 'font-family: Consolas, Lucida Console, Monaco, monospace !important;'
+										,value: me.edit ? me.record.get('userAgent') : ''
+										,disabled: me.edit ? (me.record.get('os_override') || me.record.get('chrome_version')): false
+									}
+								]
+							}
 						]
 					}
 					,{

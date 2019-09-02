@@ -112,6 +112,9 @@ Ext.define('Hamsket.view.main.MainController', {
 				,custom_css_complex: rec.get('custom_css_complex')
 				,passive_event_listeners: rec.get('passive_event_listeners')
 				,slowed_timers: rec.get('slowed_timers')
+				,userAgent: rec.get('userAgent')
+				,os_override: rec.get('os_override')
+				,chrome_version: rec.get('chrome_version')
 				,enabled: rec.get('enabled')
 				,record: rec
 				,hidden: hideTab

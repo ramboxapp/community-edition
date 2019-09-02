@@ -82,6 +82,18 @@ Ext.define('Hamsket.model.Service', {
 		,type: 'boolean'
 		,defaultValue: true
 	},{
+		name: 'userAgent'
+		,type: 'string'
+		,defaultValue: ''
+	},{
+		name: 'os_override'
+		,type: 'string'
+		,defaultValue: ''
+	},{
+		name: 'chrome_version'
+		,type: 'string'
+		,defaultValue: ''
+	},{
 		 name: 'zoomLevel'
 		,type: 'number'
 		,defaultValue: 0

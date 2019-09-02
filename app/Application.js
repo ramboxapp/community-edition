@@ -13,6 +13,7 @@ Ext.define('Hamsket.Application', {
 	,stores: [
 		 'ServicesList'
 		,'Services'
+		,'OS'
 	]
 
 	,config: {

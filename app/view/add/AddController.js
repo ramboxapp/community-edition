@@ -44,6 +44,9 @@ Ext.define('Hamsket.view.add.AddController', {
 				,custom_css_complex: formValues.custom_css_complex
 				,passive_event_listeners: formValues.passive_event_listeners
 				,slowed_timers: formValues.slowed_timers
+				,userAgent: formValues.userAgent
+				,os_override: formValues.os_override
+				,chrome_version: formValues.chrome_version
 			});
 
 			const view = Ext.getCmp('tab_'+win.record.get('id'));
@@ -67,8 +70,38 @@ Ext.define('Hamsket.view.add.AddController', {
 				}
 			}
 			// Apply the JS Code of the Tab
-			if ( win.down('textarea').isDirty() ) {
-				Ext.Msg.confirm(locale['app.window[8]'].toUpperCase(), 'Hamsket needs to reload the service to execute the new JavaScript code. Do you want to do it now?', function( btnId ) {
+			let showNotify=false;
+			const standard_form_names = [
+				 'custom_js'
+				,'custom_css_complex'
+				,'custom_css'
+				,'js_unread'
+				,'passive_event_listeners'
+				,'slowed_timers'
+			];
+			for (form_name of standard_form_names) {
+				const form =  win.down('[name=' + form_name + ']');
+				if (form.isDirty()) {
+					showNotify = true;
+					break;
+				}
+			}
+			const ua_form_names = [
+				'os_override',
+				'userAgent',
+				'chrome_version'
+			];
+			for (form_name of ua_form_names) {
+				const form =  win.down('[name=' + form_name + ']');
+				if (form.isDirty()) {
+					showNotify = true;
+					view.updateUserAgent();
+					break;
+				}
+			}
+
+			if ( showNotify ) {
+				Ext.Msg.confirm(locale['app.window[8]'].toUpperCase(), 'Hamsket needs to reload the service to apply your changes. Do you want to do it now?', function( btnId ) {
 					if ( btnId === 'yes' ) view.reloadService();
 				});
 			}
@@ -101,6 +134,9 @@ Ext.define('Hamsket.view.add.AddController', {
 				,custom_css_complex: formValues.custom_css_complex
 				,passive_event_listeners: formValues.passive_event_listeners
 				,slowed_timers: formValues.slowed_timers
+				,userAgent: formValues.userAgent
+				,os_override: formValues.os_override
+				,chrome_version: formValues.chrome_version
 			});
 			service.save();
 			Ext.getStore('Services').add(service);

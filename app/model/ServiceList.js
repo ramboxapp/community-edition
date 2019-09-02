@@ -57,6 +57,14 @@ Ext.define('Hamsket.model.ServiceList', {
 		,type: 'string'
 		,defaultValue: ''
 	},{
+		name: 'os_override'
+		,type: 'string'
+		,defaultValue: ''
+	},{
+		name: 'chrome_version'
+		,type: 'string'
+		,defaultValue: ''
+	},{
 		 name: 'note'
 		,type: 'string'
 		,defaultValue: ''
