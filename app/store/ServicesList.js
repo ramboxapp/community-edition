@@ -942,6 +942,14 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'email'
 			,js_unread: 'function checkUnread(){var t=document.getElementsByClassName("giraffe-hierarchy-node-counter"),e=0;for(i=0;i<t.length;i++)parseInt(t[i].textContent.trim())%1===0&&(e+=parseInt(t[i].textContent.trim()));updateBadge(e);}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 
-		}
+		},
+		{
+			id: 'bip'
+		   ,logo: 'bip.png'
+		   ,name: 'BiP'
+		   ,description: 'BiP is a communication client with entertaining content, voice and video calls.'
+		   ,url: 'https://web.bip.com/chat'
+		   ,type: 'messaging'
+	   }
 	]
 });
