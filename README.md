@@ -208,10 +208,6 @@ Keep in mind, I'm not pushing this. I'll do my best regardless.
 | Type         |                    URL/Wallet                    |
 | ------------ | :----------------------------------------------: |
 | GoFundMe     |       <https://www.gofundme.com/Hamsket>       |
-| Bitcoin      |     ```36SxZeQ5dA7Dn6pSmYWcvvmnkEeh8LdgmJ```     |
-| Bitcoin Cash | ```qqslp2vuamhmsp59u49dq89kwky2yj23nqmjr4mdgj``` |
-| Ethereum     | ```0xa085d5F736f2D7D210261879e183e5bf870Eae5f``` |
-| Litecoin     |     ```MKzytRHYHQTS3qrq2zCggEzSNG3HTbBXZL```     |
 
 ----------
 
