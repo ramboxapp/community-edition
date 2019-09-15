@@ -565,11 +565,11 @@ Ext.define('Hamsket.ux.WebView',{
 
 			function handleUpdateBadge(event) {
 				if (Array.isArray(event.args) === true && event.args.length > 1) {
-					const direct = event.args[0];
-					const indirect = event.args[1];
+					const direct = parseInt(event.args[0], 10) || 0;
+					const indirect = parseInt(event.args[1], 10) || 0;
 					const count = direct > 0 ? direct : (indirect > 0 ? '•' : 0);
 
-					if (count === parseInt(count, 10) || count === '•') {
+					if (count > 0 || count === '•') {
 						me.setUnreadCount(count);
 					} else {
 						me.handleClearUnreadCount();
