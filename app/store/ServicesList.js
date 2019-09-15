@@ -180,7 +180,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,url: 'https://discordapp.com/login'
 			,type: 'messaging'
 			,titleBlink: true
-			,js_unread: `let getMentionCount=badges=>{let alerts=0;for(const badge of badges){const count=parseInt(badge.innerText,10);alerts+=count.isNaN?1:count}return alerts},getServerUnread=badges=>{let alerts=0;for(const badge of badges)alerts+="1"===badge.style.opacity&&"8px"===badge.style.height?1:0;return alerts},checkUnread=()=>{const mentions=document.querySelectorAll(".lowerBadge-29hYVK > .numberBadge-2s8kKX");unread=document.getElementsByClassName("item-2hkk8m");const direct=getMentionCount(mentions);let indirect=getServerUnread(unread);indirect+=document.getElementsByClassName("unread-3zKkbm").length,hamsket.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
+			,js_unread: `let getMentionCount=badges=>{let alerts=0;for(const badge of badges)alerts+=parseInt(badge.innerText,10)||0;return alerts},getServerUnread=badges=>{let alerts=0;for(const badge of badges)alerts+="1"===badge.style.opacity&&"8px"===badge.style.height?1:0;return alerts},checkUnread=()=>{const mentions=document.querySelectorAll(".lowerBadge-29hYVK > .numberBadge-2s8kKX");unread=document.getElementsByClassName("item-2hkk8m");const direct=getMentionCount(mentions);let indirect=getServerUnread(unread);indirect+=document.getElementsByClassName("unread-3zKkbm").length,hamsket.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
 		},
 		{
