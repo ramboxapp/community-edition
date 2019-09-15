@@ -160,7 +160,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: locale['services[14]']
 			,url: 'https://gitter.im/'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("room-item__unread-indicator");let t=0;for(let i of e){const iTrim=parseInt(i.innerHTML.trim());t+=isNaN(iTrim)?0:parseInt(iTrim)}hamsket.updateBadge(t)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("unread-indicator");let c=0;for(let i of e)c+=parseInt(i.innerHTML.trim(),10)||0;hamsket.updateBadge(c)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'steam'
