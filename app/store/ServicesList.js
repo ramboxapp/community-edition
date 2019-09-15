@@ -37,7 +37,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: locale['services[1]']
 			,url: 'https://___.slack.com/'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const indirect=document.querySelectorAll(".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)").length;let direct=0,badges=document.getElementsByClassName("p-channel_sidebar__badge");for(const badge of badges){const i=parseInt(badge.innerHTML);direct+=isNaN(i)?0:i}hamsket.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const indirectSelector=".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)",indirect=document.querySelectorAll(indirectSelector).length;let direct=0;const badges=document.querySelectorAll(indirectSelector+" > .p-channel_sidebar__badge");for(const badge of badges){const i=parseInt(badge.innerHTML);direct+=isNaN(i)?0:i}hamsket.updateBadge(direct,indirect)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'noysi'
