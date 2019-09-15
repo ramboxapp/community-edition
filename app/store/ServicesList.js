@@ -804,15 +804,6 @@ Ext.define('Hamsket.store.ServicesList', {
 			,js_unread: `let checkUnread=()=>{const a=document.getElementsByClassName("unread")[0];hamsket.updateBadge(t=void 0===a?0:parseInt(a.textContent.replace(/[^0-9]/g,"")))};setInterval(checkUnread,3e3);`
 		},
 		{
-			 id: 'allo'
-			,logo: 'allo.png'
-			,name: 'Allo'
-			,description: 'Google Allo is a smart messaging app that helps you say more and do more. Express yourself better with stickers, doodles, and HUGE emojis & text. Allo also brings you the Google Assistant.'
-			,url: 'https://allo.google.com/web'
-			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const e=document.querySelectorAll(".hasUnread.conversation_item");let n=0;for(const i of e){const m=i.querySelector("#muted"),u=i.querySelector(".unreadCount"),c=parseInt(u.innerHTML.trim()),r=null===m||"none"===m.style.display?c:0;n+=isNaN(r)?0:r}hamsket.updateBadge(n)};setInterval(checkUnread,3e3);`
-		},
-		{
 			 id: 'Kune'
 			,logo: 'kune.png'
 			,name: 'Kune'
