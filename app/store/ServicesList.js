@@ -826,7 +826,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'A free phone number for life.  Stay in touch from any screen.  Use your free number to text, call, and check voicemail  all from one app. Plus, Google Voice works on all of your devices so you can connect and communicate how you want.'
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
-			,js_unread: 'function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread(){var e=document.querySelector(".msgCount"),n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[\(\) ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){var r=document.querySelector(\'gv-nav-tab[tooltip="\'+e+\'"] div[aria-label="Unread count"]\');r&&(n+=parseIntOrZero(r.innerHTML))}),updateBadge(n)}function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
+			,js_unread: 'function parseIntOrZero(e){return isNaN(parseInt(e))?0:parseInt(e)}function checkUnread() {var e = document.querySelectorAll("a[gv-test-id=\'sidenav-calls\'] .navItemBadge, a[gv-test-id=\'sidenav-messages\'] .navItemBadge, a[gv-test-id=\'sidenav-voicemail\'] .navItemBadge"), n = 0; e.forEach(function(elem) { var bounding = elem.getBoundingClientRect(); if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) ) { n += parseIntOrZero(elem.innerHTML.replace(/[\(\) ]/gi,"")); } }); updateBadge(n); }function updateBadge(a){a>=1?rambox.setUnreadCount(a):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);'
 		},
 		{
 			 id: 'sandstorm'
