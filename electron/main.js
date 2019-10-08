@@ -18,7 +18,7 @@ const path = require('path');
 // If 'data' folder exists in Hamsket's folder, set userdata, logs, and usercache path to there
 var basepath = app.getAppPath();
 if (fs.existsSync(path.join(basepath, 'data'))) {
-    app.setPath('userData', path.join(basepath, 'data', 'data'));
+	app.setPath('userData', path.join(basepath, 'data', 'data'));
 	app.setPath('logs', path.join(basepath, 'data', 'logs'));
 	app.setPath('userCache', path.join(basepath, 'data', 'cache'));
 }
