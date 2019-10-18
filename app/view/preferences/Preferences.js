@@ -281,6 +281,15 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,emptyText: 'Leave blank for default user agent'
 					}
 					,{
+						xtype: 'textfield'
+						,fieldLabel: 'Allow NTLM Authentication for specified Domains (needs to relaunch)'
+						,labelAlign: 'top'
+						,name: 'ntlm_domains'
+						,value: config.ntlm_domains
+						,width: 360
+						,emptyText: 'Leave blank for no Domains'
+					}
+					,{
 						 xtype: 'fieldset'
 						,title: locale['preferences[24]']
 						,collapsed: !config.master_password

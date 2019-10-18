@@ -41,6 +41,7 @@ const config = new Config({
 		,locale: 'en'
 		,enable_hidpi_support: false
 		,user_agent: ''
+		,ntlm_domains: ''
 		,default_service: 'ramboxTab'
 		,sendStatistics: false
 
@@ -105,6 +106,7 @@ function createWindow () {
 
 	// Check if user has defined a custom User-Agent
 	if ( config.get('user_agent').length > 0 ) mainWindow.webContents.setUserAgent( config.get('user_agent') );
+	if ( config.get('ntlm_domains').length > 0 ) session.defaultSession.allowNTLMCredentialsForDomains( config.get('ntlm_domains') );
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
 	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) {
