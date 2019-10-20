@@ -678,6 +678,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,name: 'Teams'
 			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
 			,url: 'https://teams.microsoft.com'
+			,custom_js: 'Object.defineProperty(navigator.serviceWorker,"register",{value:()=>Promise.reject()});'
 			,type: 'messaging'
 		},
 		{
