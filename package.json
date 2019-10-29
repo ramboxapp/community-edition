@@ -104,7 +104,7 @@
 	"devDependencies": {
 		"asar": "^2.0.1",
 		"chai": "^4.2.0",
-		"crowdin": "^1.0.0",
+		"crowdin": "^3.4.2",
 		"csvjson": "^5.1.0",
 		"electron": "^6.0.12",
 		"electron-builder": "^21.2.0",
