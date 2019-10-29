@@ -33,7 +33,7 @@
 	"license": "GPL-3.0",
 	"dependencies": {
 		"auto-launch-patched": "5.0.2",
-		"electron-store": "^4.0.0",
+		"electron-store": "^5.0.0",
 		"electron-is-dev": "^1.1.0",
 		"electron-contextmenu-wrapper": "^3.0.0",
 		"mime": "^2.4.4",
