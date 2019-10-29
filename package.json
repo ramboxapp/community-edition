@@ -108,7 +108,7 @@
 		"csvjson": "^5.1.0",
 		"electron": "^6.0.12",
 		"electron-builder": "^21.2.0",
-		"mocha": "^6.1.4",
+		"mocha": "^6.2.2",
 		"shx": "^0.3.2",
 		"spectron": "^7.0.0"
 	}
