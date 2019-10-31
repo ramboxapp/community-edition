@@ -14,21 +14,11 @@
 		(async () => {
 			await isOnline().then(res => {
 				console.info('Internet Connection', res);
-				if ( !res && !ipcRenderer.sendSync('getConfig').hideNoConnectionDialog ) {
-					const { remote } = require('electron');
-					remote.dialog.showMessageBox(remote.getCurrentWindow(), {
-						buttons: ['OK'],
-						type: 'warning',
-						checkboxLabel: 'Do not show this message again',
-						message: 'Please, check your internet connection and restart Rambox. If you use a Proxy, please go to Preferences to configure it.',
-						title: 'No Internet Connection'
-					},
-					function (__response, checkboxChecked) {
-						if ( !checkboxChecked ) return;
-						ipcRenderer.sendSync('sConfig', {
-							hideNoConnectionDialog: true
-						})
-					})
+				if ( !res ) {
+					document.getElementById("noconnection").style.display = "block";
+					setTimeout(function() {
+						location.reload();
+					}, 5000);
 				}
 			})
 		})();
@@ -66,6 +56,7 @@
 </head>
 
 <body>
+	<div id="noconnection" style="display: block"><h1>No Internet Connection</h1><p>Please, check your internet connection and restart Rambox. If you use a Proxy, please go to Preferences to configure it.</p></div>
 	<div id="spinner" class="component" data-path-start="M280,466c0,0.13-0.001,0.26-0.003,0.39c-0.002,0.134-0.004,0.266-0.007,0.396
 C279.572,482.992,266.307,496,250,496h-2.125H51.625H50c-16.316,0-29.592-13.029-29.99-29.249c-0.003-0.13-0.006-0.261-0.007-0.393
 C20.001,466.239,20,466.119,20,466l0,0c0-0.141,0.001-0.281,0.003-0.422C20.228,449.206,33.573,436,50,436h1.625h196.25H250
