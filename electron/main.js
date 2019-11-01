@@ -100,6 +100,8 @@ function createWindow () {
 		,webPreferences: {
 			plugins: true
 			,partition: 'persist:rambox'
+			,nodeIntegration: true
+			,webviewTag: true
 		}
 	});
 
