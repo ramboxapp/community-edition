@@ -299,6 +299,12 @@ Ext.define('Rambox.ux.WebView',{
 			// Apply saved zoom level
 			webview.setZoomLevel(me.record.get('zoomLevel'));
 
+			// Fix cursor sometimes dissapear
+			let currentTab = Ext.cq1('app-main').getActiveTab();
+			if ( currentTab.id === me.id ) {
+				webview.blur();
+				webview.focus();
+			}
 			// Set special icon for some service (like Slack)
 			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
