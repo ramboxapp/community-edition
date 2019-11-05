@@ -528,7 +528,7 @@ Ext.define('Rambox.ux.WebView',{
 			function handleKeydown(event) {
 				var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
 					code: event.code,
-					key: event.key,
+					key: event.code.substring(0, 5) === 'Digit' ? event.code.substring(5, 6) : event.key,
 					shiftKey: event.shiftKey,
 					altKey: event.altKey,
 					ctrlKey: event.ctrlKey,
