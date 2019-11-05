@@ -42,7 +42,10 @@ Ext.define('Rambox.view.main.MainController', {
 		}
 
 		var webview = newTab.down('component').el.dom;
-		if ( webview ) webview.focus();
+		if ( webview ) {
+			tabPanel.getActiveTab().getWebView().blur();
+			tabPanel.getActiveTab().getWebView().focus();
+		}
 
 		// Update the main window so it includes the active tab title.
 		if ( Rambox.app.getTotalNotifications() > 0 ) {
