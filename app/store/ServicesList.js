@@ -687,7 +687,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: 'Microsoft Teams is the chat-based workspace in Office 365 that integrates all the people, content, and tools your team needs to be more engaged and effective.'
 			,url: 'https://teams.microsoft.com'
 			,type: 'messaging'
-			,js_unread: 'Object.defineProperty(navigator.serviceWorker,"register",{value:()=>Promise.reject()});'
+			,js_unread: 'function checkUnread(){var e=0;"("===document.title[0]&&(e=parseInt(document.title.replace(/[^0-9]/g,""))),updateBadge(e)}function updateBadge(e){0<e?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3),Object.defineProperty(navigator.serviceWorker,"register",{value:()=>Promise.reject()});'
 		},
 		{
 			 id: 'kezmo'
