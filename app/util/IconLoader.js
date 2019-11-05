@@ -19,7 +19,7 @@ Ext.define('Rambox.util.IconLoader', {
 			switch (service.type) {
 				case 'slack':
 					webview.executeJavaScript(
-						"(()=>{let a=document.querySelector('.team_icon');if(!a){const d=document.querySelector('#team_menu');d&&(d.click(),a=document.querySelector('.team_icon'))}if(!a)return!1;const{style:{backgroundImage:b}}=a,c=document.createEvent('MouseEvents');return c.initEvent('mousedown',!0,!0),document.querySelector('.client_channels_list_container').dispatchEvent(c),b.slice(5,-2)})();",
+						"(a=>window.slackDebug.activeTeam.redux.getState().teams[a].icon.image_44)(window.slackDebug.activeTeamId);",
 						false,
 						function (backgroundImage) {
 							if (backgroundImage) {
