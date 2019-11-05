@@ -167,9 +167,10 @@ Ext.define('Rambox.Application', {
 					,ctrl: true
 					,alt: false
 					,handler: function(key) {
+						var tabPanel = Ext.cq1('app-main');
 						key = key - 48;
-						if ( key >= Ext.cq1('app-main').items.indexOf(Ext.getCmp('tbfill')) ) key++;
-						Ext.cq1('app-main').setActiveTab(key);
+						if ( key >= tabPanel.items.indexOf(Ext.getCmp('tbfill')) ) key++;
+						tabPanel.setActiveTab(key);
 					}
 				}
 				,{
@@ -181,10 +182,10 @@ Ext.define('Rambox.Application', {
 					}
 				}
 				,{
-					 key: Ext.event.Event.F1
+					 key: 'd'
 					,ctrl: false
-					,alt: false
-					,shift: false
+					,alt: true
+					,shift: true
 					,handler: function(key) {
 						var btn = Ext.getCmp('disturbBtn');
 						btn.toggle();
@@ -192,10 +193,10 @@ Ext.define('Rambox.Application', {
 					}
 				}
 				,{
-					 key: Ext.event.Event.F2
+					 key: 'l'
 					,ctrl: false
-					,alt: false
-					,shift: false
+					,alt: true
+					,shift: true
 					,handler: function(key) {
 						var btn = Ext.getCmp('lockRamboxBtn');
 						Ext.cq1('app-main').getController().lockRambox(btn);
