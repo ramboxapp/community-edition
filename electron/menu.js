@@ -172,13 +172,16 @@ module.exports = function(config) {
 					type: 'separator'
 				},
 				{
-					role: 'zoomin'
+					label: 'Zoom In',
+					click(item, win) { win.webContents.send('zoomin-webview')}
 				},
 				{
-					role: 'zoomout'
+					label: 'Zoom Out',
+					click(item, win) { win.webContents.send('zoomout-webview')}
 				},
 				{
-					role: 'resetzoom'
+					label: 'Reset Zoom',
+					click(item, win) { win.webContents.send('resetzoom-webview')}
 				}
 			]
 		},

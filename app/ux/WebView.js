@@ -807,25 +807,29 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,zoomIn: function() {
-		var me = this;
-		var webview = me.getWebView();
-
-		me.zoomLevel = me.zoomLevel + 0.25;
-		if ( me.record.get('enabled') ) {
-			webview.setZoomLevel(me.zoomLevel);
-			me.record.set('zoomLevel', me.zoomLevel);
-		}
+		if ( this.timeout ) clearTimeout( this.timeout );
+			this.timeout = setTimeout(() => {
+				var me = this;
+				var webview = me.getWebView();
+				me.zoomLevel = me.zoomLevel + 0.25;
+				if ( me.record.get('enabled') ) {
+					webview.setZoomLevel(me.zoomLevel);
+					me.record.set('zoomLevel', me.zoomLevel);
+				}
+		}, 100);
 	}
 
 	,zoomOut: function() {
-		var me = this;
-		var webview = me.getWebView();
-
-		me.zoomLevel = me.zoomLevel - 0.25;
-		if ( me.record.get('enabled') ) {
-			webview.setZoomLevel(me.zoomLevel);
-			me.record.set('zoomLevel', me.zoomLevel);
-		}
+		if ( this.timeout ) clearTimeout( this.timeout );
+			this.timeout = setTimeout(() => {
+				var me = this;
+				var webview = me.getWebView();
+				me.zoomLevel = me.zoomLevel - 0.25;
+				if ( me.record.get('enabled') ) {
+					webview.setZoomLevel(me.zoomLevel);
+					me.record.set('zoomLevel', me.zoomLevel);
+				}
+		}, 100);
 	}
 
 	,resetZoom: function() {

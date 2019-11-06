@@ -147,3 +147,23 @@ ipc.on('toggleStatusBar', function() {
 window.addEventListener('focus', function() {
 	if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().down('component').el.dom.focus();
 });
+
+// Handles zoom from menu
+ipc.on('resetzoom-webview', function() {
+	var tabPanel = Ext.cq1('app-main');
+	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+	tabPanel.getActiveTab().resetZoom();
+});
+ipc.on('zoomin-webview', function() {
+	var tabPanel = Ext.cq1('app-main');
+	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+	tabPanel.getActiveTab().zoomIn();
+});
+ipc.on('zoomout-webview', function() {
+	var tabPanel = Ext.cq1('app-main');
+	if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+	tabPanel.getActiveTab().zoomOut();
+});
