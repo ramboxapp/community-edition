@@ -192,8 +192,7 @@ function createWindow () {
 				default:
 					switch (config.get('window_close_behavior')) {
 						case 'keep_in_tray':
-							mainWindow.minimize();
-							mainWindow.setSkipTaskbar(true);
+							mainWindow.hide();
 							break;
 						case 'keep_in_tray_and_taskbar':
 							mainWindow.minimize();
@@ -419,20 +418,37 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 	if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && mainWindow.isVisible() ) { // Maximized
 		!allwaysShow ? mainWindow.close() : mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Minimized
+		if ( process.platform === 'linux' ) {
+			mainWindow.minimize();
+			mainWindow.restore();
+			mainWindow.focus();
+			return
+		}
 		mainWindow.restore();
 	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Windowed mode
 		!allwaysShow ? mainWindow.close() : mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Closed to taskbar
+		if ( process.platform === 'linux' ) {
+			mainWindow.minimize();
+			mainWindow.restore();
+			mainWindow.focus();
+			return
+		}
 		mainWindow.restore();
-		mainWindow.show();
 	} else if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed maximized to tray
 		mainWindow.show();
 	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed windowed to tray
 		mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed minimized to tray
-		mainWindow.restore();
-	} else {
 		mainWindow.show();
+	} else {
+		if ( process.platform === 'linux' ) {
+			mainWindow.minimize();
+			mainWindow.maximize();
+			mainWindow.focus();
+			return
+		}
+		mainWindow.restore();
 	}
 });
 
