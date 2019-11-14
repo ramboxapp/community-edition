@@ -28,7 +28,7 @@ Ext.define('Rambox.view.add.Add',{
 		var me = this;
 
 		me.title = (!me.edit ? locale['app.window[0]'] : locale['app.window[1]']) + ' ' + me.record.get('name');
-		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'resources/icons/'+me.record.get('logo');
+		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F'+me.record.get('logo')+'?alt=media';
 		me.items = [
 			{
 				 xtype: 'form'
@@ -61,12 +61,12 @@ Ext.define('Rambox.view.add.Add',{
 							,{
 								 xtype: 'textfield'
 								,name: 'url'
-								,value: me.edit && me.service.get('url').indexOf('___') >= 0 ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '') : (me.record.get('url').indexOf('___') === -1 ? me.record.get('url') : '')
+								,value: me.edit && me.service.get('url').indexOf('___') >= 0 ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '').replace('/', '') : (me.record.get('url').indexOf('___') === -1 ? me.record.get('url') : '')
 								,readOnly: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain')) : me.record.get('url').indexOf('___') === -1 && me.record.get('custom_domain')
 								,allowBlank: false
 								,submitEmptyText: false
 								,emptyText: me.record.get('url') === '___' ? 'https://' : ''
-								, validator: function(v) {
+								,validator: function(v) {
 									if ( !me.edit ? me.record.get('url') !== '___' : me.service.get('url').indexOf('https://___') === 0 ) return true
 									if ( v.match(/^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i) === null && v.match(/^http:\/\/\w+(\.\w+)*(:[0-9]+)?\/?(\/[.\w]*)*$/) === null ) return false;
 									return true;
@@ -86,12 +86,12 @@ Ext.define('Rambox.view.add.Add',{
 									items: [
 										{
 											 text: me.edit ? (me.service.get('url').indexOf('___') === -1 ? 'Official Server' : Ext.String.endsWith(me.service.get('url'), '/') ? me.service.get('url').split('___')[1].slice(0, -1) : me.service.get('url').split('___')[1]) : (me.record.get('url').indexOf('___') === -1 ? 'Official Server' : Ext.String.endsWith(me.record.get('url'), '/') ? me.record.get('url').split('___')[1].slice(0, -1) : me.record.get('url').split('___')[1])
-											,checked: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : Ext.String.endsWith(me.record.get('url'), me.service.get('url').split('___')[1])) : true
+											,checked: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : Ext.String.endsWith(me.record.get('url').endsWith('/') ? me.record.get('url').slice(0, -1) : me.record.get('url'), me.service.get('url').split('___')[1])) : true
 											,disabled: me.edit ? me.service.get('url') === '___' : me.record.get('url') === '___'
 										}
 										,{
 											 text: 'Custom Server'
-											,checked: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? false : !Ext.String.endsWith(me.record.get('url'), me.service.get('url').split('___')[1])) : false
+											,checked: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? false : !Ext.String.endsWith(me.record.get('url').endsWith('/') ? me.record.get('url').slice(0, -1) : me.record.get('url'), me.service.get('url').split('___')[1])) : false
 											,custom: true
 											,disabled: me.edit ? !me.service.get('custom_domain') : !me.record.get('custom_domain')
 										}
@@ -108,6 +108,7 @@ Ext.define('Rambox.view.add.Add',{
 									});
 									cycleBtn.previousSibling().applyEmptyText();
 									cycleBtn.previousSibling().reset();
+									console.log(activeItem);
 
 									if ( me.edit && cycleBtn.nextSibling().originalValue !== '2' ) {
 										me.service.get('custom_domain') && !activeItem.custom ? cycleBtn.previousSibling().reset() : cycleBtn.previousSibling().setValue('');
@@ -126,7 +127,7 @@ Ext.define('Rambox.view.add.Add',{
 							,{
 								 xtype: 'hiddenfield'
 								,name: 'cycleValue'
-								,value: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? 1 : (!Ext.String.endsWith(me.record.get('url'), me.service.get('url').split('___')[1]) ? 2 : 1)) : 1
+								,value: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? 1 : (!Ext.String.endsWith(me.record.get('url').endsWith('/') ? me.record.get('url').slice(0, -1) : me.record.get('url'), me.service.get('url').split('___')[1]) ? 2 : 1)) : 1
 							}
 						]
 					}

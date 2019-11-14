@@ -161,9 +161,9 @@ Ext.define('Rambox.view.main.MainController', {
 		function clearData(webview, tab) {
 			webview.getWebContents().clearHistory();
 			webview.getWebContents().session.flushStorageData();
-			webview.getWebContents().session.clearCache(function() {
-				webview.getWebContents().session.clearStorageData(function() {
-					webview.getWebContents().session.cookies.flushStore(function() {
+			webview.getWebContents().session.clearCache().then(() => {
+				webview.getWebContents().session.clearStorageData().then(() => {
+					webview.getWebContents().session.cookies.flushStore().then(() => {
 						// Remove record from localStorage
 						Ext.getStore('Services').remove(rec);
 						// Close tab
@@ -173,9 +173,9 @@ Ext.define('Rambox.view.main.MainController', {
 							Ext.Msg.hide();
 							if ( Ext.isFunction(callback) ) callback();
 						}
-					});
-				});
-			});
+					}).catch(err => { console.log(err) })
+				}).catch(err => { console.log(err) })
+			}).catch(err => { console.log(err) })
 		}
 	}
 

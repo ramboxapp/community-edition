@@ -8,7 +8,7 @@ Ext.define('Rambox.store.Services', {
 
 	,model: 'Rambox.model.Service'
 
-	,autoLoad: true
+	,autoLoad: false
 	,autoSync: true
 	,pageSize: 0
 

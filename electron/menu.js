@@ -75,9 +75,12 @@ module.exports = function(config) {
 				{
 					label: `&Clear Cache`,
 					click(item, win) {
-						win.webContents.session.clearCache(function() {
+						win.webContents.session.clearCache()
+						.then(() => {
 							win.reload();
-						});
+						}).catch(err => {
+							console.log(err)
+						})
 					}
 				},
 				{
@@ -85,9 +88,11 @@ module.exports = function(config) {
 					click(item, win) {
 						win.webContents.session.clearStorageData({
 							storages: ['localstorage']
-						}, function() {
+						}).then(() => {
 							win.reload();
-						});
+						}).catch(err => {
+							console.log(err)
+						})
 					}
 				}
 			]

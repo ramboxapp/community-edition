@@ -100,6 +100,8 @@ function createWindow () {
 		,webPreferences: {
 			plugins: true
 			,partition: 'persist:rambox'
+			,nodeIntegration: true
+			,webviewTag: true
 		}
 	});
 
@@ -259,7 +261,7 @@ ipcMain.on('getConfig', function(event, arg) {
 });
 ipcMain.on('sConfig', function(event, values) {
 	config.set(values);
-	event.returnValue = true;
+	event.returnValue = config;
 });
 ipcMain.on('setConfig', function(event, values) {
 	config.set(values);

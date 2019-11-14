@@ -110,7 +110,7 @@ Ext.define('Rambox.view.main.Main', {
 							,tpl: [
 								 '<tpl for=".">'
 									,'<div class="service" data-qtip="{description}">'
-										,'<img src="resources/icons/{logo}" width="48" />'
+										,'<img src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F{logo}?alt=media&token=49036238-8f37-4f08-a7e5-1563be94c36e" width="48" />'
 										,'<span>{name}</span>'
 									,'</div>'
 								,'</tpl>'
@@ -158,7 +158,7 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'templatecolumn'
 							,width: 50
 							,variableRowHeight: true
-							,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
+							,tpl: '<img src="{[ values.type !== \"custom\" ? \"https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F\"+values.logo+\"?alt=media&token=49036238-8f37-4f08-a7e5-1563be94c36e\" : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
 						}
 						,{
 							 dataIndex: 'name'
