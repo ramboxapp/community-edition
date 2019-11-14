@@ -108,7 +108,6 @@ Ext.define('Rambox.view.add.Add',{
 									});
 									cycleBtn.previousSibling().applyEmptyText();
 									cycleBtn.previousSibling().reset();
-									console.log(activeItem);
 
 									if ( me.edit && cycleBtn.nextSibling().originalValue !== '2' ) {
 										me.service.get('custom_domain') && !activeItem.custom ? cycleBtn.previousSibling().reset() : cycleBtn.previousSibling().setValue('');
