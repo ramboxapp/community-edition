@@ -65,6 +65,9 @@
 		"productName": "Rambox",
 		"appId": "com.grupovrs.ramboxce",
 		"asar": true,
+		"electronDownload": {
+			"version": "7.1.1"
+		},
 		"mac": {
 			"category": "public.app-category.productivity",
 			"artifactName": "Rambox-${version}-mac.${ext}",
