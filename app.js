@@ -167,3 +167,8 @@ ipc.on('zoomout-webview', function() {
 
 	tabPanel.getActiveTab().zoomOut();
 });
+ipc.on('shortcut:tab', function(e, arg) {
+	var tabPanel = Ext.cq1('app-main');
+	if ( arg >= tabPanel.items.indexOf(Ext.getCmp('tbfill')) ) arg++;
+		tabPanel.setActiveTab(arg);
+});

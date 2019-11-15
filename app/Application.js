@@ -226,17 +226,6 @@ Ext.define('Rambox.Application', {
 						}
 					}
 					,{
-						key: "123456789"
-						,ctrl: true
-						,alt: false
-						,handler: function(key) {
-							var tabPanel = Ext.cq1('app-main');
-							key = key - 48;
-							if ( key >= tabPanel.items.indexOf(Ext.getCmp('tbfill')) ) key++;
-							tabPanel.setActiveTab(key);
-						}
-					}
-					,{
 						key: 188 // comma
 						,ctrl: true
 						,alt: false
