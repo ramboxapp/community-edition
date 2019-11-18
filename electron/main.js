@@ -101,12 +101,17 @@ function createWindow () {
 	});
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
-	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) {
-		// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools() 
-		// to be finished before minimizing
-		mainWindow.webContents.once('did-finish-load', function(e) {
-			mainWindow.minimize();
-		});
+	if (config.get('start_minimized')){
+		if (config.get('window_display_behavior') == 'show_taskbar') {
+			mainWindow.webContents.once('did-finish-load', function(e) {
+				mainWindow.minimize();
+				});
+		}
+		else {
+			mainWindow.webContents.once('did-finish-load', function(e) {
+				mainWindow.hide();
+				});
+		}
 	}
 
 	// Check if the window its outside of the view (ex: multi monitor setup)
