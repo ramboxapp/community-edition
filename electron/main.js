@@ -227,6 +227,9 @@ function createMasterPasswordWindow() {
 	mainMasterPasswordWindow = new BrowserWindow({
 		 backgroundColor: '#0675A0'
 		,frame: false
+		,webPreferences: {
+			nodeIntegration: true
+		}
 	});
 	// Open the DevTools.
 	if ( isDev ) mainMasterPasswordWindow.webContents.openDevTools();
