@@ -199,7 +199,7 @@ You are always welcome to check the code! ;)
 
 | Type             | URL/Wallet                                                                                 |
 | ---------------- | :----------------------------------------------------------------------------------------: |
-| Credit Cards     | [HERE](https://rambox.pro/#donate) |
+| Credit Cards     | [HERE](https://rambox.app/donate.html) |
 | Cryptocurrencies | [HERE](https://www.vaulty.io/v/b6480279-af28-4855-868c-17e5cb0ae7fa)                       |
 
 ## Translations

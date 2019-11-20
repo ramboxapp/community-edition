@@ -33,7 +33,7 @@ Ext.define('Rambox.view.main.Main', {
 			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
 			,baseCls: ''
 			,tooltip: locale['app.main[25]']
-			,href: 'https://rambox.pro/#donate'
+			,href: 'https://rambox.app/donate.html'
 		}]
 	}
 	,items: [
@@ -243,7 +243,7 @@ Ext.define('Rambox.view.main.Main', {
 					{
 						 glyph: JSON.parse(localStorage.getItem('dontDisturb')) ? 'xf1f7@FontAwesome' : 'xf0f3@FontAwesome'
 						,text: locale['app.main[16]']+': '+(JSON.parse(localStorage.getItem('dontDisturb')) ? locale['app.window[20]'] : locale['app.window[21]'])
-						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+(require('electron').remote.process.platform === 'darwin' ? 'Cmd + D</b>' : ': Alt + Shift + D</b>')
+						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+(require('electron').remote.process.platform === 'darwin' ? ': Cmd + D</b>' : ': Alt + Shift + D</b>')
 						,enableToggle: true
 						,handler: 'dontDisturb'
 						,reference: 'disturbBtn'
@@ -253,7 +253,7 @@ Ext.define('Rambox.view.main.Main', {
 					,{
 						 glyph: 'xf023@FontAwesome'
 						,text: locale['app.main[19]']
-						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+(require('electron').remote.process.platform === 'darwin' ? 'Cmd + Alt + L</b>' : ': Alt + Shift + L</b>')
+						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+(require('electron').remote.process.platform === 'darwin' ? ': Cmd + Alt + L</b>' : ': Alt + Shift + L</b>')
 						,handler: 'lockRambox'
 						,id: 'lockRamboxBtn'
 					},'-'
@@ -348,7 +348,7 @@ Ext.define('Rambox.view.main.Main', {
 						,{
 							 text: locale['app.main[25]']
 							,glyph: 'xf21e@FontAwesome'
-							,href: 'https://rambox.pro/#donate'
+							,href: 'https://rambox.app/donate.html'
 						}
 						,{
 							 text: 'Translation'

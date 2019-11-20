@@ -520,6 +520,7 @@ Ext.define('Rambox.ux.WebView',{
 			if ( require('electron').remote.process.platform === 'darwin' ) {
 				var keys = [];
 				keys['ƒ'] = 'f'; // Search
+				keys[' '] = 'l'; // Lock 
 
 				input.key = keys[input.key] ? keys[input.key] : input.key;
 			}

@@ -103,7 +103,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[3]'],
 			click() {
-				shell.openExternal('https://rambox.pro/#donate');
+				shell.openExternal('https://rambox.app/donate.html');
 			}
 		}
 	];
