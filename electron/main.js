@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session, globalShortcut} = require('electron');
+const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session} = require('electron');
 // Tray
 const tray = require('./tray');
 // AutoLaunch
@@ -479,15 +479,6 @@ if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
 	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
-	globalShortcut.register('CommandOrControl+1', () => { mainWindow.webContents.send('shortcut:tab', 1); })
-	globalShortcut.register('CommandOrControl+2', () => { mainWindow.webContents.send('shortcut:tab', 2); })
-	globalShortcut.register('CommandOrControl+3', () => { mainWindow.webContents.send('shortcut:tab', 3); })
-	globalShortcut.register('CommandOrControl+4', () => { mainWindow.webContents.send('shortcut:tab', 4); })
-	globalShortcut.register('CommandOrControl+5', () => { mainWindow.webContents.send('shortcut:tab', 5); })
-	globalShortcut.register('CommandOrControl+6', () => { mainWindow.webContents.send('shortcut:tab', 6); })
-	globalShortcut.register('CommandOrControl+7', () => { mainWindow.webContents.send('shortcut:tab', 7); })
-	globalShortcut.register('CommandOrControl+8', () => { mainWindow.webContents.send('shortcut:tab', 8); })
-	globalShortcut.register('CommandOrControl+9', () => { mainWindow.webContents.send('shortcut:tab', 9); })
 });
 
 // Quit when all windows are closed.

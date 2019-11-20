@@ -205,6 +205,7 @@
 		"electron-updater": "4.1.2",
 		"is-online": "^8.2.0",
 		"mime": "^2.3.1",
+		"mousetrap": "^1.6.3",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.2",
 		"rimraf": "2.6.1",

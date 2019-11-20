@@ -27,6 +27,7 @@ Ext.define('Rambox.Application', {
 	,launch: function () {
 
 		const isOnline = require('is-online');
+		const Mousetrap = require('mousetrap');
 		(async () => {
 			await isOnline().then(res => {
 				var hideNoConnection = ipc.sendSync('getConfig').hideNoConnectionDialog
@@ -121,140 +122,58 @@ Ext.define('Rambox.Application', {
 			// Check for updates
 			if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
 
+
+			// Shortcuts
+			const platform = require('electron').remote.process.platform;
+			// Prevents default behaviour of Mousetrap, that prevents shortcuts in textareas
+			Mousetrap.prototype.stopCallback = function(e, element, combo) {
+				return false;
+			};
 			// Add shortcuts to switch services using CTRL + Number
-			document.keyMapping = new Ext.util.KeyMap({
-				target: document
-				,binding: [
-					{
-						key: "\t"
-						,ctrl: true
-						,alt: false
-						,shift: false
-						,handler: function(key) {
-							var tabPanel = Ext.cq1('app-main');
-							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-							var i = activeIndex + 1;
-
-							// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
-							if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
-
-							// skip spacer
-							while (tabPanel.items.items[i].id === 'tbfill') i++;
-
-							tabPanel.setActiveTab(i);
-						}
-					}
-					,{
-						key: "f"
-						,ctrl: false
-						,alt: true
-						,shift: true
-						,handler: function(key) {
-							var currentTab = Ext.cq1('app-main').getActiveTab();
-							if ( currentTab.getWebView ) currentTab.showSearchBox(true);
-						}
-					}
-					,{
-						key: "\t"
-						,ctrl: true
-						,alt: false
-						,shift: true
-						,handler: function(key) {
-							var tabPanel = Ext.cq1('app-main');
-							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-							var i = activeIndex - 1;
-							if ( i < 0 ) i = tabPanel.items.items.length - 1;
-							while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
-							tabPanel.setActiveTab( i );
-						}
-					}
-					,{
-						key: Ext.event.Event.PAGE_DOWN
-						,ctrl: true
-						,alt: false
-						,shift: false
-						,handler: function(key) {
-							var tabPanel = Ext.cq1('app-main');
-							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-							var i = activeIndex + 1;
-
-							// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
-							if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
-
-							// skip spacer
-							while (tabPanel.items.items[i].id === 'tbfill') i++;
-
-							tabPanel.setActiveTab(i);
-						}
-					}
-					,{
-						key: Ext.event.Event.PAGE_UP
-						,ctrl: true
-						,alt: false
-						,shift: false
-						,handler: function(key) {
-							var tabPanel = Ext.cq1('app-main');
-							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-							var i = activeIndex - 1;
-							if ( i < 0 ) i = tabPanel.items.items.length - 1;
-							while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
-							tabPanel.setActiveTab( i );
-						}
-					}
-					,{
-						key: [Ext.event.Event.NUM_PLUS, Ext.event.Event.NUM_MINUS, 187, 189]
-						,ctrl: true
-						,alt: false
-						,shift: false
-						,handler: function(key) {
-							var tabPanel = Ext.cq1('app-main');
-							if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-							key === Ext.event.Event.NUM_PLUS || key === 187 ? tabPanel.getActiveTab().zoomIn() : tabPanel.getActiveTab().zoomOut();
-						}
-					}
-					,{
-						key: [Ext.event.Event.NUM_ZERO, '0']
-						,ctrl: true
-						,alt: false
-						,shift: false
-						,handler: function(key) {
-							var tabPanel = Ext.cq1('app-main');
-							if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-							tabPanel.getActiveTab().resetZoom();
-						}
-					}
-					,{
-						key: 188 // comma
-						,ctrl: true
-						,alt: false
-						,handler: function(key) {
-							Ext.cq1('app-main').setActiveTab(0);
-						}
-					}
-					,{
-						key: 'd'
-						,ctrl: false
-						,alt: true
-						,shift: true
-						,handler: function(key) {
-							var btn = Ext.getCmp('disturbBtn');
-							btn.toggle();
-							Ext.cq1('app-main').getController().dontDisturb(btn, true);
-						}
-					}
-					,{
-						key: 'l'
-						,ctrl: false
-						,alt: true
-						,shift: true
-						,handler: function(key) {
-							var btn = Ext.getCmp('lockRamboxBtn');
-							Ext.cq1('app-main').getController().lockRambox(btn);
-						}
-					}
-				]
+			Mousetrap.bind(platform === 'darwin' ? ["command+1","command+2","command+3","command+4","command+5","command+6","command+7","command+8","command+9"] : ["ctrl+1","ctrl+2","ctrl+3","ctrl+4","ctrl+5","ctrl+6","ctrl+7","ctrl+8","ctrl+9"], function(e, combo) { // GROUPS
+				var tabPanel = Ext.cq1('app-main');
+				var arg = parseInt(e.key);
+				if ( arg >= tabPanel.items.indexOf(Ext.getCmp('tbfill')) ) arg++;
+				tabPanel.setActiveTab(arg);
+			});
+			// Add shortcut to main tab (ctrl+,)
+			Mousetrap.bind(platform === 'darwin' ? 'command+,' : 'ctrl+,', (e, combo) => {
+				Ext.cq1('app-main').setActiveTab(0);
+			});
+			// Add shortcuts to navigate through services
+			Mousetrap.bind(['ctrl+tab', 'ctrl+pagedown'], (e, combo) => {
+				var tabPanel = Ext.cq1('app-main');
+				var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+				var i = activeIndex + 1;
+				// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
+				if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
+				// skip spacer
+				while (tabPanel.items.items[i].id === 'tbfill') i++;
+				tabPanel.setActiveTab(i);
+			});
+			Mousetrap.bind(['ctrl+shift+tab', 'ctrl+pageup'], (e, combo) => {
+				var tabPanel = Ext.cq1('app-main');
+				var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+				var i = activeIndex - 1;
+				if ( i < 0 ) i = tabPanel.items.items.length - 1;
+				while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
+				tabPanel.setActiveTab(i);
+			});
+			// Add shortcut to search inside a service
+			Mousetrap.bind(process.platform === 'darwin' ? ['command+alt+f'] : ['shift+alt+f'], (e, combo) => {
+				var currentTab = Ext.cq1('app-main').getActiveTab();
+				if ( currentTab.getWebView ) currentTab.showSearchBox(true);
+			});
+			// Add shortcut to Do Not Disturb
+			Mousetrap.bind(platform === 'darwin' ? ["command+d"] : ["shift+alt+d"], function(e, combo) {
+				var btn = Ext.getCmp('disturbBtn');
+				btn.toggle();
+				Ext.cq1('app-main').getController().dontDisturb(btn, true);
+			});
+			// Add shortcut to Lock Rambox
+			Mousetrap.bind(platform === 'darwin' ? ['command+alt+l'] : ['shift+alt+l'], (e, combo) => {
+				var btn = Ext.getCmp('lockRamboxBtn');
+				Ext.cq1('app-main').getController().lockRambox(btn);
 			});
 
 			// Mouse Wheel zooming

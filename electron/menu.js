@@ -178,14 +178,17 @@ module.exports = function(config) {
 				},
 				{
 					label: 'Zoom In',
+					accelerator: 'Ctrl+Plus',
 					click(item, win) { win.webContents.send('zoomin-webview')}
 				},
 				{
 					label: 'Zoom Out',
+					accelerator: 'Ctrl+-',
 					click(item, win) { win.webContents.send('zoomout-webview')}
 				},
 				{
 					label: 'Reset Zoom',
+					accelerator: 'Ctrl+0',
 					click(item, win) { win.webContents.send('resetzoom-webview')}
 				}
 			]

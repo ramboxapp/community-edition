@@ -504,6 +504,34 @@ Ext.define('Rambox.ux.WebView',{
 
 			webview.executeJavaScript(js_inject).then(result => {} ).catch(err => { console.log(err) })
 		});
+		webview.getWebContents().on('before-input-event', (event, input) => {
+			if (input.type !== 'keyDown') return;
+
+			var modifiers = [];
+			if ( input.shift ) modifiers.push('shift');
+			if ( input.control ) modifiers.push('control');
+			if ( input.alt ) modifiers.push('alt');
+			if ( input.meta ) modifiers.push('meta');
+			if ( input.isAutoRepeat  ) modifiers.push('isAutoRepeat');
+
+			if ( input.key === 'Tab' && !(modifiers && modifiers.length) ) return;
+
+			// Maps special keys to fire the correct event in Mac OS
+			if ( require('electron').remote.process.platform === 'darwin' ) {
+				var keys = [];
+				keys['ƒ'] = 'f'; // Search
+
+				input.key = keys[input.key] ? keys[input.key] : input.key;
+			}
+
+			if ( input.key === 'F11' || input.key === 'F12' || input.key === 'q' || (input.key === 'F1' && modifiers.includes('control'))) return;
+
+			require('electron').remote.getCurrentWebContents().sendInputEvent({
+				type: input.type,
+				keyCode: input.key,
+				modifiers: modifiers
+			});
+		})
 
 		webview.addEventListener('ipc-message', function(event) {
 			var channel = event.channel;
@@ -517,30 +545,6 @@ Ext.define('Rambox.ux.WebView',{
 				case 'rambox.showWindowAndActivateTab':
 					showWindowAndActivateTab(event);
 					break;
-				case 'keydown':
-					handleKeydown(event.args[0])
-					break;
-			}
-			/**
-			 * Handles 'keydown' messages.
-			 * Allow to handle shortcuts.
-			 */
-			function handleKeydown(event) {
-				var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
-					code: event.code,
-					key: event.code.substring(0, 5) === 'Digit' ? event.code.substring(5, 6) : event.key,
-					shiftKey: event.shiftKey,
-					altKey: event.altKey,
-					ctrlKey: event.ctrlKey,
-					metaKey: event.metaKey,
-					repeat: event.repeat,
-					keyCode: event.keyCode,
-					charCode: event.charCode
-				});
-				emulatedKeyboardEvent.getKey = function() {
-					return this.keyCode || this.charCode // fake function, normally used by Ext.js, simply returning keyCode
-				}
-				document.keyMapping.handleTargetEvent(emulatedKeyboardEvent) // we directly trigger  handleTargetEvent. That's a private method normally. We can't fire the event directly with document.dispatch, unfortunately
 			}
 			/**
 			 * Handles 'rambox.clearUnreadCount' messages.
