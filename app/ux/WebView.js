@@ -42,7 +42,7 @@ Ext.define('Rambox.ux.WebView',{
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
 			,title: prefConfig.hide_tabbar_labels ? '' : (me.record.get('tabname') ? me.record.get('name') : '')
-			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
+			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F'+me.record.get('logo')+'?alt=media'
 			,src: me.record.get('url')
 			,type: me.record.get('type')
 			,align: me.record.get('align')
@@ -223,13 +223,13 @@ Ext.define('Rambox.ux.WebView',{
 				}
 			}];
 
-			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') ) cfg[0].autoEl.allowpopups = 'on';
+			if ( Ext.getStore('ServicesList').getById(this.record.get('type')) ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') : false ) cfg[0].autoEl.allowpopups = 'on';
 		}
 
 		return cfg;
 	}
 	,getUserAgent: function() {
-		var ua = ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(this.record.get('type')).get('userAgent')
+		var ua = ipc.sendSync('getConfig').user_agent ? ipc.sendSync('getConfig').user_agent : Ext.getStore('ServicesList').getById(this.record.get('type')) ? Ext.getStore('ServicesList').getById(this.record.get('type')).get('userAgent') : ''
 		return ua.length === 0 ? window.clientInformation.userAgent.replace(/Rambox\/([0-9]\.?)+\s/ig,'').replace(/Electron\/([0-9]\.?)+\s/ig,'') : ua;
 	}
 
@@ -299,10 +299,14 @@ Ext.define('Rambox.ux.WebView',{
 			// Apply saved zoom level
 			webview.setZoomLevel(me.record.get('zoomLevel'));
 
+			// Fix cursor sometimes dissapear
+			let currentTab = Ext.cq1('app-main').getActiveTab();
+			if ( currentTab.id === me.id ) {
+				webview.blur();
+				webview.focus();
+			}
 			// Set special icon for some service (like Slack)
-			setTimeout(function() {
-				Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
-			}, 1000);
+			Rambox.util.IconLoader.loadServiceIconUrl(me, webview);
 		});
 
 		// On search text
@@ -459,7 +463,7 @@ Ext.define('Rambox.ux.WebView',{
 			var js_inject = '';
 			// Injected code to detect new messages
 			if ( me.record ) {
-				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread');
+				var js_unread = Ext.getStore('ServicesList').getById(me.record.get('type')) ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') : '' ;
 				js_unread = js_unread + me.record.get('js_unread');
 				if ( js_unread !== '' ) {
 					console.groupCollapsed(me.record.get('type').toUpperCase() + ' - JS Injected to Detect New Messages');
@@ -470,7 +474,7 @@ Ext.define('Rambox.ux.WebView',{
 			}
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
-			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
+			if ( Ext.getStore('ServicesList').getById(me.record.get('type')) ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') : false ) {
 				var js_preventBlink = 'var originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set:function(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:function(){return document.getElementsByTagName("title")[0].innerHTML}});';
 				console.log(js_preventBlink);
 				js_inject += js_preventBlink;
@@ -498,7 +502,7 @@ Ext.define('Rambox.ux.WebView',{
 				me.down('statusbar').down('button').show();
 			});
 
-			webview.executeJavaScript(js_inject);
+			webview.executeJavaScript(js_inject).then(result => {} ).catch(err => { console.log(err) })
 		});
 
 		webview.addEventListener('ipc-message', function(event) {
@@ -524,7 +528,7 @@ Ext.define('Rambox.ux.WebView',{
 			function handleKeydown(event) {
 				var emulatedKeyboardEvent = new KeyboardEvent('keydown', {
 					code: event.code,
-					key: event.key,
+					key: event.code.substring(0, 5) === 'Digit' ? event.code.substring(5, 6) : event.key,
 					shiftKey: event.shiftKey,
 					altKey: event.altKey,
 					ctrlKey: event.ctrlKey,
@@ -558,6 +562,7 @@ Ext.define('Rambox.ux.WebView',{
 				if (Array.isArray(event.args) === true && event.args.length > 0) {
 					var count = event.args[0];
 					if (count === parseInt(count, 10) || "•" === count) {
+						if ( count === 999999 ) count = "•";
 						me.setUnreadCount(count);
 					}
 				}
@@ -576,7 +581,7 @@ Ext.define('Rambox.ux.WebView',{
 		/**
 		 * Register page title update event listener only for services that don't specify a js_unread
 		 */
-		if (Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' && me.record.get('js_unread') === '') {
+		if ( Ext.getStore('ServicesList').getById(me.record.get('type')) ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('js_unread') === '' : false && me.record.get('js_unread') === '' ) {
 			webview.addEventListener("page-title-updated", function(e) {
 				var count = e.title.match(/\(([^)]+)\)/); // Get text between (...)
 				count = count ? count[1] : '0';
@@ -625,12 +630,9 @@ Ext.define('Rambox.ux.WebView',{
 	 */
 	,doManualNotification: function(count) {
 		var me = this;
-
-		if (Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') &&
-			me.currentUnreadCount < count &&
-			me.record.get('notifications') &&
-			!JSON.parse(localStorage.getItem('dontDisturb'))) {
-				Rambox.util.Notifier.dispatchNotification(me, count);
+		var manualNotifications = Ext.getStore('ServicesList').getById(me.type) ? Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') : false;
+		if ( manualNotifications && me.currentUnreadCount < count && me.record.get('notifications') && !JSON.parse(localStorage.getItem('dontDisturb'))) {
+			Rambox.util.Notifier.dispatchNotification(me, count);
 		}
 
 		me.currentUnreadCount = count;
@@ -803,25 +805,29 @@ Ext.define('Rambox.ux.WebView',{
 	}
 
 	,zoomIn: function() {
-		var me = this;
-		var webview = me.getWebView();
-
-		me.zoomLevel = me.zoomLevel + 0.25;
-		if ( me.record.get('enabled') ) {
-			webview.setZoomLevel(me.zoomLevel);
-			me.record.set('zoomLevel', me.zoomLevel);
-		}
+		if ( this.timeout ) clearTimeout( this.timeout );
+			this.timeout = setTimeout(() => {
+				var me = this;
+				var webview = me.getWebView();
+				me.zoomLevel = me.zoomLevel + 0.25;
+				if ( me.record.get('enabled') ) {
+					webview.setZoomLevel(me.zoomLevel);
+					me.record.set('zoomLevel', me.zoomLevel);
+				}
+		}, 100);
 	}
 
 	,zoomOut: function() {
-		var me = this;
-		var webview = me.getWebView();
-
-		me.zoomLevel = me.zoomLevel - 0.25;
-		if ( me.record.get('enabled') ) {
-			webview.setZoomLevel(me.zoomLevel);
-			me.record.set('zoomLevel', me.zoomLevel);
-		}
+		if ( this.timeout ) clearTimeout( this.timeout );
+			this.timeout = setTimeout(() => {
+				var me = this;
+				var webview = me.getWebView();
+				me.zoomLevel = me.zoomLevel - 0.25;
+				if ( me.record.get('enabled') ) {
+					webview.setZoomLevel(me.zoomLevel);
+					me.record.set('zoomLevel', me.zoomLevel);
+				}
+		}, 100);
 	}
 
 	,resetZoom: function() {

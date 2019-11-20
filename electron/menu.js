@@ -75,9 +75,12 @@ module.exports = function(config) {
 				{
 					label: `&Clear Cache`,
 					click(item, win) {
-						win.webContents.session.clearCache(function() {
+						win.webContents.session.clearCache()
+						.then(() => {
 							win.reload();
-						});
+						}).catch(err => {
+							console.log(err)
+						})
 					}
 				},
 				{
@@ -85,9 +88,11 @@ module.exports = function(config) {
 					click(item, win) {
 						win.webContents.session.clearStorageData({
 							storages: ['localstorage']
-						}, function() {
+						}).then(() => {
 							win.reload();
-						});
+						}).catch(err => {
+							console.log(err)
+						})
 					}
 				}
 			]
@@ -172,13 +177,16 @@ module.exports = function(config) {
 					type: 'separator'
 				},
 				{
-					role: 'zoomin'
+					label: 'Zoom In',
+					click(item, win) { win.webContents.send('zoomin-webview')}
 				},
 				{
-					role: 'zoomout'
+					label: 'Zoom Out',
+					click(item, win) { win.webContents.send('zoomout-webview')}
 				},
 				{
-					role: 'resetzoom'
+					label: 'Reset Zoom',
+					click(item, win) { win.webContents.send('resetzoom-webview')}
 				}
 			]
 		},

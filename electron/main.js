@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session} = require('electron');
+const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session, globalShortcut} = require('electron');
 // Tray
 const tray = require('./tray');
 // AutoLaunch
@@ -100,6 +100,8 @@ function createWindow () {
 		,webPreferences: {
 			plugins: true
 			,partition: 'persist:rambox'
+			,nodeIntegration: true
+			,webviewTag: true
 		}
 	});
 
@@ -192,8 +194,7 @@ function createWindow () {
 				default:
 					switch (config.get('window_close_behavior')) {
 						case 'keep_in_tray':
-							mainWindow.minimize();
-							mainWindow.setSkipTaskbar(true);
+							mainWindow.hide();
 							break;
 						case 'keep_in_tray_and_taskbar':
 							mainWindow.minimize();
@@ -226,6 +227,9 @@ function createMasterPasswordWindow() {
 	mainMasterPasswordWindow = new BrowserWindow({
 		 backgroundColor: '#0675A0'
 		,frame: false
+		,webPreferences: {
+			nodeIntegration: true
+		}
 	});
 	// Open the DevTools.
 	if ( isDev ) mainMasterPasswordWindow.webContents.openDevTools();
@@ -260,7 +264,7 @@ ipcMain.on('getConfig', function(event, arg) {
 });
 ipcMain.on('sConfig', function(event, values) {
 	config.set(values);
-	event.returnValue = true;
+	event.returnValue = config;
 });
 ipcMain.on('setConfig', function(event, values) {
 	config.set(values);
@@ -419,20 +423,37 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 	if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && mainWindow.isVisible() ) { // Maximized
 		!allwaysShow ? mainWindow.close() : mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Minimized
+		if ( process.platform === 'linux' ) {
+			mainWindow.minimize();
+			mainWindow.restore();
+			mainWindow.focus();
+			return
+		}
 		mainWindow.restore();
 	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Windowed mode
 		!allwaysShow ? mainWindow.close() : mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && mainWindow.isVisible() ) { // Closed to taskbar
+		if ( process.platform === 'linux' ) {
+			mainWindow.minimize();
+			mainWindow.restore();
+			mainWindow.focus();
+			return
+		}
 		mainWindow.restore();
-		mainWindow.show();
 	} else if ( !mainWindow.isMinimized() && mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed maximized to tray
 		mainWindow.show();
 	} else if ( !mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed windowed to tray
 		mainWindow.show();
 	} else if ( mainWindow.isMinimized() && !mainWindow.isMaximized() && !mainWindow.isVisible() ) { // Closed minimized to tray
-		mainWindow.restore();
-	} else {
 		mainWindow.show();
+	} else {
+		if ( process.platform === 'linux' ) {
+			mainWindow.minimize();
+			mainWindow.maximize();
+			mainWindow.focus();
+			return
+		}
+		mainWindow.restore();
 	}
 });
 
@@ -458,6 +479,15 @@ if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
 	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
+	globalShortcut.register('CommandOrControl+1', () => { mainWindow.webContents.send('shortcut:tab', 1); })
+	globalShortcut.register('CommandOrControl+2', () => { mainWindow.webContents.send('shortcut:tab', 2); })
+	globalShortcut.register('CommandOrControl+3', () => { mainWindow.webContents.send('shortcut:tab', 3); })
+	globalShortcut.register('CommandOrControl+4', () => { mainWindow.webContents.send('shortcut:tab', 4); })
+	globalShortcut.register('CommandOrControl+5', () => { mainWindow.webContents.send('shortcut:tab', 5); })
+	globalShortcut.register('CommandOrControl+6', () => { mainWindow.webContents.send('shortcut:tab', 6); })
+	globalShortcut.register('CommandOrControl+7', () => { mainWindow.webContents.send('shortcut:tab', 7); })
+	globalShortcut.register('CommandOrControl+8', () => { mainWindow.webContents.send('shortcut:tab', 8); })
+	globalShortcut.register('CommandOrControl+9', () => { mainWindow.webContents.send('shortcut:tab', 9); })
 });
 
 // Quit when all windows are closed.

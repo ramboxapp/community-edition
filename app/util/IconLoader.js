@@ -18,16 +18,15 @@ Ext.define('Rambox.util.IconLoader', {
 		this.loadServiceIconUrl = function (service, webview) {
 			switch (service.type) {
 				case 'slack':
-					webview.executeJavaScript(
-						"(()=>{let a=document.querySelector('.team_icon');if(!a){const d=document.querySelector('#team_menu');d&&(d.click(),a=document.querySelector('.team_icon'))}if(!a)return!1;const{style:{backgroundImage:b}}=a,c=document.createEvent('MouseEvents');return c.initEvent('mousedown',!0,!0),document.querySelector('.client_channels_list_container').dispatchEvent(c),b.slice(5,-2)})();",
-						false,
-						function (backgroundImage) {
-							if (backgroundImage) {
-								service.setTitle('<img src="'+service.icon+'" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">'+service.title);
-								service.fireEvent('iconchange', service, backgroundImage, service.icon);
-							}
+					webview.executeJavaScript("(a=>window.slackDebug.activeTeam.redux.getState().teams[a].icon.image_44)(window.slackDebug.activeTeamId);")
+					.then(backgroundImage => {
+						if (backgroundImage) {
+							service.setTitle('<img src="'+service.icon+'" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">'+service.title);
+							service.fireEvent('iconchange', service, backgroundImage, service.icon);
 						}
-					);
+					}).catch(err => {
+						console.log(err);
+					})
 					break;
 				default:
 					break;

@@ -25,212 +25,264 @@ Ext.define('Rambox.Application', {
 		,totalNotifications: 0
 	}
 	,launch: function () {
-		// Prevent track if the user have disabled this option (default: false)
-		if ( !ipc.sendSync('sendStatistics') ) {
-			ga_storage = {
-				 _enableSSL: Ext.emptyFn
-				,_disableSSL: Ext.emptyFn
-				,_setAccount: Ext.emptyFn
-				,_setDomain: Ext.emptyFn
-				,_setLocale: Ext.emptyFn
-				,_setCustomVar: Ext.emptyFn
-				,_deleteCustomVar: Ext.emptyFn
-				,_trackPageview: Ext.emptyFn
-				,_trackEvent: Ext.emptyFn
+
+		const isOnline = require('is-online');
+		(async () => {
+			await isOnline().then(res => {
+				var hideNoConnection = ipc.sendSync('getConfig').hideNoConnectionDialog
+				if ( !res && !hideNoConnection ) {
+					Ext.get('spinner') ? Ext.get('spinner').destroy() : null;
+					Ext.get('background') ? Ext.get('background').destroy() : null;
+					Ext.Msg.show({
+						title: 'No Internet Connection'
+						,msg: 'Please, check your internet connection. If you use a Proxy, please go to Preferences to configure it. Rambox will try to re-connect in 10 seconds'
+						,width: 300
+						,closable: false
+						,buttons: Ext.Msg.YESNO
+						,buttonText: {
+							yes: 'Ok'
+							,no: 'Never show this again'
+						}
+						,multiline: false
+						,fn: function(buttonValue, inputText, showConfig) {
+							if ( buttonValue === 'no' ) {
+								ipc.send('sConfig', { hideNoConnectionDialog: true });
+								hideNoConnection = true;
+							}
+						}
+						,icon: Ext.Msg.QUESTION
+					});
+					setTimeout(function() {
+						if ( !hideNoConnection ) ipc.send('reloadApp')
+					}, 10000)
+				}
+			})
+		})();
+
+		Ext.getStore('ServicesList').load(function (records, operations, success) {
+
+			if (!success) {
+				Ext.cq1('app-main').addDocked({
+					 xtype: 'toolbar'
+					,dock: 'top'
+					,ui: 'servicesnotloaded'
+					,style: { background: '#efef6d' }
+					,items: [
+						'->'
+						,{
+							 xtype: 'label'
+							,html: '<b>Services couldn\'t be loaded, some Rambox features will not be available.</b>'
+						}
+						,{
+							 xtype: 'button'
+							,text: 'Reload'
+							,handler: function() { ipc.send('reloadApp'); }
+						}
+						,'->'
+						,{
+							 glyph: 'xf00d@FontAwesome'
+							,baseCls: ''
+							,style: 'cursor:pointer;'
+							,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+						}
+					]
+				});
 			}
-		}
-
-		// Set Google Analytics events
-		ga_storage._setAccount('UA-80680424-1');
-		ga_storage._trackPageview('/index.html', 'main');
-		ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
-
-		// Load language for Ext JS library
-		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
-
-		// Initialize Auth0
-		if ( auth0Cfg.clientID !== '' && auth0Cfg.domain !== '' ) Rambox.ux.Auth0.init();
-
-		// Set cookies to help Tooltip.io messages segmentation
-		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
-		if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
-
-		// Check for updates
-		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
-
-		// Add shortcuts to switch services using CTRL + Number
-		document.keyMapping = new Ext.util.KeyMap({
-			 target: document
-			,binding: [
-				{
-					 key: "\t"
-					,ctrl: true
-					,alt: false
-					,shift: false
-					,handler: function(key) {
-						var tabPanel = Ext.cq1('app-main');
-						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-						var i = activeIndex + 1;
-
-						// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
-						if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
-
-						// skip spacer
-						while (tabPanel.items.items[i].id === 'tbfill') i++;
-
-						tabPanel.setActiveTab(i);
-					}
-				}
-				,{
-					 key: "f"
-					,ctrl: false
-					,alt: true
-					,shift: true
-					,handler: function(key) {
-						var currentTab = Ext.cq1('app-main').getActiveTab();
-						if ( currentTab.getWebView ) currentTab.showSearchBox(true);
-					}
-				}
-				,{
-					 key: "\t"
-					,ctrl: true
-					,alt: false
-					,shift: true
-					,handler: function(key) {
-						var tabPanel = Ext.cq1('app-main');
-						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-						var i = activeIndex - 1;
-						if ( i < 0 ) i = tabPanel.items.items.length - 1;
-						while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
-						tabPanel.setActiveTab( i );
-					}
-				}
-				,{
-					 key: Ext.event.Event.PAGE_DOWN
-					,ctrl: true
-					,alt: false
-					,shift: false
-					,handler: function(key) {
-						var tabPanel = Ext.cq1('app-main');
-						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-						var i = activeIndex + 1;
-
-						// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
-						if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
-
-						// skip spacer
-						while (tabPanel.items.items[i].id === 'tbfill') i++;
-
-						tabPanel.setActiveTab(i);
-					}
-				}
-				,{
-					 key: Ext.event.Event.PAGE_UP
-					,ctrl: true
-					,alt: false
-					,shift: false
-					,handler: function(key) {
-						var tabPanel = Ext.cq1('app-main');
-						var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
-						var i = activeIndex - 1;
-						if ( i < 0 ) i = tabPanel.items.items.length - 1;
-						while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
-						tabPanel.setActiveTab( i );
-					}
-				}
-				,{
-					 key: [Ext.event.Event.NUM_PLUS, Ext.event.Event.NUM_MINUS, 187, 189]
-					,ctrl: true
-					,alt: false
-					,shift: false
-					,handler: function(key) {
-						var tabPanel = Ext.cq1('app-main');
-						if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-						key === Ext.event.Event.NUM_PLUS || key === 187 ? tabPanel.getActiveTab().zoomIn() : tabPanel.getActiveTab().zoomOut();
-					}
-				}
-				,{
-					 key: [Ext.event.Event.NUM_ZERO, '0']
-					,ctrl: true
-					,alt: false
-					,shift: false
-					,handler: function(key) {
-						var tabPanel = Ext.cq1('app-main');
-						if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-						tabPanel.getActiveTab().resetZoom();
-					}
-				}
-				,{
-					 key: "123456789"
-					,ctrl: true
-					,alt: false
-					,handler: function(key) {
-						key = key - 48;
-						if ( key >= Ext.cq1('app-main').items.indexOf(Ext.getCmp('tbfill')) ) key++;
-						Ext.cq1('app-main').setActiveTab(key);
-					}
-				}
-				,{
-					 key: 188 // comma
-					,ctrl: true
-					,alt: false
-					,handler: function(key) {
-						Ext.cq1('app-main').setActiveTab(0);
-					}
-				}
-				,{
-					 key: Ext.event.Event.F1
-					,ctrl: false
-					,alt: false
-					,shift: false
-					,handler: function(key) {
-						var btn = Ext.getCmp('disturbBtn');
-						btn.toggle();
-						Ext.cq1('app-main').getController().dontDisturb(btn, true);
-					}
-				}
-				,{
-					 key: Ext.event.Event.F2
-					,ctrl: false
-					,alt: false
-					,shift: false
-					,handler: function(key) {
-						var btn = Ext.getCmp('lockRamboxBtn');
-						Ext.cq1('app-main').getController().lockRambox(btn);
-					}
-				}
-			]
-		});
-
-		// Mouse Wheel zooming
-		document.addEventListener('mousewheel', function(e) {
-			if( e.ctrlKey ) {
-				var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-
-				var tabPanel = Ext.cq1('app-main');
-				if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
-
-				if ( delta === 1 ) { // Zoom In
-					tabPanel.getActiveTab().zoomIn();
-				} else { // Zoom Out
-					tabPanel.getActiveTab().zoomOut();
+			// Prevent track if the user have disabled this option (default: false)
+			if ( !ipc.sendSync('sendStatistics') ) {
+				ga_storage = {
+					_enableSSL: Ext.emptyFn
+					,_disableSSL: Ext.emptyFn
+					,_setAccount: Ext.emptyFn
+					,_setDomain: Ext.emptyFn
+					,_setLocale: Ext.emptyFn
+					,_setCustomVar: Ext.emptyFn
+					,_deleteCustomVar: Ext.emptyFn
+					,_trackPageview: Ext.emptyFn
+					,_trackEvent: Ext.emptyFn
 				}
 			}
+
+			// Set Google Analytics events
+			ga_storage._setAccount('UA-80680424-1');
+			ga_storage._trackPageview('/index.html', 'main');
+			ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
+
+			// Load language for Ext JS library
+			Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
+
+			// Initialize Auth0
+			if ( auth0Cfg.clientID !== '' && auth0Cfg.domain !== '' ) Rambox.ux.Auth0.init();
+
+			// Set cookies to help Tooltip.io messages segmentation
+			Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
+			if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
+
+			// Check for updates
+			if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
+
+			// Add shortcuts to switch services using CTRL + Number
+			document.keyMapping = new Ext.util.KeyMap({
+				target: document
+				,binding: [
+					{
+						key: "\t"
+						,ctrl: true
+						,alt: false
+						,shift: false
+						,handler: function(key) {
+							var tabPanel = Ext.cq1('app-main');
+							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+							var i = activeIndex + 1;
+
+							// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
+							if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
+
+							// skip spacer
+							while (tabPanel.items.items[i].id === 'tbfill') i++;
+
+							tabPanel.setActiveTab(i);
+						}
+					}
+					,{
+						key: "f"
+						,ctrl: false
+						,alt: true
+						,shift: true
+						,handler: function(key) {
+							var currentTab = Ext.cq1('app-main').getActiveTab();
+							if ( currentTab.getWebView ) currentTab.showSearchBox(true);
+						}
+					}
+					,{
+						key: "\t"
+						,ctrl: true
+						,alt: false
+						,shift: true
+						,handler: function(key) {
+							var tabPanel = Ext.cq1('app-main');
+							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+							var i = activeIndex - 1;
+							if ( i < 0 ) i = tabPanel.items.items.length - 1;
+							while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
+							tabPanel.setActiveTab( i );
+						}
+					}
+					,{
+						key: Ext.event.Event.PAGE_DOWN
+						,ctrl: true
+						,alt: false
+						,shift: false
+						,handler: function(key) {
+							var tabPanel = Ext.cq1('app-main');
+							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+							var i = activeIndex + 1;
+
+							// "cycle" (go to the start) when the end is reached or the end is the spacer "tbfill"
+							if (i === tabPanel.items.items.length || i === tabPanel.items.items.length - 1 && tabPanel.items.items[i].id === 'tbfill') i = 0;
+
+							// skip spacer
+							while (tabPanel.items.items[i].id === 'tbfill') i++;
+
+							tabPanel.setActiveTab(i);
+						}
+					}
+					,{
+						key: Ext.event.Event.PAGE_UP
+						,ctrl: true
+						,alt: false
+						,shift: false
+						,handler: function(key) {
+							var tabPanel = Ext.cq1('app-main');
+							var activeIndex = tabPanel.items.indexOf(tabPanel.getActiveTab());
+							var i = activeIndex - 1;
+							if ( i < 0 ) i = tabPanel.items.items.length - 1;
+							while ( tabPanel.items.items[i].id === 'tbfill' || i < 0 ) i--;
+							tabPanel.setActiveTab( i );
+						}
+					}
+					,{
+						key: [Ext.event.Event.NUM_PLUS, Ext.event.Event.NUM_MINUS, 187, 189]
+						,ctrl: true
+						,alt: false
+						,shift: false
+						,handler: function(key) {
+							var tabPanel = Ext.cq1('app-main');
+							if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+							key === Ext.event.Event.NUM_PLUS || key === 187 ? tabPanel.getActiveTab().zoomIn() : tabPanel.getActiveTab().zoomOut();
+						}
+					}
+					,{
+						key: [Ext.event.Event.NUM_ZERO, '0']
+						,ctrl: true
+						,alt: false
+						,shift: false
+						,handler: function(key) {
+							var tabPanel = Ext.cq1('app-main');
+							if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+							tabPanel.getActiveTab().resetZoom();
+						}
+					}
+					,{
+						key: 188 // comma
+						,ctrl: true
+						,alt: false
+						,handler: function(key) {
+							Ext.cq1('app-main').setActiveTab(0);
+						}
+					}
+					,{
+						key: 'd'
+						,ctrl: false
+						,alt: true
+						,shift: true
+						,handler: function(key) {
+							var btn = Ext.getCmp('disturbBtn');
+							btn.toggle();
+							Ext.cq1('app-main').getController().dontDisturb(btn, true);
+						}
+					}
+					,{
+						key: 'l'
+						,ctrl: false
+						,alt: true
+						,shift: true
+						,handler: function(key) {
+							var btn = Ext.getCmp('lockRamboxBtn');
+							Ext.cq1('app-main').getController().lockRambox(btn);
+						}
+					}
+				]
+			});
+
+			// Mouse Wheel zooming
+			document.addEventListener('mousewheel', function(e) {
+				if( e.ctrlKey ) {
+					var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+
+					var tabPanel = Ext.cq1('app-main');
+					if ( tabPanel.items.indexOf(tabPanel.getActiveTab()) === 0 ) return false;
+
+					if ( delta === 1 ) { // Zoom In
+						tabPanel.getActiveTab().zoomIn();
+					} else { // Zoom Out
+						tabPanel.getActiveTab().zoomOut();
+					}
+				}
+			});
+
+			// Define default value
+			if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
+			ipc.send('setDontDisturb', localStorage.getItem('dontDisturb')); // We store it in config
+
+			if ( localStorage.getItem('locked') ) {
+				console.info('Lock Rambox:', 'Enabled');
+				Ext.cq1('app-main').getController().showLockWindow();
+			}
+			Ext.getStore('Services').load();
 		});
-
-		// Define default value
-		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
-		ipc.send('setDontDisturb', localStorage.getItem('dontDisturb')); // We store it in config
-
-		if ( localStorage.getItem('locked') ) {
-			console.info('Lock Rambox:', 'Enabled');
-			Ext.cq1('app-main').getController().showLockWindow();
-		}
-
-		// Remove spinner
-		Ext.get('spinner').destroy();
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {
