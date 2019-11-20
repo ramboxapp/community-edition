@@ -56,115 +56,114 @@
 
 ## Services available - 103
 
-<img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp" />
-<img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger" />
-<img width="80" align="left" src="./resources/icons/skype.png" alt="Skype" title="Skype" />
-<img width="80" align="left" src="./resources/icons/slack.png" alt="Slack" title="Slack" />
-<img width="80" align="left" src="./resources/icons/hangouts.png" alt="Hangouts" title="Hangouts" />
-<img width="80" align="left" src="./resources/icons/telegram.png" alt="Telegram" title="Telegram" />
-<img width="80" align="left" src="./resources/icons/wechat.png" alt="WeChat" title="WeChat" />
-<img width="80" align="left" src="./resources/icons/gmail.png" alt="Gmail" title="Gmail" />
-<img width="80" align="left" src="./resources/icons/inbox.png" alt="Inbox" title="Inbox" />
-<img width="80" align="left" src="./resources/icons/hipchat.png" alt="HipChat" title="HipChat" />
-<img width="80" align="left" src="./resources/icons/awsworkmail.png" alt="Amazon WorkMail" title="Amazon WorkMail" />
 
-<img width="80" align="left" src="./resources/icons/chatwork.png" alt="ChatWork" title="ChatWork"/>
-<img width="80" align="left" src="./resources/icons/groupme.png" alt="GroupMe" title="GroupMe"/>
-<img width="80" align="left" src="./resources/icons/grape.png" alt="Grape" title="Grape"/>
-<img width="80" align="left" src="./resources/icons/gitter.png" alt="Gitter" title="Gitter"/>
-<img width="80" align="left" src="./resources/icons/steam.png" alt="Steam" title="Steam"/>
-<img width="80" align="left" src="./resources/icons/discord.png" alt="Discord" title="Discord"/>
-<img width="80" align="left" src="./resources/icons/noysi.png" alt="Noysi" title="Noysi"/>
-<img width="80" align="left" src="./resources/icons/outlook.png" alt="Outlook" title="Outlook"/>
-<img width="80" align="left" src="./resources/icons/outlook365.png" alt="Outlook 365" title="Outlook 365"/>
-<img width="80" align="left" src="./resources/icons/tutanota.png" alt="TutaNota" title="TutaNota"/>
-<img width="80" align="left" src="./resources/icons/hushmail.png" alt="Hushmail" title="Hushmail" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fwhatsapp.png?alt=media" alt="WhatsApp" title="WhatsApp" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmessenger.png?alt=media" alt="Messenger" title="Messenger" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fskype.png?alt=media" alt="Skype" title="Skype" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fslack.png?alt=media" alt="Slack" title="Slack" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fhangouts.png?alt=media" alt="Hangouts" title="Hangouts" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ftelegram.png?alt=media" alt="Telegram" title="Telegram" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fwechat.png?alt=media" alt="WeChat" title="WeChat" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fgmail.png?alt=media" alt="Gmail" title="Gmail" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Finbox.png?alt=media" alt="Inbox" title="Inbox" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fawsworkmail.png?alt=media" alt="Amazon WorkMail" title="Amazon WorkMail" />
 
-<img width="80" align="left" src="./resources/icons/bearychat.png" alt="BearyChat" title="BearyChat" />
-<img width="80" align="left" src="./resources/icons/aol.png" alt="Aol" title="Aol" />
-<img width="80" align="left" src="./resources/icons/sync.png" alt="Sync" title="Sync" />
-<img width="80" align="left" src="./resources/icons/wire.png" alt="Wire" title="Wire" />
-<img width="80" align="left" src="./resources/icons/rocketchat.png" alt="Rocket Chat" title="Rocket Chat" />
-<img width="80" align="left" src="./resources/icons/missive.png" alt="Missive" title="Missive" />
-<img width="80" align="left" src="./resources/icons/yahoo.png" alt="Yahoo! Mail" title="Yahoo! Mail" />
-<img width="80" align="left" src="./resources/icons/ryver.png" alt="Ryver" title="Ryver" />
-<img width="80" align="left" src="./resources/icons/yandex.png" alt="Yandex Mail" title="Yandex Mail" />
-<img width="80" align="left" src="./resources/icons/dasher.png" alt="Dasher" title="Dasher" />
-<img width="80" align="left" src="./resources/icons/dingtalk.png" alt="DingTalk" title="DingTalk" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fchatwork.png?alt=media" alt="ChatWork" title="ChatWork"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fgroupme.png?alt=media" alt="GroupMe" title="GroupMe"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fgrape.png?alt=media" alt="Grape" title="Grape"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fgitter.png?alt=media" alt="Gitter" title="Gitter"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fsteam.png?alt=media" alt="Steam" title="Steam"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fdiscord.png?alt=media" alt="Discord" title="Discord"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fnoysi.png?alt=media" alt="Noysi" title="Noysi"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Foutlook.png?alt=media" alt="Outlook" title="Outlook"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Foutlook365.png?alt=media" alt="Outlook 365" title="Outlook 365"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ftutanota.png?alt=media" alt="TutaNota" title="TutaNota"/>
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fhushmail.png?alt=media" alt="Hushmail" title="Hushmail" />
 
-<img width="80" align="left" src="./resources/icons/flowdock.png" alt="FlowDock" title="FlowDock" />
-<img width="80" align="left" src="./resources/icons/mattermost.png" alt="Mattermost" title="Mattermost" />
-<img width="80" align="left" src="./resources/icons/voxer.png" alt="Voxer" title="Voxer" />
-<img width="80" align="left" src="./resources/icons/glip.png" alt="Glip" title="Glip" />
-<img width="80" align="left" src="./resources/icons/yahoomessenger.png" alt="Yahoo! Messenger" title="Yahoo! Messenger" />
-<img width="80" align="left" src="./resources/icons/mysms.png" alt="mysms" title="mysms" />
-<img width="80" align="left" src="./resources/icons/icq.png" alt="ICQ" title="ICQ" />
-<img width="80" align="left" src="./resources/icons/tweetdeck.png" alt="TweetDeck" title="TweetDeck" />
-<img width="80" align="left" src="./resources/icons/zinc.png" alt="Zinc" title="Zinc" />
-<img width="80" align="left" src="./resources/icons/freenode.png" alt="FreeNode" title="FreeNode" />
-<img width="80" align="left" src="./resources/icons/mightytext.png" alt="MightyText" title="MightyText" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fbearychat.png?alt=media" alt="BearyChat" title="BearyChat" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Faol.png?alt=media" alt="Aol" title="Aol" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fsync.png?alt=media" alt="Sync" title="Sync" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fwire.png?alt=media" alt="Wire" title="Wire" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Frocketchat.png?alt=media" alt="Rocket Chat" title="Rocket Chat" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmissive.png?alt=media" alt="Missive" title="Missive" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fyahoo.png?alt=media" alt="Yahoo! Mail" title="Yahoo! Mail" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fryver.png?alt=media" alt="Ryver" title="Ryver" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fyandex.png?alt=media" alt="Yandex Mail" title="Yandex Mail" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fdasher.png?alt=media" alt="Dasher" title="Dasher" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fdingtalk.png?alt=media" alt="DingTalk" title="DingTalk" />
 
-<img width="80" align="left" src="./resources/icons/zohoemail.png" alt="Zoho Email" title="Zoho Email" />
-<img width="80" align="left" src="./resources/icons/zohocliq.png" alt="Zoho Cliq" title="Zoho Cliq" />
-<img width="80" align="left" src="./resources/icons/roundcube.png" alt="Roundcube" title="Roundcube" />
-<img width="80" align="left" src="./resources/icons/horde.png" alt="Horde" title="Horde" />
-<img width="80" align="left" src="./resources/icons/squirrelmail.png" alt="SquirrelMail" title="SquirrelMail" />
-<img width="80" align="left" src="./resources/icons/zimbra.png" alt="Zimbra" title="Zimbra" />
-<img width="80" align="left" src="./resources/icons/hootsuite.png" alt="Hootsuite" title="Hootsuite" />
-<img width="80" align="left" src="./resources/icons/amium.png" alt="Amium" title="Amium" />
-<img width="80" align="left" src="./resources/icons/rainloop.png" alt="RainLoop" title="RainLoop" />
-<img width="80" align="left" src="./resources/icons/icloud.png" alt="iCloud Mail" title="iCloud Mail" />
-<img width="80" align="left" src="./resources/icons/irccloud.png" alt="IRC Cloud" title="IRC Cloud" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fflowdock.png?alt=media" alt="FlowDock" title="FlowDock" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmattermost.png?alt=media" alt="Mattermost" title="Mattermost" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fvoxer.png?alt=media" alt="Voxer" title="Voxer" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fglip.png?alt=media" alt="Glip" title="Glip" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmysms.png?alt=media" alt="mysms" title="mysms" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ficq.png?alt=media" alt="ICQ" title="ICQ" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ftweetdeck.png?alt=media" alt="TweetDeck" title="TweetDeck" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fzinc.png?alt=media" alt="Zinc" title="Zinc" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ffreenode.png?alt=media" alt="FreeNode" title="FreeNode" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmightytext.png?alt=media" alt="MightyText" title="MightyText" />
 
-<img width="80" align="left" src="./resources/icons/kiwi.png" alt="Kiwi IRC" title="Kiwi IRC" />
-<img width="80" align="left" src="./resources/icons/smooch.png" alt="Smooch" title="Smooch" />
-<img width="80" align="left" src="./resources/icons/crisp.png" alt="Crisp" title="Crisp" />
-<img width="80" align="left" src="./resources/icons/flock.png" alt="Flock" title="Flock" />
-<img width="80" align="left" src="./resources/icons/openmailbox.png" alt="Openmailbox" title="Openmailbox" />
-<img width="80" align="left" src="./resources/icons/typetalk.png" alt="Typetalk" title="Typetalk" />
-<img width="80" align="left" src="./resources/icons/drift.png" alt="Drift" title="Drift" />
-<img width="80" align="left" src="./resources/icons/webexteams.png" alt="Cisco Webex Teams" title="Cisco Webex Teams" />
-<img width="80" align="left" src="./resources/icons/fleep.png" alt="Fleep" title="Fleep" />
-<img width="80" align="left" src="./resources/icons/socialcast.png" alt="Socialcast" title="Socialcast" />
-<img width="80" align="left" src="./resources/icons/riot.png" alt="Riot" title="Riot" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fzohoemail.png?alt=media" alt="Zoho Email" title="Zoho Email" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fzohocliq.png?alt=media" alt="Zoho Cliq" title="Zoho Cliq" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Froundcube.png?alt=media" alt="Roundcube" title="Roundcube" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fhorde.png?alt=media" alt="Horde" title="Horde" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fsquirrelmail.png?alt=media" alt="SquirrelMail" title="SquirrelMail" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fzimbra.png?alt=media" alt="Zimbra" title="Zimbra" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fhootsuite.png?alt=media" alt="Hootsuite" title="Hootsuite" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Famium.png?alt=media" alt="Amium" title="Amium" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Frainloop.png?alt=media" alt="RainLoop" title="RainLoop" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ficloud.png?alt=media" alt="iCloud Mail" title="iCloud Mail" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Firccloud.png?alt=media" alt="IRC Cloud" title="IRC Cloud" />
 
-<img width="80" align="left" src="./resources/icons/pushbullet.png" alt="Pushbullet" title="Pushbullet" />
-<img width="80" align="left" src="./resources/icons/movim.png" alt="Movim" title="Movim" />
-<img width="80" align="left" src="./resources/icons/kaiwa.png" alt="Kaiwa" title="Kaiwa" />
-<img width="80" align="left" src="./resources/icons/zyptonite.png" alt="Zyptonite" title="Zyptonite" />
-<img width="80" align="left" src="./resources/icons/linkedin.png" alt="LinkedIn" title="LinkedIn" />
-<img width="80" align="left" src="./resources/icons/lounge.png" alt="The Lounge" title="The Lounge" />
-<img width="80" align="left" src="./resources/icons/kezmo.png" alt="Kezmo" title="Kezmo" />
-<img width="80" align="left" src="./resources/icons/teams.png" alt="Teams" title="Teams" />
-<img width="80" align="left" src="./resources/icons/xing.png" alt="Xing" title="Xing" />
-<img width="80" align="left" src="./resources/icons/workplace.png" alt="Workplace" title="Workplace" />
-<img width="80" align="left" src="./resources/icons/fastmail.png" alt="FastMail" title="FastMail" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fkiwi.png?alt=media" alt="Kiwi IRC" title="Kiwi IRC" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fsmooch.png?alt=media" alt="Smooch" title="Smooch" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fcrisp.png?alt=media" alt="Crisp" title="Crisp" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fflock.png?alt=media" alt="Flock" title="Flock" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fopenmailbox.png?alt=media" alt="Openmailbox" title="Openmailbox" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ftypetalk.png?alt=media" alt="Typetalk" title="Typetalk" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fdrift.png?alt=media" alt="Drift" title="Drift" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fwebexteams.png?alt=media" alt="Cisco Webex Teams" title="Cisco Webex Teams" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ffleep.png?alt=media" alt="Fleep" title="Fleep" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fsocialcast.png?alt=media" alt="Socialcast" title="Socialcast" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Friot.png?alt=media" alt="Riot" title="Riot" />
 
-<img width="80" align="left" src="./resources/icons/hibox.png" alt="Hibox" title="Hibox" />
-<img width="80" align="left" src="./resources/icons/jandi.png" alt="Jandi" title="Jandi" />
-<img width="80" align="left" src="./resources/icons/threema.png" alt="Threema" title="Threema" />
-<img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Pages" title="Messenger for Pages" />
-<img width="80" align="left" src="./resources/icons/vk.png" alt="VK Messenger" title="VK Messenger" />
-<img width="80" align="left" src="./resources/icons/mastodon.png" alt="Mastodon" title="Mastodon" />
-<img width="80" align="left" src="./resources/icons/teamworkchat.png" alt="Teamwork Chat" title="Teamwork Chat" />
-<img width="80" align="left" src="./resources/icons/clocktweets.png" alt="ClockTweets" title="ClockTweets" />
-<img width="80" align="left" src="./resources/icons/intercom.png" alt="Intercom" title="Intercom" />
-<img width="80" align="left" src="./resources/icons/googlevoice.png" alt="Voice" title="Voice" />
-<img width="80" align="left" src="./resources/icons/sandstorm.png" alt="Sandstorm" title="Sandstorm" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fpushbullet.png?alt=media" alt="Pushbullet" title="Pushbullet" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmovim.png?alt=media" alt="Movim" title="Movim" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fkaiwa.png?alt=media" alt="Kaiwa" title="Kaiwa" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fzyptonite.png?alt=media" alt="Zyptonite" title="Zyptonite" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Flinkedin.png?alt=media" alt="LinkedIn" title="LinkedIn" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Flounge.png?alt=media" alt="The Lounge" title="The Lounge" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fkezmo.png?alt=media" alt="Kezmo" title="Kezmo" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fteams.png?alt=media" alt="Teams" title="Teams" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fxing.png?alt=media" alt="Xing" title="Xing" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fworkplace.png?alt=media" alt="Workplace" title="Workplace" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ffastmail.png?alt=media" alt="FastMail" title="FastMail" />
 
-<img width="80" align="left" src="./resources/icons/gadugadu.png" alt="Gadu-Gadu" title="Gadu-Gadu" />
-<img width="80" align="left" src="./resources/icons/mailru.png" alt="Mail.Ru" title="Mail.Ru" />
-<img width="80" align="left" src="./resources/icons/kune.png" alt="Kune" title="Kune" />
-<img width="80" align="left" src="./resources/icons/zulip.png" alt="Zulip" title="Zulip" />
-<img width="80" align="left" src="./resources/icons/stride.png" alt="Stride" title="Stride" />
-<img width="80" align="left" src="./resources/icons/hangoutschat.png" alt="Hangouts Chat" title="Hangouts Chat" />
-<img width="80" align="left" src="./resources/icons/messengerpages.png" alt="Messenger for Business" title="Messenger for Business" />
-<img width="80" align="left" src="./resources/icons/androidmessages.png" alt="Android Messages" title="Android Messages">
-<img width="80" align="left" src="./resources/icons/sococo.png" alt="Sococo" title="Sococo">
-<img width="80" align="left" src="./resources/icons/tawkto.png" alt="Tawk.to" title="Tawk.to">
-<img width="80" align="left" src="./resources/icons/protonmail.png" alt="ProtonMail & ProtonMail Onion" title="ProtonMail & ProtonMail Onion">
-<img width="80" align="left" src="./resources/icons/devrant.png" alt="devRant" title="devRant">
-<img width="80" align="left" src="./resources/icons/reddit.png" alt="Reddit" title="Reddit">
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fhibox.png?alt=media" alt="Hibox" title="Hibox" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fjandi.png?alt=media" alt="Jandi" title="Jandi" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fthreema.png?alt=media" alt="Threema" title="Threema" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmessengerpages.png?alt=media" alt="Messenger for Pages" title="Messenger for Pages" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fvk.png?alt=media" alt="VK Messenger" title="VK Messenger" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmastodon.png?alt=media" alt="Mastodon" title="Mastodon" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fteamworkchat.png?alt=media" alt="Teamwork Chat" title="Teamwork Chat" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fclocktweets.png?alt=media" alt="ClockTweets" title="ClockTweets" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fintercom.png?alt=media" alt="Intercom" title="Intercom" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fgooglevoice.png?alt=media" alt="Voice" title="Voice" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fsandstorm.png?alt=media" alt="Sandstorm" title="Sandstorm" />
+
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fgadugadu.png?alt=media" alt="Gadu-Gadu" title="Gadu-Gadu" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmailru.png?alt=media" alt="Mail.Ru" title="Mail.Ru" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fkune.png?alt=media" alt="Kune" title="Kune" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fzulip.png?alt=media" alt="Zulip" title="Zulip" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fstride.png?alt=media" alt="Stride" title="Stride" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fhangoutschat.png?alt=media" alt="Hangouts Chat" title="Hangouts Chat" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fmessengerpages.png?alt=media" alt="Messenger for Business" title="Messenger for Business" />
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fandroidmessages.png?alt=media" alt="Android Messages" title="Android Messages">
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fsococo.png?alt=media" alt="Sococo" title="Sococo">
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Ftawkto.png?alt=media" alt="Tawk.to" title="Tawk.to">
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fprotonmail.png?alt=media" alt="ProtonMail & ProtonMail Onion" title="ProtonMail & ProtonMail Onion">
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fdevrant.png?alt=media" alt="devRant" title="devRant">
+<img width="80" align="left" src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Freddit.png?alt=media" alt="Reddit" title="Reddit">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Features
