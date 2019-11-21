@@ -456,6 +456,7 @@ Ext.define('Rambox.ux.WebView',{
 			e.preventDefault();
 		});
 
+		let eventsOnDom = false;
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
 			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
@@ -501,38 +502,40 @@ Ext.define('Rambox.ux.WebView',{
 				});
 				me.down('statusbar').down('button').show();
 			});
+			if (!eventsOnDom) {
+				webview.getWebContents().on('before-input-event', (event, input) => {
+					if (input.type !== 'keyDown') return;
 
+					var modifiers = [];
+					if ( input.shift ) modifiers.push('shift');
+					if ( input.control ) modifiers.push('control');
+					if ( input.alt ) modifiers.push('alt');
+					if ( input.meta ) modifiers.push('meta');
+					if ( input.isAutoRepeat  ) modifiers.push('isAutoRepeat');
+
+					if ( input.key === 'Tab' && !(modifiers && modifiers.length) ) return;
+
+					// Maps special keys to fire the correct event in Mac OS
+					if ( require('electron').remote.process.platform === 'darwin' ) {
+						var keys = [];
+						keys['ƒ'] = 'f'; // Search
+						keys[' '] = 'l'; // Lock
+
+						input.key = keys[input.key] ? keys[input.key] : input.key;
+					}
+
+					if ( input.key === 'F11' || input.key === 'F12' || input.key === 'q' || (input.key === 'F1' && modifiers.includes('control'))) return;
+
+					require('electron').remote.getCurrentWebContents().sendInputEvent({
+						type: input.type,
+						keyCode: input.key,
+						modifiers: modifiers
+					});
+				})
+				eventsOnDom = true;
+			}
 			webview.executeJavaScript(js_inject).then(result => {} ).catch(err => { console.log(err) })
 		});
-		webview.getWebContents().on('before-input-event', (event, input) => {
-			if (input.type !== 'keyDown') return;
-
-			var modifiers = [];
-			if ( input.shift ) modifiers.push('shift');
-			if ( input.control ) modifiers.push('control');
-			if ( input.alt ) modifiers.push('alt');
-			if ( input.meta ) modifiers.push('meta');
-			if ( input.isAutoRepeat  ) modifiers.push('isAutoRepeat');
-
-			if ( input.key === 'Tab' && !(modifiers && modifiers.length) ) return;
-
-			// Maps special keys to fire the correct event in Mac OS
-			if ( require('electron').remote.process.platform === 'darwin' ) {
-				var keys = [];
-				keys['ƒ'] = 'f'; // Search
-				keys[' '] = 'l'; // Lock 
-
-				input.key = keys[input.key] ? keys[input.key] : input.key;
-			}
-
-			if ( input.key === 'F11' || input.key === 'F12' || input.key === 'q' || (input.key === 'F1' && modifiers.includes('control'))) return;
-
-			require('electron').remote.getCurrentWebContents().sendInputEvent({
-				type: input.type,
-				keyCode: input.key,
-				modifiers: modifiers
-			});
-		})
 
 		webview.addEventListener('ipc-message', function(event) {
 			var channel = event.channel;
