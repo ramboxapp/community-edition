@@ -157,18 +157,19 @@ Ext.define('Hamsket.view.main.MainController', {
 		function clearData(webview, tab, resolve) {
 			webview.getWebContents().clearHistory();
 			webview.getWebContents().session.flushStorageData();
-			webview.getWebContents().session.clearCache(function () {
-				webview.getWebContents().session.clearStorageData(function () {
-					webview.getWebContents().session.cookies.flushStore(function() {
-						// Remove record from localStorage
-						Ext.getStore('Services').remove(rec);
-						// Close tab
-						tab.close();
-						if ( Ext.isFunction(resolve) ) resolve();
-						// Close waiting message
-						if ( total === actual ) Ext.Msg.hide();
-					});
-				});
+			webview.getWebContents().session.clearCache()
+			.then(webview.getWebContents().session.clearStorageData)
+			.then(webview.getWebContents().session.cookies.flushStore)
+			.then(function() {
+				// Remove record from localStorage
+				Ext.getStore('Services').remove(rec);
+				// Close tab
+				tab.close();
+				if ( Ext.isFunction(resolve) ) resolve();
+				// Close waiting message
+				if ( total === actual ) {
+					Ext.Msg.hide();
+				}
 			});
 		}
 	}
