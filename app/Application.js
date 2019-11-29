@@ -165,7 +165,7 @@ Ext.define('Rambox.Application', {
 				if ( currentTab.getWebView ) currentTab.showSearchBox(true);
 			});
 			// Add shortcut to Do Not Disturb
-			Mousetrap.bind(platform === 'darwin' ? ["command+d"] : ["shift+alt+d"], function(e, combo) {
+			Mousetrap.bind(platform === 'darwin' ? ["command+alt+d"] : ["shift+alt+d"], function(e, combo) {
 				var btn = Ext.getCmp('disturbBtn');
 				btn.toggle();
 				Ext.cq1('app-main').getController().dontDisturb(btn, true);

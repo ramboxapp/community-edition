@@ -520,6 +520,7 @@ Ext.define('Rambox.ux.WebView',{
 						var keys = [];
 						keys['ƒ'] = 'f'; // Search
 						keys[' '] = 'l'; // Lock
+						keys['∂'] = 'd'; // DND
 
 						input.key = keys[input.key] ? keys[input.key] : input.key;
 					}
