@@ -524,7 +524,7 @@ Ext.define('Rambox.ux.WebView',{
 						input.key = keys[input.key] ? keys[input.key] : input.key;
 					}
 
-					if ( input.key === 'F11' || input.key === 'F12' || input.key === 'q' || (input.key === 'F1' && modifiers.includes('control'))) return;
+					if ( input.key === 'F11' || input.key === 'a' || input.key === 'A' || input.key === 'F12' || input.key === 'q' || (input.key === 'F1' && modifiers.includes('control'))) return;
 
 					require('electron').remote.getCurrentWebContents().sendInputEvent({
 						type: input.type,
