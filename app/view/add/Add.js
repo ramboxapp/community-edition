@@ -61,7 +61,7 @@ Ext.define('Rambox.view.add.Add',{
 							,{
 								 xtype: 'textfield'
 								,name: 'url'
-								,value: me.edit && me.service.get('url').indexOf('___') >= 0 ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '').replace('/', '') : (me.record.get('url').indexOf('___') === -1 ? me.record.get('url') : '')
+								,value: me.edit && me.service.get('url').indexOf('___') >= 0 ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '').endsWith('/') ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '').slice(0, -1) : me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '') : (me.record.get('url').indexOf('___') === -1 ? me.record.get('url') : '')
 								,readOnly: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain')) : me.record.get('url').indexOf('___') === -1 && me.record.get('custom_domain')
 								,allowBlank: false
 								,submitEmptyText: false
