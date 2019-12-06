@@ -285,6 +285,13 @@ Ext.define('Rambox.ux.WebView',{
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
+
+			webview.getWebContents().session.webRequest.onBeforeSendHeaders((details, callback) => {
+				let googleLoginURLs = ['accounts.google.com/signin/oauth', 'accounts.google.com/ServiceLogin']
+				googleLoginURLs.forEach((loginURL) => {	if ( details.url.indexOf(loginURL) > -1 ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'; })
+				callback({ cancel: false, requestHeaders: details.requestHeaders });
+			});
+
 			if ( !me.down('statusbar').closed || !me.down('statusbar').keep ) me.down('statusbar').show();
 			me.down('statusbar').showBusy();
 		});
