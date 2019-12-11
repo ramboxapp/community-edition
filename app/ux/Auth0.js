@@ -270,6 +270,16 @@ Ext.define('Rambox.ux.Auth0', {
 
 		authWindow.loadURL(me.authService.requestAuthCode());
 
+		authWindow.webContents.on('did-start-loading', function(e) {
+			authWindow.webContents.session.webRequest.onBeforeSendHeaders((details, callback) => {
+				let googleLoginURLs = ['accounts.google.com/signin/oauth', 'accounts.google.com/ServiceLogin']
+
+				googleLoginURLs.forEach((loginURL) => {
+					if ( details.url.indexOf(loginURL) > -1 ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' })
+				callback({ cancel: false, requestHeaders: details.requestHeaders });
+			});
+		});
+
 		authWindow.webContents.on('did-navigate', function(e, url) {
 			me.authService.requestAccessCode(url, me.onLogin.bind(me), authWindow);
 		});

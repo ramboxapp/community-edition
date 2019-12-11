@@ -275,6 +275,7 @@ Ext.define('Rambox.ux.WebView',{
 		if ( !me.record.get('enabled') ) return;
 
 		var webview = me.getWebView();
+		let googleLoginURLs = ['accounts.google.com/signin/oauth', 'accounts.google.com/ServiceLogin']
 
 		// Google Analytics Event
 		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
@@ -287,8 +288,7 @@ Ext.define('Rambox.ux.WebView',{
 			console.info('Start loading...', me.src);
 
 			webview.getWebContents().session.webRequest.onBeforeSendHeaders((details, callback) => {
-				let googleLoginURLs = ['accounts.google.com/signin/oauth', 'accounts.google.com/ServiceLogin']
-				googleLoginURLs.forEach((loginURL) => {	if ( details.url.indexOf(loginURL) > -1 ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'; })
+				googleLoginURLs.forEach((loginURL) => {	if ( details.url.indexOf(loginURL) > -1 ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'})
 				callback({ cancel: false, requestHeaders: details.requestHeaders });
 			});
 
@@ -541,6 +541,8 @@ Ext.define('Rambox.ux.WebView',{
 					});
 				})
 				eventsOnDom = true;
+
+				googleLoginURLs.forEach((loginURL) => {	if ( webview.getURL().indexOf(loginURL) > -1 ) webview.reload() })
 			}
 			webview.executeJavaScript(js_inject).then(result => {} ).catch(err => { console.log(err) })
 		});
