@@ -775,7 +775,7 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,setZoomLevel(level)
 	{
-		this.getWebContents().setZoomLevel(level);
+		this.getWebContents().zoomLevel = level;
 	}
 
 	,zoomIn() {

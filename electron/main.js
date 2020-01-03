@@ -249,7 +249,7 @@ function updateBadge(title) {
 
 		mainWindow.webContents.send('setBadge', messageCount);
 	} else { // macOS & Linux
-		app.setBadgeCount(messageCount);
+		app.badgeCount = messageCount;
 	}
 
 	if ( messageCount > 0 && !mainWindow.isFocused() && !config.get('dont_disturb') && config.get('flash_frame') ) mainWindow.flashFrame(true);

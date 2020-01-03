@@ -2,7 +2,7 @@
 const os = require('os');
 const {app, BrowserWindow, Menu, shell}  = require('electron');
 const path = require('path');
-const appName = app.getName();
+const appName = app.name;
 
 function sendAction(action, ...args) {
 	const win = BrowserWindow.getAllWindows()[0];
@@ -49,7 +49,7 @@ module.exports = function(config) {
 
 	<!-- DON'T REMOVE THE FOLLOWING LINES -->
 	-
-	> ${app.getName()} ${app.getVersion()}
+	> ${app.name} ${app.getVersion()}
 	> Electron ${process.versions.electron}
 	> ${process.platform} ${process.arch} ${os.release()}
 	> ${buildversion}`;
