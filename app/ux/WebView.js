@@ -917,7 +917,7 @@ Ext.define('Hamsket.ux.WebView',{
 		platform = platform ? platform : require('electron').remote.require('os').platform();
 		switch (platform) {
 			case 'win32':
-				platform = `Windows NT ${me.getOSRelease(platform)}; ${me.getOSArch(platform)}`;
+				platform = `${me.getOSRelease(platform)}; ${me.getOSArch(platform)}`;
 				break;
 			case 'linux':
 				platform = `X11; Linux ${me.getOSArch(platform)}`;
