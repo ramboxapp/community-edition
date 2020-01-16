@@ -883,7 +883,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: 'Text on your computer with Messages for web.'
 			,url: 'https://messages.google.com/web'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{hamsket.updateBadge(Array.prototype.slice.apply(document.querySelectorAll(".text-content.unread")).reduce((c,b) => b.querySelector(".notifications-off")||1,0))};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{hamsket.updateBadge(Array.prototype.slice.apply(document.querySelectorAll(".text-content.unread")).reduce((c,b) => !b.querySelector(".notifications-off")+c,0))};setInterval(checkUnread,3e3);`
 		}
 	]
 });
