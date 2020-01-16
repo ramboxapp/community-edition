@@ -875,6 +875,15 @@ Ext.define('Hamsket.store.ServicesList', {
 			,titleBlink: true
 			,manual_notifications: true
 			,js_unread: `let checkUnread=()=>{hamsket.updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)};setInterval(checkUnread,3e3);`
+		},
+		{
+			 id: 'androidmessages'
+			,logo: 'androidmessages.png'
+			,name: 'Android Messages'
+			,description: 'Text on your computer with Messages for web.'
+			,url: 'https://messages.google.com/web'
+			,type: 'messaging'
+			,js_unread: `let checkUnread=()=>{hamsket.updateBadge(Array.prototype.slice.apply(document.querySelectorAll(".text-content.unread")).reduce((c,b) => b.querySelector(".notifications-off")||1,0))};setInterval(checkUnread,3e3);`
 		}
 	]
 });
