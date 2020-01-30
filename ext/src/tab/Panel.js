@@ -43,12 +43,12 @@
  *             }
  *         }]
  *     });
- * 
+ *
  * ## Vetoing Changes
- * 
+ *
  * User interaction when changing the tabs can be vetoed by listening to the {@link #beforetabchange} event.
  * By returning `false`, the tab change will not occur.
- * 
+ *
  *     @example
  *     Ext.create('Ext.tab.Panel', {
  *         renderTo: Ext.getBody(),
@@ -66,7 +66,7 @@
  *         }, {
  *             title: 'P3'
  *         }]
- *     }); 
+ *     });
  *
  * # Examples
  *
@@ -316,8 +316,8 @@ Ext.define('Ext.tab.Panel', {
 
         /**
          * @cfg {"top"/"bottom"/"left"/"right"} tabPosition
-         * The position where the tab strip should be rendered. Possible values are: 
-         * 
+         * The position where the tab strip should be rendered. Possible values are:
+         *
          *  - top
          *  - bottom
          *  - left
@@ -488,13 +488,13 @@ Ext.define('Ext.tab.Panel', {
             tabBar.setActiveTab(activeTab.tab, true);
         }
     },
-    
+
     /**
      * @method getTabBar
      * Returns the {@link Ext.tab.Bar} associated with this tabPanel.
      * @return {Ext.tab.Bar} The tabBar for this tabPanel
      */
-    
+
     /**
      * @method setTabBar
      * @hide
@@ -573,6 +573,9 @@ Ext.define('Ext.tab.Panel', {
             else {
                 Ext.resumeLayouts(true);
             }
+						var currentTab = me.getActiveTab();
+						var content = currentTab.body.dom.querySelector('webview');
+						if (content) content.focus();
             return card;
         }
         return previous;
@@ -771,7 +774,7 @@ Ext.define('Ext.tab.Panel', {
     onItemIconChange: function(item, newIcon) {
         item.tab.setIcon(newIcon);
     },
-    
+
     /**
      * @private
      * Update the tab iconCls when panel iconCls has been set or changed.
