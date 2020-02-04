@@ -40,8 +40,7 @@ Ext.define('Hamsket.view.main.MainController', {
 			return;
 		}
 
-		const webview = newTab.getWebView();
-		if ( webview ) webview.focus();
+		newTab.focus();
 
 		// Update the main window so it includes the active tab title.
 		if ( Hamsket.app.getTotalNotifications() > 0 ) {
