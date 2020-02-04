@@ -63,9 +63,11 @@ Ext.define('Hamsket.view.main.MainController', {
 			if ( t.id !== 'hamsketTab' && t.id !== 'tbfill' && t.record.get('enabled') ) {
 				const rec = store.getById(t.record.get('id'));
 				if ( align === 'right' ) i--;
-				rec.set('align', align);
-				rec.set('position', i);
-				rec.save();
+				if (rec) {
+					rec.set('align', align);
+					rec.set('position', i);
+					rec.save();
+				}
 			}
 			else if ( t.id === 'tbfill' ) {
 				align = 'right';
@@ -147,20 +149,19 @@ Ext.define('Hamsket.view.main.MainController', {
 			// Get Tab
 			// Clear all trash data
 			const tab = Ext.getCmp('tab_'+serviceId);
-			const webview = tab.getWebView();
-			clearData(webview, tab, resolve);
+			clearData(tab, resolve);
 		}
 
 		const config = ipc.sendSync('getConfig');
 		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'hamsketTab' }));
 
-		function clearData(webview, tab, resolve) {
-			webview.getWebContents().clearHistory();
-			webview.getWebContents().session.flushStorageData();
-			webview.getWebContents().session.clearCache()
-			.then(webview.getWebContents().session.clearStorageData)
-			.then(webview.getWebContents().session.cookies.flushStore)
-			.then(function() {
+		function clearData(tab, resolve) {
+			tab.getWebContents().clearHistory();
+			tab.getWebContents().session.flushStorageData();
+			tab.getWebContents().session.clearCache()
+			.then(tab.getWebContents().session.clearStorageData)
+			.then(tab.getWebContents().session.cookies.flushStore)
+			.finally(function() {
 				// Remove record from localStorage
 				Ext.getStore('Services').remove(rec);
 				// Close tab
