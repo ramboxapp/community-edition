@@ -482,7 +482,7 @@ Ext.define('Hamsket.ux.WebView',{
 			js_inject += 'document.body.scrollTop=0;';
 
 			// Handles Certificate Errors
-			webview.getWebContents().on('certificate-error', function(event, url, error, certificate, callback) {
+			me.getWebContents().on('certificate-error', function(event, url, error, certificate, callback) {
 				if ( me.record.get('trust') ) {
 					event.preventDefault();
 					callback(true);
@@ -817,7 +817,10 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getWebContents() {
 		if ( this.record.get('enabled') ) {
-			return this.getWebView().getWebContents();
+			const remote = require('electron').remote;
+			const webview = this.getWebView();
+			const id = webview.getWebContentsId();
+			return remote.webContents.fromId(id);
 		} else {
 			return false;
 		}
