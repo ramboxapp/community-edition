@@ -168,7 +168,7 @@ Ext.define('Hamsket.view.main.MainController', {
 				if ( Ext.isFunction(resolve) ) resolve();
 				// Close waiting message
 				if ( total === actual ) {
-					Ext.Msg.hide();
+					Ext.Msg.close();
 				}
 			});
 		}
