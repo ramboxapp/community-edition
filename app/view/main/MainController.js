@@ -139,27 +139,28 @@ Ext.define('Hamsket.view.main.MainController', {
 			rec.set('enabled', true);
 			me.onEnableDisableService(null, Ext.getStore('Services').indexOf(rec), true, null, true);
 			const tab = Ext.getCmp('tab_'+serviceId);
-			const webview = tab.getWebView();
+			const webcontents = tab.getWebContents();
 
 			webview.addEventListener("did-start-loading", function() {
-				clearData(tab, resolve);
+				clearData(webcontents, tab, resolve);
 			});
 		} else {
 			// Get Tab
 			// Clear all trash data
 			const tab = Ext.getCmp('tab_'+serviceId);
-			clearData(tab, resolve);
+			const webcontents = tab.getWebContents();
+			clearData(webcontents, tab, resolve);
 		}
 
 		const config = ipc.sendSync('getConfig');
 		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'hamsketTab' }));
 
-		function clearData(tab, resolve) {
-			tab.getWebContents().clearHistory();
-			tab.getWebContents().session.flushStorageData();
-			tab.getWebContents().session.clearCache()
-			.then(tab.getWebContents().session.clearStorageData)
-			.then(tab.getWebContents().session.cookies.flushStore)
+		function clearData(webcontents, tab, resolve) {
+			webcontents.clearHistory();
+			webcontents.session.flushStorageData();
+			webcontents.session.clearCache()
+			.then(webcontents.session.clearStorageData)
+			.then(webcontents.session.cookies.flushStore)
 			.finally(function() {
 				// Remove record from localStorage
 				Ext.getStore('Services').remove(rec);
