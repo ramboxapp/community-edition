@@ -73,7 +73,13 @@
 			"artifactName": "Rambox-${version}-mac.${ext}",
 			"target": [
 				"default"
-			]
+			],
+			"entitlements": "entitlements.mac.plist",
+			"entitlementsInherit": "entitlements.mac.plist",
+			"extendInfo": {
+				"NSMicrophoneUsageDescription": "Apps inside Rambox may need access to your microphone. Please, grant access to have a better experience.",
+				"NSCameraUsageDescription": "Apps inside Rambox may need access to your camera. Please, grant access to have a better experience."
+			}
 		},
 		"dmg": {
 			"title": "Rambox",

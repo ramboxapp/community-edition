@@ -1,6 +1,7 @@
 'use strict';
 const os = require('os');
 const electron = require('electron');
+const { systemPreferences } = require('electron')
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const shell = electron.shell;
@@ -229,7 +230,7 @@ module.exports = function(config) {
 		}
 	];
 
-	if (process.platform === 'darwin') {
+	if ( process.platform === 'darwin' ) {
 		tpl.unshift({
 			label: appName,
 			submenu: [
@@ -287,6 +288,18 @@ module.exports = function(config) {
 					label: locale['tray[1]']
 				}
 			]
+		});
+		helpSubmenu.push({
+			type: 'separator'
+		});
+		helpSubmenu.push({
+			label: 'Grant Microphone and Camera permissions',
+			visible: systemPreferences.getMediaAccessStatus('microphone') !== 'granted' || systemPreferences.getMediaAccessStatus('camera') !== 'granted',
+			click(item, win) {
+				const webContents = win.webContents;
+				const send = webContents.send.bind(win.webContents);
+				send('grantPermissions');
+			}
 		});
 	} else {
 		tpl.unshift({
