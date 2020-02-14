@@ -142,7 +142,7 @@ Ext.define('Hamsket.view.main.MainController', {
 			const webview = tab.getWebView();
 
 			webview.addEventListener("did-start-loading", function() {
-				clearData(webview, tab, resolve);
+				clearData(tab, resolve);
 			});
 		} else {
 			// Get Tab
