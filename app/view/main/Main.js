@@ -26,13 +26,22 @@ Ext.define('Hamsket.view.main.Main', {
 	,autoShow: true
 	,deferredRender: false
 	,tabBar: {
-		items: [{
-			 xtype: 'button'
-			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
-			,baseCls: ''
-			,tooltip: locale['app.main[25]']
-			,href: 'https://www.gofundme.com/Hamsket'
-		}]
+		items: [
+			{
+				 xtype: 'button'
+				,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
+				,baseCls: ''
+				,tooltip: locale['app.main[25]']
+				,href: 'https://www.gofundme.com/Hamsket'
+			},
+			{
+				 xtype: 'button'
+				,html: '<span class="fa fa-user-plus" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
+				,baseCls: ''
+				,tooltip: 'Sponsor'
+				,href: 'https://github.com/sponsors/TheGoddessInari/'
+			}
+		]
 	}
 	,items: [
 		{
@@ -289,6 +298,11 @@ Ext.define('Hamsket.view.main.Main', {
 							 text: locale['app.main[25]']
 							,glyph: 'XF21E@FontAwesome'
 							,href: 'https://www.gofundme.com/Hamsket'
+						}
+						,{
+							 text: 'Sponsor'
+							,glyph: 'XF234@FontAwesome'
+							,href: 'https://github.com/sponsors/TheGoddessInari'
 						}
 					]
 					 /* TODO: Translation
