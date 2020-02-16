@@ -134,38 +134,40 @@ Ext.define('Hamsket.view.main.MainController', {
 
 		// Get Record
 		const rec = Ext.getStore('Services').getById(serviceId);
+		const {session: rsession} = require('electron').remote;
 
 		if ( !rec.get('enabled') ) {
-			rec.set('enabled', true);
-			me.onEnableDisableService(null, Ext.getStore('Services').indexOf(rec), true, null, true);
-			const tab = Ext.getCmp('tab_'+serviceId);
-			const webcontents = tab.getWebContents();
-
-			webview.addEventListener("did-start-loading", function() {
-				clearData(webcontents, tab, resolve);
-			});
+			const session = rsession.fromPartition(`persist:${rec.get('type')}_${serviceId}`);
+			clearData(session, null, resolve);
 		} else {
 			// Get Tab
 			// Clear all trash data
 			const tab = Ext.getCmp('tab_'+serviceId);
-			const webcontents = tab.getWebContents();
-			clearData(webcontents, tab, resolve);
+			const session = rsession.fromPartition(tab.getWebView().partition);
+			clearData(session, tab, resolve);
 		}
 
 		const config = ipc.sendSync('getConfig');
 		if ( config.default_service === rec.get('id') ) ipc.send('setConfig', Ext.apply(config, { default_service: 'hamsketTab' }));
 
-		function clearData(webcontents, tab, resolve) {
-			webcontents.clearHistory();
-			webcontents.session.flushStorageData();
-			webcontents.session.clearCache()
-			.then(webcontents.session.clearStorageData)
-			.then(webcontents.session.cookies.flushStore)
+		function clearData(session, tab, resolve) {
+			session.flushStorageData();
+			session.clearCache()
+			.then(session.clearStorageData)
+			.then(session.cookies.flushStore)
+			.catch(err => {
+				console.error(`Error removing service data: ${rec.name} ${err}`);
+				Ext.Msg.alert(
+					'Error!',
+					`Error removing service data: ${rec.name}: ${err}`
+				);
+			})
 			.finally(function() {
 				// Remove record from localStorage
 				Ext.getStore('Services').remove(rec);
 				// Close tab
-				tab.close();
+				if (tab) tab.close();
+				session.destroy();
 				if ( Ext.isFunction(resolve) ) resolve();
 				// Close waiting message
 				if ( total === actual ) {
