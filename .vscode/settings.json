@@ -51,9 +51,6 @@
 			"quote_style": "best"
 		}
 	},
-	"prettier.eslintIntegration": true,
-	"prettier.singleQuote": true,
-	"prettier.stylelintIntegration": true,
 	"markdown.extension.toc.githubCompatibility": true,
 	"[html]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
