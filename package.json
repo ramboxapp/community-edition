@@ -1,12 +1,43 @@
 {
+	"name": "hamsket",
+	"productName": "Hamsket",
+	"version": "0.6.0",
+	"description": "Hamsket",
+	"main": "electron/main.js",
 	"private": true,
+	"author": "TheGoddessInari <thegoddessinari@gmail.com>",
+	"license": "GPL-3.0",
+	"engines": {
+		"node": ">=8.5.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TheGoddessInari/hamsket.git"
+	},
+	"bugs": {
+		"url": "https://github.com/TheGoddessInari/hamsket/issues"
+	},
+	"homepage": "https://github.com/TheGoddessInari/hamsket",
+	"keywords": [
+		"Hamsket",
+		"messaging",
+		"app",
+		"slack",
+		"whatsapp",
+		"facebook",
+		"messenger",
+		"telegram",
+		"google",
+		"hangouts",
+		"skype"
+	],
 	"scripts": {
 		"start": "npm run compile && electron build/production/Hamsket",
 		"debug": "electron --inspect build/production/Hamsket",
 		"test": "mocha test/tests/**/*.spec.js",
 		"buildversion": "git show --pretty=\"%h %d %cD\" -s > build/production/Hamsket/BUILDVERSION || node -p -e \"require('./build/production/Hamsket/package.json').version\" > build/production/Hamsket/BUILDVERSION",
 		"clean": "shx rm -rf ./build/production",
-		"compile": "sencha app build && shx cp app/package.json app/package-lock.json build/production/Hamsket/ && npm run buildversion && electron-builder install-app-deps",
+		"compile": "sencha app build && shx cp package.json package-lock.json build/production/Hamsket/ && npm run buildversion",
 		"recompile": "npm run distclean && npm run compile",
 		"distclean": "shx rm -rf ./dist",
 		"distclean:win": "shx rm -rf ./dist/win-{ia32-,}unpacked",
@@ -48,58 +79,13 @@
 		"repack:linux64": "npm run clean && npm run compile && npm run distclean:linux && npm run pack:linux64",
 		"dist": "npm run repack"
 	},
-	"build": {
-		"productName": "Hamsket",
-		"appId": "com.thegoddessinari.hamsket",
-		"asar": true,
-		"publish": null,
-		"mac": {
-			"category": "public.app-category.productivity",
-			"target": [
-				"default"
-			]
-		},
-		"dmg": {
-			"title": "Hamsket",
-			"iconSize": 128,
-			"contents": [
-				{
-					"x": 355,
-					"y": 125,
-					"type": "link",
-					"path": "/Applications"
-				},
-				{
-					"x": 155,
-					"y": 125,
-					"type": "file"
-				}
-			]
-		},
-		"win": {
-			"target": [
-				"nsis"
-			]
-		},
-		"linux": {
-			"category": "Network",
-			"desktop": {
-				"Terminal": "false",
-				"Type": "Application",
-				"Categories": "Network;Email;Chat;InstantMessaging;"
-			},
-			"target": [
-				"tar.gz",
-				"deb",
-				"rpm",
-				"AppImage"
-			]
-		},
-		"directories": {
-			"buildResources": "resources/installer/",
-			"output": "dist/",
-			"app": "build/production/Hamsket/"
-		}
+	"dependencies": {
+		"auto-launch-patched": "5.0.2",
+		"electron-store": "^5.0.0",
+		"electron-is-dev": "^1.1.0",
+		"electron-contextmenu-wrapper": "^3.0.0",
+		"mime": "^2.4.4",
+		"tmp": "^0.1.0"
 	},
 	"devDependencies": {
 		"asar": "^2.0.1",

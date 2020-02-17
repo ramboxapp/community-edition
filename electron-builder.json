@@ -1,0 +1,44 @@
+{
+	"productName": "Hamsket",
+	"appId": "com.thegoddessinari.hamsket",
+	"asar": true,
+	"publish": null,
+	"mac": {
+		"category": "public.app-category.productivity",
+		"target": ["default"]
+	},
+	"dmg": {
+		"title": "Hamsket",
+		"iconSize": 128,
+		"contents": [
+			{
+				"x": 355,
+				"y": 125,
+				"type": "link",
+				"path": "/Applications"
+			},
+			{
+				"x": 155,
+				"y": 125,
+				"type": "file"
+			}
+		]
+	},
+	"win": {
+		"target": ["nsis"]
+	},
+	"linux": {
+		"category": "Network",
+		"desktop": {
+			"Terminal": "false",
+			"Type": "Application",
+			"Categories": "Network;Email;Chat;InstantMessaging;"
+		},
+		"target": ["tar.gz", "deb", "rpm", "AppImage"]
+	},
+	"directories": {
+		"buildResources": "resources/installer/",
+		"output": "dist/",
+		"app": "build/production/Hamsket/"
+	}
+}
