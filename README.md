@@ -12,7 +12,7 @@
 
 [![DevOps Build][devops-build]](https://dev.azure.com/TheGoddessInari/hamsket/_build?definitionId=2)
 [![DevOps Deployment][devops-deploy]](https://dev.azure.com/TheGoddessInari/hamsket/_release?definitionId=1)
-[![Dependencies][dependencies]](https://david-dm.org/TheGoddessInari/hamsket?path=app)
+[![Dependencies][dependencies]](https://david-dm.org/TheGoddessInari/hamsket)
 [![DevDependencies][dev-dependencies]](https://david-dm.org/TheGoddessInari/hamsket?type=dev)
 
 [license]: https://img.shields.io/github/license/TheGoddessInari/hamsket.svg
