@@ -238,6 +238,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		return {
 			 xtype: 'statusbar'
+			,id: me.id+'statusbar'
 			,hidden: !me.record.get('statusbar')
 			,keep: me.record.get('statusbar')
 			,y: floating ? '-18px' : 'auto'
@@ -275,7 +276,8 @@ Ext.define('Rambox.ux.WebView',{
 		if ( !me.record.get('enabled') ) return;
 
 		var webview = me.getWebView();
-		let googleLoginURLs = ['accounts.google.com/signin/oauth', 'accounts.google.com/ServiceLogin']
+		let googleLoginURLs = ['accounts.google.com/signin', 'accounts.google.com/ServiceLogin', ]
+		me.errorCodeLog = []
 
 		// Google Analytics Event
 		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
@@ -319,6 +321,60 @@ Ext.define('Rambox.ux.WebView',{
 		// On search text
 		webview.addEventListener('found-in-page', function(e) {
 			me.onSearchText(e.result)
+		});
+
+		// On search text
+		webview.addEventListener('did-fail-load', function(e) {
+			console.info('The service fail at loading', me.src, e);
+			me.errorCodeLog.push(e.errorCode)
+
+			var attempt = me.errorCodeLog.filter(function(code) { return code === e.errorCode });
+
+			// Error codes: https://cs.chromium.org/chromium/src/net/base/net_error_list.h
+			var msg = []
+			msg[-2] = 'NET error: failed.'
+			msg[-3] = 'An operation was aborted (due to user action)'
+			msg[-7] = 'Connection timeout.'
+			msg[-21] = 'Network change.'
+			msg[-100] = 'The connection was reset. Check your internet connection.'
+			msg[-101] = 'The connection was reset. Check your internet connection.'
+			msg[-105] = 'Name not resolved. Check your internet connection.'
+			msg[-106] = 'There is no active internet connection.'
+			msg[-118] = 'Connection timed out. Check your internet connection.'
+			msg[-130] = 'Proxy connection failed. Please, check the proxy configuration.'
+			msg[-300] = 'The URL is invalid.'
+			msg[-324] = 'Empty response. Check your internet connection.'
+
+			switch ( e.errorCode ) {
+				case 0:
+					break
+				case -3: // An operation was aborted (due to user action) I think that gmail an other pages that use iframes stop some of them making this error fired
+					if ( attempt.length <= 4 ) return
+					setTimeout(() => me.reloadService(me), 200);
+					me.errorCodeLog = []
+					break;
+				case -2:
+				case -7:
+				case -21:
+				case -118:
+				case -324:
+				case -100:
+				case -101:
+				case -105:
+					attempt.length > 4 ? me.onFailLoad(msg[e.errorCode]) : setTimeout(() => me.reloadService(me), 2000);
+					break;
+				case -106:
+					me.onFailLoad(msg[e.errorCode])
+					break;
+				case -130:
+					// Could not create a connection to the proxy server. An error occurred
+					// either in resolving its name, or in connecting a socket to it.
+					// Note that this does NOT include failures during the actual "CONNECT" method
+					// of an HTTP proxy.
+				case -300:
+					attempt.length > 4 ? me.onFailLoad(msg[e.errorCode]) : me.reloadService(me);
+					break;
+			}
 		});
 
 		// Open links in default browser
@@ -689,6 +745,12 @@ Ext.define('Rambox.ux.WebView',{
 			me.clearUnreadCounter();
 			webview.loadURL(me.src);
 		}
+	}
+
+	,onFailLoad: function(v) {
+		let me = this
+		me.errorCodeLog = []
+		setTimeout(() => Ext.getCmp(me.id+'statusbar').setStatus({ text: '<i class="fa fa-warning fa-fw" aria-hidden="true"></i> The service failed at loading, Error: '+ v }), 1000);
 	}
 
 	,showSearchBox: function(v) {
