@@ -112,6 +112,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,url: 'https://mail.google.com/mail/?labs=0'
 			,type: 'email'
 			,allow_popups: true
+			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'
 			,js_unread: `let checkUnread=()=>{const a=document.getElementsByClassName("aim")[0].textContent.split(":");hamsket.updateBadge(parseInt(a[a.length-1].replace(/[^0-9]/g,"")))};setInterval(checkUnread,3e3);`
 			,note: 'To enable desktop notifications, you have to go to Settings inside Gmail. <a href="https://support.google.com/mail/answer/1075549?ref_topic=3394466" target="_blank">Read more...</a>'
 		},
