@@ -2,9 +2,9 @@
  * This file is loaded in the service web views to provide a Hamsket API.
  */
 
-const { ipcRenderer } = require('electron');
-const { MenuItem } = require('electron').remote;
-const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
+const { ipcRenderer, remote } = require('electron');
+const { MenuItem } = remote;
+const { ContextMenuBuilder, ContextMenuListener } = remote.require('electron-contextmenu-wrapper');
 
 /**
  * Make the Hamsket API available via a global "hamsket" variable.
@@ -40,10 +40,10 @@ window.hamsket.clearUnreadCount = function() {
 	ipcRenderer.sendToHost('hamsket.clearUnreadCount');
 }
 
-window.hamsket.contextMenuBuilder = new ContextMenuBuilder();
+window.hamsket.contextMenuBuilder = new ContextMenuBuilder(remote.getCurrentWebContents());
 window.hamsket.contextMenuListener = new ContextMenuListener(function(event, info) { 
 	window.hamsket.contextMenuBuilder.showPopupMenu(info);
-});
+}, remote.getCurrentWebContents());
 
 
 /**
