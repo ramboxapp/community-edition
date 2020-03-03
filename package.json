@@ -83,7 +83,7 @@
 		"auto-launch-patched": "5.0.2",
 		"electron-store": "^5.0.0",
 		"electron-is-dev": "^1.1.0",
-		"electron-contextmenu-wrapper": "^4.0.0",
+		"electron-contextmenu-wrapper": "^4.0.1",
 		"mime": "^2.4.4",
 		"tmp": "^0.1.0"
 	},
