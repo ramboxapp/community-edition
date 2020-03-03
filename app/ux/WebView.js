@@ -167,7 +167,7 @@ Ext.define('Hamsket.ux.WebView',{
 					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '')
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,webpreferences: 'sandbox=yes' //,nativeWindowOpen=true
+					,webpreferences: '' //,nativeWindowOpen=true
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,userAgent: me.getUserAgent()
 					,preload: './resources/js/hamsket-service-api.js'
@@ -371,7 +371,7 @@ Ext.define('Hamsket.ux.WebView',{
 				case 'flowdock':
 					if ( e.disposition === 'new-window' ) {
 						e.preventDefault();
-						require('electron').shell.openExternal(e.url);
+						require('electron').remote.shell.openExternal(e.url);
 					}
 					return;
 				default:
@@ -381,7 +381,7 @@ Ext.define('Hamsket.ux.WebView',{
 			const protocol = require('url').parse(e.url).protocol;
 			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
 				e.preventDefault();
-				require('electron').shell.openExternal(e.url);
+				require('electron').remote.shell.openExternal(e.url);
 			}
 		});
 
@@ -965,7 +965,7 @@ Ext.define('Hamsket.ux.WebView',{
 		return version || require('electron').remote.require('process').versions['chrome'];
 	}
 	,getElectronVersion() {
-		return require('process').versions['electron'];
+		return require('electron').require('process').versions['electron'];
 	}
 	,getAppVersion() {
 		return require('electron').remote.app.getVersion();
