@@ -450,6 +450,21 @@
         "custom_domain": false
     },
     {
+        "id": "honeypot",
+        "logo": "honeypot.png",
+        "name": "Honeypot.io",
+        "description": "Europe's developer-focused job platform for Software Developers, DevOps Engineers and Engineering Leaders. Get access to top tech jobs in Germany and the Netherlands!\"",
+        "url": "https://app.honeypot.io/",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
+    {
         "id": "hootsuite",
         "logo": "hootsuite.png",
         "name": "Hootsuite",
