@@ -1065,6 +1065,21 @@
         "custom_domain": true
     },
     {
+        "id": "simplenote",
+        "logo": "simplenote.png",
+        "name": "Simplenote",
+        "description": "The simplest way to keep notes. Light, clean, and free. Simplenote is now available for iOS, Android, Mac, and the web.",
+        "url": "https://app.simplenote.com/",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
+    {
         "id": "skype",
         "logo": "skype.png",
         "name": "Skype",
