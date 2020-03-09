@@ -167,7 +167,7 @@ Ext.define('Hamsket.ux.WebView',{
 					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '')
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,webpreferences: '' //,nativeWindowOpen=true
+					,webpreferences: 'spellcheck=yes' //,nativeWindowOpen=true
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,userAgent: me.getUserAgent()
 					,preload: './resources/js/hamsket-service-api.js'
