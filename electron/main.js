@@ -357,7 +357,7 @@ let imageCache = {};
 ipcMain.on('image:download', function(event, url, partition) {
 	const tmp = require('tmp');
 	const mime = require('mime');
-	let file = imageCache[url];
+	let file = imageCache[`${url}`];
 	if (file) {
 		if (file.complete) {
 			shell.openItem(file.path);
@@ -375,7 +375,7 @@ ipcMain.on('image:download', function(event, url, partition) {
 	});
 
 	tmpWindow.webContents.session.once('will-download', (event, downloadItem) => {
-		imageCache[url] = file = {
+		imageCache[`${url}`] = file = {
 			 path: tmp.tmpNameSync() + '.' + mime.getExtension(downloadItem.getMimeType())
 			,complete: false
 		};
