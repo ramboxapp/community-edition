@@ -120,6 +120,21 @@
         "custom_domain": false
     },
     {
+        "id": "converse",
+        "logo": "converse.png",
+        "name": "Converse",
+        "description": "Converse is a free and open-source XMPP chat client that runs in a web browser.",
+        "url": "___",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "let checkUnread=()=>{a=document.getElementsByClassName(\"msgs-indicator\").length,b=document.getElementsByClassName(\"unread-msgs\").length,rambox.updateBadge(a,b)};setInterval(checkUnread,3e3);",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
+    {
         "id": "crisp",
         "logo": "crisp.png",
         "name": "Crisp",
