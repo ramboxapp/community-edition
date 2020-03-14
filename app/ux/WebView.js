@@ -923,7 +923,7 @@ Ext.define('Hamsket.ux.WebView',{
 				platform = `X11; Linux ${me.getOSArch(platform)}`;
 				break;
 			case 'darwin':
-				platform = `${me.getOSArchType()} Mac OS X ${me.getOSRelease(platform)}`;
+				platform = `Macintosh; ${me.getOSArchType()} Mac OS X ${me.getOSRelease(platform)}`;
 				break;
 			case 'freebsd':
 				platform = `X11; FreeBSD ${me.getOSArch(platform)}`;
@@ -936,8 +936,13 @@ Ext.define('Hamsket.ux.WebView',{
 		}
 		return platform;
 	}
-	,isWindows() {
-		return require('electron').remote.require('os').platform() === 'win32';
+	,isWindows(platform) {
+		platform = platform ? platform : require('electron').remote.require('os').platform();
+		return platform === 'win32';
+	}
+	,isMac(platform) {
+		platform = platform ? platform : require('electron').remote.require('os').platform();
+		return platform === 'darwin';
 	}
 	,is32bit() {
 		const arch = require('electron').remote.require('os').arch();
@@ -957,7 +962,9 @@ Ext.define('Hamsket.ux.WebView',{
 				return remote.require('os').release().match(/([0-9]+\.[0-9]+)/)[0];
 			}
 		}
-		else {
+		else if (me.isMac(platform)) {
+			return remote.require('os').release().split('.').join('_');
+		} else {
 			return remote.require('os').release();
 		}
 	}
