@@ -60,6 +60,48 @@ Ext.define('Rambox.Application', {
 			})
 		})();
 
+		if ( !localStorage.getItem('hideMacPermissions') && process.platform === 'darwin' && (require('electron').remote.systemPreferences.getMediaAccessStatus('microphone') !== 'granted' || require('electron').remote.systemPreferences.getMediaAccessStatus('camera') !== 'granted') ) {
+			console.info('Checking mac permissions...');
+			Ext.cq1('app-main').addDocked({
+				xtype: 'toolbar'
+				,dock: 'top'
+				,style: {background: '#30BBF3'}
+				,items: [
+					'->'
+					,{
+						xtype: 'label'
+						,html: '<b>Rambox CE needs permissions to use Microphone and Camera for the apps.</b>'
+					}
+					,{
+						xtype: 'button'
+						,text: 'Grant permissions'
+						,ui: 'decline'
+						,handler: async function(btn) {
+							ipc.send('grantPermissions');
+							Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true);
+						}
+					}
+					,{
+						xtype: 'button'
+						,text: 'Never ask again'
+						,ui: 'decline'
+						,handler: function(btn) {
+							Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true);
+							localStorage.setItem('hideMacPermissions', true);
+						}
+					}
+					,'->'
+					,{
+						glyph: 'xf00d@FontAwesome'
+						,baseCls: ''
+						,style: 'cursor:pointer;'
+						,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
+					}
+				]
+			});
+		}
+
+
 		Ext.getStore('ServicesList').load(function (records, operations, success) {
 
 			if (!success) {

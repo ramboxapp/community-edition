@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.7.3",
+	"version": "0.7.4",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"repository": {
@@ -66,18 +66,27 @@
 		"appId": "com.grupovrs.ramboxce",
 		"asar": true,
 		"electronDownload": {
-			"version": "7.1.1"
+			"version": "7.1.12"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
 			"artifactName": "Rambox-${version}-mac.${ext}",
 			"target": [
 				"default"
-			]
+			],
+			"hardenedRuntime": true,
+			"gatekeeperAssess": false,
+			"entitlements": "resources/installer/entitlements.mac.plist",
+			"entitlementsInherit": "resources/installer/entitlements.mac.plist",
+			"extendInfo": {
+				"NSMicrophoneUsageDescription": "Apps inside Rambox CE may need access to your microphone. Please, grant access to have a better experience.",
+				"NSCameraUsageDescription": "Apps inside Rambox CE may need access to your camera. Please, grant access to have a better experience."
+			}
 		},
 		"dmg": {
 			"title": "Rambox",
 			"iconSize": 128,
+			"sign": false,
 			"contents": [
 				{
 					"x": 355,
@@ -189,6 +198,7 @@
 		"csvjson": "4.3.3",
 		"electron": "7.1.12",
 		"electron-builder": "21.2.0",
+		"electron-notarize": "0.2.1",
 		"electron-packager": "^12.1.0",
 		"mocha": "^5.2.0",
 		"spectron": "^3.8.0"
