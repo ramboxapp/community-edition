@@ -66,7 +66,7 @@
 		"appId": "com.grupovrs.ramboxce",
 		"asar": true,
 		"electronDownload": {
-			"version": "7.1.1"
+			"version": "7.1.12"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
