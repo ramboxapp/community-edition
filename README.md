@@ -35,9 +35,8 @@
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
 - [Screenshot](#screenshot)
-- [Services available - 100](#services-available---100)
+- [Services available - 103](#services-available---103)
 - [Features](#features)
 - [Privacy](#privacy)
 - [Donations](#donations)
