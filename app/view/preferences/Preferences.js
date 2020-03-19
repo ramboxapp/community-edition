@@ -281,6 +281,15 @@ Ext.define('Rambox.view.preferences.Preferences',{
 						,emptyText: 'Leave blank for default user agent'
 					}
 					,{
+						xtype: 'textfield'
+						,fieldLabel: 'List of Chrome extensions paths comma seperated (needs to relaunch)'
+						,labelAlign: 'top'
+						,name: 'extension_paths'
+						,value: config.extension_paths
+						,width: 360
+						,emptyText: '/path/to/extension1, /path/to/extension2'
+				 	}
+					,{
 						 xtype: 'fieldset'
 						,title: locale['preferences[24]']
 						,collapsed: !config.master_password
