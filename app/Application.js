@@ -70,15 +70,14 @@ Ext.define('Rambox.Application', {
 					'->'
 					,{
 						xtype: 'label'
-						,html: '<b>Rambox Pro needs permissions to use Microphone and Camera for the apps.</b>'
+						,html: '<b>Rambox CE needs permissions to use Microphone and Camera for the apps.</b>'
 					}
 					,{
 						xtype: 'button'
 						,text: 'Grant permissions'
 						,ui: 'decline'
 						,handler: async function(btn) {
-							await require('electron').remote.systemPreferences.askForMediaAccess('microphone');
-							await require('electron').remote.systemPreferences.askForMediaAccess('camera');
+							ipc.send('grantPermissions');
 							Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true);
 						}
 					}
