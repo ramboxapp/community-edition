@@ -107,15 +107,10 @@ function createWindow () {
 
 	// Check if user has defined a custom User-Agent
 	if ( config.get('user_agent').length > 0 ) mainWindow.webContents.setUserAgent( config.get('user_agent') );
-
-	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
-	if ( config.get('window_display_behavior') !== 'show_trayIcon' && config.get('start_minimized') ) {
-		// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools()
-		// to be finished before minimizing
-		mainWindow.webContents.once('did-finish-load', function(e) {
-			mainWindow.minimize();
-		});
-	}
+	
+	// Wait for the mainWindow.loadURL(..) and the optional mainWindow.webContents.openDevTools()
+	// to be finished before minimizing
+	config.get('start_minimized') && mainWindow.webContents.once('did-finish-load', () => config.get('window_display_behavior') === 'show_trayIcon' ? mainWindow.hide() :  mainWindow.minimize());
 
 	// Check if the window its outside of the view (ex: multi monitor setup)
 	const { positionOnScreen } = require('./utils/positionOnScreen');
