@@ -77,7 +77,8 @@ Ext.define('Rambox.Application', {
 						,text: 'Grant permissions'
 						,ui: 'decline'
 						,handler: async function(btn) {
-							ipc.send('grantPermissions');
+							await require('electron').remote.systemPreferences.askForMediaAccess('microphone');
+							await require('electron').remote.systemPreferences.askForMediaAccess('camera');
 							Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true);
 						}
 					}
