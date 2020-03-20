@@ -64,6 +64,7 @@
 	"build": {
 		"productName": "Rambox",
 		"appId": "com.grupovrs.ramboxce",
+		"afterSign": "resources/installer/notarize.js",
 		"asar": true,
 		"electronDownload": {
 			"version": "7.1.12"
