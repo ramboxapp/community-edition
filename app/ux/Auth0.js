@@ -70,7 +70,8 @@ Ext.define('Rambox.ux.Auth0', {
 					Ext.getStore('Services').add(service);
 				});
 
-				require('electron').remote.getCurrentWindow().reload();
+				require('electron').remote.app.relaunch();
+				require('electron').remote.app.exit();
 			}
 
 			Ext.Msg.hide();
