@@ -326,6 +326,8 @@ Ext.define('Rambox.ux.WebView',{
 		// On search text
 		webview.addEventListener('did-fail-load', function(e) {
 			console.info('The service fail at loading', me.src, e);
+
+			if ( me.record.get('disableAutoReloadOnFail') || !e.isMainFrame ) return
 			me.errorCodeLog.push(e.errorCode)
 
 			var attempt = me.errorCodeLog.filter(function(code) { return code === e.errorCode });

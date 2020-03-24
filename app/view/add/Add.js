@@ -193,6 +193,15 @@ Ext.define('Rambox.view.add.Add',{
 										,inputValue: true
 									}
 									,{
+										xtype: 'checkbox'
+										,boxLabel: 'Disable auto-reload on fail'
+										,name: 'disableAutoReloadOnFail'
+										,hidden: false
+										,checked: me.edit ? me.record.get('disableAutoReloadOnFail') : false
+										,uncheckedValue: false
+										,inputValue: true
+									}
+									,{
 										 xtype: 'checkbox'
 										,boxLabel: locale['app.window[19]']
 										,name: 'trust'
