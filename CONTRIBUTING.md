@@ -157,8 +157,11 @@ Always feel free to reach out to the chat room when you are not certain of any t
 
 #### Adding or Editing Services
 
-The services are stored inside the file `./app/store/ServicesList.js`.  Add your service to the *BOTTOM* of the array.
-The logo it's referencing is located in `./resources/icons/`.
+The services are stored inside the file `./api/services.json` in the `gh-pages` branch:
+
+https://github.com/ramboxapp/community-edition/blob/gh-pages/api/services.json
+
+Add your service to the *BOTTOM* of the array.
 To see these changes you'll need to stop your `npm start` and `sencha app watch`, and then rerun those.
 
 ### Creating a Pull Request
