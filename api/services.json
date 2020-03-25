@@ -203,7 +203,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){rambox.setUnreadCount(document.querySelectorAll('[class^=lowerBadge]').length)}setInterval(checkUnread,3e3);",
+        "js_unread": "function checkUnread(){rambox.setUnreadCount([...document.querySelectorAll('[class^=lowerBadge]')].map(elem => parseInt(elem.innerText) || 0).reduce((a, b) => a + b, 0))}setInterval(checkUnread,3e3);",
         "userAgent": "",
         "note": "",
         "titleBlink": true,
