@@ -203,7 +203,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){var e=0;document.querySelectorAll(\"[class*=badgeWrapper]\").forEach(a=>{var r=parseInt(a.innerText);Number.isNaN(r)||(e+=r)}),updateBadge(0,e)}function updateBadge(e,a){rambox.setUnreadCount(a)}setInterval(checkUnread,3e3);",
+        "js_unread": "function checkUnread(){rambox.setUnreadCount(document.querySelectorAll('[class^=lowerBadge]').length)}setInterval(checkUnread,3e3);",
         "userAgent": "",
         "note": "",
         "titleBlink": true,
