@@ -75,6 +75,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,manual_notifications: true
+			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'
 			,js_unread: `let checkUnread=()=>{let myframe=document.getElementById("hangout-landing-chat").lastChild,mydocument=myframe.contentDocument||myframe.contentWindow.document;hamsket.updateBadge(mydocument.body.getElementsByClassName("ee").length)};setInterval(checkUnread,3e3);`
 		},
 		{
@@ -820,6 +821,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: 'A free phone number for life.  Stay in touch from any screen.  Use your free number to text, call, and check voicemail  all from one app. Plus, Google Voice works on all of your devices so you can connect and communicate how you want.'
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
+			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'
 			,js_unread: `let parseIntOrZero=e=>isNaN(parseInt(e))?0:parseInt(e),checkUnread=()=>{const e=document.querySelector(".msgCount");let n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[() ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){const r=document.querySelector('gv-nav-tab[tooltip="+e+"] div[aria-label="Unread count"]');r&&(n+=parseIntOrZero(r.innerHTML))}),hamsket.updateBadge(n)};setInterval(checkUnread,3e3);;`
 		},
 		{
@@ -875,6 +877,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,manual_notifications: true
+			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'
 			,js_unread: `let checkUnread=()=>{hamsket.updateBadge(document.querySelectorAll(".SSPGKf.EyyDtb.Q6oXP:not(.oCHqfe) .eM5l9e.FVKzAb").length)};setInterval(checkUnread,3e3);`
 		},
 		{
@@ -884,6 +887,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: 'Text on your computer with Messages for web.'
 			,url: 'https://messages.google.com/web'
 			,type: 'messaging'
+			,userAgent: 'Mozilla/5.0 (X11; Linux x86_64; rv:71.0) Gecko/20100101 Firefox/71.0'
 			,js_unread: `let checkUnread=()=>{hamsket.updateBadge(Array.prototype.slice.apply(document.querySelectorAll(".text-content.unread")).reduce((c,b) => !b.querySelector(".notifications-off")+c,0))};setInterval(checkUnread,3e3);`
 		}
 	]
