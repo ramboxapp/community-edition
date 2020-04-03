@@ -118,17 +118,6 @@ Ext.define('Hamsket.store.ServicesList', {
 			,note: 'To enable desktop notifications, you have to go to Settings inside Gmail. <a href="https://support.google.com/mail/answer/1075549?ref_topic=3394466" target="_blank">Read more...</a>'
 		},
 		{
-			 id: 'inbox'
-			,logo: 'inbox.png'
-			,name: 'Inbox'
-			,description: locale['services[10]']
-			,url: 'https://inbox.google.com/?cid=imp'
-			,type: 'email'
-			,manual_notifications: true
-			,js_unread: `let checkUnread=()=>{if(getComputedStyle(document.getElementsByClassName("sM")[0])["font-weight"] == "bold"){hamsket.updateBadge(document.getElementsByClassName("ss").length)}};setInterval(checkUnread,3e3);`
-			,note: 'Please be sure to sign out of Hangouts inside Inbox, as it causes problems. <a href="https://github.com/TheGoddessInari/hamsket/wiki/Inbox" target="_blank">Read more...</a>'
-		},
-		{
 			 id: 'chatwork'
 			,logo: 'chatwork.png'
 			,name: 'ChatWork'

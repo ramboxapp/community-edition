@@ -36,7 +36,7 @@
 
 - [Table of Contents](#table-of-contents)
 - [Screenshot](#screenshot)
-- [Services available - 95](#services-available---95)
+- [Services available - 94](#services-available---94)
 - [Features](#features)
 - [Privacy](#privacy)
 - [Donations](#donations)
@@ -54,7 +54,7 @@
 
 ----------
 
-## Services available - 95
+## Services available - 94
 
 <img width="80" align="left" src="./resources/icons/whatsapp.png" alt="WhatsApp" title="WhatsApp">
 <img width="80" align="left" src="./resources/icons/messenger.png" alt="Messenger" title="Messenger">
@@ -64,7 +64,6 @@
 <img width="80" align="left" src="./resources/icons/telegram.png" alt="Telegram" title="Telegram">
 <img width="80" align="left" src="./resources/icons/wechat.png" alt="WeChat" title="WeChat">
 <img width="80" align="left" src="./resources/icons/gmail.png" alt="Gmail" title="Gmail">
-<img width="80" align="left" src="./resources/icons/inbox.png" alt="Inbox" title="Inbox">
 <img width="80" align="left" src="./resources/icons/hipchat.png" alt="HipChat" title="HipChat">
 
 <img width="80" align="left" src="./resources/icons/chatwork.png" alt="ChatWork" title="ChatWork">
