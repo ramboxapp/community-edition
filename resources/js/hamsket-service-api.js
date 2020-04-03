@@ -3,8 +3,7 @@
  */
 
 const { ipcRenderer, remote } = require('electron');
-const { MenuItem } = remote;
-const { ContextMenuBuilder, ContextMenuListener } = remote.require('electron-contextmenu-wrapper');
+const contextMenu = require('electron-context-menu');
 
 /**
  * Make the Hamsket API available via a global "hamsket" variable.
@@ -40,10 +39,31 @@ window.hamsket.clearUnreadCount = function() {
 	ipcRenderer.sendToHost('hamsket.clearUnreadCount');
 }
 
-window.hamsket.contextMenuBuilder = new ContextMenuBuilder(remote.getCurrentWebContents());
-window.hamsket.contextMenuListener = new ContextMenuListener(function(event, info) { 
-	window.hamsket.contextMenuBuilder.showPopupMenu(info);
-}, remote.getCurrentWebContents());
+contextMenu({
+	prepend: (defaultActions, params, browserWindow) => {
+		let items = [];
+		if (params.misspelledWord) {
+			const suggestions = params.dictionarySuggestions;
+			if (suggestions) {
+				suggestions.forEach((suggestion) => {
+					items.push({
+						label: suggestion,
+						visible:
+							params.isEditable,
+						click: () => {
+							browserWindow.replaceMisspelling(suggestion);
+						}
+					});
+				});
+			}
+		}
+		return items;
+	},
+	window: remote.getCurrentWebContents(),
+	showCopyImageAddress: true,
+	showSaveImage: false,
+	showSaveImageAs: true
+});
 
 
 /**
