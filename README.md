@@ -21,7 +21,7 @@
 
 [devops-build]: https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops
 [devops-deploy]: https://img.shields.io/azure-devops/release/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/1/1.svg?logo=azure-devops
-[dependencies]: https://img.shields.io/david/TheGoddessInari/hamsket.svg?path=app
+[dependencies]: https://img.shields.io/david/TheGoddessInari/hamsket.svg
 [dev-dependencies]: https://img.shields.io/david/dev/TheGoddessInari/hamsket.svg
 
 ##### Nightly build artifacts are available in Windows ([Win64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket.Setup.0.6.0.exe)), Mac ([DMG](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.6.0.dmg) / [App](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.6.0-mac.zip)), and Linux ([AppImage64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.6.0.AppImage) / [RPM64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.6.0.x86_64.rpm) / [DEB64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket_0.6.0_amd64.deb) / [Tarball64](https://github.com/TheGoddessInari/hamsket/releases/download/nightly/Hamsket-0.6.0.tar.gz)) packaging flavors. <!-- omit in toc -->
