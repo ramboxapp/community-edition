@@ -577,9 +577,9 @@
         "url": "https://www.instagram.com/direct/inbox/",
         "type": "messaging",
         "allow_popups": false,
-        "manual_notifications": false,
-        "js_unread": "document.addEventListener(\"keydown\",function(event){if(\"Enter\"===event.key&&!event.shiftKey){event.preventDefault();let t=document.querySelectorAll(\"button[type=button]\").length;[\"Enviar\",\"Send\",\"Senden\",\"Invia\",\"Skicka\",\"Envoyer\",\"Verzenden\",\"Отправить\"].includes(document.querySelectorAll(\"button[type=button]\")[t-1].innerText)&&document.querySelectorAll(\"button[type=button]\")[t-1].click()}});",
-        "userAgent": "Mozilla/5.0 (Linux; Android 8.0.0; SM-G965F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.109 Mobile Safari/537.36",
+        "manual_notifications": true,
+        "js_unread": "",
+        "userAgent": "",
         "note": "",
         "titleBlink": false,
         "custom_domain": false
