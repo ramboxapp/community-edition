@@ -243,7 +243,7 @@ Ext.define('Rambox.view.main.Main', {
 					{
 						 glyph: JSON.parse(localStorage.getItem('dontDisturb')) ? 'xf1f7@FontAwesome' : 'xf0f3@FontAwesome'
 						,text: locale['app.main[16]']+': '+(JSON.parse(localStorage.getItem('dontDisturb')) ? locale['app.window[20]'] : locale['app.window[21]'])
-						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+(require('electron').remote.process.platform === 'darwin' ? ': Cmd + D</b>' : ': Alt + Shift + D</b>')
+						,tooltip: locale['app.main[17]']+'<br/><b>'+locale['app.main[18]']+(require('electron').remote.process.platform === 'darwin' ? ': Cmd + Alt + D</b>' : ': Alt + Shift + D</b>')
 						,enableToggle: true
 						,handler: 'dontDisturb'
 						,reference: 'disturbBtn'
