@@ -171,7 +171,8 @@ Ext.define('Hamsket.view.main.Main', {
 							,editor: {
 								 xtype: 'textfield'
 								,allowBlank: true
-							}
+							},
+							renderer: Ext.String.htmlEncode
 						}
 						,{
 							 xtype: 'actioncolumn'

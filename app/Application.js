@@ -65,15 +65,15 @@ Ext.define('Hamsket.Application', {
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
 			if ( Ext.cq1('app-main').getActiveTab().record ) {
-				document.title = 'Hamsket (' + Hamsket.util.Format.formatNumber(newValue) + ') - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+				document.title = `Hamsket (${Hamsket.util.Format.formatNumber(newValue)}) - ${Ext.String.htmlEncode(Ext.cq1('app-main').getActiveTab().record.get('name'))}`;
 			} else {
-				document.title = 'Hamsket (' + Hamsket.util.Format.formatNumber(newValue) + ')';
+				document.title = `Hamsket (${Hamsket.util.Format.formatNumber(newValue)})`;
 			}
 		} else {
 			if ( Ext.cq1('app-main') && Ext.cq1('app-main').getActiveTab().record ) {
-				document.title = 'Hamsket - '+Ext.cq1('app-main').getActiveTab().record.get('name');
+				document.title = `Hamsket - ${Ext.String.htmlEncode(Ext.cq1('app-main').getActiveTab().record.get('name'))}`;
 			} else {
-				document.title = 'Hamsket';
+				document.title = `Hamsket`;
 			}
 		}
 	}

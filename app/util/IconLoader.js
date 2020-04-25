@@ -39,8 +39,8 @@ Ext.define('Hamsket.util.IconLoader', {
 							return bg.slice(5, -2);
 						})();`).then(function (backgroundImage) {
 							if (backgroundImage) {
-								service.setTitle(`<img src="${backgroundImage}" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">`+service.title);
-								service.fireEvent('iconchange', service, backgroundImage, service.icon);
+								service.setTitle(`<img src="${Ext.String.htmlEncode(backgroundImage)}" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">${Ext.String.htmlEncode(service.title)}`);
+								service.fireEvent('iconchange', service, Ext.String.htmlEncode(backgroundImage), service.icon);
 							}
 							return true;
 						}

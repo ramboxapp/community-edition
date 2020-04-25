@@ -42,8 +42,8 @@ Ext.define('Hamsket.util.Notifier', {
 		this.dispatchNotification = function(view, count) {
 			const text = getNotificationText(view, count);
 
-			const notification = new Notification(view.record.get('name'), {
-				body: text,
+			const notification = new Notification(Ext.String.htmlEncode(view.record.get('name')), {
+				body: Ext.String.htmlEncode(text),
 				icon: view.icon,
 				silent: view.record.get('muted')
 			});

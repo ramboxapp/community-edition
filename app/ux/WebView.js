@@ -39,7 +39,7 @@ Ext.define('Hamsket.ux.WebView',{
 
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
-			,title: me.record.get('tabname') ? me.record.get('name') : ''
+			,title: me.record.get('tabname') ? Ext.String.htmlEncode(me.record.get('name')) : ''
 			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
 			,src: me.record.get('url')
 			,type: me.record.get('type')
@@ -297,7 +297,7 @@ Ext.define('Hamsket.ux.WebView',{
 					if ( e.url.indexOf('slack.com/call/') >= 0 ) {
 						me.add({
 							 xtype: 'window'
-							,title: e.options.title
+							,title: Ext.String.htmlEncode(e.options.title)
 							,width: e.options.width
 							,height: e.options.height
 							,maximizable: true

@@ -28,7 +28,7 @@ Ext.define('Hamsket.view.add.Add',{
 	,initComponent() {
 		const me = this;
 
-		me.title = (!me.edit ? locale['app.window[0]'] : locale['app.window[1]']) + ' ' + me.record.get('name');
+		me.title = `${(!me.edit ? locale['app.window[0]'] : locale['app.window[1]'])} ${Ext.String.htmlEncode(me.record.get('name'))}`;
 		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'resources/icons/'+me.record.get('logo');
 		me.items = [
 			{
@@ -38,7 +38,7 @@ Ext.define('Hamsket.view.add.Add',{
 						 xtype: 'textfield'
 						,fieldLabel: locale['app.window[2]']
 						,labelWidth: 40
-						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
+						,value: me.record.get('type') === 'custom' ? (me.edit ? Ext.String.htmlEncode(me.record.get('name')) : '') : Ext.String.htmlEncode(me.record.get('name'))
 						,name: 'serviceName'
 						,allowBlank: true
 						,listeners: { specialkey: 'onEnter' }

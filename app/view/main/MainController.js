@@ -44,9 +44,9 @@ Ext.define('Hamsket.view.main.MainController', {
 
 		// Update the main window so it includes the active tab title.
 		if ( Hamsket.app.getTotalNotifications() > 0 ) {
-			document.title = 'Hamsket ('+ Hamsket.app.getTotalNotifications() +') - ' + newTab.record.get('name');
+			document.title = `Hamsket (${Hamsket.app.getTotalNotifications()}) - ${Ext.String.htmlEncode(newTab.record.get('name'))}`;
 		} else {
-			document.title = 'Hamsket - ' + newTab.record.get('name');
+			document.title = `Hamsket - ${Ext.String.htmlEncode(newTab.record.get('name'))}`;
 		}
 	}
 
@@ -90,7 +90,7 @@ Ext.define('Hamsket.view.main.MainController', {
 		e.record.commit();
 
 		// Change the title of the Tab
-		Ext.getCmp('tab_'+e.record.get('id')).setTitle(e.record.get('name'));
+		Ext.getCmp('tab_'+e.record.get('id')).setTitle(Ext.String.htmlEncode(e.record.get('name')));
 	}
 
 	,onEnableDisableService(cc, rowIndex, checked, obj, hideTab) {
@@ -102,7 +102,7 @@ Ext.define('Hamsket.view.main.MainController', {
 			Ext.cq1('app-main').insert(rec.get('align') === 'left' ? rec.get('position') : rec.get('position')+1, {
 				 xtype: 'webview'
 				,id: 'tab_'+rec.get('id')
-				,title: rec.get('name')
+				,title: `${Ext.String.htmlEncode(rec.get('name'))}`
 				,icon: rec.get('type') !== 'custom' ? 'resources/icons/'+rec.get('logo') : ( rec.get('logo') === '' ? 'resources/icons/custom.png' : rec.get('logo'))
 				,src: rec.get('url')
 				,type: rec.get('type')
@@ -183,7 +183,7 @@ Ext.define('Hamsket.view.main.MainController', {
 	,removeService( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
 		const me = this;
 
-		Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[13]']+' <b>'+rec.get('name')+'</b>?', function(btnId) {
+		Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[13]']+' <b>'+Ext.String.htmlEncode(rec.get('name'))+'</b>?', function(btnId) {
 			if ( btnId === 'yes' ) {
 				Ext.Msg.wait('Please wait until we clear all.', 'Removing...');
 				me.removeServiceFn(rec.get('id'), 1, 1);
@@ -281,7 +281,7 @@ Ext.define('Hamsket.view.main.MainController', {
 				fn(record) {
 					if ( record.get('type') === 'custom' ) return true;
 					if ( !Ext.Array.contains(Ext.Object.getKeys(cg.getValue()), record.get('type')) ) return false;
-					return record.get('name').toLowerCase().indexOf(newValue.toLowerCase()) > -1 ? true : false;
+					return Ext.String.htmlEncode(record.get('name')).toLowerCase().indexOf(newValue.toLowerCase()) > -1 ? true : false;
 				}
 			});
 		} else {

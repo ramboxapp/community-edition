@@ -52,7 +52,7 @@ Ext.define('Hamsket.view.add.AddController', {
 			const view = Ext.getCmp('tab_'+win.record.get('id'));
 
 			// Change the title of the Tab
-			view.setTitle( formValues.tabname ? formValues.serviceName : '' );
+			view.setTitle( formValues.tabname ? Ext.String.htmlEncode(formValues.serviceName) : '' );
 			// Change sound of the Tab
 			view.setAudioMuted(formValues.muted);
 			// Change notifications of the Tab

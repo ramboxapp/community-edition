@@ -44,7 +44,7 @@ Ext.define('Hamsket.view.preferences.Preferences',{
 		Ext.getStore('Services').each(function(rec) {
 			defaultServiceOptions.push({
 				 value: rec.get('id')
-				,label: rec.get('name')
+				,label: Ext.String.htmlEncode(rec.get('name'))
 			});
 		});
 
