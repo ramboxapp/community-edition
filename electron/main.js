@@ -74,11 +74,20 @@ const appLauncher = new AutoLaunch({
 	 name: 'Hamsket'
 	,isHidden: config.get('start_minimized')
 });
-if (config.get('auto_launch') && !isDev) {
-	appLauncher.enable();
-}
-else {
-	appLauncher.disable();
+if (!isDev) {
+	appLauncher
+		.isEnabled()
+		.then((isEnabled) => {
+			if (config.get('auto_launch') && !isEnabled) {
+				appLauncher.enable();
+			} else if (!config.get('auto_launch') && isEnabled) {
+				appLauncher.disable();
+			}
+			return;
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 }
 
 // Keep a global reference of the window object, if you don't, the window will
