@@ -1418,7 +1418,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){const e=document.querySelectorAll(\"#pane-side .OUeyt, .unread\");let t=0;for(let n=0;n<e.length;n++)0===e[n].parentNode.parentNode.querySelectorAll('#pane-side *[data-icon=\"muted\"]').length&&t++;updateBadge(t)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3),(async()=>{try{const e=await window.navigator.serviceWorker.getRegistrations();for(const t of e)t.unregister()}catch(e){}})();var titleEl=document.querySelector(\".landing-title.version-title\");titleEl&&titleEl.innerHTML.includes(\"Google Chrome 49+\")&&window.location.reload(),document.body.scrollTop=0;",
+        "js_unread": "function checkUnread(){const e=document.querySelectorAll(\"#pane-side .ZKn2B\");let t=0;for(let n=0;n<e.length;n++)0===e[n].parentNode.parentNode.querySelectorAll('#pane-side *[data-icon=\"muted\"]').length&&t++;updateBadge(t)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3),(async()=>{try{const e=await window.navigator.serviceWorker.getRegistrations();for(const t of e)t.unregister()}catch(e){}})();var titleEl=document.querySelector(\".landing-title.version-title\");titleEl&&titleEl.innerHTML.includes(\"Google Chrome 49+\")&&window.location.reload(),document.body.scrollTop=0;",
         "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
         "note": "",
         "titleBlink": false,
