@@ -197,7 +197,7 @@
 		"chai": "3.5.0",
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "7.1.12",
+		"electron": "7.2.4",
 		"electron-builder": "21.2.0",
 		"electron-notarize": "0.2.1",
 		"electron-packager": "^12.1.0",
