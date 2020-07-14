@@ -66,6 +66,10 @@ if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
 // This must match the package name in package.json
 app.setAppUserModelId('com.thegoddessinari.hamsket');
 
+app.userAgentFallback = app.userAgentFallback
+	.replace(`Electron/${process.versions.electron}`, ``)
+	.replace(`Hamsket/${app.getVersion()}`, ``);
+
 // Menu
 const appMenu = require('./menu')(config);
 
