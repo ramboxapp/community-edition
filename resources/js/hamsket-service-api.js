@@ -40,25 +40,6 @@ window.hamsket.clearUnreadCount = function() {
 }
 
 contextMenu({
-	prepend: (defaultActions, params, browserWindow) => {
-		let items = [];
-		if (params.misspelledWord) {
-			const suggestions = params.dictionarySuggestions;
-			if (suggestions) {
-				suggestions.forEach((suggestion) => {
-					items.push({
-						label: suggestion,
-						visible:
-							params.isEditable,
-						click: () => {
-							browserWindow.replaceMisspelling(suggestion);
-						}
-					});
-				});
-			}
-		}
-		return items;
-	},
 	window: remote.getCurrentWebContents(),
 	showCopyImageAddress: true,
 	showSaveImage: false,
