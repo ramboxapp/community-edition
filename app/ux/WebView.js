@@ -231,6 +231,21 @@ Ext.define('Hamsket.ux.WebView',{
 			console.info('Start loading...', me.src);
 			if ( !me.down('statusbar').closed || !me.down('statusbar').keep ) me.down('statusbar').show();
 			me.down('statusbar').showBusy();
+			me.getWebContents().session.webRequest.onBeforeSendHeaders(
+				{
+					urls: [
+						'https://accounts.google.com/signin/',
+						'https://accounts.google.com/signin/*',
+						'https://accounts.google.com/ServiceLogin?*'
+					]
+				},
+				(details, callback) => {
+					details.requestHeaders['User-Agent'] =
+						'Mozilla/5.0 (X11; Linux x86_64; rv:79.0) Gecko/20100101 Firefox/79.0';
+					callback({ requestHeaders: details.requestHeaders });
+				}
+			);
+
 		});
 		webview.addEventListener("did-stop-loading", function() {
 			me.down('statusbar').clearStatus({useDefaults: true});
