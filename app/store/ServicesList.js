@@ -808,7 +808,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: 'A free phone number for life.  Stay in touch from any screen.  Use your free number to text, call, and check voicemail  all from one app. Plus, Google Voice works on all of your devices so you can connect and communicate how you want.'
 			,url: 'https://voice.google.com'
 			,type: 'messaging'
-			,js_unread: `let parseIntOrZero=e=>isNaN(parseInt(e))?0:parseInt(e),checkUnread=()=>{const e=document.querySelector(".msgCount");let n=0;e?n=parseIntOrZero(e.innerHTML.replace(/[() ]/gi,"")):["Messages","Calls","Voicemail"].forEach(function(e){const r=document.querySelector('gv-nav-tab[tooltip="+e+"] div[aria-label="Unread count"]');r&&(n+=parseIntOrZero(r.innerHTML))}),hamsket.updateBadge(n)};setInterval(checkUnread,3e3);;`
+			,js_unread: `let checkUnread=()=>{const e=document.querySelectorAll("a[gv-test-id='sidenav-calls'] .navItemBadge, a[gv-test-id='sidenav-messages'] .navItemBadge, a[gv-test-id='sidenav-voicemail'] .navItemBadge");let n=0;e.forEach(r=>{hamsket.isInViewport(r)&&(n+=hamsket.parseIntOrZero(r.innerHTML))}),hamsket.updateBadge(n)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'sandstorm'
