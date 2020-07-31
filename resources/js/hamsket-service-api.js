@@ -44,6 +44,15 @@ window.hamsket.parseIntOrZero = function (n) {
 	return isNaN(result) ? 0 : result;
 };
 
+window.hamsket.isInViewport = function(node) {
+    const rect = node.getBoundingClientRect();
+
+    return rect.bottom > 0 &&
+        rect.right > 0 &&
+        rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+        rect.top < (window.innerHeight || document.documentElement.clientHeight);
+};
+
 contextMenu({
 	window: remote.getCurrentWebContents(),
 	showCopyImageAddress: true,
