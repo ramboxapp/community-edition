@@ -39,6 +39,11 @@ window.hamsket.clearUnreadCount = function() {
 	ipcRenderer.sendToHost('hamsket.clearUnreadCount');
 }
 
+window.hamsket.parseIntOrZero = function (n) {
+	const result = parseInt(n, 10);
+	return isNaN(result) ? 0 : result;
+};
+
 contextMenu({
 	window: remote.getCurrentWebContents(),
 	showCopyImageAddress: true,
