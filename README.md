@@ -124,7 +124,7 @@
 <img width="80" align="left" src="./resources/icons/webexteams.png" alt="Cisco Webex Teams" title="Cisco Webex Teams">
 <img width="80" align="left" src="./resources/icons/fleep.png" alt="Fleep" title="Fleep">
 <img width="80" align="left" src="./resources/icons/socialcast.png" alt="Socialcast" title="Socialcast">
-<img width="80" align="left" src="./resources/icons/riot.png" alt="Riot" title="Riot">
+<img width="80" align="left" src="./resources/icons/element.png" alt="Element" title="Element">
 <img width="80" align="left" src="./resources/icons/pushbullet.png" alt="Pushbullet" title="Pushbullet">
 <img width="80" align="left" src="./resources/icons/movim.png" alt="Movim" title="Movim">
 
