@@ -557,7 +557,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: 'Element is a simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app.'
 			,url: 'https://app.element.io/'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const a=document.getElementsByClassName("mx_RoomTile_nameContainer");let b=0;for(let i of a){const c=i.getElementsByClassName("mx_RoomTile_badge");for(let ii of c){const iiTrim=parseInt(ii.textContent.trim());iiTrim%1==0&&(b+=iiTrim)}}hamsket.updateBadge(b)};setInterval(checkUnread,1e3);`
+			,js_unread: `let checkUnread=()=>{const indirect=document.querySelectorAll(".mx_RoomTile_badgeContainer > .mx_NotificationBadge_visible.mx_NotificationBadge_dot > .mx_NotificationBadge_count").length,q=document.querySelectorAll(".mx_RoomSublist_badgeContainer > .mx_NotificationBadge_visible:not(.mx_NotificationBadge_dot) > .mx_NotificationBadge_count");let direct=0;for(let i of q)direct+=hamsket.parseIntOrZero(i.textContent);hamsket.updateBadge(direct,indirect)};setInterval(checkUnread,1e3);`
 			,custom_domain: true
 		},
 		{
