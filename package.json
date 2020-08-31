@@ -221,5 +221,8 @@
 		"request-promise": "4.2.2",
 		"rimraf": "2.6.1",
 		"tmp": "0.0.28"
+	},
+	"volta": {
+		"node": "8.9.1"
 	}
 }
