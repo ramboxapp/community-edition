@@ -2,7 +2,7 @@
 
 We welcome pull requests! Follow these steps to contribute:
 
-1. Find an [issue](https://github.com/saenzramiro/rambox/issues) that needs assistance.
+1. Find an [issue](https://github.com/ramboxapp/community-edition/issues) that needs assistance.
 1. Let us know you are working on it by posting a comment on the issue.
 1. Follow the [Contribution Guidelines](#contribution-guidelines) to start working on the issue.
 
@@ -65,15 +65,15 @@ If your versions are lower than the prerequisite versions, you should update.
 
 #### Forking rambox
 
-1. Go to the top level rambox repository: <https://github.com/saenzramiro/rambox>
+1. Go to the top level rambox repository: <https://github.com/ramboxapp/community-edition>
 1. Click the "Fork" Button in the upper right hand corner of the interface ([More Details Here](https://help.github.com/articles/fork-a-repo/))
-1. After the repository (repo) has been forked, you will be taken to your copy of the rambox repo at <https://github.com/yourUsername/rambox>
+1. After the repository (repo) has been forked, you will be taken to your copy of the rambox repo at <https://github.com/yourUsername/community-edition>
 
 #### Cloning Your Fork
 
 1. Open a Terminal / Command Line / Bash Shell in your projects directory (_i.e.: `/yourprojectdirectory/`_)
 1. Clone your fork of rambox
-    - `git clone https://github.com/yourUsername/rambox.git`
+    - `git clone https://github.com/yourUsername/community-edition.git`
 
 **(make sure to replace `yourUsername` with your GitHub username)**
 
@@ -81,9 +81,9 @@ This will download the entire rambox repo to your projects directory.
 
 #### Setup Your Upstream
 
-1. Change directory to the new rambox directory (`cd rambox`)
+1. Change directory to the new rambox directory (`cd community-edition`)
 1. Add a remote to the official rambox repo:
-    - `git remote add upstream https://github.com/saenzramiro/rambox.git`
+    - `git remote add upstream https://github.com/ramboxapp/community-edition.git`
 
 Congratulations, you now have a local copy of the rambox repo! :tada:
 
@@ -173,15 +173,15 @@ You will make changes to copies of thefiles which make up rambox in a personal f
 
 #### Important: ALWAYS EDIT ON A BRANCH
 
-Take away only one thing from this document: Never, **EVER** make edits to the `staging` branch.
+Take away only one thing from this document: Never, **EVER** make edits to the `master` branch.
 ALWAYS make a new branch BEFORE you edit files.
-This is critical, because if your PR is not accepted, your copy of staging will be forever sullied and the only way to fix it is to delete your fork and re-fork.
+This is critical, because your copy of `master` will be forever sullied and the only way to fix it is a difficult hard-reset and force-push process, or deleting your fork and re-forking.
 
 ### Common Steps
 
 1. Once the edits have been committed, you will be prompted to create a pull request on your fork's GitHub Page.
-1. By default, all pull requests should be against the rambox main repo, `staging` branch.
-    - **Make sure that your Base Fork is set to saenzramiro/rambox when raising a Pull Request.**
+1. By default, all pull requests should be against the rambox main repo, `master` branch.
+    - **Make sure that your Base Fork is set to ramboxapp/community-edition when raising a Pull Request.**
 1. Submit a pull request.
 1. The title (also called the subject) of your PR should be descriptive of your changes and succinctly indicates what is being fixed.
     - **Do not add the issue number in the PR title or commit message.**
