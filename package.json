@@ -67,7 +67,7 @@
 		"afterSign": "resources/installer/notarize.js",
 		"asar": true,
 		"electronDownload": {
-			"version": "7.1.12"
+			"version": "7.2.4"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
