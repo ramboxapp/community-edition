@@ -11,7 +11,7 @@
 	"bugs": {
 		"url": "https://github.com/ramboxapp/community-edition/issues"
 	},
-	"homepage": "https://rambox.pro",
+	"homepage": "https://rambox.app",
 	"keywords": [
 		"Rambox",
 		"messaging",
@@ -25,7 +25,7 @@
 		"hangouts",
 		"skype"
 	],
-	"author": "Rambox <support@rambox.pro>",
+	"author": "Rambox <support@rambox.app>",
 	"license": "GPL-3.0",
 	"scripts": {
 		"start": "electron electron/main.js",
