@@ -276,7 +276,7 @@ Ext.define('Rambox.ux.WebView',{
 		if ( !me.record.get('enabled') ) return;
 
 		var webview = me.getWebView();
-		let googleLoginURLs = ['accounts.google.com/signin', 'accounts.google.com/ServiceLogin', ]
+		let googleLoginURLs = ['accounts.google.com/signin', 'accounts.google.com/ServiceLogin', 'accounts.google.com/_/lookup/accountlookup']
 		me.errorCodeLog = []
 
 		// Google Analytics Event
