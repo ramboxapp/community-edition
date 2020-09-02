@@ -551,6 +551,16 @@ Ext.define('Hamsket.store.ServicesList', {
 			,type: 'messaging'
 		},
 		{
+			 id: 'riot'
+			,logo: 'riot.png'
+			,name: 'Riot (deprecated)'
+			,description: 'Riot is a simple and elegant collaboration environment that gathers all of your different conversations and app integrations into one single app.'
+			,url: 'https://riot.im/app/'
+			,type: 'messaging'
+			,js_unread: `let checkUnread=()=>{const a=document.getElementsByClassName("mx_RoomTile_nameContainer");let b=0;for(let i of a){const c=i.getElementsByClassName("mx_RoomTile_badge");for(let ii of c){const iiTrim=parseInt(ii.textContent.trim());iiTrim%1==0&&(b+=iiTrim)}}hamsket.updateBadge(b)};setInterval(checkUnread,1e3);`
+			,custom_domain: true
+		},
+		{
 			 id: 'Element'
 			,logo: 'element.png'
 			,name: 'Element'
