@@ -148,12 +148,12 @@ Ext.define('Hamsket.ux.WebView',{
 		enabled = enabled || me.record.get('enabled');
 
 		if ( !enabled ) {
-			cfg = {
+			cfg = [{
 				 xtype: 'container'
 				,html: '<h3>Service Disabled</h3>'
 				,style: 'text-align:center;'
 				,padding: 100
-			};
+			}];
 		} else {
 			cfg = [{
 				 xtype: 'component'
