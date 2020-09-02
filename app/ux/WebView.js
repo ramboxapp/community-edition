@@ -234,14 +234,13 @@ Ext.define('Hamsket.ux.WebView',{
 			me.getWebContents().session.webRequest.onBeforeSendHeaders(
 				{
 					urls: [
-						'https://accounts.google.com/signin/',
-						'https://accounts.google.com/signin/*',
-						'https://accounts.google.com/ServiceLogin?*'
+						'https://accounts.google.com/',
+						'https://accounts.google.com/*'
 					]
 				},
 				(details, callback) => {
 					details.requestHeaders['User-Agent'] =
-						'Mozilla/5.0 (X11; Linux x86_64; rv:79.0) Gecko/20100101 Firefox/79.0';
+						'Mozilla/5.0 (X11; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0';
 					callback({ requestHeaders: details.requestHeaders });
 				}
 			);
