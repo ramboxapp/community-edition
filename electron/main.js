@@ -15,6 +15,10 @@ const updater = require('./updater');
 var fs = require("fs");
 const path = require('path');
 
+// Disk usage:
+const disk = require('diskusage');
+const appPath = app.getAppPath();
+
 if ( isDev ) app.getVersion = function() { return require('../package.json').version; }; // FOR DEV ONLY, BECAUSE IN DEV RETURNS ELECTRON'S VERSION
 
 // Initial Config
@@ -250,6 +254,40 @@ function updateBadge(title) {
 	if ( messageCount > 0 && !mainWindow.isFocused() && !config.get('dont_disturb') && config.get('flash_frame') ) mainWindow.flashFrame(true);
 }
 
+function formatBytes(bytes, decimals = 2) {
+	if (bytes === 0) return '0 Bytes';
+
+	const k = 1024;
+	const dm = decimals < 0 ? 0 : decimals;
+	const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+	const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+	return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+async function availableSpaceWatchDog() {
+	// optionally render this information also in rambox window
+	try {
+		const { available } = await disk.check(appPath);
+		if (available < 1073741824) { // 1 GB
+			const options = {
+				type: 'warning',
+				buttons: ['OK, quit'],
+				defaultId: 0,
+				title: `Running out of disk space! - Rambox shutting down`,
+				detail: `You've got just ${formatBytes(available)} space left.\n\nRambox has been frozen to prevent settings corruption.\n\nOnce you quit this dialog, Rambox will shutdown.\n\n1 GB of avalable disk space is required.\nFree up space on partition where Rambox is installed then start the app again.\n\nRambox path: \n${appPath}`,
+				message: `Running out of disk space! - Rambox shutting down`,
+			};
+		
+			dialog.showMessageBoxSync(null, options);
+			app.quit(); 
+		}
+	} catch (err) {
+		console.error(err)
+	}
+}
+
 ipcMain.on('setBadge', function(event, messageCount, value) {
 	mainWindow.setOverlayIcon(nativeImage.createFromDataURL(value), messageCount.toString());
 });
@@ -474,8 +512,8 @@ if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
 	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
+	setInterval(availableSpaceWatchDog, 1000 * 60);
 });
-
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
 	// On OS X it is common for applications and their menu bar
