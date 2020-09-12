@@ -149,6 +149,12 @@ Ext.define('Rambox.view.preferences.Preferences',{
 					}
 					,{
 						 xtype: 'checkbox'
+						,name: 'darkreader'
+						,boxLabel: locale['preferences[29]']
+						,value: config.darkreader
+					}
+					,{
+						 xtype: 'checkbox'
 						,name: 'hide_menu_bar'
 						,boxLabel: locale['preferences[1]']+' (<code>Alt</code> key to display)'
 						,value: config.hide_menu_bar

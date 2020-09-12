@@ -1,7 +1,7 @@
 /**
  * This file is loaded in the service web views to provide a Rambox API.
  */
-
+require("./darkreader.js")
 const { ipcRenderer } = require('electron');
 const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
 

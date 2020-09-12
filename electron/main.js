@@ -29,6 +29,7 @@ const config = new Config({
 		,flash_frame: true
 		,window_close_behavior: 'keep_in_tray'
 		,start_minimized: false
+		,darkreader: true
 		,systemtray_indicator: true
 		,master_password: false
 		,dont_disturb: false

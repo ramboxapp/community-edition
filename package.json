@@ -209,6 +209,7 @@
 		"auth0-js": "9.13.2",
 		"auto-launch-patched": "5.0.2",
 		"crypto": "1.0.1",
+		"darkreader": "4.9.17",
 		"electron-contextmenu-wrapper": "2.0.0",
 		"electron-is-dev": "0.3.0",
 		"electron-log": "2.2.17",
