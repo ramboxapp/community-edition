@@ -92,8 +92,8 @@
 		"chai": "^4.2.0",
 		"crowdin": "^3.4.2",
 		"csvjson": "^5.1.0",
-		"electron": "^9.1.2",
-		"electron-builder": "^22.8.0",
+		"electron": "^10.1.2",
+		"electron-builder": "^22.8.1",
 		"mocha": "^7.1.1",
 		"shx": "^0.3.2",
 		"spectron": "^10.0.1"

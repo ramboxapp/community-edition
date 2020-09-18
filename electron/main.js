@@ -117,7 +117,8 @@ function createWindow () {
 		,webPreferences: {
 			partition: 'persist:hamsket',
 			nodeIntegration: true,
-			webviewTag: true
+			webviewTag: true,
+			enableRemoteModule: true
 		}
 	});
 
