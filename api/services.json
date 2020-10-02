@@ -1618,5 +1618,35 @@
         "note": "",
         "titleBlink": false,
         "custom_domain": false
+    },
+    {
+        "id": "airdroid",
+        "logo": "airdroid.png",
+        "name": "Airdroid",
+        "description": "AirDroid enables you to transfer files across devices, control mobile devices remotely, receive and reply to messages on computer.",
+        "url": "https://web.airdroid.com/",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
+    {
+        "id": "xender",
+        "logo": "xender.png",
+        "name": "Xender",
+        "description": "Xender can transfer and share any type of files, from photos, documents, to music, videos, even apps without mobile data usage.",
+        "url": "http://web.xender.com/",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
     }
 ]
