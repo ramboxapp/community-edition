@@ -277,12 +277,12 @@ Ext.define('Rambox.Application', {
 	,checkUpdate: function(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
-			 url: 'https://rambox.pro/api/latestversion.json'
+			 url: 'https://api.github.com/repos/ramboxapp/community-edition/releases/latest'
 			,method: 'GET'
 			,success: function(response) {
 				var json = Ext.decode(response.responseText);
 				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
-				if ( appVersion.isLessThan(json.version) ) {
+				if ( appVersion.isLessThan(json.name) && !json.draft && !json.prerelease ) {
 					console.info('New version is available', json.version);
 					Ext.cq1('app-main').addDocked({
 						 xtype: 'toolbar'
