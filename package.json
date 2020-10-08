@@ -124,7 +124,9 @@
 			],
 			"plugs": [
 				"default",
-				"camera"
+				"camera",
+				"audio-record",
+				"removable-media"
 			]
 		},
 		"linux": {
