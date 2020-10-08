@@ -23,7 +23,9 @@ Ext.define('Rambox.Application', {
 	,config: {
 		 totalServicesLoaded: 0
 		,totalNotifications: 0
+		,googleURLs: []
 	}
+
 	,launch: function () {
 
 		const isOnline = require('is-online');
@@ -165,6 +167,14 @@ Ext.define('Rambox.Application', {
 			// Check for updates
 			if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
 
+			// Get Google URLs
+			Ext.Ajax.request({
+				url: 'https://raw.githubusercontent.com/ramboxapp/community-edition/gh-pages/api/google.json'
+				,method: 'GET'
+				,success: function(response) {
+					Rambox.app.config.googleURLs = Ext.decode(response.responseText);
+				}
+			});
 
 			// Shortcuts
 			const platform = require('electron').remote.process.platform;
