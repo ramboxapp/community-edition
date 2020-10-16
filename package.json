@@ -126,6 +126,7 @@
 				"default",
 				"camera",
 				"audio-record",
+				"audio-playback",
 				"removable-media"
 			]
 		},
