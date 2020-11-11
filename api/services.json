@@ -90,6 +90,21 @@
         "custom_domain": false
     },
     {
+        "id": "bumble",
+        "logo": "bumble.png",
+        "name": "Bumble",
+        "description": "Location-based social application that facilitates communication between interested users. In heterosexual matches, only female users can make the first contact with matched male users, while in same-sex matches either person can send a message first.",
+        "url": "https://bumble.com/app",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
+    {
         "id": "calendar",
         "logo": "calendar.png",
         "name": "Google Calendar",
