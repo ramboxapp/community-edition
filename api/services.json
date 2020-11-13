@@ -1215,6 +1215,21 @@
         "custom_domain": false
     },
     {
+        "id": "spike",
+        "logo": "spike.png",
+        "name": "Spike",
+        "description": "Spike's conversational email app makes working easier and more efficient. Saving you and your team time, sanity, and a lot of headaches.",
+        "url": "https://spikenow.com/web",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "function checkUnread(){var e=document.querySelectorAll(\"div.thread:not(.nobadge) div.badge\"),n=0;for(i=0;i<e.length;i++)n+=\"\"!=e[i].innerHTML.trim()?parseInt(e[i].innerHTML.trim()):1;updateBadge(n)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
+    {
         "id": "squirrelmail",
         "logo": "squirrelmail.png",
         "name": "SquirrelMail",
@@ -1448,7 +1463,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){const e=document.querySelectorAll(\"#pane-side ._31gEB, .unread\");let t=0;for(let n=0;n<e.length;n++)0===e[n].parentNode.parentNode.querySelectorAll('#pane-side *[data-icon=\"muted\"]').length&&t++;updateBadge(t)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3),(async()=>{try{const e=await window.navigator.serviceWorker.getRegistrations();for(const t of e)t.unregister()}catch(e){}})();var titleEl=document.querySelector(\".landing-title.version-title\");titleEl&&titleEl.innerHTML.includes(\"Google Chrome 49+\")&&window.location.reload(),document.body.scrollTop=0;",
+        "js_unread": "function checkUnread(){const e=document.querySelectorAll(\"#pane-side ._31gEB, .unread\");let t=0;for(let n=0;n<e.length;n++)0===e[n].parentNode.parentNode.querySelectorAll('#pane-side *[data-icon=\"muted\"]').length&&t++;updateBadge(t)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3),(async()=>{try{const e=await window.navigator.serviceWorker.getRegistrations();for(const t of e)t.unregister()}catch(e){}})();var titleEl=document.querySelector(\".landing-title.version-title\");titleEl&&titleEl.innerHTML.includes(\"Google Chrome 60+\")&&window.location.reload(),document.body.scrollTop=0;",
         "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36",
         "note": "",
         "titleBlink": false,
