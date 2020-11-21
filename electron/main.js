@@ -85,24 +85,28 @@ let isQuitting = false;
 function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
-		 title: 'Rambox'
-		,icon: __dirname + '/../resources/Icon.' + (process.platform === 'linux' ? 'png' : 'ico')
-		,backgroundColor: '#FFF'
-		,x: config.get('x')
-		,y: config.get('y')
-		,width: config.get('width')
-		,height: config.get('height')
-		,alwaysOnTop: config.get('always_on_top')
-		,autoHideMenuBar: config.get('hide_menu_bar')
-		,skipTaskbar: config.get('window_display_behavior') === 'show_trayIcon'
-		,show: !config.get('start_minimized')
-		,acceptFirstMouse: true
-		,webPreferences: {
-			plugins: true
-			,partition: 'persist:rambox'
-			,nodeIntegration: true
-			,webviewTag: true
-		}
+		title: "Rambox",
+		icon:
+			__dirname +
+			"/../resources/Icon." +
+			(process.platform === "linux" ? "png" : "ico"),
+		backgroundColor: "#FFF",
+		x: config.get("x"),
+		y: config.get("y"),
+		width: config.get("width"),
+		height: config.get("height"),
+		alwaysOnTop: config.get("always_on_top"),
+		autoHideMenuBar: config.get("hide_menu_bar"),
+		skipTaskbar: config.get("window_display_behavior") === "show_trayIcon",
+		show: !config.get("start_minimized"),
+		acceptFirstMouse: true,
+		webPreferences: {
+			enableRemoteModule: true,
+			plugins: true,
+			partition: "persist:rambox",
+			nodeIntegration: true,
+			webviewTag: true,
+		},
 	});
 
 	// Check if user has defined a custom User-Agent

@@ -288,10 +288,16 @@ Ext.define('Rambox.ux.WebView',{
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
 
-			webview.getWebContents().session.webRequest.onBeforeSendHeaders((details, callback) => {
-				Rambox.app.config.googleURLs.forEach((loginURL) => {	if ( details.url.indexOf(loginURL) > -1 ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'})
-				callback({ cancel: false, requestHeaders: details.requestHeaders });
-			});
+			require("electron")
+				.remote.webContents.fromId(webview.getWebContentsId())
+				.session.webRequest.onBeforeSendHeaders((details, callback) => {
+					Rambox.app.config.googleURLs.forEach((loginURL) => {
+						if (details.url.indexOf(loginURL) > -1)
+							details.requestHeaders["User-Agent"] =
+								"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0";
+					});
+					callback({ cancel: false, requestHeaders: details.requestHeaders });
+				});
 
 			if ( !me.down('statusbar').closed || !me.down('statusbar').keep ) me.down('statusbar').show();
 			me.down('statusbar').showBusy();
@@ -504,7 +510,6 @@ Ext.define('Rambox.ux.WebView',{
 						require('electron').shell.openExternal(e.url);
 					}
 					return;
-					break;
 				default:
 					break;
 			}
@@ -551,52 +556,71 @@ Ext.define('Rambox.ux.WebView',{
 			js_inject += 'document.body.scrollTop=0;';
 
 			// Handles Certificate Errors
-			webview.getWebContents().on('certificate-error', function(event, url, error, certificate, callback) {
-				if ( me.record.get('trust') ) {
-					event.preventDefault();
-					callback(true);
-				} else {
-					callback(false);
-				}
-
-				me.down('statusbar').keep = true;
-				me.down('statusbar').show();
-				me.down('statusbar').setStatus({
-					text: '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Certification Warning'
-				});
-				me.down('statusbar').down('button').show();
-			});
-			if (!eventsOnDom) {
-				webview.getWebContents().on('before-input-event', (event, input) => {
-					if (input.type !== 'keyDown') return;
-
-					var modifiers = [];
-					if ( input.shift ) modifiers.push('shift');
-					if ( input.control ) modifiers.push('control');
-					if ( input.alt ) modifiers.push('alt');
-					if ( input.meta ) modifiers.push('meta');
-					if ( input.isAutoRepeat  ) modifiers.push('isAutoRepeat');
-
-					if ( input.key === 'Tab' && !(modifiers && modifiers.length) ) return;
-
-					// Maps special keys to fire the correct event in Mac OS
-					if ( require('electron').remote.process.platform === 'darwin' ) {
-						var keys = [];
-						keys['ƒ'] = 'f'; // Search
-						keys[' '] = 'l'; // Lock
-						keys['∂'] = 'd'; // DND
-
-						input.key = keys[input.key] ? keys[input.key] : input.key;
+			require("electron")
+				.remote.webContents.fromId(webview.getWebContentsId())
+				.on("certificate-error", function (
+					event,
+					url,
+					error,
+					certificate,
+					callback
+				) {
+					if (me.record.get("trust")) {
+						event.preventDefault();
+						callback(true);
+					} else {
+						callback(false);
 					}
 
-					if ( input.key === 'F11' || input.key === 'a' || input.key === 'A' || input.key === 'F12' || input.key === 'q' || (input.key === 'F1' && modifiers.includes('control'))) return;
-
-					require('electron').remote.getCurrentWebContents().sendInputEvent({
-						type: input.type,
-						keyCode: input.key,
-						modifiers: modifiers
+					me.down("statusbar").keep = true;
+					me.down("statusbar").show();
+					me.down("statusbar").setStatus({
+						text:
+							'<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Certification Warning',
 					});
-				})
+					me.down("statusbar").down("button").show();
+				});
+			if (!eventsOnDom) {
+				require("electron")
+					.remote.webContents.fromId(webview.getWebContentsId())
+					.on("before-input-event", (event, input) => {
+						if (input.type !== "keyDown") return;
+
+						var modifiers = [];
+						if (input.shift) modifiers.push("shift");
+						if (input.control) modifiers.push("control");
+						if (input.alt) modifiers.push("alt");
+						if (input.meta) modifiers.push("meta");
+						if (input.isAutoRepeat) modifiers.push("isAutoRepeat");
+
+						if (input.key === "Tab" && !(modifiers && modifiers.length)) return;
+
+						// Maps special keys to fire the correct event in Mac OS
+						if (require("electron").remote.process.platform === "darwin") {
+							var keys = [];
+							keys["ƒ"] = "f"; // Search
+							keys[" "] = "l"; // Lock
+							keys["∂"] = "d"; // DND
+
+							input.key = keys[input.key] ? keys[input.key] : input.key;
+						}
+
+						if (
+							input.key === "F11" ||
+							input.key === "a" ||
+							input.key === "A" ||
+							input.key === "F12" ||
+							input.key === "q" ||
+							(input.key === "F1" && modifiers.includes("control"))
+						)
+							return;
+
+						require("electron").remote.getCurrentWebContents().sendInputEvent({
+							type: input.type,
+							keyCode: input.key,
+							modifiers: modifiers,
+						});
+					});
 				eventsOnDom = true;
 
 				Rambox.app.config.googleURLs.forEach((loginURL) => {	if ( webview.getURL().indexOf(loginURL) > -1 ) webview.reload() })
