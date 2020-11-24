@@ -9,6 +9,7 @@
 [![GNU GPL v3][license]](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Gitter][gitter]](https://gitter.im/TheGoddessInari/hamsket)
 [![Release][release]](https://github.com/TheGoddessInari/hamsket/releases/latest)
+[![Nightly][nightly]](https://github.com/TheGoddessInari/hamsket/releases/tag/nightly)
 
 [![DevOps Build][devops-build]](https://dev.azure.com/TheGoddessInari/hamsket/_build?definitionId=2)
 [![DevOps Deployment][devops-deploy]](https://dev.azure.com/TheGoddessInari/hamsket/_release?definitionId=1)
@@ -18,6 +19,7 @@
 [license]: https://img.shields.io/github/license/TheGoddessInari/hamsket.svg
 [gitter]: https://img.shields.io/gitter/room/TheGoddessInari/hamsket.svg
 [release]: https://img.shields.io/github/release/TheGoddessInari/hamsket.svg
+[nightly]: https://img.shields.io/badge/Nightly-tag-red
 
 [devops-build]: https://img.shields.io/azure-devops/build/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/2.svg?logo=azure-devops
 [devops-deploy]: https://img.shields.io/azure-devops/release/TheGoddessInari/f5a88978-10c7-4069-97e0-59b9fc6d36a0/1/1.svg?logo=azure-devops
