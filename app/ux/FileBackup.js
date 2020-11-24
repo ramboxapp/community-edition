@@ -13,7 +13,9 @@ Ext.define('Hamsket.ux.FileBackup', {
 	backupConfiguration(callback) {
 		const me = this;
 		let services = [];
-		Ext.getStore('Services').each(function(service) {
+		const service_store = Ext.getStore('Services');
+		service_store.sync();
+		service_store.each(function(service) {
 			const s = Ext.clone(service);
 			delete s.data.id;
 			delete s.data.zoomLevel;
@@ -37,6 +39,7 @@ Ext.define('Hamsket.ux.FileBackup', {
 	},
 	restoreConfiguration() {
 		const me = this;
+		const service_store = Ext.getStore('Services');
 		me.remote.dialog.showOpenDialog({
 			defaultPath: me.myDefaultPath,
 			properties: ['openFile']
@@ -52,9 +55,9 @@ Ext.define('Hamsket.ux.FileBackup', {
 						Ext.cq1('app-main').getController().removeAllServices(true, function() {
 							Ext.each(services, function(s) {
 								const service = Ext.create('Hamsket.model.Service', s);
-								service.save();
-								Ext.getStore('Services').add(service);
+								service_store.add(service);
 							});
+							service_store.sync();
 							me.remote.getCurrentWindow().reload();
 						});
 

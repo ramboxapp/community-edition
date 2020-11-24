@@ -166,11 +166,12 @@ Ext.define('Hamsket.view.main.MainController', {
 				);
 			})
 			.finally(function() {
+				const service_store = Ext.getStore('Services');
 				// Remove record from localStorage
-				Ext.getStore('Services').remove(rec);
+				service_store.remove(rec);
+				service_store.sync();
 				// Close tab
 				if (tab) tab.close();
-				session.destroy();
 				if ( Ext.isFunction(resolve) ) resolve();
 				// Close waiting message
 				if ( total === actual ) {

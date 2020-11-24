@@ -138,8 +138,9 @@ Ext.define('Hamsket.view.add.AddController', {
 				,os_override: formValues.os_override
 				,chrome_version: formValues.chrome_version
 			});
-			service.save();
-			Ext.getStore('Services').add(service);
+			const service_store = Ext.getStore('Services');
+			service_store.add(service);
+			service_store.sync();
 
 			const tabData = {
 				 xtype: 'webview'
