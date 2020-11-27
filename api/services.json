@@ -390,6 +390,21 @@
         "custom_domain": false
     },
     {
+        "id": "glowingbear",
+        "logo": "glowingbear.png",
+        "name": "Glowing Bear",
+        "description": "Glowing Bear is a web frontend for the WeeChat IRC client and strives to be a modern interface.",
+        "url": "https://www.glowing-bear.org/",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "",
+        "userAgent": "",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
+    {
         "id": "gmail",
         "logo": "gmail.png",
         "name": "Gmail",
