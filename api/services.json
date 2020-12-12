@@ -1163,7 +1163,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){if(-1!==location.host.indexOf(\"slack.com\")){var e=document.querySelectorAll(\".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)\").length,n=0;document.querySelectorAll(\".p-channel_sidebar__badge\").forEach(e=>{n+=isNaN(parseInt(e.innerHTML))?0:parseInt(e.innerHTML)}),updateBadge(e,n)}}function updateBadge(e,n){var a=0<n?n:0<e?999999:0;rambox.setUnreadCount(a)}setInterval(checkUnread,3e3);",
+        "js_unread": "function checkUnread(){if(-1!==location.host.indexOf(\"slack.com\")){var e=document.querySelectorAll(\".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)\").length,n=0;document.querySelectorAll(\".p-channel_sidebar__badge\").forEach(e=>{n+=isNaN(parseInt(e.innerHTML))?0:parseInt(e.innerHTML)}),updateBadge(e,n)}}function updateBadge(e,n){var a=0<n?n:0<e?999999:0;rambox.setUnreadCount(a)}setInterval(checkUnread,3e3),0<location.href.indexOf(\"/ssb/redirect?entry_point=workspace_signin\")&&(location.href=location.origin);",
         "userAgent": "",
         "note": "",
         "titleBlink": false,
