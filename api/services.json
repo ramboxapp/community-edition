@@ -263,7 +263,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){e=0,document.querySelectorAll(\".mx_RoomSublist2_stickable\").forEach(t=>t.querySelector(\".mx_NotificationBadge_count\")&&parseInt(t.querySelector(\".mx_NotificationBadge_count\").innerText)&&(e+=parseInt(t.querySelector(\".mx_NotificationBadge_count\").innerText))),updateBadge(e)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
+        "js_unread": "function checkUnread(){e=0,document.querySelectorAll(\".mx_RoomSublist_stickable\").forEach(t=>t.querySelector(\".mx_NotificationBadge_count\")&&parseInt(t.querySelector(\".mx_NotificationBadge_count\").innerText)&&(e+=parseInt(t.querySelector(\".mx_NotificationBadge_count\").innerText))),updateBadge(e)}function updateBadge(e){e&&e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
         "userAgent": "",
         "note": "",
         "titleBlink": false,
