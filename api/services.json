@@ -482,7 +482,7 @@
     {
         "id": "hangoutschat",
         "logo": "hangoutschat.png",
-        "name": "Hangouts Chat",
+        "name": "Google Chat",
         "description": "A messaging platform built for teams.",
         "url": "https://chat.google.com/",
         "type": "messaging",
