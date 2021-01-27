@@ -18,8 +18,9 @@ Ext.define('Hamsket.util.IconLoader', {
 		this.loadServiceIconUrl = function (service, webview) {
 			switch (service.type) {
 				case 'slack':
-					setTimeout( () =>
-						webview.executeJavaScript(
+					setTimeout( () => {
+					const service_name = Ext.String.htmlEncode(service.record.get('name'));
+					webview.executeJavaScript(
 						`(() => {
 							let icon = document.querySelector('.c-team_icon');
 							if (!icon) {
@@ -39,12 +40,14 @@ Ext.define('Hamsket.util.IconLoader', {
 							return bg.slice(5, -2);
 						})();`).then(function (backgroundImage) {
 							if (backgroundImage) {
-								service.setTitle(`<img src="${backgroundImage}" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">${Ext.String.htmlEncode(service.title)}`);
+								service.setTitle(`<img src="${backgroundImage}" width="" style="background-color: white;border-radius: 50%;position: absolute;left: 18px;top: 17px;width: 12px;">${service_name}`);
 								service.fireEvent('iconchange', service, backgroundImage, service.icon);
 							}
 							return true;
 						}
-					).finally({}), 1000);
+					).catch(err => {
+						console.error(`Slack IconLoader - ${service_name}: ${err}`);
+					});}, 1000);
 					break;
 				default:
 					break;
