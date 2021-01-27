@@ -775,7 +775,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,url: 'https://mastodon.social/auth/sign_in'
 			,type: 'messaging'
 			,custom_domain: true
-			,note: '<a href="https://instances.mastodon.xyz/" target="_blank">List of instances</a>'
+			,note: '<a href="https://instances.social/" target="_blank">List of instances</a>'
 		},
 		{
 			 id: 'teamworkchat'
