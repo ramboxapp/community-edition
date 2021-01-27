@@ -37,7 +37,7 @@ window.hamsket.updateBadge = function(direct, indirect = 0) {
  */
 window.hamsket.clearUnreadCount = function() {
 	ipcRenderer.sendToHost('hamsket.clearUnreadCount');
-}
+};
 
 window.hamsket.parseIntOrZero = function (n) {
 	const result = parseInt(n, 10);
@@ -79,4 +79,4 @@ Notification.prototype = NativeNotification.prototype;
 Notification.permission = NativeNotification.permission;
 Notification.requestPermission = NativeNotification.requestPermission.bind(Notification);
 
-window.close = function() { location.href = location.origin };
+window.close = function() { location.href = location.origin; };
