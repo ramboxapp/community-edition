@@ -7,8 +7,6 @@ const tray = require('./tray');
 const AutoLaunch = require('auto-launch');
 // Configuration
 const Config = require('electron-store');
-// Development
-const isDev = require('electron-is-dev');
 // Updater
 const updater = require('./updater');
 // File System
@@ -30,7 +28,7 @@ const config = new Config({
 		,hide_menu_bar: false
 		,tabbar_location: 'top'
 		,window_display_behavior: 'taskbar_tray'
-		,auto_launch: !isDev
+		,auto_launch: false
 		,flash_frame: true
 		,window_close_behavior: 'keep_in_tray'
 		,start_minimized: false
@@ -75,24 +73,22 @@ const appMenu = require('./menu')(config);
 
 // Configure AutoLaunch
 const appLauncher = new AutoLaunch({
-	 name: 'Hamsket'
-	,isHidden: config.get('start_minimized')
+	name: 'Hamsket',
+	isHidden: config.get('start_minimized')
 });
-if (!isDev) {
-	appLauncher
-		.isEnabled()
-		.then((isEnabled) => {
-			if (config.get('auto_launch') && !isEnabled) {
-				appLauncher.enable();
-			} else if (!config.get('auto_launch') && isEnabled) {
-				appLauncher.disable();
-			}
-			return;
-		})
-		.catch((err) => {
-			console.log(err);
-		});
-}
+appLauncher
+	.isEnabled()
+	.then((isEnabled) => {
+		if (config.get('auto_launch') && !isEnabled) {
+			appLauncher.enable();
+		} else if (!config.get('auto_launch') && isEnabled) {
+			appLauncher.disable();
+		}
+		return;
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -146,9 +142,6 @@ function createWindow () {
 	}
 
 	process.setMaxListeners(10000);
-
-	// Open the DevTools.
-	if ( isDev ) mainWindow.webContents.openDevTools();
 
 	// and load the index.html of the app.
 	mainWindow.loadURL('file://' + __dirname + '/../index.html');
@@ -241,8 +234,6 @@ function createMasterPasswordWindow() {
 		}
 
 	});
-	// Open the DevTools.
-	if ( isDev ) mainMasterPasswordWindow.webContents.openDevTools();
 
 	mainMasterPasswordWindow.loadURL('file://' + __dirname + '/../masterpassword.html');
 	mainMasterPasswordWindow.on('close', function() { mainMasterPasswordWindow = null; });
