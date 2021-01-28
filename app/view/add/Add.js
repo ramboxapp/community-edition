@@ -19,11 +19,11 @@ Ext.define('Hamsket.view.add.Add',{
 	// defaults
 	,modal: true
 	,width: 500
-	,height: 800
 	,autoShow: true
 	,resizable: false
 	,draggable: false
 	,bodyPadding: 10
+	,defaultAlign: 't-t'
 
 	,initComponent() {
 		const me = this;
