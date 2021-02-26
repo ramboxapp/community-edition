@@ -964,7 +964,7 @@
         "logo": "outlook365.png",
         "name": "Outlook 365",
         "description": "Outlook for Business",
-        "url": "https://outlook.office.com/owa/",
+        "url": "https://outlook.office.___/owa/",
         "type": "email",
         "allow_popups": false,
         "manual_notifications": true,
