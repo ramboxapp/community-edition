@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.7.6",
+	"version": "0.7.7",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"repository": {
@@ -124,7 +124,10 @@
 			],
 			"plugs": [
 				"default",
-				"camera"
+				"camera",
+				"audio-record",
+				"audio-playback",
+				"removable-media"
 			]
 		},
 		"linux": {
@@ -210,6 +213,7 @@
 		"auto-launch-patched": "5.0.2",
 		"crypto": "1.0.1",
 		"darkreader": "4.9.17",
+		"diskusage": "1.1.3",
 		"electron-contextmenu-wrapper": "2.0.0",
 		"electron-is-dev": "0.3.0",
 		"electron-log": "2.2.17",

@@ -23,7 +23,9 @@ Ext.define('Rambox.Application', {
 	,config: {
 		 totalServicesLoaded: 0
 		,totalNotifications: 0
+		,googleURLs: []
 	}
+
 	,launch: function () {
 
 		const isOnline = require('is-online');
@@ -165,6 +167,14 @@ Ext.define('Rambox.Application', {
 			// Check for updates
 			if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
 
+			// Get Google URLs
+			Ext.Ajax.request({
+				url: 'https://raw.githubusercontent.com/ramboxapp/community-edition/gh-pages/api/google.json'
+				,method: 'GET'
+				,success: function(response) {
+					Rambox.app.config.googleURLs = Ext.decode(response.responseText);
+				}
+			});
 
 			// Shortcuts
 			const platform = require('electron').remote.process.platform;
@@ -267,12 +277,12 @@ Ext.define('Rambox.Application', {
 	,checkUpdate: function(silence) {
 		console.info('Checking for updates...');
 		Ext.Ajax.request({
-			 url: 'https://rambox.pro/api/latestversion.json'
+			 url: 'https://api.github.com/repos/ramboxapp/community-edition/releases/latest'
 			,method: 'GET'
 			,success: function(response) {
 				var json = Ext.decode(response.responseText);
 				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
-				if ( appVersion.isLessThan(json.version) ) {
+				if ( appVersion.isLessThan(json.name) && !json.draft && !json.prerelease ) {
 					console.info('New version is available', json.version);
 					Ext.cq1('app-main').addDocked({
 						 xtype: 'toolbar'
