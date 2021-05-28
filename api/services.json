@@ -1178,7 +1178,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){if(document.querySelector(\".p-download_modal__body .p-download_modal__close\")&&document.querySelector(\".p-download_modal__body .p-download_modal__close\").click(),-1!==location.host.indexOf(\"slack.com\")){var e=document.querySelectorAll(\".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)\").length,n=0;document.querySelectorAll(\".p-channel_sidebar__badge\").forEach(e=>{n+=isNaN(parseInt(e.innerHTML))?0:parseInt(e.innerHTML)}),updateBadge(e,n)}}function updateBadge(e,n){var o=0<n?n:0<e?999999:0;rambox.setUnreadCount(o)}setInterval(checkUnread,3e3),0<location.href.indexOf(\"/ssb/redirect?entry_point=workspace_signin\")&&(location.href=location.origin);",
+        "js_unread": "function checkUnread(){if(document.querySelector(\".p-download_modal__body .p-download_modal__close\")&&document.querySelector(\".p-download_modal__body .p-download_modal__close\").click(),-1!==location.host.indexOf(\"slack.com\")){var e=document.querySelectorAll(\".p-channel_sidebar__channel--unread:not(.p-channel_sidebar__channel--muted)\").length,n=0;document.querySelectorAll(\".p-channel_sidebar__badge:not(.p-channel_sidebar__link_count)\").forEach(e=>{n+=isNaN(parseInt(e.innerHTML))?0:parseInt(e.innerHTML)}),updateBadge(e,n)}}function updateBadge(e,n){var o=0<n?n:0<e?999999:0;rambox.setUnreadCount(o)}setInterval(checkUnread,3e3),0<location.href.indexOf(\"/ssb/redirect?entry_point=workspace_signin\")&&(location.href=location.origin);",
         "userAgent": "",
         "note": "",
         "titleBlink": false,
