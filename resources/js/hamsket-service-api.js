@@ -3,7 +3,7 @@
  */
 
 const { ipcRenderer, remote } = require('electron');
-const contextMenu = require('electron-context-menu');
+const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
 
 /**
  * Make the Hamsket API available via a global "hamsket" variable.
@@ -53,11 +53,9 @@ window.hamsket.isInViewport = function(node) {
         rect.top < (window.innerHeight || document.documentElement.clientHeight);
 };
 
-contextMenu({
-	window: remote.getCurrentWebContents(),
-	showCopyImageAddress: true,
-	showSaveImage: false,
-	showSaveImageAs: true
+window.hamsket.contextMenuBuilder = new ContextMenuBuilder();
+window.hamsket.contextMenuListener = new ContextMenuListener(function(event, info) {
+       window.hamsket.contextMenuBuilder.showPopupMenu(info);
 });
 
 

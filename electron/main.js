@@ -114,7 +114,8 @@ function createWindow () {
 			partition: 'persist:hamsket',
 			nodeIntegration: true,
 			webviewTag: true,
-			enableRemoteModule: true
+			enableRemoteModule: true,
+			contextIsolation: false
 		}
 	});
 

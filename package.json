@@ -80,9 +80,9 @@
 		"dist": "npm run repack"
 	},
 	"dependencies": {
-		"@electron/remote": "^1.0.2",
+		"@electron/remote": "^2.0.1",
 		"auto-launch": "^5.0.5",
-		"electron-context-menu": "^2.3.0",
+		"electron-contextmenu-wrapper": "^5.0.0",
 		"electron-store": "^5.0.0",
 		"mime": "^2.4.4",
 		"tmp": "^0.1.0"
@@ -92,8 +92,8 @@
 		"chai": "^4.2.0",
 		"crowdin": "^3.4.2",
 		"csvjson": "^5.1.0",
-		"electron": "^10.3.0",
-		"electron-builder": "^22.9.1",
+		"electron": "^13.5.1",
+		"electron-builder": "^22.14.4",
 		"mocha": "^7.1.1",
 		"shx": "^0.3.2",
 		"spectron": "^10.0.1"
