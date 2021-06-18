@@ -1373,7 +1373,7 @@
         "type": "messaging",
         "allow_popups": false,
         "manual_notifications": false,
-        "js_unread": "function checkUnread(){const e=document.querySelectorAll(\".badge.unread\"),t=document.querySelectorAll(\".chatlist .is-muted .badge.unread\");let n=0;e.forEach(e=>{e&&(n+=parseInt(e.innerText))}),t.forEach(e=>{e&&(n-=parseInt(e.innerText))}),updateBadge(n)}function updateBadge(e){let t=0<e?e:0;rambox.setUnreadCount(t)}setInterval(checkUnread,3e3);",
+        "js_unread": "function checkUnread(){let e=0;if([\"https://web.telegram.org/k/\",\"https://webk.telegram.org/\"].includes(location.href)){const t=document.querySelectorAll(\".badge.unread\"),a=document.querySelectorAll(\".chatlist .is-muted .badge.unread\");t.forEach(t=>{\"\"!==t.innerText&&(e+=parseInt(t.innerText))}),a.forEach(t=>{\"\"!==t.innerText&&(e-=parseInt(t.innerText))}),updateBadge(e)}else if([\"https://web.telegram.org/z/\",\"https://webz.telegram.org/\"].includes(location.href))document.querySelectorAll(\".Badge.unread:not(.muted)\").forEach(t=>e+=parseInt(t.innerText)),updateBadge(e);else{const t=document.getElementsByClassName(\"im_dialog_badge badge\");for(i=0;i<t.length;i++)t[i].classList.contains(\"im_dialog_badge_muted\")||(e+=parseInt(t[i].innerHTML.trim()));updateBadge(e)}}function updateBadge(e){e>=1?rambox.setUnreadCount(e):rambox.clearUnreadCount()}setInterval(checkUnread,3e3);",
         "userAgent": "",
         "note": "",
         "titleBlink": false,
