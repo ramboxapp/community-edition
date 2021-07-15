@@ -782,9 +782,9 @@
     {
         "id": "mailru",
         "logo": "mailru.png",
-        "name": "Mail.Ru",
-        "description": "Free voice and video calls, ICQ support, Odnoklassniki, VKontakte, Facebook, online games, free SMS.",
-        "url": "http://webagent.mail.ru/webim/agent/popup.html",
+        "name": "Mail.ru",
+        "description": "Mail.ru mail is the largest free mail, fast and convenient interface, unlimited mailbox volume, reliable protection against spam and viruses, mobile version and applications for smartphones. Access via IMAP, SMS notifications, interface in different languages ​​and Mail themes. Also on Mail.ru: news, Internet search, auto, sports, games, dating, weather, work.",
+        "url": "https://e.mail.ru/inbox/",
         "type": "email",
         "allow_popups": false,
         "manual_notifications": false,
