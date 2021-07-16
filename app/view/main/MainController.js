@@ -168,36 +168,21 @@ Ext.define('Rambox.view.main.MainController', {
 
 			currentWebView.clearHistory();
 			currentWebView.session.flushStorageData();
-			currentWebView.session
-				.clearCache()
-				.then(() => {
-					currentWebView.session
-						.clearStorageData()
-						.then(() => {
-							currentWebView.session.cookies
-								.flushStore()
-								.then(() => {
-									// Remove record from localStorage
-									Ext.getStore("Services").remove(rec);
-									// Close tab
-									tab.close();
-									// Close waiting message
-									if (total === actual) {
-										Ext.Msg.hide();
-										if (Ext.isFunction(callback)) callback();
-									}
-								})
-								.catch((err) => {
-									console.log(err);
-								});
-						})
-						.catch((err) => {
-							console.log(err);
-						});
-				})
-				.catch((err) => {
-					console.log(err);
-				});
+			currentWebView.session.clearCache().then(() => {
+				currentWebView.session.clearStorageData().then(() => {
+					currentWebView.session.cookies.flushStore().then(() => {
+						// Remove record from localStorage
+						Ext.getStore('Services').remove(rec);
+						// Close tab
+						tab.close();
+						// Close waiting message
+						if ( total === actual ) {
+							Ext.Msg.hide();
+							if ( Ext.isFunction(callback) ) callback();
+						}
+					}).catch(err => { console.log(err) })
+				}).catch(err => { console.log(err) })
+			}).catch(err => { console.log(err) })
 		}
 	}
 
