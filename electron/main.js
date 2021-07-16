@@ -102,7 +102,8 @@ function createWindow () {
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
 		,webPreferences: {
-			plugins: true
+			 enableRemoteModule: true
+			,plugins: true
 			,partition: 'persist:rambox'
 			,nodeIntegration: true
 			,webviewTag: true
