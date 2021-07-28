@@ -1,6 +1,6 @@
 environment:
   matrix:
-    - nodejs_version: '12'
+    - nodejs_version: '14'
 pull_requests:
   do_not_increment_build_number: true
 branches:
@@ -19,6 +19,8 @@ install:
       cd %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
       npm install
+
+      npx electron-rebuild -v 11.4.10
 cache:
   - '%APPDATA%\npm-cache'
   - '%USERPROFILE%\.electron'
