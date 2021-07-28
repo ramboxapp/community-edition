@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.7.7",
+	"version": "0.7.8",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"repository": {
@@ -66,8 +66,9 @@
 		"appId": "com.grupovrs.ramboxce",
 		"afterSign": "resources/installer/notarize.js",
 		"asar": true,
+		"electronVersion": "11.4.10",
 		"electronDownload": {
-			"version": "11.0.2"
+			"version": "11.4.10"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
@@ -127,10 +128,14 @@
 				"camera",
 				"audio-record",
 				"audio-playback",
-				"removable-media"
+				"removable-media",
+				"raw-usb",
+				"u2f-devices",
+				"cups-control"
 			]
 		},
 		"linux": {
+			"icon": "resources/installer/icons",
 			"category": "Network",
 			"desktop": {
 				"Terminal": "false",
@@ -138,6 +143,9 @@
 				"Categories": "GTK;GNOME;Network;Email;Chat;InstantMessaging;"
 			},
 			"artifactName": "Rambox-${version}-linux-${arch}.${ext}",
+			"executableArgs": [
+				"--no-sandbox"
+			],
 			"target": [
 				{
 					"target": "snap",
@@ -200,7 +208,7 @@
 		"chai": "3.5.0",
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "11.0.2",
+		"electron": "11.4.10",
 		"electron-builder": "22.9.1",
 		"electron-notarize": "1.0.0",
 		"electron-packager": "15.1.0",
@@ -212,7 +220,8 @@
 		"auth0-js": "9.13.2",
 		"auto-launch-patched": "5.0.2",
 		"crypto": "1.0.1",
-		"electron-contextmenu-wrapper": "4.0.1",
+		"diskusage": "1.1.3",
+		"electron-contextmenu-wrapper": "git+https://github.com/ramboxapp/electron-contextmenu-wrapper.git",
 		"electron-is-dev": "1.2.0",
 		"electron-log": "4.3.0",
 		"electron-store": "6.0.1",

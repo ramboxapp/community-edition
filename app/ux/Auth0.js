@@ -253,7 +253,8 @@ Ext.define('Rambox.ux.Auth0', {
 			,height: 600
 			,maximizable: false
 			,minimizable: false
-			,resizable: false
+			,resizable: true
+			,closable: true
 			,center: true
 			,autoHideMenuBar: true
 			,skipTaskbar: true
