@@ -16,8 +16,7 @@ var fs = require("fs");
 const path = require('path');
 
 // Disk usage:
-const disk = require('diskusage');
-const appPath = app.getAppPath();
+// const disk = require('diskusage');
 
 if ( isDev ) app.getVersion = function() { return require('../package.json').version; }; // FOR DEV ONLY, BECAUSE IN DEV RETURNS ELECTRON'S VERSION
 
@@ -269,7 +268,7 @@ function formatBytes(bytes, decimals = 2) {
 	return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
-async function availableSpaceWatchDog() {
+/* async function availableSpaceWatchDog() {
 	// optionally render this information also in rambox window
 	try {
 		const { available } = await disk.check(appPath);
@@ -289,7 +288,7 @@ async function availableSpaceWatchDog() {
 	} catch (err) {
 		console.error(err)
 	}
-}
+} */
 
 ipcMain.on('setBadge', function(event, messageCount, value) {
 	mainWindow.setOverlayIcon(nativeImage.createFromDataURL(value), messageCount.toString());
@@ -594,7 +593,7 @@ if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
 	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
-	setInterval(availableSpaceWatchDog, 1000 * 60);
+	// setInterval(availableSpaceWatchDog, 1000 * 60);
 });
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
