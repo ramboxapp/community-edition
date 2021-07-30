@@ -55,3 +55,9 @@ window.rambox.contextMenuBuilder = new ContextMenuBuilder();
 window.rambox.contextMenuListener = new ContextMenuListener(function(event, info) {
 	window.rambox.contextMenuBuilder.showPopupMenu(info);
 });
+
+const mousetrap = require('mousetrap');
+mousetrap.bind(process.platform === 'darwin' ? ['command+left', 'command+right'] : ['alt+left', 'alt+right'], e => {
+	if (location.href.indexOf('slack.com') !== -1) return; 
+	e.key === 'ArrowLeft' ? history.back() : history.forward();
+});

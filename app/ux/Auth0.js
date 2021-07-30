@@ -259,7 +259,6 @@ Ext.define('Rambox.ux.Auth0', {
 			,autoHideMenuBar: true
 			,skipTaskbar: true
 			,fullscreenable: false
-			,modal: true
 			,parent: require('electron').remote.getCurrentWindow()
 			,webPreferences: {
 				partition: 'persist:rambox'
