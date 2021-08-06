@@ -254,6 +254,21 @@
         "titleBlink": false,
         "custom_domain": true
     },
+        {
+        "id": "facebook",
+        "logo": "facebook.png",
+        "name": "Facebook",
+        "description": "Create an account or log into Facebook. Connect with friends, family and other people you know. Share photos and videos, send messages and get updates.",
+        "url": "https://www.facebook.com/",
+        "type": "messaging",
+        "allow_popups": false,
+        "manual_notifications": false,
+        "js_unread": "",
+        "userAgent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Rambox/1.5.2 Chrome/83.0.4103.122 Safari/537.36",
+        "note": "",
+        "titleBlink": false,
+        "custom_domain": false
+    },
     {
         "id": "fastmail",
         "logo": "fastmail.png",
