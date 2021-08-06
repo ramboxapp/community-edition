@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session} = require('electron');
+const {app, BrowserWindow, shell, Menu, ipcMain, nativeImage, session} = require('electron');
 // Tray
 const tray = require('./tray');
 // AutoLaunch
@@ -233,7 +233,8 @@ function createMasterPasswordWindow() {
 		 backgroundColor: '#0675A0'
 		,frame: false
 		,webPreferences: {
-			nodeIntegration: true
+			 nodeIntegration: true
+			,enableRemoteModule: true
 		}
 	});
 	// Open the DevTools.
