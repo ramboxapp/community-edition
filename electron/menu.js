@@ -65,12 +65,6 @@ module.exports = function(config) {
 			}
 		},
 		{
-			label: `&`+locale['menu.help[2]'],
-			click() {
-				shell.openExternal('https://rambox.typeform.com/to/t7jc4C');
-			}
-		},
-		{
 			label: `&Tools`,
 			submenu: [
 				{
