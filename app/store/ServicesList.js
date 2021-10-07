@@ -94,7 +94,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,description: locale['services[7]']
 			,url: 'https://web.telegram.org/'
 			,type: 'messaging'
-			,js_unread: `let checkUnread=()=>{const e=document.getElementsByClassName("im_dialog_badge badge");let t=0;for(let i of e)i.classList.contains("im_dialog_badge_muted")||(t+=parseInt(i.innerHTML.trim()));hamsket.updateBadge(t)};setInterval(checkUnread,3e3);`
+			,js_unread: `let checkUnread=()=>{const e=document.querySelectorAll(".badge.unread");let t=0;for(let i of e)i.classList.contains("is-muted")||(t+=parseInt(i.innerHTML.trim()));hamsket.updateBadge(t)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'wechat'
