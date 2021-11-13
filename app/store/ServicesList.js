@@ -56,6 +56,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,note: 'To enable desktop notifications, you have to go to Options inside Messenger.'
+			,js_unread: `const titleTest=new RegExp("^\\((\\d+)\\)"),checkUnread=()=>{let count=0;const isNotification=titleTest.test(document.title);isNotification?count=hamsket.parseIntOrZero(titleTest.exec(document.title)[1]):(count=document.querySelectorAll("._5fx8:not(._569x),._1ht3:not(._569x)").length,0===count&&(count=document.querySelectorAll(".pq6dq46d.is6700om.qu0x051f.esr5mh6w.e9989ue4.r7d6kgcz.s45kfl79.emlxlaya.bkmhp75w.spb7xbtv.cyypbtt7.fwizqjfa").length));const messageRequests=document.querySelector("._5nxf");messageRequests&&(count+=hamsket.parseIntOrZero(messageRequests.textContent)),hamsket.updateBadge(count)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'skype'
