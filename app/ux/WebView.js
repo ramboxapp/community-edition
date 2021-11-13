@@ -147,15 +147,12 @@ Ext.define('Hamsket.ux.WebView',{
 		let cfg;
 		enabled = enabled || me.record.get('enabled');
 
-		if ( !enabled ) {
-			cfg = [{
+		cfg = !enabled ? [{
 				 xtype: 'container'
 				,html: '<h3>Service Disabled</h3>'
 				,style: 'text-align:center;'
 				,padding: 100
-			}];
-		} else {
-			cfg = [{
+			}] : [{
 				 xtype: 'component'
 				,hideMode: 'offsets'
 				,autoRender: true
@@ -167,15 +164,13 @@ Ext.define('Hamsket.ux.WebView',{
 					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '')
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,webpreferences: 'enableRemoteModule=yes,spellcheck=yes,contextIsolation=no' //,nativeWindowOpen=true
+					,webpreferences: 'nativeWindowOpen=yes,enableRemoteModule=yes,spellcheck=yes,contextIsolation=no' //,nativeWindowOpen=true
+					,allowpopups: 'on'
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,userAgent: me.getUserAgent()
 					,preload: './resources/js/hamsket-service-api.js'
 				}
 			}];
-
-			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('allow_popups') ) cfg[0].autoEl.allowpopups = 'on';
-		}
 
 		return cfg;
 	}
@@ -262,141 +257,13 @@ Ext.define('Hamsket.ux.WebView',{
 		});
 
 		// Open links in default browser
-		webview.addEventListener('new-window', function(e) {
-			switch ( me.type ) {
-				case 'skype':
-					// hack to fix multiple browser tabs on Skype link click, re #11
-					if ( e.url.match(/https:\/\/web.skype.com\/..\/undefined/) ) {
-						e.preventDefault();
-						return;
-					} else if ( e.url.indexOf('imgpsh_fullsize') >= 0 ) {
-						ipc.send('image:download', e.url, e.target.partition);
-						e.preventDefault();
-						return;
-					}
-					break;
-				case 'hangouts':
-					e.preventDefault();
-					if ( e.url.indexOf('plus.google.com/u/0/photos/albums') >= 0 ) {
-						ipc.send('image:popup', e.url, e.target.partition);
-						return;
-					} else if ( e.url.indexOf('/el/CONVERSATION/') >= 0 ) {
-						me.add({
-							 xtype: 'window'
-							,title: 'Video Call'
-							,width: '80%'
-							,height: '80%'
-							,maximizable: true
-							,resizable: true
-							,draggable: true
-							,collapsible: true
-							,items: {
-								 xtype: 'component'
-								,hideMode: 'offsets'
-								,autoRender: true
-								,autoShow: true
-								,autoEl: {
-									 tag: 'webview'
-									,src: e.url
-									,style: 'width:100%;height:100%;'
-									,partition: me.getWebView().partition
-									,useragent: me.getUserAgent()
-								}
-							}
-						}).show();
-						return;
-					}
-					break;
-				case 'slack':
-					if ( e.url.indexOf('slack.com/call/') >= 0 ) {
-						me.add({
-							 xtype: 'window'
-							,title: Ext.String.htmlEncode(e.options.title)
-							,width: e.options.width
-							,height: e.options.height
-							,maximizable: true
-							,resizable: true
-							,draggable: true
-							,collapsible: true
-							,items: {
-								 xtype: 'component'
-								,hideMode: 'offsets'
-								,autoRender: true
-								,autoShow: true
-								,autoEl: {
-									 tag: 'webview'
-									,src: e.url
-									,style: 'width:100%;height:100%;'
-									,partition: me.getWebView().partition
-									,useragent: me.getUserAgent()
-								}
-							}
-						}).show();
-						e.preventDefault();
-						return;
-					}
-					break;
-				case 'icloud':
-					if ( e.url.indexOf('index.html#compose') >= 0 ) {
-						me.add({
-							 xtype: 'window'
-							,title: 'iCloud - Compose'
-							,width: 700
-							,height: 500
-							,maximizable: true
-							,resizable: true
-							,draggable: true
-							,collapsible: true
-							,items: {
-								 xtype: 'component'
-								,itemId: 'webview'
-								,hideMode: 'offsets'
-								,autoRender: true
-								,autoShow: true
-								,autoEl: {
-									 tag: 'webview'
-									,src: e.url
-									,style: 'width:100%;height:100%;'
-									,partition: me.getWebView().partition
-									,useragent: me.getUserAgent()
-									,preload: './resources/js/hamsket-modal-api.js'
-								}
-							}
-							,listeners: {
-								show(win) {
-									const webview = win.down('#webview').el.dom;
-									webview.addEventListener('ipc-message', function(event) {
-										const channel = event.channel;
-										switch (channel) {
-											case 'close':
-												win.close();
-												break;
-											default:
-												break;
-										}
-									});
-								}
-							}
-						}).show();
-						e.preventDefault();
-						return;
-					}
-					break;
-				case 'flowdock':
-					if ( e.disposition === 'new-window' ) {
-						e.preventDefault();
-						require('electron').remote.shell.openExternal(e.url);
-					}
-					return;
-				default:
-					break;
-			}
-
-			const protocol = require('url').parse(e.url).protocol;
-			if (protocol === 'http:' || protocol === 'https:' || protocol === 'mailto:') {
-				e.preventDefault();
-				require('electron').remote.shell.openExternal(e.url);
-			}
+		webview.addEventListener('new-window', function (e) {
+			e.preventDefault();
+			const protocol = require('url').URL(e.url).protocol;
+			// Block some Deep links to prevent that open its app (Ex: Slack)
+			if (['slack:'].includes(protocol)) return;
+			// Allow Deep links
+			if (!['http:', 'https:', 'about:'].includes(protocol)) return require('electron').shell.openExternal(e.url);
 		});
 
 		webview.addEventListener('will-navigate', function(e, url) {

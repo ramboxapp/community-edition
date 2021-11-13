@@ -61,6 +61,9 @@ if (config.get('enable_hidpi_support') && (process.platform === 'win32')) {
 	app.commandLine.appendSwitch('force-device-scale-factor', '1');
 }
 
+// TODO: https://github.com/electron/electron/issues/25469
+app.commandLine.appendSwitch('disable-features', 'CrossOriginOpenerPolicy');
+
 // This must match the package name in package.json
 app.setAppUserModelId('com.thegoddessinari.hamsket');
 
@@ -356,6 +359,119 @@ app.on('second-instance', (commandLine, workingDirectory) => {
 if (!haveLock) {
 	app.quit();
 }
+
+const allowPopUp = [
+	'=?print=true', // esta ultima checkea como anda imprimir un pedf desde gmail, si no va bie sacala
+	'accounts.google.com/AccountChooser',
+	'accounts.google.com/o/oauth2',
+	'api.moo.do',
+	'app.mixmax.com/_oauth/google',
+	'app.slack.com/files/import/dropbox',
+	'app.slack.com/files/import/gdrive',
+	'app.slack.com/free-willy/',
+	'auth.missiveapp.com',
+	'dropbox.com/profile_services/start_auth_flow',
+	'facebook.com/v3.1/dialog/oauth?',
+	'facebook.com/v3.2/dialog/oauth?',
+	'feedly.com/v3/auth/',
+	'figma.com/start_google_sso',
+	'hangouts.google.com/webchat/u/0/frame',
+	'identity.linuxfoundation.org/cas/login',
+	'mail.google.com/mail',
+	'manychat.com/fb?popup',
+	'messenger.com/videocall',
+	'notion.so/googlepopupredirect',
+	'officeapps.live.com',
+	'spikenow.com/s/account',
+	'zoom.us/office365',
+];
+
+app.on('web-contents-created', (webContentsCreatedEvent, contents) => {
+	if (contents.getType() !== 'webview') return;
+	// Block some Deep links to prevent that open its app (Ex: Slack)
+	contents.on(
+		'will-navigate',
+		(event, url) => url.slice(0, 8) === 'slack://' && event.preventDefault()
+	);
+	// New Window handler
+	contents.on(
+		'new-window',
+		(
+			event,
+			url,
+			frameName,
+			disposition,
+			options,
+			additionalFeatures,
+			referrer,
+			postBody
+		) => {
+			// If the url is about:blank we allow the window and handle it in 'did-create-window'
+			if (['about:blank', 'about:blank#blocked'].includes(url)) {
+				event.preventDefault();
+				Object.assign(options, {
+					show: false,
+				});
+				const win = new BrowserWindow(options);
+				win.center();
+				let once = false;
+				win.webContents.on('will-navigate', (e, nextURL) => {
+					if (once) return;
+					if (['about:blank', 'about:blank#blocked'].includes(nextURL)) return;
+					once = true;
+					let allow = false;
+					for (const url of allowPopUp) {
+						if (nextURL.includes(url)) {
+							allow = true;
+							break;
+						}
+					}
+					// If the url is in aboutBlankOnlyWindow we handle this as a popup window
+					if (allow) return win.show();
+					shell.openExternal(nextURL);
+					win.close();
+				});
+				event.newGuest = win;
+				return;
+			}
+			// We check if url is in the allowPopUpLoginURLs or allowForegroundTabURLs in Firebase to open a as a popup,
+			// if it is not we send this to the app
+			let allow = false;
+			for (const allowed of allowPopUp) {
+				if (url.includes(allowed)) {
+					allow = true;
+					break;
+				}
+			}
+			if (allow) return;
+			shell.openExternal(url);
+			event.preventDefault();
+		}
+	);
+	contents.on('did-create-window', (win, details) => {
+		// Here we center the new window.
+		win.center();
+		// The following code is for handling the about:blank cases only.
+		if (!['about:blank', 'about:blank#blocked'].includes(details.url)) return;
+		let once = false;
+		win.webContents.on('will-navigate', (e, nextURL) => {
+			if (once) return;
+			if (['about:blank', 'about:blank#blocked'].includes(nextURL)) return;
+			once = true;
+			let allow = false;
+			for (const url of allowPopUp) {
+				if (nextURL.includes(url)) {
+					allow = true;
+					break;
+				}
+			}
+			// If the url is in aboutBlankOnlyWindow we handle this as a popup window
+			if (allow) return win.show();
+			shell.openExternal(url);
+			win.close();
+		});
+	});
+});
 
 // Code for downloading images as temporal files
 // Credit: Ghetto Skype (https://github.com/stanfieldr/ghetto-skype)
