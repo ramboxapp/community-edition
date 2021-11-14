@@ -2,7 +2,7 @@
  * This file is loaded in the service web views to provide a Rambox API.
  */
 
-const { ipcRenderer } = require('electron');
+const { desktopCapturer, ipcRenderer } = require('electron');
 const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
 
 /**
@@ -61,3 +61,49 @@ mousetrap.bind(process.platform === 'darwin' ? ['command+left', 'command+right']
 	if (location.href.indexOf('slack.com') !== -1) return; 
 	e.key === 'ArrowLeft' ? history.back() : history.forward();
 });
+
+
+// ScreenShare
+window.navigator.mediaDevices.getDisplayMedia = () =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const sources = await desktopCapturer.getSources({
+        types: ['screen', 'window'],
+      });
+
+      const unlisten = () => {
+        ipcRenderer.removeAllListeners('screenShare:cancel');
+        ipcRenderer.removeAllListeners('screenShare:share');
+      };
+
+      ipcRenderer.on('screenShare:cancel', () => {
+        unlisten();
+        reject(new Error('Cancelled by user'));
+      });
+
+      ipcRenderer.on('screenShare:share', (_, shareId) => {
+        unlisten();
+        window.navigator.mediaDevices
+          .getUserMedia({
+            audio: false,
+            video: {
+              mandatory: {
+                chromeMediaSource: 'desktop',
+                chromeMediaSourceId: shareId,
+              },
+            },
+          })
+          .then(stream => resolve(stream));
+      });
+
+      const mappedSources = sources.map(it => ({
+        id: it.id,
+        name: it.name,
+        thumbnail: it.thumbnail.toDataURL(),
+      }));
+
+      ipcRenderer.send('screenShare:show', mappedSources);
+    } catch (err) {
+      reject(err);
+    }
+  });

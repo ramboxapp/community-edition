@@ -576,6 +576,51 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 	}
 });
 
+// ScreenShare
+ipcMain.on('screenShare:show', (event, screenList) => {
+	let tmpWindow = new BrowserWindow({
+		width: 600,
+		height: 500,
+		icon: __dirname + '/../resources/Icon.ico',
+		autoHideMenuBar: true,
+		transparent: true,
+		show: true,
+		frame: false,
+		hasShadow: true,
+		webPreferences: {
+			nodeIntegration: true,
+		},
+	});
+
+	const close = () => {
+		tmpWindow.close();
+		tmpWindow = null;
+	};
+
+	const onCancel = () => {
+		event.sender.send('screenShare:cancel');
+		close();
+	};
+
+	const onShare = (_, shareId) => {
+		event.sender.send('screenShare:share', shareId);
+		close();
+	};
+
+	ipcMain.handle('screenShare:getSources', () => screenList);
+	ipcMain.on('screenShare:cancelSelection', onCancel);
+	ipcMain.on('screenShare:selectScreen', onShare);
+
+	tmpWindow.on('closed', () => {
+		ipcMain.removeHandler('screenShare:getSources');
+		ipcMain.removeAllListeners('screenShare:cancelSelection');
+		ipcMain.removeAllListeners('screenShare:selectScreen');
+	});
+
+	tmpWindow.loadFile(__dirname + '/../screenselector.html');
+});
+
+
 // Proxy
 if ( config.get('proxy') ) {
 	app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
