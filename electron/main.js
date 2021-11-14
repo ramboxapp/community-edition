@@ -773,15 +773,19 @@ if (config.get("disable_gpu")) app.disableHardwareAcceleration();
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
-app.on('ready', function() {
-	config.get('master_password') ? createMasterPasswordWindow() : createWindow();
+app.on("ready", function () {
+  config.get("master_password") ? createMasterPasswordWindow() : createWindow();
 
-	// Load Chrome extensions
-	const rawExtensionPaths = config.get('extension_paths')
-	if(rawExtensionPaths) {
-		const extentionPaths = rawExtensionPaths.split(',').map(path => path.trim())
-		extentionPaths.forEach(path => console.log('Extension added: ', BrowserWindow.addExtension(path)))
-	}
+  // Load Chrome extensions
+  const rawExtensionPaths = config.get("extension_paths");
+  if (rawExtensionPaths) {
+    const extentionPaths = rawExtensionPaths
+      .split(",")
+      .map((path) => path.trim());
+    extentionPaths.forEach((path) =>
+      console.log("Extension added: ", BrowserWindow.addExtension(path))
+    );
+  }
 });
 // Quit when all windows are closed.
 app.on("window-all-closed", function () {
