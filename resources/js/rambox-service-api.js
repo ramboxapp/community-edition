@@ -3,9 +3,12 @@
  */
 
 const { desktopCapturer, ipcRenderer } = require("electron");
-require("./darkreader.js")
-const { ipcRenderer } = require('electron');
-const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
+require("./darkreader.js");
+const { ipcRenderer } = require("electron");
+const {
+  ContextMenuBuilder,
+  ContextMenuListener,
+} = require("electron-contextmenu-wrapper");
 
 /**
  * Make the Rambox API available via a global "rambox" variable.
