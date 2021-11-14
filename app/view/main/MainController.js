@@ -1,3 +1,5 @@
+const darkreader = require('darkreader');
+
 Ext.define('Rambox.view.main.MainController', {
 	 extend: 'Ext.app.ViewController'
 
@@ -6,6 +8,11 @@ Ext.define('Rambox.view.main.MainController', {
 	,initialize: function( tabPanel ) {
 		const config = ipc.sendSync('getConfig');
 
+		if (config.darkreader) {
+			darkreader.enable();
+		} else {
+			darkreader.disable();
+		}
 		tabPanel.setTabPosition(config.tabbar_location);
 		tabPanel.setTabRotation(0);
 

@@ -33,37 +33,38 @@ if (isDev)
 
 // Initial Config
 const config = new Config({
-  defaults: {
-    always_on_top: false,
-    hide_menu_bar: false,
-    tabbar_location: "top",
-    hide_tabbar_labels: false,
-    window_display_behavior: "taskbar_tray",
-    auto_launch: !isDev,
-    flash_frame: true,
-    window_close_behavior: "keep_in_tray",
-    start_minimized: false,
-    systemtray_indicator: true,
-    master_password: false,
-    dont_disturb: false,
-    disable_gpu: process.platform === "linux",
-    proxy: false,
-    proxyHost: "",
-    proxyPort: "",
-    proxyLogin: "",
-    proxyPassword: "",
-    locale: "en",
-    enable_hidpi_support: false,
-    user_agent: "",
-    default_service: "ramboxTab",
-    sendStatistics: false,
+	 defaults: {
+		 always_on_top: false
+		,hide_menu_bar: false
+		,tabbar_location: 'top'
+		,hide_tabbar_labels: false
+		,window_display_behavior: 'taskbar_tray'
+		,auto_launch: !isDev
+		,flash_frame: true
+		,window_close_behavior: 'keep_in_tray'
+		,start_minimized: false
+		,darkreader: true
+		,systemtray_indicator: true
+		,master_password: false
+		,dont_disturb: false
+		,disable_gpu: process.platform === 'linux'
+		,proxy: false
+		,proxyHost: ''
+		,proxyPort: ''
+		,proxyLogin: ''
+		,proxyPassword: ''
+		,locale: 'en'
+		,enable_hidpi_support: false
+		,user_agent: ''
+		,default_service: 'ramboxTab'
+		,sendStatistics: false
 
-    x: undefined,
-    y: undefined,
-    width: 1000,
-    height: 800,
-    maximized: false,
-  },
+		,x: undefined
+		,y: undefined
+		,width: 1000
+		,height: 800
+		,maximized: false
+	}
 });
 
 // Fix issues with HiDPI scaling on Windows platform
