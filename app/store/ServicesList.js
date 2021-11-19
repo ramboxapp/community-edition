@@ -76,7 +76,7 @@ Ext.define('Hamsket.store.ServicesList', {
 			,type: 'messaging'
 			,titleBlink: true
 			,manual_notifications: true
-			,js_unread: `let checkUnread=()=>{let myframe=document.getElementById("hangout-landing-chat").lastChild,mydocument=myframe.contentDocument||myframe.contentWindow.document;hamsket.updateBadge(mydocument.body.getElementsByClassName("ee").length)};setInterval(checkUnread,3e3);`
+			,js_unread: `const checkUnread=()=>{const myframe=document.querySelector("#hangout-landing-chat iframe"),mydocument=myframe&&"contentDocument"in myframe?myframe.contentDocument:myframe.contentWindow.document,count=mydocument?mydocument.body.querySelectorAll(".ee").length:0;hamsket.updateBadge(count)};setInterval(checkUnread,3e3);`
 		},
 		{
 			 id: 'hipchat'
