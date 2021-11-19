@@ -354,13 +354,13 @@ Ext.define('Hamsket.ux.WebView',{
 
 			// Prevent Title blinking (some services have) and only allow when the title have an unread regex match: "(3) Title"
 			if ( Ext.getStore('ServicesList').getById(me.record.get('type')).get('titleBlink') ) {
-				const js_preventBlink = `const originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].innerHTML=a)},get:()=>document.getElementsByTagName("title")[0].innerHTML});`;
-				js_inject += js_preventBlink;
+				const js_preventBlink = `const originalTitle=document.title;Object.defineProperty(document,"title",{configurable:!0,set(a){null===a.match(new RegExp("[(]([0-9•]+)[)][ ](.*)","g"))&&a!==originalTitle||(document.getElementsByTagName("title")[0].textContent=a)},get:()=>document.getElementsByTagName("title")[0].textContent});`;
+				js_inject += '{' + js_preventBlink + '}';
 			}
 
 
 			// Scroll always to top (bug)
-			js_inject += 'document.body.scrollTop=0;';
+			js_inject += '{document.body.scrollTop=0;}';
 
 			// Handles Certificate Errors
 			me.getWebContents().on('certificate-error', function(event, url, error, certificate, callback) {
