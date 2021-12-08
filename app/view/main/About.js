@@ -15,7 +15,7 @@ Ext.define('Hamsket.view.main.About', {
 		me.data.buildversion = require('fs').readFileSync( __dirname + '/BUILDVERSION', 'utf8');
 	}
 	,data: {
-		 version: require('electron').remote.app.getVersion()
+		 version: require('@electron/remote').app.getVersion()
 		,platform: process.platform
 		,arch: process.arch
 		,electron: process.versions.electron

@@ -137,7 +137,7 @@ Ext.define('Hamsket.view.main.MainController', {
 
 		// Get Record
 		const rec = Ext.getStore('Services').getById(serviceId);
-		const {session: rsession} = require('electron').remote;
+		const {session: rsession} = require('@electron/remote');
 
 		if ( !rec.get('enabled') ) {
 			const session = rsession.fromPartition(`persist:${rec.get('type')}_${serviceId}`);

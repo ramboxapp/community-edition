@@ -12,6 +12,7 @@ const updater = require('./updater');
 // File System
 const fs = require("fs");
 const path = require('path');
+const contextMenu = require('electron-context-menu');
 
 // If 'data' folder exists in Hamsket's folder, set userdata, logs, and usercache path to there
 var basepath = app.getAppPath();
@@ -117,10 +118,11 @@ function createWindow () {
 			partition: 'persist:hamsket',
 			nodeIntegration: true,
 			webviewTag: true,
-			enableRemoteModule: true,
-			contextIsolation: false
+			contextIsolation: false,
 		}
 	});
+
+	require("@electron/remote/main").enable(mainWindow.webContents);
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
 	if (config.get('start_minimized')){
@@ -235,11 +237,11 @@ function createMasterPasswordWindow() {
 		,frame: false
 		,webPreferences: {
 			nodeIntegration: true,
-			enableRemoteModule: true,
 			contextIsolation: false
 		}
 
 	});
+	require("@electron/remote/main").enable(mainMasterPasswordWindow.webContents);
 
 	mainMasterPasswordWindow.loadURL('file://' + __dirname + '/../masterpassword.html');
 	mainMasterPasswordWindow.on('close', function() { mainMasterPasswordWindow = null; });
@@ -585,6 +587,7 @@ if ( config.get('disable_gpu') ) app.disableHardwareAcceleration();
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
+	require('@electron/remote/main').initialize();
 	if (config.get('master_password')) {
 		createMasterPasswordWindow();
 	} else {
@@ -621,8 +624,18 @@ app.on('before-quit', function () {
 
 // Prevent the ability to create webview with nodeIntegration.
 app.on('web-contents-created', (event, contents) => {
+	const contextMenuWebContentsDispose = contextMenu({
+		window: contents,
+		showCopyImageAddress: true,
+		showSaveImage: false,
+		showSaveImageAs: true,
+	});
     contents.on('will-attach-webview', (event, webPreferences, params) => {
 		// Always prevent node integration
 		webPreferences.nodeIntegration = false;
+
 	});
+	contents.on('destroyed', function() {
+		contextMenuWebContentsDispose();
+	})
 });

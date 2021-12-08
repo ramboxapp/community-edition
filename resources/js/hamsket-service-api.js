@@ -2,8 +2,7 @@
  * This file is loaded in the service web views to provide a Hamsket API.
  */
 
-const { ipcRenderer, remote } = require('electron');
-const { ContextMenuBuilder, ContextMenuListener } = require('electron-contextmenu-wrapper');
+const { ipcRenderer } = require('electron');
 
 /**
  * Make the Hamsket API available via a global "hamsket" variable.
@@ -40,8 +39,8 @@ window.hamsket.clearUnreadCount = function() {
 };
 
 window.hamsket.parseIntOrZero = function (n) {
-	const result = parseInt(n, 10);
-	return isNaN(result) ? 0 : result;
+	const result = Number.parseInt(n, 10);
+	return Number.isNaN(result) ? 0 : result;
 };
 
 window.hamsket.isInViewport = function(node) {
@@ -52,11 +51,6 @@ window.hamsket.isInViewport = function(node) {
         rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
         rect.top < (window.innerHeight || document.documentElement.clientHeight);
 };
-
-window.hamsket.contextMenuBuilder = new ContextMenuBuilder();
-window.hamsket.contextMenuListener = new ContextMenuListener(function(event, info) {
-       window.hamsket.contextMenuBuilder.showPopupMenu(info);
-});
 
 
 /**

@@ -27,10 +27,10 @@ Ext.define('Hamsket.Application', {
 
 
 		// Set cookies to help Tooltip.io messages segmentation
-		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
+		Ext.util.Cookies.set('version', require('@electron/remote').app.getVersion());
 
 		// Check for updates
-		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Hamsket.app.checkUpdate(true);
+		if ( require('@electron/remote').process.argv.indexOf('--without-update') === -1 ) Hamsket.app.checkUpdate(true);
 
 		// Mouse Wheel zooming
 		document.addEventListener('mousewheel', function(e) {
@@ -85,7 +85,7 @@ Ext.define('Hamsket.Application', {
 			,method: 'GET'
 			,success(response) {
 				const json = JSON.parse(response.responseText);
-				const appVersion = new Ext.Version(require('electron').remote.app.getVersion());
+				const appVersion = new Ext.Version(require('@electron/remote').app.getVersion());
 				const updateVersion = new Ext.Version(json.tag_name);
 				if ( appVersion.isLessThan(updateVersion) ) {
 					console.info('New version is available', updateVersion);

@@ -3,7 +3,7 @@ Ext.define('Hamsket.ux.FileBackup', {
 	constructor() {
 		const me = this;
 		me.callParent(arguments);
-		me.remote = require('electron').remote;
+		me.remote = require('@electron/remote');
 		me.path = me.remote.require('path');
 		me.fs = me.remote.require('fs');
 		me.userPath = me.remote.app.getPath('userData');

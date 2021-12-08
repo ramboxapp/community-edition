@@ -164,7 +164,7 @@ Ext.define('Hamsket.ux.WebView',{
 					,partition: 'persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '')
 					,allowtransparency: 'on'
 					,autosize: 'on'
-					,webpreferences: 'nativeWindowOpen=yes,enableRemoteModule=yes,spellcheck=yes,contextIsolation=no' //,nativeWindowOpen=true
+					,webpreferences: 'nativeWindowOpen=yes,spellcheck=yes,contextIsolation=no' //,nativeWindowOpen=true
 					,allowpopups: 'on'
 					//,disablewebsecurity: 'on' // Disabled because some services (Like Google Drive) dont work with this enabled
 					,userAgent: me.getUserAgent()
@@ -265,7 +265,7 @@ Ext.define('Hamsket.ux.WebView',{
 			// Block some Deep links to prevent that open its app (Ex: Slack)
 			if (['slack:'].includes(protocol)) return;
 			// Allow Deep links
-			if (!['http:', 'https:', 'about:'].includes(protocol)) return require('electron').shell.openExternal(url.href);
+			if (!['http:', 'https:', 'about:'].includes(protocol)) return require('@electron/remote').shell.openExternal(url.href);
 		});
 
 		webview.addEventListener('will-navigate', function(e, url) {
@@ -437,7 +437,7 @@ Ext.define('Hamsket.ux.WebView',{
 			}
 
 			function showWindowAndActivateTab(event) {
-				const currentWindow = require('electron').remote.getCurrentWindow();
+				const currentWindow = require('@electron/remote').getCurrentWindow();
 				currentWindow.show();
 				currentWindow.focus();
 				const tabPanel = Ext.cq1('app-main');
@@ -700,10 +700,11 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getWebContents() {
 		if ( this.record.get('enabled') ) {
-			const remote = require('electron').remote;
+			const remote = require('@electron/remote');
 			const webview = this.getWebView();
 			const id = webview.getWebContentsId();
-			return remote.webContents.fromId(id);
+			const webContents = remote.webContents.fromId(id);
+			return webContents;
 		} else {
 			return false;
 		}
@@ -743,7 +744,7 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getOSArch(platform) {
 		const me = this;
-		const remote = require('electron').remote;
+		const remote = require('@electron/remote');
 		platform = platform ? platform : remote.require('os').platform();
 		let arch = remote.require('os').arch();
 
@@ -765,7 +766,7 @@ Ext.define('Hamsket.ux.WebView',{
 		return arch;
 	}
 	,getOSArchType() {
-		let arch = require('electron').remote.require('os').arch();
+		let arch = require('@electron/remote').require('os').arch();
 
 		switch(arch) {
 			case 'x64':
@@ -797,7 +798,7 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getOSPlatform(platform) {
 		const me = this;
-		platform = platform ? platform : require('electron').remote.require('os').platform();
+		platform = platform ? platform : require('@electron/remote').require('os').platform();
 		switch (platform) {
 			case 'win32':
 				platform = `${me.getOSRelease(platform)}; ${me.getOSArch(platform)}`;
@@ -820,15 +821,15 @@ Ext.define('Hamsket.ux.WebView',{
 		return platform;
 	}
 	,isWindows(platform) {
-		platform = platform ? platform : require('electron').remote.require('os').platform();
+		platform = platform ? platform : require('@electron/remote').require('os').platform();
 		return platform === 'win32';
 	}
 	,isMac(platform) {
-		platform = platform ? platform : require('electron').remote.require('os').platform();
+		platform = platform ? platform : require('@electron/remote').require('os').platform();
 		return platform === 'darwin';
 	}
 	,is32bit() {
-		const arch = require('electron').remote.require('os').arch();
+		const arch = require('@electron/remote').require('os').arch();
 		if (arch === 'ia32' || arch === 'x32')
 			return true;
 		else
@@ -836,7 +837,7 @@ Ext.define('Hamsket.ux.WebView',{
 	}
 	,getOSRelease(platform) {
 		const me = this;
-		const remote = require('electron').remote;
+		const remote = require('@electron/remote');
 		if (me.isWindows(platform)) {
 			if (platform)
 			{
@@ -852,13 +853,13 @@ Ext.define('Hamsket.ux.WebView',{
 		}
 	}
 	,getChromeVersion(version) {
-		return version || require('electron').remote.require('process').versions['chrome'];
+		return version || require('@electron/remote').process.versions['chrome'];
 	}
 	,getElectronVersion() {
-		return require('electron').require('process').versions['electron'];
+		return require('@electron/remote').process.versions['electron'];
 	}
 	,getAppVersion() {
-		return require('electron').remote.app.getVersion();
+		return require('@electron/remote').app.getVersion();
 	}
 	,blur() {
 		this.getWebView().blur();
