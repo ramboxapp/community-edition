@@ -234,7 +234,9 @@ function createMasterPasswordWindow() {
 		 backgroundColor: '#0675A0'
 		,frame: false
 		,webPreferences: {
-			nodeIntegration: true
+			nodeIntegration: true,
+			enableRemoteModule: true,
+			contextIsolation: false
 		}
 
 	});
