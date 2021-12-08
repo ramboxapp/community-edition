@@ -217,9 +217,9 @@ Keep in mind, I'm not pushing this. I'll do my best regardless.
 To build your own copy, you need:
 
 - An 8.0 version of the [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
-- [Ruby](https://www.ruby-lang.org/en/downloads/) 2.3 or newer.
+- [Ruby](https://www.ruby-lang.org/en/downloads/) >2.3 && <3.0.
 - [Sencha CMD](https://www.sencha.com/products/extjs/cmd-download/) 6.7.0 or newer, and to install it with the Compass extension.
-- [NodeJS](https://nodejs.org/en/download/) 8.5.0 (10.0+ preferred) or newer with npm.
+- [NodeJS](https://nodejs.org/en/download/) 14.x or newer with npm.
 
 These **need** to be added to your PATH.
 
