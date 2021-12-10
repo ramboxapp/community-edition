@@ -235,7 +235,7 @@ Ext.define('Hamsket.ux.WebView',{
 				},
 				(details, callback) => {
 					details.requestHeaders['User-Agent'] =
-						'Mozilla/5.0 (X11; Linux x86_64; rv:80.0) Gecko/20100101 Firefox/80.0';
+						'Mozilla/5.0 (X11; Linux x86_64; rv:95.0) Gecko/20100101 Firefox/95.0';
 					callback({ requestHeaders: details.requestHeaders });
 				}
 			);
