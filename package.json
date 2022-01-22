@@ -58,7 +58,7 @@
 		"build:win": "electron-builder --win --ia32 --x64",
 		"build:win32": "electron-builder --win --ia32",
 		"build:win64": "electron-builder --win --x64",
-		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx && npm run build:osx64 && && npm run build:osxarm64",
+		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx && npm run build:osx64 && npm run build:osxarm64",
 		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
 		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
