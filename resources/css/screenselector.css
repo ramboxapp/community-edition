@@ -1,0 +1,146 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.screen-selector {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: solid 1px #cdcdcd;
+  box-sizing: border-box;
+}
+
+.screen-selector ul.type {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border-bottom: solid 1px #cdcdcd;
+  width: 100%;
+  -webkit-app-region: drag;
+}
+
+.screen-selector ul.type li {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  color: #65696c;
+  border-bottom: 2px solid transparent;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 0 15px;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.screen-selector ul.type li.active, .screen-selector ul.type li:hover {
+  color: #426ba3;
+  border-color: #426ba3;
+}
+
+.screen-selector > .content {
+  height: calc(100% - 92px);
+}
+
+.screen-selector ul.preview {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-height: calc(100% - 45px);
+  box-sizing: border-box;
+  padding: 10px;
+  overflow-y: auto;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.screen-selector ul.preview li {
+  display: inline-block;
+  box-sizing: border-box;
+  width: calc(33% - 1px);
+  cursor: pointer;
+  padding: 5px;
+}
+
+.screen-selector ul.preview li .content {
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px;
+  border: solid 2px transparent;
+  border-radius: 5px;
+  height: 100%;
+  flex-direction: column;
+}
+
+.screen-selector ul.preview li.active .content,
+.screen-selector ul.preview li:hover .content {
+  border-color: #88abdb;
+}
+
+.screen-selector ul.preview li.active .content {
+  color: #000;
+  height: 100%;
+}
+
+.screen-selector ul.preview li .content .img-wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+.screen-selector ul.preview li .content img {
+  display: inline-block;
+  width: 100%;
+}
+
+.screen-selector ul.preview li .content span {
+  display: inline-block;
+  width: 100%;
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.screen-selector .footer {
+  display: inline-block;
+  width: 100%;
+  border-top: solid 1px #cdcdcd;
+
+}
+
+.screen-selector .footer button {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.screen-selector .footer button#cancel {
+  border: solid 1px #cdcdcd;
+  background: #fff;
+  color: #1c73e4;
+}
+
+.screen-selector .footer button#share {
+  border: solid 1px #186ddd;
+  background: #1c73e4;
+  color: #fff;
+}
+
+.screen-selector .footer button#share[disabled] {
+  background: #666;
+  cursor: default;
+}
