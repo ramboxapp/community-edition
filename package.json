@@ -39,7 +39,9 @@
 		"clean:osx": "rm -rf ./dist/Rambox-darwin-*",
 		"clean:win": "rm -rf ./dist/Rambox-win32-*",
 		"pack": "npm run pack:osx && npm run pack:win",
-		"pack:osx": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:osx": "npm run pack:osx64 && npm run pack:osxarm64",
+		"pack:osx64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=x64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
+		"pack:osxarm64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=darwin --arch=arm64 --icon=resources/installer/Icon.icns --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:win": "npm run pack:win32 && npm run pack:win64",
 		"pack:win32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=32-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:win64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=win32 --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
@@ -47,14 +49,16 @@
 		"pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=ia32 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Rambox\" --out=dist --platform=linux --arch=x64 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Rambox\" --version-string.ProductName=\"Rambox\" --asar --prune --overwrite",
 		"build": "npm run build:linux && npm run build:osx && npm run build:win",
-		"build:osx": "electron-builder --macos",
+		"build:osx": "electron-builder --macos --universal",
+		"build:osx64": "electron-builder --macos --x64",
+		"build:osxarm64": "electron-builder --macos --arm64",
 		"build:linux": "electron-builder --linux --publish=onTagOrDraft",
 		"build:linux32": "electron-builder --linux --ia32 --publish=onTagOrDraft",
 		"build:linux64": "electron-builder --linux --x64 --publish=onTagOrDraft",
 		"build:win": "electron-builder --win --ia32 --x64",
 		"build:win32": "electron-builder --win --ia32",
 		"build:win64": "electron-builder --win --x64",
-		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx",
+		"setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run build:osx && npm run build:osx64 && npm run build:osxarm64",
 		"setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
 		"all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
 		"all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
@@ -66,13 +70,13 @@
 		"appId": "com.grupovrs.ramboxce",
 		"afterSign": "resources/installer/notarize.js",
 		"asar": true,
-		"electronVersion": "11.4.10",
+		"electronVersion": "13.6.3",
 		"electronDownload": {
-			"version": "11.4.10"
+			"version": "13.6.3"
 		},
 		"mac": {
 			"category": "public.app-category.productivity",
-			"artifactName": "Rambox-${version}-mac.${ext}",
+			"artifactName": "Rambox-${version}-mac-${arch}.${ext}",
 			"target": [
 				"default"
 			],
@@ -208,12 +212,12 @@
 		"chai": "3.5.0",
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
-		"electron": "11.4.10",
-		"electron-builder": "22.9.1",
+		"electron": "13.6.3",
+		"electron-builder": "22.14.5",
 		"electron-notarize": "1.0.0",
 		"electron-packager": "15.1.0",
 		"mocha": "5.2.0",
-		"spectron": "3.8.0"
+		"spectron": "^15.0.0"
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
