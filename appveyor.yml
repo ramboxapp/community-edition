@@ -12,7 +12,7 @@ init:
   - cmd: node --version
   - cmd: npm --version
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:nodejs_version x64
   - cmd: >-
       git clone https://github.com/saenzramiro/rambox-build.git %APPVEYOR_BUILD_FOLDER%\build\production\Rambox\
 
