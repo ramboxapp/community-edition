@@ -28,13 +28,6 @@ Ext.define('Rambox.view.main.Main', {
 	,tabBar: {
 		 id: 'mainTabBar'
 		,cls: JSON.parse(localStorage.getItem('dontDisturb')) ? 'dontdisturb' : ''
-		,items: [{
-			 xtype: 'button'
-			,html: '<span class="fa fa-heart" style="color:red;font-size:16px;cursor:pointer;padding:0 5px;"></span>'
-			,baseCls: ''
-			,tooltip: locale['app.main[25]']
-			,href: 'https://rambox.app/donate.html'
-		}]
 	}
 	,items: [
 		{
@@ -110,7 +103,7 @@ Ext.define('Rambox.view.main.Main', {
 							,tpl: [
 								 '<tpl for=".">'
 									,'<div class="service" data-qtip="{description}">'
-										,'<img src="https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F{logo}?alt=media&token=49036238-8f37-4f08-a7e5-1563be94c36e" width="48" />'
+										,'<img src="resources/icons/{logo}" width="48" />'
 										,'<span>{name}</span>'
 									,'</div>'
 								,'</tpl>'
@@ -158,7 +151,7 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'templatecolumn'
 							,width: 52
 							,variableRowHeight: true
-							,tpl: '<img src="{[ values.type !== \"custom\" ? \"https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F\"+values.logo+\"?alt=media\" : (values.logo == \"\" ? \"https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2Fcustom.png?alt=media\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
+							,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
 						}
 						,{
 							 dataIndex: 'name'
@@ -256,79 +249,8 @@ Ext.define('Rambox.view.main.Main', {
 						,tooltip: locale['app.main[20]']+'<br/><b>'+locale['app.main[18]']+(require('electron').remote.process.platform === 'darwin' ? ': Cmd + Alt + L</b>' : ': Alt + Shift + L</b>')
 						,handler: 'lockRambox'
 						,id: 'lockRamboxBtn'
-					},'-'
-					,{
-						 html: '<span style="color:#FFF;cursor:pointer;"><span class="fa fa-star" style="color:#F8D64E;font-size:16px;padding:0 5px;"></span> Try Rambox Pro</span>'
-						,href: 'https://rambox.pro/api/download'
-						,baseCls: ''
 					}
 					,'->'
-					,{
-						 xtype: 'image'
-						,id: 'avatar'
-						,bind: {
-							 src: '{avatar}'
-							,hidden: '{!avatar}'
-						}
-						,width: 30
-						,height: 30
-						,style: 'border-radius: 50%;border:2px solid #d8d8d8;'
-					}
-					,{
-						 id: 'usernameBtn'
-						,bind: {
-							 text: '{username}'
-							,hidden: '{!username}'
-						}
-						,menu: [
-							{
-								 text: 'Synchronize Configuration'
-								,glyph: 'xf0c2@FontAwesome'
-								,menu: [
-									{
-										 xtype: 'label'
-										,bind: {
-											html: '<b class="menu-title">Last Sync: {last_sync}</b>'
-										}
-									}
-									,{
-										 text: 'Backup'
-										,glyph: 'xf0ee@FontAwesome'
-										,scope: Rambox.ux.Auth0
-										,handler: Rambox.ux.Auth0.backupConfiguration
-									}
-									,{
-										 text: 'Restore'
-										,glyph: 'xf0ed@FontAwesome'
-										,scope: Rambox.ux.Auth0
-										,handler: Rambox.ux.Auth0.restoreConfiguration
-									}
-									,{
-										 text: 'Check for updated backup'
-										,glyph: 'xf021@FontAwesome'
-										,scope: Rambox.ux.Auth0
-										,handler: Rambox.ux.Auth0.checkConfiguration
-									}
-								]
-							}
-							,'-'
-							,{
-								 text: locale['app.main[21]']
-								,glyph: 'xf08b@FontAwesome'
-								,handler: 'logout'
-							}
-						]
-					}
-					,{
-						 text: locale['app.main[22]']
-						,icon: 'resources/auth0.png'
-						,id: 'loginBtn'
-						,tooltip: locale['app.main[23]']+'<br /><br /><i>'+locale['app.main[24]']+' Auth0 (https://auth0.com)</i>'
-						,bind: {
-							hidden: '{username}'
-						}
-						,handler: 'login'
-					}
 					,{
 						 tooltip: locale['preferences[0]']
 						,glyph: 'xf013@FontAwesome'
@@ -336,56 +258,23 @@ Ext.define('Rambox.view.main.Main', {
 					}
 				]
 			}
-			,bbar: [
-				{
-					 xtype: 'segmentedbutton'
-					,allowToggle: false
-					,items: [
-						{
-							 text: '<b>Help us</b> with'
-							,pressed: true
+			,bbar: {
+				xtype: 'toolbar'
+				,cls: 'deprecation'
+				,items: [
+					'<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <b>This version of Rambox is no longer supported.</b> We highly recommend that you update to the new version of Rambox which has a free plan with all the features you already use and much more!'
+					,'->'
+					,{
+						 xtype: 'button'
+						,text: 'Migrate now'
+						,handler: function(btn) {
+							btn.setText('Downloading...');
+							btn.setDisabled(true);
+							Rambox.app.checkUpdate();
 						}
-						,{
-							 text: locale['app.main[25]']
-							,glyph: 'xf21e@FontAwesome'
-							,href: 'https://rambox.app/donate.html'
-						}
-						,{
-							 text: 'Translation'
-							,glyph: 'xf0ac@FontAwesome'
-							,href: 'https://crowdin.com/project/rambox/invite'
-						}
-					]
-				}
-				,'->'
-				,{
-					 xtype: 'label'
-					,html: '<span class="fa fa-code" style="color:black;"></span> '+locale['app.main[26]']+' <span class="fa fa-heart" style="color:red;"></span> '+locale['app.main[27]'].replace('Argentina', '<img src="resources/flag.png" alt="Argentina" data-qtip="Argentina" />')
-				}
-				,'->'
-				,{
-					xtype: 'segmentedbutton'
-					,allowToggle: false
-					,items: [
-						{
-							 text: '<b>Follow us</b>'
-							,pressed: true
-						}
-						,{
-							 glyph: 'xf082@FontAwesome'
-							,href: 'https://www.facebook.com/ramboxapp'
-						}
-						,{
-							 glyph: 'xf099@FontAwesome'
-							,href: 'https://www.twitter.com/ramboxapp'
-						}
-						,{
-							 glyph: 'xf09b@FontAwesome'
-							,href: 'https://github.com/ramboxapp/community-edition'
-						}
-					]
-				}
-			]
+					}
+				]
+			}
 		}
 		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 	]

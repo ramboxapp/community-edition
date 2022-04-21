@@ -28,7 +28,7 @@ Ext.define('Rambox.view.add.Add',{
 		var me = this;
 
 		me.title = (!me.edit ? locale['app.window[0]'] : locale['app.window[1]']) + ' ' + me.record.get('name');
-		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F'+me.record.get('logo')+'?alt=media';
+		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'resources/icons/'+me.record.get('logo');
 		me.items = [
 			{
 				 xtype: 'form'

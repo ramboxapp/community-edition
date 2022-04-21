@@ -1,22 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="resources/css/screenselector.css" />
-</head>
-<body>
-  <div class="screen-selector">
-    <ul class="type">
-      <li class="active" data-type="screen">Entire Screen</li>
-      <li data-type="window">Window</li>
-    </ul>
-    <div class="content">
-      <ul class="preview"></ul>
-    </div>
-    <div class="footer">
-      <button id="share" disabled>Share</button>
-      <button id="cancel">Cancel</button>
-    </div>
-  </div>
-  <script src="resources/js/screenselector.js"></script>
-</body>
+	<head>
+		<style type="text/css">
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				overflow: hidden;
+			}
+
+			.screen-selector {
+				background-color: #fff;
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+				border: solid 1px #cdcdcd;
+				box-sizing: border-box;
+			}
+
+			.screen-selector ul.type {
+				display: inline-block;
+				padding: 0;
+				margin: 0;
+				border-bottom: solid 1px #cdcdcd;
+				width: 100%;
+				-webkit-app-region: drag;
+			}
+
+			.screen-selector ul.type li {
+				display: inline-block;
+				height: 40px;
+				line-height: 40px;
+				color: #65696c;
+				border-bottom: 2px solid transparent;
+				font-family: sans-serif;
+				font-weight: bold;
+				padding: 0 15px;
+				cursor: pointer;
+				-webkit-app-region: no-drag;
+			}
+
+			.screen-selector ul.type li.active,
+			.screen-selector ul.type li:hover {
+				color: #426ba3;
+				border-color: #426ba3;
+			}
+
+			.screen-selector > .content {
+				height: calc(100% - 92px);
+			}
+
+			.screen-selector ul.preview {
+				display: flex;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				max-height: 100%;
+				box-sizing: border-box;
+				padding: 10px;
+				overflow-y: auto;
+				flex-wrap: wrap;
+				list-style-type: none;
+			}
+
+			.screen-selector ul.preview li {
+				display: inline-block;
+				box-sizing: border-box;
+				width: calc(33% - 1px);
+				cursor: pointer;
+				padding: 5px;
+			}
+
+			.screen-selector ul.preview li .content {
+				display: flex;
+				box-sizing: border-box;
+				padding: 10px;
+				border: solid 2px transparent;
+				border-radius: 5px;
+				height: 100%;
+				flex-direction: column;
+			}
+
+			.screen-selector ul.preview li.active .content,
+			.screen-selector ul.preview li:hover .content {
+				border-color: #88abdb;
+			}
+
+			.screen-selector ul.preview li.active .content {
+				color: #000;
+				height: 100%;
+			}
+
+			.screen-selector ul.preview li .content .img-wrapper {
+				display: flex;
+				height: 100%;
+				align-items: center;
+				background: #f0f0f0;
+			}
+
+			.screen-selector ul.preview li .content img {
+				display: inline-block;
+				width: 100%;
+			}
+
+			.screen-selector ul.preview li .content span {
+				display: inline-block;
+				width: 100%;
+				height: 20px;
+				font-family: sans-serif;
+				text-align: center;
+				font-size: 14px;
+				margin-top: 10px;
+				color: #333;
+				box-sizing: border-box;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			.screen-selector .footer {
+				display: inline-block;
+				width: 100%;
+				border-top: solid 1px #cdcdcd;
+			}
+
+			.screen-selector .footer button {
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+				border: none;
+				border-radius: 5px;
+				padding: 5px 10px;
+				font-size: 14px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+
+			.screen-selector .footer button#cancel {
+				border: solid 1px #cdcdcd;
+				background: #fff;
+				color: #1c73e4;
+			}
+
+			.screen-selector .footer button#share {
+				border: solid 1px #186ddd;
+				background: #1c73e4;
+				color: #fff;
+			}
+
+			.screen-selector .footer button#share[disabled] {
+				background: #666;
+				border: solid 1px #666;
+				cursor: not-allowed;
+				opacity: 0.4;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="screen-selector">
+			<ul class="type">
+				<li class="active" data-type="screen">Entire screen</li>
+				<li data-type="window">Window</li>
+			</ul>
+			<div class="content">
+				<ul class="preview"></ul>
+			</div>
+			<div class="footer">
+				<button id="share" disabled>Share</button>
+				<button id="cancel">Cancel</button>
+			</div>
+		</div>
+		<script>
+			const { ipcRenderer } = require("electron");
+
+			let sourceList,
+				contentList,
+				typeButtons,
+				shareButton,
+				cancelButton,
+				activeItem,
+				activeTab = "screen";
+
+			const getItemDOM = (item) => {
+				const li = document.createElement("li");
+				li.setAttribute("data-id", item.id);
+				li.innerHTML = `<div class="content"><div class="img-wrapper"><img src="${item.thumbnail}" /></div><span>${item.name}</span></div>`;
+				li.addEventListener("click", onItemClick, false);
+				return li;
+			};
+
+			const updateTab = () => {
+				const sources = sourceList.filter(
+					(it) => it.id.indexOf(activeTab) === 0
+				);
+				contentList.innerHTML = "";
+				sources.forEach((source) =>
+					contentList.appendChild(getItemDOM(source))
+				);
+			};
+
+			const bindTypeClick = () => {
+				typeButtons.forEach((it) =>
+					it.addEventListener("click", onChangeType, false)
+				);
+			};
+
+			const bindActionsClick = () => {
+				shareButton.addEventListener("click", onShareClick, false);
+				cancelButton.addEventListener("click", onCancelClick, false);
+			};
+
+			const onChangeType = (event) => {
+				event.preventDefault();
+				if (!event.target.classList.contains("active")) {
+					activeTab = event.target.dataset.type;
+					typeButtons.forEach((it) => it.classList.remove("active"));
+					event.target.classList.add("active");
+					updateTab();
+				}
+			};
+
+			const onItemClick = (event) => {
+				event.preventDefault();
+				if (!event.currentTarget.classList.contains("active")) {
+					activeItem = event.currentTarget.dataset.id;
+					document
+						.querySelectorAll(".preview li")
+						.forEach((it) => it.classList.remove("active"));
+					event.currentTarget.classList.add("active");
+					changeShareState();
+				}
+			};
+
+			const onCancelClick = (event) => {
+				event.preventDefault();
+				ipcRenderer.send("screenShare:cancelSelection");
+			};
+
+			const onShareClick = (event) => {
+				event.preventDefault();
+				if (activeItem) {
+					ipcRenderer.send("screenShare:selectScreen", activeItem);
+				}
+			};
+
+			const changeShareState = () => {
+				if (shareButton.getAttribute("disabled") !== null) {
+					shareButton.removeAttribute("disabled");
+				}
+			};
+
+			window.addEventListener(
+				"load",
+				async () => {
+					sourceList = await ipcRenderer.invoke("screenShare:getSources");
+
+					contentList = document.querySelector(".preview");
+					typeButtons = document.querySelectorAll(".type li");
+					shareButton = document.querySelector("#share");
+					cancelButton = document.querySelector("#cancel");
+
+					bindTypeClick();
+					bindActionsClick();
+					updateTab();
+				},
+				false
+			);
+		</script>
+	</body>
 </html>

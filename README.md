@@ -110,8 +110,6 @@ Fork and work!
 ```shell
 git clone https://github.com/saenzramiro/rambox.git
 cd rambox
-cp env-sample.js env.js
-# update env.js with your auth0 details.
 npm install
 sencha app watch
 npm start

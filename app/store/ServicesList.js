@@ -10,7 +10,7 @@ Ext.define('Rambox.store.ServicesList', {
 
 	,proxy: {
 		type: 'ajax',
-		url: 'https://raw.githubusercontent.com/ramboxapp/community-edition/gh-pages/api/services.json',
+		url: 'resources/services.json',
 		reader: {
 			type: 'json',
 			rootProperty: 'responseText'

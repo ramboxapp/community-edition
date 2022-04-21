@@ -110,10 +110,6 @@
             "path": "resources/js/loadscreen.js"
         },
         {
-            "path": "env.js",
-			"remote": true
-        },
-        {
             "path": "app.js",
             "bundle": true
         }
@@ -291,10 +287,10 @@
      */
     "resources": [
 		"electron",
-		"env.js",
 		"package.json",
 		"package-lock.json",
-		"masterpassword.html"
+		"masterpassword.html",
+		"screenselector.html"
     ],
 
     /**

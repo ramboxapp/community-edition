@@ -23,7 +23,7 @@ module.exports = function(config) {
 		{
 			label: `&`+locale['menu.help[0]'],
 			click() {
-				shell.openExternal('https://rambox.pro');
+				shell.openExternal('https://rambox.app');
 			}
 		},
 		{
@@ -46,23 +46,6 @@ module.exports = function(config) {
 		},
 		{
 			type: 'separator'
-		},
-		{
-			label: '&'+locale['menu.help[1]'],
-			click() {
-				const body = `
-	<!-- Please describe here your issue and steps to reproduce it. -->
-
-
-
-	<!-- DON'T REMOVE THE FOLLOWING LINES -->
-	-
-	> ${app.getName()} ${app.getVersion()}
-	> Electron ${process.versions.electron}
-	> ${process.platform} ${process.arch} ${os.release()}`;
-
-				shell.openExternal(`https://github.com/ramboxapp/community-edition/issues/new?body=${encodeURIComponent(body)}`);
-			}
 		},
 		{
 			label: `&Tools`,
@@ -92,15 +75,6 @@ module.exports = function(config) {
 				}
 			]
 		},
-		{
-			type: 'separator'
-		},
-		{
-			label: `&`+locale['menu.help[3]'],
-			click() {
-				shell.openExternal('https://rambox.app/donate.html');
-			}
-		}
 	];
 
 	let tpl = [

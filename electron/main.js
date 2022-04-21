@@ -143,7 +143,7 @@ function createWindow () {
 
 	tray.create(mainWindow, config);
 
-	if ( process.argv.indexOf('--without-update') === -1 ) updater.initialize(mainWindow);
+	updater.initialize(mainWindow);
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
@@ -579,6 +579,7 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 // ScreenShare
 ipcMain.on('screenShare:show', (event, screenList) => {
 	let tmpWindow = new BrowserWindow({
+		title: 'Rambox - Select screen',
 		width: 600,
 		height: 500,
 		icon: __dirname + '/../resources/Icon.ico',
@@ -589,6 +590,7 @@ ipcMain.on('screenShare:show', (event, screenList) => {
 		hasShadow: true,
 		webPreferences: {
 			nodeIntegration: true,
+			contextIsolation: false,
 		},
 	});
 

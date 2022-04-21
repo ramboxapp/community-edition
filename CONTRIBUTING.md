@@ -122,22 +122,6 @@ Once you have rambox cloned, before you start the application, you first need to
 npm install
 ```
 
-Then you need to add the private environment variables (API Keys):
-
-```bash
-# Copy `env-sample.js` with a name of env.js
-# Populate it with Auth0 clientid and domain e.g. test.auth0.com
-# You can get these details from one of your "apps" here https://manage.auth0.com/#/clients/
-
-# macOS / Linux
-cp env-sample.js env.js
-
-# Windows
-copy env-sample.js env.js
-```
-
-Then edit the `env.js` file and modify the API keys only for services that you will use.
-
 ```bash
 # Compile the files...
 sencha app watch

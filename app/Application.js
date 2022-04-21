@@ -4,8 +4,7 @@ Ext.define('Rambox.Application', {
 	,name: 'Rambox'
 
 	,requires: [
-		 'Rambox.ux.Auth0'
-		,'Rambox.util.MD5'
+		'Rambox.util.MD5'
 		,'Ext.window.Toast'
 		,'Ext.util.Cookies'
 	]
@@ -134,47 +133,20 @@ Ext.define('Rambox.Application', {
 					]
 				});
 			}
-			// Prevent track if the user have disabled this option (default: false)
-			if ( !ipc.sendSync('sendStatistics') ) {
-				ga_storage = {
-					_enableSSL: Ext.emptyFn
-					,_disableSSL: Ext.emptyFn
-					,_setAccount: Ext.emptyFn
-					,_setDomain: Ext.emptyFn
-					,_setLocale: Ext.emptyFn
-					,_setCustomVar: Ext.emptyFn
-					,_deleteCustomVar: Ext.emptyFn
-					,_trackPageview: Ext.emptyFn
-					,_trackEvent: Ext.emptyFn
-				}
-			}
-
-			// Set Google Analytics events
-			ga_storage._setAccount('UA-80680424-1');
-			ga_storage._trackPageview('/index.html', 'main');
-			ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
 			// Load language for Ext JS library
-			Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
+			Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-extjs') || 'en')});
 
-			// Initialize Auth0
-			if ( auth0Cfg.clientID !== '' && auth0Cfg.domain !== '' ) Rambox.ux.Auth0.init();
-
-			// Set cookies to help Tooltip.io messages segmentation
-			Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
-			if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
-
-			// Check for updates
-			if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 ) Rambox.app.checkUpdate(true);
-
-			// Get Google URLs
-			Ext.Ajax.request({
-				url: 'https://raw.githubusercontent.com/ramboxapp/community-edition/gh-pages/api/google.json'
-				,method: 'GET'
-				,success: function(response) {
-					Rambox.app.config.googleURLs = Ext.decode(response.responseText);
-				}
-			});
+			// Set Google URLs
+			Rambox.app.config.googleURLs = [
+				"accounts.google.com/ServiceLogin",
+				"accounts.google.com/signin",
+				"accounts.google.com/_/lookup/accountlookup",
+				"accounts.google.com/o/oauth2",
+				"accounts.google.com/_/signin",
+				"accounts.google.com/AddSession?",
+				"accounts.google.com/_/"
+			];
 
 			// Shortcuts
 			const platform = require('electron').remote.process.platform;
@@ -275,60 +247,6 @@ Ext.define('Rambox.Application', {
 	}
 
 	,checkUpdate: function(silence) {
-		console.info('Checking for updates...');
-		Ext.Ajax.request({
-			 url: 'https://api.github.com/repos/ramboxapp/community-edition/releases/latest'
-			,method: 'GET'
-			,success: function(response) {
-				var json = Ext.decode(response.responseText);
-				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
-				if ( appVersion.isLessThan(json.name) && !json.draft && !json.prerelease ) {
-					console.info('New version is available', json.version);
-					Ext.cq1('app-main').addDocked({
-						 xtype: 'toolbar'
-						,dock: 'top'
-						,ui: 'newversion'
-						,items: [
-							'->'
-							,{
-								 xtype: 'label'
-								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')' + ( process.platform === 'win32' ? ' is downloading in the background and you will be notified when it is ready to be installed.' : '' )
-							}
-							,{
-								 xtype: 'button'
-								,text: locale['app.update[1]']
-								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/ramboxapp/community-edition/releases/latest'
-								,hidden: process.platform === 'win32'
-							}
-							,{
-								 xtype: 'button'
-								,text: locale['app.update[2]']
-								,ui: 'decline'
-								,tooltip: 'Click here to see more information about the new version.'
-								,href: 'https://github.com/ramboxapp/community-edition/releases/tag/'+json.version
-							}
-							,'->'
-							,{
-								 glyph: 'xf00d@FontAwesome'
-								,baseCls: ''
-								,style: 'cursor:pointer;'
-								,handler: function(btn) { Ext.cq1('app-main').removeDocked(btn.up('toolbar'), true); }
-							}
-						]
-					});
-					ipc.send('autoUpdater:check-for-updates');
-					return;
-				} else if ( !silence ) {
-					Ext.Msg.show({
-						 title: locale['app.update[3]']
-						,message: locale['app.update[4]']
-						,icon: Ext.Msg.INFO
-						,buttons: Ext.Msg.OK
-					});
-				}
-
-				console.info('Your version is the latest. No need to update.');
-			}
-		});
+		ipc.send('autoUpdater:check-for-updates');
 	}
 });

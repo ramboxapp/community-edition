@@ -61,18 +61,18 @@ ipc.on('autoUpdater:update-downloaded', function(e, info) {
 			'->'
 			,{
 				 xtype: 'label'
-				,html: '<b>New version ready to install ('+info.version+')!</b> It will be installed the next time Rambox is relaunched.'
+				,html: '<b>New version is ready to be installed ('+info.version+')!</b> Click the following button to install it now.'
 			}
 			,{
 				 xtype: 'button'
-				,text: 'Relaunch Now'
+				,text: 'Install now'
 				,handler: function(btn) { ipc.send('autoUpdater:quit-and-install'); }
 			}
 			,{
 				 xtype: 'button'
 				,text: 'Changelog'
 				,ui: 'decline'
-				,href: 'https://github.com/ramboxapp/community-edition/releases/tag/'+info.version
+				,href: 'https://github.com/ramboxapp/download/releases/latest'
 			}
 			,'->'
 			,{

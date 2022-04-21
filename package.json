@@ -1,7 +1,7 @@
 {
 	"name": "Rambox",
 	"productName": "Rambox",
-	"version": "0.7.9",
+	"version": "0.8.0",
 	"description": "Free and Open Source messaging and emailing app that combines common web applications into one.",
 	"main": "electron/main.js",
 	"repository": {
@@ -78,7 +78,12 @@
 			"category": "public.app-category.productivity",
 			"artifactName": "Rambox-${version}-mac-${arch}.${ext}",
 			"target": [
-				"default"
+				{
+					"target": "default",
+					"arch": [
+						"universal"
+					]
+				}
 			],
 			"hardenedRuntime": true,
 			"gatekeeperAssess": false,
@@ -213,7 +218,7 @@
 		"crowdin": "1.0.0",
 		"csvjson": "4.3.3",
 		"electron": "13.6.3",
-		"electron-builder": "22.14.5",
+		"electron-builder": "22.14.13",
 		"electron-notarize": "1.0.0",
 		"electron-packager": "15.1.0",
 		"mocha": "5.2.0",
@@ -221,14 +226,13 @@
 	},
 	"dependencies": {
 		"@exponent/electron-cookies": "2.0.0",
-		"auth0-js": "9.13.2",
 		"auto-launch-patched": "5.0.2",
 		"crypto": "1.0.1",
 		"electron-contextmenu-wrapper": "git+https://github.com/ramboxapp/electron-contextmenu-wrapper.git",
 		"electron-is-dev": "1.2.0",
 		"electron-log": "4.3.0",
 		"electron-store": "6.0.1",
-		"electron-updater": "4.3.5",
+		"electron-updater": "4.5.2",
 		"is-online": "8.2.0",
 		"mime": "2.3.1",
 		"mousetrap": "1.6.3",

@@ -39,7 +39,7 @@ Ext.define('Rambox.ux.WebView',{
 		Ext.apply(me, {
 			 items: me.webViewConstructor()
 			,title: prefConfig.hide_tabbar_labels ? '' : (me.record.get('tabname') ? me.record.get('name') : '')
-			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'https://firebasestorage.googleapis.com/v0/b/rambox-d1326.appspot.com/o/services%2F'+me.record.get('logo')+'?alt=media'
+			,icon: me.record.get('type') === 'custom' ? (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo')) : 'resources/icons/'+me.record.get('logo')
 			,src: me.record.get('url')
 			,type: me.record.get('type')
 			,align: me.record.get('align')
@@ -274,24 +274,23 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.getWebView();
 		me.errorCodeLog = []
 
-		// Google Analytics Event
-		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
-
 		// Notifications in Webview
 		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
+
+		require('electron').remote.session.fromPartition('persist:' + me.record.get('type') + '_' + me.id.replace('tab_', '') + (localStorage.getItem('id_token') ? '_' + Ext.decode(localStorage.getItem('profile')).sub : '')).webRequest.onBeforeSendHeaders((details, callback) => {
+			const change = details.url.match(/^https:\/\/accounts\.google\.com(\/|$)/);
+			if ( change ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0';
+			callback({ cancel: false, requestHeaders: details.requestHeaders });
+		});
 
 		// Show and hide spinner when is loading
 		webview.addEventListener("did-start-loading", function() {
 			console.info('Start loading...', me.src);
 
-			require('electron').remote.webContents.fromId(webview.getWebContentsId()).session.webRequest.onBeforeSendHeaders((details, callback) => {
-				Rambox.app.config.googleURLs.forEach((loginURL) => { if ( details.url.indexOf(loginURL) > -1 ) details.requestHeaders['User-Agent'] = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0'});
-				callback({ cancel: false, requestHeaders: details.requestHeaders });
-			});
-
 			if ( !me.down('statusbar').closed || !me.down('statusbar').keep ) me.down('statusbar').show();
 			me.down('statusbar').showBusy();
 		});
+
 		webview.addEventListener("did-stop-loading", function() {
 			me.down('statusbar').clearStatus({useDefaults: true});
 			if ( !me.down('statusbar').keep ) me.down('statusbar').hide();
@@ -377,11 +376,13 @@ Ext.define('Rambox.ux.WebView',{
 		// Open links in default browser
 		webview.addEventListener('new-window', function(e) {
 			e.preventDefault();
-			const protocol = require('url').parse(e.url).protocol;
+			const { URL } = require('url');
+			const url = new URL(e.url);
+			const protocol = url.protocol;
 			// Block some Deep links to prevent that open its app (Ex: Slack) 
 			if ( ['slack:'].includes(protocol) ) return;
 			// Allow Deep links
-			if ( !['http:',  'https:', 'about:'].includes(protocol) ) return require('electron').shell.openExternal(e.url);
+			if ( !['http:', 'https:', 'about:'].includes(protocol) ) return require('electron').shell.openExternal(url.href);
 		});
 
 		webview.addEventListener('will-navigate', function(e, url) {
