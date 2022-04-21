@@ -1,3 +1,14 @@
+# EOL
+The Community Edition of Rambox is no longer maintained. We highly recommend that you update to the new version of Rambox, which has a FREE plan with all the features you already use and much more!
+
+Visit: https://rambox.app/download
+
+Thank you so much for all the users who contribute to this project all these years.
+
+[Read our blog post to know more about our new Rambox.](https://rambox.medium.com/hello-2022-hello-new-rambox-4bdef5d6c3b8)
+
+---
+
 <div align="center">
   <h1>
     <br />
